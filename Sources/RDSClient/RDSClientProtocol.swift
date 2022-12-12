@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the RDS service.
  */
-public protocol RDSClientProtocol {
+public protocol RDSClientProtocol: RDSClientProtocolV2 {
     typealias AddRoleToDBClusterSyncType = (
             _ input: RDSModel.AddRoleToDBClusterMessage) throws -> ()
     typealias AddRoleToDBClusterAsyncType = (

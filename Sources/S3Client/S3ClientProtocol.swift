@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the S3 service.
  */
-public protocol S3ClientProtocol {
+public protocol S3ClientProtocol: S3ClientProtocolV2 {
     typealias AbortMultipartUploadSyncType = (
             _ input: S3Model.AbortMultipartUploadRequest) throws -> S3Model.AbortMultipartUploadOutput
     typealias AbortMultipartUploadAsyncType = (

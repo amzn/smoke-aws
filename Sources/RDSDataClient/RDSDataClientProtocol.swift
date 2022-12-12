@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the RDSData service.
  */
-public protocol RDSDataClientProtocol {
+public protocol RDSDataClientProtocol: RDSDataClientProtocolV2 {
     typealias BatchExecuteStatementSyncType = (
             _ input: RDSDataModel.BatchExecuteStatementRequest) throws -> RDSDataModel.BatchExecuteStatementResponse
     typealias BatchExecuteStatementAsyncType = (

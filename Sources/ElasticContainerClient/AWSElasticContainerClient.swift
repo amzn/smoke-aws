@@ -3806,4 +3806,1879 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the CreateCapacityProvider operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateCapacityProviderRequest object being passed to this operation.
+     - Returns: The CreateCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, limitExceeded, server, updateInProgress.
+     */
+    public func createCapacityProvider(
+            input: ElasticContainerModel.CreateCapacityProviderRequest) async throws -> ElasticContainerModel.CreateCapacityProviderResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.createCapacityProvider.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCapacityProvider,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateCapacityProviderOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateCluster operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateClusterRequest object being passed to this operation.
+     - Returns: The CreateClusterResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func createCluster(
+            input: ElasticContainerModel.CreateClusterRequest) async throws -> ElasticContainerModel.CreateClusterResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.createCluster.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateClusterOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateService operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateServiceRequest object being passed to this operation.
+     - Returns: The CreateServiceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
+     */
+    public func createService(
+            input: ElasticContainerModel.CreateServiceRequest) async throws -> ElasticContainerModel.CreateServiceResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.createService.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createService,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateServiceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateTaskSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateTaskSetRequest object being passed to this operation.
+     - Returns: The CreateTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func createTaskSet(
+            input: ElasticContainerModel.CreateTaskSetRequest) async throws -> ElasticContainerModel.CreateTaskSetResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.createTaskSet.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTaskSet,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateTaskSetOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteAccountSetting operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteAccountSettingRequest object being passed to this operation.
+     - Returns: The DeleteAccountSettingResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func deleteAccountSetting(
+            input: ElasticContainerModel.DeleteAccountSettingRequest) async throws -> ElasticContainerModel.DeleteAccountSettingResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteAccountSetting.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteAccountSetting,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteAccountSettingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteAttributesRequest object being passed to this operation.
+     - Returns: The DeleteAttributesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: clusterNotFound, invalidParameter, targetNotFound.
+     */
+    public func deleteAttributes(
+            input: ElasticContainerModel.DeleteAttributesRequest) async throws -> ElasticContainerModel.DeleteAttributesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteAttributes.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteAttributesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteCapacityProvider operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteCapacityProviderRequest object being passed to this operation.
+     - Returns: The DeleteCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func deleteCapacityProvider(
+            input: ElasticContainerModel.DeleteCapacityProviderRequest) async throws -> ElasticContainerModel.DeleteCapacityProviderResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteCapacityProvider.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCapacityProvider,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteCapacityProviderOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteCluster operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteClusterRequest object being passed to this operation.
+     - Returns: The DeleteClusterResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterContainsContainerInstances, clusterContainsServices, clusterContainsTasks, clusterNotFound, invalidParameter, server, updateInProgress.
+     */
+    public func deleteCluster(
+            input: ElasticContainerModel.DeleteClusterRequest) async throws -> ElasticContainerModel.DeleteClusterResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteCluster.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteClusterOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteService operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteServiceRequest object being passed to this operation.
+     - Returns: The DeleteServiceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
+     */
+    public func deleteService(
+            input: ElasticContainerModel.DeleteServiceRequest) async throws -> ElasticContainerModel.DeleteServiceResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteService.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteService,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteTaskSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskSetRequest object being passed to this operation.
+     - Returns: The DeleteTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func deleteTaskSet(
+            input: ElasticContainerModel.DeleteTaskSetRequest) async throws -> ElasticContainerModel.DeleteTaskSetResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteTaskSet.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTaskSet,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteTaskSetOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeregisterContainerInstance operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeregisterContainerInstanceRequest object being passed to this operation.
+     - Returns: The DeregisterContainerInstanceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func deregisterContainerInstance(
+            input: ElasticContainerModel.DeregisterContainerInstanceRequest) async throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deregisterContainerInstance.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterContainerInstance,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeregisterContainerInstanceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeregisterTaskDefinition operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeregisterTaskDefinitionRequest object being passed to this operation.
+     - Returns: The DeregisterTaskDefinitionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func deregisterTaskDefinition(
+            input: ElasticContainerModel.DeregisterTaskDefinitionRequest) async throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deregisterTaskDefinition.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeregisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeCapacityProviders operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeCapacityProvidersRequest object being passed to this operation.
+     - Returns: The DescribeCapacityProvidersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func describeCapacityProviders(
+            input: ElasticContainerModel.DescribeCapacityProvidersRequest) async throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeCapacityProviders.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeCapacityProviders,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeCapacityProvidersOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeClusters operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeClustersRequest object being passed to this operation.
+     - Returns: The DescribeClustersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func describeClusters(
+            input: ElasticContainerModel.DescribeClustersRequest) async throws -> ElasticContainerModel.DescribeClustersResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeClusters.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeClusters,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeClustersOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeContainerInstances operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeContainerInstancesRequest object being passed to this operation.
+     - Returns: The DescribeContainerInstancesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func describeContainerInstances(
+            input: ElasticContainerModel.DescribeContainerInstancesRequest) async throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeContainerInstances.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeContainerInstances,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeContainerInstancesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeServices operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeServicesRequest object being passed to this operation.
+     - Returns: The DescribeServicesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func describeServices(
+            input: ElasticContainerModel.DescribeServicesRequest) async throws -> ElasticContainerModel.DescribeServicesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeServices.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeServices,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeServicesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTaskDefinition operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeTaskDefinitionRequest object being passed to this operation.
+     - Returns: The DescribeTaskDefinitionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func describeTaskDefinition(
+            input: ElasticContainerModel.DescribeTaskDefinitionRequest) async throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeTaskDefinition.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeTaskDefinitionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTaskSets operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeTaskSetsRequest object being passed to this operation.
+     - Returns: The DescribeTaskSetsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     */
+    public func describeTaskSets(
+            input: ElasticContainerModel.DescribeTaskSetsRequest) async throws -> ElasticContainerModel.DescribeTaskSetsResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeTaskSets.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTaskSets,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeTaskSetsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTasks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeTasksRequest object being passed to this operation.
+     - Returns: The DescribeTasksResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func describeTasks(
+            input: ElasticContainerModel.DescribeTasksRequest) async throws -> ElasticContainerModel.DescribeTasksResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.describeTasks.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTasks,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeTasksOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DiscoverPollEndpoint operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DiscoverPollEndpointRequest object being passed to this operation.
+     - Returns: The DiscoverPollEndpointResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, server.
+     */
+    public func discoverPollEndpoint(
+            input: ElasticContainerModel.DiscoverPollEndpointRequest) async throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.discoverPollEndpoint.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.discoverPollEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DiscoverPollEndpointOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ExecuteCommand operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ExecuteCommandRequest object being passed to this operation.
+     - Returns: The ExecuteCommandResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, targetNotConnected.
+     */
+    public func executeCommand(
+            input: ElasticContainerModel.ExecuteCommandRequest) async throws -> ElasticContainerModel.ExecuteCommandResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.executeCommand.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.executeCommand,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExecuteCommandOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListAccountSettings operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListAccountSettingsRequest object being passed to this operation.
+     - Returns: The ListAccountSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func listAccountSettings(
+            input: ElasticContainerModel.ListAccountSettingsRequest) async throws -> ElasticContainerModel.ListAccountSettingsResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listAccountSettings.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listAccountSettings,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListAccountSettingsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListAttributesRequest object being passed to this operation.
+     - Returns: The ListAttributesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: clusterNotFound, invalidParameter.
+     */
+    public func listAttributes(
+            input: ElasticContainerModel.ListAttributesRequest) async throws -> ElasticContainerModel.ListAttributesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listAttributes.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListAttributesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListClusters operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListClustersRequest object being passed to this operation.
+     - Returns: The ListClustersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func listClusters(
+            input: ElasticContainerModel.ListClustersRequest) async throws -> ElasticContainerModel.ListClustersResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listClusters.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listClusters,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListClustersOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListContainerInstances operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListContainerInstancesRequest object being passed to this operation.
+     - Returns: The ListContainerInstancesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func listContainerInstances(
+            input: ElasticContainerModel.ListContainerInstancesRequest) async throws -> ElasticContainerModel.ListContainerInstancesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listContainerInstances.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listContainerInstances,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListContainerInstancesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListServices operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListServicesRequest object being passed to this operation.
+     - Returns: The ListServicesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func listServices(
+            input: ElasticContainerModel.ListServicesRequest) async throws -> ElasticContainerModel.ListServicesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listServices.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listServices,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListServicesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTagsForResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+     - Returns: The ListTagsForResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func listTagsForResource(
+            input: ElasticContainerModel.ListTagsForResourceRequest) async throws -> ElasticContainerModel.ListTagsForResourceResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listTagsForResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTaskDefinitionFamilies operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTaskDefinitionFamiliesRequest object being passed to this operation.
+     - Returns: The ListTaskDefinitionFamiliesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func listTaskDefinitionFamilies(
+            input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) async throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listTaskDefinitionFamilies.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTaskDefinitionFamilies,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTaskDefinitionFamiliesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTaskDefinitions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTaskDefinitionsRequest object being passed to this operation.
+     - Returns: The ListTaskDefinitionsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func listTaskDefinitions(
+            input: ElasticContainerModel.ListTaskDefinitionsRequest) async throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listTaskDefinitions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTaskDefinitions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTaskDefinitionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTasks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTasksRequest object being passed to this operation.
+     - Returns: The ListTasksResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server, serviceNotFound.
+     */
+    public func listTasks(
+            input: ElasticContainerModel.ListTasksRequest) async throws -> ElasticContainerModel.ListTasksResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.listTasks.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTasks,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTasksOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutAccountSetting operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutAccountSettingRequest object being passed to this operation.
+     - Returns: The PutAccountSettingResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func putAccountSetting(
+            input: ElasticContainerModel.PutAccountSettingRequest) async throws -> ElasticContainerModel.PutAccountSettingResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.putAccountSetting.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAccountSetting,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutAccountSettingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutAccountSettingDefault operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutAccountSettingDefaultRequest object being passed to this operation.
+     - Returns: The PutAccountSettingDefaultResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func putAccountSettingDefault(
+            input: ElasticContainerModel.PutAccountSettingDefaultRequest) async throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.putAccountSettingDefault.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAccountSettingDefault,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutAccountSettingDefaultOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutAttributesRequest object being passed to this operation.
+     - Returns: The PutAttributesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: attributeLimitExceeded, clusterNotFound, invalidParameter, targetNotFound.
+     */
+    public func putAttributes(
+            input: ElasticContainerModel.PutAttributesRequest) async throws -> ElasticContainerModel.PutAttributesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.putAttributes.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutAttributesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutClusterCapacityProviders operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutClusterCapacityProvidersRequest object being passed to this operation.
+     - Returns: The PutClusterCapacityProvidersResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceInUse, server, updateInProgress.
+     */
+    public func putClusterCapacityProviders(
+            input: ElasticContainerModel.PutClusterCapacityProvidersRequest) async throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.putClusterCapacityProviders.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putClusterCapacityProviders,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutClusterCapacityProvidersOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RegisterContainerInstance operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RegisterContainerInstanceRequest object being passed to this operation.
+     - Returns: The RegisterContainerInstanceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func registerContainerInstance(
+            input: ElasticContainerModel.RegisterContainerInstanceRequest) async throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.registerContainerInstance.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerContainerInstance,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RegisterContainerInstanceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RegisterTaskDefinition operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RegisterTaskDefinitionRequest object being passed to this operation.
+     - Returns: The RegisterTaskDefinitionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func registerTaskDefinition(
+            input: ElasticContainerModel.RegisterTaskDefinitionRequest) async throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.registerTaskDefinition.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerTaskDefinition,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RegisterTaskDefinitionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RunTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RunTaskRequest object being passed to this operation.
+     - Returns: The RunTaskResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, blocked, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
+     */
+    public func runTask(
+            input: ElasticContainerModel.RunTaskRequest) async throws -> ElasticContainerModel.RunTaskResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.runTask.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.runTask,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RunTaskOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartTaskRequest object being passed to this operation.
+     - Returns: The StartTaskResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func startTask(
+            input: ElasticContainerModel.StartTaskRequest) async throws -> ElasticContainerModel.StartTaskResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.startTask.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startTask,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StartTaskOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StopTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StopTaskRequest object being passed to this operation.
+     - Returns: The StopTaskResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func stopTask(
+            input: ElasticContainerModel.StopTaskRequest) async throws -> ElasticContainerModel.StopTaskResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.stopTask.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopTask,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StopTaskOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SubmitAttachmentStateChanges operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SubmitAttachmentStateChangesRequest object being passed to this operation.
+     - Returns: The SubmitAttachmentStateChangesResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    public func submitAttachmentStateChanges(
+            input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) async throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.submitAttachmentStateChanges.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitAttachmentStateChanges,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = SubmitAttachmentStateChangesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SubmitContainerStateChange operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SubmitContainerStateChangeRequest object being passed to this operation.
+     - Returns: The SubmitContainerStateChangeResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, server.
+     */
+    public func submitContainerStateChange(
+            input: ElasticContainerModel.SubmitContainerStateChangeRequest) async throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.submitContainerStateChange.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitContainerStateChange,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = SubmitContainerStateChangeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SubmitTaskStateChange operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SubmitTaskStateChangeRequest object being passed to this operation.
+     - Returns: The SubmitTaskStateChangeResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    public func submitTaskStateChange(
+            input: ElasticContainerModel.SubmitTaskStateChangeRequest) async throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.submitTaskStateChange.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.submitTaskStateChange,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = SubmitTaskStateChangeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+     - Returns: The TagResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func tagResource(
+            input: ElasticContainerModel.TagResourceRequest) async throws -> ElasticContainerModel.TagResourceResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.tagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UntagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+     - Returns: The UntagResourceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, resourceNotFound, server.
+     */
+    public func untagResource(
+            input: ElasticContainerModel.UntagResourceRequest) async throws -> ElasticContainerModel.UntagResourceResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.untagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateCapacityProvider operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateCapacityProviderRequest object being passed to this operation.
+     - Returns: The UpdateCapacityProviderResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, server.
+     */
+    public func updateCapacityProvider(
+            input: ElasticContainerModel.UpdateCapacityProviderRequest) async throws -> ElasticContainerModel.UpdateCapacityProviderResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateCapacityProvider.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateCapacityProvider,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateCapacityProviderOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateCluster operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterRequest object being passed to this operation.
+     - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateCluster(
+            input: ElasticContainerModel.UpdateClusterRequest) async throws -> ElasticContainerModel.UpdateClusterResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateCluster.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateClusterOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateClusterSettings operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateClusterSettingsRequest object being passed to this operation.
+     - Returns: The UpdateClusterSettingsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateClusterSettings(
+            input: ElasticContainerModel.UpdateClusterSettingsRequest) async throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateClusterSettings.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateClusterSettings,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateClusterSettingsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateContainerAgent operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateContainerAgentRequest object being passed to this operation.
+     - Returns: The UpdateContainerAgentResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, missingVersion, noUpdateAvailable, server, updateInProgress.
+     */
+    public func updateContainerAgent(
+            input: ElasticContainerModel.UpdateContainerAgentRequest) async throws -> ElasticContainerModel.UpdateContainerAgentResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateContainerAgent.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateContainerAgent,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateContainerAgentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateContainerInstancesState operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateContainerInstancesStateRequest object being passed to this operation.
+     - Returns: The UpdateContainerInstancesStateResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, clusterNotFound, invalidParameter, server.
+     */
+    public func updateContainerInstancesState(
+            input: ElasticContainerModel.UpdateContainerInstancesStateRequest) async throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateContainerInstancesState.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateContainerInstancesState,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateContainerInstancesStateOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateService operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateServiceRequest object being passed to this operation.
+     - Returns: The UpdateServiceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
+     */
+    public func updateService(
+            input: ElasticContainerModel.UpdateServiceRequest) async throws -> ElasticContainerModel.UpdateServiceResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateService.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateService,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateServiceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateServicePrimaryTaskSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateServicePrimaryTaskSetRequest object being passed to this operation.
+     - Returns: The UpdateServicePrimaryTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateServicePrimaryTaskSet(
+            input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) async throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateServicePrimaryTaskSet.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateServicePrimaryTaskSet,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateServicePrimaryTaskSetOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateTaskSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateTaskSetRequest object being passed to this operation.
+     - Returns: The UpdateTaskSetResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, server, serviceNotActive, serviceNotFound, taskSetNotFound, unsupportedFeature.
+     */
+    public func updateTaskSet(
+            input: ElasticContainerModel.UpdateTaskSetRequest) async throws -> ElasticContainerModel.UpdateTaskSetResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.updateTaskSet.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateTaskSet,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateTaskSetOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

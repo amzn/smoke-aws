@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the CodePipeline service.
  */
-public protocol CodePipelineClientProtocol {
+public protocol CodePipelineClientProtocol: CodePipelineClientProtocolV2 {
     typealias AcknowledgeJobSyncType = (
             _ input: CodePipelineModel.AcknowledgeJobInput) throws -> CodePipelineModel.AcknowledgeJobOutput
     typealias AcknowledgeJobAsyncType = (

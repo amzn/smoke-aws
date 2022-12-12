@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the SimpleQueue service.
  */
-public protocol SimpleQueueClientProtocol {
+public protocol SimpleQueueClientProtocol: SimpleQueueClientProtocolV2 {
     typealias AddPermissionSyncType = (
             _ input: SimpleQueueModel.AddPermissionRequest) throws -> ()
     typealias AddPermissionAsyncType = (

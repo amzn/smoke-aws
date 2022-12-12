@@ -1707,4 +1707,783 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the AddPermission operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AddPermissionRequest object being passed to this operation.
+     - Throws: overLimit.
+     */
+    public func addPermission(
+            input: SimpleQueueModel.AddPermissionRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addPermission,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.addPermission.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ChangeMessageVisibility operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ChangeMessageVisibilityRequest object being passed to this operation.
+     - Throws: messageNotInflight, receiptHandleIsInvalid.
+     */
+    public func changeMessageVisibility(
+            input: SimpleQueueModel.ChangeMessageVisibilityRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.changeMessageVisibility,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ChangeMessageVisibilityOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.changeMessageVisibility.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ChangeMessageVisibilityBatch operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ChangeMessageVisibilityBatchRequest object being passed to this operation.
+     - Returns: The ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
+     */
+    public func changeMessageVisibilityBatch(
+            input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) async throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.changeMessageVisibilityBatch,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ChangeMessageVisibilityBatchOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.changeMessageVisibilityBatch.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateQueue operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateQueueRequest object being passed to this operation.
+     - Returns: The CreateQueueResultForCreateQueue object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: queueDeletedRecently, queueNameExists.
+     */
+    public func createQueue(
+            input: SimpleQueueModel.CreateQueueRequest) async throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createQueue,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateQueueOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.createQueue.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteMessage operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteMessageRequest object being passed to this operation.
+     - Throws: invalidIdFormat, receiptHandleIsInvalid.
+     */
+    public func deleteMessage(
+            input: SimpleQueueModel.DeleteMessageRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteMessage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteMessageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.deleteMessage.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteMessageBatch operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteMessageBatchRequest object being passed to this operation.
+     - Returns: The DeleteMessageBatchResultForDeleteMessageBatch object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: batchEntryIdsNotDistinct, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest.
+     */
+    public func deleteMessageBatch(
+            input: SimpleQueueModel.DeleteMessageBatchRequest) async throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteMessageBatch,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteMessageBatchOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.deleteMessageBatch.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteQueue operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteQueueRequest object being passed to this operation.
+     */
+    public func deleteQueue(
+            input: SimpleQueueModel.DeleteQueueRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteQueue,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteQueueOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.deleteQueue.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetQueueAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetQueueAttributesRequest object being passed to this operation.
+     - Returns: The GetQueueAttributesResultForGetQueueAttributes object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidAttributeName.
+     */
+    public func getQueueAttributes(
+            input: SimpleQueueModel.GetQueueAttributesRequest) async throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getQueueAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetQueueAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.getQueueAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await listHttpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetQueueUrl operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetQueueUrlRequest object being passed to this operation.
+     - Returns: The GetQueueUrlResultForGetQueueUrl object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: queueDoesNotExist.
+     */
+    public func getQueueUrl(
+            input: SimpleQueueModel.GetQueueUrlRequest) async throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getQueueUrl,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetQueueUrlOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.getQueueUrl.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListDeadLetterSourceQueues operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListDeadLetterSourceQueuesRequest object being passed to this operation.
+     - Returns: The ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: queueDoesNotExist.
+     */
+    public func listDeadLetterSourceQueues(
+            input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) async throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listDeadLetterSourceQueues,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListDeadLetterSourceQueuesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.listDeadLetterSourceQueues.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListQueueTags operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListQueueTagsRequest object being passed to this operation.
+     - Returns: The ListQueueTagsResultForListQueueTags object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listQueueTags(
+            input: SimpleQueueModel.ListQueueTagsRequest) async throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listQueueTags,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListQueueTagsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.listQueueTags.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await listHttpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListQueues operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListQueuesRequest object being passed to this operation.
+     - Returns: The ListQueuesResultForListQueues object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listQueues(
+            input: SimpleQueueModel.ListQueuesRequest) async throws -> SimpleQueueModel.ListQueuesResultForListQueues {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listQueues,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListQueuesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.listQueues.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PurgeQueue operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PurgeQueueRequest object being passed to this operation.
+     - Throws: purgeQueueInProgress, queueDoesNotExist.
+     */
+    public func purgeQueue(
+            input: SimpleQueueModel.PurgeQueueRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.purgeQueue,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PurgeQueueOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.purgeQueue.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ReceiveMessage operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ReceiveMessageRequest object being passed to this operation.
+     - Returns: The ReceiveMessageResultForReceiveMessage object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: overLimit.
+     */
+    public func receiveMessage(
+            input: SimpleQueueModel.ReceiveMessageRequest) async throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.receiveMessage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ReceiveMessageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.receiveMessage.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RemovePermission operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RemovePermissionRequest object being passed to this operation.
+     */
+    public func removePermission(
+            input: SimpleQueueModel.RemovePermissionRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removePermission,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.removePermission.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SendMessage operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SendMessageRequest object being passed to this operation.
+     - Returns: The SendMessageResultForSendMessage object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidMessageContents, unsupportedOperation.
+     */
+    public func sendMessage(
+            input: SimpleQueueModel.SendMessageRequest) async throws -> SimpleQueueModel.SendMessageResultForSendMessage {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendMessage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SendMessageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.sendMessage.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SendMessageBatch operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SendMessageBatchRequest object being passed to this operation.
+     - Returns: The SendMessageBatchResultForSendMessageBatch object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, invalidBatchEntryId, tooManyEntriesInBatchRequest, unsupportedOperation.
+     */
+    public func sendMessageBatch(
+            input: SimpleQueueModel.SendMessageBatchRequest) async throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendMessageBatch,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SendMessageBatchOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.sendMessageBatch.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetQueueAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetQueueAttributesRequest object being passed to this operation.
+     - Throws: invalidAttributeName.
+     */
+    public func setQueueAttributes(
+            input: SimpleQueueModel.SetQueueAttributesRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setQueueAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetQueueAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.setQueueAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            try await listHttpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TagQueue operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TagQueueRequest object being passed to this operation.
+     */
+    public func tagQueue(
+            input: SimpleQueueModel.TagQueueRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagQueue,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = TagQueueOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.tagQueue.rawValue,
+            version: apiVersion)
+
+        do {
+            try await listHttpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UntagQueue operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UntagQueueRequest object being passed to this operation.
+     */
+    public func untagQueue(
+            input: SimpleQueueModel.UntagQueueRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagQueue,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UntagQueueOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.untagQueue.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the ElasticComputeCloud service.
  */
-public protocol ElasticComputeCloudClientProtocol {
+public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProtocolV2 {
     typealias AcceptReservedInstancesExchangeQuoteSyncType = (
             _ input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult
     typealias AcceptReservedInstancesExchangeQuoteAsyncType = (

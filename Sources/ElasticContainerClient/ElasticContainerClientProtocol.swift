@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the ElasticContainer service.
  */
-public protocol ElasticContainerClientProtocol {
+public protocol ElasticContainerClientProtocol: ElasticContainerClientProtocolV2 {
     typealias CreateCapacityProviderSyncType = (
             _ input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse
     typealias CreateCapacityProviderAsyncType = (

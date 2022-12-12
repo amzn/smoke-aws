@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the DynamoDB service.
  */
-public protocol DynamoDBClientProtocol {
+public protocol DynamoDBClientProtocol: DynamoDBClientProtocolV2 {
     typealias BatchExecuteStatementSyncType = (
             _ input: DynamoDBModel.BatchExecuteStatementInput) throws -> DynamoDBModel.BatchExecuteStatementOutput
     typealias BatchExecuteStatementAsyncType = (

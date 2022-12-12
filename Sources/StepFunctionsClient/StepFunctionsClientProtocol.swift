@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the StepFunctions service.
  */
-public protocol StepFunctionsClientProtocol {
+public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
     typealias CreateActivitySyncType = (
             _ input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput
     typealias CreateActivityAsyncType = (

@@ -6857,4 +6857,3433 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the AbortMultipartUpload operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AbortMultipartUploadRequest object being passed to this operation.
+     - Returns: The AbortMultipartUploadOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchUpload.
+     */
+    public func abortMultipartUpload(
+            input: S3Model.AbortMultipartUploadRequest) async throws -> S3Model.AbortMultipartUploadOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.abortMultipartUpload.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.abortMultipartUpload,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = AbortMultipartUploadOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CompleteMultipartUpload operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CompleteMultipartUploadRequest object being passed to this operation.
+     - Returns: The CompleteMultipartUploadOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func completeMultipartUpload(
+            input: S3Model.CompleteMultipartUploadRequest) async throws -> S3Model.CompleteMultipartUploadOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.completeMultipartUpload.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.completeMultipartUpload,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CompleteMultipartUploadOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CopyObject operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CopyObjectRequest object being passed to this operation.
+     - Returns: The CopyObjectOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: objectNotInActiveTier.
+     */
+    public func copyObject(
+            input: S3Model.CopyObjectRequest) async throws -> S3Model.CopyObjectOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.copyObject.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.copyObject,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CopyObjectOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateBucket operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateBucketRequest object being passed to this operation.
+     - Returns: The CreateBucketOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: bucketAlreadyExists, bucketAlreadyOwnedByYou.
+     */
+    public func createBucket(
+            input: S3Model.CreateBucketRequest) async throws -> S3Model.CreateBucketOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.createBucket.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createBucket,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateBucketOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateMultipartUpload operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateMultipartUploadRequest object being passed to this operation.
+     - Returns: The CreateMultipartUploadOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createMultipartUpload(
+            input: S3Model.CreateMultipartUploadRequest) async throws -> S3Model.CreateMultipartUploadOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.createMultipartUpload.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createMultipartUpload,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateMultipartUploadOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?uploads",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucket operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketRequest object being passed to this operation.
+     */
+    public func deleteBucket(
+            input: S3Model.DeleteBucketRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucket.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucket,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketAnalyticsConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketAnalyticsConfigurationRequest object being passed to this operation.
+     */
+    public func deleteBucketAnalyticsConfiguration(
+            input: S3Model.DeleteBucketAnalyticsConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketAnalyticsConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketAnalyticsConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?analytics",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketCors operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketCorsRequest object being passed to this operation.
+     */
+    public func deleteBucketCors(
+            input: S3Model.DeleteBucketCorsRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketCors.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketCors,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketCorsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?cors",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketEncryption operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketEncryptionRequest object being passed to this operation.
+     */
+    public func deleteBucketEncryption(
+            input: S3Model.DeleteBucketEncryptionRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketEncryption.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketEncryption,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketEncryptionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?encryption",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketIntelligentTieringConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     */
+    public func deleteBucketIntelligentTieringConfiguration(
+            input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?intelligent-tiering",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketInventoryConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketInventoryConfigurationRequest object being passed to this operation.
+     */
+    public func deleteBucketInventoryConfiguration(
+            input: S3Model.DeleteBucketInventoryConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketInventoryConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketInventoryConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?inventory",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketLifecycle operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketLifecycleRequest object being passed to this operation.
+     */
+    public func deleteBucketLifecycle(
+            input: S3Model.DeleteBucketLifecycleRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketLifecycle.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketLifecycle,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketLifecycleOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?lifecycle",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketMetricsConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketMetricsConfigurationRequest object being passed to this operation.
+     */
+    public func deleteBucketMetricsConfiguration(
+            input: S3Model.DeleteBucketMetricsConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketMetricsConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketMetricsConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?metrics",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketOwnershipControls operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketOwnershipControlsRequest object being passed to this operation.
+     */
+    public func deleteBucketOwnershipControls(
+            input: S3Model.DeleteBucketOwnershipControlsRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?ownershipControls",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketPolicy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketPolicyRequest object being passed to this operation.
+     */
+    public func deleteBucketPolicy(
+            input: S3Model.DeleteBucketPolicyRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketPolicy.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketPolicy,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketPolicyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?policy",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketReplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketReplicationRequest object being passed to this operation.
+     */
+    public func deleteBucketReplication(
+            input: S3Model.DeleteBucketReplicationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketReplication.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketReplication,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketReplicationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?replication",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketTagging operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketTaggingRequest object being passed to this operation.
+     */
+    public func deleteBucketTagging(
+            input: S3Model.DeleteBucketTaggingRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketTagging.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketTagging,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketTaggingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?tagging",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBucketWebsite operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBucketWebsiteRequest object being passed to this operation.
+     */
+    public func deleteBucketWebsite(
+            input: S3Model.DeleteBucketWebsiteRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteBucketWebsite.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBucketWebsite,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBucketWebsiteOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?website",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteObject operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteObjectRequest object being passed to this operation.
+     - Returns: The DeleteObjectOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteObject(
+            input: S3Model.DeleteObjectRequest) async throws -> S3Model.DeleteObjectOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteObject.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteObject,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteObjectOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteObjectTagging operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteObjectTaggingRequest object being passed to this operation.
+     - Returns: The DeleteObjectTaggingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteObjectTagging(
+            input: S3Model.DeleteObjectTaggingRequest) async throws -> S3Model.DeleteObjectTaggingOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteObjectTagging.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteObjectTagging,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteObjectTaggingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?tagging",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteObjects operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteObjectsRequest object being passed to this operation.
+     - Returns: The DeleteObjectsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteObjects(
+            input: S3Model.DeleteObjectsRequest) async throws -> S3Model.DeleteObjectsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deleteObjects.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteObjects,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteObjectsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?delete",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeletePublicAccessBlock operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeletePublicAccessBlockRequest object being passed to this operation.
+     */
+    public func deletePublicAccessBlock(
+            input: S3Model.DeletePublicAccessBlockRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.deletePublicAccessBlock.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deletePublicAccessBlock,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeletePublicAccessBlockOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?publicAccessBlock",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketAccelerateConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketAccelerateConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketAccelerateConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketAccelerateConfiguration(
+            input: S3Model.GetBucketAccelerateConfigurationRequest) async throws -> S3Model.GetBucketAccelerateConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketAccelerateConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketAccelerateConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?accelerate",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketAcl operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketAclRequest object being passed to this operation.
+     - Returns: The GetBucketAclOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketAcl(
+            input: S3Model.GetBucketAclRequest) async throws -> S3Model.GetBucketAclOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketAcl.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketAcl,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketAclOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?acl",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketAnalyticsConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketAnalyticsConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketAnalyticsConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketAnalyticsConfiguration(
+            input: S3Model.GetBucketAnalyticsConfigurationRequest) async throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketAnalyticsConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketAnalyticsConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?analytics",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketCors operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketCorsRequest object being passed to this operation.
+     - Returns: The GetBucketCorsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketCors(
+            input: S3Model.GetBucketCorsRequest) async throws -> S3Model.GetBucketCorsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketCors.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketCors,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketCorsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?cors",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketEncryption operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketEncryptionRequest object being passed to this operation.
+     - Returns: The GetBucketEncryptionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketEncryption(
+            input: S3Model.GetBucketEncryptionRequest) async throws -> S3Model.GetBucketEncryptionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketEncryption.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketEncryption,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketEncryptionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?encryption",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketIntelligentTieringConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketIntelligentTieringConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketIntelligentTieringConfiguration(
+            input: S3Model.GetBucketIntelligentTieringConfigurationRequest) async throws -> S3Model.GetBucketIntelligentTieringConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?intelligent-tiering",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketInventoryConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketInventoryConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketInventoryConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketInventoryConfiguration(
+            input: S3Model.GetBucketInventoryConfigurationRequest) async throws -> S3Model.GetBucketInventoryConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketInventoryConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketInventoryConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?inventory",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketLifecycle operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketLifecycleRequest object being passed to this operation.
+     - Returns: The GetBucketLifecycleOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketLifecycle(
+            input: S3Model.GetBucketLifecycleRequest) async throws -> S3Model.GetBucketLifecycleOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketLifecycle.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketLifecycle,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketLifecycleOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?lifecycle",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketLifecycleConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketLifecycleConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketLifecycleConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketLifecycleConfiguration(
+            input: S3Model.GetBucketLifecycleConfigurationRequest) async throws -> S3Model.GetBucketLifecycleConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketLifecycleConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketLifecycleConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?lifecycle",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketLocation operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketLocationRequest object being passed to this operation.
+     - Returns: The GetBucketLocationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketLocation(
+            input: S3Model.GetBucketLocationRequest) async throws -> S3Model.GetBucketLocationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketLocation.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketLocation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketLocationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?location",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketLogging operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketLoggingRequest object being passed to this operation.
+     - Returns: The GetBucketLoggingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketLogging(
+            input: S3Model.GetBucketLoggingRequest) async throws -> S3Model.GetBucketLoggingOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketLogging.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketLogging,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketLoggingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?logging",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketMetricsConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketMetricsConfigurationRequest object being passed to this operation.
+     - Returns: The GetBucketMetricsConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketMetricsConfiguration(
+            input: S3Model.GetBucketMetricsConfigurationRequest) async throws -> S3Model.GetBucketMetricsConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketMetricsConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketMetricsConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?metrics",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketNotification operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketNotificationConfigurationRequest object being passed to this operation.
+     - Returns: The NotificationConfigurationDeprecated object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketNotification(
+            input: S3Model.GetBucketNotificationConfigurationRequest) async throws -> S3Model.NotificationConfigurationDeprecated {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketNotification.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketNotification,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketNotificationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?notification",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketNotificationConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketNotificationConfigurationRequest object being passed to this operation.
+     - Returns: The NotificationConfiguration object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketNotificationConfiguration(
+            input: S3Model.GetBucketNotificationConfigurationRequest) async throws -> S3Model.NotificationConfiguration {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketNotificationConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketNotificationConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?notification",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketOwnershipControls operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketOwnershipControlsRequest object being passed to this operation.
+     - Returns: The GetBucketOwnershipControlsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketOwnershipControls(
+            input: S3Model.GetBucketOwnershipControlsRequest) async throws -> S3Model.GetBucketOwnershipControlsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?ownershipControls",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketPolicy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketPolicyRequest object being passed to this operation.
+     - Returns: The GetBucketPolicyOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketPolicy(
+            input: S3Model.GetBucketPolicyRequest) async throws -> S3Model.GetBucketPolicyOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketPolicy.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketPolicy,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketPolicyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?policy",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketPolicyStatus operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketPolicyStatusRequest object being passed to this operation.
+     - Returns: The GetBucketPolicyStatusOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketPolicyStatus(
+            input: S3Model.GetBucketPolicyStatusRequest) async throws -> S3Model.GetBucketPolicyStatusOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketPolicyStatus.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketPolicyStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketPolicyStatusOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?policyStatus",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketReplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketReplicationRequest object being passed to this operation.
+     - Returns: The GetBucketReplicationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketReplication(
+            input: S3Model.GetBucketReplicationRequest) async throws -> S3Model.GetBucketReplicationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketReplication.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketReplication,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketReplicationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?replication",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketRequestPayment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketRequestPaymentRequest object being passed to this operation.
+     - Returns: The GetBucketRequestPaymentOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketRequestPayment(
+            input: S3Model.GetBucketRequestPaymentRequest) async throws -> S3Model.GetBucketRequestPaymentOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketRequestPayment.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketRequestPayment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?requestPayment",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketTagging operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketTaggingRequest object being passed to this operation.
+     - Returns: The GetBucketTaggingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketTagging(
+            input: S3Model.GetBucketTaggingRequest) async throws -> S3Model.GetBucketTaggingOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketTagging.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketTagging,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketTaggingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?tagging",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketVersioning operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketVersioningRequest object being passed to this operation.
+     - Returns: The GetBucketVersioningOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketVersioning(
+            input: S3Model.GetBucketVersioningRequest) async throws -> S3Model.GetBucketVersioningOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketVersioning.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketVersioning,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketVersioningOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?versioning",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetBucketWebsite operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetBucketWebsiteRequest object being passed to this operation.
+     - Returns: The GetBucketWebsiteOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getBucketWebsite(
+            input: S3Model.GetBucketWebsiteRequest) async throws -> S3Model.GetBucketWebsiteOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getBucketWebsite.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getBucketWebsite,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetBucketWebsiteOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?website",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetObject operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetObjectRequest object being passed to this operation.
+     - Returns: The GetObjectOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidObjectState, noSuchKey.
+     */
+    public func getObject(
+            input: S3Model.GetObjectRequest) async throws -> S3Model.GetObjectOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObject.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObject,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await dataHttpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetObjectAcl operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetObjectAclRequest object being passed to this operation.
+     - Returns: The GetObjectAclOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchKey.
+     */
+    public func getObjectAcl(
+            input: S3Model.GetObjectAclRequest) async throws -> S3Model.GetObjectAclOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectAcl.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectAcl,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectAclOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?acl",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetObjectAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetObjectAttributesRequest object being passed to this operation.
+     - Returns: The GetObjectAttributesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchKey.
+     */
+    public func getObjectAttributes(
+            input: S3Model.GetObjectAttributesRequest) async throws -> S3Model.GetObjectAttributesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectAttributes.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectAttributesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?attributes",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetObjectLegalHold operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetObjectLegalHoldRequest object being passed to this operation.
+     - Returns: The GetObjectLegalHoldOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getObjectLegalHold(
+            input: S3Model.GetObjectLegalHoldRequest) async throws -> S3Model.GetObjectLegalHoldOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectLegalHold.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectLegalHold,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectLegalHoldOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?legal-hold",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetObjectLockConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetObjectLockConfigurationRequest object being passed to this operation.
+     - Returns: The GetObjectLockConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getObjectLockConfiguration(
+            input: S3Model.GetObjectLockConfigurationRequest) async throws -> S3Model.GetObjectLockConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectLockConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectLockConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?object-lock",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetObjectRetention operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetObjectRetentionRequest object being passed to this operation.
+     - Returns: The GetObjectRetentionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getObjectRetention(
+            input: S3Model.GetObjectRetentionRequest) async throws -> S3Model.GetObjectRetentionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectRetention.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectRetention,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectRetentionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?retention",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetObjectTagging operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetObjectTaggingRequest object being passed to this operation.
+     - Returns: The GetObjectTaggingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getObjectTagging(
+            input: S3Model.GetObjectTaggingRequest) async throws -> S3Model.GetObjectTaggingOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectTagging.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectTagging,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectTaggingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?tagging",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetObjectTorrent operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetObjectTorrentRequest object being passed to this operation.
+     - Returns: The GetObjectTorrentOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getObjectTorrent(
+            input: S3Model.GetObjectTorrentRequest) async throws -> S3Model.GetObjectTorrentOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getObjectTorrent.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getObjectTorrent,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetObjectTorrentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await dataHttpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?torrent",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetPublicAccessBlock operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetPublicAccessBlockRequest object being passed to this operation.
+     - Returns: The GetPublicAccessBlockOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getPublicAccessBlock(
+            input: S3Model.GetPublicAccessBlockRequest) async throws -> S3Model.GetPublicAccessBlockOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.getPublicAccessBlock.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getPublicAccessBlock,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetPublicAccessBlockOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?publicAccessBlock",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the HeadBucket operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated HeadBucketRequest object being passed to this operation.
+     - Throws: noSuchBucket.
+     */
+    public func headBucket(
+            input: S3Model.HeadBucketRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.headBucket.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.headBucket,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = HeadBucketOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}",
+                httpMethod: .HEAD,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the HeadObject operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated HeadObjectRequest object being passed to this operation.
+     - Returns: The HeadObjectOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchKey.
+     */
+    public func headObject(
+            input: S3Model.HeadObjectRequest) async throws -> S3Model.HeadObjectOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.headObject.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.headObject,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = HeadObjectOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .HEAD,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListBucketAnalyticsConfigurations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListBucketAnalyticsConfigurationsRequest object being passed to this operation.
+     - Returns: The ListBucketAnalyticsConfigurationsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listBucketAnalyticsConfigurations(
+            input: S3Model.ListBucketAnalyticsConfigurationsRequest) async throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listBucketAnalyticsConfigurations.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listBucketAnalyticsConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListBucketAnalyticsConfigurationsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?analytics",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListBucketIntelligentTieringConfigurations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListBucketIntelligentTieringConfigurationsRequest object being passed to this operation.
+     - Returns: The ListBucketIntelligentTieringConfigurationsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listBucketIntelligentTieringConfigurations(
+            input: S3Model.ListBucketIntelligentTieringConfigurationsRequest) async throws -> S3Model.ListBucketIntelligentTieringConfigurationsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listBucketIntelligentTieringConfigurations.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listBucketIntelligentTieringConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListBucketIntelligentTieringConfigurationsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?intelligent-tiering",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListBucketInventoryConfigurations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListBucketInventoryConfigurationsRequest object being passed to this operation.
+     - Returns: The ListBucketInventoryConfigurationsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listBucketInventoryConfigurations(
+            input: S3Model.ListBucketInventoryConfigurationsRequest) async throws -> S3Model.ListBucketInventoryConfigurationsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listBucketInventoryConfigurations.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listBucketInventoryConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListBucketInventoryConfigurationsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?inventory",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListBucketMetricsConfigurations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListBucketMetricsConfigurationsRequest object being passed to this operation.
+     - Returns: The ListBucketMetricsConfigurationsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listBucketMetricsConfigurations(
+            input: S3Model.ListBucketMetricsConfigurationsRequest) async throws -> S3Model.ListBucketMetricsConfigurationsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listBucketMetricsConfigurations.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listBucketMetricsConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListBucketMetricsConfigurationsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?metrics",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListBuckets operation suspending until the response is available before returning.
+     - Returns: The ListBucketsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listBuckets() async throws -> S3Model.ListBucketsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listBuckets.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listBuckets,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = NoHTTPRequestInput()
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListMultipartUploads operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListMultipartUploadsRequest object being passed to this operation.
+     - Returns: The ListMultipartUploadsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listMultipartUploads(
+            input: S3Model.ListMultipartUploadsRequest) async throws -> S3Model.ListMultipartUploadsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listMultipartUploads.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMultipartUploads,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListMultipartUploadsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?uploads",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListObjectVersions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListObjectVersionsRequest object being passed to this operation.
+     - Returns: The ListObjectVersionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listObjectVersions(
+            input: S3Model.ListObjectVersionsRequest) async throws -> S3Model.ListObjectVersionsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listObjectVersions.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listObjectVersions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListObjectVersionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?versions",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListObjects operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListObjectsRequest object being passed to this operation.
+     - Returns: The ListObjectsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchBucket.
+     */
+    public func listObjects(
+            input: S3Model.ListObjectsRequest) async throws -> S3Model.ListObjectsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listObjects.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listObjects,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListObjectsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListObjectsV2 operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListObjectsV2Request object being passed to this operation.
+     - Returns: The ListObjectsV2Output object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchBucket.
+     */
+    public func listObjectsV2(
+            input: S3Model.ListObjectsV2Request) async throws -> S3Model.ListObjectsV2Output {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listObjectsV2.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listObjectsV2,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListObjectsV2OperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?list-type=2",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListParts operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListPartsRequest object being passed to this operation.
+     - Returns: The ListPartsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listParts(
+            input: S3Model.ListPartsRequest) async throws -> S3Model.ListPartsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.listParts.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listParts,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListPartsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketAccelerateConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketAccelerateConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketAccelerateConfiguration(
+            input: S3Model.PutBucketAccelerateConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketAccelerateConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketAccelerateConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketAccelerateConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?accelerate",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketAcl operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketAclRequest object being passed to this operation.
+     */
+    public func putBucketAcl(
+            input: S3Model.PutBucketAclRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketAcl.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketAcl,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketAclOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?acl",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketAnalyticsConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketAnalyticsConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketAnalyticsConfiguration(
+            input: S3Model.PutBucketAnalyticsConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketAnalyticsConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketAnalyticsConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketAnalyticsConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?analytics",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketCors operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketCorsRequest object being passed to this operation.
+     */
+    public func putBucketCors(
+            input: S3Model.PutBucketCorsRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketCors.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketCors,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketCorsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?cors",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketEncryption operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketEncryptionRequest object being passed to this operation.
+     */
+    public func putBucketEncryption(
+            input: S3Model.PutBucketEncryptionRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketEncryption.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketEncryption,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketEncryptionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?encryption",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketIntelligentTieringConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketIntelligentTieringConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketIntelligentTieringConfiguration(
+            input: S3Model.PutBucketIntelligentTieringConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketIntelligentTieringConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketIntelligentTieringConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketIntelligentTieringConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?intelligent-tiering",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketInventoryConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketInventoryConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketInventoryConfiguration(
+            input: S3Model.PutBucketInventoryConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketInventoryConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketInventoryConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketInventoryConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?inventory",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketLifecycle operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketLifecycleRequest object being passed to this operation.
+     */
+    public func putBucketLifecycle(
+            input: S3Model.PutBucketLifecycleRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketLifecycle.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketLifecycle,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketLifecycleOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?lifecycle",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketLifecycleConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketLifecycleConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketLifecycleConfiguration(
+            input: S3Model.PutBucketLifecycleConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketLifecycleConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketLifecycleConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketLifecycleConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?lifecycle",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketLogging operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketLoggingRequest object being passed to this operation.
+     */
+    public func putBucketLogging(
+            input: S3Model.PutBucketLoggingRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketLogging.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketLogging,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketLoggingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?logging",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketMetricsConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketMetricsConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketMetricsConfiguration(
+            input: S3Model.PutBucketMetricsConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketMetricsConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketMetricsConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketMetricsConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?metrics",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketNotification operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketNotificationRequest object being passed to this operation.
+     */
+    public func putBucketNotification(
+            input: S3Model.PutBucketNotificationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketNotification.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketNotification,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketNotificationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?notification",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketNotificationConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketNotificationConfigurationRequest object being passed to this operation.
+     */
+    public func putBucketNotificationConfiguration(
+            input: S3Model.PutBucketNotificationConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketNotificationConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketNotificationConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketNotificationConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?notification",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketOwnershipControls operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketOwnershipControlsRequest object being passed to this operation.
+     */
+    public func putBucketOwnershipControls(
+            input: S3Model.PutBucketOwnershipControlsRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketOwnershipControls.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketOwnershipControls,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketOwnershipControlsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?ownershipControls",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketPolicy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketPolicyRequest object being passed to this operation.
+     */
+    public func putBucketPolicy(
+            input: S3Model.PutBucketPolicyRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketPolicy.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketPolicy,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketPolicyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?policy",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketReplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketReplicationRequest object being passed to this operation.
+     */
+    public func putBucketReplication(
+            input: S3Model.PutBucketReplicationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketReplication.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketReplication,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketReplicationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?replication",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketRequestPayment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketRequestPaymentRequest object being passed to this operation.
+     */
+    public func putBucketRequestPayment(
+            input: S3Model.PutBucketRequestPaymentRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketRequestPayment.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketRequestPayment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketRequestPaymentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?requestPayment",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketTagging operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketTaggingRequest object being passed to this operation.
+     */
+    public func putBucketTagging(
+            input: S3Model.PutBucketTaggingRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketTagging.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketTagging,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketTaggingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?tagging",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketVersioning operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketVersioningRequest object being passed to this operation.
+     */
+    public func putBucketVersioning(
+            input: S3Model.PutBucketVersioningRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketVersioning.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketVersioning,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketVersioningOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?versioning",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutBucketWebsite operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutBucketWebsiteRequest object being passed to this operation.
+     */
+    public func putBucketWebsite(
+            input: S3Model.PutBucketWebsiteRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putBucketWebsite.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putBucketWebsite,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutBucketWebsiteOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?website",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutObject operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutObjectRequest object being passed to this operation.
+     - Returns: The PutObjectOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func putObject(
+            input: S3Model.PutObjectRequest) async throws -> S3Model.PutObjectOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObject.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putObject,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutObjectOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await dataHttpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutObjectAcl operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutObjectAclRequest object being passed to this operation.
+     - Returns: The PutObjectAclOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: noSuchKey.
+     */
+    public func putObjectAcl(
+            input: S3Model.PutObjectAclRequest) async throws -> S3Model.PutObjectAclOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectAcl.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putObjectAcl,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutObjectAclOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?acl",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutObjectLegalHold operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutObjectLegalHoldRequest object being passed to this operation.
+     - Returns: The PutObjectLegalHoldOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func putObjectLegalHold(
+            input: S3Model.PutObjectLegalHoldRequest) async throws -> S3Model.PutObjectLegalHoldOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectLegalHold.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putObjectLegalHold,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutObjectLegalHoldOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?legal-hold",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutObjectLockConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutObjectLockConfigurationRequest object being passed to this operation.
+     - Returns: The PutObjectLockConfigurationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func putObjectLockConfiguration(
+            input: S3Model.PutObjectLockConfigurationRequest) async throws -> S3Model.PutObjectLockConfigurationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectLockConfiguration.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putObjectLockConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutObjectLockConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}?object-lock",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutObjectRetention operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutObjectRetentionRequest object being passed to this operation.
+     - Returns: The PutObjectRetentionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func putObjectRetention(
+            input: S3Model.PutObjectRetentionRequest) async throws -> S3Model.PutObjectRetentionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectRetention.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putObjectRetention,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutObjectRetentionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?retention",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutObjectTagging operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutObjectTaggingRequest object being passed to this operation.
+     - Returns: The PutObjectTaggingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func putObjectTagging(
+            input: S3Model.PutObjectTaggingRequest) async throws -> S3Model.PutObjectTaggingOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putObjectTagging.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putObjectTagging,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutObjectTaggingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?tagging",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutPublicAccessBlock operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutPublicAccessBlockRequest object being passed to this operation.
+     */
+    public func putPublicAccessBlock(
+            input: S3Model.PutPublicAccessBlockRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.putPublicAccessBlock.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putPublicAccessBlock,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutPublicAccessBlockOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/{Bucket}?publicAccessBlock",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RestoreObject operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RestoreObjectRequest object being passed to this operation.
+     - Returns: The RestoreObjectOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: objectAlreadyInActiveTier.
+     */
+    public func restoreObject(
+            input: S3Model.RestoreObjectRequest) async throws -> S3Model.RestoreObjectOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.restoreObject.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreObject,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RestoreObjectOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?restore",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SelectObjectContent operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SelectObjectContentRequest object being passed to this operation.
+     - Returns: The SelectObjectContentOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func selectObjectContent(
+            input: S3Model.SelectObjectContentRequest) async throws -> S3Model.SelectObjectContentOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.selectObjectContent.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.selectObjectContent,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = SelectObjectContentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}?select&select-type=2",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UploadPart operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UploadPartRequest object being passed to this operation.
+     - Returns: The UploadPartOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func uploadPart(
+            input: S3Model.UploadPartRequest) async throws -> S3Model.UploadPartOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.uploadPart.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.uploadPart,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UploadPartOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await dataHttpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UploadPartCopy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UploadPartCopyRequest object being passed to this operation.
+     - Returns: The UploadPartCopyOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func uploadPartCopy(
+            input: S3Model.UploadPartCopyRequest) async throws -> S3Model.UploadPartCopyOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.uploadPartCopy.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.uploadPartCopy,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UploadPartCopyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/{Bucket}/{Key+}",
+                httpMethod: .PUT,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the WriteGetObjectResponse operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated WriteGetObjectResponseRequest object being passed to this operation.
+     */
+    public func writeGetObjectResponse(
+            input: S3Model.WriteGetObjectResponseRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: S3ModelOperations.writeGetObjectResponse.rawValue,
+                    target: target,
+                    signAllHeaders: true)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.writeGetObjectResponse,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = WriteGetObjectResponseOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/WriteGetObjectResponse",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: S3Error = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

@@ -1,0 +1,526 @@
+// Copyright 2018-2022 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License").
+// You may not use this file except in compliance with the License.
+// A copy of the License is located at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// or in the "license" file accompanying this file. This file is distributed
+// on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+// express or implied. See the License for the specific language governing
+// permissions and limitations under the License.
+//
+// swiftlint:disable superfluous_disable_command
+// swiftlint:disable file_length line_length identifier_name type_name vertical_parameter_alignment
+// swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
+// -- Generated Code; do not edit --
+//
+// ThrowingStepFunctionsClientV2.swift
+// StepFunctionsClient
+//
+
+import Foundation
+import StepFunctionsModel
+import SmokeAWSCore
+import SmokeHTTPClient
+
+/**
+ Mock Client for the StepFunctions service that by default always throws from its methods.
+ */
+public struct ThrowingStepFunctionsClientV2: StepFunctionsClientProtocolV2 {
+#if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    let error: StepFunctionsError
+    let createActivityOverride: CreateActivityFunctionType?
+    let createStateMachineOverride: CreateStateMachineFunctionType?
+    let deleteActivityOverride: DeleteActivityFunctionType?
+    let deleteStateMachineOverride: DeleteStateMachineFunctionType?
+    let describeActivityOverride: DescribeActivityFunctionType?
+    let describeExecutionOverride: DescribeExecutionFunctionType?
+    let describeStateMachineOverride: DescribeStateMachineFunctionType?
+    let describeStateMachineForExecutionOverride: DescribeStateMachineForExecutionFunctionType?
+    let getActivityTaskOverride: GetActivityTaskFunctionType?
+    let getExecutionHistoryOverride: GetExecutionHistoryFunctionType?
+    let listActivitiesOverride: ListActivitiesFunctionType?
+    let listExecutionsOverride: ListExecutionsFunctionType?
+    let listStateMachinesOverride: ListStateMachinesFunctionType?
+    let listTagsForResourceOverride: ListTagsForResourceFunctionType?
+    let sendTaskFailureOverride: SendTaskFailureFunctionType?
+    let sendTaskHeartbeatOverride: SendTaskHeartbeatFunctionType?
+    let sendTaskSuccessOverride: SendTaskSuccessFunctionType?
+    let startExecutionOverride: StartExecutionFunctionType?
+    let startSyncExecutionOverride: StartSyncExecutionFunctionType?
+    let stopExecutionOverride: StopExecutionFunctionType?
+    let tagResourceOverride: TagResourceFunctionType?
+    let untagResourceOverride: UntagResourceFunctionType?
+    let updateStateMachineOverride: UpdateStateMachineFunctionType?
+
+    /**
+     Initializer that creates an instance of this clients. The behavior of individual
+     functions can be overridden by passing them to this initializer.
+     */
+    public init(error: StepFunctionsError,
+            createActivity: CreateActivityFunctionType? = nil,
+            createStateMachine: CreateStateMachineFunctionType? = nil,
+            deleteActivity: DeleteActivityFunctionType? = nil,
+            deleteStateMachine: DeleteStateMachineFunctionType? = nil,
+            describeActivity: DescribeActivityFunctionType? = nil,
+            describeExecution: DescribeExecutionFunctionType? = nil,
+            describeStateMachine: DescribeStateMachineFunctionType? = nil,
+            describeStateMachineForExecution: DescribeStateMachineForExecutionFunctionType? = nil,
+            getActivityTask: GetActivityTaskFunctionType? = nil,
+            getExecutionHistory: GetExecutionHistoryFunctionType? = nil,
+            listActivities: ListActivitiesFunctionType? = nil,
+            listExecutions: ListExecutionsFunctionType? = nil,
+            listStateMachines: ListStateMachinesFunctionType? = nil,
+            listTagsForResource: ListTagsForResourceFunctionType? = nil,
+            sendTaskFailure: SendTaskFailureFunctionType? = nil,
+            sendTaskHeartbeat: SendTaskHeartbeatFunctionType? = nil,
+            sendTaskSuccess: SendTaskSuccessFunctionType? = nil,
+            startExecution: StartExecutionFunctionType? = nil,
+            startSyncExecution: StartSyncExecutionFunctionType? = nil,
+            stopExecution: StopExecutionFunctionType? = nil,
+            tagResource: TagResourceFunctionType? = nil,
+            untagResource: UntagResourceFunctionType? = nil,
+            updateStateMachine: UpdateStateMachineFunctionType? = nil) {
+        self.error = error
+        self.createActivityOverride = createActivity
+        self.createStateMachineOverride = createStateMachine
+        self.deleteActivityOverride = deleteActivity
+        self.deleteStateMachineOverride = deleteStateMachine
+        self.describeActivityOverride = describeActivity
+        self.describeExecutionOverride = describeExecution
+        self.describeStateMachineOverride = describeStateMachine
+        self.describeStateMachineForExecutionOverride = describeStateMachineForExecution
+        self.getActivityTaskOverride = getActivityTask
+        self.getExecutionHistoryOverride = getExecutionHistory
+        self.listActivitiesOverride = listActivities
+        self.listExecutionsOverride = listExecutions
+        self.listStateMachinesOverride = listStateMachines
+        self.listTagsForResourceOverride = listTagsForResource
+        self.sendTaskFailureOverride = sendTaskFailure
+        self.sendTaskHeartbeatOverride = sendTaskHeartbeat
+        self.sendTaskSuccessOverride = sendTaskSuccess
+        self.startExecutionOverride = startExecution
+        self.startSyncExecutionOverride = startSyncExecution
+        self.stopExecutionOverride = stopExecution
+        self.tagResourceOverride = tagResource
+        self.untagResourceOverride = untagResource
+        self.updateStateMachineOverride = updateStateMachine
+    }
+
+    /**
+     Invokes the CreateActivity operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateActivityInput object being passed to this operation.
+     - Returns: The CreateActivityOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: activityLimitExceeded, invalidName, tooManyTags.
+     */
+    public func createActivity(
+            input: StepFunctionsModel.CreateActivityInput) async throws -> StepFunctionsModel.CreateActivityOutput {
+        if let createActivityOverride = createActivityOverride {
+            return try await createActivityOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateStateMachine operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateStateMachineInput object being passed to this operation.
+     - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+     */
+    public func createStateMachine(
+            input: StepFunctionsModel.CreateStateMachineInput) async throws -> StepFunctionsModel.CreateStateMachineOutput {
+        if let createStateMachineOverride = createStateMachineOverride {
+            return try await createStateMachineOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteActivity operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteActivityInput object being passed to this operation.
+     - Returns: The DeleteActivityOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn.
+     */
+    public func deleteActivity(
+            input: StepFunctionsModel.DeleteActivityInput) async throws -> StepFunctionsModel.DeleteActivityOutput {
+        if let deleteActivityOverride = deleteActivityOverride {
+            return try await deleteActivityOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteStateMachine operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineInput object being passed to this operation.
+     - Returns: The DeleteStateMachineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn.
+     */
+    public func deleteStateMachine(
+            input: StepFunctionsModel.DeleteStateMachineInput) async throws -> StepFunctionsModel.DeleteStateMachineOutput {
+        if let deleteStateMachineOverride = deleteStateMachineOverride {
+            return try await deleteStateMachineOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeActivity operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeActivityInput object being passed to this operation.
+     - Returns: The DescribeActivityOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: activityDoesNotExist, invalidArn.
+     */
+    public func describeActivity(
+            input: StepFunctionsModel.DescribeActivityInput) async throws -> StepFunctionsModel.DescribeActivityOutput {
+        if let describeActivityOverride = describeActivityOverride {
+            return try await describeActivityOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeExecutionInput object being passed to this operation.
+     - Returns: The DescribeExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn.
+     */
+    public func describeExecution(
+            input: StepFunctionsModel.DescribeExecutionInput) async throws -> StepFunctionsModel.DescribeExecutionOutput {
+        if let describeExecutionOverride = describeExecutionOverride {
+            return try await describeExecutionOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeStateMachine operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineInput object being passed to this operation.
+     - Returns: The DescribeStateMachineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, stateMachineDoesNotExist.
+     */
+    public func describeStateMachine(
+            input: StepFunctionsModel.DescribeStateMachineInput) async throws -> StepFunctionsModel.DescribeStateMachineOutput {
+        if let describeStateMachineOverride = describeStateMachineOverride {
+            return try await describeStateMachineOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeStateMachineForExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineForExecutionInput object being passed to this operation.
+     - Returns: The DescribeStateMachineForExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn.
+     */
+    public func describeStateMachineForExecution(
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput) async throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
+        if let describeStateMachineForExecutionOverride = describeStateMachineForExecutionOverride {
+            return try await describeStateMachineForExecutionOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetActivityTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetActivityTaskInput object being passed to this operation.
+     - Returns: The GetActivityTaskOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
+     */
+    public func getActivityTask(
+            input: StepFunctionsModel.GetActivityTaskInput) async throws -> StepFunctionsModel.GetActivityTaskOutput {
+        if let getActivityTaskOverride = getActivityTaskOverride {
+            return try await getActivityTaskOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetExecutionHistory operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetExecutionHistoryInput object being passed to this operation.
+     - Returns: The GetExecutionHistoryOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    public func getExecutionHistory(
+            input: StepFunctionsModel.GetExecutionHistoryInput) async throws -> StepFunctionsModel.GetExecutionHistoryOutput {
+        if let getExecutionHistoryOverride = getExecutionHistoryOverride {
+            return try await getExecutionHistoryOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListActivities operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListActivitiesInput object being passed to this operation.
+     - Returns: The ListActivitiesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidToken.
+     */
+    public func listActivities(
+            input: StepFunctionsModel.ListActivitiesInput) async throws -> StepFunctionsModel.ListActivitiesOutput {
+        if let listActivitiesOverride = listActivitiesOverride {
+            return try await listActivitiesOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListExecutions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListExecutionsInput object being passed to this operation.
+     - Returns: The ListExecutionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    public func listExecutions(
+            input: StepFunctionsModel.ListExecutionsInput) async throws -> StepFunctionsModel.ListExecutionsOutput {
+        if let listExecutionsOverride = listExecutionsOverride {
+            return try await listExecutionsOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListStateMachines operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachinesInput object being passed to this operation.
+     - Returns: The ListStateMachinesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidToken.
+     */
+    public func listStateMachines(
+            input: StepFunctionsModel.ListStateMachinesInput) async throws -> StepFunctionsModel.ListStateMachinesOutput {
+        if let listStateMachinesOverride = listStateMachinesOverride {
+            return try await listStateMachinesOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListTagsForResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func listTagsForResource(
+            input: StepFunctionsModel.ListTagsForResourceInput) async throws -> StepFunctionsModel.ListTagsForResourceOutput {
+        if let listTagsForResourceOverride = listTagsForResourceOverride {
+            return try await listTagsForResourceOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the SendTaskFailure operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SendTaskFailureInput object being passed to this operation.
+     - Returns: The SendTaskFailureOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
+     */
+    public func sendTaskFailure(
+            input: StepFunctionsModel.SendTaskFailureInput) async throws -> StepFunctionsModel.SendTaskFailureOutput {
+        if let sendTaskFailureOverride = sendTaskFailureOverride {
+            return try await sendTaskFailureOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the SendTaskHeartbeat operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SendTaskHeartbeatInput object being passed to this operation.
+     - Returns: The SendTaskHeartbeatOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
+     */
+    public func sendTaskHeartbeat(
+            input: StepFunctionsModel.SendTaskHeartbeatInput) async throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
+        if let sendTaskHeartbeatOverride = sendTaskHeartbeatOverride {
+            return try await sendTaskHeartbeatOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the SendTaskSuccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SendTaskSuccessInput object being passed to this operation.
+     - Returns: The SendTaskSuccessOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
+     */
+    public func sendTaskSuccess(
+            input: StepFunctionsModel.SendTaskSuccessInput) async throws -> StepFunctionsModel.SendTaskSuccessOutput {
+        if let sendTaskSuccessOverride = sendTaskSuccessOverride {
+            return try await sendTaskSuccessOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the StartExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartExecutionInput object being passed to this operation.
+     - Returns: The StartExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    public func startExecution(
+            input: StepFunctionsModel.StartExecutionInput) async throws -> StepFunctionsModel.StartExecutionOutput {
+        if let startExecutionOverride = startExecutionOverride {
+            return try await startExecutionOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the StartSyncExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartSyncExecutionInput object being passed to this operation.
+     - Returns: The StartSyncExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    public func startSyncExecution(
+            input: StepFunctionsModel.StartSyncExecutionInput) async throws -> StepFunctionsModel.StartSyncExecutionOutput {
+        if let startSyncExecutionOverride = startSyncExecutionOverride {
+            return try await startSyncExecutionOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the StopExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StopExecutionInput object being passed to this operation.
+     - Returns: The StopExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn.
+     */
+    public func stopExecution(
+            input: StepFunctionsModel.StopExecutionInput) async throws -> StepFunctionsModel.StopExecutionOutput {
+        if let stopExecutionOverride = stopExecutionOverride {
+            return try await stopExecutionOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the TagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Returns: The TagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, tooManyTags.
+     */
+    public func tagResource(
+            input: StepFunctionsModel.TagResourceInput) async throws -> StepFunctionsModel.TagResourceOutput {
+        if let tagResourceOverride = tagResourceOverride {
+            return try await tagResourceOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UntagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Returns: The UntagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func untagResource(
+            input: StepFunctionsModel.UntagResourceInput) async throws -> StepFunctionsModel.UntagResourceOutput {
+        if let untagResourceOverride = untagResourceOverride {
+            return try await untagResourceOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UpdateStateMachine operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineInput object being passed to this operation.
+     - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    public func updateStateMachine(
+            input: StepFunctionsModel.UpdateStateMachineInput) async throws -> StepFunctionsModel.UpdateStateMachineOutput {
+        if let updateStateMachineOverride = updateStateMachineOverride {
+            return try await updateStateMachineOverride(input)
+        }
+
+        throw error
+    }
+#endif
+}

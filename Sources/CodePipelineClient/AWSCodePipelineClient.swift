@@ -2850,4 +2850,1393 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the AcknowledgeJob operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AcknowledgeJobInput object being passed to this operation.
+     - Returns: The AcknowledgeJobOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNonce, jobNotFound, validation.
+     */
+    public func acknowledgeJob(
+            input: CodePipelineModel.AcknowledgeJobInput) async throws -> CodePipelineModel.AcknowledgeJobOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.acknowledgeJob.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.acknowledgeJob,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = AcknowledgeJobOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the AcknowledgeThirdPartyJob operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AcknowledgeThirdPartyJobInput object being passed to this operation.
+     - Returns: The AcknowledgeThirdPartyJobOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidClientToken, invalidNonce, jobNotFound, validation.
+     */
+    public func acknowledgeThirdPartyJob(
+            input: CodePipelineModel.AcknowledgeThirdPartyJobInput) async throws -> CodePipelineModel.AcknowledgeThirdPartyJobOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.acknowledgeThirdPartyJob.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.acknowledgeThirdPartyJob,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = AcknowledgeThirdPartyJobOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateCustomActionType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateCustomActionTypeInput object being passed to this operation.
+     - Returns: The CreateCustomActionTypeOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, invalidTags, limitExceeded, tooManyTags, validation.
+     */
+    public func createCustomActionType(
+            input: CodePipelineModel.CreateCustomActionTypeInput) async throws -> CodePipelineModel.CreateCustomActionTypeOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.createCustomActionType.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createCustomActionType,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateCustomActionTypeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreatePipeline operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreatePipelineInput object being passed to this operation.
+     - Returns: The CreatePipelineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, invalidActionDeclaration, invalidBlockerDeclaration, invalidStageDeclaration, invalidStructure, invalidTags, limitExceeded, pipelineNameInUse, tooManyTags, validation.
+     */
+    public func createPipeline(
+            input: CodePipelineModel.CreatePipelineInput) async throws -> CodePipelineModel.CreatePipelineOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.createPipeline.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPipeline,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreatePipelineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteCustomActionType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteCustomActionTypeInput object being passed to this operation.
+     - Throws: concurrentModification, validation.
+     */
+    public func deleteCustomActionType(
+            input: CodePipelineModel.DeleteCustomActionTypeInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.deleteCustomActionType.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteCustomActionType,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteCustomActionTypeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeletePipeline operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeletePipelineInput object being passed to this operation.
+     - Throws: concurrentModification, validation.
+     */
+    public func deletePipeline(
+            input: CodePipelineModel.DeletePipelineInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.deletePipeline.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deletePipeline,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeletePipelineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteWebhook operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteWebhookInput object being passed to this operation.
+     - Returns: The DeleteWebhookOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, validation.
+     */
+    public func deleteWebhook(
+            input: CodePipelineModel.DeleteWebhookInput) async throws -> CodePipelineModel.DeleteWebhookOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.deleteWebhook.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteWebhook,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteWebhookOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeregisterWebhookWithThirdParty operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeregisterWebhookWithThirdPartyInput object being passed to this operation.
+     - Returns: The DeregisterWebhookWithThirdPartyOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: validation, webhookNotFound.
+     */
+    public func deregisterWebhookWithThirdParty(
+            input: CodePipelineModel.DeregisterWebhookWithThirdPartyInput) async throws -> CodePipelineModel.DeregisterWebhookWithThirdPartyOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.deregisterWebhookWithThirdParty.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterWebhookWithThirdParty,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeregisterWebhookWithThirdPartyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DisableStageTransition operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisableStageTransitionInput object being passed to this operation.
+     - Throws: pipelineNotFound, stageNotFound, validation.
+     */
+    public func disableStageTransition(
+            input: CodePipelineModel.DisableStageTransitionInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.disableStageTransition.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableStageTransition,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DisableStageTransitionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the EnableStageTransition operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated EnableStageTransitionInput object being passed to this operation.
+     - Throws: pipelineNotFound, stageNotFound, validation.
+     */
+    public func enableStageTransition(
+            input: CodePipelineModel.EnableStageTransitionInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.enableStageTransition.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableStageTransition,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = EnableStageTransitionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetActionType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetActionTypeInput object being passed to this operation.
+     - Returns: The GetActionTypeOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: actionTypeNotFound, validation.
+     */
+    public func getActionType(
+            input: CodePipelineModel.GetActionTypeInput) async throws -> CodePipelineModel.GetActionTypeOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.getActionType.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getActionType,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetActionTypeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetJobDetails operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetJobDetailsInput object being passed to this operation.
+     - Returns: The GetJobDetailsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: jobNotFound, validation.
+     */
+    public func getJobDetails(
+            input: CodePipelineModel.GetJobDetailsInput) async throws -> CodePipelineModel.GetJobDetailsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.getJobDetails.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getJobDetails,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetJobDetailsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetPipeline operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetPipelineInput object being passed to this operation.
+     - Returns: The GetPipelineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: pipelineNotFound, pipelineVersionNotFound, validation.
+     */
+    public func getPipeline(
+            input: CodePipelineModel.GetPipelineInput) async throws -> CodePipelineModel.GetPipelineOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.getPipeline.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getPipeline,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetPipelineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetPipelineExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetPipelineExecutionInput object being passed to this operation.
+     - Returns: The GetPipelineExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: pipelineExecutionNotFound, pipelineNotFound, validation.
+     */
+    public func getPipelineExecution(
+            input: CodePipelineModel.GetPipelineExecutionInput) async throws -> CodePipelineModel.GetPipelineExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.getPipelineExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getPipelineExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetPipelineExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetPipelineState operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetPipelineStateInput object being passed to this operation.
+     - Returns: The GetPipelineStateOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: pipelineNotFound, validation.
+     */
+    public func getPipelineState(
+            input: CodePipelineModel.GetPipelineStateInput) async throws -> CodePipelineModel.GetPipelineStateOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.getPipelineState.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getPipelineState,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetPipelineStateOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetThirdPartyJobDetails operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetThirdPartyJobDetailsInput object being passed to this operation.
+     - Returns: The GetThirdPartyJobDetailsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidClientToken, invalidJob, jobNotFound, validation.
+     */
+    public func getThirdPartyJobDetails(
+            input: CodePipelineModel.GetThirdPartyJobDetailsInput) async throws -> CodePipelineModel.GetThirdPartyJobDetailsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.getThirdPartyJobDetails.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getThirdPartyJobDetails,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetThirdPartyJobDetailsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListActionExecutions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListActionExecutionsInput object being passed to this operation.
+     - Returns: The ListActionExecutionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, pipelineExecutionNotFound, pipelineNotFound, validation.
+     */
+    public func listActionExecutions(
+            input: CodePipelineModel.ListActionExecutionsInput) async throws -> CodePipelineModel.ListActionExecutionsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.listActionExecutions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listActionExecutions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListActionExecutionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListActionTypes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListActionTypesInput object being passed to this operation.
+     - Returns: The ListActionTypesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, validation.
+     */
+    public func listActionTypes(
+            input: CodePipelineModel.ListActionTypesInput) async throws -> CodePipelineModel.ListActionTypesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.listActionTypes.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listActionTypes,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListActionTypesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListPipelineExecutions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListPipelineExecutionsInput object being passed to this operation.
+     - Returns: The ListPipelineExecutionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, pipelineNotFound, validation.
+     */
+    public func listPipelineExecutions(
+            input: CodePipelineModel.ListPipelineExecutionsInput) async throws -> CodePipelineModel.ListPipelineExecutionsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.listPipelineExecutions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listPipelineExecutions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListPipelineExecutionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListPipelines operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListPipelinesInput object being passed to this operation.
+     - Returns: The ListPipelinesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, validation.
+     */
+    public func listPipelines(
+            input: CodePipelineModel.ListPipelinesInput) async throws -> CodePipelineModel.ListPipelinesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.listPipelines.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listPipelines,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListPipelinesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTagsForResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidNextToken, resourceNotFound, validation.
+     */
+    public func listTagsForResource(
+            input: CodePipelineModel.ListTagsForResourceInput) async throws -> CodePipelineModel.ListTagsForResourceOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.listTagsForResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListWebhooks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListWebhooksInput object being passed to this operation.
+     - Returns: The ListWebhooksOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidNextToken, validation.
+     */
+    public func listWebhooks(
+            input: CodePipelineModel.ListWebhooksInput) async throws -> CodePipelineModel.ListWebhooksOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.listWebhooks.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listWebhooks,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListWebhooksOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PollForJobs operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PollForJobsInput object being passed to this operation.
+     - Returns: The PollForJobsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: actionTypeNotFound, validation.
+     */
+    public func pollForJobs(
+            input: CodePipelineModel.PollForJobsInput) async throws -> CodePipelineModel.PollForJobsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.pollForJobs.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.pollForJobs,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PollForJobsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PollForThirdPartyJobs operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PollForThirdPartyJobsInput object being passed to this operation.
+     - Returns: The PollForThirdPartyJobsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: actionTypeNotFound, validation.
+     */
+    public func pollForThirdPartyJobs(
+            input: CodePipelineModel.PollForThirdPartyJobsInput) async throws -> CodePipelineModel.PollForThirdPartyJobsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.pollForThirdPartyJobs.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.pollForThirdPartyJobs,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PollForThirdPartyJobsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutActionRevision operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutActionRevisionInput object being passed to this operation.
+     - Returns: The PutActionRevisionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: actionNotFound, pipelineNotFound, stageNotFound, validation.
+     */
+    public func putActionRevision(
+            input: CodePipelineModel.PutActionRevisionInput) async throws -> CodePipelineModel.PutActionRevisionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.putActionRevision.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putActionRevision,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutActionRevisionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutApprovalResult operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutApprovalResultInput object being passed to this operation.
+     - Returns: The PutApprovalResultOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: actionNotFound, approvalAlreadyCompleted, invalidApprovalToken, pipelineNotFound, stageNotFound, validation.
+     */
+    public func putApprovalResult(
+            input: CodePipelineModel.PutApprovalResultInput) async throws -> CodePipelineModel.PutApprovalResultOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.putApprovalResult.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putApprovalResult,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutApprovalResultOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutJobFailureResult operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutJobFailureResultInput object being passed to this operation.
+     - Throws: invalidJobState, jobNotFound, validation.
+     */
+    public func putJobFailureResult(
+            input: CodePipelineModel.PutJobFailureResultInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.putJobFailureResult.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putJobFailureResult,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutJobFailureResultOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutJobSuccessResult operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutJobSuccessResultInput object being passed to this operation.
+     - Throws: invalidJobState, jobNotFound, outputVariablesSizeExceeded, validation.
+     */
+    public func putJobSuccessResult(
+            input: CodePipelineModel.PutJobSuccessResultInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.putJobSuccessResult.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putJobSuccessResult,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutJobSuccessResultOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutThirdPartyJobFailureResult operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutThirdPartyJobFailureResultInput object being passed to this operation.
+     - Throws: invalidClientToken, invalidJobState, jobNotFound, validation.
+     */
+    public func putThirdPartyJobFailureResult(
+            input: CodePipelineModel.PutThirdPartyJobFailureResultInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.putThirdPartyJobFailureResult.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putThirdPartyJobFailureResult,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutThirdPartyJobFailureResultOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutThirdPartyJobSuccessResult operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutThirdPartyJobSuccessResultInput object being passed to this operation.
+     - Throws: invalidClientToken, invalidJobState, jobNotFound, validation.
+     */
+    public func putThirdPartyJobSuccessResult(
+            input: CodePipelineModel.PutThirdPartyJobSuccessResultInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.putThirdPartyJobSuccessResult.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putThirdPartyJobSuccessResult,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutThirdPartyJobSuccessResultOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutWebhook operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutWebhookInput object being passed to this operation.
+     - Returns: The PutWebhookOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, invalidTags, invalidWebhookAuthenticationParameters, invalidWebhookFilterPattern, limitExceeded, pipelineNotFound, tooManyTags, validation.
+     */
+    public func putWebhook(
+            input: CodePipelineModel.PutWebhookInput) async throws -> CodePipelineModel.PutWebhookOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.putWebhook.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putWebhook,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutWebhookOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RegisterWebhookWithThirdParty operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RegisterWebhookWithThirdPartyInput object being passed to this operation.
+     - Returns: The RegisterWebhookWithThirdPartyOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: validation, webhookNotFound.
+     */
+    public func registerWebhookWithThirdParty(
+            input: CodePipelineModel.RegisterWebhookWithThirdPartyInput) async throws -> CodePipelineModel.RegisterWebhookWithThirdPartyOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.registerWebhookWithThirdParty.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerWebhookWithThirdParty,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RegisterWebhookWithThirdPartyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RetryStageExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RetryStageExecutionInput object being passed to this operation.
+     - Returns: The RetryStageExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, notLatestPipelineExecution, pipelineNotFound, stageNotFound, stageNotRetryable, validation.
+     */
+    public func retryStageExecution(
+            input: CodePipelineModel.RetryStageExecutionInput) async throws -> CodePipelineModel.RetryStageExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.retryStageExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.retryStageExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RetryStageExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartPipelineExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartPipelineExecutionInput object being passed to this operation.
+     - Returns: The StartPipelineExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, pipelineNotFound, validation.
+     */
+    public func startPipelineExecution(
+            input: CodePipelineModel.StartPipelineExecutionInput) async throws -> CodePipelineModel.StartPipelineExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.startPipelineExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startPipelineExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StartPipelineExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StopPipelineExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StopPipelineExecutionInput object being passed to this operation.
+     - Returns: The StopPipelineExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, duplicatedStopRequest, pipelineExecutionNotStoppable, pipelineNotFound, validation.
+     */
+    public func stopPipelineExecution(
+            input: CodePipelineModel.StopPipelineExecutionInput) async throws -> CodePipelineModel.StopPipelineExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.stopPipelineExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopPipelineExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StopPipelineExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Returns: The TagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, invalidArn, invalidTags, resourceNotFound, tooManyTags, validation.
+     */
+    public func tagResource(
+            input: CodePipelineModel.TagResourceInput) async throws -> CodePipelineModel.TagResourceOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.tagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UntagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Returns: The UntagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: concurrentModification, invalidArn, invalidTags, resourceNotFound, validation.
+     */
+    public func untagResource(
+            input: CodePipelineModel.UntagResourceInput) async throws -> CodePipelineModel.UntagResourceOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.untagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateActionType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateActionTypeInput object being passed to this operation.
+     - Throws: actionTypeNotFound, requestFailed, validation.
+     */
+    public func updateActionType(
+            input: CodePipelineModel.UpdateActionTypeInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.updateActionType.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateActionType,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateActionTypeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdatePipeline operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdatePipelineInput object being passed to this operation.
+     - Returns: The UpdatePipelineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidActionDeclaration, invalidBlockerDeclaration, invalidStageDeclaration, invalidStructure, limitExceeded, validation.
+     */
+    public func updatePipeline(
+            input: CodePipelineModel.UpdatePipelineInput) async throws -> CodePipelineModel.UpdatePipelineOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: CodePipelineModelOperations.updatePipeline.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updatePipeline,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdatePipelineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CodePipelineError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

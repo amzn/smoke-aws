@@ -3412,4 +3412,1665 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the AddPermission operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AddPermissionInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func addPermission(
+            input: SimpleNotificationModel.AddPermissionInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.addPermission,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AddPermissionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.addPermission.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CheckIfPhoneNumberIsOptedOut operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CheckIfPhoneNumberIsOptedOutInput object being passed to this operation.
+     - Returns: The CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled.
+     */
+    public func checkIfPhoneNumberIsOptedOut(
+            input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) async throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.checkIfPhoneNumberIsOptedOut,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CheckIfPhoneNumberIsOptedOutOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.checkIfPhoneNumberIsOptedOut.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ConfirmSubscription operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ConfirmSubscriptionInput object being passed to this operation.
+     - Returns: The ConfirmSubscriptionResponseForConfirmSubscription object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+     */
+    public func confirmSubscription(
+            input: SimpleNotificationModel.ConfirmSubscriptionInput) async throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.confirmSubscription,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ConfirmSubscriptionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.confirmSubscription.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreatePlatformApplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreatePlatformApplicationInput object being passed to this operation.
+     - Returns: The CreatePlatformApplicationResponseForCreatePlatformApplication object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter.
+     */
+    public func createPlatformApplication(
+            input: SimpleNotificationModel.CreatePlatformApplicationInput) async throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreatePlatformApplicationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.createPlatformApplication.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreatePlatformEndpoint operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreatePlatformEndpointInput object being passed to this operation.
+     - Returns: The CreateEndpointResponseForCreatePlatformEndpoint object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func createPlatformEndpoint(
+            input: SimpleNotificationModel.CreatePlatformEndpointInput) async throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createPlatformEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreatePlatformEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.createPlatformEndpoint.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateSMSSandboxPhoneNumber operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateSMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, optedOut, throttled, userError.
+     */
+    public func createSMSSandboxPhoneNumber(
+            input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput) async throws -> SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createSMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateSMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.createSMSSandboxPhoneNumber.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateTopic operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateTopicInput object being passed to this operation.
+     - Returns: The CreateTopicResponseForCreateTopic object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidSecurity, staleTag, tagLimitExceeded, tagPolicy, topicLimitExceeded.
+     */
+    public func createTopic(
+            input: SimpleNotificationModel.CreateTopicInput) async throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTopic,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateTopicOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.createTopic.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteEndpoint operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteEndpointInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter.
+     */
+    public func deleteEndpoint(
+            input: SimpleNotificationModel.DeleteEndpointInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.deleteEndpoint.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeletePlatformApplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeletePlatformApplicationInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter.
+     */
+    public func deletePlatformApplication(
+            input: SimpleNotificationModel.DeletePlatformApplicationInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deletePlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeletePlatformApplicationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.deletePlatformApplication.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteSMSSandboxPhoneNumber operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteSMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, userError.
+     */
+    public func deleteSMSSandboxPhoneNumber(
+            input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput) async throws -> SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteSMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteSMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.deleteSMSSandboxPhoneNumber.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteTopic operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteTopicInput object being passed to this operation.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
+     */
+    public func deleteTopic(
+            input: SimpleNotificationModel.DeleteTopicInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTopic,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteTopicOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.deleteTopic.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetDataProtectionPolicy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetDataProtectionPolicyInput object being passed to this operation.
+     - Returns: The GetDataProtectionPolicyResponseForGetDataProtectionPolicy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func getDataProtectionPolicy(
+            input: SimpleNotificationModel.GetDataProtectionPolicyInput) async throws -> SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getDataProtectionPolicy,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetDataProtectionPolicyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getDataProtectionPolicy.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetEndpointAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetEndpointAttributesInput object being passed to this operation.
+     - Returns: The GetEndpointAttributesResponseForGetEndpointAttributes object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func getEndpointAttributes(
+            input: SimpleNotificationModel.GetEndpointAttributesInput) async throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getEndpointAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetEndpointAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getEndpointAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetPlatformApplicationAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetPlatformApplicationAttributesInput object being passed to this operation.
+     - Returns: The GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func getPlatformApplicationAttributes(
+            input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) async throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getPlatformApplicationAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getPlatformApplicationAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetSMSAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetSMSAttributesInput object being passed to this operation.
+     - Returns: The GetSMSAttributesResponseForGetSMSAttributes object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled.
+     */
+    public func getSMSAttributes(
+            input: SimpleNotificationModel.GetSMSAttributesInput) async throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSMSAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSMSAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getSMSAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetSMSSandboxAccountStatus operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetSMSSandboxAccountStatusInput object being passed to this operation.
+     - Returns: The GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, throttled.
+     */
+    public func getSMSSandboxAccountStatus(
+            input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput) async throws -> SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSMSSandboxAccountStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSMSSandboxAccountStatusOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getSMSSandboxAccountStatus.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetSubscriptionAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetSubscriptionAttributesInput object being passed to this operation.
+     - Returns: The GetSubscriptionAttributesResponseForGetSubscriptionAttributes object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func getSubscriptionAttributes(
+            input: SimpleNotificationModel.GetSubscriptionAttributesInput) async throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSubscriptionAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getSubscriptionAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetTopicAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetTopicAttributesInput object being passed to this operation.
+     - Returns: The GetTopicAttributesResponseForGetTopicAttributes object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func getTopicAttributes(
+            input: SimpleNotificationModel.GetTopicAttributesInput) async throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getTopicAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetTopicAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.getTopicAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListEndpointsByPlatformApplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListEndpointsByPlatformApplicationInput object being passed to this operation.
+     - Returns: The ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func listEndpointsByPlatformApplication(
+            input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) async throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listEndpointsByPlatformApplication,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListEndpointsByPlatformApplicationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listEndpointsByPlatformApplication.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListOriginationNumbers operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListOriginationNumbersRequest object being passed to this operation.
+     - Returns: The ListOriginationNumbersResultForListOriginationNumbers object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled, validation.
+     */
+    public func listOriginationNumbers(
+            input: SimpleNotificationModel.ListOriginationNumbersRequest) async throws -> SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listOriginationNumbers,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListOriginationNumbersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listOriginationNumbers.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListPhoneNumbersOptedOut operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListPhoneNumbersOptedOutInput object being passed to this operation.
+     - Returns: The ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled.
+     */
+    public func listPhoneNumbersOptedOut(
+            input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) async throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listPhoneNumbersOptedOut,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListPhoneNumbersOptedOutOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listPhoneNumbersOptedOut.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListPlatformApplications operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListPlatformApplicationsInput object being passed to this operation.
+     - Returns: The ListPlatformApplicationsResponseForListPlatformApplications object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter.
+     */
+    public func listPlatformApplications(
+            input: SimpleNotificationModel.ListPlatformApplicationsInput) async throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listPlatformApplications,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListPlatformApplicationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listPlatformApplications.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListSMSSandboxPhoneNumbers operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListSMSSandboxPhoneNumbersInput object being passed to this operation.
+     - Returns: The ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled.
+     */
+    public func listSMSSandboxPhoneNumbers(
+            input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput) async throws -> SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSMSSandboxPhoneNumbers,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListSMSSandboxPhoneNumbersOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listSMSSandboxPhoneNumbers.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListSubscriptions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListSubscriptionsInput object being passed to this operation.
+     - Returns: The ListSubscriptionsResponseForListSubscriptions object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter.
+     */
+    public func listSubscriptions(
+            input: SimpleNotificationModel.ListSubscriptionsInput) async throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSubscriptions,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListSubscriptionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listSubscriptions.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListSubscriptionsByTopic operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListSubscriptionsByTopicInput object being passed to this operation.
+     - Returns: The ListSubscriptionsByTopicResponseForListSubscriptionsByTopic object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func listSubscriptionsByTopic(
+            input: SimpleNotificationModel.ListSubscriptionsByTopicInput) async throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listSubscriptionsByTopic,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListSubscriptionsByTopicOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listSubscriptionsByTopic.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTagsForResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+     - Returns: The ListTagsForResourceResponseForListTagsForResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, tagPolicy.
+     */
+    public func listTagsForResource(
+            input: SimpleNotificationModel.ListTagsForResourceRequest) async throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listTagsForResource.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTopics operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTopicsInput object being passed to this operation.
+     - Returns: The ListTopicsResponseForListTopics object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter.
+     */
+    public func listTopics(
+            input: SimpleNotificationModel.ListTopicsInput) async throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTopics,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListTopicsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.listTopics.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the OptInPhoneNumber operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated OptInPhoneNumberInput object being passed to this operation.
+     - Returns: The OptInPhoneNumberResponseForOptInPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled.
+     */
+    public func optInPhoneNumber(
+            input: SimpleNotificationModel.OptInPhoneNumberInput) async throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.optInPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = OptInPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.optInPhoneNumber.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the Publish operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PublishInput object being passed to this operation.
+     - Returns: The PublishResponseForPublish object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, endpointDisabled, internalError, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, validation.
+     */
+    public func publish(
+            input: SimpleNotificationModel.PublishInput) async throws -> SimpleNotificationModel.PublishResponseForPublish {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publish,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PublishOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.publish.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PublishBatch operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PublishBatchInput object being passed to this operation.
+     - Returns: The PublishBatchResponseForPublishBatch object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, batchEntryIdsNotDistinct, batchRequestTooLong, emptyBatchRequest, endpointDisabled, internalError, invalidBatchEntryId, invalidParameter, invalidParameterValue, invalidSecurity, kMSAccessDenied, kMSDisabled, kMSInvalidState, kMSNotFound, kMSOptInRequired, kMSThrottling, notFound, platformApplicationDisabled, tooManyEntriesInBatchRequest, validation.
+     */
+    public func publishBatch(
+            input: SimpleNotificationModel.PublishBatchInput) async throws -> SimpleNotificationModel.PublishBatchResponseForPublishBatch {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishBatch,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PublishBatchOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.publishBatch.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutDataProtectionPolicy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutDataProtectionPolicyInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func putDataProtectionPolicy(
+            input: SimpleNotificationModel.PutDataProtectionPolicyInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putDataProtectionPolicy,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PutDataProtectionPolicyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.putDataProtectionPolicy.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RemovePermission operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RemovePermissionInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func removePermission(
+            input: SimpleNotificationModel.RemovePermissionInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.removePermission,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RemovePermissionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.removePermission.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetEndpointAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetEndpointAttributesInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func setEndpointAttributes(
+            input: SimpleNotificationModel.SetEndpointAttributesInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setEndpointAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetEndpointAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.setEndpointAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetPlatformApplicationAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetPlatformApplicationAttributesInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, notFound.
+     */
+    public func setPlatformApplicationAttributes(
+            input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setPlatformApplicationAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetPlatformApplicationAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.setPlatformApplicationAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetSMSAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetSMSAttributesInput object being passed to this operation.
+     - Returns: The SetSMSAttributesResponseForSetSMSAttributes object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, throttled.
+     */
+    public func setSMSAttributes(
+            input: SimpleNotificationModel.SetSMSAttributesInput) async throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setSMSAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetSMSAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.setSMSAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetSubscriptionAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
+     */
+    public func setSubscriptionAttributes(
+            input: SimpleNotificationModel.SetSubscriptionAttributesInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setSubscriptionAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetSubscriptionAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.setSubscriptionAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetTopicAttributes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetTopicAttributesInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func setTopicAttributes(
+            input: SimpleNotificationModel.SetTopicAttributesInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setTopicAttributes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetTopicAttributesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.setTopicAttributes.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the Subscribe operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SubscribeInput object being passed to this operation.
+     - Returns: The SubscribeResponseForSubscribe object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
+     */
+    public func subscribe(
+            input: SimpleNotificationModel.SubscribeInput) async throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.subscribe,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SubscribeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.subscribe.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+     - Returns: The TagResourceResponseForTagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func tagResource(
+            input: SimpleNotificationModel.TagResourceRequest) async throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = TagResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.tagResource.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the Unsubscribe operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UnsubscribeInput object being passed to this operation.
+     - Throws: authorizationError, internalError, invalidParameter, invalidSecurity, notFound.
+     */
+    public func unsubscribe(
+            input: SimpleNotificationModel.UnsubscribeInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.unsubscribe,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UnsubscribeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.unsubscribe.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UntagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+     - Returns: The UntagResourceResponseForUntagResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, concurrentAccess, invalidParameter, resourceNotFound, staleTag, tagLimitExceeded, tagPolicy.
+     */
+    public func untagResource(
+            input: SimpleNotificationModel.UntagResourceRequest) async throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.untagResource.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the VerifySMSSandboxPhoneNumber operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated VerifySMSSandboxPhoneNumberInput object being passed to this operation.
+     - Returns: The VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: authorizationError, internalError, invalidParameter, resourceNotFound, throttled, verification.
+     */
+    public func verifySMSSandboxPhoneNumber(
+            input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput) async throws -> SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.verifySMSSandboxPhoneNumber,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = VerifySMSSandboxPhoneNumberOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleNotificationModelOperations.verifySMSSandboxPhoneNumber.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleNotificationError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }
