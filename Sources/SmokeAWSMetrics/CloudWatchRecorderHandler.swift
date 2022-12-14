@@ -23,14 +23,14 @@ import Logging
 /**
  Class conforming to `RecorderHandler` that emits a CloudWatch metric.
  */
-internal class CloudWatchRecorderHandler: RecorderHandler {
-    private let cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue
+internal class CloudWatchRecorderHandler<QueueType: MetricsQueue>: RecorderHandler {
+    private let cloudWatchPendingMetricsQueue: QueueType
     private let metricName: String
     private let namespace: String
     private let dimensions: [CloudWatchModel.Dimension]?
     private let logger: Logger
     
-    init(cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue,
+    init(cloudWatchPendingMetricsQueue: QueueType,
                 metricName: String,
                 namespace: String,
                 dimensions: [CloudWatchModel.Dimension]?,

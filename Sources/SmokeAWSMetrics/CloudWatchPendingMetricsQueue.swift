@@ -20,7 +20,7 @@ import CloudWatchClient
 import CloudWatchModel
 import Logging
 
-private func iso8601DateFormatter() -> DateFormatter {
+internal func iso8601DateFormatter() -> DateFormatter {
     let formatter = DateFormatter()
     formatter.calendar = Calendar(identifier: .iso8601)
     formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -39,18 +39,18 @@ internal enum CloudWatchPendingMetricsQueueError: Error {
     case shutdownAttemptOnUnstartedQueue
 }
 
-private struct Entry {
+struct Entry {
     let namespace: String
     let data: MetricDatum
 }
 
-private struct QueueShutdownDetails {
+internal struct QueueShutdownDetails {
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
     let awaitingContinuations: [CheckedContinuation<Void, Error>]
 #endif
 }
 
-internal class CloudWatchPendingMetricsQueue {
+internal class CloudWatchPendingMetricsQueue: MetricsQueue {
     private var pendingEntries: [Entry]
     private let logger: Logger
     private let cloudWatchClient: CloudWatchClientProtocol

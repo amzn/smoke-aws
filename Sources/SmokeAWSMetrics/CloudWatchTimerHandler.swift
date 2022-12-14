@@ -26,14 +26,14 @@ private let microToNanoSecondsFactor: Int64 = 1000
 /**
  Class conforming to `TimerHandler` that emits a CloudWatch metric.
  */
-internal class CloudWatchTimerHandler: TimerHandler {
-    private let cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue
+internal class CloudWatchTimerHandler<QueueType: MetricsQueue>: TimerHandler {
+    private let cloudWatchPendingMetricsQueue: QueueType
     private let metricName: String
     private let namespace: String
     private let dimensions: [CloudWatchModel.Dimension]?
     private let logger: Logger
     
-    init(cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueue,
+    init(cloudWatchPendingMetricsQueue: QueueType,
                 metricName: String,
                 namespace: String,
                 dimensions: [CloudWatchModel.Dimension]?,
