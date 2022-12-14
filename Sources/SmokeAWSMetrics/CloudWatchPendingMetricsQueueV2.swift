@@ -91,9 +91,33 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
         }
         
         Task {
-            await submitQueueConsumingTask()
-            
             self.logger.info("CloudWatchPendingMetricsQueue started.")
+            
+            var doContinue = true
+            
+            repeat {
+                await submitQueueConsumingTask()
+                
+                do {
+                    try await Task.sleep(nanoseconds: UInt64(queueConsumingTaskIntervalInSeconds) * secondsToNanoseconds)
+                } catch {
+                    self.logger.error("Unable to submit metrics to CloudWatch: \(String(describing: error))")
+                }
+                
+                // shutdown the queue if required
+                if let queueShutdownDetails = self.isShuttingDown() {
+                    // resume any continuations
+                    queueShutdownDetails.awaitingContinuations.forEach { $0.resume(returning: ()) }
+                    
+                    self.updateStateOnShutdownComplete()
+                    
+                    self.finishHandler()
+                    
+                    doContinue = false
+                } else {
+                    doContinue = true
+                }
+            } while doContinue == true
         }
     }
     
@@ -149,25 +173,6 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
                     }
                 }
             }
-        }
-        
-        do {
-            try await Task.sleep(nanoseconds: UInt64(queueConsumingTaskIntervalInSeconds) * secondsToNanoseconds)
-        } catch {
-            self.logger.error("Unable to submit metrics to CloudWatch: \(String(describing: error))")
-        }
-        
-        // shutdown the queue if required
-        if let queueShutdownDetails = self.isShuttingDown() {
-            // resume any continuations
-            queueShutdownDetails.awaitingContinuations.forEach { $0.resume(returning: ()) }
-            
-            self.updateStateOnShutdownComplete()
-            
-            self.finishHandler()
-        } else {
-            // another queue consuming task should be scheduled
-            await self.submitQueueConsumingTask()
         }
     }
     
