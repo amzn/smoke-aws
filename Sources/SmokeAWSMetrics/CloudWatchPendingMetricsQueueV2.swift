@@ -140,7 +140,7 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
     }
     
     private func handleInput(input: PutMetricDataInput) async {
-        self.logger.info("Handling Cloudwatch input for namespace \(input.namespace) of size \(input.metricData.count)")
+        self.logger.trace("Handling Cloudwatch input for namespace \(input.namespace) of size \(input.metricData.count)")
         
         do {
             try await self.cloudWatchClient.putMetricData(input: input)
