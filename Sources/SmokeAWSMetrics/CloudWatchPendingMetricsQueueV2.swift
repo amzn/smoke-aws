@@ -32,12 +32,13 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
     private let logger: Logger
     private let cloudWatchClient: CloudWatchClientProtocol
     private var shutdownWaitingContinuations: [CheckedContinuation<Void, Error>] = []
-    private let chunkedEntryStream: AsyncChunksOfCountOrSignalSequence<AsyncStream<Entry>, [Entry], AsyncTimerSequence<SuspendingClock>>
-    private let inputStream: AsyncThrottleSequence<AsyncStream<PutMetricDataInput>, ContinuousClock, PutMetricDataInput>
+    private let inputStream: RequestInputStreamType
     private let entryHander: (Entry) -> ()
     private let entryQueueFinishHandler: () -> ()
-    private let inputHander: (PutMetricDataInput) -> ()
-    private let inputQueueFinishHandler: () -> ()
+    
+    private typealias ChunkedStreamType = AsyncChunksOfCountOrSignalSequence<AsyncStream<Entry>, [Entry], AsyncTimerSequence<SuspendingClock>>
+    private typealias TransformedChunkStreamType = AsyncFlatMapSequence<ChunkedStreamType, AsyncLazySequence<[PutMetricDataInput]>>
+    private typealias RequestInputStreamType = AsyncThrottleSequence<TransformedChunkStreamType, ContinuousClock, PutMetricDataInput>
     
     enum State {
         case initialized
@@ -67,35 +68,24 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
             }
         }
         
-        var newInputHandler: ((PutMetricDataInput) -> ())?
-        var newInputQueueFinishHandler: (() -> ())?
-        let rawInputStream = AsyncStream { continuation in
-            newInputHandler = { input in
-                continuation.yield(input)
-            }
-            
-            newInputQueueFinishHandler = {
-                continuation.finish()
-            }
-        }
-        
-        guard let newEntryHandler = newEntryHandler, let newEntryQueueFinishHandler = newEntryQueueFinishHandler,
-              let newInputHandler = newInputHandler, let newInputQueueFinishHandler = newInputQueueFinishHandler else {
+        guard let newEntryHandler = newEntryHandler, let newEntryQueueFinishHandler = newEntryQueueFinishHandler else {
             fatalError()
         }
         
         // chunk the stream either by count or by time. This will chunk a request to cloudwatch
         // at a maximum of `maximumDataumsPerRequest` items or at a maximum interval of `
-        self.chunkedEntryStream = rawEntryStream.chunks(ofCount: maximumDataumsPerRequest,
-                                                        or: .repeating(every: maximumSubmissionInterval))
+        let chunkedEntryStream: ChunkedStreamType = rawEntryStream.chunks(ofCount: maximumDataumsPerRequest,
+                                                                          or: .repeating(every: maximumSubmissionInterval))
+        
+        let transformedChunkedEntryStream: TransformedChunkStreamType = chunkedEntryStream.flatMap { entryChunk in
+            return entryChunk.asInputArray().async
+        }
         
         // max sure the rate of requests to cloudwatch do not exceed 1000/`minimumSubmissionInterval` tps.
-        self.inputStream = rawInputStream.throttle(for: minimumSubmissionInterval)
+        self.inputStream = transformedChunkedEntryStream.throttle(for: minimumSubmissionInterval)
         
         self.entryHander = newEntryHandler
         self.entryQueueFinishHandler = newEntryQueueFinishHandler
-        self.inputHander = newInputHandler
-        self.inputQueueFinishHandler = newInputQueueFinishHandler
     }
     
     /**
@@ -107,17 +97,9 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
             return
         }
         
-        self.logger.info("CloudWatchPendingMetricsQueue  started.")
-        
         Task {
-            for await entryChunk in self.chunkedEntryStream {
-                handleEntryChunk(currentPendingEntries: entryChunk)
-            }
+            self.logger.info("CloudWatchPendingMetricsQueue started.")
             
-            self.inputQueueFinishHandler()
-        }
-        
-        Task {
             for await input in self.inputStream {
                 Task {
                     await handleInput(input: input)
@@ -155,29 +137,6 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
     nonisolated func submit(namespace: String, data: MetricDatum) {
         let entry = Entry(namespace: namespace, data: data)
         self.entryHander(entry)
-    }
-    
-    private func handleEntryChunk(currentPendingEntries: [Entry]) {
-        self.logger.trace("Handling metric entries chunk of size \(currentPendingEntries.count)")
-        
-        if !currentPendingEntries.isEmpty {
-            // transform the list of pending entries into a map keyed by namespace
-            var namespacedEntryMap: [String: [MetricDatum]] = [:]
-            currentPendingEntries.forEach { entry in
-                if var dataList = namespacedEntryMap[entry.namespace] {
-                    dataList.append(entry.data)
-                    namespacedEntryMap[entry.namespace] = dataList
-                } else {
-                    namespacedEntryMap[entry.namespace] = [entry.data]
-                }
-            }
-            
-            // for each namespace, kick off calls to CloudWatch
-            for (namespace, dataList) in namespacedEntryMap {
-                let input = PutMetricDataInput(metricData: dataList, namespace: namespace)
-                self.inputHander(input)
-            }
-        }
     }
     
     private func handleInput(input: PutMetricDataInput) async {
@@ -280,6 +239,26 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
         }
         
         return nil
+    }
+}
+
+extension Sequence where Element == Entry {
+    func asInputArray() -> [PutMetricDataInput] {
+        // transform the list of pending entries into a map keyed by namespace
+        var namespacedEntryMap: [String: [MetricDatum]] = [:]
+        self.forEach { entry in
+            if var dataList = namespacedEntryMap[entry.namespace] {
+                dataList.append(entry.data)
+                namespacedEntryMap[entry.namespace] = dataList
+            } else {
+                namespacedEntryMap[entry.namespace] = [entry.data]
+            }
+        }
+        
+        // for each namespace, kick off calls to CloudWatch
+        return namespacedEntryMap.map { (namespace, dataList) in
+            return PutMetricDataInput(metricData: dataList, namespace: namespace)
+        }
     }
 }
 #endif
