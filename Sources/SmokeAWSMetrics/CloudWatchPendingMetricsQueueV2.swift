@@ -132,7 +132,7 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
     }
     
     private func handleEntryChunk(currentPendingEntries: [Entry]) async {
-        self.logger.info("Handling Cloudwatch entries chunk of size \(currentPendingEntries.count)")
+        self.logger.trace("Handling Cloudwatch entries chunk of size \(currentPendingEntries.count)")
         
         if !currentPendingEntries.isEmpty {
             // transform the list of pending entries into a map keyed by namespace
@@ -152,6 +152,8 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
                 
                 for dataListChunk in chunkedList {
                     let input = PutMetricDataInput(metricData: dataListChunk, namespace: namespace)
+                    self.logger.trace("Handling Cloudwatch entries to namespace \(namespace): \(input)")
+                    
                     do {
                         try await self.cloudWatchClient.putMetricData(input: input)
                     } catch {
