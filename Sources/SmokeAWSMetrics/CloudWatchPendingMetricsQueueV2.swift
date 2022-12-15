@@ -33,13 +33,11 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
     private let cloudWatchClient: CloudWatchClientProtocol
     private var shutdownWaitingContinuations: [CheckedContinuation<Void, Error>] = []
     private let chunkedEntryStream: AsyncChunksOfCountOrSignalSequence<AsyncStream<Entry>, [Entry], AsyncTimerSequence<SuspendingClock>>
+    private let inputStream: AsyncThrottleSequence<AsyncStream<PutMetricDataInput>, ContinuousClock, PutMetricDataInput>
     private let entryHander: (Entry) -> ()
-    private let finishHandler: () -> ()
-    
-    private let queueConsumingTaskIntervalInSeconds = 2
-    // CloudWatch has a limit of 20 Dataums per request
-    // https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_limits.html
-    private let maximumDataumsPerRequest = 20
+    private let entryQueueFinishHandler: () -> ()
+    private let inputHander: (PutMetricDataInput) -> ()
+    private let inputQueueFinishHandler: () -> ()
     
     enum State {
         case initialized
@@ -49,35 +47,55 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
     }
     private var state: State = .initialized
     
-    init(cloudWatchClient: CloudWatchClientProtocol, logger: Logger) {
+    init(cloudWatchClient: CloudWatchClientProtocol,
+         maximumDataumsPerRequest: Int,
+         maximumSubmissionInterval: Duration,
+         minimumSubmissionInterval: Duration,
+         logger: Logger) {
         self.cloudWatchClient = cloudWatchClient
         self.logger = logger
         
         var newEntryHandler: ((Entry) -> ())?
-        var newFinishHandler: (() -> ())?
+        var newEntryQueueFinishHandler: (() -> ())?
         let rawEntryStream = AsyncStream { continuation in
             newEntryHandler = { entry in
                 continuation.yield(entry)
             }
             
-            newFinishHandler = {
+            newEntryQueueFinishHandler = {
                 continuation.finish()
             }
         }
         
-        guard let newEntryHandler = newEntryHandler, let newFinishHandler = newFinishHandler else {
+        var newInputHandler: ((PutMetricDataInput) -> ())?
+        var newInputQueueFinishHandler: (() -> ())?
+        let rawInputStream = AsyncStream { continuation in
+            newInputHandler = { input in
+                continuation.yield(input)
+            }
+            
+            newInputQueueFinishHandler = {
+                continuation.finish()
+            }
+        }
+        
+        guard let newEntryHandler = newEntryHandler, let newEntryQueueFinishHandler = newEntryQueueFinishHandler,
+              let newInputHandler = newInputHandler, let newInputQueueFinishHandler = newInputQueueFinishHandler else {
             fatalError()
         }
         
-        // chunk the stream either by count or by time. This will send the metrics to cloudwatch
-        // as soon as there is `self.maximumDataumsPerRequest` entries to be sent (these will then be
-        // sent in one cloudwatch request per namespace) or after `queueConsumingTaskIntervalInSeconds`
-        // time has passed.
-        self.chunkedEntryStream = rawEntryStream.chunks(ofCount: self.maximumDataumsPerRequest,
-                                                        or: .repeating(every: .seconds(queueConsumingTaskIntervalInSeconds)))
+        // chunk the stream either by count or by time. This will chunk a request to cloudwatch
+        // at a maximum of `maximumDataumsPerRequest` items or at a maximum interval of `
+        self.chunkedEntryStream = rawEntryStream.chunks(ofCount: maximumDataumsPerRequest,
+                                                        or: .repeating(every: maximumSubmissionInterval))
+        
+        // max sure the rate of requests to cloudwatch do not exceed 1000/`minimumSubmissionInterval` tps.
+        self.inputStream = rawInputStream.throttle(for: minimumSubmissionInterval)
         
         self.entryHander = newEntryHandler
-        self.finishHandler = newFinishHandler
+        self.entryQueueFinishHandler = newEntryQueueFinishHandler
+        self.inputHander = newInputHandler
+        self.inputQueueFinishHandler = newInputQueueFinishHandler
     }
     
     /**
@@ -89,12 +107,20 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
             return
         }
         
+        self.logger.info("CloudWatchPendingMetricsQueue  started.")
+        
         Task {
-            self.logger.info("CloudWatchPendingMetricsQueue started.")
-            
             for await entryChunk in self.chunkedEntryStream {
+                handleEntryChunk(currentPendingEntries: entryChunk)
+            }
+            
+            self.inputQueueFinishHandler()
+        }
+        
+        Task {
+            for await input in self.inputStream {
                 Task {
-                    await handleEntryChunk(currentPendingEntries: entryChunk)
+                    await handleInput(input: input)
                 }
             }
             
@@ -131,8 +157,8 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
         self.entryHander(entry)
     }
     
-    private func handleEntryChunk(currentPendingEntries: [Entry]) async {
-        self.logger.trace("Handling Cloudwatch entries chunk of size \(currentPendingEntries.count)")
+    private func handleEntryChunk(currentPendingEntries: [Entry]) {
+        self.logger.trace("Handling metric entries chunk of size \(currentPendingEntries.count)")
         
         if !currentPendingEntries.isEmpty {
             // transform the list of pending entries into a map keyed by namespace
@@ -148,23 +174,21 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
             
             // for each namespace, kick off calls to CloudWatch
             for (namespace, dataList) in namespacedEntryMap {
-                let chunkedList = dataList.chunked(by: self.maximumDataumsPerRequest)
-                
-                for dataListChunk in chunkedList {
-                    let input = PutMetricDataInput(metricData: dataListChunk, namespace: namespace)
-                    self.logger.trace("Handling Cloudwatch entries to namespace \(namespace): \(input)")
-                    
-                    do {
-                        try await self.cloudWatchClient.putMetricData(input: input)
-                    } catch {
-                        self.logger.error("Unable to submit metrics to CloudWatch: \(String(describing: error))")
-                    }
-                }
+                let input = PutMetricDataInput(metricData: dataList, namespace: namespace)
+                self.inputHander(input)
             }
         }
     }
     
-    
+    private func handleInput(input: PutMetricDataInput) async {
+        self.logger.info("Handling Cloudwatch input for namespace \(input.namespace) of size \(input.metricData.count)")
+        
+        do {
+            try await self.cloudWatchClient.putMetricData(input: input)
+        } catch {
+            self.logger.error("Unable to submit metrics to CloudWatch: \(String(describing: error))")
+        }
+    }
     
     /**
      Updates the Lifecycle state on a start request.
@@ -197,7 +221,7 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
         case .running:
             state = .shuttingDown
             
-            self.finishHandler()
+            self.entryQueueFinishHandler()
             
             doShutdownServer = true
         case .shuttingDown, .shutDown:

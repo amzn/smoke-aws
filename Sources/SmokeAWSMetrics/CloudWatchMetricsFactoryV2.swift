@@ -22,6 +22,18 @@ import CloudWatchClient
 import CloudWatchModel
 import Logging
 
+// ensure that metrics are batched no longer than 2 seconds
+public let defaultMaximumSubmissionIntervalInMilliseconds = 2000
+
+// by default throttle calls to Cloudwatch at 200 (1000/5) tps
+// Standard service quota is 500 tps
+// https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_limits.html
+public let defaultMinimumSubmissionIntervalInMilliseconds = 5
+
+// CloudWatch has a limit of 20 Dataums per request
+// https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_limits.html
+public let defaultMaximumDataumsPerRequest = 20
+
 /**
  Class conforming to `MetricsFactory` that emits CloudWatch metrics.
  */
@@ -39,6 +51,9 @@ public class CloudWatchMetricsFactoryV2: MetricsFactory {
     private let unknownNamespace = "Unknown Namespace"
     
     public init(cloudWatchClient: CloudWatchClientProtocol,
+                maximumDataumsPerRequest: Int = defaultMaximumDataumsPerRequest,
+                maximumSubmissionInterval: Duration = .milliseconds(defaultMaximumSubmissionIntervalInMilliseconds),
+                minimumSubmissionInterval: Duration = .milliseconds(defaultMinimumSubmissionIntervalInMilliseconds),
                 logger: Logger?) {
         self.cloudWatchClient = cloudWatchClient
         
@@ -48,7 +63,11 @@ public class CloudWatchMetricsFactoryV2: MetricsFactory {
             self.logger = Self.logger
         }
         
-        self.cloudWatchPendingMetricsQueue = CloudWatchPendingMetricsQueueV2(cloudWatchClient: self.cloudWatchClient, logger: self.logger)
+        self.cloudWatchPendingMetricsQueue = CloudWatchPendingMetricsQueueV2(cloudWatchClient: self.cloudWatchClient,
+                                                                             maximumDataumsPerRequest: maximumDataumsPerRequest,
+                                                                             maximumSubmissionInterval: maximumSubmissionInterval,
+                                                                             minimumSubmissionInterval: minimumSubmissionInterval,
+                                                                             logger: self.logger)
     }
     
     public func start() async {
