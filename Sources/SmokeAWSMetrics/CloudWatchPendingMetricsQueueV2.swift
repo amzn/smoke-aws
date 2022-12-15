@@ -20,20 +20,19 @@
 import Foundation
 import CloudWatchClient
 import CloudWatchModel
+import AsyncAlgorithms
 import Logging
-
-private let secondsToNanoseconds: UInt64 = 1000000000
 
 private struct QueueV2Helper {
     
 }
 
+@available(macOS 13.0, *)
 internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
-    private var pendingEntries: [Entry]
     private let logger: Logger
     private let cloudWatchClient: CloudWatchClientProtocol
     private var shutdownWaitingContinuations: [CheckedContinuation<Void, Error>] = []
-    private let entryStream: AsyncStream<Entry>
+    private let chunkedEntryStream: AsyncChunksOfCountOrSignalSequence<AsyncStream<Entry>, [Entry], AsyncTimerSequence<SuspendingClock>>
     private let entryHander: (Entry) -> ()
     private let finishHandler: () -> ()
     
@@ -51,13 +50,12 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
     private var state: State = .initialized
     
     init(cloudWatchClient: CloudWatchClientProtocol, logger: Logger) {
-        self.pendingEntries = []
         self.cloudWatchClient = cloudWatchClient
         self.logger = logger
         
         var newEntryHandler: ((Entry) -> ())?
         var newFinishHandler: (() -> ())?
-        self.entryStream = AsyncStream { continuation in
+        let rawEntryStream = AsyncStream { continuation in
             newEntryHandler = { entry in
                 continuation.yield(entry)
             }
@@ -70,6 +68,8 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
         guard let newEntryHandler = newEntryHandler, let newFinishHandler = newFinishHandler else {
             fatalError()
         }
+        
+        self.chunkedEntryStream = rawEntryStream.chunked(by: .repeating(every: .seconds(queueConsumingTaskIntervalInSeconds)))
         
         self.entryHander = newEntryHandler
         self.finishHandler = newFinishHandler
@@ -85,39 +85,19 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
         }
         
         Task {
-            for await entry in self.entryStream {
-                self.pendingEntries.append(entry)
-            }
-        }
-        
-        Task {
             self.logger.info("CloudWatchPendingMetricsQueue started.")
             
-            var doContinue = true
+            for await entryChunk in self.chunkedEntryStream {
+                await handleEntryChunk(currentPendingEntries: entryChunk)
+            }
             
-            repeat {
-                await submitQueueConsumingTask()
+            // shutdown the queue if required
+            if let queueShutdownDetails = self.isShuttingDown() {
+                // resume any continuations
+                queueShutdownDetails.awaitingContinuations.forEach { $0.resume(returning: ()) }
                 
-                do {
-                    try await Task.sleep(nanoseconds: UInt64(queueConsumingTaskIntervalInSeconds) * secondsToNanoseconds)
-                } catch {
-                    self.logger.error("Unable to submit metrics to CloudWatch: \(String(describing: error))")
-                }
-                
-                // shutdown the queue if required
-                if let queueShutdownDetails = self.isShuttingDown() {
-                    // resume any continuations
-                    queueShutdownDetails.awaitingContinuations.forEach { $0.resume(returning: ()) }
-                    
-                    self.updateStateOnShutdownComplete()
-                    
-                    self.finishHandler()
-                    
-                    doContinue = false
-                } else {
-                    doContinue = true
-                }
-            } while doContinue == true
+                self.updateStateOnShutdownComplete()
+            }
         }
     }
     
@@ -144,10 +124,7 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
         self.entryHander(entry)
     }
     
-    private func submitQueueConsumingTask() async {
-        let currentPendingEntries = self.pendingEntries
-        self.pendingEntries = []
-        
+    private func handleEntryChunk(currentPendingEntries: [Entry]) async {
         if !currentPendingEntries.isEmpty {
             // transform the list of pending entries into a map keyed by namespace
             var namespacedEntryMap: [String: [MetricDatum]] = [:]
@@ -208,6 +185,8 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
             throw CloudWatchPendingMetricsQueueError.shutdownAttemptOnUnstartedQueue
         case .running:
             state = .shuttingDown
+            
+            self.finishHandler()
             
             doShutdownServer = true
         case .shuttingDown, .shutDown:

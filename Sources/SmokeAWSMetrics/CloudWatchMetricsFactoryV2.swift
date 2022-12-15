@@ -25,6 +25,7 @@ import Logging
 /**
  Class conforming to `MetricsFactory` that emits CloudWatch metrics.
  */
+@available(macOS 13.0, *)
 public class CloudWatchMetricsFactoryV2: MetricsFactory {
     private let cloudWatchClient: CloudWatchClientProtocol
     private let cloudWatchPendingMetricsQueue: CloudWatchPendingMetricsQueueV2

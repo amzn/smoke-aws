@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "AsyncAlgorithms",
+        "repositoryURL": "https://github.com/apple/swift-async-algorithms",
+        "state": {
+          "branch": null,
+          "revision": "cca423ff03ab657062f3781847e65a867b51bb01",
+          "version": "0.0.3"
+        }
+      },
+      {
         "package": "swift-atomics",
         "repositoryURL": "https://github.com/apple/swift-atomics.git",
         "state": {
