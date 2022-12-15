@@ -69,7 +69,12 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
             fatalError()
         }
         
-        self.chunkedEntryStream = rawEntryStream.chunked(by: .repeating(every: .seconds(queueConsumingTaskIntervalInSeconds)))
+        // chunk the stream either by count or by time. This will send the metrics to cloudwatch
+        // as soon as there is `self.maximumDataumsPerRequest` entries to be sent (these will then be
+        // sent in one cloudwatch request per namespace) or after `queueConsumingTaskIntervalInSeconds`
+        // time has passed.
+        self.chunkedEntryStream = rawEntryStream.chunks(ofCount: self.maximumDataumsPerRequest,
+                                                        or: .repeating(every: .seconds(queueConsumingTaskIntervalInSeconds)))
         
         self.entryHander = newEntryHandler
         self.finishHandler = newFinishHandler
@@ -88,7 +93,9 @@ internal actor CloudWatchPendingMetricsQueueV2: MetricsQueue {
             self.logger.info("CloudWatchPendingMetricsQueue started.")
             
             for await entryChunk in self.chunkedEntryStream {
-                await handleEntryChunk(currentPendingEntries: entryChunk)
+                Task {
+                    await handleEntryChunk(currentPendingEntries: entryChunk)
+                }
             }
             
             // shutdown the queue if required
