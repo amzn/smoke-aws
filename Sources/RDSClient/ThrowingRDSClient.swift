@@ -56,6 +56,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let copyDBSnapshotSyncOverride: CopyDBSnapshotSyncType?
     let copyOptionGroupAsyncOverride: CopyOptionGroupAsyncType?
     let copyOptionGroupSyncOverride: CopyOptionGroupSyncType?
+    let createBlueGreenDeploymentAsyncOverride: CreateBlueGreenDeploymentAsyncType?
+    let createBlueGreenDeploymentSyncOverride: CreateBlueGreenDeploymentSyncType?
     let createCustomDBEngineVersionAsyncOverride: CreateCustomDBEngineVersionAsyncType?
     let createCustomDBEngineVersionSyncOverride: CreateCustomDBEngineVersionSyncType?
     let createDBClusterAsyncOverride: CreateDBClusterAsyncType?
@@ -88,6 +90,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let createGlobalClusterSyncOverride: CreateGlobalClusterSyncType?
     let createOptionGroupAsyncOverride: CreateOptionGroupAsyncType?
     let createOptionGroupSyncOverride: CreateOptionGroupSyncType?
+    let deleteBlueGreenDeploymentAsyncOverride: DeleteBlueGreenDeploymentAsyncType?
+    let deleteBlueGreenDeploymentSyncOverride: DeleteBlueGreenDeploymentSyncType?
     let deleteCustomDBEngineVersionAsyncOverride: DeleteCustomDBEngineVersionAsyncType?
     let deleteCustomDBEngineVersionSyncOverride: DeleteCustomDBEngineVersionSyncType?
     let deleteDBClusterAsyncOverride: DeleteDBClusterAsyncType?
@@ -124,6 +128,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let deregisterDBProxyTargetsSyncOverride: DeregisterDBProxyTargetsSyncType?
     let describeAccountAttributesAsyncOverride: DescribeAccountAttributesAsyncType?
     let describeAccountAttributesSyncOverride: DescribeAccountAttributesSyncType?
+    let describeBlueGreenDeploymentsAsyncOverride: DescribeBlueGreenDeploymentsAsyncType?
+    let describeBlueGreenDeploymentsSyncOverride: DescribeBlueGreenDeploymentsSyncType?
     let describeCertificatesAsyncOverride: DescribeCertificatesAsyncType?
     let describeCertificatesSyncOverride: DescribeCertificatesSyncType?
     let describeDBClusterBacktracksAsyncOverride: DescribeDBClusterBacktracksAsyncType?
@@ -302,6 +308,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     let stopDBInstanceSyncOverride: StopDBInstanceSyncType?
     let stopDBInstanceAutomatedBackupsReplicationAsyncOverride: StopDBInstanceAutomatedBackupsReplicationAsyncType?
     let stopDBInstanceAutomatedBackupsReplicationSyncOverride: StopDBInstanceAutomatedBackupsReplicationSyncType?
+    let switchoverBlueGreenDeploymentAsyncOverride: SwitchoverBlueGreenDeploymentAsyncType?
+    let switchoverBlueGreenDeploymentSyncOverride: SwitchoverBlueGreenDeploymentSyncType?
     let switchoverReadReplicaAsyncOverride: SwitchoverReadReplicaAsyncType?
     let switchoverReadReplicaSyncOverride: SwitchoverReadReplicaSyncType?
 
@@ -336,6 +344,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             copyDBSnapshotSync: CopyDBSnapshotSyncType? = nil,
             copyOptionGroupAsync: CopyOptionGroupAsyncType? = nil,
             copyOptionGroupSync: CopyOptionGroupSyncType? = nil,
+            createBlueGreenDeploymentAsync: CreateBlueGreenDeploymentAsyncType? = nil,
+            createBlueGreenDeploymentSync: CreateBlueGreenDeploymentSyncType? = nil,
             createCustomDBEngineVersionAsync: CreateCustomDBEngineVersionAsyncType? = nil,
             createCustomDBEngineVersionSync: CreateCustomDBEngineVersionSyncType? = nil,
             createDBClusterAsync: CreateDBClusterAsyncType? = nil,
@@ -368,6 +378,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             createGlobalClusterSync: CreateGlobalClusterSyncType? = nil,
             createOptionGroupAsync: CreateOptionGroupAsyncType? = nil,
             createOptionGroupSync: CreateOptionGroupSyncType? = nil,
+            deleteBlueGreenDeploymentAsync: DeleteBlueGreenDeploymentAsyncType? = nil,
+            deleteBlueGreenDeploymentSync: DeleteBlueGreenDeploymentSyncType? = nil,
             deleteCustomDBEngineVersionAsync: DeleteCustomDBEngineVersionAsyncType? = nil,
             deleteCustomDBEngineVersionSync: DeleteCustomDBEngineVersionSyncType? = nil,
             deleteDBClusterAsync: DeleteDBClusterAsyncType? = nil,
@@ -404,6 +416,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             deregisterDBProxyTargetsSync: DeregisterDBProxyTargetsSyncType? = nil,
             describeAccountAttributesAsync: DescribeAccountAttributesAsyncType? = nil,
             describeAccountAttributesSync: DescribeAccountAttributesSyncType? = nil,
+            describeBlueGreenDeploymentsAsync: DescribeBlueGreenDeploymentsAsyncType? = nil,
+            describeBlueGreenDeploymentsSync: DescribeBlueGreenDeploymentsSyncType? = nil,
             describeCertificatesAsync: DescribeCertificatesAsyncType? = nil,
             describeCertificatesSync: DescribeCertificatesSyncType? = nil,
             describeDBClusterBacktracksAsync: DescribeDBClusterBacktracksAsyncType? = nil,
@@ -582,6 +596,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             stopDBInstanceSync: StopDBInstanceSyncType? = nil,
             stopDBInstanceAutomatedBackupsReplicationAsync: StopDBInstanceAutomatedBackupsReplicationAsyncType? = nil,
             stopDBInstanceAutomatedBackupsReplicationSync: StopDBInstanceAutomatedBackupsReplicationSyncType? = nil,
+            switchoverBlueGreenDeploymentAsync: SwitchoverBlueGreenDeploymentAsyncType? = nil,
+            switchoverBlueGreenDeploymentSync: SwitchoverBlueGreenDeploymentSyncType? = nil,
             switchoverReadReplicaAsync: SwitchoverReadReplicaAsyncType? = nil,
             switchoverReadReplicaSync: SwitchoverReadReplicaSyncType? = nil) {
         self.error = error
@@ -611,6 +627,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.copyDBSnapshotSyncOverride = copyDBSnapshotSync
         self.copyOptionGroupAsyncOverride = copyOptionGroupAsync
         self.copyOptionGroupSyncOverride = copyOptionGroupSync
+        self.createBlueGreenDeploymentAsyncOverride = createBlueGreenDeploymentAsync
+        self.createBlueGreenDeploymentSyncOverride = createBlueGreenDeploymentSync
         self.createCustomDBEngineVersionAsyncOverride = createCustomDBEngineVersionAsync
         self.createCustomDBEngineVersionSyncOverride = createCustomDBEngineVersionSync
         self.createDBClusterAsyncOverride = createDBClusterAsync
@@ -643,6 +661,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.createGlobalClusterSyncOverride = createGlobalClusterSync
         self.createOptionGroupAsyncOverride = createOptionGroupAsync
         self.createOptionGroupSyncOverride = createOptionGroupSync
+        self.deleteBlueGreenDeploymentAsyncOverride = deleteBlueGreenDeploymentAsync
+        self.deleteBlueGreenDeploymentSyncOverride = deleteBlueGreenDeploymentSync
         self.deleteCustomDBEngineVersionAsyncOverride = deleteCustomDBEngineVersionAsync
         self.deleteCustomDBEngineVersionSyncOverride = deleteCustomDBEngineVersionSync
         self.deleteDBClusterAsyncOverride = deleteDBClusterAsync
@@ -679,6 +699,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.deregisterDBProxyTargetsSyncOverride = deregisterDBProxyTargetsSync
         self.describeAccountAttributesAsyncOverride = describeAccountAttributesAsync
         self.describeAccountAttributesSyncOverride = describeAccountAttributesSync
+        self.describeBlueGreenDeploymentsAsyncOverride = describeBlueGreenDeploymentsAsync
+        self.describeBlueGreenDeploymentsSyncOverride = describeBlueGreenDeploymentsSync
         self.describeCertificatesAsyncOverride = describeCertificatesAsync
         self.describeCertificatesSyncOverride = describeCertificatesSync
         self.describeDBClusterBacktracksAsyncOverride = describeDBClusterBacktracksAsync
@@ -857,6 +879,8 @@ public struct ThrowingRDSClient: RDSClientProtocol {
         self.stopDBInstanceSyncOverride = stopDBInstanceSync
         self.stopDBInstanceAutomatedBackupsReplicationAsyncOverride = stopDBInstanceAutomatedBackupsReplicationAsync
         self.stopDBInstanceAutomatedBackupsReplicationSyncOverride = stopDBInstanceAutomatedBackupsReplicationSync
+        self.switchoverBlueGreenDeploymentAsyncOverride = switchoverBlueGreenDeploymentAsync
+        self.switchoverBlueGreenDeploymentSyncOverride = switchoverBlueGreenDeploymentSync
         self.switchoverReadReplicaAsyncOverride = switchoverReadReplicaAsync
         self.switchoverReadReplicaSyncOverride = switchoverReadReplicaSync
     }
@@ -976,7 +1000,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+           The possible errors are: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func addTagsToResourceAsync(
             input: RDSModel.AddTagsToResourceMessage, 
@@ -993,7 +1017,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
 
      - Parameters:
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+     - Throws: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func addTagsToResourceSync(
             input: RDSModel.AddTagsToResourceMessage) throws {
@@ -1347,6 +1371,44 @@ public struct ThrowingRDSClient: RDSClientProtocol {
     }
 
     /**
+     Invokes the CreateBlueGreenDeployment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateBlueGreenDeploymentRequest object being passed to this operation.
+         - completion: The CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment object or an error will be passed to this 
+           callback when the operation is complete. The CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment
+           object will be validated before being returned to caller.
+           The possible errors are: blueGreenDeploymentAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBParameterGroupNotFound, instanceQuotaExceeded, invalidDBClusterState, invalidDBInstanceState, sourceClusterNotSupported, sourceDatabaseNotSupported.
+     */
+    public func createBlueGreenDeploymentAsync(
+            input: RDSModel.CreateBlueGreenDeploymentRequest, 
+            completion: @escaping (Result<RDSModel.CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment, RDSError>) -> ()) throws {
+        if let createBlueGreenDeploymentAsyncOverride = createBlueGreenDeploymentAsyncOverride {
+            return try createBlueGreenDeploymentAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateBlueGreenDeployment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateBlueGreenDeploymentRequest object being passed to this operation.
+     - Returns: The CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: blueGreenDeploymentAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBParameterGroupNotFound, instanceQuotaExceeded, invalidDBClusterState, invalidDBInstanceState, sourceClusterNotSupported, sourceDatabaseNotSupported.
+     */
+    public func createBlueGreenDeploymentSync(
+            input: RDSModel.CreateBlueGreenDeploymentRequest) throws -> RDSModel.CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment {
+        if let createBlueGreenDeploymentSyncOverride = createBlueGreenDeploymentSyncOverride {
+            return try createBlueGreenDeploymentSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CreateCustomDBEngineVersion operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1354,7 +1416,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - completion: The DBEngineVersionForCreateCustomDBEngineVersion object or an error will be passed to this 
            callback when the operation is complete. The DBEngineVersionForCreateCustomDBEngineVersion
            object will be validated before being returned to caller.
-           The possible errors are: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+           The possible errors are: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, ec2ImagePropertiesNotSupported, kMSKeyNotAccessible.
      */
     public func createCustomDBEngineVersionAsync(
             input: RDSModel.CreateCustomDBEngineVersionMessage, 
@@ -1373,7 +1435,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
      - Returns: The DBEngineVersionForCreateCustomDBEngineVersion object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+     - Throws: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, ec2ImagePropertiesNotSupported, kMSKeyNotAccessible.
      */
     public func createCustomDBEngineVersionSync(
             input: RDSModel.CreateCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion {
@@ -1544,7 +1606,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - completion: The CreateDBInstanceResultForCreateDBInstance object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceResultForCreateDBInstance
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceAsync(
             input: RDSModel.CreateDBInstanceMessage, 
@@ -1563,7 +1625,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated CreateDBInstanceMessage object being passed to this operation.
      - Returns: The CreateDBInstanceResultForCreateDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func createDBInstanceSync(
             input: RDSModel.CreateDBInstanceMessage) throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
@@ -1949,6 +2011,44 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             input: RDSModel.CreateOptionGroupMessage) throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
         if let createOptionGroupSyncOverride = createOptionGroupSyncOverride {
             return try createOptionGroupSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteBlueGreenDeployment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteBlueGreenDeploymentRequest object being passed to this operation.
+         - completion: The DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment object or an error will be passed to this 
+           callback when the operation is complete. The DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment
+           object will be validated before being returned to caller.
+           The possible errors are: blueGreenDeploymentNotFound, invalidBlueGreenDeploymentState.
+     */
+    public func deleteBlueGreenDeploymentAsync(
+            input: RDSModel.DeleteBlueGreenDeploymentRequest, 
+            completion: @escaping (Result<RDSModel.DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment, RDSError>) -> ()) throws {
+        if let deleteBlueGreenDeploymentAsyncOverride = deleteBlueGreenDeploymentAsyncOverride {
+            return try deleteBlueGreenDeploymentAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DeleteBlueGreenDeployment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteBlueGreenDeploymentRequest object being passed to this operation.
+     - Returns: The DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: blueGreenDeploymentNotFound, invalidBlueGreenDeploymentState.
+     */
+    public func deleteBlueGreenDeploymentSync(
+            input: RDSModel.DeleteBlueGreenDeploymentRequest) throws -> RDSModel.DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment {
+        if let deleteBlueGreenDeploymentSyncOverride = deleteBlueGreenDeploymentSyncOverride {
+            return try deleteBlueGreenDeploymentSyncOverride(input)
         }
 
         throw error
@@ -2616,6 +2716,44 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             input: RDSModel.DescribeAccountAttributesMessage) throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
         if let describeAccountAttributesSyncOverride = describeAccountAttributesSyncOverride {
             return try describeAccountAttributesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeBlueGreenDeployments operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeBlueGreenDeploymentsRequest object being passed to this operation.
+         - completion: The DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments object or an error will be passed to this 
+           callback when the operation is complete. The DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments
+           object will be validated before being returned to caller.
+           The possible errors are: blueGreenDeploymentNotFound.
+     */
+    public func describeBlueGreenDeploymentsAsync(
+            input: RDSModel.DescribeBlueGreenDeploymentsRequest, 
+            completion: @escaping (Result<RDSModel.DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments, RDSError>) -> ()) throws {
+        if let describeBlueGreenDeploymentsAsyncOverride = describeBlueGreenDeploymentsAsyncOverride {
+            return try describeBlueGreenDeploymentsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeBlueGreenDeployments operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeBlueGreenDeploymentsRequest object being passed to this operation.
+     - Returns: The DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: blueGreenDeploymentNotFound.
+     */
+    public func describeBlueGreenDeploymentsSync(
+            input: RDSModel.DescribeBlueGreenDeploymentsRequest) throws -> RDSModel.DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments {
+        if let describeBlueGreenDeploymentsSyncOverride = describeBlueGreenDeploymentsSyncOverride {
+            return try describeBlueGreenDeploymentsSyncOverride(input)
         }
 
         throw error
@@ -4133,7 +4271,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - completion: The TagListMessageForListTagsForResource object or an error will be passed to this 
            callback when the operation is complete. The TagListMessageForListTagsForResource
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+           The possible errors are: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func listTagsForResourceAsync(
             input: RDSModel.ListTagsForResourceMessage, 
@@ -4152,7 +4290,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated ListTagsForResourceMessage object being passed to this operation.
      - Returns: The TagListMessageForListTagsForResource object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+     - Throws: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func listTagsForResourceSync(
             input: RDSModel.ListTagsForResourceMessage) throws -> RDSModel.TagListMessageForListTagsForResource {
@@ -5266,7 +5404,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+           The possible errors are: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func removeTagsFromResourceAsync(
             input: RDSModel.RemoveTagsFromResourceMessage, 
@@ -5283,7 +5421,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
 
      - Parameters:
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+     - Throws: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     public func removeTagsFromResourceSync(
             input: RDSModel.RemoveTagsFromResourceMessage) throws {
@@ -5416,7 +5554,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - completion: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
@@ -5435,7 +5573,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated RestoreDBClusterFromSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshotSync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
@@ -5492,7 +5630,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - completion: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot
            object will be validated before being returned to caller.
-           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: authorizationNotFound, backupPolicyNotFound, dBClusterSnapshotNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromDBSnapshotAsync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage, 
@@ -5511,7 +5649,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated RestoreDBInstanceFromDBSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterSnapshotNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     public func restoreDBInstanceFromDBSnapshotSync(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
@@ -5796,7 +5934,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - completion: The ExportTaskForStartExportTask object or an error will be passed to this 
            callback when the operation is complete. The ExportTaskForStartExportTask
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+           The possible errors are: dBClusterNotFound, dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
     public func startExportTaskAsync(
             input: RDSModel.StartExportTaskMessage, 
@@ -5815,7 +5953,7 @@ public struct ThrowingRDSClient: RDSClientProtocol {
          - input: The validated StartExportTaskMessage object being passed to this operation.
      - Returns: The ExportTaskForStartExportTask object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     - Throws: dBClusterNotFound, dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
     public func startExportTaskSync(
             input: RDSModel.StartExportTaskMessage) throws -> RDSModel.ExportTaskForStartExportTask {
@@ -5973,6 +6111,44 @@ public struct ThrowingRDSClient: RDSClientProtocol {
             input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) throws -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
         if let stopDBInstanceAutomatedBackupsReplicationSyncOverride = stopDBInstanceAutomatedBackupsReplicationSyncOverride {
             return try stopDBInstanceAutomatedBackupsReplicationSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the SwitchoverBlueGreenDeployment operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SwitchoverBlueGreenDeploymentRequest object being passed to this operation.
+         - completion: The SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment object or an error will be passed to this 
+           callback when the operation is complete. The SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment
+           object will be validated before being returned to caller.
+           The possible errors are: blueGreenDeploymentNotFound, invalidBlueGreenDeploymentState.
+     */
+    public func switchoverBlueGreenDeploymentAsync(
+            input: RDSModel.SwitchoverBlueGreenDeploymentRequest, 
+            completion: @escaping (Result<RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment, RDSError>) -> ()) throws {
+        if let switchoverBlueGreenDeploymentAsyncOverride = switchoverBlueGreenDeploymentAsyncOverride {
+            return try switchoverBlueGreenDeploymentAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the SwitchoverBlueGreenDeployment operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SwitchoverBlueGreenDeploymentRequest object being passed to this operation.
+     - Returns: The SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: blueGreenDeploymentNotFound, invalidBlueGreenDeploymentState.
+     */
+    public func switchoverBlueGreenDeploymentSync(
+            input: RDSModel.SwitchoverBlueGreenDeploymentRequest) throws -> RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment {
+        if let switchoverBlueGreenDeploymentSyncOverride = switchoverBlueGreenDeploymentSyncOverride {
+            return try switchoverBlueGreenDeploymentSyncOverride(input)
         }
 
         throw error

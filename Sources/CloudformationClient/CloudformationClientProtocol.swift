@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the Cloudformation service.
  */
-public protocol CloudformationClientProtocol {
+public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
     typealias ActivateTypeSyncType = (
             _ input: CloudformationModel.ActivateTypeInput) throws -> CloudformationModel.ActivateTypeOutputForActivateType
     typealias ActivateTypeAsyncType = (

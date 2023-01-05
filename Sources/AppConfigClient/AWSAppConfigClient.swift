@@ -3144,4 +3144,1535 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the CreateApplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateApplicationRequest object being passed to this operation.
+     - Returns: The Application object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func createApplication(
+            input: AppConfigModel.CreateApplicationRequest) async throws -> AppConfigModel.Application {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createApplication.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createApplication,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateApplicationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateConfigurationProfile operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateConfigurationProfileRequest object being passed to this operation.
+     - Returns: The ConfigurationProfile object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func createConfigurationProfile(
+            input: AppConfigModel.CreateConfigurationProfileRequest) async throws -> AppConfigModel.ConfigurationProfile {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createConfigurationProfile.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createConfigurationProfile,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateConfigurationProfileOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateDeploymentStrategy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateDeploymentStrategyRequest object being passed to this operation.
+     - Returns: The DeploymentStrategy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func createDeploymentStrategy(
+            input: AppConfigModel.CreateDeploymentStrategyRequest) async throws -> AppConfigModel.DeploymentStrategy {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createDeploymentStrategy.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createDeploymentStrategy,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateDeploymentStrategyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/deploymentstrategies",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateEnvironment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateEnvironmentRequest object being passed to this operation.
+     - Returns: The Environment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func createEnvironment(
+            input: AppConfigModel.CreateEnvironmentRequest) async throws -> AppConfigModel.Environment {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createEnvironment.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createEnvironment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateEnvironmentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/environments",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateExtension operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, serviceQuotaExceeded.
+     */
+    public func createExtension(
+            input: AppConfigModel.CreateExtensionRequest) async throws -> AppConfigModel.Extension {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateExtensionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/extensions",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateExtensionAssociation operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
+     */
+    public func createExtensionAssociation(
+            input: AppConfigModel.CreateExtensionAssociationRequest) async throws -> AppConfigModel.ExtensionAssociation {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/extensionassociations",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateHostedConfigurationVersion operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateHostedConfigurationVersionRequest object being passed to this operation.
+     - Returns: The HostedConfigurationVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, payloadTooLarge, resourceNotFound, serviceQuotaExceeded.
+     */
+    public func createHostedConfigurationVersion(
+            input: AppConfigModel.CreateHostedConfigurationVersionRequest) async throws -> AppConfigModel.HostedConfigurationVersion {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.createHostedConfigurationVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createHostedConfigurationVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateHostedConfigurationVersionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteApplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteApplicationRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteApplication(
+            input: AppConfigModel.DeleteApplicationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteApplication.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteApplication,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteApplicationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/applications/{ApplicationId}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteConfigurationProfile operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteConfigurationProfileRequest object being passed to this operation.
+     - Throws: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    public func deleteConfigurationProfile(
+            input: AppConfigModel.DeleteConfigurationProfileRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteConfigurationProfile.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteConfigurationProfile,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteConfigurationProfileOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteDeploymentStrategy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteDeploymentStrategyRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteDeploymentStrategy(
+            input: AppConfigModel.DeleteDeploymentStrategyRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteDeploymentStrategy.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDeploymentStrategy,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteDeploymentStrategyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/deployementstrategies/{DeploymentStrategyId}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteEnvironment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteEnvironmentRequest object being passed to this operation.
+     - Throws: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    public func deleteEnvironment(
+            input: AppConfigModel.DeleteEnvironmentRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteEnvironment.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteEnvironment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteEnvironmentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteExtension operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteExtensionRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtension(
+            input: AppConfigModel.DeleteExtensionRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteExtensionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/extensions/{ExtensionIdentifier}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteExtensionAssociation operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteExtensionAssociationRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteExtensionAssociation(
+            input: AppConfigModel.DeleteExtensionAssociationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/extensionassociations/{ExtensionAssociationId}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteHostedConfigurationVersion operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteHostedConfigurationVersionRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func deleteHostedConfigurationVersion(
+            input: AppConfigModel.DeleteHostedConfigurationVersionRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.deleteHostedConfigurationVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteHostedConfigurationVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteHostedConfigurationVersionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions/{VersionNumber}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetApplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetApplicationRequest object being passed to this operation.
+     - Returns: The Application object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getApplication(
+            input: AppConfigModel.GetApplicationRequest) async throws -> AppConfigModel.Application {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getApplication.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getApplication,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetApplicationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetConfigurationRequest object being passed to this operation.
+     - Returns: The Configuration object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getConfiguration(
+            input: AppConfigModel.GetConfigurationRequest) async throws -> AppConfigModel.Configuration {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getConfiguration.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await dataHttpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{Application}/environments/{Environment}/configurations/{Configuration}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetConfigurationProfile operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetConfigurationProfileRequest object being passed to this operation.
+     - Returns: The ConfigurationProfile object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getConfigurationProfile(
+            input: AppConfigModel.GetConfigurationProfileRequest) async throws -> AppConfigModel.ConfigurationProfile {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getConfigurationProfile.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getConfigurationProfile,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetConfigurationProfileOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetDeployment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetDeploymentRequest object being passed to this operation.
+     - Returns: The Deployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getDeployment(
+            input: AppConfigModel.GetDeploymentRequest) async throws -> AppConfigModel.Deployment {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getDeployment.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getDeployment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetDeploymentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments/{DeploymentNumber}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetDeploymentStrategy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetDeploymentStrategyRequest object being passed to this operation.
+     - Returns: The DeploymentStrategy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getDeploymentStrategy(
+            input: AppConfigModel.GetDeploymentStrategyRequest) async throws -> AppConfigModel.DeploymentStrategy {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getDeploymentStrategy.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getDeploymentStrategy,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetDeploymentStrategyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/deploymentstrategies/{DeploymentStrategyId}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetEnvironment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetEnvironmentRequest object being passed to this operation.
+     - Returns: The Environment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getEnvironment(
+            input: AppConfigModel.GetEnvironmentRequest) async throws -> AppConfigModel.Environment {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getEnvironment.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getEnvironment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetEnvironmentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetExtension operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtension(
+            input: AppConfigModel.GetExtensionRequest) async throws -> AppConfigModel.Extension {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetExtensionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/extensions/{ExtensionIdentifier}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetExtensionAssociation operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getExtensionAssociation(
+            input: AppConfigModel.GetExtensionAssociationRequest) async throws -> AppConfigModel.ExtensionAssociation {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/extensionassociations/{ExtensionAssociationId}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetHostedConfigurationVersion operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetHostedConfigurationVersionRequest object being passed to this operation.
+     - Returns: The HostedConfigurationVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func getHostedConfigurationVersion(
+            input: AppConfigModel.GetHostedConfigurationVersionRequest) async throws -> AppConfigModel.HostedConfigurationVersion {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.getHostedConfigurationVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getHostedConfigurationVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetHostedConfigurationVersionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await dataHttpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions/{VersionNumber}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListApplications operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListApplicationsRequest object being passed to this operation.
+     - Returns: The Applications object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func listApplications(
+            input: AppConfigModel.ListApplicationsRequest) async throws -> AppConfigModel.Applications {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listApplications.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listApplications,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListApplicationsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListConfigurationProfiles operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListConfigurationProfilesRequest object being passed to this operation.
+     - Returns: The ConfigurationProfiles object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func listConfigurationProfiles(
+            input: AppConfigModel.ListConfigurationProfilesRequest) async throws -> AppConfigModel.ConfigurationProfiles {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listConfigurationProfiles.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listConfigurationProfiles,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListConfigurationProfilesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListDeploymentStrategies operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListDeploymentStrategiesRequest object being passed to this operation.
+     - Returns: The DeploymentStrategies object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func listDeploymentStrategies(
+            input: AppConfigModel.ListDeploymentStrategiesRequest) async throws -> AppConfigModel.DeploymentStrategies {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listDeploymentStrategies.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listDeploymentStrategies,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListDeploymentStrategiesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/deploymentstrategies",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListDeployments operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListDeploymentsRequest object being passed to this operation.
+     - Returns: The Deployments object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func listDeployments(
+            input: AppConfigModel.ListDeploymentsRequest) async throws -> AppConfigModel.Deployments {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listDeployments.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listDeployments,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListDeploymentsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListEnvironments operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListEnvironmentsRequest object being passed to this operation.
+     - Returns: The Environments object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func listEnvironments(
+            input: AppConfigModel.ListEnvironmentsRequest) async throws -> AppConfigModel.Environments {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listEnvironments.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listEnvironments,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListEnvironmentsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/environments",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListExtensionAssociations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListExtensionAssociationsRequest object being passed to this operation.
+     - Returns: The ExtensionAssociations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func listExtensionAssociations(
+            input: AppConfigModel.ListExtensionAssociationsRequest) async throws -> AppConfigModel.ExtensionAssociations {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listExtensionAssociations.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExtensionAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExtensionAssociationsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/extensionassociations",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListExtensions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListExtensionsRequest object being passed to this operation.
+     - Returns: The Extensions object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer.
+     */
+    public func listExtensions(
+            input: AppConfigModel.ListExtensionsRequest) async throws -> AppConfigModel.Extensions {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listExtensions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExtensions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExtensionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/extensions",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListHostedConfigurationVersions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListHostedConfigurationVersionsRequest object being passed to this operation.
+     - Returns: The HostedConfigurationVersions object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func listHostedConfigurationVersions(
+            input: AppConfigModel.ListHostedConfigurationVersionsRequest) async throws -> AppConfigModel.HostedConfigurationVersions {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listHostedConfigurationVersions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listHostedConfigurationVersions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListHostedConfigurationVersionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/hostedconfigurationversions",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTagsForResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceRequest object being passed to this operation.
+     - Returns: The ResourceTags object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func listTagsForResource(
+            input: AppConfigModel.ListTagsForResourceRequest) async throws -> AppConfigModel.ResourceTags {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.listTagsForResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/tags/{ResourceArn}",
+                httpMethod: .GET,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartDeployment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartDeploymentRequest object being passed to this operation.
+     - Returns: The Deployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    public func startDeployment(
+            input: AppConfigModel.StartDeploymentRequest) async throws -> AppConfigModel.Deployment {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.startDeployment.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startDeployment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StartDeploymentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StopDeployment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StopDeploymentRequest object being passed to this operation.
+     - Returns: The Deployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func stopDeployment(
+            input: AppConfigModel.StopDeploymentRequest) async throws -> AppConfigModel.Deployment {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.stopDeployment.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopDeployment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StopDeploymentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}/deployments/{DeploymentNumber}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TagResourceRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func tagResource(
+            input: AppConfigModel.TagResourceRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.tagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/tags/{ResourceArn}",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UntagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func untagResource(
+            input: AppConfigModel.UntagResourceRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.untagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/tags/{ResourceArn}",
+                httpMethod: .DELETE,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateApplication operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateApplicationRequest object being passed to this operation.
+     - Returns: The Application object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateApplication(
+            input: AppConfigModel.UpdateApplicationRequest) async throws -> AppConfigModel.Application {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateApplication.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateApplication,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateApplicationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}",
+                httpMethod: .PATCH,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateConfigurationProfile operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateConfigurationProfileRequest object being passed to this operation.
+     - Returns: The ConfigurationProfile object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateConfigurationProfile(
+            input: AppConfigModel.UpdateConfigurationProfileRequest) async throws -> AppConfigModel.ConfigurationProfile {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateConfigurationProfile.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateConfigurationProfile,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateConfigurationProfileOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}",
+                httpMethod: .PATCH,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateDeploymentStrategy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateDeploymentStrategyRequest object being passed to this operation.
+     - Returns: The DeploymentStrategy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateDeploymentStrategy(
+            input: AppConfigModel.UpdateDeploymentStrategyRequest) async throws -> AppConfigModel.DeploymentStrategy {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateDeploymentStrategy.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateDeploymentStrategy,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateDeploymentStrategyOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/deploymentstrategies/{DeploymentStrategyId}",
+                httpMethod: .PATCH,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateEnvironment operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateEnvironmentRequest object being passed to this operation.
+     - Returns: The Environment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateEnvironment(
+            input: AppConfigModel.UpdateEnvironmentRequest) async throws -> AppConfigModel.Environment {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateEnvironment.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateEnvironment,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateEnvironmentOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/applications/{ApplicationId}/environments/{EnvironmentId}",
+                httpMethod: .PATCH,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateExtension operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateExtensionRequest object being passed to this operation.
+     - Returns: The Extension object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, conflict, internalServer, resourceNotFound.
+     */
+    public func updateExtension(
+            input: AppConfigModel.UpdateExtensionRequest) async throws -> AppConfigModel.Extension {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateExtension.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateExtension,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateExtensionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/extensions/{ExtensionIdentifier}",
+                httpMethod: .PATCH,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateExtensionAssociation operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateExtensionAssociationRequest object being passed to this operation.
+     - Returns: The ExtensionAssociation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func updateExtensionAssociation(
+            input: AppConfigModel.UpdateExtensionAssociationRequest) async throws -> AppConfigModel.ExtensionAssociation {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.updateExtensionAssociation.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateExtensionAssociation,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateExtensionAssociationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/extensionassociations/{ExtensionAssociationId}",
+                httpMethod: .PATCH,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ValidateConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ValidateConfigurationRequest object being passed to this operation.
+     - Throws: badRequest, internalServer, resourceNotFound.
+     */
+    public func validateConfiguration(
+            input: AppConfigModel.ValidateConfigurationRequest) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: AppConfigModelOperations.validateConfiguration.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.validateConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ValidateConfigurationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/applications/{ApplicationId}/configurationprofiles/{ConfigurationProfileId}/validators",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: AppConfigError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

@@ -42,6 +42,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let copyDBParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let copyDBSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let copyOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createBlueGreenDeployment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createCustomDBEngineVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -58,6 +59,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let createEventSubscription: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteBlueGreenDeployment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteCustomDBEngineVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -76,6 +78,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let deleteOptionGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deregisterDBProxyTargets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeAccountAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeBlueGreenDeployments: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeDBClusterBacktracks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeDBClusterEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -165,6 +168,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let stopDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let stopDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let stopDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let switchoverBlueGreenDeployment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let switchoverReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: RDSOperationsReporting) {
@@ -194,6 +198,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.copyDBSnapshot)
         self.copyOptionGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.copyOptionGroup)
+        self.createBlueGreenDeployment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createBlueGreenDeployment)
         self.createCustomDBEngineVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createCustomDBEngineVersion)
         self.createDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -226,6 +232,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.createGlobalCluster)
         self.createOptionGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createOptionGroup)
+        self.deleteBlueGreenDeployment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteBlueGreenDeployment)
         self.deleteCustomDBEngineVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteCustomDBEngineVersion)
         self.deleteDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -262,6 +270,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.deregisterDBProxyTargets)
         self.describeAccountAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeAccountAttributes)
+        self.describeBlueGreenDeployments = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeBlueGreenDeployments)
         self.describeCertificates = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeCertificates)
         self.describeDBClusterBacktracks = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -440,6 +450,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.stopDBInstance)
         self.stopDBInstanceAutomatedBackupsReplication = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.stopDBInstanceAutomatedBackupsReplication)
+        self.switchoverBlueGreenDeployment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.switchoverBlueGreenDeployment)
         self.switchoverReadReplica = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.switchoverReadReplica)
     }

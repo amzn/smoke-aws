@@ -315,6 +315,19 @@ public typealias EvaluateLowSampleCountPercentile = String
 public typealias EvaluationPeriods = Int
 
 /**
+ Enumeration restricting the values of the EvaluationState field.
+ */
+public enum EvaluationState: String, Codable, CustomStringConvertible {
+    case partialData = "PARTIAL_DATA"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: EvaluationState = .partialData
+}
+
+/**
  Type definition for the ExceptionType field.
  */
 public typealias ExceptionType = String
@@ -383,6 +396,11 @@ public enum HistoryItemType: String, Codable, CustomStringConvertible {
  Type definition for the HistorySummary field.
  */
 public typealias HistorySummary = String
+
+/**
+ Type definition for the IncludeLinkedAccounts field.
+ */
+public typealias IncludeLinkedAccounts = Bool
 
 /**
  Type definition for the InsightRuleAggregationStatistic field.
@@ -674,6 +692,11 @@ public typealias NextToken = String
 public typealias OutputFormat = String
 
 /**
+ Type definition for the OwningAccounts field.
+ */
+public typealias OwningAccounts = [AccountId]
+
+/**
  Type definition for the Period field.
  */
 public typealias Period = Int
@@ -831,6 +854,7 @@ public typealias Statistics = [Statistic]
  */
 public enum StatusCode: String, Codable, CustomStringConvertible {
     case complete = "Complete"
+    case forbidden = "Forbidden"
     case internalerror = "InternalError"
     case partialdata = "PartialData"
 

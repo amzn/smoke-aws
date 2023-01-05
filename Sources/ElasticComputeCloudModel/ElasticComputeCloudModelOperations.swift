@@ -26,6 +26,7 @@ import Foundation
  Operation enumeration for the ElasticComputeCloudModel.
  */
 public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringConvertible {
+    case acceptAddressTransfer = "AcceptAddressTransfer"
     case acceptReservedInstancesExchangeQuote = "AcceptReservedInstancesExchangeQuote"
     case acceptTransitGatewayMulticastDomainAssociations = "AcceptTransitGatewayMulticastDomainAssociations"
     case acceptTransitGatewayPeeringAttachment = "AcceptTransitGatewayPeeringAttachment"
@@ -55,6 +56,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case attachClassicLinkVpc = "AttachClassicLinkVpc"
     case attachInternetGateway = "AttachInternetGateway"
     case attachNetworkInterface = "AttachNetworkInterface"
+    case attachVerifiedAccessTrustProvider = "AttachVerifiedAccessTrustProvider"
     case attachVolume = "AttachVolume"
     case attachVpnGateway = "AttachVpnGateway"
     case authorizeClientVpnIngress = "AuthorizeClientVpnIngress"
@@ -66,6 +68,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case cancelCapacityReservationFleets = "CancelCapacityReservationFleets"
     case cancelConversionTask = "CancelConversionTask"
     case cancelExportTask = "CancelExportTask"
+    case cancelImageLaunchPermission = "CancelImageLaunchPermission"
     case cancelImportTask = "CancelImportTask"
     case cancelReservedInstancesListing = "CancelReservedInstancesListing"
     case cancelSpotFleetRequests = "CancelSpotFleetRequests"
@@ -141,6 +144,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case createTransitGatewayRouteTable = "CreateTransitGatewayRouteTable"
     case createTransitGatewayRouteTableAnnouncement = "CreateTransitGatewayRouteTableAnnouncement"
     case createTransitGatewayVpcAttachment = "CreateTransitGatewayVpcAttachment"
+    case createVerifiedAccessEndpoint = "CreateVerifiedAccessEndpoint"
+    case createVerifiedAccessGroup = "CreateVerifiedAccessGroup"
+    case createVerifiedAccessInstance = "CreateVerifiedAccessInstance"
+    case createVerifiedAccessTrustProvider = "CreateVerifiedAccessTrustProvider"
     case createVolume = "CreateVolume"
     case createVpc = "CreateVpc"
     case createVpcEndpoint = "CreateVpcEndpoint"
@@ -209,6 +216,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deleteTransitGatewayRouteTable = "DeleteTransitGatewayRouteTable"
     case deleteTransitGatewayRouteTableAnnouncement = "DeleteTransitGatewayRouteTableAnnouncement"
     case deleteTransitGatewayVpcAttachment = "DeleteTransitGatewayVpcAttachment"
+    case deleteVerifiedAccessEndpoint = "DeleteVerifiedAccessEndpoint"
+    case deleteVerifiedAccessGroup = "DeleteVerifiedAccessGroup"
+    case deleteVerifiedAccessInstance = "DeleteVerifiedAccessInstance"
+    case deleteVerifiedAccessTrustProvider = "DeleteVerifiedAccessTrustProvider"
     case deleteVolume = "DeleteVolume"
     case deleteVpc = "DeleteVpc"
     case deleteVpcEndpointConnectionNotifications = "DeleteVpcEndpointConnectionNotifications"
@@ -226,10 +237,12 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deregisterTransitGatewayMulticastGroupMembers = "DeregisterTransitGatewayMulticastGroupMembers"
     case deregisterTransitGatewayMulticastGroupSources = "DeregisterTransitGatewayMulticastGroupSources"
     case describeAccountAttributes = "DescribeAccountAttributes"
+    case describeAddressTransfers = "DescribeAddressTransfers"
     case describeAddresses = "DescribeAddresses"
     case describeAddressesAttribute = "DescribeAddressesAttribute"
     case describeAggregateIdFormat = "DescribeAggregateIdFormat"
     case describeAvailabilityZones = "DescribeAvailabilityZones"
+    case describeAwsNetworkPerformanceMetricSubscriptions = "DescribeAwsNetworkPerformanceMetricSubscriptions"
     case describeBundleTasks = "DescribeBundleTasks"
     case describeByoipCidrs = "DescribeByoipCidrs"
     case describeCapacityReservationFleets = "DescribeCapacityReservationFleets"
@@ -343,6 +356,11 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeTransitGatewayVpcAttachments = "DescribeTransitGatewayVpcAttachments"
     case describeTransitGateways = "DescribeTransitGateways"
     case describeTrunkInterfaceAssociations = "DescribeTrunkInterfaceAssociations"
+    case describeVerifiedAccessEndpoints = "DescribeVerifiedAccessEndpoints"
+    case describeVerifiedAccessGroups = "DescribeVerifiedAccessGroups"
+    case describeVerifiedAccessInstanceLoggingConfigurations = "DescribeVerifiedAccessInstanceLoggingConfigurations"
+    case describeVerifiedAccessInstances = "DescribeVerifiedAccessInstances"
+    case describeVerifiedAccessTrustProviders = "DescribeVerifiedAccessTrustProviders"
     case describeVolumeAttribute = "DescribeVolumeAttribute"
     case describeVolumeStatus = "DescribeVolumeStatus"
     case describeVolumes = "DescribeVolumes"
@@ -363,8 +381,11 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case detachClassicLinkVpc = "DetachClassicLinkVpc"
     case detachInternetGateway = "DetachInternetGateway"
     case detachNetworkInterface = "DetachNetworkInterface"
+    case detachVerifiedAccessTrustProvider = "DetachVerifiedAccessTrustProvider"
     case detachVolume = "DetachVolume"
     case detachVpnGateway = "DetachVpnGateway"
+    case disableAddressTransfer = "DisableAddressTransfer"
+    case disableAwsNetworkPerformanceMetricSubscription = "DisableAwsNetworkPerformanceMetricSubscription"
     case disableEbsEncryptionByDefault = "DisableEbsEncryptionByDefault"
     case disableFastLaunch = "DisableFastLaunch"
     case disableFastSnapshotRestores = "DisableFastSnapshotRestores"
@@ -387,11 +408,14 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case disassociateTransitGatewayRouteTable = "DisassociateTransitGatewayRouteTable"
     case disassociateTrunkInterface = "DisassociateTrunkInterface"
     case disassociateVpcCidrBlock = "DisassociateVpcCidrBlock"
+    case enableAddressTransfer = "EnableAddressTransfer"
+    case enableAwsNetworkPerformanceMetricSubscription = "EnableAwsNetworkPerformanceMetricSubscription"
     case enableEbsEncryptionByDefault = "EnableEbsEncryptionByDefault"
     case enableFastLaunch = "EnableFastLaunch"
     case enableFastSnapshotRestores = "EnableFastSnapshotRestores"
     case enableImageDeprecation = "EnableImageDeprecation"
     case enableIpamOrganizationAdminAccount = "EnableIpamOrganizationAdminAccount"
+    case enableReachabilityAnalyzerOrganizationSharing = "EnableReachabilityAnalyzerOrganizationSharing"
     case enableSerialConsoleAccess = "EnableSerialConsoleAccess"
     case enableTransitGatewayRouteTablePropagation = "EnableTransitGatewayRouteTablePropagation"
     case enableVgwRoutePropagation = "EnableVgwRoutePropagation"
@@ -404,6 +428,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case exportTransitGatewayRoutes = "ExportTransitGatewayRoutes"
     case getAssociatedEnclaveCertificateIamRoles = "GetAssociatedEnclaveCertificateIamRoles"
     case getAssociatedIpv6PoolCidrs = "GetAssociatedIpv6PoolCidrs"
+    case getAwsNetworkPerformanceData = "GetAwsNetworkPerformanceData"
     case getCapacityReservationUsage = "GetCapacityReservationUsage"
     case getCoipPoolUsage = "GetCoipPoolUsage"
     case getConsoleOutput = "GetConsoleOutput"
@@ -437,6 +462,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getTransitGatewayPrefixListReferences = "GetTransitGatewayPrefixListReferences"
     case getTransitGatewayRouteTableAssociations = "GetTransitGatewayRouteTableAssociations"
     case getTransitGatewayRouteTablePropagations = "GetTransitGatewayRouteTablePropagations"
+    case getVerifiedAccessEndpointPolicy = "GetVerifiedAccessEndpointPolicy"
+    case getVerifiedAccessGroupPolicy = "GetVerifiedAccessGroupPolicy"
     case getVpnConnectionDeviceSampleConfiguration = "GetVpnConnectionDeviceSampleConfiguration"
     case getVpnConnectionDeviceTypes = "GetVpnConnectionDeviceTypes"
     case importClientVpnClientCertificateRevocationList = "ImportClientVpnClientCertificateRevocationList"
@@ -489,6 +516,13 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case modifyTransitGateway = "ModifyTransitGateway"
     case modifyTransitGatewayPrefixListReference = "ModifyTransitGatewayPrefixListReference"
     case modifyTransitGatewayVpcAttachment = "ModifyTransitGatewayVpcAttachment"
+    case modifyVerifiedAccessEndpoint = "ModifyVerifiedAccessEndpoint"
+    case modifyVerifiedAccessEndpointPolicy = "ModifyVerifiedAccessEndpointPolicy"
+    case modifyVerifiedAccessGroup = "ModifyVerifiedAccessGroup"
+    case modifyVerifiedAccessGroupPolicy = "ModifyVerifiedAccessGroupPolicy"
+    case modifyVerifiedAccessInstance = "ModifyVerifiedAccessInstance"
+    case modifyVerifiedAccessInstanceLoggingConfiguration = "ModifyVerifiedAccessInstanceLoggingConfiguration"
+    case modifyVerifiedAccessTrustProvider = "ModifyVerifiedAccessTrustProvider"
     case modifyVolume = "ModifyVolume"
     case modifyVolumeAttribute = "ModifyVolumeAttribute"
     case modifyVpcAttribute = "ModifyVpcAttribute"
@@ -575,6 +609,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
 
     public var operationPath: String {
         switch self {
+        case .acceptAddressTransfer:
+            return "/"
         case .acceptReservedInstancesExchangeQuote:
             return "/"
         case .acceptTransitGatewayMulticastDomainAssociations:
@@ -633,6 +669,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .attachNetworkInterface:
             return "/"
+        case .attachVerifiedAccessTrustProvider:
+            return "/"
         case .attachVolume:
             return "/"
         case .attachVpnGateway:
@@ -654,6 +692,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .cancelConversionTask:
             return "/"
         case .cancelExportTask:
+            return "/"
+        case .cancelImageLaunchPermission:
             return "/"
         case .cancelImportTask:
             return "/"
@@ -805,6 +845,14 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .createTransitGatewayVpcAttachment:
             return "/"
+        case .createVerifiedAccessEndpoint:
+            return "/"
+        case .createVerifiedAccessGroup:
+            return "/"
+        case .createVerifiedAccessInstance:
+            return "/"
+        case .createVerifiedAccessTrustProvider:
+            return "/"
         case .createVolume:
             return "/"
         case .createVpc:
@@ -941,6 +989,14 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .deleteTransitGatewayVpcAttachment:
             return "/"
+        case .deleteVerifiedAccessEndpoint:
+            return "/"
+        case .deleteVerifiedAccessGroup:
+            return "/"
+        case .deleteVerifiedAccessInstance:
+            return "/"
+        case .deleteVerifiedAccessTrustProvider:
+            return "/"
         case .deleteVolume:
             return "/"
         case .deleteVpc:
@@ -975,6 +1031,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .describeAccountAttributes:
             return "/"
+        case .describeAddressTransfers:
+            return "/"
         case .describeAddresses:
             return "/"
         case .describeAddressesAttribute:
@@ -982,6 +1040,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .describeAggregateIdFormat:
             return "/"
         case .describeAvailabilityZones:
+            return "/"
+        case .describeAwsNetworkPerformanceMetricSubscriptions:
             return "/"
         case .describeBundleTasks:
             return "/"
@@ -1209,6 +1269,16 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .describeTrunkInterfaceAssociations:
             return "/"
+        case .describeVerifiedAccessEndpoints:
+            return "/"
+        case .describeVerifiedAccessGroups:
+            return "/"
+        case .describeVerifiedAccessInstanceLoggingConfigurations:
+            return "/"
+        case .describeVerifiedAccessInstances:
+            return "/"
+        case .describeVerifiedAccessTrustProviders:
+            return "/"
         case .describeVolumeAttribute:
             return "/"
         case .describeVolumeStatus:
@@ -1249,9 +1319,15 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .detachNetworkInterface:
             return "/"
+        case .detachVerifiedAccessTrustProvider:
+            return "/"
         case .detachVolume:
             return "/"
         case .detachVpnGateway:
+            return "/"
+        case .disableAddressTransfer:
+            return "/"
+        case .disableAwsNetworkPerformanceMetricSubscription:
             return "/"
         case .disableEbsEncryptionByDefault:
             return "/"
@@ -1297,6 +1373,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .disassociateVpcCidrBlock:
             return "/"
+        case .enableAddressTransfer:
+            return "/"
+        case .enableAwsNetworkPerformanceMetricSubscription:
+            return "/"
         case .enableEbsEncryptionByDefault:
             return "/"
         case .enableFastLaunch:
@@ -1306,6 +1386,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .enableImageDeprecation:
             return "/"
         case .enableIpamOrganizationAdminAccount:
+            return "/"
+        case .enableReachabilityAnalyzerOrganizationSharing:
             return "/"
         case .enableSerialConsoleAccess:
             return "/"
@@ -1330,6 +1412,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .getAssociatedEnclaveCertificateIamRoles:
             return "/"
         case .getAssociatedIpv6PoolCidrs:
+            return "/"
+        case .getAwsNetworkPerformanceData:
             return "/"
         case .getCapacityReservationUsage:
             return "/"
@@ -1396,6 +1480,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .getTransitGatewayRouteTableAssociations:
             return "/"
         case .getTransitGatewayRouteTablePropagations:
+            return "/"
+        case .getVerifiedAccessEndpointPolicy:
+            return "/"
+        case .getVerifiedAccessGroupPolicy:
             return "/"
         case .getVpnConnectionDeviceSampleConfiguration:
             return "/"
@@ -1500,6 +1588,20 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .modifyTransitGatewayPrefixListReference:
             return "/"
         case .modifyTransitGatewayVpcAttachment:
+            return "/"
+        case .modifyVerifiedAccessEndpoint:
+            return "/"
+        case .modifyVerifiedAccessEndpointPolicy:
+            return "/"
+        case .modifyVerifiedAccessGroup:
+            return "/"
+        case .modifyVerifiedAccessGroupPolicy:
+            return "/"
+        case .modifyVerifiedAccessInstance:
+            return "/"
+        case .modifyVerifiedAccessInstanceLoggingConfiguration:
+            return "/"
+        case .modifyVerifiedAccessTrustProvider:
             return "/"
         case .modifyVolume:
             return "/"

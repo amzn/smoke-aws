@@ -118,7 +118,7 @@ public extension StepFunctionsClientProtocol {
          - input: The validated DeleteStateMachineInput object being passed to this operation.
      - Returns: The DeleteStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn.
+     - Throws: invalidArn, validation.
      */
     func deleteStateMachine(input: StepFunctionsModel.DeleteStateMachineInput) async throws
      -> StepFunctionsModel.DeleteStateMachineOutput {
@@ -179,6 +179,33 @@ public extension StepFunctionsClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeExecutionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeMapRun operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeMapRunInput object being passed to this operation.
+     - Returns: The DescribeMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    func describeMapRun(input: StepFunctionsModel.DescribeMapRunInput) async throws
+     -> StepFunctionsModel.DescribeMapRunOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeMapRunAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -334,13 +361,40 @@ public extension StepFunctionsClientProtocol {
          - input: The validated ListExecutionsInput object being passed to this operation.
      - Returns: The ListExecutionsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDoesNotExist, stateMachineTypeNotSupported, validation.
      */
     func listExecutions(input: StepFunctionsModel.ListExecutionsInput) async throws
      -> StepFunctionsModel.ListExecutionsOutput {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try listExecutionsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ListMapRuns operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListMapRunsInput object being passed to this operation.
+     - Returns: The ListMapRunsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    func listMapRuns(input: StepFunctionsModel.ListMapRunsInput) async throws
+     -> StepFunctionsModel.ListMapRunsOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try listMapRunsAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -496,7 +550,7 @@ public extension StepFunctionsClientProtocol {
          - input: The validated StartExecutionInput object being passed to this operation.
      - Returns: The StartExecutionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func startExecution(input: StepFunctionsModel.StartExecutionInput) async throws
      -> StepFunctionsModel.StartExecutionOutput {
@@ -550,7 +604,7 @@ public extension StepFunctionsClientProtocol {
          - input: The validated StopExecutionInput object being passed to this operation.
      - Returns: The StopExecutionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: executionDoesNotExist, invalidArn.
+     - Throws: executionDoesNotExist, invalidArn, validation.
      */
     func stopExecution(input: StepFunctionsModel.StopExecutionInput) async throws
      -> StepFunctionsModel.StopExecutionOutput {
@@ -625,13 +679,40 @@ public extension StepFunctionsClientProtocol {
     }
 
     /**
+     Invokes the UpdateMapRun operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated UpdateMapRunInput object being passed to this operation.
+     - Returns: The UpdateMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    func updateMapRun(input: StepFunctionsModel.UpdateMapRunInput) async throws
+     -> StepFunctionsModel.UpdateMapRunOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try updateMapRunAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the UpdateStateMachine operation and asynchronously returning the response.
 
      - Parameters:
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func updateStateMachine(input: StepFunctionsModel.UpdateStateMachineInput) async throws
      -> StepFunctionsModel.UpdateStateMachineOutput {

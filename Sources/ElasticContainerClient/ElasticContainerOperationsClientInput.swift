@@ -130,6 +130,11 @@ public typealias DiscoverPollEndpointOperationHTTPRequestInput = BodyHTTPRequest
 public typealias ExecuteCommandOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the GetTaskProtection operation in a HTTP client.
+ */
+public typealias GetTaskProtectionOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the ListAccountSettings operation in a HTTP client.
  */
 public typealias ListAccountSettingsOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -153,6 +158,11 @@ public typealias ListContainerInstancesOperationHTTPRequestInput = BodyHTTPReque
  Type to handle the input to the ListServices operation in a HTTP client.
  */
 public typealias ListServicesOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the ListServicesByNamespace operation in a HTTP client.
+ */
+public typealias ListServicesByNamespaceOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the ListTagsForResource operation in a HTTP client.
@@ -278,6 +288,11 @@ public typealias UpdateServiceOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the UpdateServicePrimaryTaskSet operation in a HTTP client.
  */
 public typealias UpdateServicePrimaryTaskSetOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UpdateTaskProtection operation in a HTTP client.
+ */
+public typealias UpdateTaskProtectionOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the UpdateTaskSet operation in a HTTP client.

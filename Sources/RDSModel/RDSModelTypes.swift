@@ -159,6 +159,46 @@ public typealias AvailableProcessorFeatureList = [AvailableProcessorFeature]
 public typealias AwsBackupRecoveryPointArn = String
 
 /**
+ Type definition for the BlueGreenDeploymentIdentifier field.
+ */
+public typealias BlueGreenDeploymentIdentifier = String
+
+/**
+ Type definition for the BlueGreenDeploymentList field.
+ */
+public typealias BlueGreenDeploymentList = [BlueGreenDeployment]
+
+/**
+ Type definition for the BlueGreenDeploymentName field.
+ */
+public typealias BlueGreenDeploymentName = String
+
+/**
+ Type definition for the BlueGreenDeploymentStatus field.
+ */
+public typealias BlueGreenDeploymentStatus = String
+
+/**
+ Type definition for the BlueGreenDeploymentStatusDetails field.
+ */
+public typealias BlueGreenDeploymentStatusDetails = String
+
+/**
+ Type definition for the BlueGreenDeploymentTaskList field.
+ */
+public typealias BlueGreenDeploymentTaskList = [BlueGreenDeploymentTask]
+
+/**
+ Type definition for the BlueGreenDeploymentTaskName field.
+ */
+public typealias BlueGreenDeploymentTaskName = String
+
+/**
+ Type definition for the BlueGreenDeploymentTaskStatus field.
+ */
+public typealias BlueGreenDeploymentTaskStatus = String
+
+/**
  Type definition for the Boolean field.
  */
 public typealias Boolean = Bool
@@ -174,9 +214,30 @@ public typealias BooleanOptional = Bool
 public typealias BucketName = String
 
 /**
+ Type definition for the CACertificateIdentifiersList field.
+ */
+public typealias CACertificateIdentifiersList = [String]
+
+/**
  Type definition for the CertificateList field.
  */
 public typealias CertificateList = [Certificate]
+
+/**
+ Enumeration restricting the values of the ClientPasswordAuthType field.
+ */
+public enum ClientPasswordAuthType: String, Codable, CustomStringConvertible {
+    case mysqlNativePassword = "MYSQL_NATIVE_PASSWORD"
+    case postgresMd5 = "POSTGRES_MD5"
+    case postgresScramSha256 = "POSTGRES_SCRAM_SHA_256"
+    case sqlServerAuthentication = "SQL_SERVER_AUTHENTICATION"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ClientPasswordAuthType = .mysqlNativePassword
+}
 
 /**
  Type definition for the CustomDBEngineVersionManifest field.
@@ -402,6 +463,11 @@ public typealias DBSnapshotList = [DBSnapshot]
 public typealias DBSubnetGroups = [DBSubnetGroup]
 
 /**
+ Type definition for the DatabaseArn field.
+ */
+public typealias DatabaseArn = String
+
+/**
  Type definition for the DescribeDBLogFilesList field.
  */
 public typealias DescribeDBLogFilesList = [DescribeDBLogFilesDetails]
@@ -470,6 +536,20 @@ public typealias EventList = [Event]
  Type definition for the EventSubscriptionsList field.
  */
 public typealias EventSubscriptionsList = [EventSubscription]
+
+/**
+ Enumeration restricting the values of the ExportSourceType field.
+ */
+public enum ExportSourceType: String, Codable, CustomStringConvertible {
+    case cluster = "CLUSTER"
+    case snapshot = "SNAPSHOT"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ExportSourceType = .cluster
+}
 
 /**
  Type definition for the ExportTasksList field.
@@ -739,6 +819,7 @@ public typealias SourceRegionList = [SourceRegion]
  Enumeration restricting the values of the SourceType field.
  */
 public enum SourceType: String, Codable, CustomStringConvertible {
+    case blueGreenDeployment = "blue-green-deployment"
     case customEngineVersion = "custom-engine-version"
     case dbCluster = "db-cluster"
     case dbClusterSnapshot = "db-cluster-snapshot"
@@ -752,7 +833,7 @@ public enum SourceType: String, Codable, CustomStringConvertible {
         return rawValue
     }
     
-    public static let __default: SourceType = .customEngineVersion
+    public static let __default: SourceType = .blueGreenDeployment
 }
 
 /**
@@ -786,6 +867,21 @@ public typealias SupportedCharacterSetsList = [CharacterSet]
 public typealias SupportedTimezonesList = [Timezone]
 
 /**
+ Type definition for the SwitchoverDetailList field.
+ */
+public typealias SwitchoverDetailList = [SwitchoverDetail]
+
+/**
+ Type definition for the SwitchoverDetailStatus field.
+ */
+public typealias SwitchoverDetailStatus = String
+
+/**
+ Type definition for the SwitchoverTimeout field.
+ */
+public typealias SwitchoverTimeout = Int
+
+/**
  Type definition for the TStamp field.
  */
 public typealias TStamp = String
@@ -794,6 +890,21 @@ public typealias TStamp = String
  Type definition for the TagList field.
  */
 public typealias TagList = [Tag]
+
+/**
+ Type definition for the TargetDBClusterParameterGroupName field.
+ */
+public typealias TargetDBClusterParameterGroupName = String
+
+/**
+ Type definition for the TargetDBParameterGroupName field.
+ */
+public typealias TargetDBParameterGroupName = String
+
+/**
+ Type definition for the TargetEngineVersion field.
+ */
+public typealias TargetEngineVersion = String
 
 /**
  Type definition for the TargetGroupList field.
@@ -936,6 +1047,48 @@ extension RDSModel.AwsBackupRecoveryPointArn {
 }
 
 /**
+ Validation for the BlueGreenDeploymentIdentifier field.
+*/
+extension RDSModel.BlueGreenDeploymentIdentifier {
+    public func validateAsBlueGreenDeploymentIdentifier() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to BlueGreenDeploymentIdentifier violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw RDSError.validationError(reason: "The provided value to BlueGreenDeploymentIdentifier violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[A-Za-z][0-9A-Za-z-:._]*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to BlueGreenDeploymentIdentifier violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the BlueGreenDeploymentName field.
+*/
+extension RDSModel.BlueGreenDeploymentName {
+    public func validateAsBlueGreenDeploymentName() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to BlueGreenDeploymentName violated the minimum length constraint.")
+        }
+
+        if self.count > 60 {
+            throw RDSError.validationError(reason: "The provided value to BlueGreenDeploymentName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[a-zA-Z][a-zA-Z0-9]*(-[a-zA-Z0-9]+)*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to BlueGreenDeploymentName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the BucketName field.
 */
 extension RDSModel.BucketName {
@@ -1011,7 +1164,7 @@ extension RDSModel.CustomEngineVersion {
             throw RDSError.validationError(reason: "The provided value to CustomEngineVersion violated the maximum length constraint.")
         }
 
-        guard let matchingRange = self.range(of: "^(11\\.\\d{1}|12\\.\\d{1}|18|19)(\\.[a-zA-Z0-9_.-]{1,50})$", options: .regularExpression),
+        guard let matchingRange = self.range(of: "^[a-z0-9_.-]{1,60}$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
                 throw RDSError.validationError(
                     reason: "The provided value to CustomEngineVersion violated the regular expression constraint.")
@@ -1078,6 +1231,27 @@ extension RDSModel.DBProxyName {
             matchingRange == startIndex..<endIndex else {
                 throw RDSError.validationError(
                     reason: "The provided value to DBProxyName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DatabaseArn field.
+*/
+extension RDSModel.DatabaseArn {
+    public func validateAsDatabaseArn() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to DatabaseArn violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw RDSError.validationError(reason: "The provided value to DatabaseArn violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^arn:[A-Za-z][0-9A-Za-z-:._]*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to DatabaseArn violated the regular expression constraint.")
         }
     }
 }
@@ -1177,6 +1351,81 @@ extension RDSModel.String255 {
             matchingRange == startIndex..<endIndex else {
                 throw RDSError.validationError(
                     reason: "The provided value to String255 violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the SwitchoverTimeout field.
+*/
+extension RDSModel.SwitchoverTimeout {
+    public func validateAsSwitchoverTimeout() throws {
+        if self < 30 {
+            throw RDSError.validationError(reason: "The provided value to SwitchoverTimeout violated the minimum range constraint.")
+        }
+
+    }
+}
+
+/**
+ Validation for the TargetDBClusterParameterGroupName field.
+*/
+extension RDSModel.TargetDBClusterParameterGroupName {
+    public func validateAsTargetDBClusterParameterGroupName() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to TargetDBClusterParameterGroupName violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw RDSError.validationError(reason: "The provided value to TargetDBClusterParameterGroupName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[A-Za-z](?!.*--)[0-9A-Za-z-]*[^-]|^default(?!.*--)(?!.*\\.\\.)[0-9A-Za-z-.]*[^-]", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to TargetDBClusterParameterGroupName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TargetDBParameterGroupName field.
+*/
+extension RDSModel.TargetDBParameterGroupName {
+    public func validateAsTargetDBParameterGroupName() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to TargetDBParameterGroupName violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw RDSError.validationError(reason: "The provided value to TargetDBParameterGroupName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[A-Za-z](?!.*--)[0-9A-Za-z-]*[^-]|^default(?!.*--)(?!.*\\.\\.)[0-9A-Za-z-.]*[^-]", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to TargetDBParameterGroupName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TargetEngineVersion field.
+*/
+extension RDSModel.TargetEngineVersion {
+    public func validateAsTargetEngineVersion() throws {
+        if self.count < 1 {
+            throw RDSError.validationError(reason: "The provided value to TargetEngineVersion violated the minimum length constraint.")
+        }
+
+        if self.count > 64 {
+            throw RDSError.validationError(reason: "The provided value to TargetEngineVersion violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[0-9A-Za-z-_.]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to TargetEngineVersion violated the regular expression constraint.")
         }
     }
 }

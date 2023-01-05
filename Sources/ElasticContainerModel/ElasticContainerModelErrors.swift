@@ -44,6 +44,7 @@ private let clusterNotFoundIdentity = "ClusterNotFoundException"
 private let invalidParameterIdentity = "InvalidParameterException"
 private let limitExceededIdentity = "LimitExceededException"
 private let missingVersionIdentity = "MissingVersionException"
+private let namespaceNotFoundIdentity = "NamespaceNotFoundException"
 private let noUpdateAvailableIdentity = "NoUpdateAvailableException"
 private let platformTaskDefinitionIncompatibilityIdentity = "PlatformTaskDefinitionIncompatibilityException"
 private let platformUnknownIdentity = "PlatformUnknownException"
@@ -70,6 +71,7 @@ public enum ElasticContainerError: Swift.Error, Decodable {
     case invalidParameter(InvalidParameterException)
     case limitExceeded(LimitExceededException)
     case missingVersion(MissingVersionException)
+    case namespaceNotFound(NamespaceNotFoundException)
     case noUpdateAvailable(NoUpdateAvailableException)
     case platformTaskDefinitionIncompatibility(PlatformTaskDefinitionIncompatibilityException)
     case platformUnknown(PlatformUnknownException)
@@ -134,6 +136,9 @@ public enum ElasticContainerError: Swift.Error, Decodable {
         case missingVersionIdentity:
             let errorPayload = try MissingVersionException(from: decoder)
             self = ElasticContainerError.missingVersion(errorPayload)
+        case namespaceNotFoundIdentity:
+            let errorPayload = try NamespaceNotFoundException(from: decoder)
+            self = ElasticContainerError.namespaceNotFound(errorPayload)
         case noUpdateAvailableIdentity:
             let errorPayload = try NoUpdateAvailableException(from: decoder)
             self = ElasticContainerError.noUpdateAvailable(errorPayload)

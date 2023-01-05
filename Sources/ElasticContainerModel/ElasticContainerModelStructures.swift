@@ -282,6 +282,7 @@ public struct Cluster: Codable, Equatable {
     public var pendingTasksCount: Integer?
     public var registeredContainerInstancesCount: Integer?
     public var runningTasksCount: Integer?
+    public var serviceConnectDefaults: ClusterServiceConnectDefaults?
     public var settings: ClusterSettings?
     public var statistics: Statistics?
     public var status: String?
@@ -298,6 +299,7 @@ public struct Cluster: Codable, Equatable {
                 pendingTasksCount: Integer? = nil,
                 registeredContainerInstancesCount: Integer? = nil,
                 runningTasksCount: Integer? = nil,
+                serviceConnectDefaults: ClusterServiceConnectDefaults? = nil,
                 settings: ClusterSettings? = nil,
                 statistics: Statistics? = nil,
                 status: String? = nil,
@@ -313,6 +315,7 @@ public struct Cluster: Codable, Equatable {
         self.pendingTasksCount = pendingTasksCount
         self.registeredContainerInstancesCount = registeredContainerInstancesCount
         self.runningTasksCount = runningTasksCount
+        self.serviceConnectDefaults = serviceConnectDefaults
         self.settings = settings
         self.statistics = statistics
         self.status = status
@@ -331,6 +334,7 @@ public struct Cluster: Codable, Equatable {
         case pendingTasksCount
         case registeredContainerInstancesCount
         case runningTasksCount
+        case serviceConnectDefaults
         case settings
         case statistics
         case status
@@ -339,6 +343,7 @@ public struct Cluster: Codable, Equatable {
 
     public func validate() throws {
         try configuration?.validate()
+        try serviceConnectDefaults?.validate()
         try tags?.validateAsTags()
     }
 }
@@ -389,6 +394,36 @@ public struct ClusterContainsTasksException: Codable, Equatable {
 public struct ClusterNotFoundException: Codable, Equatable {
 
     public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ClusterServiceConnectDefaults: Codable, Equatable {
+    public var namespace: String?
+
+    public init(namespace: String? = nil) {
+        self.namespace = namespace
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case namespace
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ClusterServiceConnectDefaultsRequest: Codable, Equatable {
+    public var namespace: String
+
+    public init(namespace: String) {
+        self.namespace = namespace
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case namespace
     }
 
     public func validate() throws {
@@ -917,6 +952,7 @@ public struct CreateClusterRequest: Codable, Equatable {
     public var clusterName: String?
     public var configuration: ClusterConfiguration?
     public var defaultCapacityProviderStrategy: CapacityProviderStrategy?
+    public var serviceConnectDefaults: ClusterServiceConnectDefaultsRequest?
     public var settings: ClusterSettings?
     public var tags: Tags?
 
@@ -924,12 +960,14 @@ public struct CreateClusterRequest: Codable, Equatable {
                 clusterName: String? = nil,
                 configuration: ClusterConfiguration? = nil,
                 defaultCapacityProviderStrategy: CapacityProviderStrategy? = nil,
+                serviceConnectDefaults: ClusterServiceConnectDefaultsRequest? = nil,
                 settings: ClusterSettings? = nil,
                 tags: Tags? = nil) {
         self.capacityProviders = capacityProviders
         self.clusterName = clusterName
         self.configuration = configuration
         self.defaultCapacityProviderStrategy = defaultCapacityProviderStrategy
+        self.serviceConnectDefaults = serviceConnectDefaults
         self.settings = settings
         self.tags = tags
     }
@@ -939,12 +977,14 @@ public struct CreateClusterRequest: Codable, Equatable {
         case clusterName
         case configuration
         case defaultCapacityProviderStrategy
+        case serviceConnectDefaults
         case settings
         case tags
     }
 
     public func validate() throws {
         try configuration?.validate()
+        try serviceConnectDefaults?.validate()
         try tags?.validateAsTags()
     }
 }
@@ -984,6 +1024,7 @@ public struct CreateServiceRequest: Codable, Equatable {
     public var propagateTags: PropagateTags?
     public var role: String?
     public var schedulingStrategy: SchedulingStrategy?
+    public var serviceConnectConfiguration: ServiceConnectConfiguration?
     public var serviceName: String
     public var serviceRegistries: ServiceRegistries?
     public var tags: Tags?
@@ -1007,6 +1048,7 @@ public struct CreateServiceRequest: Codable, Equatable {
                 propagateTags: PropagateTags? = nil,
                 role: String? = nil,
                 schedulingStrategy: SchedulingStrategy? = nil,
+                serviceConnectConfiguration: ServiceConnectConfiguration? = nil,
                 serviceName: String,
                 serviceRegistries: ServiceRegistries? = nil,
                 tags: Tags? = nil,
@@ -1029,6 +1071,7 @@ public struct CreateServiceRequest: Codable, Equatable {
         self.propagateTags = propagateTags
         self.role = role
         self.schedulingStrategy = schedulingStrategy
+        self.serviceConnectConfiguration = serviceConnectConfiguration
         self.serviceName = serviceName
         self.serviceRegistries = serviceRegistries
         self.tags = tags
@@ -1054,6 +1097,7 @@ public struct CreateServiceRequest: Codable, Equatable {
         case propagateTags
         case role
         case schedulingStrategy
+        case serviceConnectConfiguration
         case serviceName
         case serviceRegistries
         case tags
@@ -1064,6 +1108,7 @@ public struct CreateServiceRequest: Codable, Equatable {
         try deploymentConfiguration?.validate()
         try deploymentController?.validate()
         try networkConfiguration?.validate()
+        try serviceConnectConfiguration?.validate()
         try tags?.validateAsTags()
     }
 }
@@ -1393,6 +1438,8 @@ public struct Deployment: Codable, Equatable {
     public var rolloutState: DeploymentRolloutState?
     public var rolloutStateReason: String?
     public var runningCount: Integer?
+    public var serviceConnectConfiguration: ServiceConnectConfiguration?
+    public var serviceConnectResources: ServiceConnectServiceResourceList?
     public var status: String?
     public var taskDefinition: String?
     public var updatedAt: Timestamp?
@@ -1410,6 +1457,8 @@ public struct Deployment: Codable, Equatable {
                 rolloutState: DeploymentRolloutState? = nil,
                 rolloutStateReason: String? = nil,
                 runningCount: Integer? = nil,
+                serviceConnectConfiguration: ServiceConnectConfiguration? = nil,
+                serviceConnectResources: ServiceConnectServiceResourceList? = nil,
                 status: String? = nil,
                 taskDefinition: String? = nil,
                 updatedAt: Timestamp? = nil) {
@@ -1426,6 +1475,8 @@ public struct Deployment: Codable, Equatable {
         self.rolloutState = rolloutState
         self.rolloutStateReason = rolloutStateReason
         self.runningCount = runningCount
+        self.serviceConnectConfiguration = serviceConnectConfiguration
+        self.serviceConnectResources = serviceConnectResources
         self.status = status
         self.taskDefinition = taskDefinition
         self.updatedAt = updatedAt
@@ -1445,6 +1496,8 @@ public struct Deployment: Codable, Equatable {
         case rolloutState
         case rolloutStateReason
         case runningCount
+        case serviceConnectConfiguration
+        case serviceConnectResources
         case status
         case taskDefinition
         case updatedAt
@@ -1452,6 +1505,30 @@ public struct Deployment: Codable, Equatable {
 
     public func validate() throws {
         try networkConfiguration?.validate()
+        try serviceConnectConfiguration?.validate()
+    }
+}
+
+public struct DeploymentAlarms: Codable, Equatable {
+    public var alarmNames: StringList
+    public var enable: Boolean
+    public var rollback: Boolean
+
+    public init(alarmNames: StringList,
+                enable: Boolean,
+                rollback: Boolean) {
+        self.alarmNames = alarmNames
+        self.enable = enable
+        self.rollback = rollback
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case alarmNames
+        case enable
+        case rollback
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -1475,25 +1552,30 @@ public struct DeploymentCircuitBreaker: Codable, Equatable {
 }
 
 public struct DeploymentConfiguration: Codable, Equatable {
+    public var alarms: DeploymentAlarms?
     public var deploymentCircuitBreaker: DeploymentCircuitBreaker?
     public var maximumPercent: BoxedInteger?
     public var minimumHealthyPercent: BoxedInteger?
 
-    public init(deploymentCircuitBreaker: DeploymentCircuitBreaker? = nil,
+    public init(alarms: DeploymentAlarms? = nil,
+                deploymentCircuitBreaker: DeploymentCircuitBreaker? = nil,
                 maximumPercent: BoxedInteger? = nil,
                 minimumHealthyPercent: BoxedInteger? = nil) {
+        self.alarms = alarms
         self.deploymentCircuitBreaker = deploymentCircuitBreaker
         self.maximumPercent = maximumPercent
         self.minimumHealthyPercent = minimumHealthyPercent
     }
 
     enum CodingKeys: String, CodingKey {
+        case alarms
         case deploymentCircuitBreaker
         case maximumPercent
         case minimumHealthyPercent
     }
 
     public func validate() throws {
+        try alarms?.validate()
         try deploymentCircuitBreaker?.validate()
     }
 }
@@ -1927,16 +2009,20 @@ public struct DiscoverPollEndpointRequest: Codable, Equatable {
 
 public struct DiscoverPollEndpointResponse: Codable, Equatable {
     public var endpoint: String?
+    public var serviceConnectEndpoint: String?
     public var telemetryEndpoint: String?
 
     public init(endpoint: String? = nil,
+                serviceConnectEndpoint: String? = nil,
                 telemetryEndpoint: String? = nil) {
         self.endpoint = endpoint
+        self.serviceConnectEndpoint = serviceConnectEndpoint
         self.telemetryEndpoint = telemetryEndpoint
     }
 
     enum CodingKeys: String, CodingKey {
         case endpoint
+        case serviceConnectEndpoint
         case telemetryEndpoint
     }
 
@@ -2261,6 +2347,44 @@ public struct FirelensConfiguration: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case options
         case type
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetTaskProtectionRequest: Codable, Equatable {
+    public var cluster: String
+    public var tasks: StringList?
+
+    public init(cluster: String,
+                tasks: StringList? = nil) {
+        self.cluster = cluster
+        self.tasks = tasks
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case tasks
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetTaskProtectionResponse: Codable, Equatable {
+    public var failures: Failures?
+    public var protectedTasks: ProtectedTasks?
+
+    public init(failures: Failures? = nil,
+                protectedTasks: ProtectedTasks? = nil) {
+        self.failures = failures
+        self.protectedTasks = protectedTasks
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures
+        case protectedTasks
     }
 
     public func validate() throws {
@@ -2689,6 +2813,48 @@ public struct ListContainerInstancesResponse: Codable, Equatable {
     }
 }
 
+public struct ListServicesByNamespaceRequest: Codable, Equatable {
+    public var maxResults: BoxedInteger?
+    public var namespace: String
+    public var nextToken: String?
+
+    public init(maxResults: BoxedInteger? = nil,
+                namespace: String,
+                nextToken: String? = nil) {
+        self.maxResults = maxResults
+        self.namespace = namespace
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults
+        case namespace
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListServicesByNamespaceResponse: Codable, Equatable {
+    public var nextToken: String?
+    public var serviceArns: StringList?
+
+    public init(nextToken: String? = nil,
+                serviceArns: StringList? = nil) {
+        self.nextToken = nextToken
+        self.serviceArns = serviceArns
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case serviceArns
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ListServicesRequest: Codable, Equatable {
     public var cluster: String?
     public var launchType: LaunchType?
@@ -3103,26 +3269,43 @@ public struct MountPoint: Codable, Equatable {
     }
 }
 
+public struct NamespaceNotFoundException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct NetworkBinding: Codable, Equatable {
     public var bindIP: String?
     public var containerPort: BoxedInteger?
+    public var containerPortRange: String?
     public var hostPort: BoxedInteger?
+    public var hostPortRange: String?
     public var `protocol`: TransportProtocol?
 
     public init(bindIP: String? = nil,
                 containerPort: BoxedInteger? = nil,
+                containerPortRange: String? = nil,
                 hostPort: BoxedInteger? = nil,
+                hostPortRange: String? = nil,
                 `protocol`: TransportProtocol? = nil) {
         self.bindIP = bindIP
         self.containerPort = containerPort
+        self.containerPortRange = containerPortRange
         self.hostPort = hostPort
+        self.hostPortRange = hostPortRange
         self.`protocol` = `protocol`
     }
 
     enum CodingKeys: String, CodingKey {
         case bindIP
         case containerPort
+        case containerPortRange
         case hostPort
+        case hostPortRange
         case `protocol` = "protocol"
     }
 
@@ -3254,22 +3437,57 @@ public struct PlatformUnknownException: Codable, Equatable {
 }
 
 public struct PortMapping: Codable, Equatable {
+    public var appProtocol: ApplicationProtocol?
     public var containerPort: BoxedInteger?
+    public var containerPortRange: String?
     public var hostPort: BoxedInteger?
+    public var name: String?
     public var `protocol`: TransportProtocol?
 
-    public init(containerPort: BoxedInteger? = nil,
+    public init(appProtocol: ApplicationProtocol? = nil,
+                containerPort: BoxedInteger? = nil,
+                containerPortRange: String? = nil,
                 hostPort: BoxedInteger? = nil,
+                name: String? = nil,
                 `protocol`: TransportProtocol? = nil) {
+        self.appProtocol = appProtocol
         self.containerPort = containerPort
+        self.containerPortRange = containerPortRange
         self.hostPort = hostPort
+        self.name = name
         self.`protocol` = `protocol`
     }
 
     enum CodingKeys: String, CodingKey {
+        case appProtocol
         case containerPort
+        case containerPortRange
         case hostPort
+        case name
         case `protocol` = "protocol"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ProtectedTask: Codable, Equatable {
+    public var expirationDate: Timestamp?
+    public var protectionEnabled: Boolean?
+    public var taskArn: String?
+
+    public init(expirationDate: Timestamp? = nil,
+                protectionEnabled: Boolean? = nil,
+                taskArn: String? = nil) {
+        self.expirationDate = expirationDate
+        self.protectionEnabled = protectionEnabled
+        self.taskArn = taskArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case expirationDate
+        case protectionEnabled
+        case taskArn
     }
 
     public func validate() throws {
@@ -4011,6 +4229,101 @@ public struct Service: Codable, Equatable {
         try deploymentController?.validate()
         try networkConfiguration?.validate()
         try tags?.validateAsTags()
+    }
+}
+
+public struct ServiceConnectClientAlias: Codable, Equatable {
+    public var dnsName: String?
+    public var port: PortNumber
+
+    public init(dnsName: String? = nil,
+                port: PortNumber) {
+        self.dnsName = dnsName
+        self.port = port
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dnsName
+        case port
+    }
+
+    public func validate() throws {
+        try port.validateAsPortNumber()
+    }
+}
+
+public struct ServiceConnectConfiguration: Codable, Equatable {
+    public var enabled: Boolean
+    public var logConfiguration: LogConfiguration?
+    public var namespace: String?
+    public var services: ServiceConnectServiceList?
+
+    public init(enabled: Boolean,
+                logConfiguration: LogConfiguration? = nil,
+                namespace: String? = nil,
+                services: ServiceConnectServiceList? = nil) {
+        self.enabled = enabled
+        self.logConfiguration = logConfiguration
+        self.namespace = namespace
+        self.services = services
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case enabled
+        case logConfiguration
+        case namespace
+        case services
+    }
+
+    public func validate() throws {
+        try logConfiguration?.validate()
+    }
+}
+
+public struct ServiceConnectService: Codable, Equatable {
+    public var clientAliases: ServiceConnectClientAliasList?
+    public var discoveryName: String?
+    public var ingressPortOverride: PortNumber?
+    public var portName: String
+
+    public init(clientAliases: ServiceConnectClientAliasList? = nil,
+                discoveryName: String? = nil,
+                ingressPortOverride: PortNumber? = nil,
+                portName: String) {
+        self.clientAliases = clientAliases
+        self.discoveryName = discoveryName
+        self.ingressPortOverride = ingressPortOverride
+        self.portName = portName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientAliases
+        case discoveryName
+        case ingressPortOverride
+        case portName
+    }
+
+    public func validate() throws {
+        try ingressPortOverride?.validateAsPortNumber()
+    }
+}
+
+public struct ServiceConnectServiceResource: Codable, Equatable {
+    public var discoveryArn: String?
+    public var discoveryName: String?
+
+    public init(discoveryArn: String? = nil,
+                discoveryName: String? = nil) {
+        self.discoveryArn = discoveryArn
+        self.discoveryName = discoveryName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case discoveryArn
+        case discoveryName
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -5061,24 +5374,29 @@ public struct UpdateCapacityProviderResponse: Codable, Equatable {
 public struct UpdateClusterRequest: Codable, Equatable {
     public var cluster: String
     public var configuration: ClusterConfiguration?
+    public var serviceConnectDefaults: ClusterServiceConnectDefaultsRequest?
     public var settings: ClusterSettings?
 
     public init(cluster: String,
                 configuration: ClusterConfiguration? = nil,
+                serviceConnectDefaults: ClusterServiceConnectDefaultsRequest? = nil,
                 settings: ClusterSettings? = nil) {
         self.cluster = cluster
         self.configuration = configuration
+        self.serviceConnectDefaults = serviceConnectDefaults
         self.settings = settings
     }
 
     enum CodingKeys: String, CodingKey {
         case cluster
         case configuration
+        case serviceConnectDefaults
         case settings
     }
 
     public func validate() throws {
         try configuration?.validate()
+        try serviceConnectDefaults?.validate()
     }
 }
 
@@ -5274,6 +5592,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
     public var platformVersion: String?
     public var propagateTags: PropagateTags?
     public var service: String
+    public var serviceConnectConfiguration: ServiceConnectConfiguration?
     public var serviceRegistries: ServiceRegistries?
     public var taskDefinition: String?
 
@@ -5292,6 +5611,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
                 platformVersion: String? = nil,
                 propagateTags: PropagateTags? = nil,
                 service: String,
+                serviceConnectConfiguration: ServiceConnectConfiguration? = nil,
                 serviceRegistries: ServiceRegistries? = nil,
                 taskDefinition: String? = nil) {
         self.capacityProviderStrategy = capacityProviderStrategy
@@ -5309,6 +5629,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
         self.platformVersion = platformVersion
         self.propagateTags = propagateTags
         self.service = service
+        self.serviceConnectConfiguration = serviceConnectConfiguration
         self.serviceRegistries = serviceRegistries
         self.taskDefinition = taskDefinition
     }
@@ -5329,6 +5650,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
         case platformVersion
         case propagateTags
         case service
+        case serviceConnectConfiguration
         case serviceRegistries
         case taskDefinition
     }
@@ -5336,6 +5658,7 @@ public struct UpdateServiceRequest: Codable, Equatable {
     public func validate() throws {
         try deploymentConfiguration?.validate()
         try networkConfiguration?.validate()
+        try serviceConnectConfiguration?.validate()
     }
 }
 
@@ -5352,6 +5675,52 @@ public struct UpdateServiceResponse: Codable, Equatable {
 
     public func validate() throws {
         try service?.validate()
+    }
+}
+
+public struct UpdateTaskProtectionRequest: Codable, Equatable {
+    public var cluster: String
+    public var expiresInMinutes: BoxedInteger?
+    public var protectionEnabled: Boolean
+    public var tasks: StringList
+
+    public init(cluster: String,
+                expiresInMinutes: BoxedInteger? = nil,
+                protectionEnabled: Boolean,
+                tasks: StringList) {
+        self.cluster = cluster
+        self.expiresInMinutes = expiresInMinutes
+        self.protectionEnabled = protectionEnabled
+        self.tasks = tasks
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cluster
+        case expiresInMinutes
+        case protectionEnabled
+        case tasks
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UpdateTaskProtectionResponse: Codable, Equatable {
+    public var failures: Failures?
+    public var protectedTasks: ProtectedTasks?
+
+    public init(failures: Failures? = nil,
+                protectedTasks: ProtectedTasks? = nil) {
+        self.failures = failures
+        self.protectedTasks = protectedTasks
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures
+        case protectedTasks
+    }
+
+    public func validate() throws {
     }
 }
 

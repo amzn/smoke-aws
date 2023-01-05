@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the CloudWatch service.
  */
-public protocol CloudWatchClientProtocol {
+public protocol CloudWatchClientProtocol: CloudWatchClientProtocolV2 {
     typealias DeleteAlarmsSyncType = (
             _ input: CloudWatchModel.DeleteAlarmsInput) throws -> ()
     typealias DeleteAlarmsAsyncType = (

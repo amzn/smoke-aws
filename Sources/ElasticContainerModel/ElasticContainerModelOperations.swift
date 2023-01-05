@@ -47,11 +47,13 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case describeTasks = "DescribeTasks"
     case discoverPollEndpoint = "DiscoverPollEndpoint"
     case executeCommand = "ExecuteCommand"
+    case getTaskProtection = "GetTaskProtection"
     case listAccountSettings = "ListAccountSettings"
     case listAttributes = "ListAttributes"
     case listClusters = "ListClusters"
     case listContainerInstances = "ListContainerInstances"
     case listServices = "ListServices"
+    case listServicesByNamespace = "ListServicesByNamespace"
     case listTagsForResource = "ListTagsForResource"
     case listTaskDefinitionFamilies = "ListTaskDefinitionFamilies"
     case listTaskDefinitions = "ListTaskDefinitions"
@@ -77,6 +79,7 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case updateContainerInstancesState = "UpdateContainerInstancesState"
     case updateService = "UpdateService"
     case updateServicePrimaryTaskSet = "UpdateServicePrimaryTaskSet"
+    case updateTaskProtection = "UpdateTaskProtection"
     case updateTaskSet = "UpdateTaskSet"
 
     public var description: String {
@@ -127,6 +130,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
             return "/"
         case .executeCommand:
             return "/"
+        case .getTaskProtection:
+            return "/"
         case .listAccountSettings:
             return "/"
         case .listAttributes:
@@ -136,6 +141,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
         case .listContainerInstances:
             return "/"
         case .listServices:
+            return "/"
+        case .listServicesByNamespace:
             return "/"
         case .listTagsForResource:
             return "/"
@@ -186,6 +193,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
         case .updateService:
             return "/"
         case .updateServicePrimaryTaskSet:
+            return "/"
+        case .updateTaskProtection:
             return "/"
         case .updateTaskSet:
             return "/"

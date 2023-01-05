@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the SimpleWorkflow service.
  */
-public protocol SimpleWorkflowClientProtocol {
+public protocol SimpleWorkflowClientProtocol: SimpleWorkflowClientProtocolV2 {
     typealias CountClosedWorkflowExecutionsSyncType = (
             _ input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) throws -> SimpleWorkflowModel.WorkflowExecutionCount
     typealias CountClosedWorkflowExecutionsAsyncType = (

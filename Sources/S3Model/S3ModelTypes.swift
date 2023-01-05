@@ -172,6 +172,7 @@ public enum BucketLocationConstraint: String, Codable, CustomStringConvertible {
     case apSouth1 = "ap-south-1"
     case apSoutheast1 = "ap-southeast-1"
     case apSoutheast2 = "ap-southeast-2"
+    case apSoutheast3 = "ap-southeast-3"
     case caCentral1 = "ca-central-1"
     case cnNorth1 = "cn-north-1"
     case cnNorthwest1 = "cn-northwest-1"

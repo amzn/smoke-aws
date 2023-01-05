@@ -385,7 +385,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - completion: The DeleteStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The DeleteStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn.
+           The possible errors are: invalidArn, validation.
      */
     public func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
@@ -418,7 +418,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated DeleteStateMachineInput object being passed to this operation.
      - Returns: The DeleteStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn.
+     - Throws: invalidArn, validation.
      */
     public func deleteStateMachineSync(
             input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput {
@@ -572,6 +572,76 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExecution,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeMapRun operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeMapRunInput object being passed to this operation.
+         - completion: The DescribeMapRunOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeMapRunOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound.
+     */
+    public func describeMapRunAsync(
+            input: StepFunctionsModel.DescribeMapRunInput, 
+            completion: @escaping (Result<StepFunctionsModel.DescribeMapRunOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeMapRun.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeMapRun,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeMapRunOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeMapRun operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeMapRunInput object being passed to this operation.
+     - Returns: The DescribeMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func describeMapRunSync(
+            input: StepFunctionsModel.DescribeMapRunInput) throws -> StepFunctionsModel.DescribeMapRunOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeMapRun.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeMapRun,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeMapRunOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -945,7 +1015,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - completion: The ListExecutionsOutput object or an error will be passed to this 
            callback when the operation is complete. The ListExecutionsOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+           The possible errors are: invalidArn, invalidToken, resourceNotFound, stateMachineDoesNotExist, stateMachineTypeNotSupported, validation.
      */
     public func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
@@ -978,7 +1048,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated ListExecutionsInput object being passed to this operation.
      - Returns: The ListExecutionsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDoesNotExist, stateMachineTypeNotSupported, validation.
      */
     public func listExecutionsSync(
             input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput {
@@ -992,6 +1062,76 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExecutions,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListMapRuns operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMapRunsInput object being passed to this operation.
+         - completion: The ListMapRunsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListMapRunsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    public func listMapRunsAsync(
+            input: StepFunctionsModel.ListMapRunsInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListMapRunsOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listMapRuns.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMapRuns,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListMapRunsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListMapRuns operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMapRunsInput object being passed to this operation.
+     - Returns: The ListMapRunsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    public func listMapRunsSync(
+            input: StepFunctionsModel.ListMapRunsInput) throws -> StepFunctionsModel.ListMapRunsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listMapRuns.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMapRuns,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListMapRunsOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -1365,7 +1505,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - completion: The StartExecutionOutput object or an error will be passed to this 
            callback when the operation is complete. The StartExecutionOutput
            object will be validated before being returned to caller.
-           The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
+           The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
@@ -1398,7 +1538,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated StartExecutionInput object being passed to this operation.
      - Returns: The StartExecutionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func startExecutionSync(
             input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput {
@@ -1505,7 +1645,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - completion: The StopExecutionOutput object or an error will be passed to this 
            callback when the operation is complete. The StopExecutionOutput
            object will be validated before being returned to caller.
-           The possible errors are: executionDoesNotExist, invalidArn.
+           The possible errors are: executionDoesNotExist, invalidArn, validation.
      */
     public func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
@@ -1538,7 +1678,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated StopExecutionInput object being passed to this operation.
      - Returns: The StopExecutionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: executionDoesNotExist, invalidArn.
+     - Throws: executionDoesNotExist, invalidArn, validation.
      */
     public func stopExecutionSync(
             input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput {
@@ -1708,6 +1848,76 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     }
 
     /**
+     Invokes the UpdateMapRun operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateMapRunInput object being passed to this operation.
+         - completion: The UpdateMapRunOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateMapRunOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound, validation.
+     */
+    public func updateMapRunAsync(
+            input: StepFunctionsModel.UpdateMapRunInput, 
+            completion: @escaping (Result<StepFunctionsModel.UpdateMapRunOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.updateMapRun.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateMapRun,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateMapRunOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateMapRun operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateMapRunInput object being passed to this operation.
+     - Returns: The UpdateMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    public func updateMapRunSync(
+            input: StepFunctionsModel.UpdateMapRunInput) throws -> StepFunctionsModel.UpdateMapRunOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.updateMapRun.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateMapRun,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateMapRunOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the UpdateStateMachine operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1715,7 +1925,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - completion: The UpdateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
@@ -1748,7 +1958,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachineSync(
             input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {
@@ -1776,4 +1986,943 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the CreateActivity operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateActivityInput object being passed to this operation.
+     - Returns: The CreateActivityOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: activityLimitExceeded, invalidName, tooManyTags.
+     */
+    public func createActivity(
+            input: StepFunctionsModel.CreateActivityInput) async throws -> StepFunctionsModel.CreateActivityOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.createActivity.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createActivity,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateActivityOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateStateMachine operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateStateMachineInput object being passed to this operation.
+     - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+     */
+    public func createStateMachine(
+            input: StepFunctionsModel.CreateStateMachineInput) async throws -> StepFunctionsModel.CreateStateMachineOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.createStateMachine.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStateMachine,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteActivity operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteActivityInput object being passed to this operation.
+     - Returns: The DeleteActivityOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn.
+     */
+    public func deleteActivity(
+            input: StepFunctionsModel.DeleteActivityInput) async throws -> StepFunctionsModel.DeleteActivityOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.deleteActivity.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteActivity,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteActivityOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteStateMachine operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineInput object being passed to this operation.
+     - Returns: The DeleteStateMachineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, validation.
+     */
+    public func deleteStateMachine(
+            input: StepFunctionsModel.DeleteStateMachineInput) async throws -> StepFunctionsModel.DeleteStateMachineOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.deleteStateMachine.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachine,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeActivity operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeActivityInput object being passed to this operation.
+     - Returns: The DescribeActivityOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: activityDoesNotExist, invalidArn.
+     */
+    public func describeActivity(
+            input: StepFunctionsModel.DescribeActivityInput) async throws -> StepFunctionsModel.DescribeActivityOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeActivity.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeActivity,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeActivityOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeExecutionInput object being passed to this operation.
+     - Returns: The DescribeExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn.
+     */
+    public func describeExecution(
+            input: StepFunctionsModel.DescribeExecutionInput) async throws -> StepFunctionsModel.DescribeExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeMapRun operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeMapRunInput object being passed to this operation.
+     - Returns: The DescribeMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func describeMapRun(
+            input: StepFunctionsModel.DescribeMapRunInput) async throws -> StepFunctionsModel.DescribeMapRunOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeMapRun.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeMapRun,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeMapRunOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStateMachine operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineInput object being passed to this operation.
+     - Returns: The DescribeStateMachineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, stateMachineDoesNotExist.
+     */
+    public func describeStateMachine(
+            input: StepFunctionsModel.DescribeStateMachineInput) async throws -> StepFunctionsModel.DescribeStateMachineOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeStateMachine.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachine,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStateMachineForExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineForExecutionInput object being passed to this operation.
+     - Returns: The DescribeStateMachineForExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn.
+     */
+    public func describeStateMachineForExecution(
+            input: StepFunctionsModel.DescribeStateMachineForExecutionInput) async throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeStateMachineForExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachineForExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeStateMachineForExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetActivityTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetActivityTaskInput object being passed to this operation.
+     - Returns: The GetActivityTaskOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: activityDoesNotExist, activityWorkerLimitExceeded, invalidArn.
+     */
+    public func getActivityTask(
+            input: StepFunctionsModel.GetActivityTaskInput) async throws -> StepFunctionsModel.GetActivityTaskOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.getActivityTask.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getActivityTask,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetActivityTaskOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetExecutionHistory operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetExecutionHistoryInput object being passed to this operation.
+     - Returns: The GetExecutionHistoryOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    public func getExecutionHistory(
+            input: StepFunctionsModel.GetExecutionHistoryInput) async throws -> StepFunctionsModel.GetExecutionHistoryOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.getExecutionHistory.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getExecutionHistory,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetExecutionHistoryOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListActivities operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListActivitiesInput object being passed to this operation.
+     - Returns: The ListActivitiesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidToken.
+     */
+    public func listActivities(
+            input: StepFunctionsModel.ListActivitiesInput) async throws -> StepFunctionsModel.ListActivitiesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listActivities.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listActivities,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListActivitiesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListExecutions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListExecutionsInput object being passed to this operation.
+     - Returns: The ListExecutionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDoesNotExist, stateMachineTypeNotSupported, validation.
+     */
+    public func listExecutions(
+            input: StepFunctionsModel.ListExecutionsInput) async throws -> StepFunctionsModel.ListExecutionsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listExecutions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExecutions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExecutionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListMapRuns operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListMapRunsInput object being passed to this operation.
+     - Returns: The ListMapRunsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    public func listMapRuns(
+            input: StepFunctionsModel.ListMapRunsInput) async throws -> StepFunctionsModel.ListMapRunsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listMapRuns.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMapRuns,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListMapRunsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStateMachines operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachinesInput object being passed to this operation.
+     - Returns: The ListStateMachinesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidToken.
+     */
+    public func listStateMachines(
+            input: StepFunctionsModel.ListStateMachinesInput) async throws -> StepFunctionsModel.ListStateMachinesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listStateMachines.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachines,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListStateMachinesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTagsForResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTagsForResourceInput object being passed to this operation.
+     - Returns: The ListTagsForResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func listTagsForResource(
+            input: StepFunctionsModel.ListTagsForResourceInput) async throws -> StepFunctionsModel.ListTagsForResourceOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listTagsForResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SendTaskFailure operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SendTaskFailureInput object being passed to this operation.
+     - Returns: The SendTaskFailureOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
+     */
+    public func sendTaskFailure(
+            input: StepFunctionsModel.SendTaskFailureInput) async throws -> StepFunctionsModel.SendTaskFailureOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.sendTaskFailure.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskFailure,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = SendTaskFailureOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SendTaskHeartbeat operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SendTaskHeartbeatInput object being passed to this operation.
+     - Returns: The SendTaskHeartbeatOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidToken, taskDoesNotExist, taskTimedOut.
+     */
+    public func sendTaskHeartbeat(
+            input: StepFunctionsModel.SendTaskHeartbeatInput) async throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.sendTaskHeartbeat.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskHeartbeat,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = SendTaskHeartbeatOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SendTaskSuccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SendTaskSuccessInput object being passed to this operation.
+     - Returns: The SendTaskSuccessOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOutput, invalidToken, taskDoesNotExist, taskTimedOut.
+     */
+    public func sendTaskSuccess(
+            input: StepFunctionsModel.SendTaskSuccessInput) async throws -> StepFunctionsModel.SendTaskSuccessOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.sendTaskSuccess.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.sendTaskSuccess,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = SendTaskSuccessOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartExecutionInput object being passed to this operation.
+     - Returns: The StartExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    public func startExecution(
+            input: StepFunctionsModel.StartExecutionInput) async throws -> StepFunctionsModel.StartExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.startExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StartExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartSyncExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartSyncExecutionInput object being passed to this operation.
+     - Returns: The StartSyncExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     */
+    public func startSyncExecution(
+            input: StepFunctionsModel.StartSyncExecutionInput) async throws -> StepFunctionsModel.StartSyncExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.startSyncExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startSyncExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StartSyncExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StopExecution operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StopExecutionInput object being passed to this operation.
+     - Returns: The StopExecutionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn, validation.
+     */
+    public func stopExecution(
+            input: StepFunctionsModel.StopExecutionInput) async throws -> StepFunctionsModel.StopExecutionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.stopExecution.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopExecution,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = StopExecutionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Returns: The TagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, tooManyTags.
+     */
+    public func tagResource(
+            input: StepFunctionsModel.TagResourceInput) async throws -> StepFunctionsModel.TagResourceOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.tagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UntagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Returns: The UntagResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func untagResource(
+            input: StepFunctionsModel.UntagResourceInput) async throws -> StepFunctionsModel.UntagResourceOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.untagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateMapRun operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateMapRunInput object being passed to this operation.
+     - Returns: The UpdateMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    public func updateMapRun(
+            input: StepFunctionsModel.UpdateMapRunInput) async throws -> StepFunctionsModel.UpdateMapRunOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.updateMapRun.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateMapRun,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateMapRunOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateStateMachine operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineInput object being passed to this operation.
+     - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    public func updateStateMachine(
+            input: StepFunctionsModel.UpdateStateMachineInput) async throws -> StepFunctionsModel.UpdateStateMachineOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.updateStateMachine.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStateMachine,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

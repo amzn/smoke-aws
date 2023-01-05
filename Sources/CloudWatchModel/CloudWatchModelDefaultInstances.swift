@@ -1204,9 +1204,11 @@ public extension ListMetricsInput {
     static let __default: CloudWatchModel.ListMetricsInput = {
         let defaultInstance = CloudWatchModel.ListMetricsInput(
             dimensions: nil,
+            includeLinkedAccounts: nil,
             metricName: nil,
             namespace: nil,
             nextToken: nil,
+            owningAccount: nil,
             recentlyActive: nil)
 
         return defaultInstance
@@ -1220,7 +1222,8 @@ public extension ListMetricsOutput {
     static let __default: CloudWatchModel.ListMetricsOutput = {
         let defaultInstance = CloudWatchModel.ListMetricsOutput(
             metrics: nil,
-            nextToken: nil)
+            nextToken: nil,
+            owningAccounts: nil)
 
         return defaultInstance
     }()
@@ -1359,6 +1362,7 @@ public extension MetricAlarm {
             dimensions: nil,
             evaluateLowSampleCountPercentile: nil,
             evaluationPeriods: nil,
+            evaluationState: nil,
             extendedStatistic: nil,
             insufficientDataActions: nil,
             metricName: nil,
@@ -1368,6 +1372,7 @@ public extension MetricAlarm {
             period: nil,
             stateReason: nil,
             stateReasonData: nil,
+            stateTransitionedTimestamp: nil,
             stateUpdatedTimestamp: nil,
             stateValue: nil,
             statistic: nil,

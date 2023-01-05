@@ -5265,4 +5265,2618 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the ActivateType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ActivateTypeInput object being passed to this operation.
+     - Returns: The ActivateTypeOutputForActivateType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func activateType(
+            input: CloudformationModel.ActivateTypeInput) async throws -> CloudformationModel.ActivateTypeOutputForActivateType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.activateType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ActivateTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.activateType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the BatchDescribeTypeConfigurations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated BatchDescribeTypeConfigurationsInput object being passed to this operation.
+     - Returns: The BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeConfigurationNotFound.
+     */
+    public func batchDescribeTypeConfigurations(
+            input: CloudformationModel.BatchDescribeTypeConfigurationsInput) async throws -> CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchDescribeTypeConfigurations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = BatchDescribeTypeConfigurationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.batchDescribeTypeConfigurations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CancelUpdateStack operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CancelUpdateStackInput object being passed to this operation.
+     - Throws: tokenAlreadyExists.
+     */
+    public func cancelUpdateStack(
+            input: CloudformationModel.CancelUpdateStackInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.cancelUpdateStack,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CancelUpdateStackOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.cancelUpdateStack.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ContinueUpdateRollback operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ContinueUpdateRollbackInput object being passed to this operation.
+     - Returns: The ContinueUpdateRollbackOutputForContinueUpdateRollback object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: tokenAlreadyExists.
+     */
+    public func continueUpdateRollback(
+            input: CloudformationModel.ContinueUpdateRollbackInput) async throws -> CloudformationModel.ContinueUpdateRollbackOutputForContinueUpdateRollback {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.continueUpdateRollback,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ContinueUpdateRollbackOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.continueUpdateRollback.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateChangeSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateChangeSetInput object being passed to this operation.
+     - Returns: The CreateChangeSetOutputForCreateChangeSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: alreadyExists, insufficientCapabilities, limitExceeded.
+     */
+    public func createChangeSet(
+            input: CloudformationModel.CreateChangeSetInput) async throws -> CloudformationModel.CreateChangeSetOutputForCreateChangeSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createChangeSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateChangeSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.createChangeSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateStack operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateStackInput object being passed to this operation.
+     - Returns: The CreateStackOutputForCreateStack object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: alreadyExists, insufficientCapabilities, limitExceeded, tokenAlreadyExists.
+     */
+    public func createStack(
+            input: CloudformationModel.CreateStackInput) async throws -> CloudformationModel.CreateStackOutputForCreateStack {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStack,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateStackOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.createStack.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateStackInstances operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateStackInstancesInput object being passed to this operation.
+     - Returns: The CreateStackInstancesOutputForCreateStackInstances object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, limitExceeded, operationIdAlreadyExists, operationInProgress, stackSetNotFound, staleRequest.
+     */
+    public func createStackInstances(
+            input: CloudformationModel.CreateStackInstancesInput) async throws -> CloudformationModel.CreateStackInstancesOutputForCreateStackInstances {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStackInstances,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateStackInstancesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.createStackInstances.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateStackSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateStackSetInput object being passed to this operation.
+     - Returns: The CreateStackSetOutputForCreateStackSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: createdButModified, limitExceeded, nameAlreadyExists.
+     */
+    public func createStackSet(
+            input: CloudformationModel.CreateStackSetInput) async throws -> CloudformationModel.CreateStackSetOutputForCreateStackSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStackSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateStackSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.createStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeactivateType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeactivateTypeInput object being passed to this operation.
+     - Returns: The DeactivateTypeOutputForDeactivateType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func deactivateType(
+            input: CloudformationModel.DeactivateTypeInput) async throws -> CloudformationModel.DeactivateTypeOutputForDeactivateType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deactivateType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeactivateTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deactivateType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteChangeSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteChangeSetInput object being passed to this operation.
+     - Returns: The DeleteChangeSetOutputForDeleteChangeSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidChangeSetStatus.
+     */
+    public func deleteChangeSet(
+            input: CloudformationModel.DeleteChangeSetInput) async throws -> CloudformationModel.DeleteChangeSetOutputForDeleteChangeSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteChangeSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteChangeSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deleteChangeSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteStack operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteStackInput object being passed to this operation.
+     - Throws: tokenAlreadyExists.
+     */
+    public func deleteStack(
+            input: CloudformationModel.DeleteStackInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStack,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteStackOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deleteStack.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteStackInstances operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteStackInstancesInput object being passed to this operation.
+     - Returns: The DeleteStackInstancesOutputForDeleteStackInstances object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationIdAlreadyExists, operationInProgress, stackSetNotFound, staleRequest.
+     */
+    public func deleteStackInstances(
+            input: CloudformationModel.DeleteStackInstancesInput) async throws -> CloudformationModel.DeleteStackInstancesOutputForDeleteStackInstances {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStackInstances,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteStackInstancesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deleteStackInstances.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteStackSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteStackSetInput object being passed to this operation.
+     - Returns: The DeleteStackSetOutputForDeleteStackSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationInProgress, stackSetNotEmpty.
+     */
+    public func deleteStackSet(
+            input: CloudformationModel.DeleteStackSetInput) async throws -> CloudformationModel.DeleteStackSetOutputForDeleteStackSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStackSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteStackSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deleteStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeregisterType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeregisterTypeInput object being passed to this operation.
+     - Returns: The DeregisterTypeOutputForDeregisterType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func deregisterType(
+            input: CloudformationModel.DeregisterTypeInput) async throws -> CloudformationModel.DeregisterTypeOutputForDeregisterType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deregisterType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeregisterTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deregisterType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeAccountLimits operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeAccountLimitsInput object being passed to this operation.
+     - Returns: The DescribeAccountLimitsOutputForDescribeAccountLimits object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAccountLimits(
+            input: CloudformationModel.DescribeAccountLimitsInput) async throws -> CloudformationModel.DescribeAccountLimitsOutputForDescribeAccountLimits {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeAccountLimits,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeAccountLimitsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeAccountLimits.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeChangeSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetInput object being passed to this operation.
+     - Returns: The DescribeChangeSetOutputForDescribeChangeSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: changeSetNotFound.
+     */
+    public func describeChangeSet(
+            input: CloudformationModel.DescribeChangeSetInput) async throws -> CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeChangeSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeChangeSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeChangeSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeChangeSetHooks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeChangeSetHooksInput object being passed to this operation.
+     - Returns: The DescribeChangeSetHooksOutputForDescribeChangeSetHooks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: changeSetNotFound.
+     */
+    public func describeChangeSetHooks(
+            input: CloudformationModel.DescribeChangeSetHooksInput) async throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeChangeSetHooks,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeChangeSetHooksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeChangeSetHooks.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribePublisher operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribePublisherInput object being passed to this operation.
+     - Returns: The DescribePublisherOutputForDescribePublisher object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func describePublisher(
+            input: CloudformationModel.DescribePublisherInput) async throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describePublisher,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribePublisherOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describePublisher.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStackDriftDetectionStatus operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStackDriftDetectionStatusInput object being passed to this operation.
+     - Returns: The DescribeStackDriftDetectionStatusOutputForDescribeStackDriftDetectionStatus object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeStackDriftDetectionStatus(
+            input: CloudformationModel.DescribeStackDriftDetectionStatusInput) async throws -> CloudformationModel.DescribeStackDriftDetectionStatusOutputForDescribeStackDriftDetectionStatus {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStackDriftDetectionStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStackDriftDetectionStatusOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStackDriftDetectionStatus.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStackEvents operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStackEventsInput object being passed to this operation.
+     - Returns: The DescribeStackEventsOutputForDescribeStackEvents object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeStackEvents(
+            input: CloudformationModel.DescribeStackEventsInput) async throws -> CloudformationModel.DescribeStackEventsOutputForDescribeStackEvents {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStackEvents,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStackEventsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStackEvents.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStackInstance operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStackInstanceInput object being passed to this operation.
+     - Returns: The DescribeStackInstanceOutputForDescribeStackInstance object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: stackInstanceNotFound, stackSetNotFound.
+     */
+    public func describeStackInstance(
+            input: CloudformationModel.DescribeStackInstanceInput) async throws -> CloudformationModel.DescribeStackInstanceOutputForDescribeStackInstance {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStackInstance,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStackInstanceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStackInstance.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStackResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStackResourceInput object being passed to this operation.
+     - Returns: The DescribeStackResourceOutputForDescribeStackResource object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeStackResource(
+            input: CloudformationModel.DescribeStackResourceInput) async throws -> CloudformationModel.DescribeStackResourceOutputForDescribeStackResource {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStackResource,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStackResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStackResource.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStackResourceDrifts operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStackResourceDriftsInput object being passed to this operation.
+     - Returns: The DescribeStackResourceDriftsOutputForDescribeStackResourceDrifts object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeStackResourceDrifts(
+            input: CloudformationModel.DescribeStackResourceDriftsInput) async throws -> CloudformationModel.DescribeStackResourceDriftsOutputForDescribeStackResourceDrifts {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStackResourceDrifts,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStackResourceDriftsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStackResourceDrifts.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStackResources operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStackResourcesInput object being passed to this operation.
+     - Returns: The DescribeStackResourcesOutputForDescribeStackResources object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeStackResources(
+            input: CloudformationModel.DescribeStackResourcesInput) async throws -> CloudformationModel.DescribeStackResourcesOutputForDescribeStackResources {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStackResources,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStackResourcesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStackResources.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStackSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStackSetInput object being passed to this operation.
+     - Returns: The DescribeStackSetOutputForDescribeStackSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: stackSetNotFound.
+     */
+    public func describeStackSet(
+            input: CloudformationModel.DescribeStackSetInput) async throws -> CloudformationModel.DescribeStackSetOutputForDescribeStackSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStackSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStackSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStackSetOperation operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStackSetOperationInput object being passed to this operation.
+     - Returns: The DescribeStackSetOperationOutputForDescribeStackSetOperation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationNotFound, stackSetNotFound.
+     */
+    public func describeStackSetOperation(
+            input: CloudformationModel.DescribeStackSetOperationInput) async throws -> CloudformationModel.DescribeStackSetOperationOutputForDescribeStackSetOperation {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStackSetOperation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStackSetOperationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStackSetOperation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStacks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStacksInput object being passed to this operation.
+     - Returns: The DescribeStacksOutputForDescribeStacks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeStacks(
+            input: CloudformationModel.DescribeStacksInput) async throws -> CloudformationModel.DescribeStacksOutputForDescribeStacks {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStacks,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeStacksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeStacks.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeTypeInput object being passed to this operation.
+     - Returns: The DescribeTypeOutputForDescribeType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func describeType(
+            input: CloudformationModel.DescribeTypeInput) async throws -> CloudformationModel.DescribeTypeOutputForDescribeType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTypeRegistration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeTypeRegistrationInput object being passed to this operation.
+     - Returns: The DescribeTypeRegistrationOutputForDescribeTypeRegistration object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func describeTypeRegistration(
+            input: CloudformationModel.DescribeTypeRegistrationInput) async throws -> CloudformationModel.DescribeTypeRegistrationOutputForDescribeTypeRegistration {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTypeRegistration,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeTypeRegistrationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeTypeRegistration.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DetectStackDrift operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DetectStackDriftInput object being passed to this operation.
+     - Returns: The DetectStackDriftOutputForDetectStackDrift object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func detectStackDrift(
+            input: CloudformationModel.DetectStackDriftInput) async throws -> CloudformationModel.DetectStackDriftOutputForDetectStackDrift {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.detectStackDrift,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DetectStackDriftOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.detectStackDrift.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DetectStackResourceDrift operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DetectStackResourceDriftInput object being passed to this operation.
+     - Returns: The DetectStackResourceDriftOutputForDetectStackResourceDrift object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func detectStackResourceDrift(
+            input: CloudformationModel.DetectStackResourceDriftInput) async throws -> CloudformationModel.DetectStackResourceDriftOutputForDetectStackResourceDrift {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.detectStackResourceDrift,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DetectStackResourceDriftOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.detectStackResourceDrift.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DetectStackSetDrift operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DetectStackSetDriftInput object being passed to this operation.
+     - Returns: The DetectStackSetDriftOutputForDetectStackSetDrift object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationInProgress, stackSetNotFound.
+     */
+    public func detectStackSetDrift(
+            input: CloudformationModel.DetectStackSetDriftInput) async throws -> CloudformationModel.DetectStackSetDriftOutputForDetectStackSetDrift {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.detectStackSetDrift,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DetectStackSetDriftOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.detectStackSetDrift.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the EstimateTemplateCost operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated EstimateTemplateCostInput object being passed to this operation.
+     - Returns: The EstimateTemplateCostOutputForEstimateTemplateCost object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func estimateTemplateCost(
+            input: CloudformationModel.EstimateTemplateCostInput) async throws -> CloudformationModel.EstimateTemplateCostOutputForEstimateTemplateCost {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.estimateTemplateCost,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EstimateTemplateCostOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.estimateTemplateCost.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ExecuteChangeSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ExecuteChangeSetInput object being passed to this operation.
+     - Returns: The ExecuteChangeSetOutputForExecuteChangeSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: changeSetNotFound, insufficientCapabilities, invalidChangeSetStatus, tokenAlreadyExists.
+     */
+    public func executeChangeSet(
+            input: CloudformationModel.ExecuteChangeSetInput) async throws -> CloudformationModel.ExecuteChangeSetOutputForExecuteChangeSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.executeChangeSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ExecuteChangeSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.executeChangeSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetStackPolicy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetStackPolicyInput object being passed to this operation.
+     - Returns: The GetStackPolicyOutputForGetStackPolicy object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getStackPolicy(
+            input: CloudformationModel.GetStackPolicyInput) async throws -> CloudformationModel.GetStackPolicyOutputForGetStackPolicy {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getStackPolicy,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetStackPolicyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.getStackPolicy.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetTemplate operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetTemplateInput object being passed to this operation.
+     - Returns: The GetTemplateOutputForGetTemplate object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: changeSetNotFound.
+     */
+    public func getTemplate(
+            input: CloudformationModel.GetTemplateInput) async throws -> CloudformationModel.GetTemplateOutputForGetTemplate {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getTemplate,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetTemplateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.getTemplate.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetTemplateSummary operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetTemplateSummaryInput object being passed to this operation.
+     - Returns: The GetTemplateSummaryOutputForGetTemplateSummary object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: stackSetNotFound.
+     */
+    public func getTemplateSummary(
+            input: CloudformationModel.GetTemplateSummaryInput) async throws -> CloudformationModel.GetTemplateSummaryOutputForGetTemplateSummary {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getTemplateSummary,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetTemplateSummaryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.getTemplateSummary.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ImportStacksToStackSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ImportStacksToStackSetInput object being passed to this operation.
+     - Returns: The ImportStacksToStackSetOutputForImportStacksToStackSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, limitExceeded, operationIdAlreadyExists, operationInProgress, stackNotFound, stackSetNotFound, staleRequest.
+     */
+    public func importStacksToStackSet(
+            input: CloudformationModel.ImportStacksToStackSetInput) async throws -> CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importStacksToStackSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ImportStacksToStackSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.importStacksToStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListChangeSets operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListChangeSetsInput object being passed to this operation.
+     - Returns: The ListChangeSetsOutputForListChangeSets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listChangeSets(
+            input: CloudformationModel.ListChangeSetsInput) async throws -> CloudformationModel.ListChangeSetsOutputForListChangeSets {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listChangeSets,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListChangeSetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listChangeSets.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListExports operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListExportsInput object being passed to this operation.
+     - Returns: The ListExportsOutputForListExports object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listExports(
+            input: CloudformationModel.ListExportsInput) async throws -> CloudformationModel.ListExportsOutputForListExports {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExports,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListExportsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listExports.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListImports operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+     - Returns: The ListImportsOutputForListImports object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listImports(
+            input: CloudformationModel.ListImportsInput) async throws -> CloudformationModel.ListImportsOutputForListImports {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listImports,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListImportsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listImports.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStackInstances operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStackInstancesInput object being passed to this operation.
+     - Returns: The ListStackInstancesOutputForListStackInstances object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: stackSetNotFound.
+     */
+    public func listStackInstances(
+            input: CloudformationModel.ListStackInstancesInput) async throws -> CloudformationModel.ListStackInstancesOutputForListStackInstances {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStackInstances,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStackInstancesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStackInstances.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStackResources operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStackResourcesInput object being passed to this operation.
+     - Returns: The ListStackResourcesOutputForListStackResources object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listStackResources(
+            input: CloudformationModel.ListStackResourcesInput) async throws -> CloudformationModel.ListStackResourcesOutputForListStackResources {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStackResources,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStackResourcesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStackResources.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStackSetOperationResults operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStackSetOperationResultsInput object being passed to this operation.
+     - Returns: The ListStackSetOperationResultsOutputForListStackSetOperationResults object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationNotFound, stackSetNotFound.
+     */
+    public func listStackSetOperationResults(
+            input: CloudformationModel.ListStackSetOperationResultsInput) async throws -> CloudformationModel.ListStackSetOperationResultsOutputForListStackSetOperationResults {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStackSetOperationResults,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStackSetOperationResultsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStackSetOperationResults.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStackSetOperations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStackSetOperationsInput object being passed to this operation.
+     - Returns: The ListStackSetOperationsOutputForListStackSetOperations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: stackSetNotFound.
+     */
+    public func listStackSetOperations(
+            input: CloudformationModel.ListStackSetOperationsInput) async throws -> CloudformationModel.ListStackSetOperationsOutputForListStackSetOperations {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStackSetOperations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStackSetOperationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStackSetOperations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStackSets operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStackSetsInput object being passed to this operation.
+     - Returns: The ListStackSetsOutputForListStackSets object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listStackSets(
+            input: CloudformationModel.ListStackSetsInput) async throws -> CloudformationModel.ListStackSetsOutputForListStackSets {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStackSets,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStackSetsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStackSets.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStacks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStacksInput object being passed to this operation.
+     - Returns: The ListStacksOutputForListStacks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func listStacks(
+            input: CloudformationModel.ListStacksInput) async throws -> CloudformationModel.ListStacksOutputForListStacks {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStacks,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStacksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStacks.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTypeRegistrations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTypeRegistrationsInput object being passed to this operation.
+     - Returns: The ListTypeRegistrationsOutputForListTypeRegistrations object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func listTypeRegistrations(
+            input: CloudformationModel.ListTypeRegistrationsInput) async throws -> CloudformationModel.ListTypeRegistrationsOutputForListTypeRegistrations {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTypeRegistrations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListTypeRegistrationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listTypeRegistrations.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTypeVersions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTypeVersionsInput object being passed to this operation.
+     - Returns: The ListTypeVersionsOutputForListTypeVersions object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func listTypeVersions(
+            input: CloudformationModel.ListTypeVersionsInput) async throws -> CloudformationModel.ListTypeVersionsOutputForListTypeVersions {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTypeVersions,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListTypeVersionsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listTypeVersions.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTypes operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTypesInput object being passed to this operation.
+     - Returns: The ListTypesOutputForListTypes object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func listTypes(
+            input: CloudformationModel.ListTypesInput) async throws -> CloudformationModel.ListTypesOutputForListTypes {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTypes,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListTypesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listTypes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PublishType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PublishTypeInput object being passed to this operation.
+     - Returns: The PublishTypeOutputForPublishType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func publishType(
+            input: CloudformationModel.PublishTypeInput) async throws -> CloudformationModel.PublishTypeOutputForPublishType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = PublishTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.publishType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RecordHandlerProgress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RecordHandlerProgressInput object being passed to this operation.
+     - Returns: The RecordHandlerProgressOutputForRecordHandlerProgress object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidStateTransition, operationStatusCheckFailed.
+     */
+    public func recordHandlerProgress(
+            input: CloudformationModel.RecordHandlerProgressInput) async throws -> CloudformationModel.RecordHandlerProgressOutputForRecordHandlerProgress {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.recordHandlerProgress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RecordHandlerProgressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.recordHandlerProgress.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RegisterPublisher operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RegisterPublisherInput object being passed to this operation.
+     - Returns: The RegisterPublisherOutputForRegisterPublisher object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func registerPublisher(
+            input: CloudformationModel.RegisterPublisherInput) async throws -> CloudformationModel.RegisterPublisherOutputForRegisterPublisher {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerPublisher,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterPublisherOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.registerPublisher.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RegisterType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RegisterTypeInput object being passed to this operation.
+     - Returns: The RegisterTypeOutputForRegisterType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry.
+     */
+    public func registerType(
+            input: CloudformationModel.RegisterTypeInput) async throws -> CloudformationModel.RegisterTypeOutputForRegisterType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.registerType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RegisterTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.registerType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RollbackStack operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RollbackStackInput object being passed to this operation.
+     - Returns: The RollbackStackOutputForRollbackStack object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: tokenAlreadyExists.
+     */
+    public func rollbackStack(
+            input: CloudformationModel.RollbackStackInput) async throws -> CloudformationModel.RollbackStackOutputForRollbackStack {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.rollbackStack,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = RollbackStackOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.rollbackStack.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetStackPolicy operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetStackPolicyInput object being passed to this operation.
+     */
+    public func setStackPolicy(
+            input: CloudformationModel.SetStackPolicyInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setStackPolicy,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetStackPolicyOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.setStackPolicy.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetTypeConfiguration operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetTypeConfigurationInput object being passed to this operation.
+     - Returns: The SetTypeConfigurationOutputForSetTypeConfiguration object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func setTypeConfiguration(
+            input: CloudformationModel.SetTypeConfigurationInput) async throws -> CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setTypeConfiguration,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetTypeConfigurationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.setTypeConfiguration.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SetTypeDefaultVersion operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SetTypeDefaultVersionInput object being passed to this operation.
+     - Returns: The SetTypeDefaultVersionOutputForSetTypeDefaultVersion object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func setTypeDefaultVersion(
+            input: CloudformationModel.SetTypeDefaultVersionInput) async throws -> CloudformationModel.SetTypeDefaultVersionOutputForSetTypeDefaultVersion {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.setTypeDefaultVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SetTypeDefaultVersionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.setTypeDefaultVersion.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SignalResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SignalResourceInput object being passed to this operation.
+     */
+    public func signalResource(
+            input: CloudformationModel.SignalResourceInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.signalResource,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SignalResourceOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.signalResource.rawValue,
+            version: apiVersion)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StopStackSetOperation operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StopStackSetOperationInput object being passed to this operation.
+     - Returns: The StopStackSetOperationOutputForStopStackSetOperation object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound, stackSetNotFound.
+     */
+    public func stopStackSetOperation(
+            input: CloudformationModel.StopStackSetOperationInput) async throws -> CloudformationModel.StopStackSetOperationOutputForStopStackSetOperation {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.stopStackSetOperation,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StopStackSetOperationOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.stopStackSetOperation.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TestType operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TestTypeInput object being passed to this operation.
+     - Returns: The TestTypeOutputForTestType object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: cFNRegistry, typeNotFound.
+     */
+    public func testType(
+            input: CloudformationModel.TestTypeInput) async throws -> CloudformationModel.TestTypeOutputForTestType {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.testType,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = TestTypeOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.testType.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateStack operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateStackInput object being passed to this operation.
+     - Returns: The UpdateStackOutputForUpdateStack object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: insufficientCapabilities, tokenAlreadyExists.
+     */
+    public func updateStack(
+            input: CloudformationModel.UpdateStackInput) async throws -> CloudformationModel.UpdateStackOutputForUpdateStack {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStack,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UpdateStackOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.updateStack.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateStackInstances operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateStackInstancesInput object being passed to this operation.
+     - Returns: The UpdateStackInstancesOutputForUpdateStackInstances object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationIdAlreadyExists, operationInProgress, stackInstanceNotFound, stackSetNotFound, staleRequest.
+     */
+    public func updateStackInstances(
+            input: CloudformationModel.UpdateStackInstancesInput) async throws -> CloudformationModel.UpdateStackInstancesOutputForUpdateStackInstances {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStackInstances,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UpdateStackInstancesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.updateStackInstances.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateStackSet operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateStackSetInput object being passed to this operation.
+     - Returns: The UpdateStackSetOutputForUpdateStackSet object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationIdAlreadyExists, operationInProgress, stackInstanceNotFound, stackSetNotFound, staleRequest.
+     */
+    public func updateStackSet(
+            input: CloudformationModel.UpdateStackSetInput) async throws -> CloudformationModel.UpdateStackSetOutputForUpdateStackSet {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStackSet,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UpdateStackSetOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.updateStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateTerminationProtection operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateTerminationProtectionInput object being passed to this operation.
+     - Returns: The UpdateTerminationProtectionOutputForUpdateTerminationProtection object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func updateTerminationProtection(
+            input: CloudformationModel.UpdateTerminationProtectionInput) async throws -> CloudformationModel.UpdateTerminationProtectionOutputForUpdateTerminationProtection {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateTerminationProtection,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UpdateTerminationProtectionOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.updateTerminationProtection.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ValidateTemplate operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ValidateTemplateInput object being passed to this operation.
+     - Returns: The ValidateTemplateOutputForValidateTemplate object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func validateTemplate(
+            input: CloudformationModel.ValidateTemplateInput) async throws -> CloudformationModel.ValidateTemplateOutputForValidateTemplate {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.validateTemplate,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ValidateTemplateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.validateTemplate.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

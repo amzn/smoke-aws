@@ -108,7 +108,7 @@ public extension RDSClientProtocol {
 
      - Parameters:
          - input: The validated AddTagsToResourceMessage object being passed to this operation.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+     - Throws: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     func addTagsToResource(input: RDSModel.AddTagsToResourceMessage) async throws {
         return try await withCheckedThrowingContinuation { cont in
@@ -370,13 +370,40 @@ public extension RDSClientProtocol {
     }
 
     /**
+     Invokes the CreateBlueGreenDeployment operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateBlueGreenDeploymentRequest object being passed to this operation.
+     - Returns: The CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: blueGreenDeploymentAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBInstanceNotFound, dBParameterGroupNotFound, instanceQuotaExceeded, invalidDBClusterState, invalidDBInstanceState, sourceClusterNotSupported, sourceDatabaseNotSupported.
+     */
+    func createBlueGreenDeployment(input: RDSModel.CreateBlueGreenDeploymentRequest) async throws
+     -> RDSModel.CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try createBlueGreenDeploymentAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the CreateCustomDBEngineVersion operation and asynchronously returning the response.
 
      - Parameters:
          - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
      - Returns: The DBEngineVersionForCreateCustomDBEngineVersion object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, kMSKeyNotAccessible.
+     - Throws: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, ec2ImagePropertiesNotSupported, kMSKeyNotAccessible.
      */
     func createCustomDBEngineVersion(input: RDSModel.CreateCustomDBEngineVersionMessage) async throws
      -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion {
@@ -511,7 +538,7 @@ public extension RDSClientProtocol {
          - input: The validated CreateDBInstanceMessage object being passed to this operation.
      - Returns: The CreateDBInstanceResultForCreateDBInstance object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, certificateNotFound, dBClusterNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstance(input: RDSModel.CreateDBInstanceMessage) async throws
      -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
@@ -788,6 +815,33 @@ public extension RDSClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try createOptionGroupAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteBlueGreenDeployment operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteBlueGreenDeploymentRequest object being passed to this operation.
+     - Returns: The DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: blueGreenDeploymentNotFound, invalidBlueGreenDeploymentState.
+     */
+    func deleteBlueGreenDeployment(input: RDSModel.DeleteBlueGreenDeploymentRequest) async throws
+     -> RDSModel.DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteBlueGreenDeploymentAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -1253,6 +1307,33 @@ public extension RDSClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAccountAttributesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeBlueGreenDeployments operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeBlueGreenDeploymentsRequest object being passed to this operation.
+     - Returns: The DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: blueGreenDeploymentNotFound.
+     */
+    func describeBlueGreenDeployments(input: RDSModel.DescribeBlueGreenDeploymentsRequest) async throws
+     -> RDSModel.DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeBlueGreenDeploymentsAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -2345,7 +2426,7 @@ public extension RDSClientProtocol {
          - input: The validated ListTagsForResourceMessage object being passed to this operation.
      - Returns: The TagListMessageForListTagsForResource object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+     - Throws: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     func listTagsForResource(input: RDSModel.ListTagsForResourceMessage) async throws
      -> RDSModel.TagListMessageForListTagsForResource {
@@ -3145,7 +3226,7 @@ public extension RDSClientProtocol {
 
      - Parameters:
          - input: The validated RemoveTagsFromResourceMessage object being passed to this operation.
-     - Throws: dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
+     - Throws: blueGreenDeploymentNotFound, dBClusterNotFound, dBInstanceNotFound, dBProxyNotFound, dBProxyTargetGroupNotFound, dBSnapshotNotFound.
      */
     func removeTagsFromResource(input: RDSModel.RemoveTagsFromResourceMessage) async throws {
         return try await withCheckedThrowingContinuation { cont in
@@ -3251,7 +3332,7 @@ public extension RDSClientProtocol {
          - input: The validated RestoreDBClusterFromSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     func restoreDBClusterFromSnapshot(input: RDSModel.RestoreDBClusterFromSnapshotMessage) async throws
      -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
@@ -3305,7 +3386,7 @@ public extension RDSClientProtocol {
          - input: The validated RestoreDBInstanceFromDBSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationNotFound, backupPolicyNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: authorizationNotFound, backupPolicyNotFound, dBClusterSnapshotNotFound, dBInstanceAlreadyExists, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBInstanceFromDBSnapshot(input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) async throws
      -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
@@ -3521,7 +3602,7 @@ public extension RDSClientProtocol {
          - input: The validated StartExportTaskMessage object being passed to this operation.
      - Returns: The ExportTaskForStartExportTask object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
+     - Throws: dBClusterNotFound, dBClusterSnapshotNotFound, dBSnapshotNotFound, exportTaskAlreadyExists, iamRoleMissingPermissions, iamRoleNotFound, invalidExportOnly, invalidExportSourceState, invalidS3Bucket, kMSKeyNotAccessible.
      */
     func startExportTask(input: RDSModel.StartExportTaskMessage) async throws
      -> RDSModel.ExportTaskForStartExportTask {
@@ -3636,6 +3717,33 @@ public extension RDSClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try stopDBInstanceAutomatedBackupsReplicationAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the SwitchoverBlueGreenDeployment operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated SwitchoverBlueGreenDeploymentRequest object being passed to this operation.
+     - Returns: The SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: blueGreenDeploymentNotFound, invalidBlueGreenDeploymentState.
+     */
+    func switchoverBlueGreenDeployment(input: RDSModel.SwitchoverBlueGreenDeploymentRequest) async throws
+     -> RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try switchoverBlueGreenDeploymentAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

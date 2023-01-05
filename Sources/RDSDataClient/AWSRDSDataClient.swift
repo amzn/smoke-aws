@@ -567,4 +567,223 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the BatchExecuteStatement operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated BatchExecuteStatementRequest object being passed to this operation.
+     - Returns: The BatchExecuteStatementResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     */
+    public func batchExecuteStatement(
+            input: RDSDataModel.BatchExecuteStatementRequest) async throws -> RDSDataModel.BatchExecuteStatementResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: RDSDataModelOperations.batchExecuteStatement.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchExecuteStatement,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = BatchExecuteStatementOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/BatchExecute",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the BeginTransaction operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated BeginTransactionRequest object being passed to this operation.
+     - Returns: The BeginTransactionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     */
+    public func beginTransaction(
+            input: RDSDataModel.BeginTransactionRequest) async throws -> RDSDataModel.BeginTransactionResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: RDSDataModelOperations.beginTransaction.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.beginTransaction,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = BeginTransactionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/BeginTransaction",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CommitTransaction operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CommitTransactionRequest object being passed to this operation.
+     - Returns: The CommitTransactionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
+     */
+    public func commitTransaction(
+            input: RDSDataModel.CommitTransactionRequest) async throws -> RDSDataModel.CommitTransactionResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: RDSDataModelOperations.commitTransaction.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.commitTransaction,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CommitTransactionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/CommitTransaction",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ExecuteSql operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ExecuteSqlRequest object being passed to this operation.
+     - Returns: The ExecuteSqlResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable.
+     */
+    public func executeSql(
+            input: RDSDataModel.ExecuteSqlRequest) async throws -> RDSDataModel.ExecuteSqlResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: RDSDataModelOperations.executeSql.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.executeSql,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExecuteSqlOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/ExecuteSql",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ExecuteStatement operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ExecuteStatementRequest object being passed to this operation.
+     - Returns: The ExecuteStatementResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, serviceUnavailable, statementTimeout.
+     */
+    public func executeStatement(
+            input: RDSDataModel.ExecuteStatementRequest) async throws -> RDSDataModel.ExecuteStatementResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: RDSDataModelOperations.executeStatement.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.executeStatement,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExecuteStatementOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/Execute",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RollbackTransaction operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RollbackTransactionRequest object being passed to this operation.
+     - Returns: The RollbackTransactionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, badRequest, forbidden, internalServerError, notFound, serviceUnavailable, statementTimeout.
+     */
+    public func rollbackTransaction(
+            input: RDSDataModel.RollbackTransactionRequest) async throws -> RDSDataModel.RollbackTransactionResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: RDSDataModelOperations.rollbackTransaction.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.rollbackTransaction,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RollbackTransactionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/RollbackTransaction",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSDataError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

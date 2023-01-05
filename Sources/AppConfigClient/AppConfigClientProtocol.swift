@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the AppConfig service.
  */
-public protocol AppConfigClientProtocol {
+public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
     typealias CreateApplicationSyncType = (
             _ input: AppConfigModel.CreateApplicationRequest) throws -> AppConfigModel.Application
     typealias CreateApplicationAsyncType = (

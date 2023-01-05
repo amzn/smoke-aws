@@ -155,6 +155,19 @@ extension CopyOptionGroupResultForCopyOptionGroup: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateBlueGreenDeployment operation in a HTTP client.
+ */
+extension CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment
+    public typealias HeadersType = CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateCustomDBEngineVersion operation in a HTTP client.
  */
 extension DBEngineVersionForCreateCustomDBEngineVersion: HTTPResponseOutputProtocol {
@@ -363,6 +376,19 @@ extension CreateOptionGroupResultForCreateOptionGroup: HTTPResponseOutputProtoco
 }
 
 /**
+ Type to handle the output from the DeleteBlueGreenDeployment operation in a HTTP client.
+ */
+extension DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment
+    public typealias HeadersType = DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteCustomDBEngineVersion operation in a HTTP client.
  */
 extension DBEngineVersionForDeleteCustomDBEngineVersion: HTTPResponseOutputProtocol {
@@ -527,6 +553,19 @@ extension AccountAttributesMessageForDescribeAccountAttributes: HTTPResponseOutp
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> AccountAttributesMessageForDescribeAccountAttributes {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeBlueGreenDeployments operation in a HTTP client.
+ */
+extension DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments
+    public typealias HeadersType = DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments {
         return try bodyDecodableProvider()
     }
 }
@@ -1645,6 +1684,19 @@ extension StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutoma
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the SwitchoverBlueGreenDeployment operation in a HTTP client.
+ */
+extension SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment: HTTPResponseOutputProtocol {
+    public typealias BodyType = SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment
+    public typealias HeadersType = SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment {
         return try bodyDecodableProvider()
     }
 }

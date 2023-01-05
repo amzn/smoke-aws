@@ -34,12 +34,14 @@ public struct StepFunctionsOperationsReporting {
     public let deleteStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let describeActivity: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let describeExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let describeMapRun: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let describeStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let describeStateMachineForExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let getActivityTask: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let getExecutionHistory: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let listActivities: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let listExecutions: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let listMapRuns: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let listStateMachines: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let listTagsForResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let sendTaskFailure: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
@@ -50,6 +52,7 @@ public struct StepFunctionsOperationsReporting {
     public let stopExecution: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let tagResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let untagResource: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
+    public let updateMapRun: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
     public let updateStateMachine: StandardSmokeAWSOperationReporting<StepFunctionsModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<StepFunctionsModelOperations>) {
@@ -65,6 +68,8 @@ public struct StepFunctionsOperationsReporting {
             clientName: clientName, operation: .describeActivity, configuration: reportingConfiguration)
         self.describeExecution = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeExecution, configuration: reportingConfiguration)
+        self.describeMapRun = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeMapRun, configuration: reportingConfiguration)
         self.describeStateMachine = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeStateMachine, configuration: reportingConfiguration)
         self.describeStateMachineForExecution = StandardSmokeAWSOperationReporting(
@@ -77,6 +82,8 @@ public struct StepFunctionsOperationsReporting {
             clientName: clientName, operation: .listActivities, configuration: reportingConfiguration)
         self.listExecutions = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listExecutions, configuration: reportingConfiguration)
+        self.listMapRuns = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listMapRuns, configuration: reportingConfiguration)
         self.listStateMachines = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listStateMachines, configuration: reportingConfiguration)
         self.listTagsForResource = StandardSmokeAWSOperationReporting(
@@ -97,6 +104,8 @@ public struct StepFunctionsOperationsReporting {
             clientName: clientName, operation: .tagResource, configuration: reportingConfiguration)
         self.untagResource = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .untagResource, configuration: reportingConfiguration)
+        self.updateMapRun = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .updateMapRun, configuration: reportingConfiguration)
         self.updateStateMachine = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .updateStateMachine, configuration: reportingConfiguration)
     }

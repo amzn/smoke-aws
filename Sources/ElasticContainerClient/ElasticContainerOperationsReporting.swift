@@ -49,11 +49,13 @@ public struct ElasticContainerOperationsReporting {
     public let describeTasks: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let discoverPollEndpoint: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let executeCommand: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let getTaskProtection: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listAccountSettings: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listAttributes: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listClusters: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listContainerInstances: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listServices: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let listServicesByNamespace: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listTagsForResource: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listTaskDefinitionFamilies: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let listTaskDefinitions: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -79,6 +81,7 @@ public struct ElasticContainerOperationsReporting {
     public let updateContainerInstancesState: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let updateService: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let updateServicePrimaryTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let updateTaskProtection: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let updateTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticContainerModelOperations>) {
@@ -124,6 +127,8 @@ public struct ElasticContainerOperationsReporting {
             clientName: clientName, operation: .discoverPollEndpoint, configuration: reportingConfiguration)
         self.executeCommand = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .executeCommand, configuration: reportingConfiguration)
+        self.getTaskProtection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getTaskProtection, configuration: reportingConfiguration)
         self.listAccountSettings = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listAccountSettings, configuration: reportingConfiguration)
         self.listAttributes = StandardSmokeAWSOperationReporting(
@@ -134,6 +139,8 @@ public struct ElasticContainerOperationsReporting {
             clientName: clientName, operation: .listContainerInstances, configuration: reportingConfiguration)
         self.listServices = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listServices, configuration: reportingConfiguration)
+        self.listServicesByNamespace = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listServicesByNamespace, configuration: reportingConfiguration)
         self.listTagsForResource = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listTagsForResource, configuration: reportingConfiguration)
         self.listTaskDefinitionFamilies = StandardSmokeAWSOperationReporting(
@@ -184,6 +191,8 @@ public struct ElasticContainerOperationsReporting {
             clientName: clientName, operation: .updateService, configuration: reportingConfiguration)
         self.updateServicePrimaryTaskSet = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .updateServicePrimaryTaskSet, configuration: reportingConfiguration)
+        self.updateTaskProtection = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .updateTaskProtection, configuration: reportingConfiguration)
         self.updateTaskSet = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .updateTaskSet, configuration: reportingConfiguration)
     }

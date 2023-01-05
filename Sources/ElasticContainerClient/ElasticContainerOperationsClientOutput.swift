@@ -298,6 +298,19 @@ extension ExecuteCommandResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the GetTaskProtection operation in a HTTP client.
+ */
+extension GetTaskProtectionResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetTaskProtectionResponse
+    public typealias HeadersType = GetTaskProtectionResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetTaskProtectionResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListAccountSettings operation in a HTTP client.
  */
 extension ListAccountSettingsResponse: HTTPResponseOutputProtocol {
@@ -358,6 +371,19 @@ extension ListServicesResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListServicesResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListServicesByNamespace operation in a HTTP client.
+ */
+extension ListServicesByNamespaceResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListServicesByNamespaceResponse
+    public typealias HeadersType = ListServicesByNamespaceResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListServicesByNamespaceResponse {
         return try bodyDecodableProvider()
     }
 }
@@ -683,6 +709,19 @@ extension UpdateServicePrimaryTaskSetResponse: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> UpdateServicePrimaryTaskSetResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateTaskProtection operation in a HTTP client.
+ */
+extension UpdateTaskProtectionResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateTaskProtectionResponse
+    public typealias HeadersType = UpdateTaskProtectionResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateTaskProtectionResponse {
         return try bodyDecodableProvider()
     }
 }

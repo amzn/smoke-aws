@@ -31,6 +31,32 @@ import ElasticComputeCloudModel
 public extension ElasticComputeCloudClientProtocol {
 
     /**
+     Invokes the AcceptAddressTransfer operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated AcceptAddressTransferRequest object being passed to this operation.
+     - Returns: The AcceptAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func acceptAddressTransfer(input: ElasticComputeCloudModel.AcceptAddressTransferRequest) async throws
+     -> ElasticComputeCloudModel.AcceptAddressTransferResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try acceptAddressTransferAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the AcceptReservedInstancesExchangeQuote operation and asynchronously returning the response.
 
      - Parameters:
@@ -777,6 +803,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the AttachVerifiedAccessTrustProvider operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated AttachVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The AttachVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func attachVerifiedAccessTrustProvider(input: ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderRequest) async throws
+     -> ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try attachVerifiedAccessTrustProviderAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the AttachVolume operation and asynchronously returning the response.
 
      - Parameters:
@@ -1046,6 +1098,32 @@ public extension ElasticComputeCloudClientProtocol {
                         cont.resume(throwing: error)
                     } else {
                         cont.resume(returning: ())
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CancelImageLaunchPermission operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CancelImageLaunchPermissionRequest object being passed to this operation.
+     - Returns: The CancelImageLaunchPermissionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func cancelImageLaunchPermission(input: ElasticComputeCloudModel.CancelImageLaunchPermissionRequest) async throws
+     -> ElasticComputeCloudModel.CancelImageLaunchPermissionResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try cancelImageLaunchPermissionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
                     }
                 }
             } catch {
@@ -2997,6 +3075,110 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateVerifiedAccessEndpoint operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createVerifiedAccessEndpoint(input: ElasticComputeCloudModel.CreateVerifiedAccessEndpointRequest) async throws
+     -> ElasticComputeCloudModel.CreateVerifiedAccessEndpointResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try createVerifiedAccessEndpointAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessGroup operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createVerifiedAccessGroup(input: ElasticComputeCloudModel.CreateVerifiedAccessGroupRequest) async throws
+     -> ElasticComputeCloudModel.CreateVerifiedAccessGroupResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try createVerifiedAccessGroupAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessInstance operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createVerifiedAccessInstance(input: ElasticComputeCloudModel.CreateVerifiedAccessInstanceRequest) async throws
+     -> ElasticComputeCloudModel.CreateVerifiedAccessInstanceResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try createVerifiedAccessInstanceAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessTrustProvider operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createVerifiedAccessTrustProvider(input: ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderRequest) async throws
+     -> ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try createVerifiedAccessTrustProviderAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the CreateVolume operation and asynchronously returning the response.
 
      - Parameters:
@@ -4701,6 +4883,110 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteVerifiedAccessEndpoint operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessEndpoint(input: ElasticComputeCloudModel.DeleteVerifiedAccessEndpointRequest) async throws
+     -> ElasticComputeCloudModel.DeleteVerifiedAccessEndpointResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteVerifiedAccessEndpointAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessGroup operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessGroup(input: ElasticComputeCloudModel.DeleteVerifiedAccessGroupRequest) async throws
+     -> ElasticComputeCloudModel.DeleteVerifiedAccessGroupResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteVerifiedAccessGroupAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessInstance operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessInstance(input: ElasticComputeCloudModel.DeleteVerifiedAccessInstanceRequest) async throws
+     -> ElasticComputeCloudModel.DeleteVerifiedAccessInstanceResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteVerifiedAccessInstanceAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessTrustProvider operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessTrustProvider(input: ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderRequest) async throws
+     -> ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteVerifiedAccessTrustProviderAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DeleteVolume operation and asynchronously returning the response.
 
      - Parameters:
@@ -5119,6 +5405,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeAddressTransfers operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeAddressTransfersRequest object being passed to this operation.
+     - Returns: The DescribeAddressTransfersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeAddressTransfers(input: ElasticComputeCloudModel.DescribeAddressTransfersRequest) async throws
+     -> ElasticComputeCloudModel.DescribeAddressTransfersResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeAddressTransfersAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DescribeAddresses operation and asynchronously returning the response.
 
      - Parameters:
@@ -5209,6 +5521,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeAvailabilityZonesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeAwsNetworkPerformanceMetricSubscriptions operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeAwsNetworkPerformanceMetricSubscriptionsRequest object being passed to this operation.
+     - Returns: The DescribeAwsNetworkPerformanceMetricSubscriptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeAwsNetworkPerformanceMetricSubscriptions(input: ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeAwsNetworkPerformanceMetricSubscriptionsAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -8161,6 +8499,136 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeVerifiedAccessEndpoints operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessEndpoints(input: ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeVerifiedAccessEndpointsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessGroups operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessGroupsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessGroupsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessGroups(input: ElasticComputeCloudModel.DescribeVerifiedAccessGroupsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeVerifiedAccessGroupsResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeVerifiedAccessGroupsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessInstanceLoggingConfigurations operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstanceLoggingConfigurationsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessInstanceLoggingConfigurationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessInstanceLoggingConfigurations(input: ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeVerifiedAccessInstanceLoggingConfigurationsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessInstances operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstancesRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessInstances(input: ElasticComputeCloudModel.DescribeVerifiedAccessInstancesRequest) async throws
+     -> ElasticComputeCloudModel.DescribeVerifiedAccessInstancesResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeVerifiedAccessInstancesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessTrustProviders operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessTrustProvidersRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessTrustProvidersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessTrustProviders(input: ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersRequest) async throws
+     -> ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeVerifiedAccessTrustProvidersAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DescribeVolumeAttribute operation and asynchronously returning the response.
 
      - Parameters:
@@ -8673,6 +9141,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DetachVerifiedAccessTrustProvider operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DetachVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The DetachVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func detachVerifiedAccessTrustProvider(input: ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderRequest) async throws
+     -> ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try detachVerifiedAccessTrustProviderAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DetachVolume operation and asynchronously returning the response.
 
      - Parameters:
@@ -8712,6 +9206,58 @@ public extension ElasticComputeCloudClientProtocol {
                         cont.resume(throwing: error)
                     } else {
                         cont.resume(returning: ())
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DisableAddressTransfer operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisableAddressTransferRequest object being passed to this operation.
+     - Returns: The DisableAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableAddressTransfer(input: ElasticComputeCloudModel.DisableAddressTransferRequest) async throws
+     -> ElasticComputeCloudModel.DisableAddressTransferResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try disableAddressTransferAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DisableAwsNetworkPerformanceMetricSubscription operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+     - Returns: The DisableAwsNetworkPerformanceMetricSubscriptionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableAwsNetworkPerformanceMetricSubscription(input: ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionRequest) async throws
+     -> ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try disableAwsNetworkPerformanceMetricSubscriptionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
                     }
                 }
             } catch {
@@ -9281,6 +9827,58 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the EnableAddressTransfer operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated EnableAddressTransferRequest object being passed to this operation.
+     - Returns: The EnableAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableAddressTransfer(input: ElasticComputeCloudModel.EnableAddressTransferRequest) async throws
+     -> ElasticComputeCloudModel.EnableAddressTransferResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try enableAddressTransferAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the EnableAwsNetworkPerformanceMetricSubscription operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated EnableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+     - Returns: The EnableAwsNetworkPerformanceMetricSubscriptionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableAwsNetworkPerformanceMetricSubscription(input: ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionRequest) async throws
+     -> ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try enableAwsNetworkPerformanceMetricSubscriptionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the EnableEbsEncryptionByDefault operation and asynchronously returning the response.
 
      - Parameters:
@@ -9397,6 +9995,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableIpamOrganizationAdminAccountAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the EnableReachabilityAnalyzerOrganizationSharing operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated EnableReachabilityAnalyzerOrganizationSharingRequest object being passed to this operation.
+     - Returns: The EnableReachabilityAnalyzerOrganizationSharingResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableReachabilityAnalyzerOrganizationSharing(input: ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingRequest) async throws
+     -> ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try enableReachabilityAnalyzerOrganizationSharingAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -9701,6 +10325,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try getAssociatedIpv6PoolCidrsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetAwsNetworkPerformanceData operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetAwsNetworkPerformanceDataRequest object being passed to this operation.
+     - Returns: The GetAwsNetworkPerformanceDataResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getAwsNetworkPerformanceData(input: ElasticComputeCloudModel.GetAwsNetworkPerformanceDataRequest) async throws
+     -> ElasticComputeCloudModel.GetAwsNetworkPerformanceDataResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getAwsNetworkPerformanceDataAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -10559,6 +11209,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try getTransitGatewayRouteTablePropagationsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetVerifiedAccessEndpointPolicy operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+     - Returns: The GetVerifiedAccessEndpointPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getVerifiedAccessEndpointPolicy(input: ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyRequest) async throws
+     -> ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getVerifiedAccessEndpointPolicyAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetVerifiedAccessGroupPolicy operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessGroupPolicyRequest object being passed to this operation.
+     - Returns: The GetVerifiedAccessGroupPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getVerifiedAccessGroupPolicy(input: ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyRequest) async throws
+     -> ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getVerifiedAccessGroupPolicyAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -11883,6 +12585,188 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyTransitGatewayVpcAttachmentAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpoint operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessEndpoint(input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointRequest) async throws
+     -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try modifyVerifiedAccessEndpointAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpointPolicy operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessEndpointPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessEndpointPolicy(input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyRequest) async throws
+     -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try modifyVerifiedAccessEndpointPolicyAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessGroup operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessGroup(input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupRequest) async throws
+     -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try modifyVerifiedAccessGroupAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessGroupPolicy operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupPolicyRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessGroupPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessGroupPolicy(input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyRequest) async throws
+     -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try modifyVerifiedAccessGroupPolicyAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessInstance operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessInstance(input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceRequest) async throws
+     -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try modifyVerifiedAccessInstanceAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessInstanceLoggingConfiguration operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceLoggingConfigurationRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessInstanceLoggingConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessInstanceLoggingConfiguration(input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationRequest) async throws
+     -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try modifyVerifiedAccessInstanceLoggingConfigurationAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessTrustProvider operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessTrustProvider(input: ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderRequest) async throws
+     -> ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try modifyVerifiedAccessTrustProviderAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

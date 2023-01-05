@@ -32,12 +32,14 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
     case deleteStateMachine = "DeleteStateMachine"
     case describeActivity = "DescribeActivity"
     case describeExecution = "DescribeExecution"
+    case describeMapRun = "DescribeMapRun"
     case describeStateMachine = "DescribeStateMachine"
     case describeStateMachineForExecution = "DescribeStateMachineForExecution"
     case getActivityTask = "GetActivityTask"
     case getExecutionHistory = "GetExecutionHistory"
     case listActivities = "ListActivities"
     case listExecutions = "ListExecutions"
+    case listMapRuns = "ListMapRuns"
     case listStateMachines = "ListStateMachines"
     case listTagsForResource = "ListTagsForResource"
     case sendTaskFailure = "SendTaskFailure"
@@ -48,6 +50,7 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
     case stopExecution = "StopExecution"
     case tagResource = "TagResource"
     case untagResource = "UntagResource"
+    case updateMapRun = "UpdateMapRun"
     case updateStateMachine = "UpdateStateMachine"
 
     public var description: String {
@@ -68,6 +71,8 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
             return "/"
         case .describeExecution:
             return "/"
+        case .describeMapRun:
+            return "/"
         case .describeStateMachine:
             return "/"
         case .describeStateMachineForExecution:
@@ -79,6 +84,8 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
         case .listActivities:
             return "/"
         case .listExecutions:
+            return "/"
+        case .listMapRuns:
             return "/"
         case .listStateMachines:
             return "/"
@@ -99,6 +106,8 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
         case .tagResource:
             return "/"
         case .untagResource:
+            return "/"
+        case .updateMapRun:
             return "/"
         case .updateStateMachine:
             return "/"

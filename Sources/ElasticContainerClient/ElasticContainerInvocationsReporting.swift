@@ -50,11 +50,13 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
     public let describeTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let discoverPollEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let executeCommand: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getTaskProtection: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listAccountSettings: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listClusters: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listContainerInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listServices: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listServicesByNamespace: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTaskDefinitionFamilies: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTaskDefinitions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -80,6 +82,7 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
     public let updateContainerInstancesState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateService: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateServicePrimaryTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateTaskProtection: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateTaskSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: ElasticContainerOperationsReporting) {
@@ -125,6 +128,8 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
             smokeAWSOperationReporting: operationsReporting.discoverPollEndpoint)
         self.executeCommand = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.executeCommand)
+        self.getTaskProtection = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getTaskProtection)
         self.listAccountSettings = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listAccountSettings)
         self.listAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -135,6 +140,8 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
             smokeAWSOperationReporting: operationsReporting.listContainerInstances)
         self.listServices = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listServices)
+        self.listServicesByNamespace = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listServicesByNamespace)
         self.listTagsForResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listTagsForResource)
         self.listTaskDefinitionFamilies = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -185,6 +192,8 @@ public struct ElasticContainerInvocationsReporting<InvocationReportingType: HTTP
             smokeAWSOperationReporting: operationsReporting.updateService)
         self.updateServicePrimaryTaskSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateServicePrimaryTaskSet)
+        self.updateTaskProtection = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.updateTaskProtection)
         self.updateTaskSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateTaskSet)
     }
