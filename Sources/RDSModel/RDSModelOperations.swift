@@ -39,6 +39,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case copyDBParameterGroup = "CopyDBParameterGroup"
     case copyDBSnapshot = "CopyDBSnapshot"
     case copyOptionGroup = "CopyOptionGroup"
+    case createBlueGreenDeployment = "CreateBlueGreenDeployment"
     case createCustomDBEngineVersion = "CreateCustomDBEngineVersion"
     case createDBCluster = "CreateDBCluster"
     case createDBClusterEndpoint = "CreateDBClusterEndpoint"
@@ -55,6 +56,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case createEventSubscription = "CreateEventSubscription"
     case createGlobalCluster = "CreateGlobalCluster"
     case createOptionGroup = "CreateOptionGroup"
+    case deleteBlueGreenDeployment = "DeleteBlueGreenDeployment"
     case deleteCustomDBEngineVersion = "DeleteCustomDBEngineVersion"
     case deleteDBCluster = "DeleteDBCluster"
     case deleteDBClusterEndpoint = "DeleteDBClusterEndpoint"
@@ -73,6 +75,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case deleteOptionGroup = "DeleteOptionGroup"
     case deregisterDBProxyTargets = "DeregisterDBProxyTargets"
     case describeAccountAttributes = "DescribeAccountAttributes"
+    case describeBlueGreenDeployments = "DescribeBlueGreenDeployments"
     case describeCertificates = "DescribeCertificates"
     case describeDBClusterBacktracks = "DescribeDBClusterBacktracks"
     case describeDBClusterEndpoints = "DescribeDBClusterEndpoints"
@@ -162,6 +165,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case stopDBCluster = "StopDBCluster"
     case stopDBInstance = "StopDBInstance"
     case stopDBInstanceAutomatedBackupsReplication = "StopDBInstanceAutomatedBackupsReplication"
+    case switchoverBlueGreenDeployment = "SwitchoverBlueGreenDeployment"
     case switchoverReadReplica = "SwitchoverReadReplica"
 
     public var description: String {
@@ -196,6 +200,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .copyOptionGroup:
             return "/"
+        case .createBlueGreenDeployment:
+            return "/"
         case .createCustomDBEngineVersion:
             return "/"
         case .createDBCluster:
@@ -227,6 +233,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .createGlobalCluster:
             return "/"
         case .createOptionGroup:
+            return "/"
+        case .deleteBlueGreenDeployment:
             return "/"
         case .deleteCustomDBEngineVersion:
             return "/"
@@ -263,6 +271,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .deregisterDBProxyTargets:
             return "/"
         case .describeAccountAttributes:
+            return "/"
+        case .describeBlueGreenDeployments:
             return "/"
         case .describeCertificates:
             return "/"
@@ -441,6 +451,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .stopDBInstance:
             return "/"
         case .stopDBInstanceAutomatedBackupsReplication:
+            return "/"
+        case .switchoverBlueGreenDeployment:
             return "/"
         case .switchoverReadReplica:
             return "/"

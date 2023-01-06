@@ -336,9 +336,12 @@ public extension DescribeExecutionOutput {
      */
     static let __default: StepFunctionsModel.DescribeExecutionOutput = {
         let defaultInstance = StepFunctionsModel.DescribeExecutionOutput(
+            cause: nil,
+            error: nil,
             executionArn: "0",
             input: nil,
             inputDetails: nil,
+            mapRunArn: nil,
             name: nil,
             output: nil,
             outputDetails: nil,
@@ -347,6 +350,39 @@ public extension DescribeExecutionOutput {
             status: .__default,
             stopDate: nil,
             traceHeader: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeMapRunInput {
+    /**
+     Default instance of the DescribeMapRunInput structure.
+     */
+    static let __default: StepFunctionsModel.DescribeMapRunInput = {
+        let defaultInstance = StepFunctionsModel.DescribeMapRunInput(
+            mapRunArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeMapRunOutput {
+    /**
+     Default instance of the DescribeMapRunOutput structure.
+     */
+    static let __default: StepFunctionsModel.DescribeMapRunOutput = {
+        let defaultInstance = StepFunctionsModel.DescribeMapRunOutput(
+            executionArn: "0",
+            executionCounts: MapRunExecutionCounts.__default,
+            itemCounts: MapRunItemCounts.__default,
+            mapRunArn: "0",
+            maxConcurrency: 0,
+            startDate: 1.52953091375E9,
+            status: .__default,
+            stopDate: nil,
+            toleratedFailureCount: 0,
+            toleratedFailurePercentage: 0.0)
 
         return defaultInstance
     }()
@@ -371,7 +407,9 @@ public extension DescribeStateMachineForExecutionOutput {
     static let __default: StepFunctionsModel.DescribeStateMachineForExecutionOutput = {
         let defaultInstance = StepFunctionsModel.DescribeStateMachineForExecutionOutput(
             definition: "0",
+            label: nil,
             loggingConfiguration: nil,
+            mapRunArn: nil,
             name: "0",
             roleArn: "0",
             stateMachineArn: "0",
@@ -402,6 +440,7 @@ public extension DescribeStateMachineOutput {
         let defaultInstance = StepFunctionsModel.DescribeStateMachineOutput(
             creationDate: 1.52953091375E9,
             definition: "0",
+            label: nil,
             loggingConfiguration: nil,
             name: "0",
             roleArn: "0",
@@ -483,6 +522,8 @@ public extension ExecutionListItem {
     static let __default: StepFunctionsModel.ExecutionListItem = {
         let defaultInstance = StepFunctionsModel.ExecutionListItem(
             executionArn: "0",
+            itemCount: nil,
+            mapRunArn: nil,
             name: "0",
             startDate: 1.52953091375E9,
             stateMachineArn: "0",
@@ -616,6 +657,8 @@ public extension HistoryEvent {
             mapIterationFailedEventDetails: nil,
             mapIterationStartedEventDetails: nil,
             mapIterationSucceededEventDetails: nil,
+            mapRunFailedEventDetails: nil,
+            mapRunStartedEventDetails: nil,
             mapStateStartedEventDetails: nil,
             previousEventId: nil,
             stateEnteredEventDetails: nil,
@@ -778,6 +821,7 @@ public extension LambdaFunctionScheduledEventDetails {
             input: nil,
             inputDetails: nil,
             resource: "0",
+            taskCredentials: nil,
             timeoutInSeconds: nil)
 
         return defaultInstance
@@ -855,9 +899,10 @@ public extension ListExecutionsInput {
      */
     static let __default: StepFunctionsModel.ListExecutionsInput = {
         let defaultInstance = StepFunctionsModel.ListExecutionsInput(
+            mapRunArn: nil,
             maxResults: nil,
             nextToken: nil,
-            stateMachineArn: "0",
+            stateMachineArn: nil,
             statusFilter: nil)
 
         return defaultInstance
@@ -871,6 +916,33 @@ public extension ListExecutionsOutput {
     static let __default: StepFunctionsModel.ListExecutionsOutput = {
         let defaultInstance = StepFunctionsModel.ListExecutionsOutput(
             executions: [],
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListMapRunsInput {
+    /**
+     Default instance of the ListMapRunsInput structure.
+     */
+    static let __default: StepFunctionsModel.ListMapRunsInput = {
+        let defaultInstance = StepFunctionsModel.ListMapRunsInput(
+            executionArn: "0",
+            maxResults: nil,
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListMapRunsOutput {
+    /**
+     Default instance of the ListMapRunsOutput structure.
+     */
+    static let __default: StepFunctionsModel.ListMapRunsOutput = {
+        let defaultInstance = StepFunctionsModel.ListMapRunsOutput(
+            mapRuns: [],
             nextToken: nil)
 
         return defaultInstance
@@ -961,6 +1033,85 @@ public extension MapIterationEventDetails {
         let defaultInstance = StepFunctionsModel.MapIterationEventDetails(
             index: nil,
             name: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension MapRunExecutionCounts {
+    /**
+     Default instance of the MapRunExecutionCounts structure.
+     */
+    static let __default: StepFunctionsModel.MapRunExecutionCounts = {
+        let defaultInstance = StepFunctionsModel.MapRunExecutionCounts(
+            aborted: 0,
+            failed: 0,
+            pending: 0,
+            resultsWritten: 0,
+            running: 0,
+            succeeded: 0,
+            timedOut: 0,
+            total: 0)
+
+        return defaultInstance
+    }()
+}
+
+public extension MapRunFailedEventDetails {
+    /**
+     Default instance of the MapRunFailedEventDetails structure.
+     */
+    static let __default: StepFunctionsModel.MapRunFailedEventDetails = {
+        let defaultInstance = StepFunctionsModel.MapRunFailedEventDetails(
+            cause: nil,
+            error: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension MapRunItemCounts {
+    /**
+     Default instance of the MapRunItemCounts structure.
+     */
+    static let __default: StepFunctionsModel.MapRunItemCounts = {
+        let defaultInstance = StepFunctionsModel.MapRunItemCounts(
+            aborted: 0,
+            failed: 0,
+            pending: 0,
+            resultsWritten: 0,
+            running: 0,
+            succeeded: 0,
+            timedOut: 0,
+            total: 0)
+
+        return defaultInstance
+    }()
+}
+
+public extension MapRunListItem {
+    /**
+     Default instance of the MapRunListItem structure.
+     */
+    static let __default: StepFunctionsModel.MapRunListItem = {
+        let defaultInstance = StepFunctionsModel.MapRunListItem(
+            executionArn: "0",
+            mapRunArn: "0",
+            startDate: 1.52953091375E9,
+            stateMachineArn: "0",
+            stopDate: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension MapRunStartedEventDetails {
+    /**
+     Default instance of the MapRunStartedEventDetails structure.
+     */
+    static let __default: StepFunctionsModel.MapRunStartedEventDetails = {
+        let defaultInstance = StepFunctionsModel.MapRunStartedEventDetails(
+            mapRunArn: nil)
 
         return defaultInstance
     }()
@@ -1309,6 +1460,18 @@ public extension TagResourceOutput {
     }()
 }
 
+public extension TaskCredentials {
+    /**
+     Default instance of the TaskCredentials structure.
+     */
+    static let __default: StepFunctionsModel.TaskCredentials = {
+        let defaultInstance = StepFunctionsModel.TaskCredentials(
+            roleArn: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension TaskDoesNotExist {
     /**
      Default instance of the TaskDoesNotExist structure.
@@ -1347,6 +1510,7 @@ public extension TaskScheduledEventDetails {
             region: "0",
             resource: "0",
             resourceType: "0",
+            taskCredentials: nil,
             timeoutInSeconds: nil)
 
         return defaultInstance
@@ -1502,6 +1666,32 @@ public extension UntagResourceOutput {
     }()
 }
 
+public extension UpdateMapRunInput {
+    /**
+     Default instance of the UpdateMapRunInput structure.
+     */
+    static let __default: StepFunctionsModel.UpdateMapRunInput = {
+        let defaultInstance = StepFunctionsModel.UpdateMapRunInput(
+            mapRunArn: "0",
+            maxConcurrency: nil,
+            toleratedFailureCount: nil,
+            toleratedFailurePercentage: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateMapRunOutput {
+    /**
+     Default instance of the UpdateMapRunOutput structure.
+     */
+    static let __default: StepFunctionsModel.UpdateMapRunOutput = {
+        let defaultInstance = StepFunctionsModel.UpdateMapRunOutput()
+
+        return defaultInstance
+    }()
+}
+
 public extension UpdateStateMachineInput {
     /**
      Default instance of the UpdateStateMachineInput structure.
@@ -1525,6 +1715,19 @@ public extension UpdateStateMachineOutput {
     static let __default: StepFunctionsModel.UpdateStateMachineOutput = {
         let defaultInstance = StepFunctionsModel.UpdateStateMachineOutput(
             updateDate: 1.52953091375E9)
+
+        return defaultInstance
+    }()
+}
+
+public extension ValidationException {
+    /**
+     Default instance of the ValidationException structure.
+     */
+    static let __default: StepFunctionsModel.ValidationException = {
+        let defaultInstance = StepFunctionsModel.ValidationException(
+            message: nil,
+            reason: nil)
 
         return defaultInstance
     }()

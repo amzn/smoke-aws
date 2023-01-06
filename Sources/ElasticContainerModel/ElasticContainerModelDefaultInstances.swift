@@ -200,6 +200,7 @@ public extension Cluster {
             pendingTasksCount: nil,
             registeredContainerInstancesCount: nil,
             runningTasksCount: nil,
+            serviceConnectDefaults: nil,
             settings: nil,
             statistics: nil,
             status: nil,
@@ -260,6 +261,30 @@ public extension ClusterNotFoundException {
      */
     static let __default: ElasticContainerModel.ClusterNotFoundException = {
         let defaultInstance = ElasticContainerModel.ClusterNotFoundException()
+
+        return defaultInstance
+    }()
+}
+
+public extension ClusterServiceConnectDefaults {
+    /**
+     Default instance of the ClusterServiceConnectDefaults structure.
+     */
+    static let __default: ElasticContainerModel.ClusterServiceConnectDefaults = {
+        let defaultInstance = ElasticContainerModel.ClusterServiceConnectDefaults(
+            namespace: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ClusterServiceConnectDefaultsRequest {
+    /**
+     Default instance of the ClusterServiceConnectDefaultsRequest structure.
+     */
+    static let __default: ElasticContainerModel.ClusterServiceConnectDefaultsRequest = {
+        let defaultInstance = ElasticContainerModel.ClusterServiceConnectDefaultsRequest(
+            namespace: "value")
 
         return defaultInstance
     }()
@@ -484,6 +509,7 @@ public extension CreateClusterRequest {
             clusterName: nil,
             configuration: nil,
             defaultCapacityProviderStrategy: nil,
+            serviceConnectDefaults: nil,
             settings: nil,
             tags: nil)
 
@@ -527,6 +553,7 @@ public extension CreateServiceRequest {
             propagateTags: nil,
             role: nil,
             schedulingStrategy: nil,
+            serviceConnectConfiguration: nil,
             serviceName: "value",
             serviceRegistries: nil,
             tags: nil,
@@ -754,9 +781,25 @@ public extension Deployment {
             rolloutState: nil,
             rolloutStateReason: nil,
             runningCount: nil,
+            serviceConnectConfiguration: nil,
+            serviceConnectResources: nil,
             status: nil,
             taskDefinition: nil,
             updatedAt: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeploymentAlarms {
+    /**
+     Default instance of the DeploymentAlarms structure.
+     */
+    static let __default: ElasticContainerModel.DeploymentAlarms = {
+        let defaultInstance = ElasticContainerModel.DeploymentAlarms(
+            alarmNames: [],
+            enable: false,
+            rollback: false)
 
         return defaultInstance
     }()
@@ -781,6 +824,7 @@ public extension DeploymentConfiguration {
      */
     static let __default: ElasticContainerModel.DeploymentConfiguration = {
         let defaultInstance = ElasticContainerModel.DeploymentConfiguration(
+            alarms: nil,
             deploymentCircuitBreaker: nil,
             maximumPercent: nil,
             minimumHealthyPercent: nil)
@@ -1075,6 +1119,7 @@ public extension DiscoverPollEndpointResponse {
     static let __default: ElasticContainerModel.DiscoverPollEndpointResponse = {
         let defaultInstance = ElasticContainerModel.DiscoverPollEndpointResponse(
             endpoint: nil,
+            serviceConnectEndpoint: nil,
             telemetryEndpoint: nil)
 
         return defaultInstance
@@ -1263,6 +1308,32 @@ public extension FirelensConfiguration {
         let defaultInstance = ElasticContainerModel.FirelensConfiguration(
             options: nil,
             type: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetTaskProtectionRequest {
+    /**
+     Default instance of the GetTaskProtectionRequest structure.
+     */
+    static let __default: ElasticContainerModel.GetTaskProtectionRequest = {
+        let defaultInstance = ElasticContainerModel.GetTaskProtectionRequest(
+            cluster: "value",
+            tasks: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetTaskProtectionResponse {
+    /**
+     Default instance of the GetTaskProtectionResponse structure.
+     */
+    static let __default: ElasticContainerModel.GetTaskProtectionResponse = {
+        let defaultInstance = ElasticContainerModel.GetTaskProtectionResponse(
+            failures: nil,
+            protectedTasks: nil)
 
         return defaultInstance
     }()
@@ -1531,6 +1602,33 @@ public extension ListContainerInstancesResponse {
     }()
 }
 
+public extension ListServicesByNamespaceRequest {
+    /**
+     Default instance of the ListServicesByNamespaceRequest structure.
+     */
+    static let __default: ElasticContainerModel.ListServicesByNamespaceRequest = {
+        let defaultInstance = ElasticContainerModel.ListServicesByNamespaceRequest(
+            maxResults: nil,
+            namespace: "value",
+            nextToken: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListServicesByNamespaceResponse {
+    /**
+     Default instance of the ListServicesByNamespaceResponse structure.
+     */
+    static let __default: ElasticContainerModel.ListServicesByNamespaceResponse = {
+        let defaultInstance = ElasticContainerModel.ListServicesByNamespaceResponse(
+            nextToken: nil,
+            serviceArns: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListServicesRequest {
     /**
      Default instance of the ListServicesRequest structure.
@@ -1774,6 +1872,17 @@ public extension MountPoint {
     }()
 }
 
+public extension NamespaceNotFoundException {
+    /**
+     Default instance of the NamespaceNotFoundException structure.
+     */
+    static let __default: ElasticContainerModel.NamespaceNotFoundException = {
+        let defaultInstance = ElasticContainerModel.NamespaceNotFoundException()
+
+        return defaultInstance
+    }()
+}
+
 public extension NetworkBinding {
     /**
      Default instance of the NetworkBinding structure.
@@ -1782,7 +1891,9 @@ public extension NetworkBinding {
         let defaultInstance = ElasticContainerModel.NetworkBinding(
             bindIP: nil,
             containerPort: nil,
+            containerPortRange: nil,
             hostPort: nil,
+            hostPortRange: nil,
             protocol: nil)
 
         return defaultInstance
@@ -1893,9 +2004,26 @@ public extension PortMapping {
      */
     static let __default: ElasticContainerModel.PortMapping = {
         let defaultInstance = ElasticContainerModel.PortMapping(
+            appProtocol: nil,
             containerPort: nil,
+            containerPortRange: nil,
             hostPort: nil,
+            name: nil,
             protocol: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ProtectedTask {
+    /**
+     Default instance of the ProtectedTask structure.
+     */
+    static let __default: ElasticContainerModel.ProtectedTask = {
+        let defaultInstance = ElasticContainerModel.ProtectedTask(
+            expirationDate: nil,
+            protectionEnabled: nil,
+            taskArn: nil)
 
         return defaultInstance
     }()
@@ -2283,6 +2411,62 @@ public extension Service {
             tags: nil,
             taskDefinition: nil,
             taskSets: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ServiceConnectClientAlias {
+    /**
+     Default instance of the ServiceConnectClientAlias structure.
+     */
+    static let __default: ElasticContainerModel.ServiceConnectClientAlias = {
+        let defaultInstance = ElasticContainerModel.ServiceConnectClientAlias(
+            dnsName: nil,
+            port: 0)
+
+        return defaultInstance
+    }()
+}
+
+public extension ServiceConnectConfiguration {
+    /**
+     Default instance of the ServiceConnectConfiguration structure.
+     */
+    static let __default: ElasticContainerModel.ServiceConnectConfiguration = {
+        let defaultInstance = ElasticContainerModel.ServiceConnectConfiguration(
+            enabled: false,
+            logConfiguration: nil,
+            namespace: nil,
+            services: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ServiceConnectService {
+    /**
+     Default instance of the ServiceConnectService structure.
+     */
+    static let __default: ElasticContainerModel.ServiceConnectService = {
+        let defaultInstance = ElasticContainerModel.ServiceConnectService(
+            clientAliases: nil,
+            discoveryName: nil,
+            ingressPortOverride: nil,
+            portName: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ServiceConnectServiceResource {
+    /**
+     Default instance of the ServiceConnectServiceResource structure.
+     */
+    static let __default: ElasticContainerModel.ServiceConnectServiceResource = {
+        let defaultInstance = ElasticContainerModel.ServiceConnectServiceResource(
+            discoveryArn: nil,
+            discoveryName: nil)
 
         return defaultInstance
     }()
@@ -2845,6 +3029,7 @@ public extension UpdateClusterRequest {
         let defaultInstance = ElasticContainerModel.UpdateClusterRequest(
             cluster: "value",
             configuration: nil,
+            serviceConnectDefaults: nil,
             settings: nil)
 
         return defaultInstance
@@ -2998,6 +3183,7 @@ public extension UpdateServiceRequest {
             platformVersion: nil,
             propagateTags: nil,
             service: "value",
+            serviceConnectConfiguration: nil,
             serviceRegistries: nil,
             taskDefinition: nil)
 
@@ -3012,6 +3198,34 @@ public extension UpdateServiceResponse {
     static let __default: ElasticContainerModel.UpdateServiceResponse = {
         let defaultInstance = ElasticContainerModel.UpdateServiceResponse(
             service: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateTaskProtectionRequest {
+    /**
+     Default instance of the UpdateTaskProtectionRequest structure.
+     */
+    static let __default: ElasticContainerModel.UpdateTaskProtectionRequest = {
+        let defaultInstance = ElasticContainerModel.UpdateTaskProtectionRequest(
+            cluster: "value",
+            expiresInMinutes: nil,
+            protectionEnabled: false,
+            tasks: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateTaskProtectionResponse {
+    /**
+     Default instance of the UpdateTaskProtectionResponse structure.
+     */
+    static let __default: ElasticContainerModel.UpdateTaskProtectionResponse = {
+        let defaultInstance = ElasticContainerModel.UpdateTaskProtectionResponse(
+            failures: nil,
+            protectedTasks: nil)
 
         return defaultInstance
     }()

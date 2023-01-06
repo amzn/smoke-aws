@@ -28,7 +28,12 @@ import SmokeHTTPClient
 /**
  Client Protocol for the ElasticComputeCloud service.
  */
-public protocol ElasticComputeCloudClientProtocol {
+public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProtocolV2 {
+    typealias AcceptAddressTransferSyncType = (
+            _ input: ElasticComputeCloudModel.AcceptAddressTransferRequest) throws -> ElasticComputeCloudModel.AcceptAddressTransferResult
+    typealias AcceptAddressTransferAsyncType = (
+            _ input: ElasticComputeCloudModel.AcceptAddressTransferRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AcceptAddressTransferResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AcceptReservedInstancesExchangeQuoteSyncType = (
             _ input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult
     typealias AcceptReservedInstancesExchangeQuoteAsyncType = (
@@ -174,6 +179,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias AttachNetworkInterfaceAsyncType = (
             _ input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.AttachNetworkInterfaceResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias AttachVerifiedAccessTrustProviderSyncType = (
+            _ input: ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderResult
+    typealias AttachVerifiedAccessTrustProviderAsyncType = (
+            _ input: ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AttachVolumeSyncType = (
             _ input: ElasticComputeCloudModel.AttachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment
     typealias AttachVolumeAsyncType = (
@@ -229,6 +239,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CancelExportTaskAsyncType = (
             _ input: ElasticComputeCloudModel.CancelExportTaskRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias CancelImageLaunchPermissionSyncType = (
+            _ input: ElasticComputeCloudModel.CancelImageLaunchPermissionRequest) throws -> ElasticComputeCloudModel.CancelImageLaunchPermissionResult
+    typealias CancelImageLaunchPermissionAsyncType = (
+            _ input: ElasticComputeCloudModel.CancelImageLaunchPermissionRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CancelImageLaunchPermissionResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CancelImportTaskSyncType = (
             _ input: ElasticComputeCloudModel.CancelImportTaskRequest) throws -> ElasticComputeCloudModel.CancelImportTaskResult
     typealias CancelImportTaskAsyncType = (
@@ -604,6 +619,26 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias CreateTransitGatewayVpcAttachmentAsyncType = (
             _ input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateVerifiedAccessEndpointSyncType = (
+            _ input: ElasticComputeCloudModel.CreateVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessEndpointResult
+    typealias CreateVerifiedAccessEndpointAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateVerifiedAccessEndpointRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateVerifiedAccessGroupSyncType = (
+            _ input: ElasticComputeCloudModel.CreateVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessGroupResult
+    typealias CreateVerifiedAccessGroupAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateVerifiedAccessGroupRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateVerifiedAccessInstanceSyncType = (
+            _ input: ElasticComputeCloudModel.CreateVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessInstanceResult
+    typealias CreateVerifiedAccessInstanceAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateVerifiedAccessInstanceRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateVerifiedAccessTrustProviderSyncType = (
+            _ input: ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderResult
+    typealias CreateVerifiedAccessTrustProviderAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateVolumeSyncType = (
             _ input: ElasticComputeCloudModel.CreateVolumeRequest) throws -> ElasticComputeCloudModel.Volume
     typealias CreateVolumeAsyncType = (
@@ -944,6 +979,26 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DeleteTransitGatewayVpcAttachmentAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteVerifiedAccessEndpointSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessEndpointResult
+    typealias DeleteVerifiedAccessEndpointAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteVerifiedAccessEndpointRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteVerifiedAccessGroupSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessGroupResult
+    typealias DeleteVerifiedAccessGroupAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteVerifiedAccessGroupRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteVerifiedAccessInstanceSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessInstanceResult
+    typealias DeleteVerifiedAccessInstanceAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteVerifiedAccessInstanceRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteVerifiedAccessTrustProviderSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderResult
+    typealias DeleteVerifiedAccessTrustProviderAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteVolumeSyncType = (
             _ input: ElasticComputeCloudModel.DeleteVolumeRequest) throws -> ()
     typealias DeleteVolumeAsyncType = (
@@ -1029,6 +1084,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeAccountAttributesAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeAccountAttributesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeAccountAttributesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeAddressTransfersSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeAddressTransfersRequest) throws -> ElasticComputeCloudModel.DescribeAddressTransfersResult
+    typealias DescribeAddressTransfersAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeAddressTransfersRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressTransfersResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeAddressesSyncType = (
             _ input: ElasticComputeCloudModel.DescribeAddressesRequest) throws -> ElasticComputeCloudModel.DescribeAddressesResult
     typealias DescribeAddressesAsyncType = (
@@ -1049,6 +1109,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeAvailabilityZonesAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeAvailabilityZonesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeAwsNetworkPerformanceMetricSubscriptionsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsRequest) throws -> ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsResult
+    typealias DescribeAwsNetworkPerformanceMetricSubscriptionsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeBundleTasksSyncType = (
             _ input: ElasticComputeCloudModel.DescribeBundleTasksRequest) throws -> ElasticComputeCloudModel.DescribeBundleTasksResult
     typealias DescribeBundleTasksAsyncType = (
@@ -1614,6 +1679,31 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DescribeTrunkInterfaceAssociationsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeVerifiedAccessEndpointsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsResult
+    typealias DescribeVerifiedAccessEndpointsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeVerifiedAccessGroupsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessGroupsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessGroupsResult
+    typealias DescribeVerifiedAccessGroupsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessGroupsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessGroupsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeVerifiedAccessInstanceLoggingConfigurationsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsResult
+    typealias DescribeVerifiedAccessInstanceLoggingConfigurationsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeVerifiedAccessInstancesSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessInstancesRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessInstancesResult
+    typealias DescribeVerifiedAccessInstancesAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessInstancesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessInstancesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeVerifiedAccessTrustProvidersSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersResult
+    typealias DescribeVerifiedAccessTrustProvidersAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeVolumeAttributeSyncType = (
             _ input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest) throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult
     typealias DescribeVolumeAttributeAsyncType = (
@@ -1714,6 +1804,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DetachNetworkInterfaceAsyncType = (
             _ input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias DetachVerifiedAccessTrustProviderSyncType = (
+            _ input: ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderResult
+    typealias DetachVerifiedAccessTrustProviderAsyncType = (
+            _ input: ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DetachVolumeSyncType = (
             _ input: ElasticComputeCloudModel.DetachVolumeRequest) throws -> ElasticComputeCloudModel.VolumeAttachment
     typealias DetachVolumeAsyncType = (
@@ -1724,6 +1819,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DetachVpnGatewayAsyncType = (
             _ input: ElasticComputeCloudModel.DetachVpnGatewayRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias DisableAddressTransferSyncType = (
+            _ input: ElasticComputeCloudModel.DisableAddressTransferRequest) throws -> ElasticComputeCloudModel.DisableAddressTransferResult
+    typealias DisableAddressTransferAsyncType = (
+            _ input: ElasticComputeCloudModel.DisableAddressTransferRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisableAddressTransferResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DisableAwsNetworkPerformanceMetricSubscriptionSyncType = (
+            _ input: ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionRequest) throws -> ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionResult
+    typealias DisableAwsNetworkPerformanceMetricSubscriptionAsyncType = (
+            _ input: ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisableEbsEncryptionByDefaultSyncType = (
             _ input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult
     typealias DisableEbsEncryptionByDefaultAsyncType = (
@@ -1834,6 +1939,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias DisassociateVpcCidrBlockAsyncType = (
             _ input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateVpcCidrBlockResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias EnableAddressTransferSyncType = (
+            _ input: ElasticComputeCloudModel.EnableAddressTransferRequest) throws -> ElasticComputeCloudModel.EnableAddressTransferResult
+    typealias EnableAddressTransferAsyncType = (
+            _ input: ElasticComputeCloudModel.EnableAddressTransferRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.EnableAddressTransferResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias EnableAwsNetworkPerformanceMetricSubscriptionSyncType = (
+            _ input: ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionRequest) throws -> ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionResult
+    typealias EnableAwsNetworkPerformanceMetricSubscriptionAsyncType = (
+            _ input: ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias EnableEbsEncryptionByDefaultSyncType = (
             _ input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult
     typealias EnableEbsEncryptionByDefaultAsyncType = (
@@ -1859,6 +1974,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias EnableIpamOrganizationAdminAccountAsyncType = (
             _ input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias EnableReachabilityAnalyzerOrganizationSharingSyncType = (
+            _ input: ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingRequest) throws -> ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingResult
+    typealias EnableReachabilityAnalyzerOrganizationSharingAsyncType = (
+            _ input: ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias EnableSerialConsoleAccessSyncType = (
             _ input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest) throws -> ElasticComputeCloudModel.EnableSerialConsoleAccessResult
     typealias EnableSerialConsoleAccessAsyncType = (
@@ -1919,6 +2039,11 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetAssociatedIpv6PoolCidrsAsyncType = (
             _ input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetAwsNetworkPerformanceDataSyncType = (
+            _ input: ElasticComputeCloudModel.GetAwsNetworkPerformanceDataRequest) throws -> ElasticComputeCloudModel.GetAwsNetworkPerformanceDataResult
+    typealias GetAwsNetworkPerformanceDataAsyncType = (
+            _ input: ElasticComputeCloudModel.GetAwsNetworkPerformanceDataRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetAwsNetworkPerformanceDataResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetCapacityReservationUsageSyncType = (
             _ input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest) throws -> ElasticComputeCloudModel.GetCapacityReservationUsageResult
     typealias GetCapacityReservationUsageAsyncType = (
@@ -2084,6 +2209,16 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias GetTransitGatewayRouteTablePropagationsAsyncType = (
             _ input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetVerifiedAccessEndpointPolicySyncType = (
+            _ input: ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyRequest) throws -> ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyResult
+    typealias GetVerifiedAccessEndpointPolicyAsyncType = (
+            _ input: ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetVerifiedAccessGroupPolicySyncType = (
+            _ input: ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyRequest) throws -> ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyResult
+    typealias GetVerifiedAccessGroupPolicyAsyncType = (
+            _ input: ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetVpnConnectionDeviceSampleConfigurationSyncType = (
             _ input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult
     typealias GetVpnConnectionDeviceSampleConfigurationAsyncType = (
@@ -2344,6 +2479,41 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias ModifyTransitGatewayVpcAttachmentAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyVerifiedAccessEndpointSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointResult
+    typealias ModifyVerifiedAccessEndpointAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyVerifiedAccessEndpointPolicySyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult
+    typealias ModifyVerifiedAccessEndpointPolicyAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyVerifiedAccessGroupSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupResult
+    typealias ModifyVerifiedAccessGroupAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyVerifiedAccessGroupPolicySyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult
+    typealias ModifyVerifiedAccessGroupPolicyAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyVerifiedAccessInstanceSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceResult
+    typealias ModifyVerifiedAccessInstanceAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyVerifiedAccessInstanceLoggingConfigurationSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationResult
+    typealias ModifyVerifiedAccessInstanceLoggingConfigurationAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyVerifiedAccessTrustProviderSyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderResult
+    typealias ModifyVerifiedAccessTrustProviderAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyVolumeSyncType = (
             _ input: ElasticComputeCloudModel.ModifyVolumeRequest) throws -> ElasticComputeCloudModel.ModifyVolumeResult
     typealias ModifyVolumeAsyncType = (
@@ -2739,6 +2909,30 @@ public protocol ElasticComputeCloudClientProtocol {
     typealias WithdrawByoipCidrAsyncType = (
             _ input: ElasticComputeCloudModel.WithdrawByoipCidrRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.WithdrawByoipCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
+
+    /**
+     Invokes the AcceptAddressTransfer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptAddressTransferRequest object being passed to this operation.
+         - completion: The AcceptAddressTransferResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptAddressTransferResult
+           object will be validated before being returned to caller.
+     */
+    func acceptAddressTransferAsync(
+            input: ElasticComputeCloudModel.AcceptAddressTransferRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptAddressTransferResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AcceptAddressTransfer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptAddressTransferRequest object being passed to this operation.
+     - Returns: The AcceptAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func acceptAddressTransferSync(
+            input: ElasticComputeCloudModel.AcceptAddressTransferRequest) throws -> ElasticComputeCloudModel.AcceptAddressTransferResult
 
     /**
      Invokes the AcceptReservedInstancesExchangeQuote operation returning immediately and passing the response to a callback.
@@ -3431,6 +3625,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest) throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult
 
     /**
+     Invokes the AttachVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AttachVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The AttachVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The AttachVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    func attachVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AttachVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AttachVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The AttachVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func attachVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderResult
+
+    /**
      Invokes the AttachVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3687,6 +3905,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func cancelExportTaskSync(
             input: ElasticComputeCloudModel.CancelExportTaskRequest) throws
+
+    /**
+     Invokes the CancelImageLaunchPermission operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelImageLaunchPermissionRequest object being passed to this operation.
+         - completion: The CancelImageLaunchPermissionResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelImageLaunchPermissionResult
+           object will be validated before being returned to caller.
+     */
+    func cancelImageLaunchPermissionAsync(
+            input: ElasticComputeCloudModel.CancelImageLaunchPermissionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelImageLaunchPermissionResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CancelImageLaunchPermission operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelImageLaunchPermissionRequest object being passed to this operation.
+     - Returns: The CancelImageLaunchPermissionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func cancelImageLaunchPermissionSync(
+            input: ElasticComputeCloudModel.CancelImageLaunchPermissionRequest) throws -> ElasticComputeCloudModel.CancelImageLaunchPermissionResult
 
     /**
      Invokes the CancelImportTask operation returning immediately and passing the response to a callback.
@@ -5483,6 +5725,102 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult
 
     /**
+     Invokes the CreateVerifiedAccessEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessEndpointRequest object being passed to this operation.
+         - completion: The CreateVerifiedAccessEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVerifiedAccessEndpointResult
+           object will be validated before being returned to caller.
+     */
+    func createVerifiedAccessEndpointAsync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateVerifiedAccessEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createVerifiedAccessEndpointSync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessEndpointResult
+
+    /**
+     Invokes the CreateVerifiedAccessGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessGroupRequest object being passed to this operation.
+         - completion: The CreateVerifiedAccessGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVerifiedAccessGroupResult
+           object will be validated before being returned to caller.
+     */
+    func createVerifiedAccessGroupAsync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateVerifiedAccessGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createVerifiedAccessGroupSync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessGroupResult
+
+    /**
+     Invokes the CreateVerifiedAccessInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessInstanceRequest object being passed to this operation.
+         - completion: The CreateVerifiedAccessInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVerifiedAccessInstanceResult
+           object will be validated before being returned to caller.
+     */
+    func createVerifiedAccessInstanceAsync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessInstanceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateVerifiedAccessInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createVerifiedAccessInstanceSync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessInstanceResult
+
+    /**
+     Invokes the CreateVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The CreateVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    func createVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderResult
+
+    /**
      Invokes the CreateVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7067,6 +7405,102 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult
 
     /**
+     Invokes the DeleteVerifiedAccessEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessEndpointRequest object being passed to this operation.
+         - completion: The DeleteVerifiedAccessEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVerifiedAccessEndpointResult
+           object will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessEndpointAsync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteVerifiedAccessEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessEndpointSync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessEndpointResult
+
+    /**
+     Invokes the DeleteVerifiedAccessGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessGroupRequest object being passed to this operation.
+         - completion: The DeleteVerifiedAccessGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVerifiedAccessGroupResult
+           object will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessGroupAsync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteVerifiedAccessGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessGroupSync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessGroupResult
+
+    /**
+     Invokes the DeleteVerifiedAccessInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessInstanceRequest object being passed to this operation.
+         - completion: The DeleteVerifiedAccessInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVerifiedAccessInstanceResult
+           object will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessInstanceAsync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessInstanceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteVerifiedAccessInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessInstanceSync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessInstanceResult
+
+    /**
+     Invokes the DeleteVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The DeleteVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderResult
+
+    /**
      Invokes the DeleteVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7457,6 +7891,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DescribeAccountAttributesRequest) throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult
 
     /**
+     Invokes the DescribeAddressTransfers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAddressTransfersRequest object being passed to this operation.
+         - completion: The DescribeAddressTransfersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAddressTransfersResult
+           object will be validated before being returned to caller.
+     */
+    func describeAddressTransfersAsync(
+            input: ElasticComputeCloudModel.DescribeAddressTransfersRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressTransfersResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeAddressTransfers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAddressTransfersRequest object being passed to this operation.
+     - Returns: The DescribeAddressTransfersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeAddressTransfersSync(
+            input: ElasticComputeCloudModel.DescribeAddressTransfersRequest) throws -> ElasticComputeCloudModel.DescribeAddressTransfersResult
+
+    /**
      Invokes the DescribeAddresses operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7551,6 +8009,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func describeAvailabilityZonesSync(
             input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest) throws -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult
+
+    /**
+     Invokes the DescribeAwsNetworkPerformanceMetricSubscriptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAwsNetworkPerformanceMetricSubscriptionsRequest object being passed to this operation.
+         - completion: The DescribeAwsNetworkPerformanceMetricSubscriptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAwsNetworkPerformanceMetricSubscriptionsResult
+           object will be validated before being returned to caller.
+     */
+    func describeAwsNetworkPerformanceMetricSubscriptionsAsync(
+            input: ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeAwsNetworkPerformanceMetricSubscriptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAwsNetworkPerformanceMetricSubscriptionsRequest object being passed to this operation.
+     - Returns: The DescribeAwsNetworkPerformanceMetricSubscriptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeAwsNetworkPerformanceMetricSubscriptionsSync(
+            input: ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsRequest) throws -> ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsResult
 
     /**
      Invokes the DescribeBundleTasks operation returning immediately and passing the response to a callback.
@@ -10265,6 +10747,126 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult
 
     /**
+     Invokes the DescribeVerifiedAccessEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessEndpointsRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessEndpointsAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeVerifiedAccessEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessEndpointsSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsResult
+
+    /**
+     Invokes the DescribeVerifiedAccessGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessGroupsRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessGroupsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessGroupsResult
+           object will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessGroupsAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessGroupsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessGroupsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeVerifiedAccessGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessGroupsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessGroupsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessGroupsSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessGroupsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessGroupsResult
+
+    /**
+     Invokes the DescribeVerifiedAccessInstanceLoggingConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstanceLoggingConfigurationsRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessInstanceLoggingConfigurationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessInstanceLoggingConfigurationsResult
+           object will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessInstanceLoggingConfigurationsAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeVerifiedAccessInstanceLoggingConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstanceLoggingConfigurationsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessInstanceLoggingConfigurationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessInstanceLoggingConfigurationsSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsResult
+
+    /**
+     Invokes the DescribeVerifiedAccessInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstancesRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessInstancesResult
+           object will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessInstancesAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessInstancesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessInstancesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeVerifiedAccessInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstancesRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessInstancesSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessInstancesRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessInstancesResult
+
+    /**
+     Invokes the DescribeVerifiedAccessTrustProviders operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessTrustProvidersRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessTrustProvidersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessTrustProvidersResult
+           object will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessTrustProvidersAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeVerifiedAccessTrustProviders operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessTrustProvidersRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessTrustProvidersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeVerifiedAccessTrustProvidersSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersResult
+
+    /**
      Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10739,6 +11341,30 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest) throws
 
     /**
+     Invokes the DetachVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DetachVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The DetachVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The DetachVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    func detachVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DetachVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DetachVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The DetachVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func detachVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderResult
+
+    /**
      Invokes the DetachVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10782,6 +11408,54 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func detachVpnGatewaySync(
             input: ElasticComputeCloudModel.DetachVpnGatewayRequest) throws
+
+    /**
+     Invokes the DisableAddressTransfer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableAddressTransferRequest object being passed to this operation.
+         - completion: The DisableAddressTransferResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableAddressTransferResult
+           object will be validated before being returned to caller.
+     */
+    func disableAddressTransferAsync(
+            input: ElasticComputeCloudModel.DisableAddressTransferRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableAddressTransferResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisableAddressTransfer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableAddressTransferRequest object being passed to this operation.
+     - Returns: The DisableAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableAddressTransferSync(
+            input: ElasticComputeCloudModel.DisableAddressTransferRequest) throws -> ElasticComputeCloudModel.DisableAddressTransferResult
+
+    /**
+     Invokes the DisableAwsNetworkPerformanceMetricSubscription operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+         - completion: The DisableAwsNetworkPerformanceMetricSubscriptionResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableAwsNetworkPerformanceMetricSubscriptionResult
+           object will be validated before being returned to caller.
+     */
+    func disableAwsNetworkPerformanceMetricSubscriptionAsync(
+            input: ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisableAwsNetworkPerformanceMetricSubscription operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+     - Returns: The DisableAwsNetworkPerformanceMetricSubscriptionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableAwsNetworkPerformanceMetricSubscriptionSync(
+            input: ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionRequest) throws -> ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionResult
 
     /**
      Invokes the DisableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
@@ -11303,6 +11977,54 @@ public protocol ElasticComputeCloudClientProtocol {
             input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult
 
     /**
+     Invokes the EnableAddressTransfer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableAddressTransferRequest object being passed to this operation.
+         - completion: The EnableAddressTransferResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableAddressTransferResult
+           object will be validated before being returned to caller.
+     */
+    func enableAddressTransferAsync(
+            input: ElasticComputeCloudModel.EnableAddressTransferRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableAddressTransferResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the EnableAddressTransfer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableAddressTransferRequest object being passed to this operation.
+     - Returns: The EnableAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableAddressTransferSync(
+            input: ElasticComputeCloudModel.EnableAddressTransferRequest) throws -> ElasticComputeCloudModel.EnableAddressTransferResult
+
+    /**
+     Invokes the EnableAwsNetworkPerformanceMetricSubscription operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+         - completion: The EnableAwsNetworkPerformanceMetricSubscriptionResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableAwsNetworkPerformanceMetricSubscriptionResult
+           object will be validated before being returned to caller.
+     */
+    func enableAwsNetworkPerformanceMetricSubscriptionAsync(
+            input: ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the EnableAwsNetworkPerformanceMetricSubscription operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+     - Returns: The EnableAwsNetworkPerformanceMetricSubscriptionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableAwsNetworkPerformanceMetricSubscriptionSync(
+            input: ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionRequest) throws -> ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionResult
+
+    /**
      Invokes the EnableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11421,6 +12143,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func enableIpamOrganizationAdminAccountSync(
             input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest) throws -> ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult
+
+    /**
+     Invokes the EnableReachabilityAnalyzerOrganizationSharing operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableReachabilityAnalyzerOrganizationSharingRequest object being passed to this operation.
+         - completion: The EnableReachabilityAnalyzerOrganizationSharingResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableReachabilityAnalyzerOrganizationSharingResult
+           object will be validated before being returned to caller.
+     */
+    func enableReachabilityAnalyzerOrganizationSharingAsync(
+            input: ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the EnableReachabilityAnalyzerOrganizationSharing operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableReachabilityAnalyzerOrganizationSharingRequest object being passed to this operation.
+     - Returns: The EnableReachabilityAnalyzerOrganizationSharingResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableReachabilityAnalyzerOrganizationSharingSync(
+            input: ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingRequest) throws -> ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingResult
 
     /**
      Invokes the EnableSerialConsoleAccess operation returning immediately and passing the response to a callback.
@@ -11703,6 +12449,30 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func getAssociatedIpv6PoolCidrsSync(
             input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest) throws -> ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult
+
+    /**
+     Invokes the GetAwsNetworkPerformanceData operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAwsNetworkPerformanceDataRequest object being passed to this operation.
+         - completion: The GetAwsNetworkPerformanceDataResult object or an error will be passed to this 
+           callback when the operation is complete. The GetAwsNetworkPerformanceDataResult
+           object will be validated before being returned to caller.
+     */
+    func getAwsNetworkPerformanceDataAsync(
+            input: ElasticComputeCloudModel.GetAwsNetworkPerformanceDataRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetAwsNetworkPerformanceDataResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetAwsNetworkPerformanceData operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAwsNetworkPerformanceDataRequest object being passed to this operation.
+     - Returns: The GetAwsNetworkPerformanceDataResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getAwsNetworkPerformanceDataSync(
+            input: ElasticComputeCloudModel.GetAwsNetworkPerformanceDataRequest) throws -> ElasticComputeCloudModel.GetAwsNetworkPerformanceDataResult
 
     /**
      Invokes the GetCapacityReservationUsage operation returning immediately and passing the response to a callback.
@@ -12495,6 +13265,54 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func getTransitGatewayRouteTablePropagationsSync(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult
+
+    /**
+     Invokes the GetVerifiedAccessEndpointPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+         - completion: The GetVerifiedAccessEndpointPolicyResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVerifiedAccessEndpointPolicyResult
+           object will be validated before being returned to caller.
+     */
+    func getVerifiedAccessEndpointPolicyAsync(
+            input: ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetVerifiedAccessEndpointPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+     - Returns: The GetVerifiedAccessEndpointPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getVerifiedAccessEndpointPolicySync(
+            input: ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyRequest) throws -> ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyResult
+
+    /**
+     Invokes the GetVerifiedAccessGroupPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessGroupPolicyRequest object being passed to this operation.
+         - completion: The GetVerifiedAccessGroupPolicyResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVerifiedAccessGroupPolicyResult
+           object will be validated before being returned to caller.
+     */
+    func getVerifiedAccessGroupPolicyAsync(
+            input: ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetVerifiedAccessGroupPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessGroupPolicyRequest object being passed to this operation.
+     - Returns: The GetVerifiedAccessGroupPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getVerifiedAccessGroupPolicySync(
+            input: ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyRequest) throws -> ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyResult
 
     /**
      Invokes the GetVpnConnectionDeviceSampleConfiguration operation returning immediately and passing the response to a callback.
@@ -13722,6 +14540,174 @@ public protocol ElasticComputeCloudClientProtocol {
      */
     func modifyTransitGatewayVpcAttachmentSync(
             input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessEndpointResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessEndpointAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessEndpointSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointResult
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpointPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessEndpointPolicyResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessEndpointPolicyResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessEndpointPolicyAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpointPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessEndpointPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessEndpointPolicySync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult
+
+    /**
+     Invokes the ModifyVerifiedAccessGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessGroupResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessGroupAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyVerifiedAccessGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessGroupSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupResult
+
+    /**
+     Invokes the ModifyVerifiedAccessGroupPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupPolicyRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessGroupPolicyResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessGroupPolicyResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessGroupPolicyAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyVerifiedAccessGroupPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupPolicyRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessGroupPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessGroupPolicySync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult
+
+    /**
+     Invokes the ModifyVerifiedAccessInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessInstanceResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessInstanceAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyVerifiedAccessInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessInstanceSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceResult
+
+    /**
+     Invokes the ModifyVerifiedAccessInstanceLoggingConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceLoggingConfigurationRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessInstanceLoggingConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessInstanceLoggingConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessInstanceLoggingConfigurationAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyVerifiedAccessInstanceLoggingConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceLoggingConfigurationRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessInstanceLoggingConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessInstanceLoggingConfigurationSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationResult
+
+    /**
+     Invokes the ModifyVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderResult
 
     /**
      Invokes the ModifyVolume operation returning immediately and passing the response to a callback.

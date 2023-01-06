@@ -3868,4 +3868,1910 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
             throw typedError
         }
     }
+    
+    #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+
+    /**
+     Invokes the BatchExecuteStatement operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated BatchExecuteStatementInput object being passed to this operation.
+     - Returns: The BatchExecuteStatementOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, requestLimitExceeded.
+     */
+    public func batchExecuteStatement(
+            input: DynamoDBModel.BatchExecuteStatementInput) async throws -> DynamoDBModel.BatchExecuteStatementOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.batchExecuteStatement.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchExecuteStatement,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = BatchExecuteStatementOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the BatchGetItem operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated BatchGetItemInput object being passed to this operation.
+     - Returns: The BatchGetItemOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
+     */
+    public func batchGetItem(
+            input: DynamoDBModel.BatchGetItemInput) async throws -> DynamoDBModel.BatchGetItemOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.batchGetItem.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchGetItem,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = BatchGetItemOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the BatchWriteItem operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated BatchWriteItemInput object being passed to this operation.
+     - Returns: The BatchWriteItemOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
+     */
+    public func batchWriteItem(
+            input: DynamoDBModel.BatchWriteItemInput) async throws -> DynamoDBModel.BatchWriteItemOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.batchWriteItem.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.batchWriteItem,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = BatchWriteItemOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateBackup operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateBackupInput object being passed to this operation.
+     - Returns: The CreateBackupOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: backupInUse, continuousBackupsUnavailable, internalServer, limitExceeded, tableInUse, tableNotFound.
+     */
+    public func createBackup(
+            input: DynamoDBModel.CreateBackupInput) async throws -> DynamoDBModel.CreateBackupOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.createBackup.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createBackup,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateBackupOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateGlobalTable operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateGlobalTableInput object being passed to this operation.
+     - Returns: The CreateGlobalTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: globalTableAlreadyExists, internalServer, limitExceeded, tableNotFound.
+     */
+    public func createGlobalTable(
+            input: DynamoDBModel.CreateGlobalTableInput) async throws -> DynamoDBModel.CreateGlobalTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.createGlobalTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createGlobalTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateGlobalTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateTable operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateTableInput object being passed to this operation.
+     - Returns: The CreateTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse.
+     */
+    public func createTable(
+            input: DynamoDBModel.CreateTableInput) async throws -> DynamoDBModel.CreateTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.createTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteBackup operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteBackupInput object being passed to this operation.
+     - Returns: The DeleteBackupOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: backupInUse, backupNotFound, internalServer, limitExceeded.
+     */
+    public func deleteBackup(
+            input: DynamoDBModel.DeleteBackupInput) async throws -> DynamoDBModel.DeleteBackupOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.deleteBackup.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteBackup,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteBackupOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteItem operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteItemInput object being passed to this operation.
+     - Returns: The DeleteItemOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
+     */
+    public func deleteItem(
+            input: DynamoDBModel.DeleteItemInput) async throws -> DynamoDBModel.DeleteItemOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.deleteItem.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteItem,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteItemOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteTable operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteTableInput object being passed to this operation.
+     - Returns: The DeleteTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func deleteTable(
+            input: DynamoDBModel.DeleteTableInput) async throws -> DynamoDBModel.DeleteTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.deleteTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeBackup operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeBackupInput object being passed to this operation.
+     - Returns: The DescribeBackupOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: backupNotFound, internalServer.
+     */
+    public func describeBackup(
+            input: DynamoDBModel.DescribeBackupInput) async throws -> DynamoDBModel.DescribeBackupOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeBackup.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeBackup,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeBackupOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeContinuousBackups operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeContinuousBackupsInput object being passed to this operation.
+     - Returns: The DescribeContinuousBackupsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, tableNotFound.
+     */
+    public func describeContinuousBackups(
+            input: DynamoDBModel.DescribeContinuousBackupsInput) async throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeContinuousBackups.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeContinuousBackups,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeContinuousBackupsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeContributorInsights operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeContributorInsightsInput object being passed to this operation.
+     - Returns: The DescribeContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeContributorInsights(
+            input: DynamoDBModel.DescribeContributorInsightsInput) async throws -> DynamoDBModel.DescribeContributorInsightsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeContributorInsights.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeContributorInsights,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeEndpoints operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeEndpointsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeEndpoints(
+            input: DynamoDBModel.DescribeEndpointsRequest) async throws -> DynamoDBModel.DescribeEndpointsResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeEndpoints.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeEndpoints,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeEndpointsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeExport operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeExportInput object being passed to this operation.
+     - Returns: The DescribeExportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportNotFound, internalServer, limitExceeded.
+     */
+    public func describeExport(
+            input: DynamoDBModel.DescribeExportInput) async throws -> DynamoDBModel.DescribeExportOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeExport.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeExport,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeExportOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeGlobalTable operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeGlobalTableInput object being passed to this operation.
+     - Returns: The DescribeGlobalTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: globalTableNotFound, internalServer.
+     */
+    public func describeGlobalTable(
+            input: DynamoDBModel.DescribeGlobalTableInput) async throws -> DynamoDBModel.DescribeGlobalTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeGlobalTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeGlobalTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeGlobalTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeGlobalTableSettings operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeGlobalTableSettingsInput object being passed to this operation.
+     - Returns: The DescribeGlobalTableSettingsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: globalTableNotFound, internalServer.
+     */
+    public func describeGlobalTableSettings(
+            input: DynamoDBModel.DescribeGlobalTableSettingsInput) async throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeGlobalTableSettings.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeGlobalTableSettings,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeImport operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeImportInput object being passed to this operation.
+     - Returns: The DescribeImportOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importNotFound.
+     */
+    public func describeImport(
+            input: DynamoDBModel.DescribeImportInput) async throws -> DynamoDBModel.DescribeImportOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeImport.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeImport,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeImportOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeKinesisStreamingDestination operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeKinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The DescribeKinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeKinesisStreamingDestination(
+            input: DynamoDBModel.DescribeKinesisStreamingDestinationInput) async throws -> DynamoDBModel.DescribeKinesisStreamingDestinationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeKinesisStreamingDestination.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeKinesisStreamingDestination,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeKinesisStreamingDestinationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeLimits operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeLimitsInput object being passed to this operation.
+     - Returns: The DescribeLimitsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer.
+     */
+    public func describeLimits(
+            input: DynamoDBModel.DescribeLimitsInput) async throws -> DynamoDBModel.DescribeLimitsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeLimits.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeLimits,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeLimitsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTable operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeTableInput object being passed to this operation.
+     - Returns: The DescribeTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeTable(
+            input: DynamoDBModel.DescribeTableInput) async throws -> DynamoDBModel.DescribeTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTableReplicaAutoScaling operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The DescribeTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeTableReplicaAutoScaling(
+            input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) async throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTableReplicaAutoScaling,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeTimeToLive operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeTimeToLiveInput object being passed to this operation.
+     - Returns: The DescribeTimeToLiveOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func describeTimeToLive(
+            input: DynamoDBModel.DescribeTimeToLiveInput) async throws -> DynamoDBModel.DescribeTimeToLiveOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.describeTimeToLive.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeTimeToLive,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeTimeToLiveOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DisableKinesisStreamingDestination operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The KinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func disableKinesisStreamingDestination(
+            input: DynamoDBModel.KinesisStreamingDestinationInput) async throws -> DynamoDBModel.KinesisStreamingDestinationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.disableKinesisStreamingDestination.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableKinesisStreamingDestination,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DisableKinesisStreamingDestinationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the EnableKinesisStreamingDestination operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated KinesisStreamingDestinationInput object being passed to this operation.
+     - Returns: The KinesisStreamingDestinationOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func enableKinesisStreamingDestination(
+            input: DynamoDBModel.KinesisStreamingDestinationInput) async throws -> DynamoDBModel.KinesisStreamingDestinationOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.enableKinesisStreamingDestination.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableKinesisStreamingDestination,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = EnableKinesisStreamingDestinationOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ExecuteStatement operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ExecuteStatementInput object being passed to this operation.
+     - Returns: The ExecuteStatementOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conditionalCheckFailed, duplicateItem, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
+     */
+    public func executeStatement(
+            input: DynamoDBModel.ExecuteStatementInput) async throws -> DynamoDBModel.ExecuteStatementOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.executeStatement.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.executeStatement,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExecuteStatementOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ExecuteTransaction operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ExecuteTransactionInput object being passed to this operation.
+     - Returns: The ExecuteTransactionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    public func executeTransaction(
+            input: DynamoDBModel.ExecuteTransactionInput) async throws -> DynamoDBModel.ExecuteTransactionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.executeTransaction.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.executeTransaction,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExecuteTransactionOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ExportTableToPointInTime operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ExportTableToPointInTimeInput object being passed to this operation.
+     - Returns: The ExportTableToPointInTimeOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: exportConflict, internalServer, invalidExportTime, limitExceeded, pointInTimeRecoveryUnavailable, tableNotFound.
+     */
+    public func exportTableToPointInTime(
+            input: DynamoDBModel.ExportTableToPointInTimeInput) async throws -> DynamoDBModel.ExportTableToPointInTimeOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.exportTableToPointInTime.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.exportTableToPointInTime,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ExportTableToPointInTimeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetItem operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetItemInput object being passed to this operation.
+     - Returns: The GetItemOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
+     */
+    public func getItem(
+            input: DynamoDBModel.GetItemInput) async throws -> DynamoDBModel.GetItemOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.getItem.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getItem,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = GetItemOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ImportTable operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ImportTableInput object being passed to this operation.
+     - Returns: The ImportTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: importConflict, limitExceeded, resourceInUse.
+     */
+    public func importTable(
+            input: DynamoDBModel.ImportTableInput) async throws -> DynamoDBModel.ImportTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.importTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.importTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ImportTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListBackups operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListBackupsInput object being passed to this operation.
+     - Returns: The ListBackupsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer.
+     */
+    public func listBackups(
+            input: DynamoDBModel.ListBackupsInput) async throws -> DynamoDBModel.ListBackupsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listBackups.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listBackups,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListContributorInsights operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListContributorInsightsInput object being passed to this operation.
+     - Returns: The ListContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func listContributorInsights(
+            input: DynamoDBModel.ListContributorInsightsInput) async throws -> DynamoDBModel.ListContributorInsightsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listContributorInsights.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listContributorInsights,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListExports operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListExportsInput object being passed to this operation.
+     - Returns: The ListExportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded.
+     */
+    public func listExports(
+            input: DynamoDBModel.ListExportsInput) async throws -> DynamoDBModel.ListExportsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listExports.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listExports,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListExportsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListGlobalTables operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListGlobalTablesInput object being passed to this operation.
+     - Returns: The ListGlobalTablesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer.
+     */
+    public func listGlobalTables(
+            input: DynamoDBModel.ListGlobalTablesInput) async throws -> DynamoDBModel.ListGlobalTablesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listGlobalTables.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listGlobalTables,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListImports operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListImportsInput object being passed to this operation.
+     - Returns: The ListImportsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: limitExceeded.
+     */
+    public func listImports(
+            input: DynamoDBModel.ListImportsInput) async throws -> DynamoDBModel.ListImportsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listImports.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listImports,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListImportsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTables operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTablesInput object being passed to this operation.
+     - Returns: The ListTablesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer.
+     */
+    public func listTables(
+            input: DynamoDBModel.ListTablesInput) async throws -> DynamoDBModel.ListTablesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listTables.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTables,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTablesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListTagsOfResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListTagsOfResourceInput object being passed to this operation.
+     - Returns: The ListTagsOfResourceOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func listTagsOfResource(
+            input: DynamoDBModel.ListTagsOfResourceInput) async throws -> DynamoDBModel.ListTagsOfResourceOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.listTagsOfResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsOfResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListTagsOfResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PutItem operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PutItemInput object being passed to this operation.
+     - Returns: The PutItemOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
+     */
+    public func putItem(
+            input: DynamoDBModel.PutItemInput) async throws -> DynamoDBModel.PutItemOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.putItem.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.putItem,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PutItemOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the Query operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated QueryInput object being passed to this operation.
+     - Returns: The QueryOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
+     */
+    public func query(
+            input: DynamoDBModel.QueryInput) async throws -> DynamoDBModel.QueryOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.query.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.query,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = QueryOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RestoreTableFromBackup operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RestoreTableFromBackupInput object being passed to this operation.
+     - Returns: The RestoreTableFromBackupOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: backupInUse, backupNotFound, internalServer, limitExceeded, tableAlreadyExists, tableInUse.
+     */
+    public func restoreTableFromBackup(
+            input: DynamoDBModel.RestoreTableFromBackupInput) async throws -> DynamoDBModel.RestoreTableFromBackupOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.restoreTableFromBackup.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreTableFromBackup,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RestoreTableFromBackupOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the RestoreTableToPointInTime operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated RestoreTableToPointInTimeInput object being passed to this operation.
+     - Returns: The RestoreTableToPointInTimeOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, invalidRestoreTime, limitExceeded, pointInTimeRecoveryUnavailable, tableAlreadyExists, tableInUse, tableNotFound.
+     */
+    public func restoreTableToPointInTime(
+            input: DynamoDBModel.RestoreTableToPointInTimeInput) async throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.restoreTableToPointInTime.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.restoreTableToPointInTime,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = RestoreTableToPointInTimeOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the Scan operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ScanInput object being passed to this operation.
+     - Returns: The ScanOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound.
+     */
+    public func scan(
+            input: DynamoDBModel.ScanInput) async throws -> DynamoDBModel.ScanOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.scan.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.scan,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ScanOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TagResourceInput object being passed to this operation.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func tagResource(
+            input: DynamoDBModel.TagResourceInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.tagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.tagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TransactGetItems operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TransactGetItemsInput object being passed to this operation.
+     - Returns: The TransactGetItemsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled.
+     */
+    public func transactGetItems(
+            input: DynamoDBModel.TransactGetItemsInput) async throws -> DynamoDBModel.TransactGetItemsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.transactGetItems.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.transactGetItems,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = TransactGetItemsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the TransactWriteItems operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated TransactWriteItemsInput object being passed to this operation.
+     - Returns: The TransactWriteItemsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: idempotentParameterMismatch, internalServer, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionCanceled, transactionInProgress.
+     */
+    public func transactWriteItems(
+            input: DynamoDBModel.TransactWriteItemsInput) async throws -> DynamoDBModel.TransactWriteItemsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.transactWriteItems.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.transactWriteItems,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = TransactWriteItemsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UntagResource operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UntagResourceInput object being passed to this operation.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func untagResource(
+            input: DynamoDBModel.UntagResourceInput) async throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.untagResource.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.untagResource,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateContinuousBackups operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateContinuousBackupsInput object being passed to this operation.
+     - Returns: The UpdateContinuousBackupsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: continuousBackupsUnavailable, internalServer, tableNotFound.
+     */
+    public func updateContinuousBackups(
+            input: DynamoDBModel.UpdateContinuousBackupsInput) async throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateContinuousBackups.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateContinuousBackups,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateContributorInsights operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateContributorInsightsInput object being passed to this operation.
+     - Returns: The UpdateContributorInsightsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, resourceNotFound.
+     */
+    public func updateContributorInsights(
+            input: DynamoDBModel.UpdateContributorInsightsInput) async throws -> DynamoDBModel.UpdateContributorInsightsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateContributorInsights.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateContributorInsights,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateContributorInsightsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateGlobalTable operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateGlobalTableInput object being passed to this operation.
+     - Returns: The UpdateGlobalTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: globalTableNotFound, internalServer, replicaAlreadyExists, replicaNotFound, tableNotFound.
+     */
+    public func updateGlobalTable(
+            input: DynamoDBModel.UpdateGlobalTableInput) async throws -> DynamoDBModel.UpdateGlobalTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateGlobalTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateGlobalTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateGlobalTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateGlobalTableSettings operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateGlobalTableSettingsInput object being passed to this operation.
+     - Returns: The UpdateGlobalTableSettingsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: globalTableNotFound, indexNotFound, internalServer, limitExceeded, replicaNotFound, resourceInUse.
+     */
+    public func updateGlobalTableSettings(
+            input: DynamoDBModel.UpdateGlobalTableSettingsInput) async throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateGlobalTableSettings.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateGlobalTableSettings,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateItem operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateItemInput object being passed to this operation.
+     - Returns: The UpdateItemOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conditionalCheckFailed, internalServer, itemCollectionSizeLimitExceeded, provisionedThroughputExceeded, requestLimitExceeded, resourceNotFound, transactionConflict.
+     */
+    public func updateItem(
+            input: DynamoDBModel.UpdateItemInput) async throws -> DynamoDBModel.UpdateItemOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateItem.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateItem,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateItemOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateTable operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateTableInput object being passed to this operation.
+     - Returns: The UpdateTableOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTable(
+            input: DynamoDBModel.UpdateTableInput) async throws -> DynamoDBModel.UpdateTableOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateTable.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateTable,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateTableReplicaAutoScaling operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateTableReplicaAutoScalingInput object being passed to this operation.
+     - Returns: The UpdateTableReplicaAutoScalingOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTableReplicaAutoScaling(
+            input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) async throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateTableReplicaAutoScaling.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateTableReplicaAutoScaling,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateTimeToLive operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateTimeToLiveInput object being passed to this operation.
+     - Returns: The UpdateTimeToLiveOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: internalServer, limitExceeded, resourceInUse, resourceNotFound.
+     */
+    public func updateTimeToLive(
+            input: DynamoDBModel.UpdateTimeToLiveInput) async throws -> DynamoDBModel.UpdateTimeToLiveOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: DynamoDBModelOperations.updateTimeToLive.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateTimeToLive,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateTimeToLiveOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: DynamoDBError = error.asTypedError()
+            throw typedError
+        }
+    }
+    #endif
 }

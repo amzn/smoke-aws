@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the ECR service.
  */
-public protocol ECRClientProtocol {
+public protocol ECRClientProtocol: ECRClientProtocolV2 {
     typealias BatchCheckLayerAvailabilitySyncType = (
             _ input: ECRModel.BatchCheckLayerAvailabilityRequest) throws -> ECRModel.BatchCheckLayerAvailabilityResponse
     typealias BatchCheckLayerAvailabilityAsyncType = (

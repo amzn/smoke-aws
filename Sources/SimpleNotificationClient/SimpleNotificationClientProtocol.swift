@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the SimpleNotification service.
  */
-public protocol SimpleNotificationClientProtocol {
+public protocol SimpleNotificationClientProtocol: SimpleNotificationClientProtocolV2 {
     typealias AddPermissionSyncType = (
             _ input: SimpleNotificationModel.AddPermissionInput) throws -> ()
     typealias AddPermissionAsyncType = (

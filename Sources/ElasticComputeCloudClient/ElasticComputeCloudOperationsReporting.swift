@@ -28,6 +28,7 @@ import ElasticComputeCloudModel
  Operation reporting for the ElasticComputeCloudModel.
  */
 public struct ElasticComputeCloudOperationsReporting {
+    public let acceptAddressTransfer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let acceptReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let acceptTransitGatewayMulticastDomainAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let acceptTransitGatewayPeeringAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -57,6 +58,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let attachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let attachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let attachNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let attachVerifiedAccessTrustProvider: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let attachVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let attachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let authorizeClientVpnIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -68,6 +70,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let cancelCapacityReservationFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelConversionTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let cancelImageLaunchPermission: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelImportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelReservedInstancesListing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let cancelSpotFleetRequests: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -143,6 +146,10 @@ public struct ElasticComputeCloudOperationsReporting {
     public let createTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createTransitGatewayRouteTableAnnouncement: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVerifiedAccessEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVerifiedAccessGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVerifiedAccessInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createVerifiedAccessTrustProvider: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createVpcEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -211,6 +218,10 @@ public struct ElasticComputeCloudOperationsReporting {
     public let deleteTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteTransitGatewayRouteTableAnnouncement: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVerifiedAccessEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVerifiedAccessGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVerifiedAccessInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteVerifiedAccessTrustProvider: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteVpcEndpointConnectionNotifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -228,10 +239,12 @@ public struct ElasticComputeCloudOperationsReporting {
     public let deregisterTransitGatewayMulticastGroupMembers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deregisterTransitGatewayMulticastGroupSources: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeAccountAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeAddressTransfers: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeAddressesAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeAggregateIdFormat: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeAvailabilityZones: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeAwsNetworkPerformanceMetricSubscriptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeBundleTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeByoipCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeCapacityReservationFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -345,6 +358,11 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describeTransitGatewayVpcAttachments: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeTransitGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeTrunkInterfaceAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVerifiedAccessEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVerifiedAccessGroups: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVerifiedAccessInstanceLoggingConfigurations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVerifiedAccessInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeVerifiedAccessTrustProviders: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeVolumeStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeVolumes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -365,8 +383,11 @@ public struct ElasticComputeCloudOperationsReporting {
     public let detachClassicLinkVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let detachInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let detachNetworkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let detachVerifiedAccessTrustProvider: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let detachVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let detachVpnGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableAddressTransfer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableAwsNetworkPerformanceMetricSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableFastLaunch: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -389,11 +410,14 @@ public struct ElasticComputeCloudOperationsReporting {
     public let disassociateTransitGatewayRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateTrunkInterface: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateVpcCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableAddressTransfer: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableAwsNetworkPerformanceMetricSubscription: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableFastLaunch: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableImageDeprecation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableIpamOrganizationAdminAccount: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableReachabilityAnalyzerOrganizationSharing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableSerialConsoleAccess: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableTransitGatewayRouteTablePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableVgwRoutePropagation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -406,6 +430,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let exportTransitGatewayRoutes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getAssociatedEnclaveCertificateIamRoles: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getAssociatedIpv6PoolCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getAwsNetworkPerformanceData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getCapacityReservationUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getCoipPoolUsage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getConsoleOutput: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -439,6 +464,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getTransitGatewayPrefixListReferences: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayRouteTableAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getTransitGatewayRouteTablePropagations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getVerifiedAccessEndpointPolicy: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getVerifiedAccessGroupPolicy: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getVpnConnectionDeviceSampleConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getVpnConnectionDeviceTypes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let importClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -491,6 +518,13 @@ public struct ElasticComputeCloudOperationsReporting {
     public let modifyTransitGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyTransitGatewayPrefixListReference: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyTransitGatewayVpcAttachment: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVerifiedAccessEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVerifiedAccessEndpointPolicy: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVerifiedAccessGroup: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVerifiedAccessGroupPolicy: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVerifiedAccessInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVerifiedAccessInstanceLoggingConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyVerifiedAccessTrustProvider: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyVolume: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyVolumeAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyVpcAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -572,6 +606,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public let withdrawByoipCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<ElasticComputeCloudModelOperations>) {
+        self.acceptAddressTransfer = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .acceptAddressTransfer, configuration: reportingConfiguration)
         self.acceptReservedInstancesExchangeQuote = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .acceptReservedInstancesExchangeQuote, configuration: reportingConfiguration)
         self.acceptTransitGatewayMulticastDomainAssociations = StandardSmokeAWSOperationReporting(
@@ -630,6 +666,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .attachInternetGateway, configuration: reportingConfiguration)
         self.attachNetworkInterface = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .attachNetworkInterface, configuration: reportingConfiguration)
+        self.attachVerifiedAccessTrustProvider = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .attachVerifiedAccessTrustProvider, configuration: reportingConfiguration)
         self.attachVolume = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .attachVolume, configuration: reportingConfiguration)
         self.attachVpnGateway = StandardSmokeAWSOperationReporting(
@@ -652,6 +690,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .cancelConversionTask, configuration: reportingConfiguration)
         self.cancelExportTask = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .cancelExportTask, configuration: reportingConfiguration)
+        self.cancelImageLaunchPermission = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelImageLaunchPermission, configuration: reportingConfiguration)
         self.cancelImportTask = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .cancelImportTask, configuration: reportingConfiguration)
         self.cancelReservedInstancesListing = StandardSmokeAWSOperationReporting(
@@ -802,6 +842,14 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createTransitGatewayRouteTableAnnouncement, configuration: reportingConfiguration)
         self.createTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createTransitGatewayVpcAttachment, configuration: reportingConfiguration)
+        self.createVerifiedAccessEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVerifiedAccessEndpoint, configuration: reportingConfiguration)
+        self.createVerifiedAccessGroup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVerifiedAccessGroup, configuration: reportingConfiguration)
+        self.createVerifiedAccessInstance = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVerifiedAccessInstance, configuration: reportingConfiguration)
+        self.createVerifiedAccessTrustProvider = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createVerifiedAccessTrustProvider, configuration: reportingConfiguration)
         self.createVolume = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createVolume, configuration: reportingConfiguration)
         self.createVpc = StandardSmokeAWSOperationReporting(
@@ -938,6 +986,14 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deleteTransitGatewayRouteTableAnnouncement, configuration: reportingConfiguration)
         self.deleteTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteTransitGatewayVpcAttachment, configuration: reportingConfiguration)
+        self.deleteVerifiedAccessEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVerifiedAccessEndpoint, configuration: reportingConfiguration)
+        self.deleteVerifiedAccessGroup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVerifiedAccessGroup, configuration: reportingConfiguration)
+        self.deleteVerifiedAccessInstance = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVerifiedAccessInstance, configuration: reportingConfiguration)
+        self.deleteVerifiedAccessTrustProvider = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteVerifiedAccessTrustProvider, configuration: reportingConfiguration)
         self.deleteVolume = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteVolume, configuration: reportingConfiguration)
         self.deleteVpc = StandardSmokeAWSOperationReporting(
@@ -972,6 +1028,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deregisterTransitGatewayMulticastGroupSources, configuration: reportingConfiguration)
         self.describeAccountAttributes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeAccountAttributes, configuration: reportingConfiguration)
+        self.describeAddressTransfers = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeAddressTransfers, configuration: reportingConfiguration)
         self.describeAddresses = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeAddresses, configuration: reportingConfiguration)
         self.describeAddressesAttribute = StandardSmokeAWSOperationReporting(
@@ -980,6 +1038,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeAggregateIdFormat, configuration: reportingConfiguration)
         self.describeAvailabilityZones = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeAvailabilityZones, configuration: reportingConfiguration)
+        self.describeAwsNetworkPerformanceMetricSubscriptions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeAwsNetworkPerformanceMetricSubscriptions, configuration: reportingConfiguration)
         self.describeBundleTasks = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeBundleTasks, configuration: reportingConfiguration)
         self.describeByoipCidrs = StandardSmokeAWSOperationReporting(
@@ -1206,6 +1266,16 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeTransitGateways, configuration: reportingConfiguration)
         self.describeTrunkInterfaceAssociations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeTrunkInterfaceAssociations, configuration: reportingConfiguration)
+        self.describeVerifiedAccessEndpoints = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVerifiedAccessEndpoints, configuration: reportingConfiguration)
+        self.describeVerifiedAccessGroups = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVerifiedAccessGroups, configuration: reportingConfiguration)
+        self.describeVerifiedAccessInstanceLoggingConfigurations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVerifiedAccessInstanceLoggingConfigurations, configuration: reportingConfiguration)
+        self.describeVerifiedAccessInstances = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVerifiedAccessInstances, configuration: reportingConfiguration)
+        self.describeVerifiedAccessTrustProviders = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeVerifiedAccessTrustProviders, configuration: reportingConfiguration)
         self.describeVolumeAttribute = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeVolumeAttribute, configuration: reportingConfiguration)
         self.describeVolumeStatus = StandardSmokeAWSOperationReporting(
@@ -1246,10 +1316,16 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .detachInternetGateway, configuration: reportingConfiguration)
         self.detachNetworkInterface = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .detachNetworkInterface, configuration: reportingConfiguration)
+        self.detachVerifiedAccessTrustProvider = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .detachVerifiedAccessTrustProvider, configuration: reportingConfiguration)
         self.detachVolume = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .detachVolume, configuration: reportingConfiguration)
         self.detachVpnGateway = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .detachVpnGateway, configuration: reportingConfiguration)
+        self.disableAddressTransfer = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableAddressTransfer, configuration: reportingConfiguration)
+        self.disableAwsNetworkPerformanceMetricSubscription = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableAwsNetworkPerformanceMetricSubscription, configuration: reportingConfiguration)
         self.disableEbsEncryptionByDefault = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disableEbsEncryptionByDefault, configuration: reportingConfiguration)
         self.disableFastLaunch = StandardSmokeAWSOperationReporting(
@@ -1294,6 +1370,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .disassociateTrunkInterface, configuration: reportingConfiguration)
         self.disassociateVpcCidrBlock = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateVpcCidrBlock, configuration: reportingConfiguration)
+        self.enableAddressTransfer = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableAddressTransfer, configuration: reportingConfiguration)
+        self.enableAwsNetworkPerformanceMetricSubscription = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableAwsNetworkPerformanceMetricSubscription, configuration: reportingConfiguration)
         self.enableEbsEncryptionByDefault = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableEbsEncryptionByDefault, configuration: reportingConfiguration)
         self.enableFastLaunch = StandardSmokeAWSOperationReporting(
@@ -1304,6 +1384,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .enableImageDeprecation, configuration: reportingConfiguration)
         self.enableIpamOrganizationAdminAccount = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableIpamOrganizationAdminAccount, configuration: reportingConfiguration)
+        self.enableReachabilityAnalyzerOrganizationSharing = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableReachabilityAnalyzerOrganizationSharing, configuration: reportingConfiguration)
         self.enableSerialConsoleAccess = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableSerialConsoleAccess, configuration: reportingConfiguration)
         self.enableTransitGatewayRouteTablePropagation = StandardSmokeAWSOperationReporting(
@@ -1328,6 +1410,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getAssociatedEnclaveCertificateIamRoles, configuration: reportingConfiguration)
         self.getAssociatedIpv6PoolCidrs = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getAssociatedIpv6PoolCidrs, configuration: reportingConfiguration)
+        self.getAwsNetworkPerformanceData = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getAwsNetworkPerformanceData, configuration: reportingConfiguration)
         self.getCapacityReservationUsage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getCapacityReservationUsage, configuration: reportingConfiguration)
         self.getCoipPoolUsage = StandardSmokeAWSOperationReporting(
@@ -1394,6 +1478,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getTransitGatewayRouteTableAssociations, configuration: reportingConfiguration)
         self.getTransitGatewayRouteTablePropagations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getTransitGatewayRouteTablePropagations, configuration: reportingConfiguration)
+        self.getVerifiedAccessEndpointPolicy = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getVerifiedAccessEndpointPolicy, configuration: reportingConfiguration)
+        self.getVerifiedAccessGroupPolicy = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getVerifiedAccessGroupPolicy, configuration: reportingConfiguration)
         self.getVpnConnectionDeviceSampleConfiguration = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getVpnConnectionDeviceSampleConfiguration, configuration: reportingConfiguration)
         self.getVpnConnectionDeviceTypes = StandardSmokeAWSOperationReporting(
@@ -1498,6 +1586,20 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .modifyTransitGatewayPrefixListReference, configuration: reportingConfiguration)
         self.modifyTransitGatewayVpcAttachment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyTransitGatewayVpcAttachment, configuration: reportingConfiguration)
+        self.modifyVerifiedAccessEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVerifiedAccessEndpoint, configuration: reportingConfiguration)
+        self.modifyVerifiedAccessEndpointPolicy = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVerifiedAccessEndpointPolicy, configuration: reportingConfiguration)
+        self.modifyVerifiedAccessGroup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVerifiedAccessGroup, configuration: reportingConfiguration)
+        self.modifyVerifiedAccessGroupPolicy = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVerifiedAccessGroupPolicy, configuration: reportingConfiguration)
+        self.modifyVerifiedAccessInstance = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVerifiedAccessInstance, configuration: reportingConfiguration)
+        self.modifyVerifiedAccessInstanceLoggingConfiguration = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVerifiedAccessInstanceLoggingConfiguration, configuration: reportingConfiguration)
+        self.modifyVerifiedAccessTrustProvider = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyVerifiedAccessTrustProvider, configuration: reportingConfiguration)
         self.modifyVolume = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyVolume, configuration: reportingConfiguration)
         self.modifyVolumeAttribute = StandardSmokeAWSOperationReporting(

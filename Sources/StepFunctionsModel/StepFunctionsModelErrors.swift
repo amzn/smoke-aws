@@ -58,6 +58,7 @@ private let taskDoesNotExistIdentity = "TaskDoesNotExist"
 private let taskTimedOutIdentity = "TaskTimedOut"
 private let throttlingIdentity = "ThrottlingException"
 private let tooManyTagsIdentity = "TooManyTags"
+private let validationIdentity = "ValidationException"
 private let __accessDeniedIdentity = "AccessDenied"
 
 public struct StepFunctionsErrorPayload: Codable {
@@ -96,6 +97,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case taskTimedOut(TaskTimedOut)
     case throttling(StepFunctionsErrorPayload)
     case tooManyTags(TooManyTags)
+    case validation(ValidationException)
     case accessDenied(message: String?)
     case validationError(reason: String)
     case unrecognizedError(String, String?)
@@ -190,6 +192,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case tooManyTagsIdentity:
             let errorPayload = try TooManyTags(from: decoder)
             self = StepFunctionsError.tooManyTags(errorPayload)
+        case validationIdentity:
+            let errorPayload = try ValidationException(from: decoder)
+            self = StepFunctionsError.validation(errorPayload)
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:

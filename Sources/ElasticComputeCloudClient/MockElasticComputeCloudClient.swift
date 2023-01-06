@@ -29,6 +29,8 @@ import SmokeHTTPClient
  Mock Client for the ElasticComputeCloud service by default returns the `__default` property of its return type.
  */
 public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
+    let acceptAddressTransferAsyncOverride: AcceptAddressTransferAsyncType?
+    let acceptAddressTransferSyncOverride: AcceptAddressTransferSyncType?
     let acceptReservedInstancesExchangeQuoteAsyncOverride: AcceptReservedInstancesExchangeQuoteAsyncType?
     let acceptReservedInstancesExchangeQuoteSyncOverride: AcceptReservedInstancesExchangeQuoteSyncType?
     let acceptTransitGatewayMulticastDomainAssociationsAsyncOverride: AcceptTransitGatewayMulticastDomainAssociationsAsyncType?
@@ -87,6 +89,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let attachInternetGatewaySyncOverride: AttachInternetGatewaySyncType?
     let attachNetworkInterfaceAsyncOverride: AttachNetworkInterfaceAsyncType?
     let attachNetworkInterfaceSyncOverride: AttachNetworkInterfaceSyncType?
+    let attachVerifiedAccessTrustProviderAsyncOverride: AttachVerifiedAccessTrustProviderAsyncType?
+    let attachVerifiedAccessTrustProviderSyncOverride: AttachVerifiedAccessTrustProviderSyncType?
     let attachVolumeAsyncOverride: AttachVolumeAsyncType?
     let attachVolumeSyncOverride: AttachVolumeSyncType?
     let attachVpnGatewayAsyncOverride: AttachVpnGatewayAsyncType?
@@ -109,6 +113,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let cancelConversionTaskSyncOverride: CancelConversionTaskSyncType?
     let cancelExportTaskAsyncOverride: CancelExportTaskAsyncType?
     let cancelExportTaskSyncOverride: CancelExportTaskSyncType?
+    let cancelImageLaunchPermissionAsyncOverride: CancelImageLaunchPermissionAsyncType?
+    let cancelImageLaunchPermissionSyncOverride: CancelImageLaunchPermissionSyncType?
     let cancelImportTaskAsyncOverride: CancelImportTaskAsyncType?
     let cancelImportTaskSyncOverride: CancelImportTaskSyncType?
     let cancelReservedInstancesListingAsyncOverride: CancelReservedInstancesListingAsyncType?
@@ -259,6 +265,14 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let createTransitGatewayRouteTableAnnouncementSyncOverride: CreateTransitGatewayRouteTableAnnouncementSyncType?
     let createTransitGatewayVpcAttachmentAsyncOverride: CreateTransitGatewayVpcAttachmentAsyncType?
     let createTransitGatewayVpcAttachmentSyncOverride: CreateTransitGatewayVpcAttachmentSyncType?
+    let createVerifiedAccessEndpointAsyncOverride: CreateVerifiedAccessEndpointAsyncType?
+    let createVerifiedAccessEndpointSyncOverride: CreateVerifiedAccessEndpointSyncType?
+    let createVerifiedAccessGroupAsyncOverride: CreateVerifiedAccessGroupAsyncType?
+    let createVerifiedAccessGroupSyncOverride: CreateVerifiedAccessGroupSyncType?
+    let createVerifiedAccessInstanceAsyncOverride: CreateVerifiedAccessInstanceAsyncType?
+    let createVerifiedAccessInstanceSyncOverride: CreateVerifiedAccessInstanceSyncType?
+    let createVerifiedAccessTrustProviderAsyncOverride: CreateVerifiedAccessTrustProviderAsyncType?
+    let createVerifiedAccessTrustProviderSyncOverride: CreateVerifiedAccessTrustProviderSyncType?
     let createVolumeAsyncOverride: CreateVolumeAsyncType?
     let createVolumeSyncOverride: CreateVolumeSyncType?
     let createVpcAsyncOverride: CreateVpcAsyncType?
@@ -395,6 +409,14 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deleteTransitGatewayRouteTableAnnouncementSyncOverride: DeleteTransitGatewayRouteTableAnnouncementSyncType?
     let deleteTransitGatewayVpcAttachmentAsyncOverride: DeleteTransitGatewayVpcAttachmentAsyncType?
     let deleteTransitGatewayVpcAttachmentSyncOverride: DeleteTransitGatewayVpcAttachmentSyncType?
+    let deleteVerifiedAccessEndpointAsyncOverride: DeleteVerifiedAccessEndpointAsyncType?
+    let deleteVerifiedAccessEndpointSyncOverride: DeleteVerifiedAccessEndpointSyncType?
+    let deleteVerifiedAccessGroupAsyncOverride: DeleteVerifiedAccessGroupAsyncType?
+    let deleteVerifiedAccessGroupSyncOverride: DeleteVerifiedAccessGroupSyncType?
+    let deleteVerifiedAccessInstanceAsyncOverride: DeleteVerifiedAccessInstanceAsyncType?
+    let deleteVerifiedAccessInstanceSyncOverride: DeleteVerifiedAccessInstanceSyncType?
+    let deleteVerifiedAccessTrustProviderAsyncOverride: DeleteVerifiedAccessTrustProviderAsyncType?
+    let deleteVerifiedAccessTrustProviderSyncOverride: DeleteVerifiedAccessTrustProviderSyncType?
     let deleteVolumeAsyncOverride: DeleteVolumeAsyncType?
     let deleteVolumeSyncOverride: DeleteVolumeSyncType?
     let deleteVpcAsyncOverride: DeleteVpcAsyncType?
@@ -429,6 +451,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let deregisterTransitGatewayMulticastGroupSourcesSyncOverride: DeregisterTransitGatewayMulticastGroupSourcesSyncType?
     let describeAccountAttributesAsyncOverride: DescribeAccountAttributesAsyncType?
     let describeAccountAttributesSyncOverride: DescribeAccountAttributesSyncType?
+    let describeAddressTransfersAsyncOverride: DescribeAddressTransfersAsyncType?
+    let describeAddressTransfersSyncOverride: DescribeAddressTransfersSyncType?
     let describeAddressesAsyncOverride: DescribeAddressesAsyncType?
     let describeAddressesSyncOverride: DescribeAddressesSyncType?
     let describeAddressesAttributeAsyncOverride: DescribeAddressesAttributeAsyncType?
@@ -437,6 +461,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeAggregateIdFormatSyncOverride: DescribeAggregateIdFormatSyncType?
     let describeAvailabilityZonesAsyncOverride: DescribeAvailabilityZonesAsyncType?
     let describeAvailabilityZonesSyncOverride: DescribeAvailabilityZonesSyncType?
+    let describeAwsNetworkPerformanceMetricSubscriptionsAsyncOverride: DescribeAwsNetworkPerformanceMetricSubscriptionsAsyncType?
+    let describeAwsNetworkPerformanceMetricSubscriptionsSyncOverride: DescribeAwsNetworkPerformanceMetricSubscriptionsSyncType?
     let describeBundleTasksAsyncOverride: DescribeBundleTasksAsyncType?
     let describeBundleTasksSyncOverride: DescribeBundleTasksSyncType?
     let describeByoipCidrsAsyncOverride: DescribeByoipCidrsAsyncType?
@@ -663,6 +689,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let describeTransitGatewaysSyncOverride: DescribeTransitGatewaysSyncType?
     let describeTrunkInterfaceAssociationsAsyncOverride: DescribeTrunkInterfaceAssociationsAsyncType?
     let describeTrunkInterfaceAssociationsSyncOverride: DescribeTrunkInterfaceAssociationsSyncType?
+    let describeVerifiedAccessEndpointsAsyncOverride: DescribeVerifiedAccessEndpointsAsyncType?
+    let describeVerifiedAccessEndpointsSyncOverride: DescribeVerifiedAccessEndpointsSyncType?
+    let describeVerifiedAccessGroupsAsyncOverride: DescribeVerifiedAccessGroupsAsyncType?
+    let describeVerifiedAccessGroupsSyncOverride: DescribeVerifiedAccessGroupsSyncType?
+    let describeVerifiedAccessInstanceLoggingConfigurationsAsyncOverride: DescribeVerifiedAccessInstanceLoggingConfigurationsAsyncType?
+    let describeVerifiedAccessInstanceLoggingConfigurationsSyncOverride: DescribeVerifiedAccessInstanceLoggingConfigurationsSyncType?
+    let describeVerifiedAccessInstancesAsyncOverride: DescribeVerifiedAccessInstancesAsyncType?
+    let describeVerifiedAccessInstancesSyncOverride: DescribeVerifiedAccessInstancesSyncType?
+    let describeVerifiedAccessTrustProvidersAsyncOverride: DescribeVerifiedAccessTrustProvidersAsyncType?
+    let describeVerifiedAccessTrustProvidersSyncOverride: DescribeVerifiedAccessTrustProvidersSyncType?
     let describeVolumeAttributeAsyncOverride: DescribeVolumeAttributeAsyncType?
     let describeVolumeAttributeSyncOverride: DescribeVolumeAttributeSyncType?
     let describeVolumeStatusAsyncOverride: DescribeVolumeStatusAsyncType?
@@ -703,10 +739,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let detachInternetGatewaySyncOverride: DetachInternetGatewaySyncType?
     let detachNetworkInterfaceAsyncOverride: DetachNetworkInterfaceAsyncType?
     let detachNetworkInterfaceSyncOverride: DetachNetworkInterfaceSyncType?
+    let detachVerifiedAccessTrustProviderAsyncOverride: DetachVerifiedAccessTrustProviderAsyncType?
+    let detachVerifiedAccessTrustProviderSyncOverride: DetachVerifiedAccessTrustProviderSyncType?
     let detachVolumeAsyncOverride: DetachVolumeAsyncType?
     let detachVolumeSyncOverride: DetachVolumeSyncType?
     let detachVpnGatewayAsyncOverride: DetachVpnGatewayAsyncType?
     let detachVpnGatewaySyncOverride: DetachVpnGatewaySyncType?
+    let disableAddressTransferAsyncOverride: DisableAddressTransferAsyncType?
+    let disableAddressTransferSyncOverride: DisableAddressTransferSyncType?
+    let disableAwsNetworkPerformanceMetricSubscriptionAsyncOverride: DisableAwsNetworkPerformanceMetricSubscriptionAsyncType?
+    let disableAwsNetworkPerformanceMetricSubscriptionSyncOverride: DisableAwsNetworkPerformanceMetricSubscriptionSyncType?
     let disableEbsEncryptionByDefaultAsyncOverride: DisableEbsEncryptionByDefaultAsyncType?
     let disableEbsEncryptionByDefaultSyncOverride: DisableEbsEncryptionByDefaultSyncType?
     let disableFastLaunchAsyncOverride: DisableFastLaunchAsyncType?
@@ -751,6 +793,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let disassociateTrunkInterfaceSyncOverride: DisassociateTrunkInterfaceSyncType?
     let disassociateVpcCidrBlockAsyncOverride: DisassociateVpcCidrBlockAsyncType?
     let disassociateVpcCidrBlockSyncOverride: DisassociateVpcCidrBlockSyncType?
+    let enableAddressTransferAsyncOverride: EnableAddressTransferAsyncType?
+    let enableAddressTransferSyncOverride: EnableAddressTransferSyncType?
+    let enableAwsNetworkPerformanceMetricSubscriptionAsyncOverride: EnableAwsNetworkPerformanceMetricSubscriptionAsyncType?
+    let enableAwsNetworkPerformanceMetricSubscriptionSyncOverride: EnableAwsNetworkPerformanceMetricSubscriptionSyncType?
     let enableEbsEncryptionByDefaultAsyncOverride: EnableEbsEncryptionByDefaultAsyncType?
     let enableEbsEncryptionByDefaultSyncOverride: EnableEbsEncryptionByDefaultSyncType?
     let enableFastLaunchAsyncOverride: EnableFastLaunchAsyncType?
@@ -761,6 +807,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let enableImageDeprecationSyncOverride: EnableImageDeprecationSyncType?
     let enableIpamOrganizationAdminAccountAsyncOverride: EnableIpamOrganizationAdminAccountAsyncType?
     let enableIpamOrganizationAdminAccountSyncOverride: EnableIpamOrganizationAdminAccountSyncType?
+    let enableReachabilityAnalyzerOrganizationSharingAsyncOverride: EnableReachabilityAnalyzerOrganizationSharingAsyncType?
+    let enableReachabilityAnalyzerOrganizationSharingSyncOverride: EnableReachabilityAnalyzerOrganizationSharingSyncType?
     let enableSerialConsoleAccessAsyncOverride: EnableSerialConsoleAccessAsyncType?
     let enableSerialConsoleAccessSyncOverride: EnableSerialConsoleAccessSyncType?
     let enableTransitGatewayRouteTablePropagationAsyncOverride: EnableTransitGatewayRouteTablePropagationAsyncType?
@@ -785,6 +833,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getAssociatedEnclaveCertificateIamRolesSyncOverride: GetAssociatedEnclaveCertificateIamRolesSyncType?
     let getAssociatedIpv6PoolCidrsAsyncOverride: GetAssociatedIpv6PoolCidrsAsyncType?
     let getAssociatedIpv6PoolCidrsSyncOverride: GetAssociatedIpv6PoolCidrsSyncType?
+    let getAwsNetworkPerformanceDataAsyncOverride: GetAwsNetworkPerformanceDataAsyncType?
+    let getAwsNetworkPerformanceDataSyncOverride: GetAwsNetworkPerformanceDataSyncType?
     let getCapacityReservationUsageAsyncOverride: GetCapacityReservationUsageAsyncType?
     let getCapacityReservationUsageSyncOverride: GetCapacityReservationUsageSyncType?
     let getCoipPoolUsageAsyncOverride: GetCoipPoolUsageAsyncType?
@@ -851,6 +901,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getTransitGatewayRouteTableAssociationsSyncOverride: GetTransitGatewayRouteTableAssociationsSyncType?
     let getTransitGatewayRouteTablePropagationsAsyncOverride: GetTransitGatewayRouteTablePropagationsAsyncType?
     let getTransitGatewayRouteTablePropagationsSyncOverride: GetTransitGatewayRouteTablePropagationsSyncType?
+    let getVerifiedAccessEndpointPolicyAsyncOverride: GetVerifiedAccessEndpointPolicyAsyncType?
+    let getVerifiedAccessEndpointPolicySyncOverride: GetVerifiedAccessEndpointPolicySyncType?
+    let getVerifiedAccessGroupPolicyAsyncOverride: GetVerifiedAccessGroupPolicyAsyncType?
+    let getVerifiedAccessGroupPolicySyncOverride: GetVerifiedAccessGroupPolicySyncType?
     let getVpnConnectionDeviceSampleConfigurationAsyncOverride: GetVpnConnectionDeviceSampleConfigurationAsyncType?
     let getVpnConnectionDeviceSampleConfigurationSyncOverride: GetVpnConnectionDeviceSampleConfigurationSyncType?
     let getVpnConnectionDeviceTypesAsyncOverride: GetVpnConnectionDeviceTypesAsyncType?
@@ -955,6 +1009,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let modifyTransitGatewayPrefixListReferenceSyncOverride: ModifyTransitGatewayPrefixListReferenceSyncType?
     let modifyTransitGatewayVpcAttachmentAsyncOverride: ModifyTransitGatewayVpcAttachmentAsyncType?
     let modifyTransitGatewayVpcAttachmentSyncOverride: ModifyTransitGatewayVpcAttachmentSyncType?
+    let modifyVerifiedAccessEndpointAsyncOverride: ModifyVerifiedAccessEndpointAsyncType?
+    let modifyVerifiedAccessEndpointSyncOverride: ModifyVerifiedAccessEndpointSyncType?
+    let modifyVerifiedAccessEndpointPolicyAsyncOverride: ModifyVerifiedAccessEndpointPolicyAsyncType?
+    let modifyVerifiedAccessEndpointPolicySyncOverride: ModifyVerifiedAccessEndpointPolicySyncType?
+    let modifyVerifiedAccessGroupAsyncOverride: ModifyVerifiedAccessGroupAsyncType?
+    let modifyVerifiedAccessGroupSyncOverride: ModifyVerifiedAccessGroupSyncType?
+    let modifyVerifiedAccessGroupPolicyAsyncOverride: ModifyVerifiedAccessGroupPolicyAsyncType?
+    let modifyVerifiedAccessGroupPolicySyncOverride: ModifyVerifiedAccessGroupPolicySyncType?
+    let modifyVerifiedAccessInstanceAsyncOverride: ModifyVerifiedAccessInstanceAsyncType?
+    let modifyVerifiedAccessInstanceSyncOverride: ModifyVerifiedAccessInstanceSyncType?
+    let modifyVerifiedAccessInstanceLoggingConfigurationAsyncOverride: ModifyVerifiedAccessInstanceLoggingConfigurationAsyncType?
+    let modifyVerifiedAccessInstanceLoggingConfigurationSyncOverride: ModifyVerifiedAccessInstanceLoggingConfigurationSyncType?
+    let modifyVerifiedAccessTrustProviderAsyncOverride: ModifyVerifiedAccessTrustProviderAsyncType?
+    let modifyVerifiedAccessTrustProviderSyncOverride: ModifyVerifiedAccessTrustProviderSyncType?
     let modifyVolumeAsyncOverride: ModifyVolumeAsyncType?
     let modifyVolumeSyncOverride: ModifyVolumeSyncType?
     let modifyVolumeAttributeAsyncOverride: ModifyVolumeAttributeAsyncType?
@@ -1119,6 +1187,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
      functions can be overridden by passing them to this initializer.
      */
     public init(
+            acceptAddressTransferAsync: AcceptAddressTransferAsyncType? = nil,
+            acceptAddressTransferSync: AcceptAddressTransferSyncType? = nil,
             acceptReservedInstancesExchangeQuoteAsync: AcceptReservedInstancesExchangeQuoteAsyncType? = nil,
             acceptReservedInstancesExchangeQuoteSync: AcceptReservedInstancesExchangeQuoteSyncType? = nil,
             acceptTransitGatewayMulticastDomainAssociationsAsync: AcceptTransitGatewayMulticastDomainAssociationsAsyncType? = nil,
@@ -1177,6 +1247,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             attachInternetGatewaySync: AttachInternetGatewaySyncType? = nil,
             attachNetworkInterfaceAsync: AttachNetworkInterfaceAsyncType? = nil,
             attachNetworkInterfaceSync: AttachNetworkInterfaceSyncType? = nil,
+            attachVerifiedAccessTrustProviderAsync: AttachVerifiedAccessTrustProviderAsyncType? = nil,
+            attachVerifiedAccessTrustProviderSync: AttachVerifiedAccessTrustProviderSyncType? = nil,
             attachVolumeAsync: AttachVolumeAsyncType? = nil,
             attachVolumeSync: AttachVolumeSyncType? = nil,
             attachVpnGatewayAsync: AttachVpnGatewayAsyncType? = nil,
@@ -1199,6 +1271,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             cancelConversionTaskSync: CancelConversionTaskSyncType? = nil,
             cancelExportTaskAsync: CancelExportTaskAsyncType? = nil,
             cancelExportTaskSync: CancelExportTaskSyncType? = nil,
+            cancelImageLaunchPermissionAsync: CancelImageLaunchPermissionAsyncType? = nil,
+            cancelImageLaunchPermissionSync: CancelImageLaunchPermissionSyncType? = nil,
             cancelImportTaskAsync: CancelImportTaskAsyncType? = nil,
             cancelImportTaskSync: CancelImportTaskSyncType? = nil,
             cancelReservedInstancesListingAsync: CancelReservedInstancesListingAsyncType? = nil,
@@ -1349,6 +1423,14 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             createTransitGatewayRouteTableAnnouncementSync: CreateTransitGatewayRouteTableAnnouncementSyncType? = nil,
             createTransitGatewayVpcAttachmentAsync: CreateTransitGatewayVpcAttachmentAsyncType? = nil,
             createTransitGatewayVpcAttachmentSync: CreateTransitGatewayVpcAttachmentSyncType? = nil,
+            createVerifiedAccessEndpointAsync: CreateVerifiedAccessEndpointAsyncType? = nil,
+            createVerifiedAccessEndpointSync: CreateVerifiedAccessEndpointSyncType? = nil,
+            createVerifiedAccessGroupAsync: CreateVerifiedAccessGroupAsyncType? = nil,
+            createVerifiedAccessGroupSync: CreateVerifiedAccessGroupSyncType? = nil,
+            createVerifiedAccessInstanceAsync: CreateVerifiedAccessInstanceAsyncType? = nil,
+            createVerifiedAccessInstanceSync: CreateVerifiedAccessInstanceSyncType? = nil,
+            createVerifiedAccessTrustProviderAsync: CreateVerifiedAccessTrustProviderAsyncType? = nil,
+            createVerifiedAccessTrustProviderSync: CreateVerifiedAccessTrustProviderSyncType? = nil,
             createVolumeAsync: CreateVolumeAsyncType? = nil,
             createVolumeSync: CreateVolumeSyncType? = nil,
             createVpcAsync: CreateVpcAsyncType? = nil,
@@ -1485,6 +1567,14 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             deleteTransitGatewayRouteTableAnnouncementSync: DeleteTransitGatewayRouteTableAnnouncementSyncType? = nil,
             deleteTransitGatewayVpcAttachmentAsync: DeleteTransitGatewayVpcAttachmentAsyncType? = nil,
             deleteTransitGatewayVpcAttachmentSync: DeleteTransitGatewayVpcAttachmentSyncType? = nil,
+            deleteVerifiedAccessEndpointAsync: DeleteVerifiedAccessEndpointAsyncType? = nil,
+            deleteVerifiedAccessEndpointSync: DeleteVerifiedAccessEndpointSyncType? = nil,
+            deleteVerifiedAccessGroupAsync: DeleteVerifiedAccessGroupAsyncType? = nil,
+            deleteVerifiedAccessGroupSync: DeleteVerifiedAccessGroupSyncType? = nil,
+            deleteVerifiedAccessInstanceAsync: DeleteVerifiedAccessInstanceAsyncType? = nil,
+            deleteVerifiedAccessInstanceSync: DeleteVerifiedAccessInstanceSyncType? = nil,
+            deleteVerifiedAccessTrustProviderAsync: DeleteVerifiedAccessTrustProviderAsyncType? = nil,
+            deleteVerifiedAccessTrustProviderSync: DeleteVerifiedAccessTrustProviderSyncType? = nil,
             deleteVolumeAsync: DeleteVolumeAsyncType? = nil,
             deleteVolumeSync: DeleteVolumeSyncType? = nil,
             deleteVpcAsync: DeleteVpcAsyncType? = nil,
@@ -1519,6 +1609,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             deregisterTransitGatewayMulticastGroupSourcesSync: DeregisterTransitGatewayMulticastGroupSourcesSyncType? = nil,
             describeAccountAttributesAsync: DescribeAccountAttributesAsyncType? = nil,
             describeAccountAttributesSync: DescribeAccountAttributesSyncType? = nil,
+            describeAddressTransfersAsync: DescribeAddressTransfersAsyncType? = nil,
+            describeAddressTransfersSync: DescribeAddressTransfersSyncType? = nil,
             describeAddressesAsync: DescribeAddressesAsyncType? = nil,
             describeAddressesSync: DescribeAddressesSyncType? = nil,
             describeAddressesAttributeAsync: DescribeAddressesAttributeAsyncType? = nil,
@@ -1527,6 +1619,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             describeAggregateIdFormatSync: DescribeAggregateIdFormatSyncType? = nil,
             describeAvailabilityZonesAsync: DescribeAvailabilityZonesAsyncType? = nil,
             describeAvailabilityZonesSync: DescribeAvailabilityZonesSyncType? = nil,
+            describeAwsNetworkPerformanceMetricSubscriptionsAsync: DescribeAwsNetworkPerformanceMetricSubscriptionsAsyncType? = nil,
+            describeAwsNetworkPerformanceMetricSubscriptionsSync: DescribeAwsNetworkPerformanceMetricSubscriptionsSyncType? = nil,
             describeBundleTasksAsync: DescribeBundleTasksAsyncType? = nil,
             describeBundleTasksSync: DescribeBundleTasksSyncType? = nil,
             describeByoipCidrsAsync: DescribeByoipCidrsAsyncType? = nil,
@@ -1753,6 +1847,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             describeTransitGatewaysSync: DescribeTransitGatewaysSyncType? = nil,
             describeTrunkInterfaceAssociationsAsync: DescribeTrunkInterfaceAssociationsAsyncType? = nil,
             describeTrunkInterfaceAssociationsSync: DescribeTrunkInterfaceAssociationsSyncType? = nil,
+            describeVerifiedAccessEndpointsAsync: DescribeVerifiedAccessEndpointsAsyncType? = nil,
+            describeVerifiedAccessEndpointsSync: DescribeVerifiedAccessEndpointsSyncType? = nil,
+            describeVerifiedAccessGroupsAsync: DescribeVerifiedAccessGroupsAsyncType? = nil,
+            describeVerifiedAccessGroupsSync: DescribeVerifiedAccessGroupsSyncType? = nil,
+            describeVerifiedAccessInstanceLoggingConfigurationsAsync: DescribeVerifiedAccessInstanceLoggingConfigurationsAsyncType? = nil,
+            describeVerifiedAccessInstanceLoggingConfigurationsSync: DescribeVerifiedAccessInstanceLoggingConfigurationsSyncType? = nil,
+            describeVerifiedAccessInstancesAsync: DescribeVerifiedAccessInstancesAsyncType? = nil,
+            describeVerifiedAccessInstancesSync: DescribeVerifiedAccessInstancesSyncType? = nil,
+            describeVerifiedAccessTrustProvidersAsync: DescribeVerifiedAccessTrustProvidersAsyncType? = nil,
+            describeVerifiedAccessTrustProvidersSync: DescribeVerifiedAccessTrustProvidersSyncType? = nil,
             describeVolumeAttributeAsync: DescribeVolumeAttributeAsyncType? = nil,
             describeVolumeAttributeSync: DescribeVolumeAttributeSyncType? = nil,
             describeVolumeStatusAsync: DescribeVolumeStatusAsyncType? = nil,
@@ -1793,10 +1897,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             detachInternetGatewaySync: DetachInternetGatewaySyncType? = nil,
             detachNetworkInterfaceAsync: DetachNetworkInterfaceAsyncType? = nil,
             detachNetworkInterfaceSync: DetachNetworkInterfaceSyncType? = nil,
+            detachVerifiedAccessTrustProviderAsync: DetachVerifiedAccessTrustProviderAsyncType? = nil,
+            detachVerifiedAccessTrustProviderSync: DetachVerifiedAccessTrustProviderSyncType? = nil,
             detachVolumeAsync: DetachVolumeAsyncType? = nil,
             detachVolumeSync: DetachVolumeSyncType? = nil,
             detachVpnGatewayAsync: DetachVpnGatewayAsyncType? = nil,
             detachVpnGatewaySync: DetachVpnGatewaySyncType? = nil,
+            disableAddressTransferAsync: DisableAddressTransferAsyncType? = nil,
+            disableAddressTransferSync: DisableAddressTransferSyncType? = nil,
+            disableAwsNetworkPerformanceMetricSubscriptionAsync: DisableAwsNetworkPerformanceMetricSubscriptionAsyncType? = nil,
+            disableAwsNetworkPerformanceMetricSubscriptionSync: DisableAwsNetworkPerformanceMetricSubscriptionSyncType? = nil,
             disableEbsEncryptionByDefaultAsync: DisableEbsEncryptionByDefaultAsyncType? = nil,
             disableEbsEncryptionByDefaultSync: DisableEbsEncryptionByDefaultSyncType? = nil,
             disableFastLaunchAsync: DisableFastLaunchAsyncType? = nil,
@@ -1841,6 +1951,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             disassociateTrunkInterfaceSync: DisassociateTrunkInterfaceSyncType? = nil,
             disassociateVpcCidrBlockAsync: DisassociateVpcCidrBlockAsyncType? = nil,
             disassociateVpcCidrBlockSync: DisassociateVpcCidrBlockSyncType? = nil,
+            enableAddressTransferAsync: EnableAddressTransferAsyncType? = nil,
+            enableAddressTransferSync: EnableAddressTransferSyncType? = nil,
+            enableAwsNetworkPerformanceMetricSubscriptionAsync: EnableAwsNetworkPerformanceMetricSubscriptionAsyncType? = nil,
+            enableAwsNetworkPerformanceMetricSubscriptionSync: EnableAwsNetworkPerformanceMetricSubscriptionSyncType? = nil,
             enableEbsEncryptionByDefaultAsync: EnableEbsEncryptionByDefaultAsyncType? = nil,
             enableEbsEncryptionByDefaultSync: EnableEbsEncryptionByDefaultSyncType? = nil,
             enableFastLaunchAsync: EnableFastLaunchAsyncType? = nil,
@@ -1851,6 +1965,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             enableImageDeprecationSync: EnableImageDeprecationSyncType? = nil,
             enableIpamOrganizationAdminAccountAsync: EnableIpamOrganizationAdminAccountAsyncType? = nil,
             enableIpamOrganizationAdminAccountSync: EnableIpamOrganizationAdminAccountSyncType? = nil,
+            enableReachabilityAnalyzerOrganizationSharingAsync: EnableReachabilityAnalyzerOrganizationSharingAsyncType? = nil,
+            enableReachabilityAnalyzerOrganizationSharingSync: EnableReachabilityAnalyzerOrganizationSharingSyncType? = nil,
             enableSerialConsoleAccessAsync: EnableSerialConsoleAccessAsyncType? = nil,
             enableSerialConsoleAccessSync: EnableSerialConsoleAccessSyncType? = nil,
             enableTransitGatewayRouteTablePropagationAsync: EnableTransitGatewayRouteTablePropagationAsyncType? = nil,
@@ -1875,6 +1991,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getAssociatedEnclaveCertificateIamRolesSync: GetAssociatedEnclaveCertificateIamRolesSyncType? = nil,
             getAssociatedIpv6PoolCidrsAsync: GetAssociatedIpv6PoolCidrsAsyncType? = nil,
             getAssociatedIpv6PoolCidrsSync: GetAssociatedIpv6PoolCidrsSyncType? = nil,
+            getAwsNetworkPerformanceDataAsync: GetAwsNetworkPerformanceDataAsyncType? = nil,
+            getAwsNetworkPerformanceDataSync: GetAwsNetworkPerformanceDataSyncType? = nil,
             getCapacityReservationUsageAsync: GetCapacityReservationUsageAsyncType? = nil,
             getCapacityReservationUsageSync: GetCapacityReservationUsageSyncType? = nil,
             getCoipPoolUsageAsync: GetCoipPoolUsageAsyncType? = nil,
@@ -1941,6 +2059,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getTransitGatewayRouteTableAssociationsSync: GetTransitGatewayRouteTableAssociationsSyncType? = nil,
             getTransitGatewayRouteTablePropagationsAsync: GetTransitGatewayRouteTablePropagationsAsyncType? = nil,
             getTransitGatewayRouteTablePropagationsSync: GetTransitGatewayRouteTablePropagationsSyncType? = nil,
+            getVerifiedAccessEndpointPolicyAsync: GetVerifiedAccessEndpointPolicyAsyncType? = nil,
+            getVerifiedAccessEndpointPolicySync: GetVerifiedAccessEndpointPolicySyncType? = nil,
+            getVerifiedAccessGroupPolicyAsync: GetVerifiedAccessGroupPolicyAsyncType? = nil,
+            getVerifiedAccessGroupPolicySync: GetVerifiedAccessGroupPolicySyncType? = nil,
             getVpnConnectionDeviceSampleConfigurationAsync: GetVpnConnectionDeviceSampleConfigurationAsyncType? = nil,
             getVpnConnectionDeviceSampleConfigurationSync: GetVpnConnectionDeviceSampleConfigurationSyncType? = nil,
             getVpnConnectionDeviceTypesAsync: GetVpnConnectionDeviceTypesAsyncType? = nil,
@@ -2045,6 +2167,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             modifyTransitGatewayPrefixListReferenceSync: ModifyTransitGatewayPrefixListReferenceSyncType? = nil,
             modifyTransitGatewayVpcAttachmentAsync: ModifyTransitGatewayVpcAttachmentAsyncType? = nil,
             modifyTransitGatewayVpcAttachmentSync: ModifyTransitGatewayVpcAttachmentSyncType? = nil,
+            modifyVerifiedAccessEndpointAsync: ModifyVerifiedAccessEndpointAsyncType? = nil,
+            modifyVerifiedAccessEndpointSync: ModifyVerifiedAccessEndpointSyncType? = nil,
+            modifyVerifiedAccessEndpointPolicyAsync: ModifyVerifiedAccessEndpointPolicyAsyncType? = nil,
+            modifyVerifiedAccessEndpointPolicySync: ModifyVerifiedAccessEndpointPolicySyncType? = nil,
+            modifyVerifiedAccessGroupAsync: ModifyVerifiedAccessGroupAsyncType? = nil,
+            modifyVerifiedAccessGroupSync: ModifyVerifiedAccessGroupSyncType? = nil,
+            modifyVerifiedAccessGroupPolicyAsync: ModifyVerifiedAccessGroupPolicyAsyncType? = nil,
+            modifyVerifiedAccessGroupPolicySync: ModifyVerifiedAccessGroupPolicySyncType? = nil,
+            modifyVerifiedAccessInstanceAsync: ModifyVerifiedAccessInstanceAsyncType? = nil,
+            modifyVerifiedAccessInstanceSync: ModifyVerifiedAccessInstanceSyncType? = nil,
+            modifyVerifiedAccessInstanceLoggingConfigurationAsync: ModifyVerifiedAccessInstanceLoggingConfigurationAsyncType? = nil,
+            modifyVerifiedAccessInstanceLoggingConfigurationSync: ModifyVerifiedAccessInstanceLoggingConfigurationSyncType? = nil,
+            modifyVerifiedAccessTrustProviderAsync: ModifyVerifiedAccessTrustProviderAsyncType? = nil,
+            modifyVerifiedAccessTrustProviderSync: ModifyVerifiedAccessTrustProviderSyncType? = nil,
             modifyVolumeAsync: ModifyVolumeAsyncType? = nil,
             modifyVolumeSync: ModifyVolumeSyncType? = nil,
             modifyVolumeAttributeAsync: ModifyVolumeAttributeAsyncType? = nil,
@@ -2203,6 +2339,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             updateSecurityGroupRuleDescriptionsIngressSync: UpdateSecurityGroupRuleDescriptionsIngressSyncType? = nil,
             withdrawByoipCidrAsync: WithdrawByoipCidrAsyncType? = nil,
             withdrawByoipCidrSync: WithdrawByoipCidrSyncType? = nil) {
+        self.acceptAddressTransferAsyncOverride = acceptAddressTransferAsync
+        self.acceptAddressTransferSyncOverride = acceptAddressTransferSync
         self.acceptReservedInstancesExchangeQuoteAsyncOverride = acceptReservedInstancesExchangeQuoteAsync
         self.acceptReservedInstancesExchangeQuoteSyncOverride = acceptReservedInstancesExchangeQuoteSync
         self.acceptTransitGatewayMulticastDomainAssociationsAsyncOverride = acceptTransitGatewayMulticastDomainAssociationsAsync
@@ -2261,6 +2399,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.attachInternetGatewaySyncOverride = attachInternetGatewaySync
         self.attachNetworkInterfaceAsyncOverride = attachNetworkInterfaceAsync
         self.attachNetworkInterfaceSyncOverride = attachNetworkInterfaceSync
+        self.attachVerifiedAccessTrustProviderAsyncOverride = attachVerifiedAccessTrustProviderAsync
+        self.attachVerifiedAccessTrustProviderSyncOverride = attachVerifiedAccessTrustProviderSync
         self.attachVolumeAsyncOverride = attachVolumeAsync
         self.attachVolumeSyncOverride = attachVolumeSync
         self.attachVpnGatewayAsyncOverride = attachVpnGatewayAsync
@@ -2283,6 +2423,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.cancelConversionTaskSyncOverride = cancelConversionTaskSync
         self.cancelExportTaskAsyncOverride = cancelExportTaskAsync
         self.cancelExportTaskSyncOverride = cancelExportTaskSync
+        self.cancelImageLaunchPermissionAsyncOverride = cancelImageLaunchPermissionAsync
+        self.cancelImageLaunchPermissionSyncOverride = cancelImageLaunchPermissionSync
         self.cancelImportTaskAsyncOverride = cancelImportTaskAsync
         self.cancelImportTaskSyncOverride = cancelImportTaskSync
         self.cancelReservedInstancesListingAsyncOverride = cancelReservedInstancesListingAsync
@@ -2433,6 +2575,14 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.createTransitGatewayRouteTableAnnouncementSyncOverride = createTransitGatewayRouteTableAnnouncementSync
         self.createTransitGatewayVpcAttachmentAsyncOverride = createTransitGatewayVpcAttachmentAsync
         self.createTransitGatewayVpcAttachmentSyncOverride = createTransitGatewayVpcAttachmentSync
+        self.createVerifiedAccessEndpointAsyncOverride = createVerifiedAccessEndpointAsync
+        self.createVerifiedAccessEndpointSyncOverride = createVerifiedAccessEndpointSync
+        self.createVerifiedAccessGroupAsyncOverride = createVerifiedAccessGroupAsync
+        self.createVerifiedAccessGroupSyncOverride = createVerifiedAccessGroupSync
+        self.createVerifiedAccessInstanceAsyncOverride = createVerifiedAccessInstanceAsync
+        self.createVerifiedAccessInstanceSyncOverride = createVerifiedAccessInstanceSync
+        self.createVerifiedAccessTrustProviderAsyncOverride = createVerifiedAccessTrustProviderAsync
+        self.createVerifiedAccessTrustProviderSyncOverride = createVerifiedAccessTrustProviderSync
         self.createVolumeAsyncOverride = createVolumeAsync
         self.createVolumeSyncOverride = createVolumeSync
         self.createVpcAsyncOverride = createVpcAsync
@@ -2569,6 +2719,14 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.deleteTransitGatewayRouteTableAnnouncementSyncOverride = deleteTransitGatewayRouteTableAnnouncementSync
         self.deleteTransitGatewayVpcAttachmentAsyncOverride = deleteTransitGatewayVpcAttachmentAsync
         self.deleteTransitGatewayVpcAttachmentSyncOverride = deleteTransitGatewayVpcAttachmentSync
+        self.deleteVerifiedAccessEndpointAsyncOverride = deleteVerifiedAccessEndpointAsync
+        self.deleteVerifiedAccessEndpointSyncOverride = deleteVerifiedAccessEndpointSync
+        self.deleteVerifiedAccessGroupAsyncOverride = deleteVerifiedAccessGroupAsync
+        self.deleteVerifiedAccessGroupSyncOverride = deleteVerifiedAccessGroupSync
+        self.deleteVerifiedAccessInstanceAsyncOverride = deleteVerifiedAccessInstanceAsync
+        self.deleteVerifiedAccessInstanceSyncOverride = deleteVerifiedAccessInstanceSync
+        self.deleteVerifiedAccessTrustProviderAsyncOverride = deleteVerifiedAccessTrustProviderAsync
+        self.deleteVerifiedAccessTrustProviderSyncOverride = deleteVerifiedAccessTrustProviderSync
         self.deleteVolumeAsyncOverride = deleteVolumeAsync
         self.deleteVolumeSyncOverride = deleteVolumeSync
         self.deleteVpcAsyncOverride = deleteVpcAsync
@@ -2603,6 +2761,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.deregisterTransitGatewayMulticastGroupSourcesSyncOverride = deregisterTransitGatewayMulticastGroupSourcesSync
         self.describeAccountAttributesAsyncOverride = describeAccountAttributesAsync
         self.describeAccountAttributesSyncOverride = describeAccountAttributesSync
+        self.describeAddressTransfersAsyncOverride = describeAddressTransfersAsync
+        self.describeAddressTransfersSyncOverride = describeAddressTransfersSync
         self.describeAddressesAsyncOverride = describeAddressesAsync
         self.describeAddressesSyncOverride = describeAddressesSync
         self.describeAddressesAttributeAsyncOverride = describeAddressesAttributeAsync
@@ -2611,6 +2771,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.describeAggregateIdFormatSyncOverride = describeAggregateIdFormatSync
         self.describeAvailabilityZonesAsyncOverride = describeAvailabilityZonesAsync
         self.describeAvailabilityZonesSyncOverride = describeAvailabilityZonesSync
+        self.describeAwsNetworkPerformanceMetricSubscriptionsAsyncOverride = describeAwsNetworkPerformanceMetricSubscriptionsAsync
+        self.describeAwsNetworkPerformanceMetricSubscriptionsSyncOverride = describeAwsNetworkPerformanceMetricSubscriptionsSync
         self.describeBundleTasksAsyncOverride = describeBundleTasksAsync
         self.describeBundleTasksSyncOverride = describeBundleTasksSync
         self.describeByoipCidrsAsyncOverride = describeByoipCidrsAsync
@@ -2837,6 +2999,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.describeTransitGatewaysSyncOverride = describeTransitGatewaysSync
         self.describeTrunkInterfaceAssociationsAsyncOverride = describeTrunkInterfaceAssociationsAsync
         self.describeTrunkInterfaceAssociationsSyncOverride = describeTrunkInterfaceAssociationsSync
+        self.describeVerifiedAccessEndpointsAsyncOverride = describeVerifiedAccessEndpointsAsync
+        self.describeVerifiedAccessEndpointsSyncOverride = describeVerifiedAccessEndpointsSync
+        self.describeVerifiedAccessGroupsAsyncOverride = describeVerifiedAccessGroupsAsync
+        self.describeVerifiedAccessGroupsSyncOverride = describeVerifiedAccessGroupsSync
+        self.describeVerifiedAccessInstanceLoggingConfigurationsAsyncOverride = describeVerifiedAccessInstanceLoggingConfigurationsAsync
+        self.describeVerifiedAccessInstanceLoggingConfigurationsSyncOverride = describeVerifiedAccessInstanceLoggingConfigurationsSync
+        self.describeVerifiedAccessInstancesAsyncOverride = describeVerifiedAccessInstancesAsync
+        self.describeVerifiedAccessInstancesSyncOverride = describeVerifiedAccessInstancesSync
+        self.describeVerifiedAccessTrustProvidersAsyncOverride = describeVerifiedAccessTrustProvidersAsync
+        self.describeVerifiedAccessTrustProvidersSyncOverride = describeVerifiedAccessTrustProvidersSync
         self.describeVolumeAttributeAsyncOverride = describeVolumeAttributeAsync
         self.describeVolumeAttributeSyncOverride = describeVolumeAttributeSync
         self.describeVolumeStatusAsyncOverride = describeVolumeStatusAsync
@@ -2877,10 +3049,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.detachInternetGatewaySyncOverride = detachInternetGatewaySync
         self.detachNetworkInterfaceAsyncOverride = detachNetworkInterfaceAsync
         self.detachNetworkInterfaceSyncOverride = detachNetworkInterfaceSync
+        self.detachVerifiedAccessTrustProviderAsyncOverride = detachVerifiedAccessTrustProviderAsync
+        self.detachVerifiedAccessTrustProviderSyncOverride = detachVerifiedAccessTrustProviderSync
         self.detachVolumeAsyncOverride = detachVolumeAsync
         self.detachVolumeSyncOverride = detachVolumeSync
         self.detachVpnGatewayAsyncOverride = detachVpnGatewayAsync
         self.detachVpnGatewaySyncOverride = detachVpnGatewaySync
+        self.disableAddressTransferAsyncOverride = disableAddressTransferAsync
+        self.disableAddressTransferSyncOverride = disableAddressTransferSync
+        self.disableAwsNetworkPerformanceMetricSubscriptionAsyncOverride = disableAwsNetworkPerformanceMetricSubscriptionAsync
+        self.disableAwsNetworkPerformanceMetricSubscriptionSyncOverride = disableAwsNetworkPerformanceMetricSubscriptionSync
         self.disableEbsEncryptionByDefaultAsyncOverride = disableEbsEncryptionByDefaultAsync
         self.disableEbsEncryptionByDefaultSyncOverride = disableEbsEncryptionByDefaultSync
         self.disableFastLaunchAsyncOverride = disableFastLaunchAsync
@@ -2925,6 +3103,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.disassociateTrunkInterfaceSyncOverride = disassociateTrunkInterfaceSync
         self.disassociateVpcCidrBlockAsyncOverride = disassociateVpcCidrBlockAsync
         self.disassociateVpcCidrBlockSyncOverride = disassociateVpcCidrBlockSync
+        self.enableAddressTransferAsyncOverride = enableAddressTransferAsync
+        self.enableAddressTransferSyncOverride = enableAddressTransferSync
+        self.enableAwsNetworkPerformanceMetricSubscriptionAsyncOverride = enableAwsNetworkPerformanceMetricSubscriptionAsync
+        self.enableAwsNetworkPerformanceMetricSubscriptionSyncOverride = enableAwsNetworkPerformanceMetricSubscriptionSync
         self.enableEbsEncryptionByDefaultAsyncOverride = enableEbsEncryptionByDefaultAsync
         self.enableEbsEncryptionByDefaultSyncOverride = enableEbsEncryptionByDefaultSync
         self.enableFastLaunchAsyncOverride = enableFastLaunchAsync
@@ -2935,6 +3117,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.enableImageDeprecationSyncOverride = enableImageDeprecationSync
         self.enableIpamOrganizationAdminAccountAsyncOverride = enableIpamOrganizationAdminAccountAsync
         self.enableIpamOrganizationAdminAccountSyncOverride = enableIpamOrganizationAdminAccountSync
+        self.enableReachabilityAnalyzerOrganizationSharingAsyncOverride = enableReachabilityAnalyzerOrganizationSharingAsync
+        self.enableReachabilityAnalyzerOrganizationSharingSyncOverride = enableReachabilityAnalyzerOrganizationSharingSync
         self.enableSerialConsoleAccessAsyncOverride = enableSerialConsoleAccessAsync
         self.enableSerialConsoleAccessSyncOverride = enableSerialConsoleAccessSync
         self.enableTransitGatewayRouteTablePropagationAsyncOverride = enableTransitGatewayRouteTablePropagationAsync
@@ -2959,6 +3143,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getAssociatedEnclaveCertificateIamRolesSyncOverride = getAssociatedEnclaveCertificateIamRolesSync
         self.getAssociatedIpv6PoolCidrsAsyncOverride = getAssociatedIpv6PoolCidrsAsync
         self.getAssociatedIpv6PoolCidrsSyncOverride = getAssociatedIpv6PoolCidrsSync
+        self.getAwsNetworkPerformanceDataAsyncOverride = getAwsNetworkPerformanceDataAsync
+        self.getAwsNetworkPerformanceDataSyncOverride = getAwsNetworkPerformanceDataSync
         self.getCapacityReservationUsageAsyncOverride = getCapacityReservationUsageAsync
         self.getCapacityReservationUsageSyncOverride = getCapacityReservationUsageSync
         self.getCoipPoolUsageAsyncOverride = getCoipPoolUsageAsync
@@ -3025,6 +3211,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getTransitGatewayRouteTableAssociationsSyncOverride = getTransitGatewayRouteTableAssociationsSync
         self.getTransitGatewayRouteTablePropagationsAsyncOverride = getTransitGatewayRouteTablePropagationsAsync
         self.getTransitGatewayRouteTablePropagationsSyncOverride = getTransitGatewayRouteTablePropagationsSync
+        self.getVerifiedAccessEndpointPolicyAsyncOverride = getVerifiedAccessEndpointPolicyAsync
+        self.getVerifiedAccessEndpointPolicySyncOverride = getVerifiedAccessEndpointPolicySync
+        self.getVerifiedAccessGroupPolicyAsyncOverride = getVerifiedAccessGroupPolicyAsync
+        self.getVerifiedAccessGroupPolicySyncOverride = getVerifiedAccessGroupPolicySync
         self.getVpnConnectionDeviceSampleConfigurationAsyncOverride = getVpnConnectionDeviceSampleConfigurationAsync
         self.getVpnConnectionDeviceSampleConfigurationSyncOverride = getVpnConnectionDeviceSampleConfigurationSync
         self.getVpnConnectionDeviceTypesAsyncOverride = getVpnConnectionDeviceTypesAsync
@@ -3129,6 +3319,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.modifyTransitGatewayPrefixListReferenceSyncOverride = modifyTransitGatewayPrefixListReferenceSync
         self.modifyTransitGatewayVpcAttachmentAsyncOverride = modifyTransitGatewayVpcAttachmentAsync
         self.modifyTransitGatewayVpcAttachmentSyncOverride = modifyTransitGatewayVpcAttachmentSync
+        self.modifyVerifiedAccessEndpointAsyncOverride = modifyVerifiedAccessEndpointAsync
+        self.modifyVerifiedAccessEndpointSyncOverride = modifyVerifiedAccessEndpointSync
+        self.modifyVerifiedAccessEndpointPolicyAsyncOverride = modifyVerifiedAccessEndpointPolicyAsync
+        self.modifyVerifiedAccessEndpointPolicySyncOverride = modifyVerifiedAccessEndpointPolicySync
+        self.modifyVerifiedAccessGroupAsyncOverride = modifyVerifiedAccessGroupAsync
+        self.modifyVerifiedAccessGroupSyncOverride = modifyVerifiedAccessGroupSync
+        self.modifyVerifiedAccessGroupPolicyAsyncOverride = modifyVerifiedAccessGroupPolicyAsync
+        self.modifyVerifiedAccessGroupPolicySyncOverride = modifyVerifiedAccessGroupPolicySync
+        self.modifyVerifiedAccessInstanceAsyncOverride = modifyVerifiedAccessInstanceAsync
+        self.modifyVerifiedAccessInstanceSyncOverride = modifyVerifiedAccessInstanceSync
+        self.modifyVerifiedAccessInstanceLoggingConfigurationAsyncOverride = modifyVerifiedAccessInstanceLoggingConfigurationAsync
+        self.modifyVerifiedAccessInstanceLoggingConfigurationSyncOverride = modifyVerifiedAccessInstanceLoggingConfigurationSync
+        self.modifyVerifiedAccessTrustProviderAsyncOverride = modifyVerifiedAccessTrustProviderAsync
+        self.modifyVerifiedAccessTrustProviderSyncOverride = modifyVerifiedAccessTrustProviderSync
         self.modifyVolumeAsyncOverride = modifyVolumeAsync
         self.modifyVolumeSyncOverride = modifyVolumeSync
         self.modifyVolumeAttributeAsyncOverride = modifyVolumeAttributeAsync
@@ -3287,6 +3491,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.updateSecurityGroupRuleDescriptionsIngressSyncOverride = updateSecurityGroupRuleDescriptionsIngressSync
         self.withdrawByoipCidrAsyncOverride = withdrawByoipCidrAsync
         self.withdrawByoipCidrSyncOverride = withdrawByoipCidrSync
+    }
+
+    /**
+     Invokes the AcceptAddressTransfer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AcceptAddressTransferRequest object being passed to this operation.
+         - completion: The AcceptAddressTransferResult object or an error will be passed to this 
+           callback when the operation is complete. The AcceptAddressTransferResult
+           object will be validated before being returned to caller.
+     */
+    public func acceptAddressTransferAsync(
+            input: ElasticComputeCloudModel.AcceptAddressTransferRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AcceptAddressTransferResult, ElasticComputeCloudError>) -> ()) throws {
+        if let acceptAddressTransferAsyncOverride = acceptAddressTransferAsyncOverride {
+            return try acceptAddressTransferAsyncOverride(input, completion)
+        }
+
+        let result = AcceptAddressTransferResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the AcceptAddressTransfer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AcceptAddressTransferRequest object being passed to this operation.
+     - Returns: The AcceptAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func acceptAddressTransferSync(
+            input: ElasticComputeCloudModel.AcceptAddressTransferRequest) throws -> ElasticComputeCloudModel.AcceptAddressTransferResult {
+        if let acceptAddressTransferSyncOverride = acceptAddressTransferSyncOverride {
+            return try acceptAddressTransferSyncOverride(input)
+        }
+
+        return AcceptAddressTransferResult.__default
     }
 
     /**
@@ -4380,6 +4622,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the AttachVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AttachVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The AttachVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The AttachVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    public func attachVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws {
+        if let attachVerifiedAccessTrustProviderAsyncOverride = attachVerifiedAccessTrustProviderAsyncOverride {
+            return try attachVerifiedAccessTrustProviderAsyncOverride(input, completion)
+        }
+
+        let result = AttachVerifiedAccessTrustProviderResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the AttachVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AttachVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The AttachVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func attachVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderResult {
+        if let attachVerifiedAccessTrustProviderSyncOverride = attachVerifiedAccessTrustProviderSyncOverride {
+            return try attachVerifiedAccessTrustProviderSyncOverride(input)
+        }
+
+        return AttachVerifiedAccessTrustProviderResult.__default
+    }
+
+    /**
      Invokes the AttachVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4783,6 +5063,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             return try cancelExportTaskSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the CancelImageLaunchPermission operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelImageLaunchPermissionRequest object being passed to this operation.
+         - completion: The CancelImageLaunchPermissionResult object or an error will be passed to this 
+           callback when the operation is complete. The CancelImageLaunchPermissionResult
+           object will be validated before being returned to caller.
+     */
+    public func cancelImageLaunchPermissionAsync(
+            input: ElasticComputeCloudModel.CancelImageLaunchPermissionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CancelImageLaunchPermissionResult, ElasticComputeCloudError>) -> ()) throws {
+        if let cancelImageLaunchPermissionAsyncOverride = cancelImageLaunchPermissionAsyncOverride {
+            return try cancelImageLaunchPermissionAsyncOverride(input, completion)
+        }
+
+        let result = CancelImageLaunchPermissionResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CancelImageLaunchPermission operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelImageLaunchPermissionRequest object being passed to this operation.
+     - Returns: The CancelImageLaunchPermissionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func cancelImageLaunchPermissionSync(
+            input: ElasticComputeCloudModel.CancelImageLaunchPermissionRequest) throws -> ElasticComputeCloudModel.CancelImageLaunchPermissionResult {
+        if let cancelImageLaunchPermissionSyncOverride = cancelImageLaunchPermissionSyncOverride {
+            return try cancelImageLaunchPermissionSyncOverride(input)
+        }
+
+        return CancelImageLaunchPermissionResult.__default
     }
 
     /**
@@ -7624,6 +7942,158 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateVerifiedAccessEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessEndpointRequest object being passed to this operation.
+         - completion: The CreateVerifiedAccessEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVerifiedAccessEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func createVerifiedAccessEndpointAsync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createVerifiedAccessEndpointAsyncOverride = createVerifiedAccessEndpointAsyncOverride {
+            return try createVerifiedAccessEndpointAsyncOverride(input, completion)
+        }
+
+        let result = CreateVerifiedAccessEndpointResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVerifiedAccessEndpointSync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessEndpointResult {
+        if let createVerifiedAccessEndpointSyncOverride = createVerifiedAccessEndpointSyncOverride {
+            return try createVerifiedAccessEndpointSyncOverride(input)
+        }
+
+        return CreateVerifiedAccessEndpointResult.__default
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessGroupRequest object being passed to this operation.
+         - completion: The CreateVerifiedAccessGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVerifiedAccessGroupResult
+           object will be validated before being returned to caller.
+     */
+    public func createVerifiedAccessGroupAsync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createVerifiedAccessGroupAsyncOverride = createVerifiedAccessGroupAsyncOverride {
+            return try createVerifiedAccessGroupAsyncOverride(input, completion)
+        }
+
+        let result = CreateVerifiedAccessGroupResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVerifiedAccessGroupSync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessGroupResult {
+        if let createVerifiedAccessGroupSyncOverride = createVerifiedAccessGroupSyncOverride {
+            return try createVerifiedAccessGroupSyncOverride(input)
+        }
+
+        return CreateVerifiedAccessGroupResult.__default
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessInstanceRequest object being passed to this operation.
+         - completion: The CreateVerifiedAccessInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVerifiedAccessInstanceResult
+           object will be validated before being returned to caller.
+     */
+    public func createVerifiedAccessInstanceAsync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessInstanceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createVerifiedAccessInstanceAsyncOverride = createVerifiedAccessInstanceAsyncOverride {
+            return try createVerifiedAccessInstanceAsyncOverride(input, completion)
+        }
+
+        let result = CreateVerifiedAccessInstanceResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVerifiedAccessInstanceSync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessInstanceResult {
+        if let createVerifiedAccessInstanceSyncOverride = createVerifiedAccessInstanceSyncOverride {
+            return try createVerifiedAccessInstanceSyncOverride(input)
+        }
+
+        return CreateVerifiedAccessInstanceResult.__default
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The CreateVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    public func createVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws {
+        if let createVerifiedAccessTrustProviderAsyncOverride = createVerifiedAccessTrustProviderAsyncOverride {
+            return try createVerifiedAccessTrustProviderAsyncOverride(input, completion)
+        }
+
+        let result = CreateVerifiedAccessTrustProviderResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CreateVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The CreateVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderResult {
+        if let createVerifiedAccessTrustProviderSyncOverride = createVerifiedAccessTrustProviderSyncOverride {
+            return try createVerifiedAccessTrustProviderSyncOverride(input)
+        }
+
+        return CreateVerifiedAccessTrustProviderResult.__default
+    }
+
+    /**
      Invokes the CreateVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10112,6 +10582,158 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteVerifiedAccessEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessEndpointRequest object being passed to this operation.
+         - completion: The DeleteVerifiedAccessEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVerifiedAccessEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteVerifiedAccessEndpointAsync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteVerifiedAccessEndpointAsyncOverride = deleteVerifiedAccessEndpointAsyncOverride {
+            return try deleteVerifiedAccessEndpointAsyncOverride(input, completion)
+        }
+
+        let result = DeleteVerifiedAccessEndpointResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteVerifiedAccessEndpointSync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessEndpointResult {
+        if let deleteVerifiedAccessEndpointSyncOverride = deleteVerifiedAccessEndpointSyncOverride {
+            return try deleteVerifiedAccessEndpointSyncOverride(input)
+        }
+
+        return DeleteVerifiedAccessEndpointResult.__default
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessGroupRequest object being passed to this operation.
+         - completion: The DeleteVerifiedAccessGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVerifiedAccessGroupResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteVerifiedAccessGroupAsync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteVerifiedAccessGroupAsyncOverride = deleteVerifiedAccessGroupAsyncOverride {
+            return try deleteVerifiedAccessGroupAsyncOverride(input, completion)
+        }
+
+        let result = DeleteVerifiedAccessGroupResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteVerifiedAccessGroupSync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessGroupResult {
+        if let deleteVerifiedAccessGroupSyncOverride = deleteVerifiedAccessGroupSyncOverride {
+            return try deleteVerifiedAccessGroupSyncOverride(input)
+        }
+
+        return DeleteVerifiedAccessGroupResult.__default
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessInstanceRequest object being passed to this operation.
+         - completion: The DeleteVerifiedAccessInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVerifiedAccessInstanceResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteVerifiedAccessInstanceAsync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessInstanceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteVerifiedAccessInstanceAsyncOverride = deleteVerifiedAccessInstanceAsyncOverride {
+            return try deleteVerifiedAccessInstanceAsyncOverride(input, completion)
+        }
+
+        let result = DeleteVerifiedAccessInstanceResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteVerifiedAccessInstanceSync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessInstanceResult {
+        if let deleteVerifiedAccessInstanceSyncOverride = deleteVerifiedAccessInstanceSyncOverride {
+            return try deleteVerifiedAccessInstanceSyncOverride(input)
+        }
+
+        return DeleteVerifiedAccessInstanceResult.__default
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The DeleteVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws {
+        if let deleteVerifiedAccessTrustProviderAsyncOverride = deleteVerifiedAccessTrustProviderAsyncOverride {
+            return try deleteVerifiedAccessTrustProviderAsyncOverride(input, completion)
+        }
+
+        let result = DeleteVerifiedAccessTrustProviderResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The DeleteVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderResult {
+        if let deleteVerifiedAccessTrustProviderSyncOverride = deleteVerifiedAccessTrustProviderSyncOverride {
+            return try deleteVerifiedAccessTrustProviderSyncOverride(input)
+        }
+
+        return DeleteVerifiedAccessTrustProviderResult.__default
+    }
+
+    /**
      Invokes the DeleteVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10722,6 +11344,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeAddressTransfers operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAddressTransfersRequest object being passed to this operation.
+         - completion: The DescribeAddressTransfersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAddressTransfersResult
+           object will be validated before being returned to caller.
+     */
+    public func describeAddressTransfersAsync(
+            input: ElasticComputeCloudModel.DescribeAddressTransfersRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAddressTransfersResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeAddressTransfersAsyncOverride = describeAddressTransfersAsyncOverride {
+            return try describeAddressTransfersAsyncOverride(input, completion)
+        }
+
+        let result = DescribeAddressTransfersResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeAddressTransfers operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAddressTransfersRequest object being passed to this operation.
+     - Returns: The DescribeAddressTransfersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAddressTransfersSync(
+            input: ElasticComputeCloudModel.DescribeAddressTransfersRequest) throws -> ElasticComputeCloudModel.DescribeAddressTransfersResult {
+        if let describeAddressTransfersSyncOverride = describeAddressTransfersSyncOverride {
+            return try describeAddressTransfersSyncOverride(input)
+        }
+
+        return DescribeAddressTransfersResult.__default
+    }
+
+    /**
      Invokes the DescribeAddresses operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -10871,6 +11531,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return DescribeAvailabilityZonesResult.__default
+    }
+
+    /**
+     Invokes the DescribeAwsNetworkPerformanceMetricSubscriptions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeAwsNetworkPerformanceMetricSubscriptionsRequest object being passed to this operation.
+         - completion: The DescribeAwsNetworkPerformanceMetricSubscriptionsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeAwsNetworkPerformanceMetricSubscriptionsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeAwsNetworkPerformanceMetricSubscriptionsAsync(
+            input: ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeAwsNetworkPerformanceMetricSubscriptionsAsyncOverride = describeAwsNetworkPerformanceMetricSubscriptionsAsyncOverride {
+            return try describeAwsNetworkPerformanceMetricSubscriptionsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeAwsNetworkPerformanceMetricSubscriptionsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeAwsNetworkPerformanceMetricSubscriptions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeAwsNetworkPerformanceMetricSubscriptionsRequest object being passed to this operation.
+     - Returns: The DescribeAwsNetworkPerformanceMetricSubscriptionsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeAwsNetworkPerformanceMetricSubscriptionsSync(
+            input: ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsRequest) throws -> ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsResult {
+        if let describeAwsNetworkPerformanceMetricSubscriptionsSyncOverride = describeAwsNetworkPerformanceMetricSubscriptionsSyncOverride {
+            return try describeAwsNetworkPerformanceMetricSubscriptionsSyncOverride(input)
+        }
+
+        return DescribeAwsNetworkPerformanceMetricSubscriptionsResult.__default
     }
 
     /**
@@ -15168,6 +15866,196 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeVerifiedAccessEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessEndpointsRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessEndpointsAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeVerifiedAccessEndpointsAsyncOverride = describeVerifiedAccessEndpointsAsyncOverride {
+            return try describeVerifiedAccessEndpointsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVerifiedAccessEndpointsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessEndpointsSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsResult {
+        if let describeVerifiedAccessEndpointsSyncOverride = describeVerifiedAccessEndpointsSyncOverride {
+            return try describeVerifiedAccessEndpointsSyncOverride(input)
+        }
+
+        return DescribeVerifiedAccessEndpointsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessGroups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessGroupsRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessGroupsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessGroupsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessGroupsAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessGroupsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessGroupsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeVerifiedAccessGroupsAsyncOverride = describeVerifiedAccessGroupsAsyncOverride {
+            return try describeVerifiedAccessGroupsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVerifiedAccessGroupsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessGroups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessGroupsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessGroupsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessGroupsSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessGroupsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessGroupsResult {
+        if let describeVerifiedAccessGroupsSyncOverride = describeVerifiedAccessGroupsSyncOverride {
+            return try describeVerifiedAccessGroupsSyncOverride(input)
+        }
+
+        return DescribeVerifiedAccessGroupsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessInstanceLoggingConfigurations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstanceLoggingConfigurationsRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessInstanceLoggingConfigurationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessInstanceLoggingConfigurationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessInstanceLoggingConfigurationsAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeVerifiedAccessInstanceLoggingConfigurationsAsyncOverride = describeVerifiedAccessInstanceLoggingConfigurationsAsyncOverride {
+            return try describeVerifiedAccessInstanceLoggingConfigurationsAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVerifiedAccessInstanceLoggingConfigurationsResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessInstanceLoggingConfigurations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstanceLoggingConfigurationsRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessInstanceLoggingConfigurationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessInstanceLoggingConfigurationsSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsResult {
+        if let describeVerifiedAccessInstanceLoggingConfigurationsSyncOverride = describeVerifiedAccessInstanceLoggingConfigurationsSyncOverride {
+            return try describeVerifiedAccessInstanceLoggingConfigurationsSyncOverride(input)
+        }
+
+        return DescribeVerifiedAccessInstanceLoggingConfigurationsResult.__default
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessInstances operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstancesRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessInstancesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessInstancesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessInstancesAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessInstancesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessInstancesResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeVerifiedAccessInstancesAsyncOverride = describeVerifiedAccessInstancesAsyncOverride {
+            return try describeVerifiedAccessInstancesAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVerifiedAccessInstancesResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessInstances operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessInstancesRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessInstancesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessInstancesSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessInstancesRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessInstancesResult {
+        if let describeVerifiedAccessInstancesSyncOverride = describeVerifiedAccessInstancesSyncOverride {
+            return try describeVerifiedAccessInstancesSyncOverride(input)
+        }
+
+        return DescribeVerifiedAccessInstancesResult.__default
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessTrustProviders operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessTrustProvidersRequest object being passed to this operation.
+         - completion: The DescribeVerifiedAccessTrustProvidersResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeVerifiedAccessTrustProvidersResult
+           object will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessTrustProvidersAsync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersResult, ElasticComputeCloudError>) -> ()) throws {
+        if let describeVerifiedAccessTrustProvidersAsyncOverride = describeVerifiedAccessTrustProvidersAsyncOverride {
+            return try describeVerifiedAccessTrustProvidersAsyncOverride(input, completion)
+        }
+
+        let result = DescribeVerifiedAccessTrustProvidersResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeVerifiedAccessTrustProviders operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeVerifiedAccessTrustProvidersRequest object being passed to this operation.
+     - Returns: The DescribeVerifiedAccessTrustProvidersResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeVerifiedAccessTrustProvidersSync(
+            input: ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersRequest) throws -> ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersResult {
+        if let describeVerifiedAccessTrustProvidersSyncOverride = describeVerifiedAccessTrustProvidersSyncOverride {
+            return try describeVerifiedAccessTrustProvidersSyncOverride(input)
+        }
+
+        return DescribeVerifiedAccessTrustProvidersResult.__default
+    }
+
+    /**
      Invokes the DescribeVolumeAttribute operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15916,6 +16804,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DetachVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DetachVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The DetachVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The DetachVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    public func detachVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws {
+        if let detachVerifiedAccessTrustProviderAsyncOverride = detachVerifiedAccessTrustProviderAsyncOverride {
+            return try detachVerifiedAccessTrustProviderAsyncOverride(input, completion)
+        }
+
+        let result = DetachVerifiedAccessTrustProviderResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DetachVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DetachVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The DetachVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func detachVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderResult {
+        if let detachVerifiedAccessTrustProviderSyncOverride = detachVerifiedAccessTrustProviderSyncOverride {
+            return try detachVerifiedAccessTrustProviderSyncOverride(input)
+        }
+
+        return DetachVerifiedAccessTrustProviderResult.__default
+    }
+
+    /**
      Invokes the DetachVolume operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -15983,6 +16909,82 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             return try detachVpnGatewaySyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the DisableAddressTransfer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableAddressTransferRequest object being passed to this operation.
+         - completion: The DisableAddressTransferResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableAddressTransferResult
+           object will be validated before being returned to caller.
+     */
+    public func disableAddressTransferAsync(
+            input: ElasticComputeCloudModel.DisableAddressTransferRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableAddressTransferResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disableAddressTransferAsyncOverride = disableAddressTransferAsyncOverride {
+            return try disableAddressTransferAsyncOverride(input, completion)
+        }
+
+        let result = DisableAddressTransferResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DisableAddressTransfer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableAddressTransferRequest object being passed to this operation.
+     - Returns: The DisableAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableAddressTransferSync(
+            input: ElasticComputeCloudModel.DisableAddressTransferRequest) throws -> ElasticComputeCloudModel.DisableAddressTransferResult {
+        if let disableAddressTransferSyncOverride = disableAddressTransferSyncOverride {
+            return try disableAddressTransferSyncOverride(input)
+        }
+
+        return DisableAddressTransferResult.__default
+    }
+
+    /**
+     Invokes the DisableAwsNetworkPerformanceMetricSubscription operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+         - completion: The DisableAwsNetworkPerformanceMetricSubscriptionResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableAwsNetworkPerformanceMetricSubscriptionResult
+           object will be validated before being returned to caller.
+     */
+    public func disableAwsNetworkPerformanceMetricSubscriptionAsync(
+            input: ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disableAwsNetworkPerformanceMetricSubscriptionAsyncOverride = disableAwsNetworkPerformanceMetricSubscriptionAsyncOverride {
+            return try disableAwsNetworkPerformanceMetricSubscriptionAsyncOverride(input, completion)
+        }
+
+        let result = DisableAwsNetworkPerformanceMetricSubscriptionResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DisableAwsNetworkPerformanceMetricSubscription operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+     - Returns: The DisableAwsNetworkPerformanceMetricSubscriptionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableAwsNetworkPerformanceMetricSubscriptionSync(
+            input: ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionRequest) throws -> ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionResult {
+        if let disableAwsNetworkPerformanceMetricSubscriptionSyncOverride = disableAwsNetworkPerformanceMetricSubscriptionSyncOverride {
+            return try disableAwsNetworkPerformanceMetricSubscriptionSyncOverride(input)
+        }
+
+        return DisableAwsNetworkPerformanceMetricSubscriptionResult.__default
     }
 
     /**
@@ -16804,6 +17806,82 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the EnableAddressTransfer operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableAddressTransferRequest object being passed to this operation.
+         - completion: The EnableAddressTransferResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableAddressTransferResult
+           object will be validated before being returned to caller.
+     */
+    public func enableAddressTransferAsync(
+            input: ElasticComputeCloudModel.EnableAddressTransferRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableAddressTransferResult, ElasticComputeCloudError>) -> ()) throws {
+        if let enableAddressTransferAsyncOverride = enableAddressTransferAsyncOverride {
+            return try enableAddressTransferAsyncOverride(input, completion)
+        }
+
+        let result = EnableAddressTransferResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the EnableAddressTransfer operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableAddressTransferRequest object being passed to this operation.
+     - Returns: The EnableAddressTransferResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableAddressTransferSync(
+            input: ElasticComputeCloudModel.EnableAddressTransferRequest) throws -> ElasticComputeCloudModel.EnableAddressTransferResult {
+        if let enableAddressTransferSyncOverride = enableAddressTransferSyncOverride {
+            return try enableAddressTransferSyncOverride(input)
+        }
+
+        return EnableAddressTransferResult.__default
+    }
+
+    /**
+     Invokes the EnableAwsNetworkPerformanceMetricSubscription operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+         - completion: The EnableAwsNetworkPerformanceMetricSubscriptionResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableAwsNetworkPerformanceMetricSubscriptionResult
+           object will be validated before being returned to caller.
+     */
+    public func enableAwsNetworkPerformanceMetricSubscriptionAsync(
+            input: ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionResult, ElasticComputeCloudError>) -> ()) throws {
+        if let enableAwsNetworkPerformanceMetricSubscriptionAsyncOverride = enableAwsNetworkPerformanceMetricSubscriptionAsyncOverride {
+            return try enableAwsNetworkPerformanceMetricSubscriptionAsyncOverride(input, completion)
+        }
+
+        let result = EnableAwsNetworkPerformanceMetricSubscriptionResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the EnableAwsNetworkPerformanceMetricSubscription operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableAwsNetworkPerformanceMetricSubscriptionRequest object being passed to this operation.
+     - Returns: The EnableAwsNetworkPerformanceMetricSubscriptionResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableAwsNetworkPerformanceMetricSubscriptionSync(
+            input: ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionRequest) throws -> ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionResult {
+        if let enableAwsNetworkPerformanceMetricSubscriptionSyncOverride = enableAwsNetworkPerformanceMetricSubscriptionSyncOverride {
+            return try enableAwsNetworkPerformanceMetricSubscriptionSyncOverride(input)
+        }
+
+        return EnableAwsNetworkPerformanceMetricSubscriptionResult.__default
+    }
+
+    /**
      Invokes the EnableEbsEncryptionByDefault operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -16991,6 +18069,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return EnableIpamOrganizationAdminAccountResult.__default
+    }
+
+    /**
+     Invokes the EnableReachabilityAnalyzerOrganizationSharing operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableReachabilityAnalyzerOrganizationSharingRequest object being passed to this operation.
+         - completion: The EnableReachabilityAnalyzerOrganizationSharingResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableReachabilityAnalyzerOrganizationSharingResult
+           object will be validated before being returned to caller.
+     */
+    public func enableReachabilityAnalyzerOrganizationSharingAsync(
+            input: ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingResult, ElasticComputeCloudError>) -> ()) throws {
+        if let enableReachabilityAnalyzerOrganizationSharingAsyncOverride = enableReachabilityAnalyzerOrganizationSharingAsyncOverride {
+            return try enableReachabilityAnalyzerOrganizationSharingAsyncOverride(input, completion)
+        }
+
+        let result = EnableReachabilityAnalyzerOrganizationSharingResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the EnableReachabilityAnalyzerOrganizationSharing operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableReachabilityAnalyzerOrganizationSharingRequest object being passed to this operation.
+     - Returns: The EnableReachabilityAnalyzerOrganizationSharingResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableReachabilityAnalyzerOrganizationSharingSync(
+            input: ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingRequest) throws -> ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingResult {
+        if let enableReachabilityAnalyzerOrganizationSharingSyncOverride = enableReachabilityAnalyzerOrganizationSharingSyncOverride {
+            return try enableReachabilityAnalyzerOrganizationSharingSyncOverride(input)
+        }
+
+        return EnableReachabilityAnalyzerOrganizationSharingResult.__default
     }
 
     /**
@@ -17435,6 +18551,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return GetAssociatedIpv6PoolCidrsResult.__default
+    }
+
+    /**
+     Invokes the GetAwsNetworkPerformanceData operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetAwsNetworkPerformanceDataRequest object being passed to this operation.
+         - completion: The GetAwsNetworkPerformanceDataResult object or an error will be passed to this 
+           callback when the operation is complete. The GetAwsNetworkPerformanceDataResult
+           object will be validated before being returned to caller.
+     */
+    public func getAwsNetworkPerformanceDataAsync(
+            input: ElasticComputeCloudModel.GetAwsNetworkPerformanceDataRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetAwsNetworkPerformanceDataResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getAwsNetworkPerformanceDataAsyncOverride = getAwsNetworkPerformanceDataAsyncOverride {
+            return try getAwsNetworkPerformanceDataAsyncOverride(input, completion)
+        }
+
+        let result = GetAwsNetworkPerformanceDataResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetAwsNetworkPerformanceData operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetAwsNetworkPerformanceDataRequest object being passed to this operation.
+     - Returns: The GetAwsNetworkPerformanceDataResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getAwsNetworkPerformanceDataSync(
+            input: ElasticComputeCloudModel.GetAwsNetworkPerformanceDataRequest) throws -> ElasticComputeCloudModel.GetAwsNetworkPerformanceDataResult {
+        if let getAwsNetworkPerformanceDataSyncOverride = getAwsNetworkPerformanceDataSyncOverride {
+            return try getAwsNetworkPerformanceDataSyncOverride(input)
+        }
+
+        return GetAwsNetworkPerformanceDataResult.__default
     }
 
     /**
@@ -18689,6 +19843,82 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return GetTransitGatewayRouteTablePropagationsResult.__default
+    }
+
+    /**
+     Invokes the GetVerifiedAccessEndpointPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+         - completion: The GetVerifiedAccessEndpointPolicyResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVerifiedAccessEndpointPolicyResult
+           object will be validated before being returned to caller.
+     */
+    public func getVerifiedAccessEndpointPolicyAsync(
+            input: ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getVerifiedAccessEndpointPolicyAsyncOverride = getVerifiedAccessEndpointPolicyAsyncOverride {
+            return try getVerifiedAccessEndpointPolicyAsyncOverride(input, completion)
+        }
+
+        let result = GetVerifiedAccessEndpointPolicyResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetVerifiedAccessEndpointPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+     - Returns: The GetVerifiedAccessEndpointPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVerifiedAccessEndpointPolicySync(
+            input: ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyRequest) throws -> ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyResult {
+        if let getVerifiedAccessEndpointPolicySyncOverride = getVerifiedAccessEndpointPolicySyncOverride {
+            return try getVerifiedAccessEndpointPolicySyncOverride(input)
+        }
+
+        return GetVerifiedAccessEndpointPolicyResult.__default
+    }
+
+    /**
+     Invokes the GetVerifiedAccessGroupPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessGroupPolicyRequest object being passed to this operation.
+         - completion: The GetVerifiedAccessGroupPolicyResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVerifiedAccessGroupPolicyResult
+           object will be validated before being returned to caller.
+     */
+    public func getVerifiedAccessGroupPolicyAsync(
+            input: ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getVerifiedAccessGroupPolicyAsyncOverride = getVerifiedAccessGroupPolicyAsyncOverride {
+            return try getVerifiedAccessGroupPolicyAsyncOverride(input, completion)
+        }
+
+        let result = GetVerifiedAccessGroupPolicyResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetVerifiedAccessGroupPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVerifiedAccessGroupPolicyRequest object being passed to this operation.
+     - Returns: The GetVerifiedAccessGroupPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVerifiedAccessGroupPolicySync(
+            input: ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyRequest) throws -> ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyResult {
+        if let getVerifiedAccessGroupPolicySyncOverride = getVerifiedAccessGroupPolicySyncOverride {
+            return try getVerifiedAccessGroupPolicySyncOverride(input)
+        }
+
+        return GetVerifiedAccessGroupPolicyResult.__default
     }
 
     /**
@@ -20623,6 +21853,272 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return ModifyTransitGatewayVpcAttachmentResult.__default
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessEndpointAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessEndpointResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyVerifiedAccessEndpointAsyncOverride = modifyVerifiedAccessEndpointAsyncOverride {
+            return try modifyVerifiedAccessEndpointAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVerifiedAccessEndpointResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessEndpointSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointResult {
+        if let modifyVerifiedAccessEndpointSyncOverride = modifyVerifiedAccessEndpointSyncOverride {
+            return try modifyVerifiedAccessEndpointSyncOverride(input)
+        }
+
+        return ModifyVerifiedAccessEndpointResult.__default
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpointPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessEndpointPolicyResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessEndpointPolicyResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessEndpointPolicyAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyVerifiedAccessEndpointPolicyAsyncOverride = modifyVerifiedAccessEndpointPolicyAsyncOverride {
+            return try modifyVerifiedAccessEndpointPolicyAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVerifiedAccessEndpointPolicyResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessEndpointPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessEndpointPolicyRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessEndpointPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessEndpointPolicySync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult {
+        if let modifyVerifiedAccessEndpointPolicySyncOverride = modifyVerifiedAccessEndpointPolicySyncOverride {
+            return try modifyVerifiedAccessEndpointPolicySyncOverride(input)
+        }
+
+        return ModifyVerifiedAccessEndpointPolicyResult.__default
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessGroup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessGroupResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessGroupResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessGroupAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessGroupResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyVerifiedAccessGroupAsyncOverride = modifyVerifiedAccessGroupAsyncOverride {
+            return try modifyVerifiedAccessGroupAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVerifiedAccessGroupResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessGroup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessGroupResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessGroupSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupResult {
+        if let modifyVerifiedAccessGroupSyncOverride = modifyVerifiedAccessGroupSyncOverride {
+            return try modifyVerifiedAccessGroupSyncOverride(input)
+        }
+
+        return ModifyVerifiedAccessGroupResult.__default
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessGroupPolicy operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupPolicyRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessGroupPolicyResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessGroupPolicyResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessGroupPolicyAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyVerifiedAccessGroupPolicyAsyncOverride = modifyVerifiedAccessGroupPolicyAsyncOverride {
+            return try modifyVerifiedAccessGroupPolicyAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVerifiedAccessGroupPolicyResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessGroupPolicy operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessGroupPolicyRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessGroupPolicyResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessGroupPolicySync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult {
+        if let modifyVerifiedAccessGroupPolicySyncOverride = modifyVerifiedAccessGroupPolicySyncOverride {
+            return try modifyVerifiedAccessGroupPolicySyncOverride(input)
+        }
+
+        return ModifyVerifiedAccessGroupPolicyResult.__default
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessInstance operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessInstanceResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessInstanceResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessInstanceAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessInstanceResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyVerifiedAccessInstanceAsyncOverride = modifyVerifiedAccessInstanceAsyncOverride {
+            return try modifyVerifiedAccessInstanceAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVerifiedAccessInstanceResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessInstance operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessInstanceResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessInstanceSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceResult {
+        if let modifyVerifiedAccessInstanceSyncOverride = modifyVerifiedAccessInstanceSyncOverride {
+            return try modifyVerifiedAccessInstanceSyncOverride(input)
+        }
+
+        return ModifyVerifiedAccessInstanceResult.__default
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessInstanceLoggingConfiguration operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceLoggingConfigurationRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessInstanceLoggingConfigurationResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessInstanceLoggingConfigurationResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessInstanceLoggingConfigurationAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyVerifiedAccessInstanceLoggingConfigurationAsyncOverride = modifyVerifiedAccessInstanceLoggingConfigurationAsyncOverride {
+            return try modifyVerifiedAccessInstanceLoggingConfigurationAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVerifiedAccessInstanceLoggingConfigurationResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessInstanceLoggingConfiguration operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessInstanceLoggingConfigurationRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessInstanceLoggingConfigurationResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessInstanceLoggingConfigurationSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationResult {
+        if let modifyVerifiedAccessInstanceLoggingConfigurationSyncOverride = modifyVerifiedAccessInstanceLoggingConfigurationSyncOverride {
+            return try modifyVerifiedAccessInstanceLoggingConfigurationSyncOverride(input)
+        }
+
+        return ModifyVerifiedAccessInstanceLoggingConfigurationResult.__default
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessTrustProvider operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessTrustProviderRequest object being passed to this operation.
+         - completion: The ModifyVerifiedAccessTrustProviderResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyVerifiedAccessTrustProviderResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessTrustProviderAsync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderResult, ElasticComputeCloudError>) -> ()) throws {
+        if let modifyVerifiedAccessTrustProviderAsyncOverride = modifyVerifiedAccessTrustProviderAsyncOverride {
+            return try modifyVerifiedAccessTrustProviderAsyncOverride(input, completion)
+        }
+
+        let result = ModifyVerifiedAccessTrustProviderResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ModifyVerifiedAccessTrustProvider operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyVerifiedAccessTrustProviderRequest object being passed to this operation.
+     - Returns: The ModifyVerifiedAccessTrustProviderResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyVerifiedAccessTrustProviderSync(
+            input: ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderRequest) throws -> ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderResult {
+        if let modifyVerifiedAccessTrustProviderSyncOverride = modifyVerifiedAccessTrustProviderSyncOverride {
+            return try modifyVerifiedAccessTrustProviderSyncOverride(input)
+        }
+
+        return ModifyVerifiedAccessTrustProviderResult.__default
     }
 
     /**

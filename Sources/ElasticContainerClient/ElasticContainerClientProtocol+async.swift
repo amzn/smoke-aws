@@ -91,7 +91,7 @@ public extension ElasticContainerClientProtocol {
          - input: The validated CreateServiceRequest object being passed to this operation.
      - Returns: The CreateServiceResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
     func createService(input: ElasticContainerModel.CreateServiceRequest) async throws
      -> ElasticContainerModel.CreateServiceResponse {
@@ -118,7 +118,7 @@ public extension ElasticContainerClientProtocol {
          - input: The validated CreateTaskSetRequest object being passed to this operation.
      - Returns: The CreateTaskSetResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
     func createTaskSet(input: ElasticContainerModel.CreateTaskSetRequest) async throws
      -> ElasticContainerModel.CreateTaskSetResponse {
@@ -598,6 +598,33 @@ public extension ElasticContainerClientProtocol {
     }
 
     /**
+     Invokes the GetTaskProtection operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetTaskProtectionRequest object being passed to this operation.
+     - Returns: The GetTaskProtectionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, resourceNotFound, server, unsupportedFeature.
+     */
+    func getTaskProtection(input: ElasticContainerModel.GetTaskProtectionRequest) async throws
+     -> ElasticContainerModel.GetTaskProtectionResponse {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getTaskProtectionAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ListAccountSettings operation and asynchronously returning the response.
 
      - Parameters:
@@ -719,6 +746,33 @@ public extension ElasticContainerClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try listServicesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ListServicesByNamespace operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListServicesByNamespaceRequest object being passed to this operation.
+     - Returns: The ListServicesByNamespaceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
+     */
+    func listServicesByNamespace(input: ElasticContainerModel.ListServicesByNamespaceRequest) async throws
+     -> ElasticContainerModel.ListServicesByNamespaceResponse {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try listServicesByNamespaceAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -1360,7 +1414,7 @@ public extension ElasticContainerClientProtocol {
          - input: The validated UpdateServiceRequest object being passed to this operation.
      - Returns: The UpdateServiceResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
     func updateService(input: ElasticContainerModel.UpdateServiceRequest) async throws
      -> ElasticContainerModel.UpdateServiceResponse {
@@ -1394,6 +1448,33 @@ public extension ElasticContainerClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateServicePrimaryTaskSetAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the UpdateTaskProtection operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated UpdateTaskProtectionRequest object being passed to this operation.
+     - Returns: The UpdateTaskProtectionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, resourceNotFound, server, unsupportedFeature.
+     */
+    func updateTaskProtection(input: ElasticContainerModel.UpdateTaskProtectionRequest) async throws
+     -> ElasticContainerModel.UpdateTaskProtectionResponse {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try updateTaskProtectionAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

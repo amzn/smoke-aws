@@ -25,6 +25,11 @@ import SmokeHTTPClient
 import ElasticComputeCloudModel
 
 /**
+ Type to handle the input to the AcceptAddressTransfer operation in a HTTP client.
+ */
+public typealias AcceptAddressTransferOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the AcceptReservedInstancesExchangeQuote operation in a HTTP client.
  */
 public typealias AcceptReservedInstancesExchangeQuoteOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -170,6 +175,11 @@ public typealias AttachInternetGatewayOperationHTTPRequestInput = QueryHTTPReque
 public typealias AttachNetworkInterfaceOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the AttachVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+public typealias AttachVerifiedAccessTrustProviderOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the AttachVolume operation in a HTTP client.
  */
 public typealias AttachVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -223,6 +233,11 @@ public typealias CancelConversionTaskOperationHTTPRequestInput = QueryHTTPReques
  Type to handle the input to the CancelExportTask operation in a HTTP client.
  */
 public typealias CancelExportTaskOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CancelImageLaunchPermission operation in a HTTP client.
+ */
+public typealias CancelImageLaunchPermissionOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CancelImportTask operation in a HTTP client.
@@ -600,6 +615,26 @@ public typealias CreateTransitGatewayRouteTableAnnouncementOperationHTTPRequestI
 public typealias CreateTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateVerifiedAccessEndpoint operation in a HTTP client.
+ */
+public typealias CreateVerifiedAccessEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateVerifiedAccessGroup operation in a HTTP client.
+ */
+public typealias CreateVerifiedAccessGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateVerifiedAccessInstance operation in a HTTP client.
+ */
+public typealias CreateVerifiedAccessInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+public typealias CreateVerifiedAccessTrustProviderOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateVolume operation in a HTTP client.
  */
 public typealias CreateVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -940,6 +975,26 @@ public typealias DeleteTransitGatewayRouteTableAnnouncementOperationHTTPRequestI
 public typealias DeleteTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteVerifiedAccessEndpoint operation in a HTTP client.
+ */
+public typealias DeleteVerifiedAccessEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteVerifiedAccessGroup operation in a HTTP client.
+ */
+public typealias DeleteVerifiedAccessGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteVerifiedAccessInstance operation in a HTTP client.
+ */
+public typealias DeleteVerifiedAccessInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+public typealias DeleteVerifiedAccessTrustProviderOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteVolume operation in a HTTP client.
  */
 public typealias DeleteVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1025,6 +1080,11 @@ public typealias DeregisterTransitGatewayMulticastGroupSourcesOperationHTTPReque
 public typealias DescribeAccountAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeAddressTransfers operation in a HTTP client.
+ */
+public typealias DescribeAddressTransfersOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeAddresses operation in a HTTP client.
  */
 public typealias DescribeAddressesOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1043,6 +1103,11 @@ public typealias DescribeAggregateIdFormatOperationHTTPRequestInput = QueryHTTPR
  Type to handle the input to the DescribeAvailabilityZones operation in a HTTP client.
  */
 public typealias DescribeAvailabilityZonesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeAwsNetworkPerformanceMetricSubscriptions operation in a HTTP client.
+ */
+public typealias DescribeAwsNetworkPerformanceMetricSubscriptionsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeBundleTasks operation in a HTTP client.
@@ -1610,6 +1675,31 @@ public typealias DescribeTransitGatewaysOperationHTTPRequestInput = QueryHTTPReq
 public typealias DescribeTrunkInterfaceAssociationsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeVerifiedAccessEndpoints operation in a HTTP client.
+ */
+public typealias DescribeVerifiedAccessEndpointsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeVerifiedAccessGroups operation in a HTTP client.
+ */
+public typealias DescribeVerifiedAccessGroupsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeVerifiedAccessInstanceLoggingConfigurations operation in a HTTP client.
+ */
+public typealias DescribeVerifiedAccessInstanceLoggingConfigurationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeVerifiedAccessInstances operation in a HTTP client.
+ */
+public typealias DescribeVerifiedAccessInstancesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeVerifiedAccessTrustProviders operation in a HTTP client.
+ */
+public typealias DescribeVerifiedAccessTrustProvidersOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeVolumeAttribute operation in a HTTP client.
  */
 public typealias DescribeVolumeAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1710,6 +1800,11 @@ public typealias DetachInternetGatewayOperationHTTPRequestInput = QueryHTTPReque
 public typealias DetachNetworkInterfaceOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DetachVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+public typealias DetachVerifiedAccessTrustProviderOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DetachVolume operation in a HTTP client.
  */
 public typealias DetachVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1718,6 +1813,16 @@ public typealias DetachVolumeOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the DetachVpnGateway operation in a HTTP client.
  */
 public typealias DetachVpnGatewayOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DisableAddressTransfer operation in a HTTP client.
+ */
+public typealias DisableAddressTransferOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DisableAwsNetworkPerformanceMetricSubscription operation in a HTTP client.
+ */
+public typealias DisableAwsNetworkPerformanceMetricSubscriptionOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DisableEbsEncryptionByDefault operation in a HTTP client.
@@ -1830,6 +1935,16 @@ public typealias DisassociateTrunkInterfaceOperationHTTPRequestInput = QueryHTTP
 public typealias DisassociateVpcCidrBlockOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the EnableAddressTransfer operation in a HTTP client.
+ */
+public typealias EnableAddressTransferOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the EnableAwsNetworkPerformanceMetricSubscription operation in a HTTP client.
+ */
+public typealias EnableAwsNetworkPerformanceMetricSubscriptionOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the EnableEbsEncryptionByDefault operation in a HTTP client.
  */
 public typealias EnableEbsEncryptionByDefaultOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1853,6 +1968,11 @@ public typealias EnableImageDeprecationOperationHTTPRequestInput = QueryHTTPRequ
  Type to handle the input to the EnableIpamOrganizationAdminAccount operation in a HTTP client.
  */
 public typealias EnableIpamOrganizationAdminAccountOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the EnableReachabilityAnalyzerOrganizationSharing operation in a HTTP client.
+ */
+public typealias EnableReachabilityAnalyzerOrganizationSharingOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the EnableSerialConsoleAccess operation in a HTTP client.
@@ -1913,6 +2033,11 @@ public typealias GetAssociatedEnclaveCertificateIamRolesOperationHTTPRequestInpu
  Type to handle the input to the GetAssociatedIpv6PoolCidrs operation in a HTTP client.
  */
 public typealias GetAssociatedIpv6PoolCidrsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetAwsNetworkPerformanceData operation in a HTTP client.
+ */
+public typealias GetAwsNetworkPerformanceDataOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetCapacityReservationUsage operation in a HTTP client.
@@ -2078,6 +2203,16 @@ public typealias GetTransitGatewayRouteTableAssociationsOperationHTTPRequestInpu
  Type to handle the input to the GetTransitGatewayRouteTablePropagations operation in a HTTP client.
  */
 public typealias GetTransitGatewayRouteTablePropagationsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetVerifiedAccessEndpointPolicy operation in a HTTP client.
+ */
+public typealias GetVerifiedAccessEndpointPolicyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetVerifiedAccessGroupPolicy operation in a HTTP client.
+ */
+public typealias GetVerifiedAccessGroupPolicyOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetVpnConnectionDeviceSampleConfiguration operation in a HTTP client.
@@ -2338,6 +2473,41 @@ public typealias ModifyTransitGatewayPrefixListReferenceOperationHTTPRequestInpu
  Type to handle the input to the ModifyTransitGatewayVpcAttachment operation in a HTTP client.
  */
 public typealias ModifyTransitGatewayVpcAttachmentOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVerifiedAccessEndpoint operation in a HTTP client.
+ */
+public typealias ModifyVerifiedAccessEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVerifiedAccessEndpointPolicy operation in a HTTP client.
+ */
+public typealias ModifyVerifiedAccessEndpointPolicyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVerifiedAccessGroup operation in a HTTP client.
+ */
+public typealias ModifyVerifiedAccessGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVerifiedAccessGroupPolicy operation in a HTTP client.
+ */
+public typealias ModifyVerifiedAccessGroupPolicyOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVerifiedAccessInstance operation in a HTTP client.
+ */
+public typealias ModifyVerifiedAccessInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVerifiedAccessInstanceLoggingConfiguration operation in a HTTP client.
+ */
+public typealias ModifyVerifiedAccessInstanceLoggingConfigurationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+public typealias ModifyVerifiedAccessTrustProviderOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyVolume operation in a HTTP client.

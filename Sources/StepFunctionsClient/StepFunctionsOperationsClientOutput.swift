@@ -103,6 +103,19 @@ extension DescribeExecutionOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeMapRun operation in a HTTP client.
+ */
+extension DescribeMapRunOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeMapRunOutput
+    public typealias HeadersType = DescribeMapRunOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeMapRunOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeStateMachine operation in a HTTP client.
  */
 extension DescribeStateMachineOutput: HTTPResponseOutputProtocol {
@@ -176,6 +189,19 @@ extension ListExecutionsOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListExecutionsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListMapRuns operation in a HTTP client.
+ */
+extension ListMapRunsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListMapRunsOutput
+    public typealias HeadersType = ListMapRunsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListMapRunsOutput {
         return try bodyDecodableProvider()
     }
 }
@@ -306,6 +332,19 @@ extension UntagResourceOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> UntagResourceOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateMapRun operation in a HTTP client.
+ */
+extension UpdateMapRunOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateMapRunOutput
+    public typealias HeadersType = UpdateMapRunOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateMapRunOutput {
         return try bodyDecodableProvider()
     }
 }

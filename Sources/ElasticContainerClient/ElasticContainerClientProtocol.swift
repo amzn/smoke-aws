@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the ElasticContainer service.
  */
-public protocol ElasticContainerClientProtocol {
+public protocol ElasticContainerClientProtocol: ElasticContainerClientProtocolV2 {
     typealias CreateCapacityProviderSyncType = (
             _ input: ElasticContainerModel.CreateCapacityProviderRequest) throws -> ElasticContainerModel.CreateCapacityProviderResponse
     typealias CreateCapacityProviderAsyncType = (
@@ -134,6 +134,11 @@ public protocol ElasticContainerClientProtocol {
     typealias ExecuteCommandAsyncType = (
             _ input: ElasticContainerModel.ExecuteCommandRequest, 
             _ completion: @escaping (Result<ElasticContainerModel.ExecuteCommandResponse, ElasticContainerError>) -> ()) throws -> ()
+    typealias GetTaskProtectionSyncType = (
+            _ input: ElasticContainerModel.GetTaskProtectionRequest) throws -> ElasticContainerModel.GetTaskProtectionResponse
+    typealias GetTaskProtectionAsyncType = (
+            _ input: ElasticContainerModel.GetTaskProtectionRequest, 
+            _ completion: @escaping (Result<ElasticContainerModel.GetTaskProtectionResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListAccountSettingsSyncType = (
             _ input: ElasticContainerModel.ListAccountSettingsRequest) throws -> ElasticContainerModel.ListAccountSettingsResponse
     typealias ListAccountSettingsAsyncType = (
@@ -159,6 +164,11 @@ public protocol ElasticContainerClientProtocol {
     typealias ListServicesAsyncType = (
             _ input: ElasticContainerModel.ListServicesRequest, 
             _ completion: @escaping (Result<ElasticContainerModel.ListServicesResponse, ElasticContainerError>) -> ()) throws -> ()
+    typealias ListServicesByNamespaceSyncType = (
+            _ input: ElasticContainerModel.ListServicesByNamespaceRequest) throws -> ElasticContainerModel.ListServicesByNamespaceResponse
+    typealias ListServicesByNamespaceAsyncType = (
+            _ input: ElasticContainerModel.ListServicesByNamespaceRequest, 
+            _ completion: @escaping (Result<ElasticContainerModel.ListServicesByNamespaceResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias ListTagsForResourceSyncType = (
             _ input: ElasticContainerModel.ListTagsForResourceRequest) throws -> ElasticContainerModel.ListTagsForResourceResponse
     typealias ListTagsForResourceAsyncType = (
@@ -284,6 +294,11 @@ public protocol ElasticContainerClientProtocol {
     typealias UpdateServicePrimaryTaskSetAsyncType = (
             _ input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest, 
             _ completion: @escaping (Result<ElasticContainerModel.UpdateServicePrimaryTaskSetResponse, ElasticContainerError>) -> ()) throws -> ()
+    typealias UpdateTaskProtectionSyncType = (
+            _ input: ElasticContainerModel.UpdateTaskProtectionRequest) throws -> ElasticContainerModel.UpdateTaskProtectionResponse
+    typealias UpdateTaskProtectionAsyncType = (
+            _ input: ElasticContainerModel.UpdateTaskProtectionRequest, 
+            _ completion: @escaping (Result<ElasticContainerModel.UpdateTaskProtectionResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias UpdateTaskSetSyncType = (
             _ input: ElasticContainerModel.UpdateTaskSetRequest) throws -> ElasticContainerModel.UpdateTaskSetResponse
     typealias UpdateTaskSetAsyncType = (
@@ -350,7 +365,7 @@ public protocol ElasticContainerClientProtocol {
          - completion: The CreateServiceResponse object or an error will be passed to this 
            callback when the operation is complete. The CreateServiceResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
     func createServiceAsync(
             input: ElasticContainerModel.CreateServiceRequest, 
@@ -363,7 +378,7 @@ public protocol ElasticContainerClientProtocol {
          - input: The validated CreateServiceRequest object being passed to this operation.
      - Returns: The CreateServiceResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, unsupportedFeature.
      */
     func createServiceSync(
             input: ElasticContainerModel.CreateServiceRequest) throws -> ElasticContainerModel.CreateServiceResponse
@@ -376,7 +391,7 @@ public protocol ElasticContainerClientProtocol {
          - completion: The CreateTaskSetResponse object or an error will be passed to this 
            callback when the operation is complete. The CreateTaskSetResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
     func createTaskSetAsync(
             input: ElasticContainerModel.CreateTaskSetRequest, 
@@ -389,7 +404,7 @@ public protocol ElasticContainerClientProtocol {
          - input: The validated CreateTaskSetRequest object being passed to this operation.
      - Returns: The CreateTaskSetResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound, unsupportedFeature.
      */
     func createTaskSetSync(
             input: ElasticContainerModel.CreateTaskSetRequest) throws -> ElasticContainerModel.CreateTaskSetResponse
@@ -837,6 +852,32 @@ public protocol ElasticContainerClientProtocol {
             input: ElasticContainerModel.ExecuteCommandRequest) throws -> ElasticContainerModel.ExecuteCommandResponse
 
     /**
+     Invokes the GetTaskProtection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetTaskProtectionRequest object being passed to this operation.
+         - completion: The GetTaskProtectionResponse object or an error will be passed to this 
+           callback when the operation is complete. The GetTaskProtectionResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, resourceNotFound, server, unsupportedFeature.
+     */
+    func getTaskProtectionAsync(
+            input: ElasticContainerModel.GetTaskProtectionRequest, 
+            completion: @escaping (Result<ElasticContainerModel.GetTaskProtectionResponse, ElasticContainerError>) -> ()) throws
+
+    /**
+     Invokes the GetTaskProtection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetTaskProtectionRequest object being passed to this operation.
+     - Returns: The GetTaskProtectionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, resourceNotFound, server, unsupportedFeature.
+     */
+    func getTaskProtectionSync(
+            input: ElasticContainerModel.GetTaskProtectionRequest) throws -> ElasticContainerModel.GetTaskProtectionResponse
+
+    /**
      Invokes the ListAccountSettings operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -965,6 +1006,32 @@ public protocol ElasticContainerClientProtocol {
      */
     func listServicesSync(
             input: ElasticContainerModel.ListServicesRequest) throws -> ElasticContainerModel.ListServicesResponse
+
+    /**
+     Invokes the ListServicesByNamespace operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListServicesByNamespaceRequest object being passed to this operation.
+         - completion: The ListServicesByNamespaceResponse object or an error will be passed to this 
+           callback when the operation is complete. The ListServicesByNamespaceResponse
+           object will be validated before being returned to caller.
+           The possible errors are: client, invalidParameter, namespaceNotFound, server.
+     */
+    func listServicesByNamespaceAsync(
+            input: ElasticContainerModel.ListServicesByNamespaceRequest, 
+            completion: @escaping (Result<ElasticContainerModel.ListServicesByNamespaceResponse, ElasticContainerError>) -> ()) throws
+
+    /**
+     Invokes the ListServicesByNamespace operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListServicesByNamespaceRequest object being passed to this operation.
+     - Returns: The ListServicesByNamespaceResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
+     */
+    func listServicesByNamespaceSync(
+            input: ElasticContainerModel.ListServicesByNamespaceRequest) throws -> ElasticContainerModel.ListServicesByNamespaceResponse
 
     /**
      Invokes the ListTagsForResource operation returning immediately and passing the response to a callback.
@@ -1572,7 +1639,7 @@ public protocol ElasticContainerClientProtocol {
          - completion: The UpdateServiceResponse object or an error will be passed to this 
            callback when the operation is complete. The UpdateServiceResponse
            object will be validated before being returned to caller.
-           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
     func updateServiceAsync(
             input: ElasticContainerModel.UpdateServiceRequest, 
@@ -1585,7 +1652,7 @@ public protocol ElasticContainerClientProtocol {
          - input: The validated UpdateServiceRequest object being passed to this operation.
      - Returns: The UpdateServiceResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: accessDenied, client, clusterNotFound, invalidParameter, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, namespaceNotFound, platformTaskDefinitionIncompatibility, platformUnknown, server, serviceNotActive, serviceNotFound.
      */
     func updateServiceSync(
             input: ElasticContainerModel.UpdateServiceRequest) throws -> ElasticContainerModel.UpdateServiceResponse
@@ -1615,6 +1682,32 @@ public protocol ElasticContainerClientProtocol {
      */
     func updateServicePrimaryTaskSetSync(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse
+
+    /**
+     Invokes the UpdateTaskProtection operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateTaskProtectionRequest object being passed to this operation.
+         - completion: The UpdateTaskProtectionResponse object or an error will be passed to this 
+           callback when the operation is complete. The UpdateTaskProtectionResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, clusterNotFound, invalidParameter, resourceNotFound, server, unsupportedFeature.
+     */
+    func updateTaskProtectionAsync(
+            input: ElasticContainerModel.UpdateTaskProtectionRequest, 
+            completion: @escaping (Result<ElasticContainerModel.UpdateTaskProtectionResponse, ElasticContainerError>) -> ()) throws
+
+    /**
+     Invokes the UpdateTaskProtection operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateTaskProtectionRequest object being passed to this operation.
+     - Returns: The UpdateTaskProtectionResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, clusterNotFound, invalidParameter, resourceNotFound, server, unsupportedFeature.
+     */
+    func updateTaskProtectionSync(
+            input: ElasticContainerModel.UpdateTaskProtectionRequest) throws -> ElasticContainerModel.UpdateTaskProtectionResponse
 
     /**
      Invokes the UpdateTaskSet operation returning immediately and passing the response to a callback.

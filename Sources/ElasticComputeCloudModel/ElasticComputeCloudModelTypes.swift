@@ -217,6 +217,26 @@ public typealias AddressMaxResults = Int
 public typealias AddressSet = [AddressAttribute]
 
 /**
+ Type definition for the AddressTransferList field.
+ */
+public typealias AddressTransferList = [AddressTransfer]
+
+/**
+ Enumeration restricting the values of the AddressTransferStatus field.
+ */
+public enum AddressTransferStatus: String, Codable, CustomStringConvertible {
+    case accepted
+    case disabled
+    case pending
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: AddressTransferStatus = .accepted
+}
+
+/**
  Enumeration restricting the values of the Affinity field.
  */
 public enum Affinity: String, Codable, CustomStringConvertible {
@@ -271,6 +291,7 @@ public enum AllocationStrategy: String, Codable, CustomStringConvertible {
     case capacityoptimizedprioritized = "capacityOptimizedPrioritized"
     case diversified
     case lowestprice = "lowestPrice"
+    case pricecapacityoptimized = "priceCapacityOptimized"
 
     public var description: String {
         return rawValue
@@ -291,6 +312,16 @@ public enum AllocationType: String, Codable, CustomStringConvertible {
     
     public static let __default: AllocationType = .used
 }
+
+/**
+ Type definition for the AllowedInstanceType field.
+ */
+public typealias AllowedInstanceType = String
+
+/**
+ Type definition for the AllowedInstanceTypeSet field.
+ */
+public typealias AllowedInstanceTypeSet = [AllowedInstanceType]
 
 /**
  Type definition for the AllowedPrincipalSet field.
@@ -355,6 +386,7 @@ public enum ApplianceModeSupportValue: String, Codable, CustomStringConvertible 
  */
 public enum ArchitectureType: String, Codable, CustomStringConvertible {
     case arm64
+    case arm64Mac = "arm64_mac"
     case i386
     case x8664 = "x86_64"
     case x8664Mac = "x86_64_mac"
@@ -381,6 +413,7 @@ public typealias ArchitectureTypeSet = [ArchitectureType]
  */
 public enum ArchitectureValues: String, Codable, CustomStringConvertible {
     case arm64
+    case arm64Mac = "arm64_mac"
     case i386
     case x8664 = "x86_64"
     case x8664Mac = "x86_64_mac"
@@ -1016,6 +1049,11 @@ public enum CarrierGatewayState: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the CertificateArn field.
+ */
+public typealias CertificateArn = String
+
+/**
  Type definition for the CidrBlockSet field.
  */
 public typealias CidrBlockSet = [CidrBlock]
@@ -1376,6 +1414,11 @@ public typealias CreateFleetErrorsSet = [CreateFleetError]
 public typealias CreateFleetInstancesSet = [CreateFleetInstance]
 
 /**
+ Type definition for the CreateVerifiedAccessEndpointSubnetIdList field.
+ */
+public typealias CreateVerifiedAccessEndpointSubnetIdList = [SubnetId]
+
+/**
  Type definition for the CreateVolumePermissionList field.
  */
 public typealias CreateVolumePermissionList = [CreateVolumePermission]
@@ -1422,6 +1465,16 @@ public typealias DITMaxResults = Int
  Type definition for the DITOMaxResults field.
  */
 public typealias DITOMaxResults = Int
+
+/**
+ Type definition for the DataQueries field.
+ */
+public typealias DataQueries = [DataQuery]
+
+/**
+ Type definition for the DataResponses field.
+ */
+public typealias DataResponses = [DataResponse]
 
 /**
  Enumeration restricting the values of the DatafeedSubscriptionState field.
@@ -1569,6 +1622,11 @@ public typealias DeleteQueuedReservedInstancesIdList = [ReservationId]
  Type definition for the DeprovisionedAddressSet field.
  */
 public typealias DeprovisionedAddressSet = [String]
+
+/**
+ Type definition for the DescribeAddressTransfersMaxResults field.
+ */
+public typealias DescribeAddressTransfersMaxResults = Int
 
 /**
  Type definition for the DescribeByoipCidrsMaxResults field.
@@ -1796,6 +1854,31 @@ public typealias DescribeSubnetsMaxResults = Int
 public typealias DescribeTrunkInterfaceAssociationsMaxResults = Int
 
 /**
+ Type definition for the DescribeVerifiedAccessEndpointsMaxResults field.
+ */
+public typealias DescribeVerifiedAccessEndpointsMaxResults = Int
+
+/**
+ Type definition for the DescribeVerifiedAccessGroupMaxResults field.
+ */
+public typealias DescribeVerifiedAccessGroupMaxResults = Int
+
+/**
+ Type definition for the DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults field.
+ */
+public typealias DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults = Int
+
+/**
+ Type definition for the DescribeVerifiedAccessInstancesMaxResults field.
+ */
+public typealias DescribeVerifiedAccessInstancesMaxResults = Int
+
+/**
+ Type definition for the DescribeVerifiedAccessTrustProvidersMaxResults field.
+ */
+public typealias DescribeVerifiedAccessTrustProvidersMaxResults = Int
+
+/**
  Type definition for the DescribeVpcClassicLinkDnsSupportMaxResults field.
  */
 public typealias DescribeVpcClassicLinkDnsSupportMaxResults = Int
@@ -1827,6 +1910,20 @@ public enum DestinationFileFormat: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: DestinationFileFormat = .parquet
+}
+
+/**
+ Enumeration restricting the values of the DeviceTrustProviderType field.
+ */
+public enum DeviceTrustProviderType: String, Codable, CustomStringConvertible {
+    case crowdstrike
+    case jamf
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: DeviceTrustProviderType = .crowdstrike
 }
 
 /**
@@ -2160,6 +2257,11 @@ public typealias ElasticInferenceAccelerators = [ElasticInferenceAccelerator]
  Type definition for the ElasticIpAssociationId field.
  */
 public typealias ElasticIpAssociationId = String
+
+/**
+ Type definition for the EnaSrdSupported field.
+ */
+public typealias EnaSrdSupported = Bool
 
 /**
  Enumeration restricting the values of the EnaSupport field.
@@ -3373,6 +3475,11 @@ public enum InstanceHealthStatus: String, Codable, CustomStringConvertible {
 public typealias InstanceId = String
 
 /**
+ Type definition for the InstanceIdForResolver field.
+ */
+public typealias InstanceIdForResolver = String
+
+/**
  Type definition for the InstanceIdList field.
  */
 public typealias InstanceIdList = [InstanceId]
@@ -3800,6 +3907,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case h18xlarge = "h1.8xlarge"
     case hi14xlarge = "hi1.4xlarge"
     case hpc6a48xlarge = "hpc6a.48xlarge"
+    case hpc6id32xlarge = "hpc6id.32xlarge"
     case hs18xlarge = "hs1.8xlarge"
     case i22xlarge = "i2.2xlarge"
     case i24xlarge = "i2.4xlarge"
@@ -4130,9 +4238,13 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case t4gNano = "t4g.nano"
     case t4gSmall = "t4g.small"
     case t4gXlarge = "t4g.xlarge"
+    case trn12xlarge = "trn1.2xlarge"
+    case trn132xlarge = "trn1.32xlarge"
     case u12tb1112xlarge = "u-12tb1.112xlarge"
     case u12tb1Metal = "u-12tb1.metal"
+    case u18tb1112xlarge = "u-18tb1.112xlarge"
     case u18tb1Metal = "u-18tb1.metal"
+    case u24tb1112xlarge = "u-24tb1.112xlarge"
     case u24tb1Metal = "u-24tb1.metal"
     case u3tb156xlarge = "u-3tb1.56xlarge"
     case u6tb1112xlarge = "u-6tb1.112xlarge"
@@ -4231,6 +4343,11 @@ public typealias InstanceTypeOfferingsList = [InstanceTypeOffering]
  Type definition for the InstanceTypes field.
  */
 public typealias InstanceTypes = [String]
+
+/**
+ Type definition for the InstanceTypesList field.
+ */
+public typealias InstanceTypesList = [String]
 
 /**
  Type definition for the InstanceUsageSet field.
@@ -5080,6 +5197,11 @@ public enum ListingStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the LoadBalancerArn field.
+ */
+public typealias LoadBalancerArn = String
+
+/**
  Type definition for the LoadPermissionList field.
  */
 public typealias LoadPermissionList = [LoadPermission]
@@ -5347,6 +5469,11 @@ public typealias MaxNetworkInterfaces = Int
 public typealias MaxResults = Int
 
 /**
+ Type definition for the MaxResultsParam field.
+ */
+public typealias MaxResultsParam = Int
+
+/**
  Type definition for the MaximumBandwidthInMbps field.
  */
 public typealias MaximumBandwidthInMbps = Int
@@ -5391,6 +5518,24 @@ public enum MembershipType: String, Codable, CustomStringConvertible {
 public typealias MemorySize = Int
 
 /**
+ Type definition for the MetricPoints field.
+ */
+public typealias MetricPoints = [MetricPoint]
+
+/**
+ Enumeration restricting the values of the MetricType field.
+ */
+public enum MetricType: String, Codable, CustomStringConvertible {
+    case aggregateLatency = "aggregate-latency"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: MetricType = .aggregateLatency
+}
+
+/**
  Type definition for the MillisecondDateTime field.
  */
 public typealias MillisecondDateTime = String
@@ -5408,6 +5553,11 @@ public enum ModifyAvailabilityZoneOptInStatus: String, Codable, CustomStringConv
     
     public static let __default: ModifyAvailabilityZoneOptInStatus = .notOptedIn
 }
+
+/**
+ Type definition for the ModifyVerifiedAccessEndpointSubnetIdList field.
+ */
+public typealias ModifyVerifiedAccessEndpointSubnetIdList = [SubnetId]
 
 /**
  Enumeration restricting the values of the MonitoringState field.
@@ -5905,6 +6055,24 @@ public enum PaymentOption: String, Codable, CustomStringConvertible {
     }
     
     public static let __default: PaymentOption = .allupfront
+}
+
+/**
+ Enumeration restricting the values of the PeriodType field.
+ */
+public enum PeriodType: String, Codable, CustomStringConvertible {
+    case fifteenMinutes = "fifteen-minutes"
+    case fiveMinutes = "five-minutes"
+    case oneDay = "one-day"
+    case oneHour = "one-hour"
+    case oneWeek = "one-week"
+    case threeHours = "three-hours"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PeriodType = .fifteenMinutes
 }
 
 /**
@@ -6742,8 +6910,14 @@ public enum ResourceType: String, Codable, CustomStringConvertible {
     case transitGatewayPolicyTable = "transit-gateway-policy-table"
     case transitGatewayRouteTable = "transit-gateway-route-table"
     case transitGatewayRouteTableAnnouncement = "transit-gateway-route-table-announcement"
+    case verifiedAccessEndpoint = "verified-access-endpoint"
+    case verifiedAccessGroup = "verified-access-group"
+    case verifiedAccessInstance = "verified-access-instance"
+    case verifiedAccessPolicy = "verified-access-policy"
+    case verifiedAccessTrustProvider = "verified-access-trust-provider"
     case volume
     case vpc
+    case vpcBlockPublicAccessExclusion = "vpc-block-public-access-exclusion"
     case vpcEndpoint = "vpc-endpoint"
     case vpcEndpointConnection = "vpc-endpoint-connection"
     case vpcEndpointConnectionDeviceType = "vpc-endpoint-connection-device-type"
@@ -6955,6 +7129,11 @@ public typealias ScheduledInstancesSecurityGroupIdSet = [SecurityGroupId]
  Type definition for the SecurityGroupId field.
  */
 public typealias SecurityGroupId = String
+
+/**
+ Type definition for the SecurityGroupIdList field.
+ */
+public typealias SecurityGroupIdList = [SecurityGroupId]
 
 /**
  Type definition for the SecurityGroupIdStringList field.
@@ -7169,6 +7348,7 @@ public enum SpotAllocationStrategy: String, Codable, CustomStringConvertible {
     case capacityOptimizedPrioritized = "capacity-optimized-prioritized"
     case diversified
     case lowestPrice = "lowest-price"
+    case priceCapacityOptimized = "price-capacity-optimized"
 
     public var description: String {
         return rawValue
@@ -7337,6 +7517,19 @@ public enum StaticSourcesSupportValue: String, Codable, CustomStringConvertible 
 }
 
 /**
+ Enumeration restricting the values of the StatisticType field.
+ */
+public enum StatisticType: String, Codable, CustomStringConvertible {
+    case p50
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: StatisticType = .p50
+}
+
+/**
  Enumeration restricting the values of the Status field.
  */
 public enum Status: String, Codable, CustomStringConvertible {
@@ -7494,6 +7687,11 @@ public enum SubnetState: String, Codable, CustomStringConvertible {
     
     public static let __default: SubnetState = .available
 }
+
+/**
+ Type definition for the SubscriptionList field.
+ */
+public typealias SubscriptionList = [Subscription]
 
 /**
  Type definition for the SuccessfulInstanceCreditSpecificationSet field.
@@ -8344,6 +8542,20 @@ public typealias TrunkInterfaceAssociationIdList = [TrunkInterfaceAssociationId]
 public typealias TrunkInterfaceAssociationList = [TrunkInterfaceAssociation]
 
 /**
+ Enumeration restricting the values of the TrustProviderType field.
+ */
+public enum TrustProviderType: String, Codable, CustomStringConvertible {
+    case device
+    case user
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: TrustProviderType = .device
+}
+
+/**
  Enumeration restricting the values of the TunnelInsideIpVersion field.
  */
 public enum TunnelInsideIpVersion: String, Codable, CustomStringConvertible {
@@ -8449,6 +8661,20 @@ public typealias UserIdGroupPairSet = [UserIdGroupPair]
 public typealias UserIdStringList = [String]
 
 /**
+ Enumeration restricting the values of the UserTrustProviderType field.
+ */
+public enum UserTrustProviderType: String, Codable, CustomStringConvertible {
+    case iamIdentityCenter = "iam-identity-center"
+    case oidc
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: UserTrustProviderType = .iamIdentityCenter
+}
+
+/**
  Type definition for the VCpuCount field.
  */
 public typealias VCpuCount = Int
@@ -8457,6 +8683,158 @@ public typealias VCpuCount = Int
  Type definition for the ValueStringList field.
  */
 public typealias ValueStringList = [String]
+
+/**
+ Enumeration restricting the values of the VerifiedAccessEndpointAttachmentType field.
+ */
+public enum VerifiedAccessEndpointAttachmentType: String, Codable, CustomStringConvertible {
+    case vpc
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: VerifiedAccessEndpointAttachmentType = .vpc
+}
+
+/**
+ Type definition for the VerifiedAccessEndpointId field.
+ */
+public typealias VerifiedAccessEndpointId = String
+
+/**
+ Type definition for the VerifiedAccessEndpointIdList field.
+ */
+public typealias VerifiedAccessEndpointIdList = [VerifiedAccessEndpointId]
+
+/**
+ Type definition for the VerifiedAccessEndpointList field.
+ */
+public typealias VerifiedAccessEndpointList = [VerifiedAccessEndpoint]
+
+/**
+ Type definition for the VerifiedAccessEndpointPortNumber field.
+ */
+public typealias VerifiedAccessEndpointPortNumber = Int
+
+/**
+ Enumeration restricting the values of the VerifiedAccessEndpointProtocol field.
+ */
+public enum VerifiedAccessEndpointProtocol: String, Codable, CustomStringConvertible {
+    case http
+    case https
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: VerifiedAccessEndpointProtocol = .http
+}
+
+/**
+ Enumeration restricting the values of the VerifiedAccessEndpointStatusCode field.
+ */
+public enum VerifiedAccessEndpointStatusCode: String, Codable, CustomStringConvertible {
+    case active
+    case deleted
+    case deleting
+    case pending
+    case updating
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: VerifiedAccessEndpointStatusCode = .active
+}
+
+/**
+ Type definition for the VerifiedAccessEndpointSubnetIdList field.
+ */
+public typealias VerifiedAccessEndpointSubnetIdList = [SubnetId]
+
+/**
+ Enumeration restricting the values of the VerifiedAccessEndpointType field.
+ */
+public enum VerifiedAccessEndpointType: String, Codable, CustomStringConvertible {
+    case loadBalancer = "load-balancer"
+    case networkInterface = "network-interface"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: VerifiedAccessEndpointType = .loadBalancer
+}
+
+/**
+ Type definition for the VerifiedAccessGroupId field.
+ */
+public typealias VerifiedAccessGroupId = String
+
+/**
+ Type definition for the VerifiedAccessGroupIdList field.
+ */
+public typealias VerifiedAccessGroupIdList = [VerifiedAccessGroupId]
+
+/**
+ Type definition for the VerifiedAccessGroupList field.
+ */
+public typealias VerifiedAccessGroupList = [VerifiedAccessGroup]
+
+/**
+ Type definition for the VerifiedAccessInstanceId field.
+ */
+public typealias VerifiedAccessInstanceId = String
+
+/**
+ Type definition for the VerifiedAccessInstanceIdList field.
+ */
+public typealias VerifiedAccessInstanceIdList = [VerifiedAccessInstanceId]
+
+/**
+ Type definition for the VerifiedAccessInstanceList field.
+ */
+public typealias VerifiedAccessInstanceList = [VerifiedAccessInstance]
+
+/**
+ Type definition for the VerifiedAccessInstanceLoggingConfigurationList field.
+ */
+public typealias VerifiedAccessInstanceLoggingConfigurationList = [VerifiedAccessInstanceLoggingConfiguration]
+
+/**
+ Enumeration restricting the values of the VerifiedAccessLogDeliveryStatusCode field.
+ */
+public enum VerifiedAccessLogDeliveryStatusCode: String, Codable, CustomStringConvertible {
+    case failed
+    case success
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: VerifiedAccessLogDeliveryStatusCode = .failed
+}
+
+/**
+ Type definition for the VerifiedAccessTrustProviderCondensedList field.
+ */
+public typealias VerifiedAccessTrustProviderCondensedList = [VerifiedAccessTrustProviderCondensed]
+
+/**
+ Type definition for the VerifiedAccessTrustProviderId field.
+ */
+public typealias VerifiedAccessTrustProviderId = String
+
+/**
+ Type definition for the VerifiedAccessTrustProviderIdList field.
+ */
+public typealias VerifiedAccessTrustProviderIdList = [VerifiedAccessTrustProviderId]
+
+/**
+ Type definition for the VerifiedAccessTrustProviderList field.
+ */
+public typealias VerifiedAccessTrustProviderList = [VerifiedAccessTrustProvider]
 
 /**
  Type definition for the VersionDescription field.
@@ -8542,6 +8920,11 @@ public typealias VolumeId = String
  Type definition for the VolumeIdStringList field.
  */
 public typealias VolumeIdStringList = [VolumeId]
+
+/**
+ Type definition for the VolumeIdWithResolver field.
+ */
+public typealias VolumeIdWithResolver = String
 
 /**
  Type definition for the VolumeList field.
@@ -8814,6 +9197,11 @@ public typealias VpcPeeringConnectionId = String
 public typealias VpcPeeringConnectionIdList = [VpcPeeringConnectionId]
 
 /**
+ Type definition for the VpcPeeringConnectionIdWithResolver field.
+ */
+public typealias VpcPeeringConnectionIdWithResolver = String
+
+/**
  Type definition for the VpcPeeringConnectionList field.
  */
 public typealias VpcPeeringConnectionList = [VpcPeeringConnection]
@@ -9081,6 +9469,42 @@ extension ElasticComputeCloudModel.AddressMaxResults {
 }
 
 /**
+ Validation for the AllowedInstanceType field.
+*/
+extension ElasticComputeCloudModel.AllowedInstanceType {
+    public func validateAsAllowedInstanceType() throws {
+        if self.count < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AllowedInstanceType violated the minimum length constraint.")
+        }
+
+        if self.count > 30 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AllowedInstanceType violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw ElasticComputeCloudError.validationError(
+                    reason: "The provided value to AllowedInstanceType violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the AllowedInstanceTypeSet field.
+*/
+extension Array where Element == ElasticComputeCloudModel.AllowedInstanceType {
+    public func validateAsAllowedInstanceTypeSet() throws {
+        if self.count < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AllowedInstanceTypeSet violated the minimum length constraint.")
+        }
+
+        if self.count > 400 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to AllowedInstanceTypeSet violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the ArchitectureTypeSet field.
 */
 extension Array where Element == ElasticComputeCloudModel.ArchitectureType {
@@ -9222,6 +9646,21 @@ extension Array where Element == ElasticComputeCloudModel.ReservationId {
 
         if self.count > 100 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to DeleteQueuedReservedInstancesIdList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeAddressTransfersMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeAddressTransfersMaxResults {
+    public func validateAsDescribeAddressTransfersMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeAddressTransfersMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeAddressTransfersMaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -9812,6 +10251,81 @@ extension ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsMaxResults 
 }
 
 /**
+ Validation for the DescribeVerifiedAccessEndpointsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsMaxResults {
+    public func validateAsDescribeVerifiedAccessEndpointsMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessEndpointsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessEndpointsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeVerifiedAccessGroupMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeVerifiedAccessGroupMaxResults {
+    public func validateAsDescribeVerifiedAccessGroupMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessGroupMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessGroupMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults {
+    public func validateAsDescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 10 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeVerifiedAccessInstancesMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeVerifiedAccessInstancesMaxResults {
+    public func validateAsDescribeVerifiedAccessInstancesMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessInstancesMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 200 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessInstancesMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the DescribeVerifiedAccessTrustProvidersMaxResults field.
+*/
+extension ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersMaxResults {
+    public func validateAsDescribeVerifiedAccessTrustProvidersMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessTrustProvidersMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 200 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to DescribeVerifiedAccessTrustProvidersMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the DescribeVpcClassicLinkDnsSupportMaxResults field.
 */
 extension ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportMaxResults {
@@ -10241,6 +10755,21 @@ extension ElasticComputeCloudModel.LocalGatewayMaxResults {
 }
 
 /**
+ Validation for the MaxResultsParam field.
+*/
+extension ElasticComputeCloudModel.MaxResultsParam {
+    public func validateAsMaxResultsParam() throws {
+        if self < 0 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to MaxResultsParam violated the minimum range constraint.")
+        }
+
+        if self > 100 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to MaxResultsParam violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the NetworkInsightsMaxResults field.
 */
 extension ElasticComputeCloudModel.NetworkInsightsMaxResults {
@@ -10529,6 +11058,21 @@ extension ElasticComputeCloudModel.TransitGatewayMaxResults {
 
         if self > 1000 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to TransitGatewayMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the VerifiedAccessEndpointPortNumber field.
+*/
+extension ElasticComputeCloudModel.VerifiedAccessEndpointPortNumber {
+    public func validateAsVerifiedAccessEndpointPortNumber() throws {
+        if self < 1 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to VerifiedAccessEndpointPortNumber violated the minimum range constraint.")
+        }
+
+        if self > 65535 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to VerifiedAccessEndpointPortNumber violated the maximum range constraint.")
         }
     }
 }

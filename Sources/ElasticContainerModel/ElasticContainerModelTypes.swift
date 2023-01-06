@@ -41,6 +41,21 @@ public enum AgentUpdateStatus: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the ApplicationProtocol field.
+ */
+public enum ApplicationProtocol: String, Codable, CustomStringConvertible {
+    case grpc
+    case http
+    case http2
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ApplicationProtocol = .grpc
+}
+
+/**
  Enumeration restricting the values of the AssignPublicIp field.
  */
 public enum AssignPublicIp: String, Codable, CustomStringConvertible {
@@ -837,6 +852,11 @@ public typealias PlatformDevices = [PlatformDevice]
 public typealias PortMappingList = [PortMapping]
 
 /**
+ Type definition for the PortNumber field.
+ */
+public typealias PortNumber = Int
+
+/**
  Enumeration restricting the values of the PropagateTags field.
  */
 public enum PropagateTags: String, Codable, CustomStringConvertible {
@@ -850,6 +870,11 @@ public enum PropagateTags: String, Codable, CustomStringConvertible {
     
     public static let __default: PropagateTags = .none
 }
+
+/**
+ Type definition for the ProtectedTasks field.
+ */
+public typealias ProtectedTasks = [ProtectedTask]
 
 /**
  Type definition for the ProxyConfigurationProperties field.
@@ -948,6 +973,21 @@ public typealias SecretList = [Secret]
  Type definition for the SensitiveString field.
  */
 public typealias SensitiveString = String
+
+/**
+ Type definition for the ServiceConnectClientAliasList field.
+ */
+public typealias ServiceConnectClientAliasList = [ServiceConnectClientAlias]
+
+/**
+ Type definition for the ServiceConnectServiceList field.
+ */
+public typealias ServiceConnectServiceList = [ServiceConnectService]
+
+/**
+ Type definition for the ServiceConnectServiceResourceList field.
+ */
+public typealias ServiceConnectServiceResourceList = [ServiceConnectServiceResource]
 
 /**
  Type definition for the ServiceEvents field.
@@ -1196,7 +1236,10 @@ public typealias TaskSets = [TaskSet]
  */
 public enum TaskStopCode: String, Codable, CustomStringConvertible {
     case essentialcontainerexited = "EssentialContainerExited"
+    case serviceschedulerinitiated = "ServiceSchedulerInitiated"
+    case spotinterruption = "SpotInterruption"
     case taskfailedtostart = "TaskFailedToStart"
+    case terminationnotice = "TerminationNotice"
     case userinitiated = "UserInitiated"
 
     public var description: String {
@@ -1348,6 +1391,21 @@ extension ElasticContainerModel.ManagedScalingTargetCapacity {
 
         if self > 100 {
             throw ElasticContainerError.validationError(reason: "The provided value to ManagedScalingTargetCapacity violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PortNumber field.
+*/
+extension ElasticContainerModel.PortNumber {
+    public func validateAsPortNumber() throws {
+        if self < 0 {
+            throw ElasticContainerError.validationError(reason: "The provided value to PortNumber violated the minimum range constraint.")
+        }
+
+        if self > 65535 {
+            throw ElasticContainerError.validationError(reason: "The provided value to PortNumber violated the maximum range constraint.")
         }
     }
 }

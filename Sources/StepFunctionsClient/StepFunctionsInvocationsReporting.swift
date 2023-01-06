@@ -35,12 +35,14 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
     public let deleteStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeMapRun: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStateMachineForExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getActivityTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getExecutionHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listActivities: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listMapRuns: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listStateMachines: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let sendTaskFailure: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -51,6 +53,7 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
     public let stopExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let tagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateMapRun: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: StepFunctionsOperationsReporting) {
@@ -66,6 +69,8 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
             smokeAWSOperationReporting: operationsReporting.describeActivity)
         self.describeExecution = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeExecution)
+        self.describeMapRun = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeMapRun)
         self.describeStateMachine = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeStateMachine)
         self.describeStateMachineForExecution = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -78,6 +83,8 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
             smokeAWSOperationReporting: operationsReporting.listActivities)
         self.listExecutions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listExecutions)
+        self.listMapRuns = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listMapRuns)
         self.listStateMachines = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listStateMachines)
         self.listTagsForResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -98,6 +105,8 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
             smokeAWSOperationReporting: operationsReporting.tagResource)
         self.untagResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.untagResource)
+        self.updateMapRun = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.updateMapRun)
         self.updateStateMachine = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateStateMachine)
     }

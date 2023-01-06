@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the SecurityToken service.
  */
-public protocol SecurityTokenClientProtocol {
+public protocol SecurityTokenClientProtocol: SecurityTokenClientProtocolV2 {
     typealias AssumeRoleSyncType = (
             _ input: SecurityTokenModel.AssumeRoleRequest) throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole
     typealias AssumeRoleAsyncType = (

@@ -123,6 +123,10 @@ public enum HistoryEventType: String, Codable, CustomStringConvertible {
     case mapIterationFailed = "MapIterationFailed"
     case mapIterationStarted = "MapIterationStarted"
     case mapIterationSucceeded = "MapIterationSucceeded"
+    case mapRunAborted = "MapRunAborted"
+    case mapRunFailed = "MapRunFailed"
+    case mapRunStarted = "MapRunStarted"
+    case mapRunSucceeded = "MapRunSucceeded"
     case mapStateAborted = "MapStateAborted"
     case mapStateEntered = "MapStateEntered"
     case mapStateExited = "MapStateExited"
@@ -201,6 +205,42 @@ public enum LogLevel: String, Codable, CustomStringConvertible {
     
     public static let __default: LogLevel = .all
 }
+
+/**
+ Type definition for the LongArn field.
+ */
+public typealias LongArn = String
+
+/**
+ Type definition for the MapRunLabel field.
+ */
+public typealias MapRunLabel = String
+
+/**
+ Type definition for the MapRunList field.
+ */
+public typealias MapRunList = [MapRunListItem]
+
+/**
+ Enumeration restricting the values of the MapRunStatus field.
+ */
+public enum MapRunStatus: String, Codable, CustomStringConvertible {
+    case aborted = "ABORTED"
+    case failed = "FAILED"
+    case running = "RUNNING"
+    case succeeded = "SUCCEEDED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: MapRunStatus = .aborted
+}
+
+/**
+ Type definition for the MaxConcurrency field.
+ */
+public typealias MaxConcurrency = Int
 
 /**
  Type definition for the Name field.
@@ -326,6 +366,16 @@ public typealias TimeoutInSeconds = Int
 public typealias Timestamp = Double
 
 /**
+ Type definition for the ToleratedFailureCount field.
+ */
+public typealias ToleratedFailureCount = Int
+
+/**
+ Type definition for the ToleratedFailurePercentage field.
+ */
+public typealias ToleratedFailurePercentage = Double
+
+/**
  Type definition for the TraceHeader field.
  */
 public typealias TraceHeader = String
@@ -334,6 +384,26 @@ public typealias TraceHeader = String
  Type definition for the UnsignedInteger field.
  */
 public typealias UnsignedInteger = Int
+
+/**
+ Type definition for the UnsignedLong field.
+ */
+public typealias UnsignedLong = Int
+
+/**
+ Enumeration restricting the values of the ValidationExceptionReason field.
+ */
+public enum ValidationExceptionReason: String, Codable, CustomStringConvertible {
+    case apiDoesNotSupportLabeledArns = "API_DOES_NOT_SUPPORT_LABELED_ARNS"
+    case cannotUpdateCompletedMapRun = "CANNOT_UPDATE_COMPLETED_MAP_RUN"
+    case missingRequiredParameter = "MISSING_REQUIRED_PARAMETER"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ValidationExceptionReason = .apiDoesNotSupportLabeledArns
+}
 
 /**
  Type definition for the IncludedDetails field.
@@ -438,6 +508,33 @@ extension StepFunctionsModel.ListExecutionsPageToken {
         if self.count > 3096 {
             throw StepFunctionsError.validationError(reason: "The provided value to ListExecutionsPageToken violated the maximum length constraint.")
         }
+    }
+}
+
+/**
+ Validation for the LongArn field.
+*/
+extension StepFunctionsModel.LongArn {
+    public func validateAsLongArn() throws {
+        if self.count < 1 {
+            throw StepFunctionsError.validationError(reason: "The provided value to LongArn violated the minimum length constraint.")
+        }
+
+        if self.count > 2000 {
+            throw StepFunctionsError.validationError(reason: "The provided value to LongArn violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the MaxConcurrency field.
+*/
+extension StepFunctionsModel.MaxConcurrency {
+    public func validateAsMaxConcurrency() throws {
+        if self < 0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to MaxConcurrency violated the minimum range constraint.")
+        }
+
     }
 }
 
@@ -586,6 +683,33 @@ extension StepFunctionsModel.TaskToken {
 }
 
 /**
+ Validation for the ToleratedFailureCount field.
+*/
+extension StepFunctionsModel.ToleratedFailureCount {
+    public func validateAsToleratedFailureCount() throws {
+        if self < 0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to ToleratedFailureCount violated the minimum range constraint.")
+        }
+
+    }
+}
+
+/**
+ Validation for the ToleratedFailurePercentage field.
+*/
+extension StepFunctionsModel.ToleratedFailurePercentage {
+    public func validateAsToleratedFailurePercentage() throws {
+        if self < 0.0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to ToleratedFailurePercentage violated the minimum range constraint.")
+        }
+
+        if self > 100.0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to ToleratedFailurePercentage violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
  Validation for the TraceHeader field.
 */
 extension StepFunctionsModel.TraceHeader {
@@ -613,6 +737,18 @@ extension StepFunctionsModel.UnsignedInteger {
     public func validateAsUnsignedInteger() throws {
         if self < 0 {
             throw StepFunctionsError.validationError(reason: "The provided value to UnsignedInteger violated the minimum range constraint.")
+        }
+
+    }
+}
+
+/**
+ Validation for the UnsignedLong field.
+*/
+extension StepFunctionsModel.UnsignedLong {
+    public func validateAsUnsignedLong() throws {
+        if self < 0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to UnsignedLong violated the minimum range constraint.")
         }
 
     }

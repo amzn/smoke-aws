@@ -490,9 +490,12 @@ public struct DescribeExecutionInput: Codable, Equatable {
 }
 
 public struct DescribeExecutionOutput: Codable, Equatable {
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
     public var executionArn: Arn
     public var input: SensitiveData?
     public var inputDetails: CloudWatchEventsExecutionDataDetails?
+    public var mapRunArn: LongArn?
     public var name: Name?
     public var output: SensitiveData?
     public var outputDetails: CloudWatchEventsExecutionDataDetails?
@@ -502,9 +505,12 @@ public struct DescribeExecutionOutput: Codable, Equatable {
     public var stopDate: Timestamp?
     public var traceHeader: TraceHeader?
 
-    public init(executionArn: Arn,
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil,
+                executionArn: Arn,
                 input: SensitiveData? = nil,
                 inputDetails: CloudWatchEventsExecutionDataDetails? = nil,
+                mapRunArn: LongArn? = nil,
                 name: Name? = nil,
                 output: SensitiveData? = nil,
                 outputDetails: CloudWatchEventsExecutionDataDetails? = nil,
@@ -513,9 +519,12 @@ public struct DescribeExecutionOutput: Codable, Equatable {
                 status: ExecutionStatus,
                 stopDate: Timestamp? = nil,
                 traceHeader: TraceHeader? = nil) {
+        self.cause = cause
+        self.error = error
         self.executionArn = executionArn
         self.input = input
         self.inputDetails = inputDetails
+        self.mapRunArn = mapRunArn
         self.name = name
         self.output = output
         self.outputDetails = outputDetails
@@ -527,9 +536,12 @@ public struct DescribeExecutionOutput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case cause
+        case error
         case executionArn
         case input
         case inputDetails
+        case mapRunArn
         case name
         case output
         case outputDetails
@@ -541,14 +553,91 @@ public struct DescribeExecutionOutput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
         try executionArn.validateAsArn()
         try input?.validateAsSensitiveData()
         try inputDetails?.validate()
+        try mapRunArn?.validateAsLongArn()
         try name?.validateAsName()
         try output?.validateAsSensitiveData()
         try outputDetails?.validate()
         try stateMachineArn.validateAsArn()
         try traceHeader?.validateAsTraceHeader()
+    }
+}
+
+public struct DescribeMapRunInput: Codable, Equatable {
+    public var mapRunArn: LongArn
+
+    public init(mapRunArn: LongArn) {
+        self.mapRunArn = mapRunArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case mapRunArn
+    }
+
+    public func validate() throws {
+        try mapRunArn.validateAsLongArn()
+    }
+}
+
+public struct DescribeMapRunOutput: Codable, Equatable {
+    public var executionArn: Arn
+    public var executionCounts: MapRunExecutionCounts
+    public var itemCounts: MapRunItemCounts
+    public var mapRunArn: LongArn
+    public var maxConcurrency: MaxConcurrency
+    public var startDate: Timestamp
+    public var status: MapRunStatus
+    public var stopDate: Timestamp?
+    public var toleratedFailureCount: ToleratedFailureCount
+    public var toleratedFailurePercentage: ToleratedFailurePercentage
+
+    public init(executionArn: Arn,
+                executionCounts: MapRunExecutionCounts,
+                itemCounts: MapRunItemCounts,
+                mapRunArn: LongArn,
+                maxConcurrency: MaxConcurrency,
+                startDate: Timestamp,
+                status: MapRunStatus,
+                stopDate: Timestamp? = nil,
+                toleratedFailureCount: ToleratedFailureCount,
+                toleratedFailurePercentage: ToleratedFailurePercentage) {
+        self.executionArn = executionArn
+        self.executionCounts = executionCounts
+        self.itemCounts = itemCounts
+        self.mapRunArn = mapRunArn
+        self.maxConcurrency = maxConcurrency
+        self.startDate = startDate
+        self.status = status
+        self.stopDate = stopDate
+        self.toleratedFailureCount = toleratedFailureCount
+        self.toleratedFailurePercentage = toleratedFailurePercentage
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case executionArn
+        case executionCounts
+        case itemCounts
+        case mapRunArn
+        case maxConcurrency
+        case startDate
+        case status
+        case stopDate
+        case toleratedFailureCount
+        case toleratedFailurePercentage
+    }
+
+    public func validate() throws {
+        try executionArn.validateAsArn()
+        try executionCounts.validate()
+        try itemCounts.validate()
+        try mapRunArn.validateAsLongArn()
+        try maxConcurrency.validateAsMaxConcurrency()
+        try toleratedFailureCount.validateAsToleratedFailureCount()
+        try toleratedFailurePercentage.validateAsToleratedFailurePercentage()
     }
 }
 
@@ -570,7 +659,9 @@ public struct DescribeStateMachineForExecutionInput: Codable, Equatable {
 
 public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
     public var definition: Definition
+    public var label: MapRunLabel?
     public var loggingConfiguration: LoggingConfiguration?
+    public var mapRunArn: LongArn?
     public var name: Name
     public var roleArn: Arn
     public var stateMachineArn: Arn
@@ -578,14 +669,18 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
     public var updateDate: Timestamp
 
     public init(definition: Definition,
+                label: MapRunLabel? = nil,
                 loggingConfiguration: LoggingConfiguration? = nil,
+                mapRunArn: LongArn? = nil,
                 name: Name,
                 roleArn: Arn,
                 stateMachineArn: Arn,
                 tracingConfiguration: TracingConfiguration? = nil,
                 updateDate: Timestamp) {
         self.definition = definition
+        self.label = label
         self.loggingConfiguration = loggingConfiguration
+        self.mapRunArn = mapRunArn
         self.name = name
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
@@ -595,7 +690,9 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case definition
+        case label
         case loggingConfiguration
+        case mapRunArn
         case name
         case roleArn
         case stateMachineArn
@@ -606,6 +703,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
     public func validate() throws {
         try definition.validateAsDefinition()
         try loggingConfiguration?.validate()
+        try mapRunArn?.validateAsLongArn()
         try name.validateAsName()
         try roleArn.validateAsArn()
         try stateMachineArn.validateAsArn()
@@ -632,6 +730,7 @@ public struct DescribeStateMachineInput: Codable, Equatable {
 public struct DescribeStateMachineOutput: Codable, Equatable {
     public var creationDate: Timestamp
     public var definition: Definition
+    public var label: MapRunLabel?
     public var loggingConfiguration: LoggingConfiguration?
     public var name: Name
     public var roleArn: Arn
@@ -642,6 +741,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
 
     public init(creationDate: Timestamp,
                 definition: Definition,
+                label: MapRunLabel? = nil,
                 loggingConfiguration: LoggingConfiguration? = nil,
                 name: Name,
                 roleArn: Arn,
@@ -651,6 +751,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
                 type: StateMachineType) {
         self.creationDate = creationDate
         self.definition = definition
+        self.label = label
         self.loggingConfiguration = loggingConfiguration
         self.name = name
         self.roleArn = roleArn
@@ -663,6 +764,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case creationDate
         case definition
+        case label
         case loggingConfiguration
         case name
         case roleArn
@@ -771,6 +873,8 @@ public struct ExecutionLimitExceeded: Codable, Equatable {
 
 public struct ExecutionListItem: Codable, Equatable {
     public var executionArn: Arn
+    public var itemCount: UnsignedInteger?
+    public var mapRunArn: LongArn?
     public var name: Name
     public var startDate: Timestamp
     public var stateMachineArn: Arn
@@ -778,12 +882,16 @@ public struct ExecutionListItem: Codable, Equatable {
     public var stopDate: Timestamp?
 
     public init(executionArn: Arn,
+                itemCount: UnsignedInteger? = nil,
+                mapRunArn: LongArn? = nil,
                 name: Name,
                 startDate: Timestamp,
                 stateMachineArn: Arn,
                 status: ExecutionStatus,
                 stopDate: Timestamp? = nil) {
         self.executionArn = executionArn
+        self.itemCount = itemCount
+        self.mapRunArn = mapRunArn
         self.name = name
         self.startDate = startDate
         self.stateMachineArn = stateMachineArn
@@ -793,6 +901,8 @@ public struct ExecutionListItem: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case executionArn
+        case itemCount
+        case mapRunArn
         case name
         case startDate
         case stateMachineArn
@@ -802,6 +912,8 @@ public struct ExecutionListItem: Codable, Equatable {
 
     public func validate() throws {
         try executionArn.validateAsArn()
+        try itemCount?.validateAsUnsignedInteger()
+        try mapRunArn?.validateAsLongArn()
         try name.validateAsName()
         try stateMachineArn.validateAsArn()
     }
@@ -994,6 +1106,8 @@ public struct HistoryEvent: Codable, Equatable {
     public var mapIterationFailedEventDetails: MapIterationEventDetails?
     public var mapIterationStartedEventDetails: MapIterationEventDetails?
     public var mapIterationSucceededEventDetails: MapIterationEventDetails?
+    public var mapRunFailedEventDetails: MapRunFailedEventDetails?
+    public var mapRunStartedEventDetails: MapRunStartedEventDetails?
     public var mapStateStartedEventDetails: MapStateStartedEventDetails?
     public var previousEventId: EventId?
     public var stateEnteredEventDetails: StateEnteredEventDetails?
@@ -1031,6 +1145,8 @@ public struct HistoryEvent: Codable, Equatable {
                 mapIterationFailedEventDetails: MapIterationEventDetails? = nil,
                 mapIterationStartedEventDetails: MapIterationEventDetails? = nil,
                 mapIterationSucceededEventDetails: MapIterationEventDetails? = nil,
+                mapRunFailedEventDetails: MapRunFailedEventDetails? = nil,
+                mapRunStartedEventDetails: MapRunStartedEventDetails? = nil,
                 mapStateStartedEventDetails: MapStateStartedEventDetails? = nil,
                 previousEventId: EventId? = nil,
                 stateEnteredEventDetails: StateEnteredEventDetails? = nil,
@@ -1067,6 +1183,8 @@ public struct HistoryEvent: Codable, Equatable {
         self.mapIterationFailedEventDetails = mapIterationFailedEventDetails
         self.mapIterationStartedEventDetails = mapIterationStartedEventDetails
         self.mapIterationSucceededEventDetails = mapIterationSucceededEventDetails
+        self.mapRunFailedEventDetails = mapRunFailedEventDetails
+        self.mapRunStartedEventDetails = mapRunStartedEventDetails
         self.mapStateStartedEventDetails = mapStateStartedEventDetails
         self.previousEventId = previousEventId
         self.stateEnteredEventDetails = stateEnteredEventDetails
@@ -1106,6 +1224,8 @@ public struct HistoryEvent: Codable, Equatable {
         case mapIterationFailedEventDetails
         case mapIterationStartedEventDetails
         case mapIterationSucceededEventDetails
+        case mapRunFailedEventDetails
+        case mapRunStartedEventDetails
         case mapStateStartedEventDetails
         case previousEventId
         case stateEnteredEventDetails
@@ -1144,6 +1264,8 @@ public struct HistoryEvent: Codable, Equatable {
         try mapIterationFailedEventDetails?.validate()
         try mapIterationStartedEventDetails?.validate()
         try mapIterationSucceededEventDetails?.validate()
+        try mapRunFailedEventDetails?.validate()
+        try mapRunStartedEventDetails?.validate()
         try mapStateStartedEventDetails?.validate()
         try stateEnteredEventDetails?.validate()
         try stateExitedEventDetails?.validate()
@@ -1339,15 +1461,18 @@ public struct LambdaFunctionScheduledEventDetails: Codable, Equatable {
     public var input: SensitiveData?
     public var inputDetails: HistoryEventExecutionDataDetails?
     public var resource: Arn
+    public var taskCredentials: TaskCredentials?
     public var timeoutInSeconds: TimeoutInSeconds?
 
     public init(input: SensitiveData? = nil,
                 inputDetails: HistoryEventExecutionDataDetails? = nil,
                 resource: Arn,
+                taskCredentials: TaskCredentials? = nil,
                 timeoutInSeconds: TimeoutInSeconds? = nil) {
         self.input = input
         self.inputDetails = inputDetails
         self.resource = resource
+        self.taskCredentials = taskCredentials
         self.timeoutInSeconds = timeoutInSeconds
     }
 
@@ -1355,6 +1480,7 @@ public struct LambdaFunctionScheduledEventDetails: Codable, Equatable {
         case input
         case inputDetails
         case resource
+        case taskCredentials
         case timeoutInSeconds
     }
 
@@ -1362,6 +1488,7 @@ public struct LambdaFunctionScheduledEventDetails: Codable, Equatable {
         try input?.validateAsSensitiveData()
         try inputDetails?.validate()
         try resource.validateAsArn()
+        try taskCredentials?.validate()
     }
 }
 
@@ -1470,15 +1597,18 @@ public struct ListActivitiesOutput: Codable, Equatable {
 }
 
 public struct ListExecutionsInput: Codable, Equatable {
+    public var mapRunArn: LongArn?
     public var maxResults: PageSize?
     public var nextToken: ListExecutionsPageToken?
-    public var stateMachineArn: Arn
+    public var stateMachineArn: Arn?
     public var statusFilter: ExecutionStatus?
 
-    public init(maxResults: PageSize? = nil,
+    public init(mapRunArn: LongArn? = nil,
+                maxResults: PageSize? = nil,
                 nextToken: ListExecutionsPageToken? = nil,
-                stateMachineArn: Arn,
+                stateMachineArn: Arn? = nil,
                 statusFilter: ExecutionStatus? = nil) {
+        self.mapRunArn = mapRunArn
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.stateMachineArn = stateMachineArn
@@ -1486,6 +1616,7 @@ public struct ListExecutionsInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case mapRunArn
         case maxResults
         case nextToken
         case stateMachineArn
@@ -1493,9 +1624,10 @@ public struct ListExecutionsInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try mapRunArn?.validateAsLongArn()
         try maxResults?.validateAsPageSize()
         try nextToken?.validateAsListExecutionsPageToken()
-        try stateMachineArn.validateAsArn()
+        try stateMachineArn?.validateAsArn()
     }
 }
 
@@ -1516,6 +1648,52 @@ public struct ListExecutionsOutput: Codable, Equatable {
 
     public func validate() throws {
         try nextToken?.validateAsListExecutionsPageToken()
+    }
+}
+
+public struct ListMapRunsInput: Codable, Equatable {
+    public var executionArn: Arn
+    public var maxResults: PageSize?
+    public var nextToken: PageToken?
+
+    public init(executionArn: Arn,
+                maxResults: PageSize? = nil,
+                nextToken: PageToken? = nil) {
+        self.executionArn = executionArn
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case executionArn
+        case maxResults
+        case nextToken
+    }
+
+    public func validate() throws {
+        try executionArn.validateAsArn()
+        try maxResults?.validateAsPageSize()
+        try nextToken?.validateAsPageToken()
+    }
+}
+
+public struct ListMapRunsOutput: Codable, Equatable {
+    public var mapRuns: MapRunList
+    public var nextToken: PageToken?
+
+    public init(mapRuns: MapRunList,
+                nextToken: PageToken? = nil) {
+        self.mapRuns = mapRuns
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case mapRuns
+        case nextToken
+    }
+
+    public func validate() throws {
+        try nextToken?.validateAsPageToken()
     }
 }
 
@@ -1648,6 +1826,179 @@ public struct MapIterationEventDetails: Codable, Equatable {
     public func validate() throws {
         try index?.validateAsUnsignedInteger()
         try name?.validateAsName()
+    }
+}
+
+public struct MapRunExecutionCounts: Codable, Equatable {
+    public var aborted: UnsignedLong
+    public var failed: UnsignedLong
+    public var pending: UnsignedLong
+    public var resultsWritten: UnsignedLong
+    public var running: UnsignedLong
+    public var succeeded: UnsignedLong
+    public var timedOut: UnsignedLong
+    public var total: UnsignedLong
+
+    public init(aborted: UnsignedLong,
+                failed: UnsignedLong,
+                pending: UnsignedLong,
+                resultsWritten: UnsignedLong,
+                running: UnsignedLong,
+                succeeded: UnsignedLong,
+                timedOut: UnsignedLong,
+                total: UnsignedLong) {
+        self.aborted = aborted
+        self.failed = failed
+        self.pending = pending
+        self.resultsWritten = resultsWritten
+        self.running = running
+        self.succeeded = succeeded
+        self.timedOut = timedOut
+        self.total = total
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case aborted
+        case failed
+        case pending
+        case resultsWritten
+        case running
+        case succeeded
+        case timedOut
+        case total
+    }
+
+    public func validate() throws {
+        try aborted.validateAsUnsignedLong()
+        try failed.validateAsUnsignedLong()
+        try pending.validateAsUnsignedLong()
+        try resultsWritten.validateAsUnsignedLong()
+        try running.validateAsUnsignedLong()
+        try succeeded.validateAsUnsignedLong()
+        try timedOut.validateAsUnsignedLong()
+        try total.validateAsUnsignedLong()
+    }
+}
+
+public struct MapRunFailedEventDetails: Codable, Equatable {
+    public var cause: SensitiveCause?
+    public var error: SensitiveError?
+
+    public init(cause: SensitiveCause? = nil,
+                error: SensitiveError? = nil) {
+        self.cause = cause
+        self.error = error
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cause
+        case error
+    }
+
+    public func validate() throws {
+        try cause?.validateAsSensitiveCause()
+        try error?.validateAsSensitiveError()
+    }
+}
+
+public struct MapRunItemCounts: Codable, Equatable {
+    public var aborted: UnsignedLong
+    public var failed: UnsignedLong
+    public var pending: UnsignedLong
+    public var resultsWritten: UnsignedLong
+    public var running: UnsignedLong
+    public var succeeded: UnsignedLong
+    public var timedOut: UnsignedLong
+    public var total: UnsignedLong
+
+    public init(aborted: UnsignedLong,
+                failed: UnsignedLong,
+                pending: UnsignedLong,
+                resultsWritten: UnsignedLong,
+                running: UnsignedLong,
+                succeeded: UnsignedLong,
+                timedOut: UnsignedLong,
+                total: UnsignedLong) {
+        self.aborted = aborted
+        self.failed = failed
+        self.pending = pending
+        self.resultsWritten = resultsWritten
+        self.running = running
+        self.succeeded = succeeded
+        self.timedOut = timedOut
+        self.total = total
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case aborted
+        case failed
+        case pending
+        case resultsWritten
+        case running
+        case succeeded
+        case timedOut
+        case total
+    }
+
+    public func validate() throws {
+        try aborted.validateAsUnsignedLong()
+        try failed.validateAsUnsignedLong()
+        try pending.validateAsUnsignedLong()
+        try resultsWritten.validateAsUnsignedLong()
+        try running.validateAsUnsignedLong()
+        try succeeded.validateAsUnsignedLong()
+        try timedOut.validateAsUnsignedLong()
+        try total.validateAsUnsignedLong()
+    }
+}
+
+public struct MapRunListItem: Codable, Equatable {
+    public var executionArn: Arn
+    public var mapRunArn: LongArn
+    public var startDate: Timestamp
+    public var stateMachineArn: Arn
+    public var stopDate: Timestamp?
+
+    public init(executionArn: Arn,
+                mapRunArn: LongArn,
+                startDate: Timestamp,
+                stateMachineArn: Arn,
+                stopDate: Timestamp? = nil) {
+        self.executionArn = executionArn
+        self.mapRunArn = mapRunArn
+        self.startDate = startDate
+        self.stateMachineArn = stateMachineArn
+        self.stopDate = stopDate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case executionArn
+        case mapRunArn
+        case startDate
+        case stateMachineArn
+        case stopDate
+    }
+
+    public func validate() throws {
+        try executionArn.validateAsArn()
+        try mapRunArn.validateAsLongArn()
+        try stateMachineArn.validateAsArn()
+    }
+}
+
+public struct MapRunStartedEventDetails: Codable, Equatable {
+    public var mapRunArn: LongArn?
+
+    public init(mapRunArn: LongArn? = nil) {
+        self.mapRunArn = mapRunArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case mapRunArn
+    }
+
+    public func validate() throws {
+        try mapRunArn?.validateAsLongArn()
     }
 }
 
@@ -2199,6 +2550,22 @@ public struct TagResourceOutput: Codable, Equatable {
     }
 }
 
+public struct TaskCredentials: Codable, Equatable {
+    public var roleArn: LongArn?
+
+    public init(roleArn: LongArn? = nil) {
+        self.roleArn = roleArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case roleArn
+    }
+
+    public func validate() throws {
+        try roleArn?.validateAsLongArn()
+    }
+}
+
 public struct TaskDoesNotExist: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -2251,6 +2618,7 @@ public struct TaskScheduledEventDetails: Codable, Equatable {
     public var region: Name
     public var resource: Name
     public var resourceType: Name
+    public var taskCredentials: TaskCredentials?
     public var timeoutInSeconds: TimeoutInSeconds?
 
     public init(heartbeatInSeconds: TimeoutInSeconds? = nil,
@@ -2258,12 +2626,14 @@ public struct TaskScheduledEventDetails: Codable, Equatable {
                 region: Name,
                 resource: Name,
                 resourceType: Name,
+                taskCredentials: TaskCredentials? = nil,
                 timeoutInSeconds: TimeoutInSeconds? = nil) {
         self.heartbeatInSeconds = heartbeatInSeconds
         self.parameters = parameters
         self.region = region
         self.resource = resource
         self.resourceType = resourceType
+        self.taskCredentials = taskCredentials
         self.timeoutInSeconds = timeoutInSeconds
     }
 
@@ -2273,6 +2643,7 @@ public struct TaskScheduledEventDetails: Codable, Equatable {
         case region
         case resource
         case resourceType
+        case taskCredentials
         case timeoutInSeconds
     }
 
@@ -2281,6 +2652,7 @@ public struct TaskScheduledEventDetails: Codable, Equatable {
         try region.validateAsName()
         try resource.validateAsName()
         try resourceType.validateAsName()
+        try taskCredentials?.validate()
     }
 }
 
@@ -2539,6 +2911,46 @@ public struct UntagResourceOutput: Codable, Equatable {
     }
 }
 
+public struct UpdateMapRunInput: Codable, Equatable {
+    public var mapRunArn: LongArn
+    public var maxConcurrency: MaxConcurrency?
+    public var toleratedFailureCount: ToleratedFailureCount?
+    public var toleratedFailurePercentage: ToleratedFailurePercentage?
+
+    public init(mapRunArn: LongArn,
+                maxConcurrency: MaxConcurrency? = nil,
+                toleratedFailureCount: ToleratedFailureCount? = nil,
+                toleratedFailurePercentage: ToleratedFailurePercentage? = nil) {
+        self.mapRunArn = mapRunArn
+        self.maxConcurrency = maxConcurrency
+        self.toleratedFailureCount = toleratedFailureCount
+        self.toleratedFailurePercentage = toleratedFailurePercentage
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case mapRunArn
+        case maxConcurrency
+        case toleratedFailureCount
+        case toleratedFailurePercentage
+    }
+
+    public func validate() throws {
+        try mapRunArn.validateAsLongArn()
+        try maxConcurrency?.validateAsMaxConcurrency()
+        try toleratedFailureCount?.validateAsToleratedFailureCount()
+        try toleratedFailurePercentage?.validateAsToleratedFailurePercentage()
+    }
+}
+
+public struct UpdateMapRunOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct UpdateStateMachineInput: Codable, Equatable {
     public var definition: Definition?
     public var loggingConfiguration: LoggingConfiguration?
@@ -2584,6 +2996,25 @@ public struct UpdateStateMachineOutput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case updateDate
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ValidationException: Codable, Equatable {
+    public var message: ErrorMessage?
+    public var reason: ValidationExceptionReason?
+
+    public init(message: ErrorMessage? = nil,
+                reason: ValidationExceptionReason? = nil) {
+        self.message = message
+        self.reason = reason
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+        case reason
     }
 
     public func validate() throws {

@@ -3351,17 +3351,20 @@ public struct ListStackResourcesOutputForListStackResources: Codable, Equatable 
 
 public struct ListStackSetOperationResultsInput: Codable, Equatable {
     public var callAs: CallAs?
+    public var filters: OperationResultFilters?
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
     public var operationId: ClientRequestToken
     public var stackSetName: StackSetName
 
     public init(callAs: CallAs? = nil,
+                filters: OperationResultFilters? = nil,
                 maxResults: MaxResults? = nil,
                 nextToken: NextToken? = nil,
                 operationId: ClientRequestToken,
                 stackSetName: StackSetName) {
         self.callAs = callAs
+        self.filters = filters
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.operationId = operationId
@@ -3370,6 +3373,7 @@ public struct ListStackSetOperationResultsInput: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case callAs = "CallAs"
+        case filters = "Filters"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
         case operationId = "OperationId"
@@ -3377,6 +3381,7 @@ public struct ListStackSetOperationResultsInput: Codable, Equatable {
     }
 
     public func validate() throws {
+        try filters?.validateAsOperationResultFilters()
         try maxResults?.validateAsMaxResults()
         try nextToken?.validateAsNextToken()
         try operationId.validateAsClientRequestToken()
@@ -3926,6 +3931,26 @@ public struct OperationNotFoundException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct OperationResultFilter: Codable, Equatable {
+    public var name: OperationResultFilterName?
+    public var values: OperationResultFilterValues?
+
+    public init(name: OperationResultFilterName? = nil,
+                values: OperationResultFilterValues? = nil) {
+        self.name = name
+        self.values = values
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name = "Name"
+        case values = "Values"
+    }
+
+    public func validate() throws {
+        try values?.validateAsOperationResultFilterValues()
     }
 }
 
@@ -5026,6 +5051,7 @@ public struct StackInstance: Codable, Equatable {
     public var account: Account?
     public var driftStatus: StackDriftStatus?
     public var lastDriftCheckTimestamp: Timestamp?
+    public var lastOperationId: ClientRequestToken?
     public var organizationalUnitId: OrganizationalUnitId?
     public var parameterOverrides: Parameters?
     public var region: Region?
@@ -5038,6 +5064,7 @@ public struct StackInstance: Codable, Equatable {
     public init(account: Account? = nil,
                 driftStatus: StackDriftStatus? = nil,
                 lastDriftCheckTimestamp: Timestamp? = nil,
+                lastOperationId: ClientRequestToken? = nil,
                 organizationalUnitId: OrganizationalUnitId? = nil,
                 parameterOverrides: Parameters? = nil,
                 region: Region? = nil,
@@ -5049,6 +5076,7 @@ public struct StackInstance: Codable, Equatable {
         self.account = account
         self.driftStatus = driftStatus
         self.lastDriftCheckTimestamp = lastDriftCheckTimestamp
+        self.lastOperationId = lastOperationId
         self.organizationalUnitId = organizationalUnitId
         self.parameterOverrides = parameterOverrides
         self.region = region
@@ -5063,6 +5091,7 @@ public struct StackInstance: Codable, Equatable {
         case account = "Account"
         case driftStatus = "DriftStatus"
         case lastDriftCheckTimestamp = "LastDriftCheckTimestamp"
+        case lastOperationId = "LastOperationId"
         case organizationalUnitId = "OrganizationalUnitId"
         case parameterOverrides = "ParameterOverrides"
         case region = "Region"
@@ -5075,6 +5104,7 @@ public struct StackInstance: Codable, Equatable {
 
     public func validate() throws {
         try account?.validateAsAccount()
+        try lastOperationId?.validateAsClientRequestToken()
         try organizationalUnitId?.validateAsOrganizationalUnitId()
         try region?.validateAsRegion()
         try stackInstanceStatus?.validate()
@@ -5129,6 +5159,7 @@ public struct StackInstanceSummary: Codable, Equatable {
     public var account: Account?
     public var driftStatus: StackDriftStatus?
     public var lastDriftCheckTimestamp: Timestamp?
+    public var lastOperationId: ClientRequestToken?
     public var organizationalUnitId: OrganizationalUnitId?
     public var region: Region?
     public var stackId: StackId?
@@ -5140,6 +5171,7 @@ public struct StackInstanceSummary: Codable, Equatable {
     public init(account: Account? = nil,
                 driftStatus: StackDriftStatus? = nil,
                 lastDriftCheckTimestamp: Timestamp? = nil,
+                lastOperationId: ClientRequestToken? = nil,
                 organizationalUnitId: OrganizationalUnitId? = nil,
                 region: Region? = nil,
                 stackId: StackId? = nil,
@@ -5150,6 +5182,7 @@ public struct StackInstanceSummary: Codable, Equatable {
         self.account = account
         self.driftStatus = driftStatus
         self.lastDriftCheckTimestamp = lastDriftCheckTimestamp
+        self.lastOperationId = lastOperationId
         self.organizationalUnitId = organizationalUnitId
         self.region = region
         self.stackId = stackId
@@ -5163,6 +5196,7 @@ public struct StackInstanceSummary: Codable, Equatable {
         case account = "Account"
         case driftStatus = "DriftStatus"
         case lastDriftCheckTimestamp = "LastDriftCheckTimestamp"
+        case lastOperationId = "LastOperationId"
         case organizationalUnitId = "OrganizationalUnitId"
         case region = "Region"
         case stackId = "StackId"
@@ -5174,6 +5208,7 @@ public struct StackInstanceSummary: Codable, Equatable {
 
     public func validate() throws {
         try account?.validateAsAccount()
+        try lastOperationId?.validateAsClientRequestToken()
         try organizationalUnitId?.validateAsOrganizationalUnitId()
         try region?.validateAsRegion()
         try stackInstanceStatus?.validate()
@@ -5615,6 +5650,7 @@ public struct StackSetOperation: Codable, Equatable {
     public var stackSetDriftDetectionDetails: StackSetDriftDetectionDetails?
     public var stackSetId: StackSetId?
     public var status: StackSetOperationStatus?
+    public var statusDetails: StackSetOperationStatusDetails?
     public var statusReason: StackSetOperationStatusReason?
 
     public init(action: StackSetOperationAction? = nil,
@@ -5629,6 +5665,7 @@ public struct StackSetOperation: Codable, Equatable {
                 stackSetDriftDetectionDetails: StackSetDriftDetectionDetails? = nil,
                 stackSetId: StackSetId? = nil,
                 status: StackSetOperationStatus? = nil,
+                statusDetails: StackSetOperationStatusDetails? = nil,
                 statusReason: StackSetOperationStatusReason? = nil) {
         self.action = action
         self.administrationRoleARN = administrationRoleARN
@@ -5642,6 +5679,7 @@ public struct StackSetOperation: Codable, Equatable {
         self.stackSetDriftDetectionDetails = stackSetDriftDetectionDetails
         self.stackSetId = stackSetId
         self.status = status
+        self.statusDetails = statusDetails
         self.statusReason = statusReason
     }
 
@@ -5658,6 +5696,7 @@ public struct StackSetOperation: Codable, Equatable {
         case stackSetDriftDetectionDetails = "StackSetDriftDetectionDetails"
         case stackSetId = "StackSetId"
         case status = "Status"
+        case statusDetails = "StatusDetails"
         case statusReason = "StatusReason"
     }
 
@@ -5668,6 +5707,7 @@ public struct StackSetOperation: Codable, Equatable {
         try operationId?.validateAsClientRequestToken()
         try operationPreferences?.validate()
         try stackSetDriftDetectionDetails?.validate()
+        try statusDetails?.validate()
     }
 }
 
@@ -5749,25 +5789,47 @@ public struct StackSetOperationResultSummary: Codable, Equatable {
     }
 }
 
+public struct StackSetOperationStatusDetails: Codable, Equatable {
+    public var failedStackInstancesCount: FailedStackInstancesCount?
+
+    public init(failedStackInstancesCount: FailedStackInstancesCount? = nil) {
+        self.failedStackInstancesCount = failedStackInstancesCount
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failedStackInstancesCount = "FailedStackInstancesCount"
+    }
+
+    public func validate() throws {
+        try failedStackInstancesCount?.validateAsFailedStackInstancesCount()
+    }
+}
+
 public struct StackSetOperationSummary: Codable, Equatable {
     public var action: StackSetOperationAction?
     public var creationTimestamp: Timestamp?
     public var endTimestamp: Timestamp?
     public var operationId: ClientRequestToken?
+    public var operationPreferences: StackSetOperationPreferences?
     public var status: StackSetOperationStatus?
+    public var statusDetails: StackSetOperationStatusDetails?
     public var statusReason: StackSetOperationStatusReason?
 
     public init(action: StackSetOperationAction? = nil,
                 creationTimestamp: Timestamp? = nil,
                 endTimestamp: Timestamp? = nil,
                 operationId: ClientRequestToken? = nil,
+                operationPreferences: StackSetOperationPreferences? = nil,
                 status: StackSetOperationStatus? = nil,
+                statusDetails: StackSetOperationStatusDetails? = nil,
                 statusReason: StackSetOperationStatusReason? = nil) {
         self.action = action
         self.creationTimestamp = creationTimestamp
         self.endTimestamp = endTimestamp
         self.operationId = operationId
+        self.operationPreferences = operationPreferences
         self.status = status
+        self.statusDetails = statusDetails
         self.statusReason = statusReason
     }
 
@@ -5776,12 +5838,16 @@ public struct StackSetOperationSummary: Codable, Equatable {
         case creationTimestamp = "CreationTimestamp"
         case endTimestamp = "EndTimestamp"
         case operationId = "OperationId"
+        case operationPreferences = "OperationPreferences"
         case status = "Status"
+        case statusDetails = "StatusDetails"
         case statusReason = "StatusReason"
     }
 
     public func validate() throws {
         try operationId?.validateAsClientRequestToken()
+        try operationPreferences?.validate()
+        try statusDetails?.validate()
     }
 }
 

@@ -28,7 +28,7 @@ import SmokeHTTPClient
 /**
  Client Protocol for the StepFunctions service.
  */
-public protocol StepFunctionsClientProtocol {
+public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
     typealias CreateActivitySyncType = (
             _ input: StepFunctionsModel.CreateActivityInput) throws -> StepFunctionsModel.CreateActivityOutput
     typealias CreateActivityAsyncType = (
@@ -59,6 +59,11 @@ public protocol StepFunctionsClientProtocol {
     typealias DescribeExecutionAsyncType = (
             _ input: StepFunctionsModel.DescribeExecutionInput, 
             _ completion: @escaping (Result<StepFunctionsModel.DescribeExecutionOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias DescribeMapRunSyncType = (
+            _ input: StepFunctionsModel.DescribeMapRunInput) throws -> StepFunctionsModel.DescribeMapRunOutput
+    typealias DescribeMapRunAsyncType = (
+            _ input: StepFunctionsModel.DescribeMapRunInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeMapRunOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DescribeStateMachineSyncType = (
             _ input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput
     typealias DescribeStateMachineAsyncType = (
@@ -89,6 +94,11 @@ public protocol StepFunctionsClientProtocol {
     typealias ListExecutionsAsyncType = (
             _ input: StepFunctionsModel.ListExecutionsInput, 
             _ completion: @escaping (Result<StepFunctionsModel.ListExecutionsOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias ListMapRunsSyncType = (
+            _ input: StepFunctionsModel.ListMapRunsInput) throws -> StepFunctionsModel.ListMapRunsOutput
+    typealias ListMapRunsAsyncType = (
+            _ input: StepFunctionsModel.ListMapRunsInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.ListMapRunsOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias ListStateMachinesSyncType = (
             _ input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput
     typealias ListStateMachinesAsyncType = (
@@ -139,6 +149,11 @@ public protocol StepFunctionsClientProtocol {
     typealias UntagResourceAsyncType = (
             _ input: StepFunctionsModel.UntagResourceInput, 
             _ completion: @escaping (Result<StepFunctionsModel.UntagResourceOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias UpdateMapRunSyncType = (
+            _ input: StepFunctionsModel.UpdateMapRunInput) throws -> StepFunctionsModel.UpdateMapRunOutput
+    typealias UpdateMapRunAsyncType = (
+            _ input: StepFunctionsModel.UpdateMapRunInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.UpdateMapRunOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias UpdateStateMachineSyncType = (
             _ input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput
     typealias UpdateStateMachineAsyncType = (
@@ -231,7 +246,7 @@ public protocol StepFunctionsClientProtocol {
          - completion: The DeleteStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The DeleteStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn.
+           The possible errors are: invalidArn, validation.
      */
     func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
@@ -244,7 +259,7 @@ public protocol StepFunctionsClientProtocol {
          - input: The validated DeleteStateMachineInput object being passed to this operation.
      - Returns: The DeleteStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn.
+     - Throws: invalidArn, validation.
      */
     func deleteStateMachineSync(
             input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput
@@ -300,6 +315,32 @@ public protocol StepFunctionsClientProtocol {
      */
     func describeExecutionSync(
             input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput
+
+    /**
+     Invokes the DescribeMapRun operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeMapRunInput object being passed to this operation.
+         - completion: The DescribeMapRunOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeMapRunOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound.
+     */
+    func describeMapRunAsync(
+            input: StepFunctionsModel.DescribeMapRunInput, 
+            completion: @escaping (Result<StepFunctionsModel.DescribeMapRunOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the DescribeMapRun operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeMapRunInput object being passed to this operation.
+     - Returns: The DescribeMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    func describeMapRunSync(
+            input: StepFunctionsModel.DescribeMapRunInput) throws -> StepFunctionsModel.DescribeMapRunOutput
 
     /**
      Invokes the DescribeStateMachine operation returning immediately and passing the response to a callback.
@@ -439,7 +480,7 @@ public protocol StepFunctionsClientProtocol {
          - completion: The ListExecutionsOutput object or an error will be passed to this 
            callback when the operation is complete. The ListExecutionsOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+           The possible errors are: invalidArn, invalidToken, resourceNotFound, stateMachineDoesNotExist, stateMachineTypeNotSupported, validation.
      */
     func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
@@ -452,10 +493,36 @@ public protocol StepFunctionsClientProtocol {
          - input: The validated ListExecutionsInput object being passed to this operation.
      - Returns: The ListExecutionsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDoesNotExist, stateMachineTypeNotSupported, validation.
      */
     func listExecutionsSync(
             input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput
+
+    /**
+     Invokes the ListMapRuns operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMapRunsInput object being passed to this operation.
+         - completion: The ListMapRunsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListMapRunsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    func listMapRunsAsync(
+            input: StepFunctionsModel.ListMapRunsInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListMapRunsOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the ListMapRuns operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMapRunsInput object being passed to this operation.
+     - Returns: The ListMapRunsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    func listMapRunsSync(
+            input: StepFunctionsModel.ListMapRunsInput) throws -> StepFunctionsModel.ListMapRunsOutput
 
     /**
      Invokes the ListStateMachines operation returning immediately and passing the response to a callback.
@@ -595,7 +662,7 @@ public protocol StepFunctionsClientProtocol {
          - completion: The StartExecutionOutput object or an error will be passed to this 
            callback when the operation is complete. The StartExecutionOutput
            object will be validated before being returned to caller.
-           The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
+           The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
@@ -608,7 +675,7 @@ public protocol StepFunctionsClientProtocol {
          - input: The validated StartExecutionInput object being passed to this operation.
      - Returns: The StartExecutionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func startExecutionSync(
             input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput
@@ -647,7 +714,7 @@ public protocol StepFunctionsClientProtocol {
          - completion: The StopExecutionOutput object or an error will be passed to this 
            callback when the operation is complete. The StopExecutionOutput
            object will be validated before being returned to caller.
-           The possible errors are: executionDoesNotExist, invalidArn.
+           The possible errors are: executionDoesNotExist, invalidArn, validation.
      */
     func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
@@ -660,7 +727,7 @@ public protocol StepFunctionsClientProtocol {
          - input: The validated StopExecutionInput object being passed to this operation.
      - Returns: The StopExecutionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: executionDoesNotExist, invalidArn.
+     - Throws: executionDoesNotExist, invalidArn, validation.
      */
     func stopExecutionSync(
             input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput
@@ -718,6 +785,32 @@ public protocol StepFunctionsClientProtocol {
             input: StepFunctionsModel.UntagResourceInput) throws -> StepFunctionsModel.UntagResourceOutput
 
     /**
+     Invokes the UpdateMapRun operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateMapRunInput object being passed to this operation.
+         - completion: The UpdateMapRunOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateMapRunOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound, validation.
+     */
+    func updateMapRunAsync(
+            input: StepFunctionsModel.UpdateMapRunInput, 
+            completion: @escaping (Result<StepFunctionsModel.UpdateMapRunOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the UpdateMapRun operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateMapRunInput object being passed to this operation.
+     - Returns: The UpdateMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    func updateMapRunSync(
+            input: StepFunctionsModel.UpdateMapRunInput) throws -> StepFunctionsModel.UpdateMapRunOutput
+
+    /**
      Invokes the UpdateStateMachine operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -725,7 +818,7 @@ public protocol StepFunctionsClientProtocol {
          - completion: The UpdateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
@@ -738,7 +831,7 @@ public protocol StepFunctionsClientProtocol {
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func updateStateMachineSync(
             input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput

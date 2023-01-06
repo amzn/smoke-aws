@@ -37,6 +37,8 @@ private let authorizationAlreadyExistsIdentity = "AuthorizationAlreadyExists"
 private let authorizationNotFoundIdentity = "AuthorizationNotFound"
 private let authorizationQuotaExceededIdentity = "AuthorizationQuotaExceeded"
 private let backupPolicyNotFoundIdentity = "BackupPolicyNotFoundFault"
+private let blueGreenDeploymentAlreadyExistsIdentity = "BlueGreenDeploymentAlreadyExistsFault"
+private let blueGreenDeploymentNotFoundIdentity = "BlueGreenDeploymentNotFoundFault"
 private let certificateNotFoundIdentity = "CertificateNotFound"
 private let customAvailabilityZoneNotFoundIdentity = "CustomAvailabilityZoneNotFound"
 private let customDBEngineVersionAlreadyExistsIdentity = "CustomDBEngineVersionAlreadyExistsFault"
@@ -89,6 +91,7 @@ private let dBSubnetGroupQuotaExceededIdentity = "DBSubnetGroupQuotaExceeded"
 private let dBSubnetQuotaExceededIdentity = "DBSubnetQuotaExceededFault"
 private let dBUpgradeDependencyFailureIdentity = "DBUpgradeDependencyFailure"
 private let domainNotFoundIdentity = "DomainNotFoundFault"
+private let ec2ImagePropertiesNotSupportedIdentity = "Ec2ImagePropertiesNotSupportedFault"
 private let eventSubscriptionQuotaExceededIdentity = "EventSubscriptionQuotaExceeded"
 private let exportTaskAlreadyExistsIdentity = "ExportTaskAlreadyExists"
 private let exportTaskNotFoundIdentity = "ExportTaskNotFound"
@@ -102,6 +105,7 @@ private let insufficientAvailableIPsInSubnetIdentity = "InsufficientAvailableIPs
 private let insufficientDBClusterCapacityIdentity = "InsufficientDBClusterCapacityFault"
 private let insufficientDBInstanceCapacityIdentity = "InsufficientDBInstanceCapacity"
 private let insufficientStorageClusterCapacityIdentity = "InsufficientStorageClusterCapacity"
+private let invalidBlueGreenDeploymentStateIdentity = "InvalidBlueGreenDeploymentStateFault"
 private let invalidCustomDBEngineVersionStateIdentity = "InvalidCustomDBEngineVersionStateFault"
 private let invalidDBClusterCapacityIdentity = "InvalidDBClusterCapacityFault"
 private let invalidDBClusterEndpointStateIdentity = "InvalidDBClusterEndpointStateFault"
@@ -144,6 +148,8 @@ private let sNSNoAuthorizationIdentity = "SNSNoAuthorization"
 private let sNSTopicArnNotFoundIdentity = "SNSTopicArnNotFound"
 private let sharedSnapshotQuotaExceededIdentity = "SharedSnapshotQuotaExceeded"
 private let snapshotQuotaExceededIdentity = "SnapshotQuotaExceeded"
+private let sourceClusterNotSupportedIdentity = "SourceClusterNotSupportedFault"
+private let sourceDatabaseNotSupportedIdentity = "SourceDatabaseNotSupportedFault"
 private let sourceNotFoundIdentity = "SourceNotFound"
 private let storageQuotaExceededIdentity = "StorageQuotaExceeded"
 private let storageTypeNotSupportedIdentity = "StorageTypeNotSupported"
@@ -158,6 +164,8 @@ public enum RDSError: Swift.Error, Decodable {
     case authorizationNotFound(AuthorizationNotFoundFault)
     case authorizationQuotaExceeded(AuthorizationQuotaExceededFault)
     case backupPolicyNotFound(BackupPolicyNotFoundFault)
+    case blueGreenDeploymentAlreadyExists(BlueGreenDeploymentAlreadyExistsFault)
+    case blueGreenDeploymentNotFound(BlueGreenDeploymentNotFoundFault)
     case certificateNotFound(CertificateNotFoundFault)
     case customAvailabilityZoneNotFound(CustomAvailabilityZoneNotFoundFault)
     case customDBEngineVersionAlreadyExists(CustomDBEngineVersionAlreadyExistsFault)
@@ -210,6 +218,7 @@ public enum RDSError: Swift.Error, Decodable {
     case dBSubnetQuotaExceeded(DBSubnetQuotaExceededFault)
     case dBUpgradeDependencyFailure(DBUpgradeDependencyFailureFault)
     case domainNotFound(DomainNotFoundFault)
+    case ec2ImagePropertiesNotSupported(Ec2ImagePropertiesNotSupportedFault)
     case eventSubscriptionQuotaExceeded(EventSubscriptionQuotaExceededFault)
     case exportTaskAlreadyExists(ExportTaskAlreadyExistsFault)
     case exportTaskNotFound(ExportTaskNotFoundFault)
@@ -223,6 +232,7 @@ public enum RDSError: Swift.Error, Decodable {
     case insufficientDBClusterCapacity(InsufficientDBClusterCapacityFault)
     case insufficientDBInstanceCapacity(InsufficientDBInstanceCapacityFault)
     case insufficientStorageClusterCapacity(InsufficientStorageClusterCapacityFault)
+    case invalidBlueGreenDeploymentState(InvalidBlueGreenDeploymentStateFault)
     case invalidCustomDBEngineVersionState(InvalidCustomDBEngineVersionStateFault)
     case invalidDBClusterCapacity(InvalidDBClusterCapacityFault)
     case invalidDBClusterEndpointState(InvalidDBClusterEndpointStateFault)
@@ -265,6 +275,8 @@ public enum RDSError: Swift.Error, Decodable {
     case sNSTopicArnNotFound(SNSTopicArnNotFoundFault)
     case sharedSnapshotQuotaExceeded(SharedSnapshotQuotaExceededFault)
     case snapshotQuotaExceeded(SnapshotQuotaExceededFault)
+    case sourceClusterNotSupported(SourceClusterNotSupportedFault)
+    case sourceDatabaseNotSupported(SourceDatabaseNotSupportedFault)
     case sourceNotFound(SourceNotFoundFault)
     case storageQuotaExceeded(StorageQuotaExceededFault)
     case storageTypeNotSupported(StorageTypeNotSupportedFault)
@@ -303,6 +315,12 @@ public enum RDSError: Swift.Error, Decodable {
         case backupPolicyNotFoundIdentity:
             let errorPayload = try BackupPolicyNotFoundFault(from: decoder)
             self = RDSError.backupPolicyNotFound(errorPayload)
+        case blueGreenDeploymentAlreadyExistsIdentity:
+            let errorPayload = try BlueGreenDeploymentAlreadyExistsFault(from: decoder)
+            self = RDSError.blueGreenDeploymentAlreadyExists(errorPayload)
+        case blueGreenDeploymentNotFoundIdentity:
+            let errorPayload = try BlueGreenDeploymentNotFoundFault(from: decoder)
+            self = RDSError.blueGreenDeploymentNotFound(errorPayload)
         case certificateNotFoundIdentity:
             let errorPayload = try CertificateNotFoundFault(from: decoder)
             self = RDSError.certificateNotFound(errorPayload)
@@ -459,6 +477,9 @@ public enum RDSError: Swift.Error, Decodable {
         case domainNotFoundIdentity:
             let errorPayload = try DomainNotFoundFault(from: decoder)
             self = RDSError.domainNotFound(errorPayload)
+        case ec2ImagePropertiesNotSupportedIdentity:
+            let errorPayload = try Ec2ImagePropertiesNotSupportedFault(from: decoder)
+            self = RDSError.ec2ImagePropertiesNotSupported(errorPayload)
         case eventSubscriptionQuotaExceededIdentity:
             let errorPayload = try EventSubscriptionQuotaExceededFault(from: decoder)
             self = RDSError.eventSubscriptionQuotaExceeded(errorPayload)
@@ -498,6 +519,9 @@ public enum RDSError: Swift.Error, Decodable {
         case insufficientStorageClusterCapacityIdentity:
             let errorPayload = try InsufficientStorageClusterCapacityFault(from: decoder)
             self = RDSError.insufficientStorageClusterCapacity(errorPayload)
+        case invalidBlueGreenDeploymentStateIdentity:
+            let errorPayload = try InvalidBlueGreenDeploymentStateFault(from: decoder)
+            self = RDSError.invalidBlueGreenDeploymentState(errorPayload)
         case invalidCustomDBEngineVersionStateIdentity:
             let errorPayload = try InvalidCustomDBEngineVersionStateFault(from: decoder)
             self = RDSError.invalidCustomDBEngineVersionState(errorPayload)
@@ -624,6 +648,12 @@ public enum RDSError: Swift.Error, Decodable {
         case snapshotQuotaExceededIdentity:
             let errorPayload = try SnapshotQuotaExceededFault(from: decoder)
             self = RDSError.snapshotQuotaExceeded(errorPayload)
+        case sourceClusterNotSupportedIdentity:
+            let errorPayload = try SourceClusterNotSupportedFault(from: decoder)
+            self = RDSError.sourceClusterNotSupported(errorPayload)
+        case sourceDatabaseNotSupportedIdentity:
+            let errorPayload = try SourceDatabaseNotSupportedFault(from: decoder)
+            self = RDSError.sourceDatabaseNotSupported(errorPayload)
         case sourceNotFoundIdentity:
             let errorPayload = try SourceNotFoundFault(from: decoder)
             self = RDSError.sourceNotFound(errorPayload)

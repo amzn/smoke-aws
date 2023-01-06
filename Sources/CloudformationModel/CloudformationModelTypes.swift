@@ -498,6 +498,7 @@ public enum HandlerErrorCode: String, Codable, CustomStringConvertible {
     case serviceLimitExceeded = "ServiceLimitExceeded"
     case throttling = "Throttling"
     case unknown = "Unknown"
+    case unsupportedTarget = "UnsupportedTarget"
 
     public var description: String {
         return rawValue
@@ -756,6 +757,29 @@ public enum OnFailure: String, Codable, CustomStringConvertible {
     
     public static let __default: OnFailure = .delete
 }
+
+/**
+ Enumeration restricting the values of the OperationResultFilterName field.
+ */
+public enum OperationResultFilterName: String, Codable, CustomStringConvertible {
+    case operationResultStatus = "OPERATION_RESULT_STATUS"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: OperationResultFilterName = .operationResultStatus
+}
+
+/**
+ Type definition for the OperationResultFilterValues field.
+ */
+public typealias OperationResultFilterValues = String
+
+/**
+ Type definition for the OperationResultFilters field.
+ */
+public typealias OperationResultFilters = [OperationResultFilter]
 
 /**
  Enumeration restricting the values of the OperationStatus field.
@@ -1315,6 +1339,7 @@ public enum StackInstanceDetailedStatus: String, Codable, CustomStringConvertibl
  */
 public enum StackInstanceFilterName: String, Codable, CustomStringConvertible {
     case detailedStatus = "DETAILED_STATUS"
+    case lastOperationId = "LAST_OPERATION_ID"
 
     public var description: String {
         return rawValue
@@ -2461,6 +2486,39 @@ extension Array where Element == CloudformationModel.NotificationARN {
 }
 
 /**
+ Validation for the OperationResultFilterValues field.
+*/
+extension CloudformationModel.OperationResultFilterValues {
+    public func validateAsOperationResultFilterValues() throws {
+        if self.count < 6 {
+            throw CloudformationError.validationError(reason: "The provided value to OperationResultFilterValues violated the minimum length constraint.")
+        }
+
+        if self.count > 9 {
+            throw CloudformationError.validationError(reason: "The provided value to OperationResultFilterValues violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^\\S{6,9}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to OperationResultFilterValues violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the OperationResultFilters field.
+*/
+extension Array where Element == CloudformationModel.OperationResultFilter {
+    public func validateAsOperationResultFilters() throws {
+
+        if self.count > 1 {
+            throw CloudformationError.validationError(reason: "The provided value to OperationResultFilters violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the OptionalSecureUrl field.
 */
 extension CloudformationModel.OptionalSecureUrl {
@@ -2873,12 +2931,18 @@ extension CloudformationModel.StackIdsUrl {
 */
 extension CloudformationModel.StackInstanceFilterValues {
     public func validateAsStackInstanceFilterValues() throws {
-        if self.count < 6 {
+        if self.count < 1 {
             throw CloudformationError.validationError(reason: "The provided value to StackInstanceFilterValues violated the minimum length constraint.")
         }
 
-        if self.count > 10 {
+        if self.count > 128 {
             throw CloudformationError.validationError(reason: "The provided value to StackInstanceFilterValues violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^\\S{1,128}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CloudformationError.validationError(
+                    reason: "The provided value to StackInstanceFilterValues violated the regular expression constraint.")
         }
     }
 }
@@ -2889,7 +2953,7 @@ extension CloudformationModel.StackInstanceFilterValues {
 extension Array where Element == CloudformationModel.StackInstanceFilter {
     public func validateAsStackInstanceFilters() throws {
 
-        if self.count > 1 {
+        if self.count > 2 {
             throw CloudformationError.validationError(reason: "The provided value to StackInstanceFilters violated the maximum length constraint.")
         }
     }

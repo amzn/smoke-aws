@@ -42,6 +42,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     let describeActivitySyncOverride: DescribeActivitySyncType?
     let describeExecutionAsyncOverride: DescribeExecutionAsyncType?
     let describeExecutionSyncOverride: DescribeExecutionSyncType?
+    let describeMapRunAsyncOverride: DescribeMapRunAsyncType?
+    let describeMapRunSyncOverride: DescribeMapRunSyncType?
     let describeStateMachineAsyncOverride: DescribeStateMachineAsyncType?
     let describeStateMachineSyncOverride: DescribeStateMachineSyncType?
     let describeStateMachineForExecutionAsyncOverride: DescribeStateMachineForExecutionAsyncType?
@@ -54,6 +56,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     let listActivitiesSyncOverride: ListActivitiesSyncType?
     let listExecutionsAsyncOverride: ListExecutionsAsyncType?
     let listExecutionsSyncOverride: ListExecutionsSyncType?
+    let listMapRunsAsyncOverride: ListMapRunsAsyncType?
+    let listMapRunsSyncOverride: ListMapRunsSyncType?
     let listStateMachinesAsyncOverride: ListStateMachinesAsyncType?
     let listStateMachinesSyncOverride: ListStateMachinesSyncType?
     let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
@@ -74,6 +78,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     let tagResourceSyncOverride: TagResourceSyncType?
     let untagResourceAsyncOverride: UntagResourceAsyncType?
     let untagResourceSyncOverride: UntagResourceSyncType?
+    let updateMapRunAsyncOverride: UpdateMapRunAsyncType?
+    let updateMapRunSyncOverride: UpdateMapRunSyncType?
     let updateStateMachineAsyncOverride: UpdateStateMachineAsyncType?
     let updateStateMachineSyncOverride: UpdateStateMachineSyncType?
 
@@ -94,6 +100,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             describeActivitySync: DescribeActivitySyncType? = nil,
             describeExecutionAsync: DescribeExecutionAsyncType? = nil,
             describeExecutionSync: DescribeExecutionSyncType? = nil,
+            describeMapRunAsync: DescribeMapRunAsyncType? = nil,
+            describeMapRunSync: DescribeMapRunSyncType? = nil,
             describeStateMachineAsync: DescribeStateMachineAsyncType? = nil,
             describeStateMachineSync: DescribeStateMachineSyncType? = nil,
             describeStateMachineForExecutionAsync: DescribeStateMachineForExecutionAsyncType? = nil,
@@ -106,6 +114,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             listActivitiesSync: ListActivitiesSyncType? = nil,
             listExecutionsAsync: ListExecutionsAsyncType? = nil,
             listExecutionsSync: ListExecutionsSyncType? = nil,
+            listMapRunsAsync: ListMapRunsAsyncType? = nil,
+            listMapRunsSync: ListMapRunsSyncType? = nil,
             listStateMachinesAsync: ListStateMachinesAsyncType? = nil,
             listStateMachinesSync: ListStateMachinesSyncType? = nil,
             listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
@@ -126,6 +136,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             tagResourceSync: TagResourceSyncType? = nil,
             untagResourceAsync: UntagResourceAsyncType? = nil,
             untagResourceSync: UntagResourceSyncType? = nil,
+            updateMapRunAsync: UpdateMapRunAsyncType? = nil,
+            updateMapRunSync: UpdateMapRunSyncType? = nil,
             updateStateMachineAsync: UpdateStateMachineAsyncType? = nil,
             updateStateMachineSync: UpdateStateMachineSyncType? = nil) {
         self.error = error
@@ -141,6 +153,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
         self.describeActivitySyncOverride = describeActivitySync
         self.describeExecutionAsyncOverride = describeExecutionAsync
         self.describeExecutionSyncOverride = describeExecutionSync
+        self.describeMapRunAsyncOverride = describeMapRunAsync
+        self.describeMapRunSyncOverride = describeMapRunSync
         self.describeStateMachineAsyncOverride = describeStateMachineAsync
         self.describeStateMachineSyncOverride = describeStateMachineSync
         self.describeStateMachineForExecutionAsyncOverride = describeStateMachineForExecutionAsync
@@ -153,6 +167,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
         self.listActivitiesSyncOverride = listActivitiesSync
         self.listExecutionsAsyncOverride = listExecutionsAsync
         self.listExecutionsSyncOverride = listExecutionsSync
+        self.listMapRunsAsyncOverride = listMapRunsAsync
+        self.listMapRunsSyncOverride = listMapRunsSync
         self.listStateMachinesAsyncOverride = listStateMachinesAsync
         self.listStateMachinesSyncOverride = listStateMachinesSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
@@ -173,6 +189,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
         self.tagResourceSyncOverride = tagResourceSync
         self.untagResourceAsyncOverride = untagResourceAsync
         self.untagResourceSyncOverride = untagResourceSync
+        self.updateMapRunAsyncOverride = updateMapRunAsync
+        self.updateMapRunSyncOverride = updateMapRunSync
         self.updateStateMachineAsyncOverride = updateStateMachineAsync
         self.updateStateMachineSyncOverride = updateStateMachineSync
     }
@@ -299,7 +317,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The DeleteStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The DeleteStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn.
+           The possible errors are: invalidArn, validation.
      */
     public func deleteStateMachineAsync(
             input: StepFunctionsModel.DeleteStateMachineInput, 
@@ -318,7 +336,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated DeleteStateMachineInput object being passed to this operation.
      - Returns: The DeleteStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn.
+     - Throws: invalidArn, validation.
      */
     public func deleteStateMachineSync(
             input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput {
@@ -400,6 +418,44 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             input: StepFunctionsModel.DescribeExecutionInput) throws -> StepFunctionsModel.DescribeExecutionOutput {
         if let describeExecutionSyncOverride = describeExecutionSyncOverride {
             return try describeExecutionSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeMapRun operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeMapRunInput object being passed to this operation.
+         - completion: The DescribeMapRunOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeMapRunOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound.
+     */
+    public func describeMapRunAsync(
+            input: StepFunctionsModel.DescribeMapRunInput, 
+            completion: @escaping (Result<StepFunctionsModel.DescribeMapRunOutput, StepFunctionsError>) -> ()) throws {
+        if let describeMapRunAsyncOverride = describeMapRunAsyncOverride {
+            return try describeMapRunAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeMapRun operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeMapRunInput object being passed to this operation.
+     - Returns: The DescribeMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound.
+     */
+    public func describeMapRunSync(
+            input: StepFunctionsModel.DescribeMapRunInput) throws -> StepFunctionsModel.DescribeMapRunOutput {
+        if let describeMapRunSyncOverride = describeMapRunSyncOverride {
+            return try describeMapRunSyncOverride(input)
         }
 
         throw error
@@ -603,7 +659,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The ListExecutionsOutput object or an error will be passed to this 
            callback when the operation is complete. The ListExecutionsOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+           The possible errors are: invalidArn, invalidToken, resourceNotFound, stateMachineDoesNotExist, stateMachineTypeNotSupported, validation.
      */
     public func listExecutionsAsync(
             input: StepFunctionsModel.ListExecutionsInput, 
@@ -622,12 +678,50 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated ListExecutionsInput object being passed to this operation.
      - Returns: The ListExecutionsOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidToken, stateMachineDoesNotExist, stateMachineTypeNotSupported.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDoesNotExist, stateMachineTypeNotSupported, validation.
      */
     public func listExecutionsSync(
             input: StepFunctionsModel.ListExecutionsInput) throws -> StepFunctionsModel.ListExecutionsOutput {
         if let listExecutionsSyncOverride = listExecutionsSyncOverride {
             return try listExecutionsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListMapRuns operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMapRunsInput object being passed to this operation.
+         - completion: The ListMapRunsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListMapRunsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    public func listMapRunsAsync(
+            input: StepFunctionsModel.ListMapRunsInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListMapRunsOutput, StepFunctionsError>) -> ()) throws {
+        if let listMapRunsAsyncOverride = listMapRunsAsyncOverride {
+            return try listMapRunsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ListMapRuns operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMapRunsInput object being passed to this operation.
+     - Returns: The ListMapRunsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: executionDoesNotExist, invalidArn, invalidToken.
+     */
+    public func listMapRunsSync(
+            input: StepFunctionsModel.ListMapRunsInput) throws -> StepFunctionsModel.ListMapRunsOutput {
+        if let listMapRunsSyncOverride = listMapRunsSyncOverride {
+            return try listMapRunsSyncOverride(input)
         }
 
         throw error
@@ -831,7 +925,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The StartExecutionOutput object or an error will be passed to this 
            callback when the operation is complete. The StartExecutionOutput
            object will be validated before being returned to caller.
-           The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
+           The possible errors are: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func startExecutionAsync(
             input: StepFunctionsModel.StartExecutionInput, 
@@ -850,7 +944,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated StartExecutionInput object being passed to this operation.
      - Returns: The StartExecutionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: executionAlreadyExists, executionLimitExceeded, invalidArn, invalidExecutionInput, invalidName, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func startExecutionSync(
             input: StepFunctionsModel.StartExecutionInput) throws -> StepFunctionsModel.StartExecutionOutput {
@@ -907,7 +1001,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The StopExecutionOutput object or an error will be passed to this 
            callback when the operation is complete. The StopExecutionOutput
            object will be validated before being returned to caller.
-           The possible errors are: executionDoesNotExist, invalidArn.
+           The possible errors are: executionDoesNotExist, invalidArn, validation.
      */
     public func stopExecutionAsync(
             input: StepFunctionsModel.StopExecutionInput, 
@@ -926,7 +1020,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated StopExecutionInput object being passed to this operation.
      - Returns: The StopExecutionOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: executionDoesNotExist, invalidArn.
+     - Throws: executionDoesNotExist, invalidArn, validation.
      */
     public func stopExecutionSync(
             input: StepFunctionsModel.StopExecutionInput) throws -> StepFunctionsModel.StopExecutionOutput {
@@ -1014,6 +1108,44 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     }
 
     /**
+     Invokes the UpdateMapRun operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateMapRunInput object being passed to this operation.
+         - completion: The UpdateMapRunOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateMapRunOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound, validation.
+     */
+    public func updateMapRunAsync(
+            input: StepFunctionsModel.UpdateMapRunInput, 
+            completion: @escaping (Result<StepFunctionsModel.UpdateMapRunOutput, StepFunctionsError>) -> ()) throws {
+        if let updateMapRunAsyncOverride = updateMapRunAsyncOverride {
+            return try updateMapRunAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the UpdateMapRun operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateMapRunInput object being passed to this operation.
+     - Returns: The UpdateMapRunOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    public func updateMapRunSync(
+            input: StepFunctionsModel.UpdateMapRunInput) throws -> StepFunctionsModel.UpdateMapRunOutput {
+        if let updateMapRunSyncOverride = updateMapRunSyncOverride {
+            return try updateMapRunSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the UpdateStateMachine operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1021,7 +1153,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The UpdateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
@@ -1040,7 +1172,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist.
+     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachineSync(
             input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {

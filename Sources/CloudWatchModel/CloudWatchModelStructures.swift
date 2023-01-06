@@ -1933,28 +1933,36 @@ public struct ListMetricStreamsOutputForListMetricStreams: Codable, Equatable {
 
 public struct ListMetricsInput: Codable, Equatable {
     public var dimensions: DimensionFilters?
+    public var includeLinkedAccounts: IncludeLinkedAccounts?
     public var metricName: MetricName?
     public var namespace: Namespace?
     public var nextToken: NextToken?
+    public var owningAccount: AccountId?
     public var recentlyActive: RecentlyActive?
 
     public init(dimensions: DimensionFilters? = nil,
+                includeLinkedAccounts: IncludeLinkedAccounts? = nil,
                 metricName: MetricName? = nil,
                 namespace: Namespace? = nil,
                 nextToken: NextToken? = nil,
+                owningAccount: AccountId? = nil,
                 recentlyActive: RecentlyActive? = nil) {
         self.dimensions = dimensions
+        self.includeLinkedAccounts = includeLinkedAccounts
         self.metricName = metricName
         self.namespace = namespace
         self.nextToken = nextToken
+        self.owningAccount = owningAccount
         self.recentlyActive = recentlyActive
     }
 
     enum CodingKeys: String, CodingKey {
         case dimensions = "Dimensions"
+        case includeLinkedAccounts = "IncludeLinkedAccounts"
         case metricName = "MetricName"
         case namespace = "Namespace"
         case nextToken = "NextToken"
+        case owningAccount = "OwningAccount"
         case recentlyActive = "RecentlyActive"
     }
 
@@ -1962,22 +1970,27 @@ public struct ListMetricsInput: Codable, Equatable {
         try dimensions?.validateAsDimensionFilters()
         try metricName?.validateAsMetricName()
         try namespace?.validateAsNamespace()
+        try owningAccount?.validateAsAccountId()
     }
 }
 
 public struct ListMetricsOutput: Codable, Equatable {
     public var metrics: Metrics?
     public var nextToken: NextToken?
+    public var owningAccounts: OwningAccounts?
 
     public init(metrics: Metrics? = nil,
-                nextToken: NextToken? = nil) {
+                nextToken: NextToken? = nil,
+                owningAccounts: OwningAccounts? = nil) {
         self.metrics = metrics
         self.nextToken = nextToken
+        self.owningAccounts = owningAccounts
     }
 
     enum CodingKeys: String, CodingKey {
         case metrics = "Metrics"
         case nextToken = "NextToken"
+        case owningAccounts = "OwningAccounts"
     }
 
     public func validate() throws {
@@ -2176,6 +2189,7 @@ public struct MetricAlarm: Codable, Equatable {
     public var dimensions: Dimensions?
     public var evaluateLowSampleCountPercentile: EvaluateLowSampleCountPercentile?
     public var evaluationPeriods: EvaluationPeriods?
+    public var evaluationState: EvaluationState?
     public var extendedStatistic: ExtendedStatistic?
     public var insufficientDataActions: ResourceList?
     public var metricName: MetricName?
@@ -2185,6 +2199,7 @@ public struct MetricAlarm: Codable, Equatable {
     public var period: Period?
     public var stateReason: StateReason?
     public var stateReasonData: StateReasonData?
+    public var stateTransitionedTimestamp: Timestamp?
     public var stateUpdatedTimestamp: Timestamp?
     public var stateValue: StateValue?
     public var statistic: Statistic?
@@ -2204,6 +2219,7 @@ public struct MetricAlarm: Codable, Equatable {
                 dimensions: Dimensions? = nil,
                 evaluateLowSampleCountPercentile: EvaluateLowSampleCountPercentile? = nil,
                 evaluationPeriods: EvaluationPeriods? = nil,
+                evaluationState: EvaluationState? = nil,
                 extendedStatistic: ExtendedStatistic? = nil,
                 insufficientDataActions: ResourceList? = nil,
                 metricName: MetricName? = nil,
@@ -2213,6 +2229,7 @@ public struct MetricAlarm: Codable, Equatable {
                 period: Period? = nil,
                 stateReason: StateReason? = nil,
                 stateReasonData: StateReasonData? = nil,
+                stateTransitionedTimestamp: Timestamp? = nil,
                 stateUpdatedTimestamp: Timestamp? = nil,
                 stateValue: StateValue? = nil,
                 statistic: Statistic? = nil,
@@ -2231,6 +2248,7 @@ public struct MetricAlarm: Codable, Equatable {
         self.dimensions = dimensions
         self.evaluateLowSampleCountPercentile = evaluateLowSampleCountPercentile
         self.evaluationPeriods = evaluationPeriods
+        self.evaluationState = evaluationState
         self.extendedStatistic = extendedStatistic
         self.insufficientDataActions = insufficientDataActions
         self.metricName = metricName
@@ -2240,6 +2258,7 @@ public struct MetricAlarm: Codable, Equatable {
         self.period = period
         self.stateReason = stateReason
         self.stateReasonData = stateReasonData
+        self.stateTransitionedTimestamp = stateTransitionedTimestamp
         self.stateUpdatedTimestamp = stateUpdatedTimestamp
         self.stateValue = stateValue
         self.statistic = statistic
@@ -2261,6 +2280,7 @@ public struct MetricAlarm: Codable, Equatable {
         case dimensions = "Dimensions"
         case evaluateLowSampleCountPercentile = "EvaluateLowSampleCountPercentile"
         case evaluationPeriods = "EvaluationPeriods"
+        case evaluationState = "EvaluationState"
         case extendedStatistic = "ExtendedStatistic"
         case insufficientDataActions = "InsufficientDataActions"
         case metricName = "MetricName"
@@ -2270,6 +2290,7 @@ public struct MetricAlarm: Codable, Equatable {
         case period = "Period"
         case stateReason = "StateReason"
         case stateReasonData = "StateReasonData"
+        case stateTransitionedTimestamp = "StateTransitionedTimestamp"
         case stateUpdatedTimestamp = "StateUpdatedTimestamp"
         case stateValue = "StateValue"
         case statistic = "Statistic"

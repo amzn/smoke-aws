@@ -301,6 +301,63 @@ public extension BackupPolicyNotFoundFault {
     }()
 }
 
+public extension BlueGreenDeployment {
+    /**
+     Default instance of the BlueGreenDeployment structure.
+     */
+    static let __default: RDSModel.BlueGreenDeployment = {
+        let defaultInstance = RDSModel.BlueGreenDeployment(
+            blueGreenDeploymentIdentifier: nil,
+            blueGreenDeploymentName: nil,
+            createTime: nil,
+            deleteTime: nil,
+            source: nil,
+            status: nil,
+            statusDetails: nil,
+            switchoverDetails: nil,
+            tagList: nil,
+            target: nil,
+            tasks: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension BlueGreenDeploymentAlreadyExistsFault {
+    /**
+     Default instance of the BlueGreenDeploymentAlreadyExistsFault structure.
+     */
+    static let __default: RDSModel.BlueGreenDeploymentAlreadyExistsFault = {
+        let defaultInstance = RDSModel.BlueGreenDeploymentAlreadyExistsFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension BlueGreenDeploymentNotFoundFault {
+    /**
+     Default instance of the BlueGreenDeploymentNotFoundFault structure.
+     */
+    static let __default: RDSModel.BlueGreenDeploymentNotFoundFault = {
+        let defaultInstance = RDSModel.BlueGreenDeploymentNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension BlueGreenDeploymentTask {
+    /**
+     Default instance of the BlueGreenDeploymentTask structure.
+     */
+    static let __default: RDSModel.BlueGreenDeploymentTask = {
+        let defaultInstance = RDSModel.BlueGreenDeploymentTask(
+            name: nil,
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CancelExportTaskMessage {
     /**
      Default instance of the CancelExportTaskMessage structure.
@@ -326,6 +383,19 @@ public extension Certificate {
             customerOverrideValidTill: nil,
             thumbprint: nil,
             validFrom: nil,
+            validTill: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CertificateDetails {
+    /**
+     Default instance of the CertificateDetails structure.
+     */
+    static let __default: RDSModel.CertificateDetails = {
+        let defaultInstance = RDSModel.CertificateDetails(
+            cAIdentifier: nil,
             validTill: nil)
 
         return defaultInstance
@@ -400,9 +470,12 @@ public extension ClusterPendingModifiedValues {
      */
     static let __default: RDSModel.ClusterPendingModifiedValues = {
         let defaultInstance = RDSModel.ClusterPendingModifiedValues(
+            allocatedStorage: nil,
+            backupRetentionPeriod: nil,
             dBClusterIdentifier: nil,
             engineVersion: nil,
             iAMDatabaseAuthenticationEnabled: nil,
+            iops: nil,
             masterUserPassword: nil,
             pendingCloudwatchLogsExports: nil)
 
@@ -567,6 +640,7 @@ public extension CopyDBSnapshotMessage {
      */
     static let __default: RDSModel.CopyDBSnapshotMessage = {
         let defaultInstance = RDSModel.CopyDBSnapshotMessage(
+            copyOptionGroup: nil,
             copyTags: nil,
             kmsKeyId: nil,
             optionGroupName: nil,
@@ -643,19 +717,61 @@ public extension CopyOptionGroupResultForCopyOptionGroup {
     }()
 }
 
+public extension CreateBlueGreenDeploymentRequest {
+    /**
+     Default instance of the CreateBlueGreenDeploymentRequest structure.
+     */
+    static let __default: RDSModel.CreateBlueGreenDeploymentRequest = {
+        let defaultInstance = RDSModel.CreateBlueGreenDeploymentRequest(
+            blueGreenDeploymentName: "0",
+            source: "0",
+            tags: nil,
+            targetDBClusterParameterGroupName: nil,
+            targetDBParameterGroupName: nil,
+            targetEngineVersion: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateBlueGreenDeploymentResponse {
+    /**
+     Default instance of the CreateBlueGreenDeploymentResponse structure.
+     */
+    static let __default: RDSModel.CreateBlueGreenDeploymentResponse = {
+        let defaultInstance = RDSModel.CreateBlueGreenDeploymentResponse(
+            blueGreenDeployment: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment {
+    /**
+     Default instance of the CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment structure.
+     */
+    static let __default: RDSModel.CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment = {
+        let defaultInstance = RDSModel.CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment(
+            createBlueGreenDeploymentResult: CreateBlueGreenDeploymentResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateCustomDBEngineVersionMessage {
     /**
      Default instance of the CreateCustomDBEngineVersionMessage structure.
      */
     static let __default: RDSModel.CreateCustomDBEngineVersionMessage = {
         let defaultInstance = RDSModel.CreateCustomDBEngineVersionMessage(
-            databaseInstallationFilesS3BucketName: "012",
+            databaseInstallationFilesS3BucketName: nil,
             databaseInstallationFilesS3Prefix: nil,
             description: nil,
             engine: "0",
             engineVersion: "0",
-            kMSKeyId: "0",
-            manifest: "0",
+            imageId: nil,
+            kMSKeyId: nil,
+            manifest: nil,
             tags: nil)
 
         return defaultInstance
@@ -696,6 +812,7 @@ public extension CreateDBClusterMessage {
             dBClusterInstanceClass: nil,
             dBClusterParameterGroupName: nil,
             dBSubnetGroupName: nil,
+            dBSystemId: nil,
             databaseName: nil,
             deletionProtection: nil,
             domain: nil,
@@ -711,7 +828,9 @@ public extension CreateDBClusterMessage {
             globalClusterIdentifier: nil,
             iops: nil,
             kmsKeyId: nil,
+            manageMasterUserPassword: nil,
             masterUserPassword: nil,
+            masterUserSecretKmsKeyId: nil,
             masterUsername: nil,
             monitoringInterval: nil,
             monitoringRoleArn: nil,
@@ -848,6 +967,7 @@ public extension CreateDBInstanceMessage {
             availabilityZone: nil,
             backupRetentionPeriod: nil,
             backupTarget: nil,
+            cACertificateIdentifier: nil,
             characterSetName: nil,
             copyTagsToSnapshot: nil,
             customIamInstanceProfile: nil,
@@ -870,7 +990,9 @@ public extension CreateDBInstanceMessage {
             iops: nil,
             kmsKeyId: nil,
             licenseModel: nil,
+            manageMasterUserPassword: nil,
             masterUserPassword: nil,
+            masterUserSecretKmsKeyId: nil,
             masterUsername: nil,
             maxAllocatedStorage: nil,
             monitoringInterval: nil,
@@ -888,6 +1010,7 @@ public extension CreateDBInstanceMessage {
             promotionTier: nil,
             publiclyAccessible: nil,
             storageEncrypted: nil,
+            storageThroughput: nil,
             storageType: nil,
             tags: nil,
             tdeCredentialArn: nil,
@@ -917,6 +1040,7 @@ public extension CreateDBInstanceReadReplicaMessage {
             domain: nil,
             domainIAMRoleName: nil,
             enableCloudwatchLogsExports: nil,
+            enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
             enablePerformanceInsights: nil,
             iops: nil,
@@ -935,6 +1059,7 @@ public extension CreateDBInstanceReadReplicaMessage {
             publiclyAccessible: nil,
             replicaMode: nil,
             sourceDBInstanceIdentifier: "value",
+            storageThroughput: nil,
             storageType: nil,
             tags: nil,
             useDefaultProcessorFeatures: nil,
@@ -1367,6 +1492,19 @@ public extension CustomAvailabilityZoneNotFoundFault {
     }()
 }
 
+public extension CustomDBEngineVersionAMI {
+    /**
+     Default instance of the CustomDBEngineVersionAMI structure.
+     */
+    static let __default: RDSModel.CustomDBEngineVersionAMI = {
+        let defaultInstance = RDSModel.CustomDBEngineVersionAMI(
+            imageId: nil,
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CustomDBEngineVersionAlreadyExistsFault {
     /**
      Default instance of the CustomDBEngineVersionAlreadyExistsFault structure.
@@ -1432,6 +1570,7 @@ public extension DBCluster {
             dBClusterOptionGroupMemberships: nil,
             dBClusterParameterGroup: nil,
             dBSubnetGroup: nil,
+            dBSystemId: nil,
             databaseName: nil,
             dbClusterResourceId: nil,
             deletionProtection: nil,
@@ -1451,6 +1590,7 @@ public extension DBCluster {
             iops: nil,
             kmsKeyId: nil,
             latestRestorableTime: nil,
+            masterUserSecret: nil,
             masterUsername: nil,
             monitoringInterval: nil,
             monitoringRoleArn: nil,
@@ -1945,6 +2085,7 @@ public extension DBClusterSnapshot {
             dBClusterIdentifier: nil,
             dBClusterSnapshotArn: nil,
             dBClusterSnapshotIdentifier: nil,
+            dBSystemId: nil,
             engine: nil,
             engineMode: nil,
             engineVersion: nil,
@@ -2046,7 +2187,9 @@ public extension DBEngineVersion {
     static let __default: RDSModel.DBEngineVersion = {
         let defaultInstance = RDSModel.DBEngineVersion(
             createTime: nil,
+            customDBEngineVersionManifest: nil,
             dBEngineDescription: nil,
+            dBEngineMediaType: nil,
             dBEngineVersionArn: nil,
             dBEngineVersionDescription: nil,
             dBParameterGroupFamily: nil,
@@ -2056,15 +2199,18 @@ public extension DBEngineVersion {
             engine: nil,
             engineVersion: nil,
             exportableLogTypes: nil,
+            image: nil,
             kMSKeyId: nil,
             majorEngineVersion: nil,
             status: nil,
+            supportedCACertificateIdentifiers: nil,
             supportedCharacterSets: nil,
             supportedEngineModes: nil,
             supportedFeatureNames: nil,
             supportedNcharCharacterSets: nil,
             supportedTimezones: nil,
             supportsBabelfish: nil,
+            supportsCertificateRotationWithoutRestart: nil,
             supportsGlobalDatabases: nil,
             supportsLogExportsToCloudwatchLogs: nil,
             supportsParallelQuery: nil,
@@ -2159,6 +2305,7 @@ public extension DBInstance {
             backupRetentionPeriod: nil,
             backupTarget: nil,
             cACertificateIdentifier: nil,
+            certificateDetails: nil,
             characterSetName: nil,
             copyTagsToSnapshot: nil,
             customIamInstanceProfile: nil,
@@ -2173,6 +2320,7 @@ public extension DBInstance {
             dBParameterGroups: nil,
             dBSecurityGroups: nil,
             dBSubnetGroup: nil,
+            dBSystemId: nil,
             dbInstancePort: nil,
             dbiResourceId: nil,
             deletionProtection: nil,
@@ -2189,6 +2337,7 @@ public extension DBInstance {
             latestRestorableTime: nil,
             licenseModel: nil,
             listenerEndpoint: nil,
+            masterUserSecret: nil,
             masterUsername: nil,
             maxAllocatedStorage: nil,
             monitoringInterval: nil,
@@ -2214,6 +2363,7 @@ public extension DBInstance {
             secondaryAvailabilityZone: nil,
             statusInfos: nil,
             storageEncrypted: nil,
+            storageThroughput: nil,
             storageType: nil,
             tagList: nil,
             tdeCredentialArn: nil,
@@ -2264,6 +2414,7 @@ public extension DBInstanceAutomatedBackup {
             region: nil,
             restoreWindow: nil,
             status: nil,
+            storageThroughput: nil,
             storageType: nil,
             tdeCredentialArn: nil,
             timezone: nil,
@@ -2906,6 +3057,7 @@ public extension DBSnapshot {
             sourceDBSnapshotIdentifier: nil,
             sourceRegion: nil,
             status: nil,
+            storageThroughput: nil,
             storageType: nil,
             tagList: nil,
             tdeCredentialArn: nil,
@@ -3104,6 +3256,43 @@ public extension DBUpgradeDependencyFailureFault {
      */
     static let __default: RDSModel.DBUpgradeDependencyFailureFault = {
         let defaultInstance = RDSModel.DBUpgradeDependencyFailureFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteBlueGreenDeploymentRequest {
+    /**
+     Default instance of the DeleteBlueGreenDeploymentRequest structure.
+     */
+    static let __default: RDSModel.DeleteBlueGreenDeploymentRequest = {
+        let defaultInstance = RDSModel.DeleteBlueGreenDeploymentRequest(
+            blueGreenDeploymentIdentifier: "0",
+            deleteTarget: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteBlueGreenDeploymentResponse {
+    /**
+     Default instance of the DeleteBlueGreenDeploymentResponse structure.
+     */
+    static let __default: RDSModel.DeleteBlueGreenDeploymentResponse = {
+        let defaultInstance = RDSModel.DeleteBlueGreenDeploymentResponse(
+            blueGreenDeployment: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment {
+    /**
+     Default instance of the DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment structure.
+     */
+    static let __default: RDSModel.DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment = {
+        let defaultInstance = RDSModel.DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment(
+            deleteBlueGreenDeploymentResult: DeleteBlueGreenDeploymentResponse.__default)
 
         return defaultInstance
     }()
@@ -3568,6 +3757,46 @@ public extension DescribeAccountAttributesMessage {
      */
     static let __default: RDSModel.DescribeAccountAttributesMessage = {
         let defaultInstance = RDSModel.DescribeAccountAttributesMessage()
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeBlueGreenDeploymentsRequest {
+    /**
+     Default instance of the DescribeBlueGreenDeploymentsRequest structure.
+     */
+    static let __default: RDSModel.DescribeBlueGreenDeploymentsRequest = {
+        let defaultInstance = RDSModel.DescribeBlueGreenDeploymentsRequest(
+            blueGreenDeploymentIdentifier: nil,
+            filters: nil,
+            marker: nil,
+            maxRecords: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeBlueGreenDeploymentsResponse {
+    /**
+     Default instance of the DescribeBlueGreenDeploymentsResponse structure.
+     */
+    static let __default: RDSModel.DescribeBlueGreenDeploymentsResponse = {
+        let defaultInstance = RDSModel.DescribeBlueGreenDeploymentsResponse(
+            blueGreenDeployments: nil,
+            marker: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments {
+    /**
+     Default instance of the DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments structure.
+     */
+    static let __default: RDSModel.DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments = {
+        let defaultInstance = RDSModel.DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments(
+            describeBlueGreenDeploymentsResult: DescribeBlueGreenDeploymentsResponse.__default)
 
         return defaultInstance
     }()
@@ -4248,7 +4477,8 @@ public extension DescribeExportTasksMessage {
             filters: nil,
             marker: nil,
             maxRecords: nil,
-            sourceArn: nil)
+            sourceArn: nil,
+            sourceType: nil)
 
         return defaultInstance
     }()
@@ -4525,6 +4755,17 @@ public extension EC2SecurityGroup {
     }()
 }
 
+public extension Ec2ImagePropertiesNotSupportedFault {
+    /**
+     Default instance of the Ec2ImagePropertiesNotSupportedFault structure.
+     */
+    static let __default: RDSModel.Ec2ImagePropertiesNotSupportedFault = {
+        let defaultInstance = RDSModel.Ec2ImagePropertiesNotSupportedFault()
+
+        return defaultInstance
+    }()
+}
+
 public extension Endpoint {
     /**
      Default instance of the Endpoint structure.
@@ -4705,6 +4946,7 @@ public extension ExportTask {
             s3Prefix: nil,
             snapshotTime: nil,
             sourceArn: nil,
+            sourceType: nil,
             status: nil,
             taskEndTime: nil,
             taskStartTime: nil,
@@ -5072,6 +5314,17 @@ public extension InsufficientStorageClusterCapacityFault {
     }()
 }
 
+public extension InvalidBlueGreenDeploymentStateFault {
+    /**
+     Default instance of the InvalidBlueGreenDeploymentStateFault structure.
+     */
+    static let __default: RDSModel.InvalidBlueGreenDeploymentStateFault = {
+        let defaultInstance = RDSModel.InvalidBlueGreenDeploymentStateFault()
+
+        return defaultInstance
+    }()
+}
+
 public extension InvalidCustomDBEngineVersionStateFault {
     /**
      Default instance of the InvalidCustomDBEngineVersionStateFault structure.
@@ -5371,6 +5624,20 @@ public extension ListTagsForResourceMessage {
     }()
 }
 
+public extension MasterUserSecret {
+    /**
+     Default instance of the MasterUserSecret structure.
+     */
+    static let __default: RDSModel.MasterUserSecret = {
+        let defaultInstance = RDSModel.MasterUserSecret(
+            kmsKeyId: nil,
+            secretArn: nil,
+            secretStatus: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension MinimumEngineVersionPerAllowedValue {
     /**
      Default instance of the MinimumEngineVersionPerAllowedValue structure.
@@ -5535,7 +5802,9 @@ public extension ModifyDBClusterMessage {
             enablePerformanceInsights: nil,
             engineVersion: nil,
             iops: nil,
+            manageMasterUserPassword: nil,
             masterUserPassword: nil,
+            masterUserSecretKmsKeyId: nil,
             monitoringInterval: nil,
             monitoringRoleArn: nil,
             networkType: nil,
@@ -5546,6 +5815,7 @@ public extension ModifyDBClusterMessage {
             port: nil,
             preferredBackupWindow: nil,
             preferredMaintenanceWindow: nil,
+            rotateMasterUserPassword: nil,
             scalingConfiguration: nil,
             serverlessV2ScalingConfiguration: nil,
             storageType: nil,
@@ -5663,7 +5933,9 @@ public extension ModifyDBInstanceMessage {
             engineVersion: nil,
             iops: nil,
             licenseModel: nil,
+            manageMasterUserPassword: nil,
             masterUserPassword: nil,
+            masterUserSecretKmsKeyId: nil,
             maxAllocatedStorage: nil,
             monitoringInterval: nil,
             monitoringRoleArn: nil,
@@ -5680,6 +5952,8 @@ public extension ModifyDBInstanceMessage {
             publiclyAccessible: nil,
             replicaMode: nil,
             resumeFullAutomationModeMinutes: nil,
+            rotateMasterUserPassword: nil,
+            storageThroughput: nil,
             storageType: nil,
             tdeCredentialArn: nil,
             tdeCredentialPassword: nil,
@@ -6136,12 +6410,15 @@ public extension OptionGroup {
     static let __default: RDSModel.OptionGroup = {
         let defaultInstance = RDSModel.OptionGroup(
             allowsVpcAndNonVpcInstanceMemberships: nil,
+            copyTimestamp: nil,
             engineName: nil,
             majorEngineVersion: nil,
             optionGroupArn: nil,
             optionGroupDescription: nil,
             optionGroupName: nil,
             options: nil,
+            sourceAccountId: nil,
+            sourceOptionGroup: nil,
             vpcId: nil)
 
         return defaultInstance
@@ -6189,6 +6466,7 @@ public extension OptionGroupOption {
      */
     static let __default: RDSModel.OptionGroupOption = {
         let defaultInstance = RDSModel.OptionGroupOption(
+            copyableCrossAccount: nil,
             defaultPort: nil,
             description: nil,
             engineName: nil,
@@ -6339,9 +6617,13 @@ public extension OrderableDBInstanceOption {
             maxIopsPerDbInstance: nil,
             maxIopsPerGib: nil,
             maxStorageSize: nil,
+            maxStorageThroughputPerDbInstance: nil,
+            maxStorageThroughputPerIops: nil,
             minIopsPerDbInstance: nil,
             minIopsPerGib: nil,
             minStorageSize: nil,
+            minStorageThroughputPerDbInstance: nil,
+            minStorageThroughputPerIops: nil,
             multiAZCapable: nil,
             outpostCapable: nil,
             readReplicaCapable: nil,
@@ -6358,6 +6640,7 @@ public extension OrderableDBInstanceOption {
             supportsPerformanceInsights: nil,
             supportsStorageAutoscaling: nil,
             supportsStorageEncryption: nil,
+            supportsStorageThroughput: nil,
             vpc: nil)
 
         return defaultInstance
@@ -6501,6 +6784,7 @@ public extension PendingModifiedValues {
             port: nil,
             processorFeatures: nil,
             resumeFullAutomationModeTime: nil,
+            storageThroughput: nil,
             storageType: nil)
 
         return defaultInstance
@@ -7126,7 +7410,9 @@ public extension RestoreDBClusterFromS3Message {
             engine: "value",
             engineVersion: nil,
             kmsKeyId: nil,
-            masterUserPassword: "value",
+            manageMasterUserPassword: nil,
+            masterUserPassword: nil,
+            masterUserSecretKmsKeyId: nil,
             masterUsername: "value",
             networkType: nil,
             optionGroupName: nil,
@@ -7307,11 +7593,12 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
             backupTarget: nil,
             copyTagsToSnapshot: nil,
             customIamInstanceProfile: nil,
+            dBClusterSnapshotIdentifier: nil,
             dBInstanceClass: nil,
             dBInstanceIdentifier: "value",
             dBName: nil,
             dBParameterGroupName: nil,
-            dBSnapshotIdentifier: "value",
+            dBSnapshotIdentifier: nil,
             dBSubnetGroupName: nil,
             deletionProtection: nil,
             domain: nil,
@@ -7328,6 +7615,7 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
             port: nil,
             processorFeatures: nil,
             publiclyAccessible: nil,
+            storageThroughput: nil,
             storageType: nil,
             tags: nil,
             tdeCredentialArn: nil,
@@ -7389,7 +7677,9 @@ public extension RestoreDBInstanceFromS3Message {
             iops: nil,
             kmsKeyId: nil,
             licenseModel: nil,
+            manageMasterUserPassword: nil,
             masterUserPassword: nil,
+            masterUserSecretKmsKeyId: nil,
             masterUsername: nil,
             maxAllocatedStorage: nil,
             monitoringInterval: nil,
@@ -7410,6 +7700,7 @@ public extension RestoreDBInstanceFromS3Message {
             sourceEngine: "value",
             sourceEngineVersion: "value",
             storageEncrypted: nil,
+            storageThroughput: nil,
             storageType: nil,
             tags: nil,
             useDefaultProcessorFeatures: nil,
@@ -7478,6 +7769,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
             sourceDBInstanceAutomatedBackupsArn: nil,
             sourceDBInstanceIdentifier: nil,
             sourceDbiResourceId: nil,
+            storageThroughput: nil,
             storageType: nil,
             tags: nil,
             targetDBInstanceIdentifier: "value",
@@ -7678,6 +7970,28 @@ public extension SnapshotQuotaExceededFault {
      */
     static let __default: RDSModel.SnapshotQuotaExceededFault = {
         let defaultInstance = RDSModel.SnapshotQuotaExceededFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension SourceClusterNotSupportedFault {
+    /**
+     Default instance of the SourceClusterNotSupportedFault structure.
+     */
+    static let __default: RDSModel.SourceClusterNotSupportedFault = {
+        let defaultInstance = RDSModel.SourceClusterNotSupportedFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension SourceDatabaseNotSupportedFault {
+    /**
+     Default instance of the SourceDatabaseNotSupportedFault structure.
+     */
+    static let __default: RDSModel.SourceDatabaseNotSupportedFault = {
+        let defaultInstance = RDSModel.SourceDatabaseNotSupportedFault()
 
         return defaultInstance
     }()
@@ -8137,6 +8451,57 @@ public extension SubscriptionNotFoundFault {
     }()
 }
 
+public extension SwitchoverBlueGreenDeploymentRequest {
+    /**
+     Default instance of the SwitchoverBlueGreenDeploymentRequest structure.
+     */
+    static let __default: RDSModel.SwitchoverBlueGreenDeploymentRequest = {
+        let defaultInstance = RDSModel.SwitchoverBlueGreenDeploymentRequest(
+            blueGreenDeploymentIdentifier: "0",
+            switchoverTimeout: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SwitchoverBlueGreenDeploymentResponse {
+    /**
+     Default instance of the SwitchoverBlueGreenDeploymentResponse structure.
+     */
+    static let __default: RDSModel.SwitchoverBlueGreenDeploymentResponse = {
+        let defaultInstance = RDSModel.SwitchoverBlueGreenDeploymentResponse(
+            blueGreenDeployment: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment {
+    /**
+     Default instance of the SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment structure.
+     */
+    static let __default: RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment = {
+        let defaultInstance = RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment(
+            switchoverBlueGreenDeploymentResult: SwitchoverBlueGreenDeploymentResponse.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension SwitchoverDetail {
+    /**
+     Default instance of the SwitchoverDetail structure.
+     */
+    static let __default: RDSModel.SwitchoverDetail = {
+        let defaultInstance = RDSModel.SwitchoverDetail(
+            sourceMember: nil,
+            status: nil,
+            targetMember: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension SwitchoverReadReplicaMessage {
     /**
      Default instance of the SwitchoverReadReplicaMessage structure.
@@ -8263,6 +8628,7 @@ public extension UserAuthConfig {
     static let __default: RDSModel.UserAuthConfig = {
         let defaultInstance = RDSModel.UserAuthConfig(
             authScheme: nil,
+            clientPasswordAuthType: nil,
             description: nil,
             iAMAuth: nil,
             secretArn: nil,
@@ -8279,6 +8645,7 @@ public extension UserAuthConfigInfo {
     static let __default: RDSModel.UserAuthConfigInfo = {
         let defaultInstance = RDSModel.UserAuthConfigInfo(
             authScheme: nil,
+            clientPasswordAuthType: nil,
             description: nil,
             iAMAuth: nil,
             secretArn: nil,
@@ -8309,7 +8676,9 @@ public extension ValidStorageOptions {
         let defaultInstance = RDSModel.ValidStorageOptions(
             iopsToStorageRatio: nil,
             provisionedIops: nil,
+            provisionedStorageThroughput: nil,
             storageSize: nil,
+            storageThroughputToIopsRatio: nil,
             storageType: nil,
             supportsStorageAutoscaling: nil)
 

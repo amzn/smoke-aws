@@ -2007,6 +2007,7 @@ public extension ListStackSetOperationResultsInput {
     static let __default: CloudformationModel.ListStackSetOperationResultsInput = {
         let defaultInstance = CloudformationModel.ListStackSetOperationResultsInput(
             callAs: nil,
+            filters: nil,
             maxResults: nil,
             nextToken: nil,
             operationId: "0",
@@ -2364,6 +2365,19 @@ public extension OperationNotFoundException {
      */
     static let __default: CloudformationModel.OperationNotFoundException = {
         let defaultInstance = CloudformationModel.OperationNotFoundException()
+
+        return defaultInstance
+    }()
+}
+
+public extension OperationResultFilter {
+    /**
+     Default instance of the OperationResultFilter structure.
+     */
+    static let __default: CloudformationModel.OperationResultFilter = {
+        let defaultInstance = CloudformationModel.OperationResultFilter(
+            name: nil,
+            values: nil)
 
         return defaultInstance
     }()
@@ -2983,6 +2997,7 @@ public extension StackInstance {
             account: nil,
             driftStatus: nil,
             lastDriftCheckTimestamp: nil,
+            lastOperationId: nil,
             organizationalUnitId: nil,
             parameterOverrides: nil,
             region: nil,
@@ -3041,6 +3056,7 @@ public extension StackInstanceSummary {
             account: nil,
             driftStatus: nil,
             lastDriftCheckTimestamp: nil,
+            lastOperationId: nil,
             organizationalUnitId: nil,
             region: nil,
             stackId: nil,
@@ -3262,6 +3278,7 @@ public extension StackSetOperation {
             stackSetDriftDetectionDetails: nil,
             stackSetId: nil,
             status: nil,
+            statusDetails: nil,
             statusReason: nil)
 
         return defaultInstance
@@ -3302,6 +3319,18 @@ public extension StackSetOperationResultSummary {
     }()
 }
 
+public extension StackSetOperationStatusDetails {
+    /**
+     Default instance of the StackSetOperationStatusDetails structure.
+     */
+    static let __default: CloudformationModel.StackSetOperationStatusDetails = {
+        let defaultInstance = CloudformationModel.StackSetOperationStatusDetails(
+            failedStackInstancesCount: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension StackSetOperationSummary {
     /**
      Default instance of the StackSetOperationSummary structure.
@@ -3312,7 +3341,9 @@ public extension StackSetOperationSummary {
             creationTimestamp: nil,
             endTimestamp: nil,
             operationId: nil,
+            operationPreferences: nil,
             status: nil,
+            statusDetails: nil,
             statusReason: nil)
 
         return defaultInstance

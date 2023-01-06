@@ -25,6 +25,19 @@ import SmokeHTTPClient
 import ElasticComputeCloudModel
 
 /**
+ Type to handle the output from the AcceptAddressTransfer operation in a HTTP client.
+ */
+extension AcceptAddressTransferResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AcceptAddressTransferResult
+    public typealias HeadersType = AcceptAddressTransferResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AcceptAddressTransferResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the AcceptReservedInstancesExchangeQuote operation in a HTTP client.
  */
 extension AcceptReservedInstancesExchangeQuoteResult: HTTPResponseOutputProtocol {
@@ -376,6 +389,19 @@ extension AttachNetworkInterfaceResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the AttachVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+extension AttachVerifiedAccessTrustProviderResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = AttachVerifiedAccessTrustProviderResult
+    public typealias HeadersType = AttachVerifiedAccessTrustProviderResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> AttachVerifiedAccessTrustProviderResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the AttachVolume operation in a HTTP client.
  */
 extension VolumeAttachment: HTTPResponseOutputProtocol {
@@ -488,6 +514,19 @@ extension CancelCapacityReservationFleetsResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CancelCapacityReservationFleetsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CancelImageLaunchPermission operation in a HTTP client.
+ */
+extension CancelImageLaunchPermissionResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CancelImageLaunchPermissionResult
+    public typealias HeadersType = CancelImageLaunchPermissionResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CancelImageLaunchPermissionResult {
         return try bodyDecodableProvider()
     }
 }
@@ -1442,6 +1481,58 @@ extension CreateTransitGatewayVpcAttachmentResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateVerifiedAccessEndpoint operation in a HTTP client.
+ */
+extension CreateVerifiedAccessEndpointResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateVerifiedAccessEndpointResult
+    public typealias HeadersType = CreateVerifiedAccessEndpointResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateVerifiedAccessEndpointResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateVerifiedAccessGroup operation in a HTTP client.
+ */
+extension CreateVerifiedAccessGroupResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateVerifiedAccessGroupResult
+    public typealias HeadersType = CreateVerifiedAccessGroupResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateVerifiedAccessGroupResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateVerifiedAccessInstance operation in a HTTP client.
+ */
+extension CreateVerifiedAccessInstanceResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateVerifiedAccessInstanceResult
+    public typealias HeadersType = CreateVerifiedAccessInstanceResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateVerifiedAccessInstanceResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the CreateVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+extension CreateVerifiedAccessTrustProviderResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateVerifiedAccessTrustProviderResult
+    public typealias HeadersType = CreateVerifiedAccessTrustProviderResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateVerifiedAccessTrustProviderResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the CreateVolume operation in a HTTP client.
  */
 extension Volume: HTTPResponseOutputProtocol {
@@ -2118,6 +2209,58 @@ extension DeleteTransitGatewayVpcAttachmentResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteVerifiedAccessEndpoint operation in a HTTP client.
+ */
+extension DeleteVerifiedAccessEndpointResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteVerifiedAccessEndpointResult
+    public typealias HeadersType = DeleteVerifiedAccessEndpointResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteVerifiedAccessEndpointResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteVerifiedAccessGroup operation in a HTTP client.
+ */
+extension DeleteVerifiedAccessGroupResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteVerifiedAccessGroupResult
+    public typealias HeadersType = DeleteVerifiedAccessGroupResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteVerifiedAccessGroupResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteVerifiedAccessInstance operation in a HTTP client.
+ */
+extension DeleteVerifiedAccessInstanceResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteVerifiedAccessInstanceResult
+    public typealias HeadersType = DeleteVerifiedAccessInstanceResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteVerifiedAccessInstanceResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+extension DeleteVerifiedAccessTrustProviderResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteVerifiedAccessTrustProviderResult
+    public typealias HeadersType = DeleteVerifiedAccessTrustProviderResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteVerifiedAccessTrustProviderResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteVpcEndpointConnectionNotifications operation in a HTTP client.
  */
 extension DeleteVpcEndpointConnectionNotificationsResult: HTTPResponseOutputProtocol {
@@ -2261,6 +2404,19 @@ extension DescribeAccountAttributesResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeAddressTransfers operation in a HTTP client.
+ */
+extension DescribeAddressTransfersResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeAddressTransfersResult
+    public typealias HeadersType = DescribeAddressTransfersResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeAddressTransfersResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeAddresses operation in a HTTP client.
  */
 extension DescribeAddressesResult: HTTPResponseOutputProtocol {
@@ -2308,6 +2464,19 @@ extension DescribeAvailabilityZonesResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeAvailabilityZonesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeAwsNetworkPerformanceMetricSubscriptions operation in a HTTP client.
+ */
+extension DescribeAwsNetworkPerformanceMetricSubscriptionsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeAwsNetworkPerformanceMetricSubscriptionsResult
+    public typealias HeadersType = DescribeAwsNetworkPerformanceMetricSubscriptionsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeAwsNetworkPerformanceMetricSubscriptionsResult {
         return try bodyDecodableProvider()
     }
 }
@@ -3782,6 +3951,71 @@ extension DescribeTrunkInterfaceAssociationsResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DescribeVerifiedAccessEndpoints operation in a HTTP client.
+ */
+extension DescribeVerifiedAccessEndpointsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeVerifiedAccessEndpointsResult
+    public typealias HeadersType = DescribeVerifiedAccessEndpointsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeVerifiedAccessEndpointsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeVerifiedAccessGroups operation in a HTTP client.
+ */
+extension DescribeVerifiedAccessGroupsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeVerifiedAccessGroupsResult
+    public typealias HeadersType = DescribeVerifiedAccessGroupsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeVerifiedAccessGroupsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeVerifiedAccessInstanceLoggingConfigurations operation in a HTTP client.
+ */
+extension DescribeVerifiedAccessInstanceLoggingConfigurationsResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeVerifiedAccessInstanceLoggingConfigurationsResult
+    public typealias HeadersType = DescribeVerifiedAccessInstanceLoggingConfigurationsResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeVerifiedAccessInstanceLoggingConfigurationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeVerifiedAccessInstances operation in a HTTP client.
+ */
+extension DescribeVerifiedAccessInstancesResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeVerifiedAccessInstancesResult
+    public typealias HeadersType = DescribeVerifiedAccessInstancesResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeVerifiedAccessInstancesResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeVerifiedAccessTrustProviders operation in a HTTP client.
+ */
+extension DescribeVerifiedAccessTrustProvidersResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeVerifiedAccessTrustProvidersResult
+    public typealias HeadersType = DescribeVerifiedAccessTrustProvidersResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeVerifiedAccessTrustProvidersResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DescribeVolumeAttribute operation in a HTTP client.
  */
 extension DescribeVolumeAttributeResult: HTTPResponseOutputProtocol {
@@ -4011,6 +4245,45 @@ extension DetachClassicLinkVpcResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DetachClassicLinkVpcResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DetachVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+extension DetachVerifiedAccessTrustProviderResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DetachVerifiedAccessTrustProviderResult
+    public typealias HeadersType = DetachVerifiedAccessTrustProviderResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DetachVerifiedAccessTrustProviderResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DisableAddressTransfer operation in a HTTP client.
+ */
+extension DisableAddressTransferResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableAddressTransferResult
+    public typealias HeadersType = DisableAddressTransferResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableAddressTransferResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DisableAwsNetworkPerformanceMetricSubscription operation in a HTTP client.
+ */
+extension DisableAwsNetworkPerformanceMetricSubscriptionResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableAwsNetworkPerformanceMetricSubscriptionResult
+    public typealias HeadersType = DisableAwsNetworkPerformanceMetricSubscriptionResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableAwsNetworkPerformanceMetricSubscriptionResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4263,6 +4536,32 @@ extension DisassociateVpcCidrBlockResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the EnableAddressTransfer operation in a HTTP client.
+ */
+extension EnableAddressTransferResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableAddressTransferResult
+    public typealias HeadersType = EnableAddressTransferResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableAddressTransferResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the EnableAwsNetworkPerformanceMetricSubscription operation in a HTTP client.
+ */
+extension EnableAwsNetworkPerformanceMetricSubscriptionResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableAwsNetworkPerformanceMetricSubscriptionResult
+    public typealias HeadersType = EnableAwsNetworkPerformanceMetricSubscriptionResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableAwsNetworkPerformanceMetricSubscriptionResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the EnableEbsEncryptionByDefault operation in a HTTP client.
  */
 extension EnableEbsEncryptionByDefaultResult: HTTPResponseOutputProtocol {
@@ -4323,6 +4622,19 @@ extension EnableIpamOrganizationAdminAccountResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> EnableIpamOrganizationAdminAccountResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the EnableReachabilityAnalyzerOrganizationSharing operation in a HTTP client.
+ */
+extension EnableReachabilityAnalyzerOrganizationSharingResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableReachabilityAnalyzerOrganizationSharingResult
+    public typealias HeadersType = EnableReachabilityAnalyzerOrganizationSharingResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableReachabilityAnalyzerOrganizationSharingResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4453,6 +4765,19 @@ extension GetAssociatedIpv6PoolCidrsResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetAssociatedIpv6PoolCidrsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetAwsNetworkPerformanceData operation in a HTTP client.
+ */
+extension GetAwsNetworkPerformanceDataResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetAwsNetworkPerformanceDataResult
+    public typealias HeadersType = GetAwsNetworkPerformanceDataResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetAwsNetworkPerformanceDataResult {
         return try bodyDecodableProvider()
     }
 }
@@ -4882,6 +5207,32 @@ extension GetTransitGatewayRouteTablePropagationsResult: HTTPResponseOutputProto
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetTransitGatewayRouteTablePropagationsResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetVerifiedAccessEndpointPolicy operation in a HTTP client.
+ */
+extension GetVerifiedAccessEndpointPolicyResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetVerifiedAccessEndpointPolicyResult
+    public typealias HeadersType = GetVerifiedAccessEndpointPolicyResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetVerifiedAccessEndpointPolicyResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetVerifiedAccessGroupPolicy operation in a HTTP client.
+ */
+extension GetVerifiedAccessGroupPolicyResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetVerifiedAccessGroupPolicyResult
+    public typealias HeadersType = GetVerifiedAccessGroupPolicyResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetVerifiedAccessGroupPolicyResult {
         return try bodyDecodableProvider()
     }
 }
@@ -5467,6 +5818,97 @@ extension ModifyTransitGatewayVpcAttachmentResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ModifyTransitGatewayVpcAttachmentResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVerifiedAccessEndpoint operation in a HTTP client.
+ */
+extension ModifyVerifiedAccessEndpointResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVerifiedAccessEndpointResult
+    public typealias HeadersType = ModifyVerifiedAccessEndpointResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVerifiedAccessEndpointResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVerifiedAccessEndpointPolicy operation in a HTTP client.
+ */
+extension ModifyVerifiedAccessEndpointPolicyResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVerifiedAccessEndpointPolicyResult
+    public typealias HeadersType = ModifyVerifiedAccessEndpointPolicyResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVerifiedAccessEndpointPolicyResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVerifiedAccessGroup operation in a HTTP client.
+ */
+extension ModifyVerifiedAccessGroupResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVerifiedAccessGroupResult
+    public typealias HeadersType = ModifyVerifiedAccessGroupResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVerifiedAccessGroupResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVerifiedAccessGroupPolicy operation in a HTTP client.
+ */
+extension ModifyVerifiedAccessGroupPolicyResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVerifiedAccessGroupPolicyResult
+    public typealias HeadersType = ModifyVerifiedAccessGroupPolicyResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVerifiedAccessGroupPolicyResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVerifiedAccessInstance operation in a HTTP client.
+ */
+extension ModifyVerifiedAccessInstanceResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVerifiedAccessInstanceResult
+    public typealias HeadersType = ModifyVerifiedAccessInstanceResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVerifiedAccessInstanceResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVerifiedAccessInstanceLoggingConfiguration operation in a HTTP client.
+ */
+extension ModifyVerifiedAccessInstanceLoggingConfigurationResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVerifiedAccessInstanceLoggingConfigurationResult
+    public typealias HeadersType = ModifyVerifiedAccessInstanceLoggingConfigurationResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVerifiedAccessInstanceLoggingConfigurationResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ModifyVerifiedAccessTrustProvider operation in a HTTP client.
+ */
+extension ModifyVerifiedAccessTrustProviderResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = ModifyVerifiedAccessTrustProviderResult
+    public typealias HeadersType = ModifyVerifiedAccessTrustProviderResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ModifyVerifiedAccessTrustProviderResult {
         return try bodyDecodableProvider()
     }
 }

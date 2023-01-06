@@ -55,6 +55,11 @@ public typealias DescribeActivityOperationHTTPRequestInput = BodyHTTPRequestInpu
 public typealias DescribeExecutionOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeMapRun operation in a HTTP client.
+ */
+public typealias DescribeMapRunOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeStateMachine operation in a HTTP client.
  */
 public typealias DescribeStateMachineOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -83,6 +88,11 @@ public typealias ListActivitiesOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the ListExecutions operation in a HTTP client.
  */
 public typealias ListExecutionsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the ListMapRuns operation in a HTTP client.
+ */
+public typealias ListMapRunsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the ListStateMachines operation in a HTTP client.
@@ -133,6 +143,11 @@ public typealias TagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the UntagResource operation in a HTTP client.
  */
 public typealias UntagResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UpdateMapRun operation in a HTTP client.
+ */
+public typealias UpdateMapRunOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the UpdateStateMachine operation in a HTTP client.

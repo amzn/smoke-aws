@@ -90,6 +90,11 @@ public typealias CopyDBSnapshotOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias CopyOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateBlueGreenDeployment operation in a HTTP client.
+ */
+public typealias CreateBlueGreenDeploymentOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateCustomDBEngineVersion operation in a HTTP client.
  */
 public typealias CreateCustomDBEngineVersionOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -168,6 +173,11 @@ public typealias CreateGlobalClusterOperationHTTPRequestInput = QueryHTTPRequest
  Type to handle the input to the CreateOptionGroup operation in a HTTP client.
  */
 public typealias CreateOptionGroupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteBlueGreenDeployment operation in a HTTP client.
+ */
+public typealias DeleteBlueGreenDeploymentOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteCustomDBEngineVersion operation in a HTTP client.
@@ -258,6 +268,11 @@ public typealias DeregisterDBProxyTargetsOperationHTTPRequestInput = QueryHTTPRe
  Type to handle the input to the DescribeAccountAttributes operation in a HTTP client.
  */
 public typealias DescribeAccountAttributesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeBlueGreenDeployments operation in a HTTP client.
+ */
+public typealias DescribeBlueGreenDeploymentsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeCertificates operation in a HTTP client.
@@ -703,6 +718,11 @@ public typealias StopDBInstanceOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the StopDBInstanceAutomatedBackupsReplication operation in a HTTP client.
  */
 public typealias StopDBInstanceAutomatedBackupsReplicationOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the SwitchoverBlueGreenDeployment operation in a HTTP client.
+ */
+public typealias SwitchoverBlueGreenDeploymentOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the SwitchoverReadReplica operation in a HTTP client.
