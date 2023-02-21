@@ -137,8 +137,8 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-log", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-metrics.git", "1.0.0"..<"3.0.0"),
         .package(url: "https://github.com/LiveUI/XMLCoding.git", from: "0.4.1"),
-        .package(url: "https://github.com/amzn/smoke-http.git", from: "2.12.0"),
-        .package(url: "https://github.com/amzn/smoke-aws-support.git", from: "1.0.0"),
+        .package(url: "https://github.com/amzn/smoke-http.git", branch: "smoke_http_middleware"),
+        .package(url: "https://github.com/amzn/smoke-aws-support.git", branch: "initial_middleware"),
         .package(url: "https://github.com/apple/swift-crypto.git", from: "1.0.0"),
     ],
     targets: [
@@ -182,6 +182,7 @@ let package = Package(
             name: "DynamoDBClient", dependencies: [
                 .target(name: "DynamoDBModel"),
                 .target(name: "SmokeAWSHttp"),
+                .product(name: "AWSMiddleware", package: "smoke-aws-support"),
             ]),
         .target(
             name: "DynamoDBModel", dependencies: [
