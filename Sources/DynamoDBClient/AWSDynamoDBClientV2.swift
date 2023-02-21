@@ -74,6 +74,28 @@ public struct GenericAWSDynamoDBClientV2<MiddlewareStackType: AWSHTTPMiddlewareS
         self.httpClientEngine = SmokeHTTPClientEngine(runtimeConfig: try ClientRuntime.DefaultSDKRuntimeConfiguration("DynamoDBClient"))
     }
     
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                endpointHostName: String,
+                endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
+                service: String = "dynamodb",
+                contentType: String = "application/x-amz-json-1.0",
+                target: String? = "DynamoDB_20120810",
+                logger: Logger = Logger(label: "GenericAWSDynamoDBClientV2"),
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                httpClientEngine: SmokeHTTPClientEngine) {
+        self.awsRegion = awsRegion
+        self.service = service
+        self.target = target
+        self.credentialsProvider = credentialsProvider
+        self.endpointHostName = endpointHostName
+        self.endpointPort = endpointPort
+        self.contentType = contentType
+        self.middlewareContext = SmokeAWSMiddlewareContext(logger: logger)
+        self.retryConfiguration = retryConfiguration
+        self.httpClientEngine = httpClientEngine
+    }
+    
     private func getStackForOperation(operation: String?) -> JSONHTTPMiddlewareStack<MiddlewareStackType> {
         let innerStack = MiddlewareStackType(credentialsProvider: self.credentialsProvider, awsRegion: self.awsRegion, service: self.service,
                                              operation: operation, target: self.target, isV4SignRequest: true, signAllHeaders: false,
