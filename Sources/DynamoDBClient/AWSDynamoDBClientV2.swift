@@ -40,7 +40,7 @@ public typealias AWSDynamoDBClientV2 = GenericAWSDynamoDBClientV2<JSONContentTyp
 /**
  AWS Client for the DynamoDB service.
  */
-public struct GenericAWSDynamoDBClientV2<MiddlewareTransformStackType: JSONContentTypeMiddlewareTransformStackProtocol>: DynamoDBClientProtocolV2 {
+public struct GenericAWSDynamoDBClientV2<StackType: JSONContentTypeMiddlewareTransformStackProtocol>: DynamoDBClientProtocolV2 {
     public let awsRegion: AWSRegion
     public let service: String
     public let target: String?
@@ -96,12 +96,12 @@ public struct GenericAWSDynamoDBClientV2<MiddlewareTransformStackType: JSONConte
         self.httpClientEngine = httpClientEngine
     }
     
-    private func getStackForOperation(operation: String?) -> MiddlewareTransformStackType {
-        return MiddlewareTransformStackType(inputQueryMapDecodingStrategy: nil, credentialsProvider: self.credentialsProvider,
-                                            awsRegion: self.awsRegion, service: self.service,
-                                            operation: operation, target: self.target, isV4SignRequest: true, signAllHeaders: false,
-                                            endpointHostName: self.endpointHostName, endpointPort: self.endpointPort, contentType: self.contentType,
-                                            specifyContentHeadersForZeroLengthBody: true)
+    private func getStackForOperation(operation: String?) -> StackType {
+        return StackType(inputQueryMapDecodingStrategy: nil, credentialsProvider: self.credentialsProvider,
+                         awsRegion: self.awsRegion, service: self.service,
+                         operation: operation, target: self.target, isV4SignRequest: true, signAllHeaders: false,
+                         endpointHostName: self.endpointHostName, endpointPort: self.endpointPort, contentType: self.contentType,
+                         specifyContentHeadersForZeroLengthBody: true)
     }
     
     #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
