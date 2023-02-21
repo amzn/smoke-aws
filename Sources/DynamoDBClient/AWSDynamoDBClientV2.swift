@@ -35,12 +35,12 @@ public struct SmokeAWSMiddlewareContext: AWSMiddlewareContext {
     
 }
 
-public typealias AWSDynamoDBClientV2 = GenericAWSDynamoDBClientV2<JSONContentTypeMiddlewareTransformStack<DynamoDBError>>
+public typealias AWSDynamoDBClientV2 = GenericAWSDynamoDBClientV2<JSONPayloadTransformStack<DynamoDBError>>
 
 /**
  AWS Client for the DynamoDB service.
  */
-public struct GenericAWSDynamoDBClientV2<StackType: JSONContentTypeMiddlewareTransformStackProtocol>: DynamoDBClientProtocolV2 {
+public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackProtocol>: DynamoDBClientProtocolV2 {
     public let awsRegion: AWSRegion
     public let service: String
     public let target: String?
