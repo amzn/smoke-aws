@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/amzn/smoke-aws-support.git",
         "state": {
           "branch": "initial_middleware",
-          "revision": "98e8a2eee188e49a7e9edad513cdea0c0c77d94f",
+          "revision": "c8cab57c35f351b343ddba92a3004f9f55fd9e00",
           "version": null
         }
       },

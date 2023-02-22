@@ -45,47 +45,9 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
     public let middlewareContext: SmokeAWSMiddlewareContext
     
     public let httpClientEngine: SmokeHTTPClientEngine
-        
-    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
-                endpointHostName: String,
-                endpointPort: Int = 443,
-                requiresTLS: Bool? = nil,
-                service: String = "dynamodb",
-                contentType: String = "application/x-amz-json-1.0",
-                target: String? = "DynamoDB_20120810",
-                logger: Logger = Logger(label: "GenericAWSDynamoDBClientV2"),
-                retryConfiguration: HTTPClientRetryConfiguration = .default) throws {
-        let runtimeConfig = try ClientRuntime.DefaultSDKRuntimeConfiguration("DynamoDBClient")
-        
-        self.middlewareContext = SmokeAWSMiddlewareContext(logger: logger)
-        self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
-                                           target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
-                                           endpointHostName: endpointHostName, endpointPort: endpointPort, contentType: contentType)
-        
-        self.httpClientEngine = SmokeHTTPClientEngine(runtimeConfig: runtimeConfig)
-    }
     
-    public init<InvocationAttributesType: HTTPClientInvocationAttributes>(
-                credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
-                endpointHostName: String,
-                endpointPort: Int = 443,
-                requiresTLS: Bool? = nil,
-                service: String = "dynamodb",
-                contentType: String = "application/x-amz-json-1.0",
-                target: String? = "DynamoDB_20120810",
-                invocationAttributes: InvocationAttributesType,
-                retryConfiguration: HTTPClientRetryConfiguration = .default) throws {
-        let runtimeConfig = try ClientRuntime.DefaultSDKRuntimeConfiguration("DynamoDBClient")
+    let operationsReporting: DynamoDBOperationsReporting
         
-        self.middlewareContext = SmokeAWSMiddlewareContext(logger: invocationAttributes.logger)
-        self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
-                                           target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
-                                           outwardsRequestAggregator: invocationAttributes.outwardsRequestAggregator, endpointHostName: endpointHostName,
-                                           endpointPort: endpointPort, contentType: contentType)
-        
-        self.httpClientEngine = SmokeHTTPClientEngine(runtimeConfig: runtimeConfig)
-    }
-    
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
@@ -95,14 +57,17 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
                 target: String? = "DynamoDB_20120810",
                 logger: Logger = Logger(label: "GenericAWSDynamoDBClientV2"),
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
-                runtimeConfig: ClientRuntime.SDKRuntimeConfiguration,
-                httpClientEngine: SmokeHTTPClientEngine) {
+                reportingConfiguration: HTTPClientReportingConfiguration<DynamoDBModelOperations>
+                    = HTTPClientReportingConfiguration<DynamoDBModelOperations>()) throws {
+        let runtimeConfig = try ClientRuntime.DefaultSDKRuntimeConfiguration("DynamoDBClient")
+        
         self.middlewareContext = SmokeAWSMiddlewareContext(logger: logger)
         self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
                                            target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
                                            endpointHostName: endpointHostName, endpointPort: endpointPort, contentType: contentType)
         
-        self.httpClientEngine = httpClientEngine
+        self.httpClientEngine = SmokeHTTPClientEngine(runtimeConfig: runtimeConfig)
+        self.operationsReporting = DynamoDBOperationsReporting(clientName: "AWSDynamoDBClient", reportingConfiguration: reportingConfiguration)
     }
     
     public init<InvocationAttributesType: HTTPClientInvocationAttributes>(
@@ -115,8 +80,56 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
                 target: String? = "DynamoDB_20120810",
                 invocationAttributes: InvocationAttributesType,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
+                reportingConfiguration: HTTPClientReportingConfiguration<DynamoDBModelOperations>
+                = HTTPClientReportingConfiguration<DynamoDBModelOperations>()) throws {
+        let runtimeConfig = try ClientRuntime.DefaultSDKRuntimeConfiguration("DynamoDBClient")
+        
+        self.middlewareContext = SmokeAWSMiddlewareContext(logger: invocationAttributes.logger)
+        self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
+                                           target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
+                                           outwardsRequestAggregator: invocationAttributes.outwardsRequestAggregator, endpointHostName: endpointHostName,
+                                           endpointPort: endpointPort, contentType: contentType)
+        
+        self.httpClientEngine = SmokeHTTPClientEngine(runtimeConfig: runtimeConfig)
+        self.operationsReporting = DynamoDBOperationsReporting(clientName: "AWSDynamoDBClient", reportingConfiguration: reportingConfiguration)
+    }
+    
+    public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                endpointHostName: String,
+                endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
+                service: String = "dynamodb",
+                contentType: String = "application/x-amz-json-1.0",
+                target: String? = "DynamoDB_20120810",
+                logger: Logger = Logger(label: "GenericAWSDynamoDBClientV2"),
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
                 runtimeConfig: ClientRuntime.SDKRuntimeConfiguration,
-                httpClientEngine: SmokeHTTPClientEngine) {
+                httpClientEngine: SmokeHTTPClientEngine,
+                reportingConfiguration: HTTPClientReportingConfiguration<DynamoDBModelOperations>
+                = HTTPClientReportingConfiguration<DynamoDBModelOperations>()) {
+        self.middlewareContext = SmokeAWSMiddlewareContext(logger: logger)
+        self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
+                                           target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
+                                           endpointHostName: endpointHostName, endpointPort: endpointPort, contentType: contentType)
+        
+        self.httpClientEngine = httpClientEngine
+        self.operationsReporting = DynamoDBOperationsReporting(clientName: "AWSDynamoDBClient", reportingConfiguration: reportingConfiguration)
+    }
+    
+    public init<InvocationAttributesType: HTTPClientInvocationAttributes>(
+                credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                endpointHostName: String,
+                endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
+                service: String = "dynamodb",
+                contentType: String = "application/x-amz-json-1.0",
+                target: String? = "DynamoDB_20120810",
+                invocationAttributes: InvocationAttributesType,
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                runtimeConfig: ClientRuntime.SDKRuntimeConfiguration,
+                httpClientEngine: SmokeHTTPClientEngine,
+                reportingConfiguration: HTTPClientReportingConfiguration<DynamoDBModelOperations>
+                    = HTTPClientReportingConfiguration<DynamoDBModelOperations>()) {
         self.middlewareContext = SmokeAWSMiddlewareContext(logger: invocationAttributes.logger)
         self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
                                            target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
@@ -124,11 +137,14 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
                                            endpointPort: endpointPort, contentType: contentType)
         
         self.httpClientEngine = httpClientEngine
+        self.operationsReporting = DynamoDBOperationsReporting(clientName: "AWSDynamoDBClient", reportingConfiguration: reportingConfiguration)
     }
     
-    private func getStackForOperation(operation: String?) -> StackType {
+    private func getStackForOperation(operation: String?,
+                                      operationReporting: StandardSmokeAWSOperationReporting<DynamoDBModelOperations>) -> StackType {
         var initContext = self.middlewareInitContext
         initContext.operation = operation
+        initContext.metrics = operationReporting.toStandardHTTPClientInvocationMetrics()
         
         return StackType(inputQueryMapDecodingStrategy: nil, initContext: initContext)
     }
@@ -146,7 +162,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func batchExecuteStatement(
             input: DynamoDBModel.BatchExecuteStatementInput) async throws -> DynamoDBModel.BatchExecuteStatementOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.batchExecuteStatement.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.batchExecuteStatement.rawValue,
+                                         operationReporting: self.operationsReporting.batchExecuteStatement)
         let requestInput = BatchExecuteStatementOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -169,7 +186,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func batchGetItem(
             input: DynamoDBModel.BatchGetItemInput) async throws -> DynamoDBModel.BatchGetItemOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.batchGetItem.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.batchGetItem.rawValue,
+                                         operationReporting: self.operationsReporting.batchGetItem)
         let requestInput = BatchGetItemOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -192,7 +210,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func batchWriteItem(
             input: DynamoDBModel.BatchWriteItemInput) async throws -> DynamoDBModel.BatchWriteItemOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.batchWriteItem.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.batchWriteItem.rawValue,
+                                         operationReporting: self.operationsReporting.batchWriteItem)
         let requestInput = BatchWriteItemOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -215,7 +234,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func createBackup(
             input: DynamoDBModel.CreateBackupInput) async throws -> DynamoDBModel.CreateBackupOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.createBackup.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.createBackup.rawValue,
+                                         operationReporting: self.operationsReporting.createBackup)
         let requestInput = CreateBackupOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -238,7 +258,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func createGlobalTable(
             input: DynamoDBModel.CreateGlobalTableInput) async throws -> DynamoDBModel.CreateGlobalTableOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.createGlobalTable.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.createGlobalTable.rawValue,
+                                         operationReporting: self.operationsReporting.createGlobalTable)
         let requestInput = CreateGlobalTableOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -261,7 +282,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func createTable(
             input: DynamoDBModel.CreateTableInput) async throws -> DynamoDBModel.CreateTableOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.createTable.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.createTable.rawValue,
+                                         operationReporting: self.operationsReporting.createTable)
         let requestInput = CreateTableOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -284,7 +306,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func deleteBackup(
             input: DynamoDBModel.DeleteBackupInput) async throws -> DynamoDBModel.DeleteBackupOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.deleteBackup.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.deleteBackup.rawValue,
+                                         operationReporting: self.operationsReporting.deleteBackup)
         let requestInput = DeleteBackupOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -307,7 +330,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func deleteItem(
             input: DynamoDBModel.DeleteItemInput) async throws -> DynamoDBModel.DeleteItemOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.deleteItem.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.deleteItem.rawValue,
+                                         operationReporting: self.operationsReporting.deleteItem)
         let requestInput = DeleteItemOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -330,7 +354,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func deleteTable(
             input: DynamoDBModel.DeleteTableInput) async throws -> DynamoDBModel.DeleteTableOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.deleteTable.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.deleteTable.rawValue,
+                                         operationReporting: self.operationsReporting.deleteTable)
         let requestInput = DeleteTableOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -353,7 +378,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeBackup(
             input: DynamoDBModel.DescribeBackupInput) async throws -> DynamoDBModel.DescribeBackupOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeBackup.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeBackup.rawValue,
+                                         operationReporting: self.operationsReporting.describeBackup)
         let requestInput = DescribeBackupOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -376,7 +402,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeContinuousBackups(
             input: DynamoDBModel.DescribeContinuousBackupsInput) async throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeContinuousBackups.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeContinuousBackups.rawValue,
+                                         operationReporting: self.operationsReporting.describeContinuousBackups)
         let requestInput = DescribeContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -399,7 +426,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeContributorInsights(
             input: DynamoDBModel.DescribeContributorInsightsInput) async throws -> DynamoDBModel.DescribeContributorInsightsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeContributorInsights.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeContributorInsights.rawValue,
+                                         operationReporting: self.operationsReporting.describeContributorInsights)
         let requestInput = DescribeContributorInsightsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -421,7 +449,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeEndpoints(
             input: DynamoDBModel.DescribeEndpointsRequest) async throws -> DynamoDBModel.DescribeEndpointsResponse {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeEndpoints.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeEndpoints.rawValue,
+                                         operationReporting: self.operationsReporting.describeEndpoints)
         let requestInput = DescribeEndpointsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -444,7 +473,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeExport(
             input: DynamoDBModel.DescribeExportInput) async throws -> DynamoDBModel.DescribeExportOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeExport.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeExport.rawValue,
+                                         operationReporting: self.operationsReporting.describeExport)
         let requestInput = DescribeExportOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -467,7 +497,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeGlobalTable(
             input: DynamoDBModel.DescribeGlobalTableInput) async throws -> DynamoDBModel.DescribeGlobalTableOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeGlobalTable.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeGlobalTable.rawValue,
+                                         operationReporting: self.operationsReporting.describeGlobalTable)
         let requestInput = DescribeGlobalTableOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -490,7 +521,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeGlobalTableSettings(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput) async throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeGlobalTableSettings.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeGlobalTableSettings.rawValue,
+                                         operationReporting: self.operationsReporting.describeGlobalTableSettings)
         let requestInput = DescribeGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -513,7 +545,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeImport(
             input: DynamoDBModel.DescribeImportInput) async throws -> DynamoDBModel.DescribeImportOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeImport.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeImport.rawValue,
+                                         operationReporting: self.operationsReporting.describeImport)
         let requestInput = DescribeImportOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -536,7 +569,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeKinesisStreamingDestination(
             input: DynamoDBModel.DescribeKinesisStreamingDestinationInput) async throws -> DynamoDBModel.DescribeKinesisStreamingDestinationOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeKinesisStreamingDestination.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeKinesisStreamingDestination.rawValue,
+                                         operationReporting: self.operationsReporting.describeKinesisStreamingDestination)
         let requestInput = DescribeKinesisStreamingDestinationOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -559,7 +593,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeLimits(
             input: DynamoDBModel.DescribeLimitsInput) async throws -> DynamoDBModel.DescribeLimitsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeLimits.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeLimits.rawValue,
+                                         operationReporting: self.operationsReporting.describeLimits)
         let requestInput = DescribeLimitsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -582,7 +617,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeTable(
             input: DynamoDBModel.DescribeTableInput) async throws -> DynamoDBModel.DescribeTableOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeTable.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeTable.rawValue,
+                                         operationReporting: self.operationsReporting.describeTable)
         let requestInput = DescribeTableOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -605,7 +641,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeTableReplicaAutoScaling(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) async throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeTableReplicaAutoScaling.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeTableReplicaAutoScaling.rawValue,
+                                         operationReporting: self.operationsReporting.describeTableReplicaAutoScaling)
         let requestInput = DescribeTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -628,7 +665,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func describeTimeToLive(
             input: DynamoDBModel.DescribeTimeToLiveInput) async throws -> DynamoDBModel.DescribeTimeToLiveOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeTimeToLive.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.describeTimeToLive.rawValue,
+                                         operationReporting: self.operationsReporting.describeTimeToLive)
         let requestInput = DescribeTimeToLiveOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -651,7 +689,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func disableKinesisStreamingDestination(
             input: DynamoDBModel.KinesisStreamingDestinationInput) async throws -> DynamoDBModel.KinesisStreamingDestinationOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.disableKinesisStreamingDestination.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.disableKinesisStreamingDestination.rawValue,
+                                         operationReporting: self.operationsReporting.disableKinesisStreamingDestination)
         let requestInput = DisableKinesisStreamingDestinationOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -674,7 +713,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func enableKinesisStreamingDestination(
             input: DynamoDBModel.KinesisStreamingDestinationInput) async throws -> DynamoDBModel.KinesisStreamingDestinationOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.enableKinesisStreamingDestination.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.enableKinesisStreamingDestination.rawValue,
+                                         operationReporting: self.operationsReporting.enableKinesisStreamingDestination)
         let requestInput = EnableKinesisStreamingDestinationOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -697,7 +737,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func executeStatement(
             input: DynamoDBModel.ExecuteStatementInput) async throws -> DynamoDBModel.ExecuteStatementOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.executeStatement.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.executeStatement.rawValue,
+                                         operationReporting: self.operationsReporting.executeStatement)
         let requestInput = ExecuteStatementOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -720,7 +761,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func executeTransaction(
             input: DynamoDBModel.ExecuteTransactionInput) async throws -> DynamoDBModel.ExecuteTransactionOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.executeTransaction.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.executeTransaction.rawValue,
+                                         operationReporting: self.operationsReporting.executeTransaction)
         let requestInput = ExecuteTransactionOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -743,7 +785,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func exportTableToPointInTime(
             input: DynamoDBModel.ExportTableToPointInTimeInput) async throws -> DynamoDBModel.ExportTableToPointInTimeOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.exportTableToPointInTime.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.exportTableToPointInTime.rawValue,
+                                         operationReporting: self.operationsReporting.exportTableToPointInTime)
         let requestInput = ExportTableToPointInTimeOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -766,7 +809,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func getItem(
             input: DynamoDBModel.GetItemInput) async throws -> DynamoDBModel.GetItemOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.getItem.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.getItem.rawValue,
+                                         operationReporting: self.operationsReporting.getItem)
         let requestInput = GetItemOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -789,7 +833,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func importTable(
             input: DynamoDBModel.ImportTableInput) async throws -> DynamoDBModel.ImportTableOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.importTable.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.importTable.rawValue,
+                                         operationReporting: self.operationsReporting.importTable)
         let requestInput = ImportTableOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -812,7 +857,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func listBackups(
             input: DynamoDBModel.ListBackupsInput) async throws -> DynamoDBModel.ListBackupsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.listBackups.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.listBackups.rawValue,
+                                         operationReporting: self.operationsReporting.listBackups)
         let requestInput = ListBackupsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -835,7 +881,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func listContributorInsights(
             input: DynamoDBModel.ListContributorInsightsInput) async throws -> DynamoDBModel.ListContributorInsightsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.listContributorInsights.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.listContributorInsights.rawValue,
+                                         operationReporting: self.operationsReporting.listContributorInsights)
         let requestInput = ListContributorInsightsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -858,7 +905,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func listExports(
             input: DynamoDBModel.ListExportsInput) async throws -> DynamoDBModel.ListExportsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.listExports.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.listExports.rawValue,
+                                         operationReporting: self.operationsReporting.listExports)
         let requestInput = ListExportsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -881,7 +929,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func listGlobalTables(
             input: DynamoDBModel.ListGlobalTablesInput) async throws -> DynamoDBModel.ListGlobalTablesOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.listGlobalTables.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.listGlobalTables.rawValue,
+                                         operationReporting: self.operationsReporting.listGlobalTables)
         let requestInput = ListGlobalTablesOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -904,7 +953,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func listImports(
             input: DynamoDBModel.ListImportsInput) async throws -> DynamoDBModel.ListImportsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.listImports.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.listImports.rawValue,
+                                         operationReporting: self.operationsReporting.listImports)
         let requestInput = ListImportsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -927,7 +977,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func listTables(
             input: DynamoDBModel.ListTablesInput) async throws -> DynamoDBModel.ListTablesOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.listTables.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.listTables.rawValue,
+                                         operationReporting: self.operationsReporting.listTables)
         let requestInput = ListTablesOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -950,7 +1001,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func listTagsOfResource(
             input: DynamoDBModel.ListTagsOfResourceInput) async throws -> DynamoDBModel.ListTagsOfResourceOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.listTagsOfResource.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.listTagsOfResource.rawValue,
+                                         operationReporting: self.operationsReporting.listTagsOfResource)
         let requestInput = ListTagsOfResourceOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -973,7 +1025,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func putItem(
             input: DynamoDBModel.PutItemInput) async throws -> DynamoDBModel.PutItemOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.putItem.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.putItem.rawValue,
+                                         operationReporting: self.operationsReporting.putItem)
         let requestInput = PutItemOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -996,7 +1049,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func query(
             input: DynamoDBModel.QueryInput) async throws -> DynamoDBModel.QueryOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.query.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.query.rawValue,
+                                         operationReporting: self.operationsReporting.query)
         let requestInput = QueryOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1019,7 +1073,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func restoreTableFromBackup(
             input: DynamoDBModel.RestoreTableFromBackupInput) async throws -> DynamoDBModel.RestoreTableFromBackupOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.restoreTableFromBackup.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.restoreTableFromBackup.rawValue,
+                                         operationReporting: self.operationsReporting.restoreTableFromBackup)
         let requestInput = RestoreTableFromBackupOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1042,7 +1097,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func restoreTableToPointInTime(
             input: DynamoDBModel.RestoreTableToPointInTimeInput) async throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.restoreTableToPointInTime.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.restoreTableToPointInTime.rawValue,
+                                         operationReporting: self.operationsReporting.restoreTableToPointInTime)
         let requestInput = RestoreTableToPointInTimeOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1065,7 +1121,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func scan(
             input: DynamoDBModel.ScanInput) async throws -> DynamoDBModel.ScanOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.scan.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.scan.rawValue,
+                                         operationReporting: self.operationsReporting.scan)
         let requestInput = ScanOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1086,7 +1143,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func tagResource(
             input: DynamoDBModel.TagResourceInput) async throws {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.tagResource.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.tagResource.rawValue,
+                                         operationReporting: self.operationsReporting.tagResource)
         let requestInput = TagResourceOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1109,7 +1167,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func transactGetItems(
             input: DynamoDBModel.TransactGetItemsInput) async throws -> DynamoDBModel.TransactGetItemsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.transactGetItems.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.transactGetItems.rawValue,
+                                         operationReporting: self.operationsReporting.transactGetItems)
         let requestInput = TransactGetItemsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1132,7 +1191,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func transactWriteItems(
             input: DynamoDBModel.TransactWriteItemsInput) async throws -> DynamoDBModel.TransactWriteItemsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.transactWriteItems.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.transactWriteItems.rawValue,
+                                         operationReporting: self.operationsReporting.transactWriteItems)
         let requestInput = TransactWriteItemsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1153,7 +1213,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func untagResource(
             input: DynamoDBModel.UntagResourceInput) async throws {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.untagResource.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.untagResource.rawValue,
+                                         operationReporting: self.operationsReporting.untagResource)
         let requestInput = UntagResourceOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1176,7 +1237,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func updateContinuousBackups(
             input: DynamoDBModel.UpdateContinuousBackupsInput) async throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateContinuousBackups.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateContinuousBackups.rawValue,
+                                         operationReporting: self.operationsReporting.updateContinuousBackups)
         let requestInput = UpdateContinuousBackupsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1199,7 +1261,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func updateContributorInsights(
             input: DynamoDBModel.UpdateContributorInsightsInput) async throws -> DynamoDBModel.UpdateContributorInsightsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateContributorInsights.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateContributorInsights.rawValue,
+                                         operationReporting: self.operationsReporting.updateContributorInsights)
         let requestInput = UpdateContributorInsightsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1222,7 +1285,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func updateGlobalTable(
             input: DynamoDBModel.UpdateGlobalTableInput) async throws -> DynamoDBModel.UpdateGlobalTableOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateGlobalTable.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateGlobalTable.rawValue,
+                                         operationReporting: self.operationsReporting.updateGlobalTable)
         let requestInput = UpdateGlobalTableOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1245,7 +1309,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func updateGlobalTableSettings(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput) async throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateGlobalTableSettings.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateGlobalTableSettings.rawValue,
+                                         operationReporting: self.operationsReporting.updateGlobalTableSettings)
         let requestInput = UpdateGlobalTableSettingsOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1268,7 +1333,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func updateItem(
             input: DynamoDBModel.UpdateItemInput) async throws -> DynamoDBModel.UpdateItemOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateItem.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateItem.rawValue,
+                                         operationReporting: self.operationsReporting.updateItem)
         let requestInput = UpdateItemOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1291,7 +1357,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func updateTable(
             input: DynamoDBModel.UpdateTableInput) async throws -> DynamoDBModel.UpdateTableOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateTable.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateTable.rawValue,
+                                         operationReporting: self.operationsReporting.updateTable)
         let requestInput = UpdateTableOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1314,7 +1381,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func updateTableReplicaAutoScaling(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) async throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateTableReplicaAutoScaling.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateTableReplicaAutoScaling.rawValue,
+                                         operationReporting: self.operationsReporting.updateTableReplicaAutoScaling)
         let requestInput = UpdateTableReplicaAutoScalingOperationHTTPRequestInput(encodable: input)
 
         do {
@@ -1337,7 +1405,8 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
      */
     public func updateTimeToLive(
             input: DynamoDBModel.UpdateTimeToLiveInput) async throws -> DynamoDBModel.UpdateTimeToLiveOutput {
-        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateTimeToLive.rawValue)
+        let stack = getStackForOperation(operation: DynamoDBModelOperations.updateTimeToLive.rawValue,
+                                         operationReporting: self.operationsReporting.updateTimeToLive)
         let requestInput = UpdateTimeToLiveOperationHTTPRequestInput(encodable: input)
 
         do {
