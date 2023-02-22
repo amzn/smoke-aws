@@ -30,7 +30,7 @@ import AWSMiddleware
 import SmokeHTTPMiddleware
 import ClientRuntime
 
-public struct SmokeAWSMiddlewareContext: AWSMiddlewareContext {
+public struct SmokeAWSMiddlewareContext: SmokeMiddlewareContext {
     public let logger: Logging.Logger
     
 }
@@ -41,18 +41,11 @@ public typealias AWSDynamoDBClientV2 = GenericAWSDynamoDBClientV2<JSONPayloadTra
  AWS Client for the DynamoDB service.
  */
 public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackProtocol>: DynamoDBClientProtocolV2 {
-    public let awsRegion: AWSRegion
-    public let service: String
-    public let target: String?
-    public let credentialsProvider: CredentialsProvider
-    public let retryConfiguration: HTTPClientRetryConfiguration
-    
-    public let endpointHostName: String
-    public let endpointPort: Int
-    public let contentType: String
+    public let middlewareInitContext: StandardMiddlewareInitializationContext
     public let middlewareContext: SmokeAWSMiddlewareContext
-    public let httpClientEngine: SmokeHTTPClientEngine
     
+    public let httpClientEngine: SmokeHTTPClientEngine
+        
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
                 endpointPort: Int = 443,
@@ -62,16 +55,35 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
                 target: String? = "DynamoDB_20120810",
                 logger: Logger = Logger(label: "GenericAWSDynamoDBClientV2"),
                 retryConfiguration: HTTPClientRetryConfiguration = .default) throws {
-        self.awsRegion = awsRegion
-        self.service = service
-        self.target = target
-        self.credentialsProvider = credentialsProvider
-        self.endpointHostName = endpointHostName
-        self.endpointPort = endpointPort
-        self.contentType = contentType
+        let runtimeConfig = try ClientRuntime.DefaultSDKRuntimeConfiguration("DynamoDBClient")
+        
         self.middlewareContext = SmokeAWSMiddlewareContext(logger: logger)
-        self.retryConfiguration = retryConfiguration
-        self.httpClientEngine = SmokeHTTPClientEngine(runtimeConfig: try ClientRuntime.DefaultSDKRuntimeConfiguration("DynamoDBClient"))
+        self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
+                                           target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
+                                           endpointHostName: endpointHostName, endpointPort: endpointPort, contentType: contentType)
+        
+        self.httpClientEngine = SmokeHTTPClientEngine(runtimeConfig: runtimeConfig)
+    }
+    
+    public init<InvocationAttributesType: HTTPClientInvocationAttributes>(
+                credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                endpointHostName: String,
+                endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
+                service: String = "dynamodb",
+                contentType: String = "application/x-amz-json-1.0",
+                target: String? = "DynamoDB_20120810",
+                invocationAttributes: InvocationAttributesType,
+                retryConfiguration: HTTPClientRetryConfiguration = .default) throws {
+        let runtimeConfig = try ClientRuntime.DefaultSDKRuntimeConfiguration("DynamoDBClient")
+        
+        self.middlewareContext = SmokeAWSMiddlewareContext(logger: invocationAttributes.logger)
+        self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
+                                           target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
+                                           outwardsRequestAggregator: invocationAttributes.outwardsRequestAggregator, endpointHostName: endpointHostName,
+                                           endpointPort: endpointPort, contentType: contentType)
+        
+        self.httpClientEngine = SmokeHTTPClientEngine(runtimeConfig: runtimeConfig)
     }
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
@@ -83,25 +95,42 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
                 target: String? = "DynamoDB_20120810",
                 logger: Logger = Logger(label: "GenericAWSDynamoDBClientV2"),
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
+                runtimeConfig: ClientRuntime.SDKRuntimeConfiguration,
                 httpClientEngine: SmokeHTTPClientEngine) {
-        self.awsRegion = awsRegion
-        self.service = service
-        self.target = target
-        self.credentialsProvider = credentialsProvider
-        self.endpointHostName = endpointHostName
-        self.endpointPort = endpointPort
-        self.contentType = contentType
         self.middlewareContext = SmokeAWSMiddlewareContext(logger: logger)
-        self.retryConfiguration = retryConfiguration
+        self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
+                                           target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
+                                           endpointHostName: endpointHostName, endpointPort: endpointPort, contentType: contentType)
+        
+        self.httpClientEngine = httpClientEngine
+    }
+    
+    public init<InvocationAttributesType: HTTPClientInvocationAttributes>(
+                credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
+                endpointHostName: String,
+                endpointPort: Int = 443,
+                requiresTLS: Bool? = nil,
+                service: String = "dynamodb",
+                contentType: String = "application/x-amz-json-1.0",
+                target: String? = "DynamoDB_20120810",
+                invocationAttributes: InvocationAttributesType,
+                retryConfiguration: HTTPClientRetryConfiguration = .default,
+                runtimeConfig: ClientRuntime.SDKRuntimeConfiguration,
+                httpClientEngine: SmokeHTTPClientEngine) throws {
+        self.middlewareContext = SmokeAWSMiddlewareContext(logger: invocationAttributes.logger)
+        self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
+                                           target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
+                                           outwardsRequestAggregator: invocationAttributes.outwardsRequestAggregator, endpointHostName: endpointHostName,
+                                           endpointPort: endpointPort, contentType: contentType)
+        
         self.httpClientEngine = httpClientEngine
     }
     
     private func getStackForOperation(operation: String?) -> StackType {
-        return StackType(inputQueryMapDecodingStrategy: nil, credentialsProvider: self.credentialsProvider,
-                         awsRegion: self.awsRegion, service: self.service,
-                         operation: operation, target: self.target, isV4SignRequest: true, signAllHeaders: false,
-                         endpointHostName: self.endpointHostName, endpointPort: self.endpointPort, contentType: self.contentType,
-                         specifyContentHeadersForZeroLengthBody: true)
+        var initContext = self.middlewareInitContext
+        initContext.operation = operation
+        
+        return StackType(inputQueryMapDecodingStrategy: nil, initContext: initContext)
     }
     
     #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
