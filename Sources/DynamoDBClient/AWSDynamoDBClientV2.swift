@@ -116,7 +116,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
                 invocationAttributes: InvocationAttributesType,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 runtimeConfig: ClientRuntime.SDKRuntimeConfiguration,
-                httpClientEngine: SmokeHTTPClientEngine) throws {
+                httpClientEngine: SmokeHTTPClientEngine) {
         self.middlewareContext = SmokeAWSMiddlewareContext(logger: invocationAttributes.logger)
         self.middlewareInitContext = .init(credentialsProvider: credentialsProvider, awsRegion: awsRegion, service: service, operation: nil,
                                            target: target, retryer: runtimeConfig.retryer, retryConfiguration: retryConfiguration, metrics: .init(),
