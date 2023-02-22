@@ -170,7 +170,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -194,7 +194,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -218,7 +218,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -242,7 +242,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -266,7 +266,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -290,7 +290,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -314,7 +314,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -338,7 +338,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -362,7 +362,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -386,7 +386,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -410,7 +410,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -434,7 +434,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -457,7 +457,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -481,7 +481,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -505,7 +505,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -529,7 +529,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -553,7 +553,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -577,7 +577,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -601,7 +601,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -625,7 +625,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -649,7 +649,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -673,7 +673,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -697,7 +697,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -721,7 +721,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -745,7 +745,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -769,7 +769,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -793,7 +793,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -817,7 +817,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -841,7 +841,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -865,7 +865,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -889,7 +889,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -913,7 +913,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -937,7 +937,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -961,7 +961,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -985,7 +985,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1009,7 +1009,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1033,7 +1033,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1057,7 +1057,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1081,7 +1081,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1105,7 +1105,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1129,7 +1129,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1151,7 +1151,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1175,7 +1175,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1199,7 +1199,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1221,7 +1221,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1245,7 +1245,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1269,7 +1269,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1293,7 +1293,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1317,7 +1317,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1341,7 +1341,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1365,7 +1365,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1389,7 +1389,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
@@ -1413,7 +1413,7 @@ public struct GenericAWSDynamoDBClientV2<StackType: JSONPayloadTransformStackPro
             return try await stack.execute(input: requestInput, endpointPath: "/", httpMethod: .post,
                                            context: self.middlewareContext, engine: self.httpClientEngine)
         } catch {
-            let typedError: DynamoDBError = error.asTypedError()
+            let typedError: DynamoDBError = error.unwrapSdkError()
             throw typedError
         }
     }
