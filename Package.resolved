@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/amzn/smoke-http.git",
         "state": {
           "branch": null,
-          "revision": "7a38547e6ef16b53238ac2b41340cd00c07caa93",
-          "version": "2.15.0"
+          "revision": "f0a8debc8048afd30540ea3f2c80e3486530aa17",
+          "version": "2.19.1"
         }
       },
       {
