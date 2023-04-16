@@ -1,5 +1,5 @@
 ---
-date: 2022-09-23 15:00
+date: 2023-04-17 10:00
 description: Support Policy for SmokeAWS.
 tags: support policy
 ---
@@ -24,17 +24,17 @@ SmokeAWS has two mechanism for removing support for Swift Toolchain versions-
 Once support has been removed, testing via continuous integration may be removed and no guarantees will be given for compiling the package using this version of the toolchain.
 
 Following these rules, the support level for different Swift Toolchain versions are-
-1. **Swift 5.4 and earlier**: No support.
-2. **Swift 5.5**: Supported for SmokeAWS 2.x. Support to be removed after 12th of March, 2023.
-3. **Swift 5.6**: Supported for SmokeAWS 2.x. See https://github.com/amzn/smoke-aws/issues/130 for open compiler crash issue.
-4. **Swift 5.7**: Supported for SmokeAWS 2.x.
+1. **Swift 5.5 and earlier**: No support.
+2. **Swift 5.6**: Supported for SmokeAWS 2.x. Support to be removed after 30th of September, 2023. See https://github.com/amzn/smoke-aws/issues/130 for open compiler crash issue.
+3. **Swift 5.7**: Supported for SmokeAWS 2.x.
+4. **Swift 5.8**: Supported for SmokeAWS 2.x.
 
 # Runtime Support
 
 SmokeAWS will provide support for the following runtimes, verifying this support using continuous integration of all changes for these runtimes.  Verification of support through continuous integration for each of these runtimes will occur for five years from their release, unless otherwise stated-
 1. **Ubuntu 16.04 and earlier**: No support.
-2. **Ubuntu 18.04**: CI verification to be removed after April, 2023.
-3. **Ubuntu 20.04**: CI verification to be removed after April, 2025.
+2. **Ubuntu 20.04**: CI verification to be removed after April, 2025.
+3. **Ubuntu 22.04**: CI verification to be removed after April, 2027.
 4. **Amazon Linux 2**: CI verification to be removed after June, 2023.
 5. **CentOS 8**: CI verification to be removed after November, 2024.
 
