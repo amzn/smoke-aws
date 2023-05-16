@@ -249,4 +249,135 @@ class S3ClientTests: XCTestCase {
             XCTAssertEqual(try id.fileName, expectedFolderPath)
         }
     }
+
+    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
+    func testListFolder() async throws {
+        func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
+            XCTAssertEqual(input.bucket, "my-bucket")
+            XCTAssertEqual(input.prefix, "a/b/c/")
+
+            return ListObjectsV2Output(
+                contents: [
+                    .init(key: "a/b/c/d.ext"),
+                    .init(key: "a/b/c/e.ext"),
+                    .init(key: "a/b/c/f/g.ext"),
+                ]
+            )
+        }
+
+        let client = MockS3ClientV2(listObjectsV2: listObjects)
+
+        let originalObject = S3ObjectIdentifier(bucketName: "my-bucket", keyPath: "a/b/c/d.ext")
+        let folderObjects = try await client.listFolder(for: originalObject)
+
+        XCTAssertEqual(
+            folderObjects.sorted(),
+            [originalObject, S3ObjectIdentifier(bucketName: "my-bucket", keyPath: "a/b/c/e.ext")].sorted()
+        )
+    }
+
+    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
+    func testListFolder_atRoot() async throws {
+        func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
+            XCTAssertEqual(input.bucket, "my-bucket")
+            XCTAssertEqual(input.prefix, "")
+
+            return ListObjectsV2Output(
+                contents: [
+                    .init(key: "d.ext"),
+                    .init(key: "e.ext"),
+                    .init(key: "f/g.ext"),
+                ]
+            )
+        }
+
+        let client = MockS3ClientV2(listObjectsV2: listObjects)
+
+        let originalObject = S3ObjectIdentifier(bucketName: "my-bucket", keyPath: "d.ext")
+        let folderObjects = try await client.listFolder(for: originalObject)
+
+        XCTAssertEqual(
+            folderObjects.sorted(),
+            [originalObject, S3ObjectIdentifier(bucketName: "my-bucket", keyPath: "e.ext")].sorted()
+        )
+    }
+
+    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
+    func testListFolder_withPrefixProvider() async throws {
+        func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
+            XCTAssertEqual(input.bucket, "my-bucket")
+            XCTAssertEqual(input.prefix, "a/b/c/d")
+
+            return ListObjectsV2Output(
+                contents: [
+                    .init(key: "a/b/c/d.ext"),
+                    .init(key: "a/b/c/d1.ext"),
+                    .init(key: "a/b/c/d/d.ext"),
+                    .init(key: "a/b/c/d1/d1.ext"),
+                ]
+            )
+        }
+
+        let client = MockS3ClientV2(listObjectsV2: listObjects)
+
+        let originalObject = S3ObjectIdentifier(bucketName: "my-bucket", keyPath: "a/b/c/d.ext")
+        let folderObjects = try await client.listFolder(for: originalObject, fileNamePrefixProvider: { _ in "d" })
+
+        XCTAssertEqual(
+            folderObjects.sorted(),
+            [originalObject, S3ObjectIdentifier(bucketName: "my-bucket", keyPath: "a/b/c/d1.ext")].sorted()
+        )
+    }
+
+    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
+    func testListFolder_withPaging() async throws {
+        var listObjectsCallCount = 0
+        func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
+            if listObjectsCallCount > 0 {
+                XCTAssertEqual(input.continuationToken, String(listObjectsCallCount))
+            } else {
+                XCTAssertNil(input.continuationToken)
+            }
+
+            listObjectsCallCount += 1
+
+            let nextToken: NextToken?
+            if listObjectsCallCount < 50 {
+                nextToken = String(listObjectsCallCount)
+            } else {
+                nextToken = nil
+            }
+
+            return ListObjectsV2Output(
+                contents: [.init(key: "a/b/c/d\(listObjectsCallCount).ext")],
+                nextContinuationToken: nextToken
+            )
+        }
+
+        let client = MockS3ClientV2(listObjectsV2: listObjects)
+
+        let originalObject = S3ObjectIdentifier(bucketName: "my-bucket", keyPath: "a/b/c/d.ext")
+        let folderObjects = try await client.listFolder(for: originalObject)
+
+        XCTAssertEqual(listObjectsCallCount, 50)
+        XCTAssertEqual(folderObjects.count, 50)
+    }
+}
+
+extension S3ObjectIdentifier: Comparable {
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        return (lhs.bucketName + lhs.keyPath) < (rhs.bucketName + rhs.keyPath)
+    }
+
+    public static func <= (lhs: Self, rhs: Self) -> Bool {
+        return (lhs.bucketName + lhs.keyPath) <= (rhs.bucketName + rhs.keyPath)
+    }
+
+    public static func > (lhs: Self, rhs: Self) -> Bool {
+        return (lhs.bucketName + lhs.keyPath) > (rhs.bucketName + rhs.keyPath)
+    }
+
+    public static func >= (lhs: Self, rhs: Self) -> Bool {
+        return (lhs.bucketName + lhs.keyPath) >= (rhs.bucketName + rhs.keyPath)
+    }
 }
