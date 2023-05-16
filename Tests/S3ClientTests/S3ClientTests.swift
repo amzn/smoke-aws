@@ -219,4 +219,34 @@ class S3ClientTests: XCTestCase {
             XCTAssertEqual(try id.parentPath, expectedFolderPath)
         }
     }
+
+    func testS3ObjectIdentifierFileName() throws {
+        let testMatrix = [
+            "a/b/c/d.ext": "d.ext",
+            "a/b/c/d": "d",
+            "a/b/c/": "",
+            "a/b/c": "c",
+            "a/": "",
+            "a.ext": "a.ext",
+            "a": "a",
+            "": "",
+            "/a/b/c/d.ext": "d.ext",
+            "/a/b/c/d": "d",
+            "/a/b/c/": "",
+            "/a/b/c": "c",
+            "/a/": "",
+            "/a.ext": "a.ext",
+            "/a": "a",
+            "/": "",
+            "///////////": "",
+            "///////////a": "a",
+            "///////////a/": "",
+            "///////////a/b": "b",
+        ]
+
+        try testMatrix.forEach { keyPath, expectedFolderPath in
+            let id = S3ObjectIdentifier(bucketName: "my-bucket", keyPath: keyPath)
+            XCTAssertEqual(try id.fileName, expectedFolderPath)
+        }
+    }
 }
