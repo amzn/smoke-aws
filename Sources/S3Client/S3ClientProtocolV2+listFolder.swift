@@ -17,8 +17,8 @@ public extension S3ClientProtocolV2 {
         fileNamePrefixProvider: (String) throws -> String = { _ in "" }) async throws
     -> [S3ObjectIdentifier] {
         let bucketName = objectIdentifier.bucketName
-        let s3Folder = try objectIdentifier.parentPath
-        let fileName = try objectIdentifier.fileName
+        let s3Folder = try objectIdentifier.parentPath ?? ""
+        let fileName = try objectIdentifier.fileName ?? ""
         let fileNamePrefix = try fileNamePrefixProvider(fileName)
         let listBucketPrefix = s3Folder + fileNamePrefix
 

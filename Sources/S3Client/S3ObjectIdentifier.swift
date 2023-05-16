@@ -28,25 +28,32 @@ public struct S3ObjectIdentifier: Equatable {
     // Returns the key path of the parent S3 "folder" containing the object, WITH trailing '/'.
     // For example, for an object at path "a/b/c/d.ext", the return value will be "a/b/c/".
     @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
-    public var parentPath: String {
+    public var parentPath: String? {
         get throws {
             let pathComponents = try url.pathComponents
             if pathComponents.count <= 1 {
-                return ""
+                return nil
             } else {
-                return String((pathComponents.dropLast().joined(separator: "/").trimmingSuffix(try Regex("/+")) + "/").trimmingPrefix(try Regex("/+")))
+                var slashCharacterSet = CharacterSet()
+                slashCharacterSet.insert(charactersIn: "/")
+                let path = pathComponents.dropLast().joined(separator: "/").trimmingCharacters(in: slashCharacterSet)
+                if path.isEmpty {
+                    return nil
+                } else {
+                    return path + "/"
+                }
             }
         }
     }
 
     // Returns the "file name" of the object within its S3 "folder". If the key path is a directory path
-    // (e.g. ending with '/'), the return value will be empty.
-    public var fileName: String {
+    // (e.g. ending with '/'), the return value will be nil.
+    public var fileName: String? {
         get throws {
             if try url.hasDirectoryPath {
-                return ""
+                return nil
             } else {
-                return try url.pathComponents.last ?? ""
+                return try url.pathComponents.last
             }
         }
     }
@@ -61,13 +68,6 @@ public struct S3ObjectIdentifier: Equatable {
 
             return url
         }
-    }
-}
-
-extension String {
-    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
-    func trimmingSuffix(_ regex: some RegexComponent) -> String {
-        String(String(self.reversed()).trimmingPrefix(regex).reversed())
     }
 }
 
