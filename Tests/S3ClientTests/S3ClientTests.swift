@@ -188,4 +188,35 @@ class S3ClientTests: XCTestCase {
             return XCTFail()
         }
     }
+
+    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
+    func testS3ObjectIdentifierParentPath() throws {
+        let testMatrix = [
+            "a/b/c/d.ext": "a/b/c/",
+            "a/b/c/d": "a/b/c/",
+            "a/b/c/": "a/b/",
+            "a/b/c": "a/b/",
+            "a/": "",
+            "a.ext": "",
+            "a": "",
+            "": "",
+            "/a/b/c/d.ext": "a/b/c/",
+            "/a/b/c/d": "a/b/c/",
+            "/a/b/c/": "a/b/",
+            "/a/b/c": "a/b/",
+            "/a/": "",
+            "/a.ext": "",
+            "/a": "",
+            "/": "",
+            "///////////": "",
+            "///////////a": "",
+            "///////////a/": "",
+            "///////////a/b": "a/",
+        ]
+
+        try testMatrix.forEach { keyPath, expectedFolderPath in
+            let id = S3ObjectIdentifier(bucketName: "my-bucket", keyPath: keyPath)
+            XCTAssertEqual(try id.parentPath, expectedFolderPath)
+        }
+    }
 }
