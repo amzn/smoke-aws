@@ -5,44 +5,24 @@
 
 import Foundation
 
-/**
- An identifier for an S3 object, specifying the name of its bucket
- and its key path.
- */
-public struct S3ObjectIdentifer: Equatable {
-    internal static let s3Prefix = "s3://"
-    internal static let httpsPrefix = "https://"
-    internal static let httpPrefix = "http://"
-    internal static let s3EndpointRegex = #"^https?:\/\/(.+\.)?s3[.-][a-z0-9-]+\."#
-    
-    public let bucketName: String
-    public let keyPath: String
-    
-    public init(bucketName: String,
-                keyPath: String) {
-        self.bucketName = bucketName
-        self.keyPath = keyPath
-    }
-}
-
 public extension String {
     /**
-     If possible creates an S3ObjectIdentifer instance from this string,
-     seperating the bucket name and key path.
+     If possible creates an S3ObjectIdentifier instance from this string,
+     separating the bucket name and key path.
  
      Will return nil if this string is not of the form-
        s3://bucketName/the/key/path
      
-     This would return S3ObjectIdentifer(bucketName: "bucketName",
-                                         keyPath: "/the/key/path")
+     This would return S3ObjectIdentifier(bucketName: "bucketName",
+                                          keyPath: "/the/key/path")
      */
-    func asS3ObjectIdentifier() -> S3ObjectIdentifer? {
-        if self.starts(with: S3ObjectIdentifer.s3Prefix) {
+    func asS3ObjectIdentifier() -> S3ObjectIdentifier? {
+        if self.starts(with: S3ObjectIdentifier.s3Prefix) {
             // get the url without the scheme - of the form {bucket}/{key+}
-            let nonPrefixedUrl = self.dropFirst(S3ObjectIdentifer.s3Prefix.count)
+            let nonPrefixedUrl = self.dropFirst(S3ObjectIdentifier.s3Prefix.count)
             
             return asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: nonPrefixedUrl)
-        } else if self.starts(with: S3ObjectIdentifer.httpsPrefix) || self.starts(with: S3ObjectIdentifer.httpPrefix) {
+        } else if self.starts(with: S3ObjectIdentifier.httpsPrefix) || self.starts(with: S3ObjectIdentifier.httpPrefix) {
             return asS3ObjectIdentifierFromHttpOrHttps()
         }
         
@@ -50,14 +30,14 @@ public extension String {
     }
     
     /// Tries to parse the bucket and key names from an HTTP or HTTPS URL.
-    private func asS3ObjectIdentifierFromHttpOrHttps() -> S3ObjectIdentifer? {
+    private func asS3ObjectIdentifierFromHttpOrHttps() -> S3ObjectIdentifier? {
         guard let url = URL(string: self) else {
             return nil
         }
         
         let urlPath = url.path.dropFirst()
         
-        guard let regex = try? NSRegularExpression(pattern: S3ObjectIdentifer.s3EndpointRegex, options: []) else {
+        guard let regex = try? NSRegularExpression(pattern: S3ObjectIdentifier.s3EndpointRegex, options: []) else {
             return nil
         }
         
@@ -73,7 +53,7 @@ public extension String {
             // The capture group is the bucket name (with trailing dot) and the URL path is the key name
             let bucketName = String(self[bucketRange].dropLast())
             let keyName = String(urlPath)
-            return S3ObjectIdentifer(bucketName: bucketName, keyPath: keyName)
+            return S3ObjectIdentifier(bucketName: bucketName, keyPath: keyName)
         }
         
         // If the regex capture group is empty, the URL is in the path style, for example:
@@ -90,17 +70,22 @@ public extension String {
         #endif
     }
     
-    /// Spilts a url of the form {bucket}/{key+} into a S3ObjectIdentifer if possible
-    private func asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: Substring) -> S3ObjectIdentifer? {
+    /// Splits a url of the form {bucket}/{key+} into a S3ObjectIdentifier if possible
+    private func asS3ObjectIdentifierFromNonPrefixedUrl(nonPrefixedUrl: Substring) -> S3ObjectIdentifier? {
         guard let nextUrlSeparator = getIndexOfNextUrlSeparator(url: nonPrefixedUrl) else {
             return nil
         }
         
-        let bucketKeySeperatorIndex = nonPrefixedUrl.index(nextUrlSeparator,
+        let bucketKeySeparatorIndex = nonPrefixedUrl.index(nextUrlSeparator,
                                                                offsetBy: 1)
         let bucketName = String(nonPrefixedUrl[..<nextUrlSeparator])
-        let keyPath = String(nonPrefixedUrl[bucketKeySeperatorIndex...])
+        let keyPath = String(nonPrefixedUrl[bucketKeySeparatorIndex...])
         
-        return S3ObjectIdentifer(bucketName: bucketName, keyPath: keyPath)
+        return S3ObjectIdentifier(bucketName: bucketName, keyPath: keyPath)
+    }
+
+    // To keep backwards compatibility after fixing the typo
+    func asS3ObjectIdentifer() -> S3ObjectIdentifer? {
+        asS3ObjectIdentifier()
     }
 }
