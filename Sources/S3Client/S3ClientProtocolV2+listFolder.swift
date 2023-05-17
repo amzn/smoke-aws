@@ -11,7 +11,6 @@ public extension S3ClientProtocolV2 {
     // contain all objects within its parent "folder".
     // Optionally, the caller can pass a filename prefix provider; only objects
     // with the same prefix in the "folder" will be returned.
-    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
     func listFolder(
         for objectIdentifier: S3ObjectIdentifier,
         fileNamePrefixProvider: (String) throws -> String = { _ in "" }) async throws

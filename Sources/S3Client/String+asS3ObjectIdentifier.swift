@@ -14,7 +14,7 @@ public extension String {
        s3://bucketName/the/key/path
      
      This would return S3ObjectIdentifier(bucketName: "bucketName",
-                                         keyPath: "/the/key/path")
+                                          keyPath: "/the/key/path")
      */
     func asS3ObjectIdentifier() -> S3ObjectIdentifier? {
         if self.starts(with: S3ObjectIdentifier.s3Prefix) {

@@ -189,7 +189,6 @@ class S3ClientTests: XCTestCase {
         }
     }
 
-    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
     func testS3ObjectIdentifierParentPath() throws {
         let testMatrix = [
             "a/b/c/d.ext": "a/b/c/",
@@ -250,7 +249,6 @@ class S3ClientTests: XCTestCase {
         }
     }
 
-    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
     func testListFolder() async throws {
         func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
             XCTAssertEqual(input.bucket, "my-bucket")
@@ -276,7 +274,6 @@ class S3ClientTests: XCTestCase {
         )
     }
 
-    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
     func testListFolder_atRoot() async throws {
         func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
             XCTAssertEqual(input.bucket, "my-bucket")
@@ -302,7 +299,6 @@ class S3ClientTests: XCTestCase {
         )
     }
 
-    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
     func testListFolder_withPrefixProvider() async throws {
         func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
             XCTAssertEqual(input.bucket, "my-bucket")
@@ -329,7 +325,6 @@ class S3ClientTests: XCTestCase {
         )
     }
 
-    @available(macOS 13.0, iOS 16.0, watchOS 9.0, tvOS 16.0, *)
     func testListFolder_withPaging() async throws {
         var listObjectsCallCount = 0
         func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
