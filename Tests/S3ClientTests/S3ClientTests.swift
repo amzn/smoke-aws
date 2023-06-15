@@ -325,7 +325,7 @@ class S3ClientTests: XCTestCase {
         )
     }
 
-    func testListFolder_withPaging() async throws {
+    func testListFolder_withPagination() async throws {
         var listObjectsCallCount = 0
         func listObjects(input: ListObjectsV2Request) -> ListObjectsV2Output {
             if listObjectsCallCount > 0 {
@@ -334,6 +334,7 @@ class S3ClientTests: XCTestCase {
                 XCTAssertNil(input.continuationToken)
             }
 
+            XCTAssertEqual(input.maxKeys, 1)
             listObjectsCallCount += 1
 
             let nextToken: NextToken?
@@ -352,7 +353,7 @@ class S3ClientTests: XCTestCase {
         let client = MockS3ClientV2(listObjectsV2: listObjects)
 
         let originalObject = S3ObjectIdentifier(bucketName: "my-bucket", keyPath: "a/b/c/d.ext")
-        let folderObjects = try await client.listFolder(for: originalObject)
+        let folderObjects = try await client.listFolder(for: originalObject, pageSize: 1)
 
         XCTAssertEqual(listObjectsCallCount, 50)
         XCTAssertEqual(folderObjects.count, 50)
