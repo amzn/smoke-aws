@@ -13,7 +13,8 @@ public extension S3ClientProtocolV2 {
     // with the same prefix in the "folder" will be returned.
     func listFolder(
         for objectIdentifier: S3ObjectIdentifier,
-        fileNamePrefixProvider: (String) throws -> String = { _ in "" }) async throws
+        fileNamePrefixProvider: (String) throws -> String = { _ in "" },
+        pageSize: Int? = nil) async throws
     -> [S3ObjectIdentifier] {
         let bucketName = objectIdentifier.bucketName
         let s3Folder = try objectIdentifier.parentPath ?? ""
@@ -27,6 +28,7 @@ public extension S3ClientProtocolV2 {
             let request = ListObjectsV2Request(
                 bucket: bucketName,
                 continuationToken: nextToken,
+                maxKeys: pageSize,
                 prefix: listBucketPrefix)
             let response = try await self.listObjectsV2(input: request)
 
