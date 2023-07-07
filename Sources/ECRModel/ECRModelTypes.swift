@@ -80,7 +80,7 @@ public typealias BatchedOperationLayerDigestList = [BatchedOperationLayerDigest]
 /**
  Type definition for the CreationTimestamp field.
  */
-public typealias CreationTimestamp = Int64
+public typealias CreationTimestamp = Double
 
 /**
  Type definition for the CvssScoreAdjustmentList field.
@@ -95,7 +95,7 @@ public typealias CvssScoreList = [CvssScore]
 /**
  Type definition for the Date field.
  */
-public typealias Date = Int64
+public typealias Date = Double
 
 /**
  Enumeration restricting the values of the EncryptionType field.
@@ -124,7 +124,7 @@ public typealias Epoch = Int
 /**
  Type definition for the EvaluationTimestamp field.
  */
-public typealias EvaluationTimestamp = Int64
+public typealias EvaluationTimestamp = Double
 
 /**
  Type definition for the ExceptionMessage field.
@@ -134,7 +134,7 @@ public typealias ExceptionMessage = String
 /**
  Type definition for the ExpirationTimestamp field.
  */
-public typealias ExpirationTimestamp = Int64
+public typealias ExpirationTimestamp = Double
 
 /**
  Type definition for the FilePath field.
@@ -477,7 +477,7 @@ public typealias PullThroughCacheRuleRepositoryPrefixList = [PullThroughCacheRul
 /**
  Type definition for the PushTimestamp field.
  */
-public typealias PushTimestamp = Int64
+public typealias PushTimestamp = Double
 
 /**
  Type definition for the Reason field.
@@ -492,7 +492,7 @@ public typealias RecommendationText = String
 /**
  Type definition for the RecordedPullTimestamp field.
  */
-public typealias RecordedPullTimestamp = Int64
+public typealias RecordedPullTimestamp = Double
 
 /**
  Type definition for the ReferenceUrlsList field.
@@ -675,7 +675,7 @@ public typealias ScanStatusDescription = String
 /**
  Type definition for the ScanTimestamp field.
  */
-public typealias ScanTimestamp = Int64
+public typealias ScanTimestamp = Double
 
 /**
  Enumeration restricting the values of the ScanType field.
@@ -845,7 +845,7 @@ public typealias VulnerabilityId = String
 /**
  Type definition for the VulnerabilitySourceUpdateTimestamp field.
  */
-public typealias VulnerabilitySourceUpdateTimestamp = Int64
+public typealias VulnerabilitySourceUpdateTimestamp = Double
 
 /**
  Type definition for the VulnerablePackageName field.
