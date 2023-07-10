@@ -1029,7 +1029,9 @@ public enum SettingName: String, Codable, CustomStringConvertible {
     case awsvpctrunking = "awsvpcTrunking"
     case containerinsights = "containerInsights"
     case containerinstancelongarnformat = "containerInstanceLongArnFormat"
+    case fargatefipsmode = "fargateFIPSMode"
     case servicelongarnformat = "serviceLongArnFormat"
+    case tagresourceauthorization = "tagResourceAuthorization"
     case tasklongarnformat = "taskLongArnFormat"
 
     public var description: String {
@@ -1159,6 +1161,11 @@ public enum TaskDefinitionField: String, Codable, CustomStringConvertible {
 public typealias TaskDefinitionFieldList = [TaskDefinitionField]
 
 /**
+ Type definition for the TaskDefinitionList field.
+ */
+public typealias TaskDefinitionList = [TaskDefinition]
+
+/**
  Enumeration restricting the values of the TaskDefinitionPlacementConstraintType field.
  */
 public enum TaskDefinitionPlacementConstraintType: String, Codable, CustomStringConvertible {
@@ -1181,6 +1188,7 @@ public typealias TaskDefinitionPlacementConstraints = [TaskDefinitionPlacementCo
  */
 public enum TaskDefinitionStatus: String, Codable, CustomStringConvertible {
     case active = "ACTIVE"
+    case deleteInProgress = "DELETE_IN_PROGRESS"
     case inactive = "INACTIVE"
 
     public var description: String {

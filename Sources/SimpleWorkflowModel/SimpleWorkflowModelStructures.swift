@@ -2358,6 +2358,7 @@ public struct PollForDecisionTaskInput: Codable, Equatable {
     public var maximumPageSize: PageSize?
     public var nextPageToken: PageToken?
     public var reverseOrder: ReverseOrder?
+    public var startAtPreviousStartedEvent: StartAtPreviousStartedEvent?
     public var taskList: TaskList
 
     public init(domain: DomainName,
@@ -2365,12 +2366,14 @@ public struct PollForDecisionTaskInput: Codable, Equatable {
                 maximumPageSize: PageSize? = nil,
                 nextPageToken: PageToken? = nil,
                 reverseOrder: ReverseOrder? = nil,
+                startAtPreviousStartedEvent: StartAtPreviousStartedEvent? = nil,
                 taskList: TaskList) {
         self.domain = domain
         self.identity = identity
         self.maximumPageSize = maximumPageSize
         self.nextPageToken = nextPageToken
         self.reverseOrder = reverseOrder
+        self.startAtPreviousStartedEvent = startAtPreviousStartedEvent
         self.taskList = taskList
     }
 
@@ -2380,6 +2383,7 @@ public struct PollForDecisionTaskInput: Codable, Equatable {
         case maximumPageSize
         case nextPageToken
         case reverseOrder
+        case startAtPreviousStartedEvent
         case taskList
     }
 

@@ -2038,13 +2038,17 @@ public struct FilterRule: Codable, Equatable {
 }
 
 public struct GetBucketAccelerateConfigurationOutput: Codable, Equatable {
+    public var requestCharged: RequestCharged?
     public var status: BucketAccelerateStatus?
 
-    public init(status: BucketAccelerateStatus? = nil) {
+    public init(requestCharged: RequestCharged? = nil,
+                status: BucketAccelerateStatus? = nil) {
+        self.requestCharged = requestCharged
         self.status = status
     }
 
     enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
         case status = "Status"
     }
 
@@ -2055,16 +2059,20 @@ public struct GetBucketAccelerateConfigurationOutput: Codable, Equatable {
 public struct GetBucketAccelerateConfigurationRequest: Codable, Equatable {
     public var bucket: BucketName
     public var expectedBucketOwner: AccountId?
+    public var requestPayer: RequestPayer?
 
     public init(bucket: BucketName,
-                expectedBucketOwner: AccountId? = nil) {
+                expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
         self.bucket = bucket
         self.expectedBucketOwner = expectedBucketOwner
+        self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case bucket = "Bucket"
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case requestPayer = "x-amz-request-payer"
     }
 
     public func validate() throws {
@@ -4522,6 +4530,7 @@ public struct ListMultipartUploadsOutput: Codable, Equatable {
     public var nextKeyMarker: NextKeyMarker?
     public var nextUploadIdMarker: NextUploadIdMarker?
     public var prefix: Prefix?
+    public var requestCharged: RequestCharged?
     public var uploadIdMarker: UploadIdMarker?
     public var uploads: MultipartUploadList?
 
@@ -4535,6 +4544,7 @@ public struct ListMultipartUploadsOutput: Codable, Equatable {
                 nextKeyMarker: NextKeyMarker? = nil,
                 nextUploadIdMarker: NextUploadIdMarker? = nil,
                 prefix: Prefix? = nil,
+                requestCharged: RequestCharged? = nil,
                 uploadIdMarker: UploadIdMarker? = nil,
                 uploads: MultipartUploadList? = nil) {
         self.bucket = bucket
@@ -4547,6 +4557,7 @@ public struct ListMultipartUploadsOutput: Codable, Equatable {
         self.nextKeyMarker = nextKeyMarker
         self.nextUploadIdMarker = nextUploadIdMarker
         self.prefix = prefix
+        self.requestCharged = requestCharged
         self.uploadIdMarker = uploadIdMarker
         self.uploads = uploads
     }
@@ -4562,6 +4573,7 @@ public struct ListMultipartUploadsOutput: Codable, Equatable {
         case nextKeyMarker = "NextKeyMarker"
         case nextUploadIdMarker = "NextUploadIdMarker"
         case prefix = "Prefix"
+        case requestCharged = "x-amz-request-charged"
         case uploadIdMarker = "UploadIdMarker"
         case uploads = "Upload"
     }
@@ -4578,6 +4590,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
     public var keyMarker: KeyMarker?
     public var maxUploads: MaxUploads?
     public var prefix: Prefix?
+    public var requestPayer: RequestPayer?
     public var uploadIdMarker: UploadIdMarker?
 
     public init(bucket: BucketName,
@@ -4587,6 +4600,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
                 keyMarker: KeyMarker? = nil,
                 maxUploads: MaxUploads? = nil,
                 prefix: Prefix? = nil,
+                requestPayer: RequestPayer? = nil,
                 uploadIdMarker: UploadIdMarker? = nil) {
         self.bucket = bucket
         self.delimiter = delimiter
@@ -4595,6 +4609,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
         self.keyMarker = keyMarker
         self.maxUploads = maxUploads
         self.prefix = prefix
+        self.requestPayer = requestPayer
         self.uploadIdMarker = uploadIdMarker
     }
 
@@ -4606,6 +4621,7 @@ public struct ListMultipartUploadsRequest: Codable, Equatable {
         case keyMarker = "key-marker"
         case maxUploads = "max-uploads"
         case prefix
+        case requestPayer = "x-amz-request-payer"
         case uploadIdMarker = "upload-id-marker"
     }
 
@@ -4625,6 +4641,7 @@ public struct ListObjectVersionsOutput: Codable, Equatable {
     public var nextKeyMarker: NextKeyMarker?
     public var nextVersionIdMarker: NextVersionIdMarker?
     public var prefix: Prefix?
+    public var requestCharged: RequestCharged?
     public var versionIdMarker: VersionIdMarker?
     public var versions: ObjectVersionList?
 
@@ -4639,6 +4656,7 @@ public struct ListObjectVersionsOutput: Codable, Equatable {
                 nextKeyMarker: NextKeyMarker? = nil,
                 nextVersionIdMarker: NextVersionIdMarker? = nil,
                 prefix: Prefix? = nil,
+                requestCharged: RequestCharged? = nil,
                 versionIdMarker: VersionIdMarker? = nil,
                 versions: ObjectVersionList? = nil) {
         self.commonPrefixes = commonPrefixes
@@ -4652,6 +4670,7 @@ public struct ListObjectVersionsOutput: Codable, Equatable {
         self.nextKeyMarker = nextKeyMarker
         self.nextVersionIdMarker = nextVersionIdMarker
         self.prefix = prefix
+        self.requestCharged = requestCharged
         self.versionIdMarker = versionIdMarker
         self.versions = versions
     }
@@ -4668,6 +4687,7 @@ public struct ListObjectVersionsOutput: Codable, Equatable {
         case nextKeyMarker = "NextKeyMarker"
         case nextVersionIdMarker = "NextVersionIdMarker"
         case prefix = "Prefix"
+        case requestCharged = "x-amz-request-charged"
         case versionIdMarker = "VersionIdMarker"
         case versions = "Version"
     }
@@ -4683,7 +4703,9 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
     public var keyMarker: KeyMarker?
     public var maxKeys: MaxKeys?
+    public var optionalObjectAttributes: OptionalObjectAttributesList?
     public var prefix: Prefix?
+    public var requestPayer: RequestPayer?
     public var versionIdMarker: VersionIdMarker?
 
     public init(bucket: BucketName,
@@ -4692,7 +4714,9 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
                 expectedBucketOwner: AccountId? = nil,
                 keyMarker: KeyMarker? = nil,
                 maxKeys: MaxKeys? = nil,
+                optionalObjectAttributes: OptionalObjectAttributesList? = nil,
                 prefix: Prefix? = nil,
+                requestPayer: RequestPayer? = nil,
                 versionIdMarker: VersionIdMarker? = nil) {
         self.bucket = bucket
         self.delimiter = delimiter
@@ -4700,7 +4724,9 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
         self.expectedBucketOwner = expectedBucketOwner
         self.keyMarker = keyMarker
         self.maxKeys = maxKeys
+        self.optionalObjectAttributes = optionalObjectAttributes
         self.prefix = prefix
+        self.requestPayer = requestPayer
         self.versionIdMarker = versionIdMarker
     }
 
@@ -4711,7 +4737,9 @@ public struct ListObjectVersionsRequest: Codable, Equatable {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case keyMarker = "key-marker"
         case maxKeys = "max-keys"
+        case optionalObjectAttributes = "x-amz-optional-object-attributes"
         case prefix
+        case requestPayer = "x-amz-request-payer"
         case versionIdMarker = "version-id-marker"
     }
 
@@ -4730,6 +4758,7 @@ public struct ListObjectsOutput: Codable, Equatable {
     public var name: BucketName?
     public var nextMarker: NextMarker?
     public var prefix: Prefix?
+    public var requestCharged: RequestCharged?
 
     public init(commonPrefixes: CommonPrefixList? = nil,
                 contents: ObjectList? = nil,
@@ -4740,7 +4769,8 @@ public struct ListObjectsOutput: Codable, Equatable {
                 maxKeys: MaxKeys? = nil,
                 name: BucketName? = nil,
                 nextMarker: NextMarker? = nil,
-                prefix: Prefix? = nil) {
+                prefix: Prefix? = nil,
+                requestCharged: RequestCharged? = nil) {
         self.commonPrefixes = commonPrefixes
         self.contents = contents
         self.delimiter = delimiter
@@ -4751,6 +4781,7 @@ public struct ListObjectsOutput: Codable, Equatable {
         self.name = name
         self.nextMarker = nextMarker
         self.prefix = prefix
+        self.requestCharged = requestCharged
     }
 
     enum CodingKeys: String, CodingKey {
@@ -4764,6 +4795,7 @@ public struct ListObjectsOutput: Codable, Equatable {
         case name = "Name"
         case nextMarker = "NextMarker"
         case prefix = "Prefix"
+        case requestCharged = "x-amz-request-charged"
     }
 
     public func validate() throws {
@@ -4777,6 +4809,7 @@ public struct ListObjectsRequest: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
     public var marker: Marker?
     public var maxKeys: MaxKeys?
+    public var optionalObjectAttributes: OptionalObjectAttributesList?
     public var prefix: Prefix?
     public var requestPayer: RequestPayer?
 
@@ -4786,6 +4819,7 @@ public struct ListObjectsRequest: Codable, Equatable {
                 expectedBucketOwner: AccountId? = nil,
                 marker: Marker? = nil,
                 maxKeys: MaxKeys? = nil,
+                optionalObjectAttributes: OptionalObjectAttributesList? = nil,
                 prefix: Prefix? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.bucket = bucket
@@ -4794,6 +4828,7 @@ public struct ListObjectsRequest: Codable, Equatable {
         self.expectedBucketOwner = expectedBucketOwner
         self.marker = marker
         self.maxKeys = maxKeys
+        self.optionalObjectAttributes = optionalObjectAttributes
         self.prefix = prefix
         self.requestPayer = requestPayer
     }
@@ -4805,6 +4840,7 @@ public struct ListObjectsRequest: Codable, Equatable {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case marker
         case maxKeys = "max-keys"
+        case optionalObjectAttributes = "x-amz-optional-object-attributes"
         case prefix
         case requestPayer = "x-amz-request-payer"
     }
@@ -4825,6 +4861,7 @@ public struct ListObjectsV2Output: Codable, Equatable {
     public var name: BucketName?
     public var nextContinuationToken: NextToken?
     public var prefix: Prefix?
+    public var requestCharged: RequestCharged?
     public var startAfter: StartAfter?
 
     public init(commonPrefixes: CommonPrefixList? = nil,
@@ -4838,6 +4875,7 @@ public struct ListObjectsV2Output: Codable, Equatable {
                 name: BucketName? = nil,
                 nextContinuationToken: NextToken? = nil,
                 prefix: Prefix? = nil,
+                requestCharged: RequestCharged? = nil,
                 startAfter: StartAfter? = nil) {
         self.commonPrefixes = commonPrefixes
         self.contents = contents
@@ -4850,6 +4888,7 @@ public struct ListObjectsV2Output: Codable, Equatable {
         self.name = name
         self.nextContinuationToken = nextContinuationToken
         self.prefix = prefix
+        self.requestCharged = requestCharged
         self.startAfter = startAfter
     }
 
@@ -4865,6 +4904,7 @@ public struct ListObjectsV2Output: Codable, Equatable {
         case name = "Name"
         case nextContinuationToken = "NextContinuationToken"
         case prefix = "Prefix"
+        case requestCharged = "x-amz-request-charged"
         case startAfter = "StartAfter"
     }
 
@@ -4880,6 +4920,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
     public var fetchOwner: FetchOwner?
     public var maxKeys: MaxKeys?
+    public var optionalObjectAttributes: OptionalObjectAttributesList?
     public var prefix: Prefix?
     public var requestPayer: RequestPayer?
     public var startAfter: StartAfter?
@@ -4891,6 +4932,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
                 expectedBucketOwner: AccountId? = nil,
                 fetchOwner: FetchOwner? = nil,
                 maxKeys: MaxKeys? = nil,
+                optionalObjectAttributes: OptionalObjectAttributesList? = nil,
                 prefix: Prefix? = nil,
                 requestPayer: RequestPayer? = nil,
                 startAfter: StartAfter? = nil) {
@@ -4901,6 +4943,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
         self.expectedBucketOwner = expectedBucketOwner
         self.fetchOwner = fetchOwner
         self.maxKeys = maxKeys
+        self.optionalObjectAttributes = optionalObjectAttributes
         self.prefix = prefix
         self.requestPayer = requestPayer
         self.startAfter = startAfter
@@ -4914,6 +4957,7 @@ public struct ListObjectsV2Request: Codable, Equatable {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
         case fetchOwner = "fetch-owner"
         case maxKeys = "max-keys"
+        case optionalObjectAttributes = "x-amz-optional-object-attributes"
         case prefix
         case requestPayer = "x-amz-request-payer"
         case startAfter = "start-after"
@@ -5370,6 +5414,7 @@ public struct Object: Codable, Equatable {
     public var key: ObjectKey?
     public var lastModified: LastModified?
     public var owner: Owner?
+    public var restoreStatus: RestoreStatus?
     public var size: Size?
     public var storageClass: ObjectStorageClass?
 
@@ -5378,6 +5423,7 @@ public struct Object: Codable, Equatable {
                 key: ObjectKey? = nil,
                 lastModified: LastModified? = nil,
                 owner: Owner? = nil,
+                restoreStatus: RestoreStatus? = nil,
                 size: Size? = nil,
                 storageClass: ObjectStorageClass? = nil) {
         self.checksumAlgorithm = checksumAlgorithm
@@ -5385,6 +5431,7 @@ public struct Object: Codable, Equatable {
         self.key = key
         self.lastModified = lastModified
         self.owner = owner
+        self.restoreStatus = restoreStatus
         self.size = size
         self.storageClass = storageClass
     }
@@ -5395,6 +5442,7 @@ public struct Object: Codable, Equatable {
         case key = "Key"
         case lastModified = "LastModified"
         case owner = "Owner"
+        case restoreStatus = "RestoreStatus"
         case size = "Size"
         case storageClass = "StorageClass"
     }
@@ -5402,6 +5450,7 @@ public struct Object: Codable, Equatable {
     public func validate() throws {
         try key?.validateAsObjectKey()
         try owner?.validate()
+        try restoreStatus?.validate()
     }
 }
 
@@ -5555,6 +5604,7 @@ public struct ObjectVersion: Codable, Equatable {
     public var key: ObjectKey?
     public var lastModified: LastModified?
     public var owner: Owner?
+    public var restoreStatus: RestoreStatus?
     public var size: Size?
     public var storageClass: ObjectVersionStorageClass?
     public var versionId: ObjectVersionId?
@@ -5565,6 +5615,7 @@ public struct ObjectVersion: Codable, Equatable {
                 key: ObjectKey? = nil,
                 lastModified: LastModified? = nil,
                 owner: Owner? = nil,
+                restoreStatus: RestoreStatus? = nil,
                 size: Size? = nil,
                 storageClass: ObjectVersionStorageClass? = nil,
                 versionId: ObjectVersionId? = nil) {
@@ -5574,6 +5625,7 @@ public struct ObjectVersion: Codable, Equatable {
         self.key = key
         self.lastModified = lastModified
         self.owner = owner
+        self.restoreStatus = restoreStatus
         self.size = size
         self.storageClass = storageClass
         self.versionId = versionId
@@ -5586,6 +5638,7 @@ public struct ObjectVersion: Codable, Equatable {
         case key = "Key"
         case lastModified = "LastModified"
         case owner = "Owner"
+        case restoreStatus = "RestoreStatus"
         case size = "Size"
         case storageClass = "StorageClass"
         case versionId = "VersionId"
@@ -5594,6 +5647,7 @@ public struct ObjectVersion: Codable, Equatable {
     public func validate() throws {
         try key?.validateAsObjectKey()
         try owner?.validate()
+        try restoreStatus?.validate()
     }
 }
 
@@ -7443,6 +7497,25 @@ public struct RestoreRequest: Codable, Equatable {
         try glacierJobParameters?.validate()
         try outputLocation?.validate()
         try selectParameters?.validate()
+    }
+}
+
+public struct RestoreStatus: Codable, Equatable {
+    public var isRestoreInProgress: IsRestoreInProgress?
+    public var restoreExpiryDate: RestoreExpiryDate?
+
+    public init(isRestoreInProgress: IsRestoreInProgress? = nil,
+                restoreExpiryDate: RestoreExpiryDate? = nil) {
+        self.isRestoreInProgress = isRestoreInProgress
+        self.restoreExpiryDate = restoreExpiryDate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case isRestoreInProgress = "IsRestoreInProgress"
+        case restoreExpiryDate = "RestoreExpiryDate"
+    }
+
+    public func validate() throws {
     }
 }
 

@@ -1121,6 +1121,7 @@ public extension GetBucketAccelerateConfigurationOutput {
      */
     static let __default: S3Model.GetBucketAccelerateConfigurationOutput = {
         let defaultInstance = S3Model.GetBucketAccelerateConfigurationOutput(
+            requestCharged: nil,
             status: nil)
 
         return defaultInstance
@@ -1134,7 +1135,8 @@ public extension GetBucketAccelerateConfigurationRequest {
     static let __default: S3Model.GetBucketAccelerateConfigurationRequest = {
         let defaultInstance = S3Model.GetBucketAccelerateConfigurationRequest(
             bucket: "value",
-            expectedBucketOwner: nil)
+            expectedBucketOwner: nil,
+            requestPayer: nil)
 
         return defaultInstance
     }()
@@ -2529,6 +2531,7 @@ public extension ListMultipartUploadsOutput {
             nextKeyMarker: nil,
             nextUploadIdMarker: nil,
             prefix: nil,
+            requestCharged: nil,
             uploadIdMarker: nil,
             uploads: nil)
 
@@ -2549,6 +2552,7 @@ public extension ListMultipartUploadsRequest {
             keyMarker: nil,
             maxUploads: nil,
             prefix: nil,
+            requestPayer: nil,
             uploadIdMarker: nil)
 
         return defaultInstance
@@ -2572,6 +2576,7 @@ public extension ListObjectVersionsOutput {
             nextKeyMarker: nil,
             nextVersionIdMarker: nil,
             prefix: nil,
+            requestCharged: nil,
             versionIdMarker: nil,
             versions: nil)
 
@@ -2591,7 +2596,9 @@ public extension ListObjectVersionsRequest {
             expectedBucketOwner: nil,
             keyMarker: nil,
             maxKeys: nil,
+            optionalObjectAttributes: nil,
             prefix: nil,
+            requestPayer: nil,
             versionIdMarker: nil)
 
         return defaultInstance
@@ -2613,7 +2620,8 @@ public extension ListObjectsOutput {
             maxKeys: nil,
             name: nil,
             nextMarker: nil,
-            prefix: nil)
+            prefix: nil,
+            requestCharged: nil)
 
         return defaultInstance
     }()
@@ -2631,6 +2639,7 @@ public extension ListObjectsRequest {
             expectedBucketOwner: nil,
             marker: nil,
             maxKeys: nil,
+            optionalObjectAttributes: nil,
             prefix: nil,
             requestPayer: nil)
 
@@ -2655,6 +2664,7 @@ public extension ListObjectsV2Output {
             name: nil,
             nextContinuationToken: nil,
             prefix: nil,
+            requestCharged: nil,
             startAfter: nil)
 
         return defaultInstance
@@ -2674,6 +2684,7 @@ public extension ListObjectsV2Request {
             expectedBucketOwner: nil,
             fetchOwner: nil,
             maxKeys: nil,
+            optionalObjectAttributes: nil,
             prefix: nil,
             requestPayer: nil,
             startAfter: nil)
@@ -2941,6 +2952,7 @@ public extension Object {
             key: nil,
             lastModified: nil,
             owner: nil,
+            restoreStatus: nil,
             size: nil,
             storageClass: nil)
 
@@ -3062,6 +3074,7 @@ public extension ObjectVersion {
             key: nil,
             lastModified: nil,
             owner: nil,
+            restoreStatus: nil,
             size: nil,
             storageClass: nil,
             versionId: nil)
@@ -4019,6 +4032,19 @@ public extension RestoreRequest {
             selectParameters: nil,
             tier: nil,
             type: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RestoreStatus {
+    /**
+     Default instance of the RestoreStatus structure.
+     */
+    static let __default: S3Model.RestoreStatus = {
+        let defaultInstance = S3Model.RestoreStatus(
+            isRestoreInProgress: nil,
+            restoreExpiryDate: nil)
 
         return defaultInstance
     }()

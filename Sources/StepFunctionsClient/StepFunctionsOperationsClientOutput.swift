@@ -51,6 +51,19 @@ extension CreateStateMachineOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the CreateStateMachineAlias operation in a HTTP client.
+ */
+extension CreateStateMachineAliasOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = CreateStateMachineAliasOutput
+    public typealias HeadersType = CreateStateMachineAliasOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CreateStateMachineAliasOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteActivity operation in a HTTP client.
  */
 extension DeleteActivityOutput: HTTPResponseOutputProtocol {
@@ -72,6 +85,32 @@ extension DeleteStateMachineOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DeleteStateMachineOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteStateMachineAlias operation in a HTTP client.
+ */
+extension DeleteStateMachineAliasOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteStateMachineAliasOutput
+    public typealias HeadersType = DeleteStateMachineAliasOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteStateMachineAliasOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeleteStateMachineVersion operation in a HTTP client.
+ */
+extension DeleteStateMachineVersionOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteStateMachineVersionOutput
+    public typealias HeadersType = DeleteStateMachineVersionOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteStateMachineVersionOutput {
         return try bodyDecodableProvider()
     }
 }
@@ -124,6 +163,19 @@ extension DescribeStateMachineOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeStateMachineOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeStateMachineAlias operation in a HTTP client.
+ */
+extension DescribeStateMachineAliasOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeStateMachineAliasOutput
+    public typealias HeadersType = DescribeStateMachineAliasOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeStateMachineAliasOutput {
         return try bodyDecodableProvider()
     }
 }
@@ -207,6 +259,32 @@ extension ListMapRunsOutput: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ListStateMachineAliases operation in a HTTP client.
+ */
+extension ListStateMachineAliasesOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListStateMachineAliasesOutput
+    public typealias HeadersType = ListStateMachineAliasesOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListStateMachineAliasesOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the ListStateMachineVersions operation in a HTTP client.
+ */
+extension ListStateMachineVersionsOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListStateMachineVersionsOutput
+    public typealias HeadersType = ListStateMachineVersionsOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListStateMachineVersionsOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListStateMachines operation in a HTTP client.
  */
 extension ListStateMachinesOutput: HTTPResponseOutputProtocol {
@@ -228,6 +306,19 @@ extension ListTagsForResourceOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListTagsForResourceOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the PublishStateMachineVersion operation in a HTTP client.
+ */
+extension PublishStateMachineVersionOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = PublishStateMachineVersionOutput
+    public typealias HeadersType = PublishStateMachineVersionOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> PublishStateMachineVersionOutput {
         return try bodyDecodableProvider()
     }
 }
@@ -358,6 +449,19 @@ extension UpdateStateMachineOutput: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> UpdateStateMachineOutput {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the UpdateStateMachineAlias operation in a HTTP client.
+ */
+extension UpdateStateMachineAliasOutput: HTTPResponseOutputProtocol {
+    public typealias BodyType = UpdateStateMachineAliasOutput
+    public typealias HeadersType = UpdateStateMachineAliasOutput
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> UpdateStateMachineAliasOutput {
         return try bodyDecodableProvider()
     }
 }

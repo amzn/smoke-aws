@@ -441,24 +441,29 @@ public struct CreateHostedConfigurationVersionOperationInputAdditionalHeaders: C
     public var contentType: StringWithLengthBetween1And255
     public var description: Description?
     public var latestVersionNumber: Integer?
+    public var versionLabel: VersionLabel?
 
     public init(contentType: StringWithLengthBetween1And255,
                 description: Description? = nil,
-                latestVersionNumber: Integer? = nil) {
+                latestVersionNumber: Integer? = nil,
+                versionLabel: VersionLabel? = nil) {
         self.contentType = contentType
         self.description = description
         self.latestVersionNumber = latestVersionNumber
+        self.versionLabel = versionLabel
     }
 
     enum CodingKeys: String, CodingKey {
         case contentType = "Content-Type"
         case description = "Description"
         case latestVersionNumber = "Latest-Version-Number"
+        case versionLabel = "VersionLabel"
     }
 
     public func validate() throws {
         try contentType.validateAsStringWithLengthBetween1And255()
         try description?.validateAsDescription()
+        try versionLabel?.validateAsVersionLabel()
     }
 }
 
@@ -467,7 +472,8 @@ public extension CreateHostedConfigurationVersionRequest {
         return CreateHostedConfigurationVersionOperationInputAdditionalHeaders(
             contentType: contentType,
             description: description,
-            latestVersionNumber: latestVersionNumber)
+            latestVersionNumber: latestVersionNumber,
+            versionLabel: versionLabel)
     }
 }
 
@@ -480,17 +486,20 @@ public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, E
     public var configurationProfileId: Id?
     public var contentType: StringWithLengthBetween1And255?
     public var description: Description?
+    public var versionLabel: VersionLabel?
     public var versionNumber: Integer?
 
     public init(applicationId: Id? = nil,
                 configurationProfileId: Id? = nil,
                 contentType: StringWithLengthBetween1And255? = nil,
                 description: Description? = nil,
+                versionLabel: VersionLabel? = nil,
                 versionNumber: Integer? = nil) {
         self.applicationId = applicationId
         self.configurationProfileId = configurationProfileId
         self.contentType = contentType
         self.description = description
+        self.versionLabel = versionLabel
         self.versionNumber = versionNumber
     }
 
@@ -499,6 +508,7 @@ public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, E
         case configurationProfileId = "Configuration-Profile-Id"
         case contentType = "Content-Type"
         case description = "Description"
+        case versionLabel = "VersionLabel"
         case versionNumber = "Version-Number"
     }
 
@@ -507,6 +517,7 @@ public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, E
         try configurationProfileId?.validateAsId()
         try contentType?.validateAsStringWithLengthBetween1And255()
         try description?.validateAsDescription()
+        try versionLabel?.validateAsVersionLabel()
     }
 }
 
@@ -517,6 +528,7 @@ public extension HostedConfigurationVersion {
             configurationProfileId: configurationProfileId,
             contentType: contentType,
             description: description,
+            versionLabel: versionLabel,
             versionNumber: versionNumber)
     }
 }
@@ -1526,21 +1538,26 @@ public extension ListHostedConfigurationVersionsRequest {
 public struct ListHostedConfigurationVersionsOperationInputQuery: Codable, Equatable {
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
+    public var versionLabel: QueryName?
 
     public init(maxResults: MaxResults? = nil,
-                nextToken: NextToken? = nil) {
+                nextToken: NextToken? = nil,
+                versionLabel: QueryName? = nil) {
         self.maxResults = maxResults
         self.nextToken = nextToken
+        self.versionLabel = versionLabel
     }
 
     enum CodingKeys: String, CodingKey {
         case maxResults = "max_results"
         case nextToken = "next_token"
+        case versionLabel = "version_label"
     }
 
     public func validate() throws {
         try maxResults?.validateAsMaxResults()
         try nextToken?.validateAsNextToken()
+        try versionLabel?.validateAsQueryName()
     }
 }
 
@@ -1548,7 +1565,8 @@ public extension ListHostedConfigurationVersionsRequest {
     func asAppConfigModelListHostedConfigurationVersionsOperationInputQuery() -> ListHostedConfigurationVersionsOperationInputQuery {
         return ListHostedConfigurationVersionsOperationInputQuery(
             maxResults: maxResults,
-            nextToken: nextToken)
+            nextToken: nextToken,
+            versionLabel: versionLabel)
     }
 }
 
@@ -1621,17 +1639,20 @@ public struct StartDeploymentOperationInputBody: Codable, Equatable {
     public var configurationVersion: Version
     public var deploymentStrategyId: DeploymentStrategyId
     public var description: Description?
+    public var kmsKeyIdentifier: Identifier?
     public var tags: TagMap?
 
     public init(configurationProfileId: Id,
                 configurationVersion: Version,
                 deploymentStrategyId: DeploymentStrategyId,
                 description: Description? = nil,
+                kmsKeyIdentifier: Identifier? = nil,
                 tags: TagMap? = nil) {
         self.configurationProfileId = configurationProfileId
         self.configurationVersion = configurationVersion
         self.deploymentStrategyId = deploymentStrategyId
         self.description = description
+        self.kmsKeyIdentifier = kmsKeyIdentifier
         self.tags = tags
     }
 
@@ -1640,6 +1661,7 @@ public struct StartDeploymentOperationInputBody: Codable, Equatable {
         case configurationVersion = "ConfigurationVersion"
         case deploymentStrategyId = "DeploymentStrategyId"
         case description = "Description"
+        case kmsKeyIdentifier = "KmsKeyIdentifier"
         case tags = "Tags"
     }
 
@@ -1648,6 +1670,7 @@ public struct StartDeploymentOperationInputBody: Codable, Equatable {
         try configurationVersion.validateAsVersion()
         try deploymentStrategyId.validateAsDeploymentStrategyId()
         try description?.validateAsDescription()
+        try kmsKeyIdentifier?.validateAsIdentifier()
     }
 }
 
@@ -1658,6 +1681,7 @@ public extension StartDeploymentRequest {
             configurationVersion: configurationVersion,
             deploymentStrategyId: deploymentStrategyId,
             description: description,
+            kmsKeyIdentifier: kmsKeyIdentifier,
             tags: tags)
     }
 }

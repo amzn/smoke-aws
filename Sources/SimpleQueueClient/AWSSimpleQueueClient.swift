@@ -263,6 +263,84 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     }
 
     /**
+     Invokes the CancelMessageMoveTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+         - completion: The CancelMessageMoveTaskResultForCancelMessageMoveTask object or an error will be passed to this 
+           callback when the operation is complete. The CancelMessageMoveTaskResultForCancelMessageMoveTask
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    public func cancelMessageMoveTaskAsync(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest, 
+            completion: @escaping (Result<SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask, SimpleQueueError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.cancelMessageMoveTask,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CancelMessageMoveTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.cancelMessageMoveTask.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CancelMessageMoveTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The CancelMessageMoveTaskResultForCancelMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func cancelMessageMoveTaskSync(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest) throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.cancelMessageMoveTask,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CancelMessageMoveTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.cancelMessageMoveTask.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ChangeMessageVisibility operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -954,6 +1032,84 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     }
 
     /**
+     Invokes the ListMessageMoveTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+         - completion: The ListMessageMoveTasksResultForListMessageMoveTasks object or an error will be passed to this 
+           callback when the operation is complete. The ListMessageMoveTasksResultForListMessageMoveTasks
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    public func listMessageMoveTasksAsync(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest, 
+            completion: @escaping (Result<SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks, SimpleQueueError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMessageMoveTasks,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListMessageMoveTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.listMessageMoveTasks.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListMessageMoveTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+     - Returns: The ListMessageMoveTasksResultForListMessageMoveTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func listMessageMoveTasksSync(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest) throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMessageMoveTasks,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListMessageMoveTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.listMessageMoveTasks.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListQueueTags operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1563,6 +1719,84 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     }
 
     /**
+     Invokes the StartMessageMoveTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+         - completion: The StartMessageMoveTaskResultForStartMessageMoveTask object or an error will be passed to this 
+           callback when the operation is complete. The StartMessageMoveTaskResultForStartMessageMoveTask
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    public func startMessageMoveTaskAsync(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest, 
+            completion: @escaping (Result<SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask, SimpleQueueError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startMessageMoveTask,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartMessageMoveTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.startMessageMoveTask.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the StartMessageMoveTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The StartMessageMoveTaskResultForStartMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func startMessageMoveTaskSync(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest) throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startMessageMoveTask,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartMessageMoveTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.startMessageMoveTask.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the TagQueue operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1736,6 +1970,46 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
 
         do {
             try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CancelMessageMoveTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The CancelMessageMoveTaskResultForCancelMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func cancelMessageMoveTask(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest) async throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.cancelMessageMoveTask,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CancelMessageMoveTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.cancelMessageMoveTask.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -2102,6 +2376,46 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
     }
 
     /**
+     Invokes the ListMessageMoveTasks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+     - Returns: The ListMessageMoveTasksResultForListMessageMoveTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func listMessageMoveTasks(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest) async throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listMessageMoveTasks,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListMessageMoveTasksOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.listMessageMoveTasks.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListQueueTags operation suspending until the response is available before returning.
 
      - Parameters:
@@ -2400,6 +2714,46 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
 
         do {
             try await listHttpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: SimpleQueueError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the StartMessageMoveTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The StartMessageMoveTaskResultForStartMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func startMessageMoveTask(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest) async throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.startMessageMoveTask,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = StartMessageMoveTaskOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: SimpleQueueModelOperations.startMessageMoveTask.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,

@@ -865,6 +865,7 @@ public extension GetMetricStreamOutput {
             excludeFilters: nil,
             firehoseArn: nil,
             includeFilters: nil,
+            includeLinkedAccountsMetrics: nil,
             lastUpdateDate: nil,
             name: nil,
             outputFormat: nil,
@@ -1491,6 +1492,7 @@ public extension MetricStreamFilter {
      */
     static let __default: CloudWatchModel.MetricStreamFilter = {
         let defaultInstance = CloudWatchModel.MetricStreamFilter(
+            metricNames: nil,
             namespace: nil)
 
         return defaultInstance
@@ -1775,6 +1777,7 @@ public extension PutMetricStreamInput {
             excludeFilters: nil,
             firehoseArn: "0",
             includeFilters: nil,
+            includeLinkedAccountsMetrics: nil,
             name: "0",
             outputFormat: .__default,
             roleArn: "0",

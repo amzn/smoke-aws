@@ -35,6 +35,11 @@ public typealias CreateActivityOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias CreateStateMachineOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateStateMachineAlias operation in a HTTP client.
+ */
+public typealias CreateStateMachineAliasOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteActivity operation in a HTTP client.
  */
 public typealias DeleteActivityOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -43,6 +48,16 @@ public typealias DeleteActivityOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the DeleteStateMachine operation in a HTTP client.
  */
 public typealias DeleteStateMachineOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteStateMachineAlias operation in a HTTP client.
+ */
+public typealias DeleteStateMachineAliasOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteStateMachineVersion operation in a HTTP client.
+ */
+public typealias DeleteStateMachineVersionOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeActivity operation in a HTTP client.
@@ -63,6 +78,11 @@ public typealias DescribeMapRunOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the DescribeStateMachine operation in a HTTP client.
  */
 public typealias DescribeStateMachineOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeStateMachineAlias operation in a HTTP client.
+ */
+public typealias DescribeStateMachineAliasOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeStateMachineForExecution operation in a HTTP client.
@@ -95,6 +115,16 @@ public typealias ListExecutionsOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias ListMapRunsOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the ListStateMachineAliases operation in a HTTP client.
+ */
+public typealias ListStateMachineAliasesOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the ListStateMachineVersions operation in a HTTP client.
+ */
+public typealias ListStateMachineVersionsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the ListStateMachines operation in a HTTP client.
  */
 public typealias ListStateMachinesOperationHTTPRequestInput = BodyHTTPRequestInput
@@ -103,6 +133,11 @@ public typealias ListStateMachinesOperationHTTPRequestInput = BodyHTTPRequestInp
  Type to handle the input to the ListTagsForResource operation in a HTTP client.
  */
 public typealias ListTagsForResourceOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the PublishStateMachineVersion operation in a HTTP client.
+ */
+public typealias PublishStateMachineVersionOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
  Type to handle the input to the SendTaskFailure operation in a HTTP client.
@@ -153,3 +188,8 @@ public typealias UpdateMapRunOperationHTTPRequestInput = BodyHTTPRequestInput
  Type to handle the input to the UpdateStateMachine operation in a HTTP client.
  */
 public typealias UpdateStateMachineOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
+ Type to handle the input to the UpdateStateMachineAlias operation in a HTTP client.
+ */
+public typealias UpdateStateMachineAliasOperationHTTPRequestInput = BodyHTTPRequestInput

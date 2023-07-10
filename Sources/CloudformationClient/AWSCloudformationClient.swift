@@ -173,6 +173,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
     #endif
 
     /**
+     Invokes the ActivateOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+         - completion: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    public func activateOrganizationsAccessAsync(
+            input: CloudformationModel.ActivateOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.activateOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ActivateOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.activateOrganizationsAccess.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ActivateOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func activateOrganizationsAccessSync(
+            input: CloudformationModel.ActivateOrganizationsAccessInput) throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.activateOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ActivateOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.activateOrganizationsAccess.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ActivateType operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -777,6 +855,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.createStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+         - completion: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    public func deactivateOrganizationsAccessAsync(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deactivateOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeactivateOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deactivateOrganizationsAccess.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func deactivateOrganizationsAccessSync(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput) throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deactivateOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeactivateOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deactivateOrganizationsAccess.rawValue,
             version: apiVersion)
 
         do {
@@ -1474,6 +1630,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.describeChangeSetHooks.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+         - completion: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    public func describeOrganizationsAccessAsync(
+            input: CloudformationModel.DescribeOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeOrganizationsAccess.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func describeOrganizationsAccessSync(
+            input: CloudformationModel.DescribeOrganizationsAccessInput) throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeOrganizationsAccess.rawValue,
             version: apiVersion)
 
         do {
@@ -5269,6 +5503,46 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
     #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
 
     /**
+     Invokes the ActivateOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func activateOrganizationsAccess(
+            input: CloudformationModel.ActivateOrganizationsAccessInput) async throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.activateOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ActivateOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.activateOrganizationsAccess.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ActivateType operation suspending until the response is available before returning.
 
      - Parameters:
@@ -5570,6 +5844,46 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.createStackSet.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func deactivateOrganizationsAccess(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput) async throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deactivateOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeactivateOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.deactivateOrganizationsAccess.rawValue,
             version: apiVersion)
 
         do {
@@ -5927,6 +6241,46 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.describeChangeSetHooks.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func describeOrganizationsAccess(
+            input: CloudformationModel.DescribeOrganizationsAccessInput) async throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeOrganizationsAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeOrganizationsAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.describeOrganizationsAccess.rawValue,
             version: apiVersion)
 
         do {

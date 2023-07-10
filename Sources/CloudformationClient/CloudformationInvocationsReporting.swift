@@ -29,6 +29,7 @@ import CloudformationModel
  Invocations reporting for the CloudformationModel.
  */
 public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
+    public let activateOrganizationsAccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let activateType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let batchDescribeTypeConfigurations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let cancelUpdateStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -37,6 +38,7 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let createStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createStackSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deactivateOrganizationsAccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deactivateType: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteStack: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -46,6 +48,7 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let describeAccountLimits: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeChangeSet: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeChangeSetHooks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeOrganizationsAccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describePublisher: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStackDriftDetectionStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStackEvents: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -97,6 +100,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let validateTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: CloudformationOperationsReporting) {
+        self.activateOrganizationsAccess = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.activateOrganizationsAccess)
         self.activateType = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.activateType)
         self.batchDescribeTypeConfigurations = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -113,6 +118,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.createStackInstances)
         self.createStackSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createStackSet)
+        self.deactivateOrganizationsAccess = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deactivateOrganizationsAccess)
         self.deactivateType = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deactivateType)
         self.deleteChangeSet = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -131,6 +138,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.describeChangeSet)
         self.describeChangeSetHooks = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeChangeSetHooks)
+        self.describeOrganizationsAccess = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeOrganizationsAccess)
         self.describePublisher = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describePublisher)
         self.describeStackDriftDetectionStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

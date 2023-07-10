@@ -31,6 +31,33 @@ import CloudformationModel
 public extension CloudformationClientProtocol {
 
     /**
+     Invokes the ActivateOrganizationsAccess operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func activateOrganizationsAccess(input: CloudformationModel.ActivateOrganizationsAccessInput) async throws
+     -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try activateOrganizationsAccessAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ActivateType operation and asynchronously returning the response.
 
      - Parameters:
@@ -229,6 +256,33 @@ public extension CloudformationClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try createStackSetAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func deactivateOrganizationsAccess(input: CloudformationModel.DeactivateOrganizationsAccessInput) async throws
+     -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deactivateOrganizationsAccessAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -467,6 +521,33 @@ public extension CloudformationClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeChangeSetHooksAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func describeOrganizationsAccess(input: CloudformationModel.DescribeOrganizationsAccessInput) async throws
+     -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeOrganizationsAccessAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

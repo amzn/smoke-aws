@@ -278,6 +278,21 @@ public struct CloudWatchLogsLogGroup: Codable, Equatable {
     }
 }
 
+public struct ConflictException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct CreateActivityInput: Codable, Equatable {
     public var name: Name
     public var tags: TagList?
@@ -318,39 +333,93 @@ public struct CreateActivityOutput: Codable, Equatable {
     }
 }
 
+public struct CreateStateMachineAliasInput: Codable, Equatable {
+    public var description: AliasDescription?
+    public var name: CharacterRestrictedName
+    public var routingConfiguration: RoutingConfigurationList
+
+    public init(description: AliasDescription? = nil,
+                name: CharacterRestrictedName,
+                routingConfiguration: RoutingConfigurationList) {
+        self.description = description
+        self.name = name
+        self.routingConfiguration = routingConfiguration
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case description
+        case name
+        case routingConfiguration
+    }
+
+    public func validate() throws {
+        try description?.validateAsAliasDescription()
+        try name.validateAsCharacterRestrictedName()
+        try routingConfiguration.validateAsRoutingConfigurationList()
+    }
+}
+
+public struct CreateStateMachineAliasOutput: Codable, Equatable {
+    public var creationDate: Timestamp
+    public var stateMachineAliasArn: Arn
+
+    public init(creationDate: Timestamp,
+                stateMachineAliasArn: Arn) {
+        self.creationDate = creationDate
+        self.stateMachineAliasArn = stateMachineAliasArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case creationDate
+        case stateMachineAliasArn
+    }
+
+    public func validate() throws {
+        try stateMachineAliasArn.validateAsArn()
+    }
+}
+
 public struct CreateStateMachineInput: Codable, Equatable {
     public var definition: Definition
     public var loggingConfiguration: LoggingConfiguration?
     public var name: Name
+    public var publish: Publish?
     public var roleArn: Arn
     public var tags: TagList?
     public var tracingConfiguration: TracingConfiguration?
     public var type: StateMachineType?
+    public var versionDescription: VersionDescription?
 
     public init(definition: Definition,
                 loggingConfiguration: LoggingConfiguration? = nil,
                 name: Name,
+                publish: Publish? = nil,
                 roleArn: Arn,
                 tags: TagList? = nil,
                 tracingConfiguration: TracingConfiguration? = nil,
-                type: StateMachineType? = nil) {
+                type: StateMachineType? = nil,
+                versionDescription: VersionDescription? = nil) {
         self.definition = definition
         self.loggingConfiguration = loggingConfiguration
         self.name = name
+        self.publish = publish
         self.roleArn = roleArn
         self.tags = tags
         self.tracingConfiguration = tracingConfiguration
         self.type = type
+        self.versionDescription = versionDescription
     }
 
     enum CodingKeys: String, CodingKey {
         case definition
         case loggingConfiguration
         case name
+        case publish
         case roleArn
         case tags
         case tracingConfiguration
         case type
+        case versionDescription
     }
 
     public func validate() throws {
@@ -359,26 +428,32 @@ public struct CreateStateMachineInput: Codable, Equatable {
         try name.validateAsName()
         try roleArn.validateAsArn()
         try tracingConfiguration?.validate()
+        try versionDescription?.validateAsVersionDescription()
     }
 }
 
 public struct CreateStateMachineOutput: Codable, Equatable {
     public var creationDate: Timestamp
     public var stateMachineArn: Arn
+    public var stateMachineVersionArn: Arn?
 
     public init(creationDate: Timestamp,
-                stateMachineArn: Arn) {
+                stateMachineArn: Arn,
+                stateMachineVersionArn: Arn? = nil) {
         self.creationDate = creationDate
         self.stateMachineArn = stateMachineArn
+        self.stateMachineVersionArn = stateMachineVersionArn
     }
 
     enum CodingKeys: String, CodingKey {
         case creationDate
         case stateMachineArn
+        case stateMachineVersionArn
     }
 
     public func validate() throws {
         try stateMachineArn.validateAsArn()
+        try stateMachineVersionArn?.validateAsArn()
     }
 }
 
@@ -407,6 +482,31 @@ public struct DeleteActivityOutput: Codable, Equatable {
     }
 }
 
+public struct DeleteStateMachineAliasInput: Codable, Equatable {
+    public var stateMachineAliasArn: Arn
+
+    public init(stateMachineAliasArn: Arn) {
+        self.stateMachineAliasArn = stateMachineAliasArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case stateMachineAliasArn
+    }
+
+    public func validate() throws {
+        try stateMachineAliasArn.validateAsArn()
+    }
+}
+
+public struct DeleteStateMachineAliasOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DeleteStateMachineInput: Codable, Equatable {
     public var stateMachineArn: Arn
 
@@ -424,6 +524,31 @@ public struct DeleteStateMachineInput: Codable, Equatable {
 }
 
 public struct DeleteStateMachineOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteStateMachineVersionInput: Codable, Equatable {
+    public var stateMachineVersionArn: LongArn
+
+    public init(stateMachineVersionArn: LongArn) {
+        self.stateMachineVersionArn = stateMachineVersionArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case stateMachineVersionArn
+    }
+
+    public func validate() throws {
+        try stateMachineVersionArn.validateAsLongArn()
+    }
+}
+
+public struct DeleteStateMachineVersionOutput: Codable, Equatable {
 
     public init() {
     }
@@ -500,7 +625,9 @@ public struct DescribeExecutionOutput: Codable, Equatable {
     public var output: SensitiveData?
     public var outputDetails: CloudWatchEventsExecutionDataDetails?
     public var startDate: Timestamp
+    public var stateMachineAliasArn: Arn?
     public var stateMachineArn: Arn
+    public var stateMachineVersionArn: Arn?
     public var status: ExecutionStatus
     public var stopDate: Timestamp?
     public var traceHeader: TraceHeader?
@@ -515,7 +642,9 @@ public struct DescribeExecutionOutput: Codable, Equatable {
                 output: SensitiveData? = nil,
                 outputDetails: CloudWatchEventsExecutionDataDetails? = nil,
                 startDate: Timestamp,
+                stateMachineAliasArn: Arn? = nil,
                 stateMachineArn: Arn,
+                stateMachineVersionArn: Arn? = nil,
                 status: ExecutionStatus,
                 stopDate: Timestamp? = nil,
                 traceHeader: TraceHeader? = nil) {
@@ -529,7 +658,9 @@ public struct DescribeExecutionOutput: Codable, Equatable {
         self.output = output
         self.outputDetails = outputDetails
         self.startDate = startDate
+        self.stateMachineAliasArn = stateMachineAliasArn
         self.stateMachineArn = stateMachineArn
+        self.stateMachineVersionArn = stateMachineVersionArn
         self.status = status
         self.stopDate = stopDate
         self.traceHeader = traceHeader
@@ -546,7 +677,9 @@ public struct DescribeExecutionOutput: Codable, Equatable {
         case output
         case outputDetails
         case startDate
+        case stateMachineAliasArn
         case stateMachineArn
+        case stateMachineVersionArn
         case status
         case stopDate
         case traceHeader
@@ -562,7 +695,9 @@ public struct DescribeExecutionOutput: Codable, Equatable {
         try name?.validateAsName()
         try output?.validateAsSensitiveData()
         try outputDetails?.validate()
+        try stateMachineAliasArn?.validateAsArn()
         try stateMachineArn.validateAsArn()
+        try stateMachineVersionArn?.validateAsArn()
         try traceHeader?.validateAsTraceHeader()
     }
 }
@@ -641,6 +776,61 @@ public struct DescribeMapRunOutput: Codable, Equatable {
     }
 }
 
+public struct DescribeStateMachineAliasInput: Codable, Equatable {
+    public var stateMachineAliasArn: Arn
+
+    public init(stateMachineAliasArn: Arn) {
+        self.stateMachineAliasArn = stateMachineAliasArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case stateMachineAliasArn
+    }
+
+    public func validate() throws {
+        try stateMachineAliasArn.validateAsArn()
+    }
+}
+
+public struct DescribeStateMachineAliasOutput: Codable, Equatable {
+    public var creationDate: Timestamp?
+    public var description: AliasDescription?
+    public var name: Name?
+    public var routingConfiguration: RoutingConfigurationList?
+    public var stateMachineAliasArn: Arn?
+    public var updateDate: Timestamp?
+
+    public init(creationDate: Timestamp? = nil,
+                description: AliasDescription? = nil,
+                name: Name? = nil,
+                routingConfiguration: RoutingConfigurationList? = nil,
+                stateMachineAliasArn: Arn? = nil,
+                updateDate: Timestamp? = nil) {
+        self.creationDate = creationDate
+        self.description = description
+        self.name = name
+        self.routingConfiguration = routingConfiguration
+        self.stateMachineAliasArn = stateMachineAliasArn
+        self.updateDate = updateDate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case creationDate
+        case description
+        case name
+        case routingConfiguration
+        case stateMachineAliasArn
+        case updateDate
+    }
+
+    public func validate() throws {
+        try description?.validateAsAliasDescription()
+        try name?.validateAsName()
+        try routingConfiguration?.validateAsRoutingConfigurationList()
+        try stateMachineAliasArn?.validateAsArn()
+    }
+}
+
 public struct DescribeStateMachineForExecutionInput: Codable, Equatable {
     public var executionArn: Arn
 
@@ -663,6 +853,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
     public var loggingConfiguration: LoggingConfiguration?
     public var mapRunArn: LongArn?
     public var name: Name
+    public var revisionId: RevisionId?
     public var roleArn: Arn
     public var stateMachineArn: Arn
     public var tracingConfiguration: TracingConfiguration?
@@ -673,6 +864,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
                 loggingConfiguration: LoggingConfiguration? = nil,
                 mapRunArn: LongArn? = nil,
                 name: Name,
+                revisionId: RevisionId? = nil,
                 roleArn: Arn,
                 stateMachineArn: Arn,
                 tracingConfiguration: TracingConfiguration? = nil,
@@ -682,6 +874,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
         self.loggingConfiguration = loggingConfiguration
         self.mapRunArn = mapRunArn
         self.name = name
+        self.revisionId = revisionId
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
         self.tracingConfiguration = tracingConfiguration
@@ -694,6 +887,7 @@ public struct DescribeStateMachineForExecutionOutput: Codable, Equatable {
         case loggingConfiguration
         case mapRunArn
         case name
+        case revisionId
         case roleArn
         case stateMachineArn
         case tracingConfiguration
@@ -730,9 +924,11 @@ public struct DescribeStateMachineInput: Codable, Equatable {
 public struct DescribeStateMachineOutput: Codable, Equatable {
     public var creationDate: Timestamp
     public var definition: Definition
+    public var description: VersionDescription?
     public var label: MapRunLabel?
     public var loggingConfiguration: LoggingConfiguration?
     public var name: Name
+    public var revisionId: RevisionId?
     public var roleArn: Arn
     public var stateMachineArn: Arn
     public var status: StateMachineStatus?
@@ -741,9 +937,11 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
 
     public init(creationDate: Timestamp,
                 definition: Definition,
+                description: VersionDescription? = nil,
                 label: MapRunLabel? = nil,
                 loggingConfiguration: LoggingConfiguration? = nil,
                 name: Name,
+                revisionId: RevisionId? = nil,
                 roleArn: Arn,
                 stateMachineArn: Arn,
                 status: StateMachineStatus? = nil,
@@ -751,9 +949,11 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
                 type: StateMachineType) {
         self.creationDate = creationDate
         self.definition = definition
+        self.description = description
         self.label = label
         self.loggingConfiguration = loggingConfiguration
         self.name = name
+        self.revisionId = revisionId
         self.roleArn = roleArn
         self.stateMachineArn = stateMachineArn
         self.status = status
@@ -764,9 +964,11 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case creationDate
         case definition
+        case description
         case label
         case loggingConfiguration
         case name
+        case revisionId
         case roleArn
         case stateMachineArn
         case status
@@ -776,6 +978,7 @@ public struct DescribeStateMachineOutput: Codable, Equatable {
 
     public func validate() throws {
         try definition.validateAsDefinition()
+        try description?.validateAsVersionDescription()
         try loggingConfiguration?.validate()
         try name.validateAsName()
         try roleArn.validateAsArn()
@@ -877,7 +1080,9 @@ public struct ExecutionListItem: Codable, Equatable {
     public var mapRunArn: LongArn?
     public var name: Name
     public var startDate: Timestamp
+    public var stateMachineAliasArn: Arn?
     public var stateMachineArn: Arn
+    public var stateMachineVersionArn: Arn?
     public var status: ExecutionStatus
     public var stopDate: Timestamp?
 
@@ -886,7 +1091,9 @@ public struct ExecutionListItem: Codable, Equatable {
                 mapRunArn: LongArn? = nil,
                 name: Name,
                 startDate: Timestamp,
+                stateMachineAliasArn: Arn? = nil,
                 stateMachineArn: Arn,
+                stateMachineVersionArn: Arn? = nil,
                 status: ExecutionStatus,
                 stopDate: Timestamp? = nil) {
         self.executionArn = executionArn
@@ -894,7 +1101,9 @@ public struct ExecutionListItem: Codable, Equatable {
         self.mapRunArn = mapRunArn
         self.name = name
         self.startDate = startDate
+        self.stateMachineAliasArn = stateMachineAliasArn
         self.stateMachineArn = stateMachineArn
+        self.stateMachineVersionArn = stateMachineVersionArn
         self.status = status
         self.stopDate = stopDate
     }
@@ -905,7 +1114,9 @@ public struct ExecutionListItem: Codable, Equatable {
         case mapRunArn
         case name
         case startDate
+        case stateMachineAliasArn
         case stateMachineArn
+        case stateMachineVersionArn
         case status
         case stopDate
     }
@@ -915,7 +1126,9 @@ public struct ExecutionListItem: Codable, Equatable {
         try itemCount?.validateAsUnsignedInteger()
         try mapRunArn?.validateAsLongArn()
         try name.validateAsName()
+        try stateMachineAliasArn?.validateAsArn()
         try stateMachineArn.validateAsArn()
+        try stateMachineVersionArn?.validateAsArn()
     }
 }
 
@@ -923,25 +1136,35 @@ public struct ExecutionStartedEventDetails: Codable, Equatable {
     public var input: SensitiveData?
     public var inputDetails: HistoryEventExecutionDataDetails?
     public var roleArn: Arn?
+    public var stateMachineAliasArn: Arn?
+    public var stateMachineVersionArn: Arn?
 
     public init(input: SensitiveData? = nil,
                 inputDetails: HistoryEventExecutionDataDetails? = nil,
-                roleArn: Arn? = nil) {
+                roleArn: Arn? = nil,
+                stateMachineAliasArn: Arn? = nil,
+                stateMachineVersionArn: Arn? = nil) {
         self.input = input
         self.inputDetails = inputDetails
         self.roleArn = roleArn
+        self.stateMachineAliasArn = stateMachineAliasArn
+        self.stateMachineVersionArn = stateMachineVersionArn
     }
 
     enum CodingKeys: String, CodingKey {
         case input
         case inputDetails
         case roleArn
+        case stateMachineAliasArn
+        case stateMachineVersionArn
     }
 
     public func validate() throws {
         try input?.validateAsSensitiveData()
         try inputDetails?.validate()
         try roleArn?.validateAsArn()
+        try stateMachineAliasArn?.validateAsArn()
+        try stateMachineVersionArn?.validateAsArn()
     }
 }
 
@@ -1697,6 +1920,98 @@ public struct ListMapRunsOutput: Codable, Equatable {
     }
 }
 
+public struct ListStateMachineAliasesInput: Codable, Equatable {
+    public var maxResults: PageSize?
+    public var nextToken: PageToken?
+    public var stateMachineArn: Arn
+
+    public init(maxResults: PageSize? = nil,
+                nextToken: PageToken? = nil,
+                stateMachineArn: Arn) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.stateMachineArn = stateMachineArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults
+        case nextToken
+        case stateMachineArn
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsPageSize()
+        try nextToken?.validateAsPageToken()
+        try stateMachineArn.validateAsArn()
+    }
+}
+
+public struct ListStateMachineAliasesOutput: Codable, Equatable {
+    public var nextToken: PageToken?
+    public var stateMachineAliases: StateMachineAliasList
+
+    public init(nextToken: PageToken? = nil,
+                stateMachineAliases: StateMachineAliasList) {
+        self.nextToken = nextToken
+        self.stateMachineAliases = stateMachineAliases
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case stateMachineAliases
+    }
+
+    public func validate() throws {
+        try nextToken?.validateAsPageToken()
+    }
+}
+
+public struct ListStateMachineVersionsInput: Codable, Equatable {
+    public var maxResults: PageSize?
+    public var nextToken: PageToken?
+    public var stateMachineArn: Arn
+
+    public init(maxResults: PageSize? = nil,
+                nextToken: PageToken? = nil,
+                stateMachineArn: Arn) {
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.stateMachineArn = stateMachineArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults
+        case nextToken
+        case stateMachineArn
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsPageSize()
+        try nextToken?.validateAsPageToken()
+        try stateMachineArn.validateAsArn()
+    }
+}
+
+public struct ListStateMachineVersionsOutput: Codable, Equatable {
+    public var nextToken: PageToken?
+    public var stateMachineVersions: StateMachineVersionList
+
+    public init(nextToken: PageToken? = nil,
+                stateMachineVersions: StateMachineVersionList) {
+        self.nextToken = nextToken
+        self.stateMachineVersions = stateMachineVersions
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case stateMachineVersions
+    }
+
+    public func validate() throws {
+        try nextToken?.validateAsPageToken()
+    }
+}
+
 public struct ListStateMachinesInput: Codable, Equatable {
     public var maxResults: PageSize?
     public var nextToken: PageToken?
@@ -2033,6 +2348,51 @@ public struct MissingRequiredParameter: Codable, Equatable {
     }
 }
 
+public struct PublishStateMachineVersionInput: Codable, Equatable {
+    public var description: VersionDescription?
+    public var revisionId: RevisionId?
+    public var stateMachineArn: Arn
+
+    public init(description: VersionDescription? = nil,
+                revisionId: RevisionId? = nil,
+                stateMachineArn: Arn) {
+        self.description = description
+        self.revisionId = revisionId
+        self.stateMachineArn = stateMachineArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case description
+        case revisionId
+        case stateMachineArn
+    }
+
+    public func validate() throws {
+        try description?.validateAsVersionDescription()
+        try stateMachineArn.validateAsArn()
+    }
+}
+
+public struct PublishStateMachineVersionOutput: Codable, Equatable {
+    public var creationDate: Timestamp
+    public var stateMachineVersionArn: Arn
+
+    public init(creationDate: Timestamp,
+                stateMachineVersionArn: Arn) {
+        self.creationDate = creationDate
+        self.stateMachineVersionArn = stateMachineVersionArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case creationDate
+        case stateMachineVersionArn
+    }
+
+    public func validate() throws {
+        try stateMachineVersionArn.validateAsArn()
+    }
+}
+
 public struct ResourceNotFound: Codable, Equatable {
     public var message: ErrorMessage?
     public var resourceName: Arn?
@@ -2050,6 +2410,27 @@ public struct ResourceNotFound: Codable, Equatable {
 
     public func validate() throws {
         try resourceName?.validateAsArn()
+    }
+}
+
+public struct RoutingConfigurationListItem: Codable, Equatable {
+    public var stateMachineVersionArn: Arn
+    public var weight: VersionWeight
+
+    public init(stateMachineVersionArn: Arn,
+                weight: VersionWeight) {
+        self.stateMachineVersionArn = stateMachineVersionArn
+        self.weight = weight
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case stateMachineVersionArn
+        case weight
+    }
+
+    public func validate() throws {
+        try stateMachineVersionArn.validateAsArn()
+        try weight.validateAsVersionWeight()
     }
 }
 
@@ -2137,6 +2518,21 @@ public struct SendTaskSuccessInput: Codable, Equatable {
 public struct SendTaskSuccessOutput: Codable, Equatable {
 
     public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ServiceQuotaExceededException: Codable, Equatable {
+    public var message: ErrorMessage?
+
+    public init(message: ErrorMessage? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
     }
 
     public func validate() throws {
@@ -2355,6 +2751,26 @@ public struct StateExitedEventDetails: Codable, Equatable {
     }
 }
 
+public struct StateMachineAliasListItem: Codable, Equatable {
+    public var creationDate: Timestamp
+    public var stateMachineAliasArn: LongArn
+
+    public init(creationDate: Timestamp,
+                stateMachineAliasArn: LongArn) {
+        self.creationDate = creationDate
+        self.stateMachineAliasArn = stateMachineAliasArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case creationDate
+        case stateMachineAliasArn
+    }
+
+    public func validate() throws {
+        try stateMachineAliasArn.validateAsLongArn()
+    }
+}
+
 public struct StateMachineAlreadyExists: Codable, Equatable {
     public var message: ErrorMessage?
 
@@ -2456,6 +2872,26 @@ public struct StateMachineTypeNotSupported: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct StateMachineVersionListItem: Codable, Equatable {
+    public var creationDate: Timestamp
+    public var stateMachineVersionArn: LongArn
+
+    public init(creationDate: Timestamp,
+                stateMachineVersionArn: LongArn) {
+        self.creationDate = creationDate
+        self.stateMachineVersionArn = stateMachineVersionArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case creationDate
+        case stateMachineVersionArn
+    }
+
+    public func validate() throws {
+        try stateMachineVersionArn.validateAsLongArn()
     }
 }
 
@@ -2951,43 +3387,33 @@ public struct UpdateMapRunOutput: Codable, Equatable {
     }
 }
 
-public struct UpdateStateMachineInput: Codable, Equatable {
-    public var definition: Definition?
-    public var loggingConfiguration: LoggingConfiguration?
-    public var roleArn: Arn?
-    public var stateMachineArn: Arn
-    public var tracingConfiguration: TracingConfiguration?
+public struct UpdateStateMachineAliasInput: Codable, Equatable {
+    public var description: AliasDescription?
+    public var routingConfiguration: RoutingConfigurationList?
+    public var stateMachineAliasArn: Arn
 
-    public init(definition: Definition? = nil,
-                loggingConfiguration: LoggingConfiguration? = nil,
-                roleArn: Arn? = nil,
-                stateMachineArn: Arn,
-                tracingConfiguration: TracingConfiguration? = nil) {
-        self.definition = definition
-        self.loggingConfiguration = loggingConfiguration
-        self.roleArn = roleArn
-        self.stateMachineArn = stateMachineArn
-        self.tracingConfiguration = tracingConfiguration
+    public init(description: AliasDescription? = nil,
+                routingConfiguration: RoutingConfigurationList? = nil,
+                stateMachineAliasArn: Arn) {
+        self.description = description
+        self.routingConfiguration = routingConfiguration
+        self.stateMachineAliasArn = stateMachineAliasArn
     }
 
     enum CodingKeys: String, CodingKey {
-        case definition
-        case loggingConfiguration
-        case roleArn
-        case stateMachineArn
-        case tracingConfiguration
+        case description
+        case routingConfiguration
+        case stateMachineAliasArn
     }
 
     public func validate() throws {
-        try definition?.validateAsDefinition()
-        try loggingConfiguration?.validate()
-        try roleArn?.validateAsArn()
-        try stateMachineArn.validateAsArn()
-        try tracingConfiguration?.validate()
+        try description?.validateAsAliasDescription()
+        try routingConfiguration?.validateAsRoutingConfigurationList()
+        try stateMachineAliasArn.validateAsArn()
     }
 }
 
-public struct UpdateStateMachineOutput: Codable, Equatable {
+public struct UpdateStateMachineAliasOutput: Codable, Equatable {
     public var updateDate: Timestamp
 
     public init(updateDate: Timestamp) {
@@ -2999,6 +3425,75 @@ public struct UpdateStateMachineOutput: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct UpdateStateMachineInput: Codable, Equatable {
+    public var definition: Definition?
+    public var loggingConfiguration: LoggingConfiguration?
+    public var publish: Publish?
+    public var roleArn: Arn?
+    public var stateMachineArn: Arn
+    public var tracingConfiguration: TracingConfiguration?
+    public var versionDescription: VersionDescription?
+
+    public init(definition: Definition? = nil,
+                loggingConfiguration: LoggingConfiguration? = nil,
+                publish: Publish? = nil,
+                roleArn: Arn? = nil,
+                stateMachineArn: Arn,
+                tracingConfiguration: TracingConfiguration? = nil,
+                versionDescription: VersionDescription? = nil) {
+        self.definition = definition
+        self.loggingConfiguration = loggingConfiguration
+        self.publish = publish
+        self.roleArn = roleArn
+        self.stateMachineArn = stateMachineArn
+        self.tracingConfiguration = tracingConfiguration
+        self.versionDescription = versionDescription
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case definition
+        case loggingConfiguration
+        case publish
+        case roleArn
+        case stateMachineArn
+        case tracingConfiguration
+        case versionDescription
+    }
+
+    public func validate() throws {
+        try definition?.validateAsDefinition()
+        try loggingConfiguration?.validate()
+        try roleArn?.validateAsArn()
+        try stateMachineArn.validateAsArn()
+        try tracingConfiguration?.validate()
+        try versionDescription?.validateAsVersionDescription()
+    }
+}
+
+public struct UpdateStateMachineOutput: Codable, Equatable {
+    public var revisionId: RevisionId?
+    public var stateMachineVersionArn: Arn?
+    public var updateDate: Timestamp
+
+    public init(revisionId: RevisionId? = nil,
+                stateMachineVersionArn: Arn? = nil,
+                updateDate: Timestamp) {
+        self.revisionId = revisionId
+        self.stateMachineVersionArn = stateMachineVersionArn
+        self.updateDate = updateDate
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case revisionId
+        case stateMachineVersionArn
+        case updateDate
+    }
+
+    public func validate() throws {
+        try stateMachineVersionArn?.validateAsArn()
     }
 }
 

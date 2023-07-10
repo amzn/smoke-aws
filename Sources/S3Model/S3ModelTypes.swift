@@ -958,6 +958,11 @@ public typealias IsLatest = Bool
 public typealias IsPublic = Bool
 
 /**
+ Type definition for the IsRestoreInProgress field.
+ */
+public typealias IsRestoreInProgress = Bool
+
+/**
  Type definition for the IsTruncated field.
  */
 public typealias IsTruncated = Bool
@@ -1369,6 +1374,7 @@ public enum ObjectStorageClass: String, Codable, CustomStringConvertible {
     case onezoneIa = "ONEZONE_IA"
     case outposts = "OUTPOSTS"
     case reducedRedundancy = "REDUCED_REDUNDANCY"
+    case snow = "SNOW"
     case standard = "STANDARD"
     case standardIa = "STANDARD_IA"
 
@@ -1401,6 +1407,24 @@ public enum ObjectVersionStorageClass: String, Codable, CustomStringConvertible 
     
     public static let __default: ObjectVersionStorageClass = .standard
 }
+
+/**
+ Enumeration restricting the values of the OptionalObjectAttributes field.
+ */
+public enum OptionalObjectAttributes: String, Codable, CustomStringConvertible {
+    case restorestatus = "RestoreStatus"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: OptionalObjectAttributes = .restorestatus
+}
+
+/**
+ Type definition for the OptionalObjectAttributesList field.
+ */
+public typealias OptionalObjectAttributesList = [OptionalObjectAttributes]
 
 /**
  Enumeration restricting the values of the OwnerOverride field.
@@ -1704,6 +1728,11 @@ public typealias ResponseExpires = String
 public typealias Restore = String
 
 /**
+ Type definition for the RestoreExpiryDate field.
+ */
+public typealias RestoreExpiryDate = String
+
+/**
  Type definition for the RestoreOutputPath field.
  */
 public typealias RestoreOutputPath = String
@@ -1767,6 +1796,7 @@ public typealias SSEKMSKeyId = String
 public enum ServerSideEncryption: String, Codable, CustomStringConvertible {
     case aes256 = "AES256"
     case awsKms = "aws:kms"
+    case awsKmsDsse = "aws:kms:dsse"
 
     public var description: String {
         return rawValue
@@ -1830,6 +1860,7 @@ public enum StorageClass: String, Codable, CustomStringConvertible {
     case onezoneIa = "ONEZONE_IA"
     case outposts = "OUTPOSTS"
     case reducedRedundancy = "REDUCED_REDUNDANCY"
+    case snow = "SNOW"
     case standard = "STANDARD"
     case standardIa = "STANDARD_IA"
 

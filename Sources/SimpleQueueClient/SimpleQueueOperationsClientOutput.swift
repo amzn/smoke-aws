@@ -25,6 +25,19 @@ import SmokeHTTPClient
 import SimpleQueueModel
 
 /**
+ Type to handle the output from the CancelMessageMoveTask operation in a HTTP client.
+ */
+extension CancelMessageMoveTaskResultForCancelMessageMoveTask: HTTPResponseOutputProtocol {
+    public typealias BodyType = CancelMessageMoveTaskResultForCancelMessageMoveTask
+    public typealias HeadersType = CancelMessageMoveTaskResultForCancelMessageMoveTask
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> CancelMessageMoveTaskResultForCancelMessageMoveTask {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ChangeMessageVisibilityBatch operation in a HTTP client.
  */
 extension ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch: HTTPResponseOutputProtocol {
@@ -103,6 +116,19 @@ extension ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues: HTTPRes
 }
 
 /**
+ Type to handle the output from the ListMessageMoveTasks operation in a HTTP client.
+ */
+extension ListMessageMoveTasksResultForListMessageMoveTasks: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListMessageMoveTasksResultForListMessageMoveTasks
+    public typealias HeadersType = ListMessageMoveTasksResultForListMessageMoveTasks
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListMessageMoveTasksResultForListMessageMoveTasks {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListQueueTags operation in a HTTP client.
  */
 extension ListQueueTagsResultForListQueueTags: HTTPResponseOutputProtocol {
@@ -163,6 +189,19 @@ extension SendMessageBatchResultForSendMessageBatch: HTTPResponseOutputProtocol 
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> SendMessageBatchResultForSendMessageBatch {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the StartMessageMoveTask operation in a HTTP client.
+ */
+extension StartMessageMoveTaskResultForStartMessageMoveTask: HTTPResponseOutputProtocol {
+    public typealias BodyType = StartMessageMoveTaskResultForStartMessageMoveTask
+    public typealias HeadersType = StartMessageMoveTaskResultForStartMessageMoveTask
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> StartMessageMoveTaskResultForStartMessageMoveTask {
         return try bodyDecodableProvider()
     }
 }

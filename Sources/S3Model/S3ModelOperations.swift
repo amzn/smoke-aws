@@ -2512,13 +2512,17 @@ public extension GetBucketAccelerateConfigurationRequest {
  */
 public struct GetBucketAccelerateConfigurationOperationInputAdditionalHeaders: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
+    public var requestPayer: RequestPayer?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
         self.expectedBucketOwner = expectedBucketOwner
+        self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case requestPayer = "x-amz-request-payer"
     }
 
     public func validate() throws {
@@ -2528,7 +2532,60 @@ public struct GetBucketAccelerateConfigurationOperationInputAdditionalHeaders: C
 public extension GetBucketAccelerateConfigurationRequest {
     func asS3ModelGetBucketAccelerateConfigurationOperationInputAdditionalHeaders() -> GetBucketAccelerateConfigurationOperationInputAdditionalHeaders {
         return GetBucketAccelerateConfigurationOperationInputAdditionalHeaders(
-            expectedBucketOwner: expectedBucketOwner)
+            expectedBucketOwner: expectedBucketOwner,
+            requestPayer: requestPayer)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketAccelerateConfiguration
+ operation.
+ */
+public struct GetBucketAccelerateConfigurationOperationOutputBody: Codable, Equatable {
+    public var status: BucketAccelerateStatus?
+
+    public init(status: BucketAccelerateStatus? = nil) {
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case status = "Status"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketAccelerateConfigurationOutput {
+    func asS3ModelGetBucketAccelerateConfigurationOperationOutputBody() -> GetBucketAccelerateConfigurationOperationOutputBody {
+        return GetBucketAccelerateConfigurationOperationOutputBody(
+            status: status)
+    }
+}
+
+/**
+ Structure to encode the body input for the GetBucketAccelerateConfiguration
+ operation.
+ */
+public struct GetBucketAccelerateConfigurationOperationOutputHeaders: Codable, Equatable {
+    public var requestCharged: RequestCharged?
+
+    public init(requestCharged: RequestCharged? = nil) {
+        self.requestCharged = requestCharged
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension GetBucketAccelerateConfigurationOutput {
+    func asS3ModelGetBucketAccelerateConfigurationOperationOutputHeaders() -> GetBucketAccelerateConfigurationOperationOutputHeaders {
+        return GetBucketAccelerateConfigurationOperationOutputHeaders(
+            requestCharged: requestCharged)
     }
 }
 
@@ -5494,13 +5551,17 @@ public extension ListMultipartUploadsRequest {
  */
 public struct ListMultipartUploadsOperationInputAdditionalHeaders: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
+    public var requestPayer: RequestPayer?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                requestPayer: RequestPayer? = nil) {
         self.expectedBucketOwner = expectedBucketOwner
+        self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case requestPayer = "x-amz-request-payer"
     }
 
     public func validate() throws {
@@ -5510,7 +5571,115 @@ public struct ListMultipartUploadsOperationInputAdditionalHeaders: Codable, Equa
 public extension ListMultipartUploadsRequest {
     func asS3ModelListMultipartUploadsOperationInputAdditionalHeaders() -> ListMultipartUploadsOperationInputAdditionalHeaders {
         return ListMultipartUploadsOperationInputAdditionalHeaders(
-            expectedBucketOwner: expectedBucketOwner)
+            expectedBucketOwner: expectedBucketOwner,
+            requestPayer: requestPayer)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListMultipartUploads
+ operation.
+ */
+public struct ListMultipartUploadsOperationOutputBody: Codable, Equatable {
+    public var bucket: BucketName?
+    public var commonPrefixes: CommonPrefixList?
+    public var delimiter: Delimiter?
+    public var encodingType: EncodingType?
+    public var isTruncated: IsTruncated?
+    public var keyMarker: KeyMarker?
+    public var maxUploads: MaxUploads?
+    public var nextKeyMarker: NextKeyMarker?
+    public var nextUploadIdMarker: NextUploadIdMarker?
+    public var prefix: Prefix?
+    public var uploadIdMarker: UploadIdMarker?
+    public var uploads: MultipartUploadList?
+
+    public init(bucket: BucketName? = nil,
+                commonPrefixes: CommonPrefixList? = nil,
+                delimiter: Delimiter? = nil,
+                encodingType: EncodingType? = nil,
+                isTruncated: IsTruncated? = nil,
+                keyMarker: KeyMarker? = nil,
+                maxUploads: MaxUploads? = nil,
+                nextKeyMarker: NextKeyMarker? = nil,
+                nextUploadIdMarker: NextUploadIdMarker? = nil,
+                prefix: Prefix? = nil,
+                uploadIdMarker: UploadIdMarker? = nil,
+                uploads: MultipartUploadList? = nil) {
+        self.bucket = bucket
+        self.commonPrefixes = commonPrefixes
+        self.delimiter = delimiter
+        self.encodingType = encodingType
+        self.isTruncated = isTruncated
+        self.keyMarker = keyMarker
+        self.maxUploads = maxUploads
+        self.nextKeyMarker = nextKeyMarker
+        self.nextUploadIdMarker = nextUploadIdMarker
+        self.prefix = prefix
+        self.uploadIdMarker = uploadIdMarker
+        self.uploads = uploads
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case bucket = "Bucket"
+        case commonPrefixes = "CommonPrefixes"
+        case delimiter = "Delimiter"
+        case encodingType = "EncodingType"
+        case isTruncated = "IsTruncated"
+        case keyMarker = "KeyMarker"
+        case maxUploads = "MaxUploads"
+        case nextKeyMarker = "NextKeyMarker"
+        case nextUploadIdMarker = "NextUploadIdMarker"
+        case prefix = "Prefix"
+        case uploadIdMarker = "UploadIdMarker"
+        case uploads = "Upload"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListMultipartUploadsOutput {
+    func asS3ModelListMultipartUploadsOperationOutputBody() -> ListMultipartUploadsOperationOutputBody {
+        return ListMultipartUploadsOperationOutputBody(
+            bucket: bucket,
+            commonPrefixes: commonPrefixes,
+            delimiter: delimiter,
+            encodingType: encodingType,
+            isTruncated: isTruncated,
+            keyMarker: keyMarker,
+            maxUploads: maxUploads,
+            nextKeyMarker: nextKeyMarker,
+            nextUploadIdMarker: nextUploadIdMarker,
+            prefix: prefix,
+            uploadIdMarker: uploadIdMarker,
+            uploads: uploads)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListMultipartUploads
+ operation.
+ */
+public struct ListMultipartUploadsOperationOutputHeaders: Codable, Equatable {
+    public var requestCharged: RequestCharged?
+
+    public init(requestCharged: RequestCharged? = nil) {
+        self.requestCharged = requestCharged
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListMultipartUploadsOutput {
+    func asS3ModelListMultipartUploadsOperationOutputHeaders() -> ListMultipartUploadsOperationOutputHeaders {
+        return ListMultipartUploadsOperationOutputHeaders(
+            requestCharged: requestCharged)
     }
 }
 
@@ -5597,13 +5766,21 @@ public extension ListObjectVersionsRequest {
  */
 public struct ListObjectVersionsOperationInputAdditionalHeaders: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
+    public var optionalObjectAttributes: OptionalObjectAttributesList?
+    public var requestPayer: RequestPayer?
 
-    public init(expectedBucketOwner: AccountId? = nil) {
+    public init(expectedBucketOwner: AccountId? = nil,
+                optionalObjectAttributes: OptionalObjectAttributesList? = nil,
+                requestPayer: RequestPayer? = nil) {
         self.expectedBucketOwner = expectedBucketOwner
+        self.optionalObjectAttributes = optionalObjectAttributes
+        self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case optionalObjectAttributes = "x-amz-optional-object-attributes"
+        case requestPayer = "x-amz-request-payer"
     }
 
     public func validate() throws {
@@ -5613,7 +5790,121 @@ public struct ListObjectVersionsOperationInputAdditionalHeaders: Codable, Equata
 public extension ListObjectVersionsRequest {
     func asS3ModelListObjectVersionsOperationInputAdditionalHeaders() -> ListObjectVersionsOperationInputAdditionalHeaders {
         return ListObjectVersionsOperationInputAdditionalHeaders(
-            expectedBucketOwner: expectedBucketOwner)
+            expectedBucketOwner: expectedBucketOwner,
+            optionalObjectAttributes: optionalObjectAttributes,
+            requestPayer: requestPayer)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListObjectVersions
+ operation.
+ */
+public struct ListObjectVersionsOperationOutputBody: Codable, Equatable {
+    public var commonPrefixes: CommonPrefixList?
+    public var deleteMarkers: DeleteMarkers?
+    public var delimiter: Delimiter?
+    public var encodingType: EncodingType?
+    public var isTruncated: IsTruncated?
+    public var keyMarker: KeyMarker?
+    public var maxKeys: MaxKeys?
+    public var name: BucketName?
+    public var nextKeyMarker: NextKeyMarker?
+    public var nextVersionIdMarker: NextVersionIdMarker?
+    public var prefix: Prefix?
+    public var versionIdMarker: VersionIdMarker?
+    public var versions: ObjectVersionList?
+
+    public init(commonPrefixes: CommonPrefixList? = nil,
+                deleteMarkers: DeleteMarkers? = nil,
+                delimiter: Delimiter? = nil,
+                encodingType: EncodingType? = nil,
+                isTruncated: IsTruncated? = nil,
+                keyMarker: KeyMarker? = nil,
+                maxKeys: MaxKeys? = nil,
+                name: BucketName? = nil,
+                nextKeyMarker: NextKeyMarker? = nil,
+                nextVersionIdMarker: NextVersionIdMarker? = nil,
+                prefix: Prefix? = nil,
+                versionIdMarker: VersionIdMarker? = nil,
+                versions: ObjectVersionList? = nil) {
+        self.commonPrefixes = commonPrefixes
+        self.deleteMarkers = deleteMarkers
+        self.delimiter = delimiter
+        self.encodingType = encodingType
+        self.isTruncated = isTruncated
+        self.keyMarker = keyMarker
+        self.maxKeys = maxKeys
+        self.name = name
+        self.nextKeyMarker = nextKeyMarker
+        self.nextVersionIdMarker = nextVersionIdMarker
+        self.prefix = prefix
+        self.versionIdMarker = versionIdMarker
+        self.versions = versions
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case commonPrefixes = "CommonPrefixes"
+        case deleteMarkers = "DeleteMarker"
+        case delimiter = "Delimiter"
+        case encodingType = "EncodingType"
+        case isTruncated = "IsTruncated"
+        case keyMarker = "KeyMarker"
+        case maxKeys = "MaxKeys"
+        case name = "Name"
+        case nextKeyMarker = "NextKeyMarker"
+        case nextVersionIdMarker = "NextVersionIdMarker"
+        case prefix = "Prefix"
+        case versionIdMarker = "VersionIdMarker"
+        case versions = "Version"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListObjectVersionsOutput {
+    func asS3ModelListObjectVersionsOperationOutputBody() -> ListObjectVersionsOperationOutputBody {
+        return ListObjectVersionsOperationOutputBody(
+            commonPrefixes: commonPrefixes,
+            deleteMarkers: deleteMarkers,
+            delimiter: delimiter,
+            encodingType: encodingType,
+            isTruncated: isTruncated,
+            keyMarker: keyMarker,
+            maxKeys: maxKeys,
+            name: name,
+            nextKeyMarker: nextKeyMarker,
+            nextVersionIdMarker: nextVersionIdMarker,
+            prefix: prefix,
+            versionIdMarker: versionIdMarker,
+            versions: versions)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListObjectVersions
+ operation.
+ */
+public struct ListObjectVersionsOperationOutputHeaders: Codable, Equatable {
+    public var requestCharged: RequestCharged?
+
+    public init(requestCharged: RequestCharged? = nil) {
+        self.requestCharged = requestCharged
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListObjectVersionsOutput {
+    func asS3ModelListObjectVersionsOperationOutputHeaders() -> ListObjectVersionsOperationOutputHeaders {
+        return ListObjectVersionsOperationOutputHeaders(
+            requestCharged: requestCharged)
     }
 }
 
@@ -5695,16 +5986,20 @@ public extension ListObjectsRequest {
  */
 public struct ListObjectsOperationInputAdditionalHeaders: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
+    public var optionalObjectAttributes: OptionalObjectAttributesList?
     public var requestPayer: RequestPayer?
 
     public init(expectedBucketOwner: AccountId? = nil,
+                optionalObjectAttributes: OptionalObjectAttributesList? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.expectedBucketOwner = expectedBucketOwner
+        self.optionalObjectAttributes = optionalObjectAttributes
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case optionalObjectAttributes = "x-amz-optional-object-attributes"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -5716,7 +6011,105 @@ public extension ListObjectsRequest {
     func asS3ModelListObjectsOperationInputAdditionalHeaders() -> ListObjectsOperationInputAdditionalHeaders {
         return ListObjectsOperationInputAdditionalHeaders(
             expectedBucketOwner: expectedBucketOwner,
+            optionalObjectAttributes: optionalObjectAttributes,
             requestPayer: requestPayer)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListObjects
+ operation.
+ */
+public struct ListObjectsOperationOutputBody: Codable, Equatable {
+    public var commonPrefixes: CommonPrefixList?
+    public var contents: ObjectList?
+    public var delimiter: Delimiter?
+    public var encodingType: EncodingType?
+    public var isTruncated: IsTruncated?
+    public var marker: Marker?
+    public var maxKeys: MaxKeys?
+    public var name: BucketName?
+    public var nextMarker: NextMarker?
+    public var prefix: Prefix?
+
+    public init(commonPrefixes: CommonPrefixList? = nil,
+                contents: ObjectList? = nil,
+                delimiter: Delimiter? = nil,
+                encodingType: EncodingType? = nil,
+                isTruncated: IsTruncated? = nil,
+                marker: Marker? = nil,
+                maxKeys: MaxKeys? = nil,
+                name: BucketName? = nil,
+                nextMarker: NextMarker? = nil,
+                prefix: Prefix? = nil) {
+        self.commonPrefixes = commonPrefixes
+        self.contents = contents
+        self.delimiter = delimiter
+        self.encodingType = encodingType
+        self.isTruncated = isTruncated
+        self.marker = marker
+        self.maxKeys = maxKeys
+        self.name = name
+        self.nextMarker = nextMarker
+        self.prefix = prefix
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case commonPrefixes = "CommonPrefixes"
+        case contents = "Contents"
+        case delimiter = "Delimiter"
+        case encodingType = "EncodingType"
+        case isTruncated = "IsTruncated"
+        case marker = "Marker"
+        case maxKeys = "MaxKeys"
+        case name = "Name"
+        case nextMarker = "NextMarker"
+        case prefix = "Prefix"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListObjectsOutput {
+    func asS3ModelListObjectsOperationOutputBody() -> ListObjectsOperationOutputBody {
+        return ListObjectsOperationOutputBody(
+            commonPrefixes: commonPrefixes,
+            contents: contents,
+            delimiter: delimiter,
+            encodingType: encodingType,
+            isTruncated: isTruncated,
+            marker: marker,
+            maxKeys: maxKeys,
+            name: name,
+            nextMarker: nextMarker,
+            prefix: prefix)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListObjects
+ operation.
+ */
+public struct ListObjectsOperationOutputHeaders: Codable, Equatable {
+    public var requestCharged: RequestCharged?
+
+    public init(requestCharged: RequestCharged? = nil) {
+        self.requestCharged = requestCharged
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListObjectsOutput {
+    func asS3ModelListObjectsOperationOutputHeaders() -> ListObjectsOperationOutputHeaders {
+        return ListObjectsOperationOutputHeaders(
+            requestCharged: requestCharged)
     }
 }
 
@@ -5808,16 +6201,20 @@ public extension ListObjectsV2Request {
  */
 public struct ListObjectsV2OperationInputAdditionalHeaders: Codable, Equatable {
     public var expectedBucketOwner: AccountId?
+    public var optionalObjectAttributes: OptionalObjectAttributesList?
     public var requestPayer: RequestPayer?
 
     public init(expectedBucketOwner: AccountId? = nil,
+                optionalObjectAttributes: OptionalObjectAttributesList? = nil,
                 requestPayer: RequestPayer? = nil) {
         self.expectedBucketOwner = expectedBucketOwner
+        self.optionalObjectAttributes = optionalObjectAttributes
         self.requestPayer = requestPayer
     }
 
     enum CodingKeys: String, CodingKey {
         case expectedBucketOwner = "x-amz-expected-bucket-owner"
+        case optionalObjectAttributes = "x-amz-optional-object-attributes"
         case requestPayer = "x-amz-request-payer"
     }
 
@@ -5829,7 +6226,115 @@ public extension ListObjectsV2Request {
     func asS3ModelListObjectsV2OperationInputAdditionalHeaders() -> ListObjectsV2OperationInputAdditionalHeaders {
         return ListObjectsV2OperationInputAdditionalHeaders(
             expectedBucketOwner: expectedBucketOwner,
+            optionalObjectAttributes: optionalObjectAttributes,
             requestPayer: requestPayer)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListObjectsV2
+ operation.
+ */
+public struct ListObjectsV2OperationOutputBody: Codable, Equatable {
+    public var commonPrefixes: CommonPrefixList?
+    public var contents: ObjectList?
+    public var continuationToken: Token?
+    public var delimiter: Delimiter?
+    public var encodingType: EncodingType?
+    public var isTruncated: IsTruncated?
+    public var keyCount: KeyCount?
+    public var maxKeys: MaxKeys?
+    public var name: BucketName?
+    public var nextContinuationToken: NextToken?
+    public var prefix: Prefix?
+    public var startAfter: StartAfter?
+
+    public init(commonPrefixes: CommonPrefixList? = nil,
+                contents: ObjectList? = nil,
+                continuationToken: Token? = nil,
+                delimiter: Delimiter? = nil,
+                encodingType: EncodingType? = nil,
+                isTruncated: IsTruncated? = nil,
+                keyCount: KeyCount? = nil,
+                maxKeys: MaxKeys? = nil,
+                name: BucketName? = nil,
+                nextContinuationToken: NextToken? = nil,
+                prefix: Prefix? = nil,
+                startAfter: StartAfter? = nil) {
+        self.commonPrefixes = commonPrefixes
+        self.contents = contents
+        self.continuationToken = continuationToken
+        self.delimiter = delimiter
+        self.encodingType = encodingType
+        self.isTruncated = isTruncated
+        self.keyCount = keyCount
+        self.maxKeys = maxKeys
+        self.name = name
+        self.nextContinuationToken = nextContinuationToken
+        self.prefix = prefix
+        self.startAfter = startAfter
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case commonPrefixes = "CommonPrefixes"
+        case contents = "Contents"
+        case continuationToken = "ContinuationToken"
+        case delimiter = "Delimiter"
+        case encodingType = "EncodingType"
+        case isTruncated = "IsTruncated"
+        case keyCount = "KeyCount"
+        case maxKeys = "MaxKeys"
+        case name = "Name"
+        case nextContinuationToken = "NextContinuationToken"
+        case prefix = "Prefix"
+        case startAfter = "StartAfter"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListObjectsV2Output {
+    func asS3ModelListObjectsV2OperationOutputBody() -> ListObjectsV2OperationOutputBody {
+        return ListObjectsV2OperationOutputBody(
+            commonPrefixes: commonPrefixes,
+            contents: contents,
+            continuationToken: continuationToken,
+            delimiter: delimiter,
+            encodingType: encodingType,
+            isTruncated: isTruncated,
+            keyCount: keyCount,
+            maxKeys: maxKeys,
+            name: name,
+            nextContinuationToken: nextContinuationToken,
+            prefix: prefix,
+            startAfter: startAfter)
+    }
+}
+
+/**
+ Structure to encode the body input for the ListObjectsV2
+ operation.
+ */
+public struct ListObjectsV2OperationOutputHeaders: Codable, Equatable {
+    public var requestCharged: RequestCharged?
+
+    public init(requestCharged: RequestCharged? = nil) {
+        self.requestCharged = requestCharged
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case requestCharged = "x-amz-request-charged"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public extension ListObjectsV2Output {
+    func asS3ModelListObjectsV2OperationOutputHeaders() -> ListObjectsV2OperationOutputHeaders {
+        return ListObjectsV2OperationOutputHeaders(
+            requestCharged: requestCharged)
     }
 }
 

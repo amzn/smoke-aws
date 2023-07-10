@@ -39,6 +39,11 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
     typealias CreateStateMachineAsyncType = (
             _ input: StepFunctionsModel.CreateStateMachineInput, 
             _ completion: @escaping (Result<StepFunctionsModel.CreateStateMachineOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias CreateStateMachineAliasSyncType = (
+            _ input: StepFunctionsModel.CreateStateMachineAliasInput) throws -> StepFunctionsModel.CreateStateMachineAliasOutput
+    typealias CreateStateMachineAliasAsyncType = (
+            _ input: StepFunctionsModel.CreateStateMachineAliasInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.CreateStateMachineAliasOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DeleteActivitySyncType = (
             _ input: StepFunctionsModel.DeleteActivityInput) throws -> StepFunctionsModel.DeleteActivityOutput
     typealias DeleteActivityAsyncType = (
@@ -49,6 +54,16 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
     typealias DeleteStateMachineAsyncType = (
             _ input: StepFunctionsModel.DeleteStateMachineInput, 
             _ completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias DeleteStateMachineAliasSyncType = (
+            _ input: StepFunctionsModel.DeleteStateMachineAliasInput) throws -> StepFunctionsModel.DeleteStateMachineAliasOutput
+    typealias DeleteStateMachineAliasAsyncType = (
+            _ input: StepFunctionsModel.DeleteStateMachineAliasInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineAliasOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias DeleteStateMachineVersionSyncType = (
+            _ input: StepFunctionsModel.DeleteStateMachineVersionInput) throws -> StepFunctionsModel.DeleteStateMachineVersionOutput
+    typealias DeleteStateMachineVersionAsyncType = (
+            _ input: StepFunctionsModel.DeleteStateMachineVersionInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineVersionOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DescribeActivitySyncType = (
             _ input: StepFunctionsModel.DescribeActivityInput) throws -> StepFunctionsModel.DescribeActivityOutput
     typealias DescribeActivityAsyncType = (
@@ -69,6 +84,11 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
     typealias DescribeStateMachineAsyncType = (
             _ input: StepFunctionsModel.DescribeStateMachineInput, 
             _ completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias DescribeStateMachineAliasSyncType = (
+            _ input: StepFunctionsModel.DescribeStateMachineAliasInput) throws -> StepFunctionsModel.DescribeStateMachineAliasOutput
+    typealias DescribeStateMachineAliasAsyncType = (
+            _ input: StepFunctionsModel.DescribeStateMachineAliasInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineAliasOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias DescribeStateMachineForExecutionSyncType = (
             _ input: StepFunctionsModel.DescribeStateMachineForExecutionInput) throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput
     typealias DescribeStateMachineForExecutionAsyncType = (
@@ -99,6 +119,16 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
     typealias ListMapRunsAsyncType = (
             _ input: StepFunctionsModel.ListMapRunsInput, 
             _ completion: @escaping (Result<StepFunctionsModel.ListMapRunsOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias ListStateMachineAliasesSyncType = (
+            _ input: StepFunctionsModel.ListStateMachineAliasesInput) throws -> StepFunctionsModel.ListStateMachineAliasesOutput
+    typealias ListStateMachineAliasesAsyncType = (
+            _ input: StepFunctionsModel.ListStateMachineAliasesInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.ListStateMachineAliasesOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias ListStateMachineVersionsSyncType = (
+            _ input: StepFunctionsModel.ListStateMachineVersionsInput) throws -> StepFunctionsModel.ListStateMachineVersionsOutput
+    typealias ListStateMachineVersionsAsyncType = (
+            _ input: StepFunctionsModel.ListStateMachineVersionsInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.ListStateMachineVersionsOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias ListStateMachinesSyncType = (
             _ input: StepFunctionsModel.ListStateMachinesInput) throws -> StepFunctionsModel.ListStateMachinesOutput
     typealias ListStateMachinesAsyncType = (
@@ -109,6 +139,11 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
     typealias ListTagsForResourceAsyncType = (
             _ input: StepFunctionsModel.ListTagsForResourceInput, 
             _ completion: @escaping (Result<StepFunctionsModel.ListTagsForResourceOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias PublishStateMachineVersionSyncType = (
+            _ input: StepFunctionsModel.PublishStateMachineVersionInput) throws -> StepFunctionsModel.PublishStateMachineVersionOutput
+    typealias PublishStateMachineVersionAsyncType = (
+            _ input: StepFunctionsModel.PublishStateMachineVersionInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.PublishStateMachineVersionOutput, StepFunctionsError>) -> ()) throws -> ()
     typealias SendTaskFailureSyncType = (
             _ input: StepFunctionsModel.SendTaskFailureInput) throws -> StepFunctionsModel.SendTaskFailureOutput
     typealias SendTaskFailureAsyncType = (
@@ -159,6 +194,11 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
     typealias UpdateStateMachineAsyncType = (
             _ input: StepFunctionsModel.UpdateStateMachineInput, 
             _ completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineOutput, StepFunctionsError>) -> ()) throws -> ()
+    typealias UpdateStateMachineAliasSyncType = (
+            _ input: StepFunctionsModel.UpdateStateMachineAliasInput) throws -> StepFunctionsModel.UpdateStateMachineAliasOutput
+    typealias UpdateStateMachineAliasAsyncType = (
+            _ input: StepFunctionsModel.UpdateStateMachineAliasInput, 
+            _ completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineAliasOutput, StepFunctionsError>) -> ()) throws -> ()
 
     /**
      Invokes the CreateActivity operation returning immediately and passing the response to a callback.
@@ -194,7 +234,7 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
          - completion: The CreateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The CreateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+           The possible errors are: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags, validation.
      */
     func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
@@ -207,10 +247,36 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
          - input: The validated CreateStateMachineInput object being passed to this operation.
      - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags, validation.
      */
     func createStateMachineSync(
             input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput
+
+    /**
+     Invokes the CreateStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateStateMachineAliasInput object being passed to this operation.
+         - completion: The CreateStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The CreateStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, invalidName, resourceNotFound, serviceQuotaExceeded, stateMachineDeleting, validation.
+     */
+    func createStateMachineAliasAsync(
+            input: StepFunctionsModel.CreateStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineAliasOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the CreateStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateStateMachineAliasInput object being passed to this operation.
+     - Returns: The CreateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, invalidName, resourceNotFound, serviceQuotaExceeded, stateMachineDeleting, validation.
+     */
+    func createStateMachineAliasSync(
+            input: StepFunctionsModel.CreateStateMachineAliasInput) throws -> StepFunctionsModel.CreateStateMachineAliasOutput
 
     /**
      Invokes the DeleteActivity operation returning immediately and passing the response to a callback.
@@ -263,6 +329,58 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
      */
     func deleteStateMachineSync(
             input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput
+
+    /**
+     Invokes the DeleteStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineAliasInput object being passed to this operation.
+         - completion: The DeleteStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The DeleteStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, resourceNotFound, validation.
+     */
+    func deleteStateMachineAliasAsync(
+            input: StepFunctionsModel.DeleteStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineAliasOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the DeleteStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineAliasInput object being passed to this operation.
+     - Returns: The DeleteStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    func deleteStateMachineAliasSync(
+            input: StepFunctionsModel.DeleteStateMachineAliasInput) throws -> StepFunctionsModel.DeleteStateMachineAliasOutput
+
+    /**
+     Invokes the DeleteStateMachineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineVersionInput object being passed to this operation.
+         - completion: The DeleteStateMachineVersionOutput object or an error will be passed to this 
+           callback when the operation is complete. The DeleteStateMachineVersionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, validation.
+     */
+    func deleteStateMachineVersionAsync(
+            input: StepFunctionsModel.DeleteStateMachineVersionInput, 
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineVersionOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the DeleteStateMachineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineVersionInput object being passed to this operation.
+     - Returns: The DeleteStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, validation.
+     */
+    func deleteStateMachineVersionSync(
+            input: StepFunctionsModel.DeleteStateMachineVersionInput) throws -> StepFunctionsModel.DeleteStateMachineVersionOutput
 
     /**
      Invokes the DescribeActivity operation returning immediately and passing the response to a callback.
@@ -367,6 +485,32 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
      */
     func describeStateMachineSync(
             input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput
+
+    /**
+     Invokes the DescribeStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineAliasInput object being passed to this operation.
+         - completion: The DescribeStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound, validation.
+     */
+    func describeStateMachineAliasAsync(
+            input: StepFunctionsModel.DescribeStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineAliasOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the DescribeStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineAliasInput object being passed to this operation.
+     - Returns: The DescribeStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    func describeStateMachineAliasSync(
+            input: StepFunctionsModel.DescribeStateMachineAliasInput) throws -> StepFunctionsModel.DescribeStateMachineAliasOutput
 
     /**
      Invokes the DescribeStateMachineForExecution operation returning immediately and passing the response to a callback.
@@ -525,6 +669,58 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
             input: StepFunctionsModel.ListMapRunsInput) throws -> StepFunctionsModel.ListMapRunsOutput
 
     /**
+     Invokes the ListStateMachineAliases operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStateMachineAliasesInput object being passed to this operation.
+         - completion: The ListStateMachineAliasesOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListStateMachineAliasesOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidToken, resourceNotFound, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    func listStateMachineAliasesAsync(
+            input: StepFunctionsModel.ListStateMachineAliasesInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachineAliasesOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the ListStateMachineAliases operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachineAliasesInput object being passed to this operation.
+     - Returns: The ListStateMachineAliasesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    func listStateMachineAliasesSync(
+            input: StepFunctionsModel.ListStateMachineAliasesInput) throws -> StepFunctionsModel.ListStateMachineAliasesOutput
+
+    /**
+     Invokes the ListStateMachineVersions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStateMachineVersionsInput object being passed to this operation.
+         - completion: The ListStateMachineVersionsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListStateMachineVersionsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidToken, validation.
+     */
+    func listStateMachineVersionsAsync(
+            input: StepFunctionsModel.ListStateMachineVersionsInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachineVersionsOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the ListStateMachineVersions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachineVersionsInput object being passed to this operation.
+     - Returns: The ListStateMachineVersionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, validation.
+     */
+    func listStateMachineVersionsSync(
+            input: StepFunctionsModel.ListStateMachineVersionsInput) throws -> StepFunctionsModel.ListStateMachineVersionsOutput
+
+    /**
      Invokes the ListStateMachines operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -575,6 +771,32 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
      */
     func listTagsForResourceSync(
             input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput
+
+    /**
+     Invokes the PublishStateMachineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishStateMachineVersionInput object being passed to this operation.
+         - completion: The PublishStateMachineVersionOutput object or an error will be passed to this 
+           callback when the operation is complete. The PublishStateMachineVersionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    func publishStateMachineVersionAsync(
+            input: StepFunctionsModel.PublishStateMachineVersionInput, 
+            completion: @escaping (Result<StepFunctionsModel.PublishStateMachineVersionOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the PublishStateMachineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishStateMachineVersionInput object being passed to this operation.
+     - Returns: The PublishStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    func publishStateMachineVersionSync(
+            input: StepFunctionsModel.PublishStateMachineVersionInput) throws -> StepFunctionsModel.PublishStateMachineVersionOutput
 
     /**
      Invokes the SendTaskFailure operation returning immediately and passing the response to a callback.
@@ -818,7 +1040,7 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
          - completion: The UpdateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+           The possible errors are: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
@@ -831,8 +1053,34 @@ public protocol StepFunctionsClientProtocol: StepFunctionsClientProtocolV2 {
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func updateStateMachineSync(
             input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput
+
+    /**
+     Invokes the UpdateStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineAliasInput object being passed to this operation.
+         - completion: The UpdateStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, resourceNotFound, validation.
+     */
+    func updateStateMachineAliasAsync(
+            input: StepFunctionsModel.UpdateStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineAliasOutput, StepFunctionsError>) -> ()) throws
+
+    /**
+     Invokes the UpdateStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineAliasInput object being passed to this operation.
+     - Returns: The UpdateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    func updateStateMachineAliasSync(
+            input: StepFunctionsModel.UpdateStateMachineAliasInput) throws -> StepFunctionsModel.UpdateStateMachineAliasOutput
 }

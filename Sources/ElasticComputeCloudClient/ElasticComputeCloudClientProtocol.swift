@@ -99,6 +99,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias AssignPrivateIpAddressesAsyncType = (
             _ input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateIpAddressesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias AssignPrivateNatGatewayAddressSyncType = (
+            _ input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult
+    typealias AssignPrivateNatGatewayAddressAsyncType = (
+            _ input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AssociateAddressSyncType = (
             _ input: ElasticComputeCloudModel.AssociateAddressRequest) throws -> ElasticComputeCloudModel.AssociateAddressResult
     typealias AssociateAddressAsyncType = (
@@ -129,6 +134,16 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias AssociateInstanceEventWindowAsyncType = (
             _ input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.AssociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias AssociateIpamResourceDiscoverySyncType = (
+            _ input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult
+    typealias AssociateIpamResourceDiscoveryAsyncType = (
+            _ input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias AssociateNatGatewayAddressSyncType = (
+            _ input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.AssociateNatGatewayAddressResult
+    typealias AssociateNatGatewayAddressAsyncType = (
+            _ input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.AssociateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias AssociateRouteTableSyncType = (
             _ input: ElasticComputeCloudModel.AssociateRouteTableRequest) throws -> ElasticComputeCloudModel.AssociateRouteTableResult
     typealias AssociateRouteTableAsyncType = (
@@ -364,6 +379,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias CreateImageAsyncType = (
             _ input: ElasticComputeCloudModel.CreateImageRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateImageResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateInstanceConnectEndpointSyncType = (
+            _ input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest) throws -> ElasticComputeCloudModel.CreateInstanceConnectEndpointResult
+    typealias CreateInstanceConnectEndpointAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceConnectEndpointResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateInstanceEventWindowSyncType = (
             _ input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.CreateInstanceEventWindowResult
     typealias CreateInstanceEventWindowAsyncType = (
@@ -389,6 +409,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias CreateIpamPoolAsyncType = (
             _ input: ElasticComputeCloudModel.CreateIpamPoolRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamPoolResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias CreateIpamResourceDiscoverySyncType = (
+            _ input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult
+    typealias CreateIpamResourceDiscoveryAsyncType = (
+            _ input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias CreateIpamScopeSyncType = (
             _ input: ElasticComputeCloudModel.CreateIpamScopeRequest) throws -> ElasticComputeCloudModel.CreateIpamScopeResult
     typealias CreateIpamScopeAsyncType = (
@@ -739,6 +764,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias DeleteFpgaImageAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteFpgaImageRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteFpgaImageResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteInstanceConnectEndpointSyncType = (
+            _ input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest) throws -> ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult
+    typealias DeleteInstanceConnectEndpointAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteInstanceEventWindowSyncType = (
             _ input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DeleteInstanceEventWindowResult
     typealias DeleteInstanceEventWindowAsyncType = (
@@ -759,6 +789,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias DeleteIpamPoolAsyncType = (
             _ input: ElasticComputeCloudModel.DeleteIpamPoolRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamPoolResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DeleteIpamResourceDiscoverySyncType = (
+            _ input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult
+    typealias DeleteIpamResourceDiscoveryAsyncType = (
+            _ input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DeleteIpamScopeSyncType = (
             _ input: ElasticComputeCloudModel.DeleteIpamScopeRequest) throws -> ElasticComputeCloudModel.DeleteIpamScopeResult
     typealias DeleteIpamScopeAsyncType = (
@@ -1304,6 +1339,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias DescribeInstanceAttributeAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.InstanceAttribute, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeInstanceConnectEndpointsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult
+    typealias DescribeInstanceConnectEndpointsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeInstanceCreditSpecificationsSyncType = (
             _ input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult
     typealias DescribeInstanceCreditSpecificationsAsyncType = (
@@ -1349,6 +1389,16 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias DescribeIpamPoolsAsyncType = (
             _ input: ElasticComputeCloudModel.DescribeIpamPoolsRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamPoolsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeIpamResourceDiscoveriesSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest) throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult
+    typealias DescribeIpamResourceDiscoveriesAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DescribeIpamResourceDiscoveryAssociationsSyncType = (
+            _ input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult
+    typealias DescribeIpamResourceDiscoveryAssociationsAsyncType = (
+            _ input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DescribeIpamScopesSyncType = (
             _ input: ElasticComputeCloudModel.DescribeIpamScopesRequest) throws -> ElasticComputeCloudModel.DescribeIpamScopesResult
     typealias DescribeIpamScopesAsyncType = (
@@ -1904,6 +1954,16 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias DisassociateInstanceEventWindowAsyncType = (
             _ input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateInstanceEventWindowResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DisassociateIpamResourceDiscoverySyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult
+    typealias DisassociateIpamResourceDiscoveryAsyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias DisassociateNatGatewayAddressSyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.DisassociateNatGatewayAddressResult
+    typealias DisassociateNatGatewayAddressAsyncType = (
+            _ input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.DisassociateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias DisassociateRouteTableSyncType = (
             _ input: ElasticComputeCloudModel.DisassociateRouteTableRequest) throws -> ()
     typealias DisassociateRouteTableAsyncType = (
@@ -2109,6 +2169,16 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias GetIpamAddressHistoryAsyncType = (
             _ input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetIpamAddressHistoryResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetIpamDiscoveredAccountsSyncType = (
+            _ input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest) throws -> ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult
+    typealias GetIpamDiscoveredAccountsAsyncType = (
+            _ input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetIpamDiscoveredResourceCidrsSyncType = (
+            _ input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest) throws -> ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult
+    typealias GetIpamDiscoveredResourceCidrsAsyncType = (
+            _ input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias GetIpamPoolAllocationsSyncType = (
             _ input: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest) throws -> ElasticComputeCloudModel.GetIpamPoolAllocationsResult
     typealias GetIpamPoolAllocationsAsyncType = (
@@ -2229,6 +2299,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias GetVpnConnectionDeviceTypesAsyncType = (
             _ input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias GetVpnTunnelReplacementStatusSyncType = (
+            _ input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest) throws -> ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult
+    typealias GetVpnTunnelReplacementStatusAsyncType = (
+            _ input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ImportClientVpnClientCertificateRevocationListSyncType = (
             _ input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult
     typealias ImportClientVpnClientCertificateRevocationListAsyncType = (
@@ -2389,6 +2464,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias ModifyIpamResourceCidrAsyncType = (
             _ input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamResourceCidrResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ModifyIpamResourceDiscoverySyncType = (
+            _ input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult
+    typealias ModifyIpamResourceDiscoveryAsyncType = (
+            _ input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ModifyIpamScopeSyncType = (
             _ input: ElasticComputeCloudModel.ModifyIpamScopeRequest) throws -> ElasticComputeCloudModel.ModifyIpamScopeResult
     typealias ModifyIpamScopeAsyncType = (
@@ -2724,6 +2804,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias ReplaceTransitGatewayRouteAsyncType = (
             _ input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest, 
             _ completion: @escaping (Result<ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult, ElasticComputeCloudError>) -> ()) throws -> ()
+    typealias ReplaceVpnTunnelSyncType = (
+            _ input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest) throws -> ElasticComputeCloudModel.ReplaceVpnTunnelResult
+    typealias ReplaceVpnTunnelAsyncType = (
+            _ input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.ReplaceVpnTunnelResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias ReportInstanceStatusSyncType = (
             _ input: ElasticComputeCloudModel.ReportInstanceStatusRequest) throws -> ()
     typealias ReportInstanceStatusAsyncType = (
@@ -2889,6 +2974,11 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
     typealias UnassignPrivateIpAddressesAsyncType = (
             _ input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest, 
             _ completion: @escaping (ElasticComputeCloudError?) -> ()) throws -> ()
+    typealias UnassignPrivateNatGatewayAddressSyncType = (
+            _ input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult
+    typealias UnassignPrivateNatGatewayAddressAsyncType = (
+            _ input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest, 
+            _ completion: @escaping (Result<ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws -> ()
     typealias UnmonitorInstancesSyncType = (
             _ input: ElasticComputeCloudModel.UnmonitorInstancesRequest) throws -> ElasticComputeCloudModel.UnmonitorInstancesResult
     typealias UnmonitorInstancesAsyncType = (
@@ -3247,6 +3337,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) throws -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult
 
     /**
+     Invokes the AssignPrivateNatGatewayAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssignPrivateNatGatewayAddressRequest object being passed to this operation.
+         - completion: The AssignPrivateNatGatewayAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The AssignPrivateNatGatewayAddressResult
+           object will be validated before being returned to caller.
+     */
+    func assignPrivateNatGatewayAddressAsync(
+            input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AssignPrivateNatGatewayAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func assignPrivateNatGatewayAddressSync(
+            input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult
+
+    /**
      Invokes the AssociateAddress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -3386,6 +3500,54 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
      */
     func associateInstanceEventWindowSync(
             input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.AssociateInstanceEventWindowResult
+
+    /**
+     Invokes the AssociateIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The AssociateIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    func associateIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AssociateIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The AssociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult
+
+    /**
+     Invokes the AssociateNatGatewayAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateNatGatewayAddressRequest object being passed to this operation.
+         - completion: The AssociateNatGatewayAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateNatGatewayAddressResult
+           object will be validated before being returned to caller.
+     */
+    func associateNatGatewayAddressAsync(
+            input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the AssociateNatGatewayAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateNatGatewayAddressSync(
+            input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.AssociateNatGatewayAddressResult
 
     /**
      Invokes the AssociateRouteTable operation returning immediately and passing the response to a callback.
@@ -4507,6 +4669,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.CreateImageRequest) throws -> ElasticComputeCloudModel.CreateImageResult
 
     /**
+     Invokes the CreateInstanceConnectEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateInstanceConnectEndpointRequest object being passed to this operation.
+         - completion: The CreateInstanceConnectEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateInstanceConnectEndpointResult
+           object will be validated before being returned to caller.
+     */
+    func createInstanceConnectEndpointAsync(
+            input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceConnectEndpointResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateInstanceConnectEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The CreateInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createInstanceConnectEndpointSync(
+            input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest) throws -> ElasticComputeCloudModel.CreateInstanceConnectEndpointResult
+
+    /**
      Invokes the CreateInstanceEventWindow operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -4625,6 +4811,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
      */
     func createIpamPoolSync(
             input: ElasticComputeCloudModel.CreateIpamPoolRequest) throws -> ElasticComputeCloudModel.CreateIpamPoolResult
+
+    /**
+     Invokes the CreateIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The CreateIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    func createIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the CreateIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The CreateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult
 
     /**
      Invokes the CreateIpamScope operation returning immediately and passing the response to a callback.
@@ -6292,6 +6502,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest) throws -> ElasticComputeCloudModel.DeleteFpgaImageResult
 
     /**
+     Invokes the DeleteInstanceConnectEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInstanceConnectEndpointRequest object being passed to this operation.
+         - completion: The DeleteInstanceConnectEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteInstanceConnectEndpointResult
+           object will be validated before being returned to caller.
+     */
+    func deleteInstanceConnectEndpointAsync(
+            input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteInstanceConnectEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The DeleteInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteInstanceConnectEndpointSync(
+            input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest) throws -> ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult
+
+    /**
      Invokes the DeleteInstanceEventWindow operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -6383,6 +6617,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
      */
     func deleteIpamPoolSync(
             input: ElasticComputeCloudModel.DeleteIpamPoolRequest) throws -> ElasticComputeCloudModel.DeleteIpamPoolResult
+
+    /**
+     Invokes the DeleteIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The DeleteIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    func deleteIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DeleteIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DeleteIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult
 
     /**
      Invokes the DeleteIpamScope operation returning immediately and passing the response to a callback.
@@ -8947,6 +9205,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest) throws -> ElasticComputeCloudModel.InstanceAttribute
 
     /**
+     Invokes the DescribeInstanceConnectEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceConnectEndpointsRequest object being passed to this operation.
+         - completion: The DescribeInstanceConnectEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceConnectEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    func describeInstanceConnectEndpointsAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeInstanceConnectEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceConnectEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceConnectEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeInstanceConnectEndpointsSync(
+            input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult
+
+    /**
      Invokes the DescribeInstanceCreditSpecifications operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -9161,6 +9443,54 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
      */
     func describeIpamPoolsSync(
             input: ElasticComputeCloudModel.DescribeIpamPoolsRequest) throws -> ElasticComputeCloudModel.DescribeIpamPoolsResult
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveries operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveriesRequest object being passed to this operation.
+         - completion: The DescribeIpamResourceDiscoveriesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeIpamResourceDiscoveriesResult
+           object will be validated before being returned to caller.
+     */
+    func describeIpamResourceDiscoveriesAsync(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveries operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveriesRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeIpamResourceDiscoveriesSync(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest) throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveryAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveryAssociationsRequest object being passed to this operation.
+         - completion: The DescribeIpamResourceDiscoveryAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeIpamResourceDiscoveryAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    func describeIpamResourceDiscoveryAssociationsAsync(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveryAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveryAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveryAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeIpamResourceDiscoveryAssociationsSync(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult
 
     /**
      Invokes the DescribeIpamScopes operation returning immediately and passing the response to a callback.
@@ -11812,6 +12142,54 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest) throws -> ElasticComputeCloudModel.DisassociateInstanceEventWindowResult
 
     /**
+     Invokes the DisassociateIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The DisassociateIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    func disassociateIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisassociateIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DisassociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult
+
+    /**
+     Invokes the DisassociateNatGatewayAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateNatGatewayAddressRequest object being passed to this operation.
+         - completion: The DisassociateNatGatewayAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateNatGatewayAddressResult
+           object will be validated before being returned to caller.
+     */
+    func disassociateNatGatewayAddressAsync(
+            input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the DisassociateNatGatewayAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The DisassociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateNatGatewayAddressSync(
+            input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.DisassociateNatGatewayAddressResult
+
+    /**
      Invokes the DisassociateRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -12787,6 +13165,54 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest) throws -> ElasticComputeCloudModel.GetIpamAddressHistoryResult
 
     /**
+     Invokes the GetIpamDiscoveredAccounts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredAccountsRequest object being passed to this operation.
+         - completion: The GetIpamDiscoveredAccountsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetIpamDiscoveredAccountsResult
+           object will be validated before being returned to caller.
+     */
+    func getIpamDiscoveredAccountsAsync(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetIpamDiscoveredAccounts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredAccountsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredAccountsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getIpamDiscoveredAccountsSync(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest) throws -> ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult
+
+    /**
+     Invokes the GetIpamDiscoveredResourceCidrs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredResourceCidrsRequest object being passed to this operation.
+         - completion: The GetIpamDiscoveredResourceCidrsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetIpamDiscoveredResourceCidrsResult
+           object will be validated before being returned to caller.
+     */
+    func getIpamDiscoveredResourceCidrsAsync(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetIpamDiscoveredResourceCidrs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredResourceCidrsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredResourceCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getIpamDiscoveredResourceCidrsSync(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest) throws -> ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult
+
+    /**
      Invokes the GetIpamPoolAllocations operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -13361,6 +13787,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
      */
     func getVpnConnectionDeviceTypesSync(
             input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest) throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult
+
+    /**
+     Invokes the GetVpnTunnelReplacementStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVpnTunnelReplacementStatusRequest object being passed to this operation.
+         - completion: The GetVpnTunnelReplacementStatusResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVpnTunnelReplacementStatusResult
+           object will be validated before being returned to caller.
+     */
+    func getVpnTunnelReplacementStatusAsync(
+            input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the GetVpnTunnelReplacementStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVpnTunnelReplacementStatusRequest object being passed to this operation.
+     - Returns: The GetVpnTunnelReplacementStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getVpnTunnelReplacementStatusSync(
+            input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest) throws -> ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult
 
     /**
      Invokes the ImportClientVpnClientCertificateRevocationList operation returning immediately and passing the response to a callback.
@@ -14117,6 +14567,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
      */
     func modifyIpamResourceCidrSync(
             input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest) throws -> ElasticComputeCloudModel.ModifyIpamResourceCidrResult
+
+    /**
+     Invokes the ModifyIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The ModifyIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    func modifyIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ModifyIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The ModifyIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult
 
     /**
      Invokes the ModifyIpamScope operation returning immediately and passing the response to a callback.
@@ -15700,6 +16174,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult
 
     /**
+     Invokes the ReplaceVpnTunnel operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceVpnTunnelRequest object being passed to this operation.
+         - completion: The ReplaceVpnTunnelResult object or an error will be passed to this 
+           callback when the operation is complete. The ReplaceVpnTunnelResult
+           object will be validated before being returned to caller.
+     */
+    func replaceVpnTunnelAsync(
+            input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceVpnTunnelResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the ReplaceVpnTunnel operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceVpnTunnelRequest object being passed to this operation.
+     - Returns: The ReplaceVpnTunnelResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func replaceVpnTunnelSync(
+            input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest) throws -> ElasticComputeCloudModel.ReplaceVpnTunnelResult
+
+    /**
      Invokes the ReportInstanceStatus operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -16469,6 +16967,30 @@ public protocol ElasticComputeCloudClientProtocol: ElasticComputeCloudClientProt
      */
     func unassignPrivateIpAddressesSync(
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest) throws
+
+    /**
+     Invokes the UnassignPrivateNatGatewayAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UnassignPrivateNatGatewayAddressRequest object being passed to this operation.
+         - completion: The UnassignPrivateNatGatewayAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The UnassignPrivateNatGatewayAddressResult
+           object will be validated before being returned to caller.
+     */
+    func unassignPrivateNatGatewayAddressAsync(
+            input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws
+
+    /**
+     Invokes the UnassignPrivateNatGatewayAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UnassignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The UnassignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func unassignPrivateNatGatewayAddressSync(
+            input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult
 
     /**
      Invokes the UnmonitorInstances operation returning immediately and passing the response to a callback.

@@ -142,6 +142,19 @@ extension DeleteServiceResponse: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteTaskDefinitions operation in a HTTP client.
+ */
+extension DeleteTaskDefinitionsResponse: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteTaskDefinitionsResponse
+    public typealias HeadersType = DeleteTaskDefinitionsResponse
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteTaskDefinitionsResponse {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteTaskSet operation in a HTTP client.
  */
 extension DeleteTaskSetResponse: HTTPResponseOutputProtocol {

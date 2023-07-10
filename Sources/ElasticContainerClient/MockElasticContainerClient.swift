@@ -47,6 +47,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
     let deleteClusterSyncOverride: DeleteClusterSyncType?
     let deleteServiceAsyncOverride: DeleteServiceAsyncType?
     let deleteServiceSyncOverride: DeleteServiceSyncType?
+    let deleteTaskDefinitionsAsyncOverride: DeleteTaskDefinitionsAsyncType?
+    let deleteTaskDefinitionsSyncOverride: DeleteTaskDefinitionsSyncType?
     let deleteTaskSetAsyncOverride: DeleteTaskSetAsyncType?
     let deleteTaskSetSyncOverride: DeleteTaskSetSyncType?
     let deregisterContainerInstanceAsyncOverride: DeregisterContainerInstanceAsyncType?
@@ -163,6 +165,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
             deleteClusterSync: DeleteClusterSyncType? = nil,
             deleteServiceAsync: DeleteServiceAsyncType? = nil,
             deleteServiceSync: DeleteServiceSyncType? = nil,
+            deleteTaskDefinitionsAsync: DeleteTaskDefinitionsAsyncType? = nil,
+            deleteTaskDefinitionsSync: DeleteTaskDefinitionsSyncType? = nil,
             deleteTaskSetAsync: DeleteTaskSetAsyncType? = nil,
             deleteTaskSetSync: DeleteTaskSetSyncType? = nil,
             deregisterContainerInstanceAsync: DeregisterContainerInstanceAsyncType? = nil,
@@ -273,6 +277,8 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         self.deleteClusterSyncOverride = deleteClusterSync
         self.deleteServiceAsyncOverride = deleteServiceAsync
         self.deleteServiceSyncOverride = deleteServiceSync
+        self.deleteTaskDefinitionsAsyncOverride = deleteTaskDefinitionsAsync
+        self.deleteTaskDefinitionsSyncOverride = deleteTaskDefinitionsSync
         self.deleteTaskSetAsyncOverride = deleteTaskSetAsync
         self.deleteTaskSetSyncOverride = deleteTaskSetSync
         self.deregisterContainerInstanceAsyncOverride = deregisterContainerInstanceAsync
@@ -415,7 +421,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The CreateClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The CreateClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, invalidParameter, server.
+           The possible errors are: client, invalidParameter, namespaceNotFound, server.
      */
     public func createClusterAsync(
             input: ElasticContainerModel.CreateClusterRequest, 
@@ -436,7 +442,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated CreateClusterRequest object being passed to this operation.
      - Returns: The CreateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, server.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
      */
     public func createClusterSync(
             input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse {
@@ -725,6 +731,46 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
         }
 
         return DeleteServiceResponse.__default
+    }
+
+    /**
+     Invokes the DeleteTaskDefinitions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+         - completion: The DeleteTaskDefinitionsResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTaskDefinitionsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, invalidParameter, server.
+     */
+    public func deleteTaskDefinitionsAsync(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest, 
+            completion: @escaping (Result<ElasticContainerModel.DeleteTaskDefinitionsResponse, ElasticContainerError>) -> ()) throws {
+        if let deleteTaskDefinitionsAsyncOverride = deleteTaskDefinitionsAsyncOverride {
+            return try deleteTaskDefinitionsAsyncOverride(input, completion)
+        }
+
+        let result = DeleteTaskDefinitionsResponse.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeleteTaskDefinitions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+     - Returns: The DeleteTaskDefinitionsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    public func deleteTaskDefinitionsSync(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest) throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse {
+        if let deleteTaskDefinitionsSyncOverride = deleteTaskDefinitionsSyncOverride {
+            return try deleteTaskDefinitionsSyncOverride(input)
+        }
+
+        return DeleteTaskDefinitionsResponse.__default
     }
 
     /**
@@ -2255,7 +2301,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - completion: The UpdateClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The UpdateClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, clusterNotFound, invalidParameter, server.
+           The possible errors are: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     public func updateClusterAsync(
             input: ElasticContainerModel.UpdateClusterRequest, 
@@ -2276,7 +2322,7 @@ public struct MockElasticContainerClient: ElasticContainerClientProtocol {
          - input: The validated UpdateClusterRequest object being passed to this operation.
      - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     public func updateClusterSync(
             input: ElasticContainerModel.UpdateClusterRequest) throws -> ElasticContainerModel.UpdateClusterResponse {

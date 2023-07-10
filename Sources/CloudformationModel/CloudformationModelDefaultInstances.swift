@@ -48,6 +48,40 @@ public extension AccountLimit {
     }()
 }
 
+public extension ActivateOrganizationsAccessInput {
+    /**
+     Default instance of the ActivateOrganizationsAccessInput structure.
+     */
+    static let __default: CloudformationModel.ActivateOrganizationsAccessInput = {
+        let defaultInstance = CloudformationModel.ActivateOrganizationsAccessInput()
+
+        return defaultInstance
+    }()
+}
+
+public extension ActivateOrganizationsAccessOutput {
+    /**
+     Default instance of the ActivateOrganizationsAccessOutput structure.
+     */
+    static let __default: CloudformationModel.ActivateOrganizationsAccessOutput = {
+        let defaultInstance = CloudformationModel.ActivateOrganizationsAccessOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension ActivateOrganizationsAccessOutputForActivateOrganizationsAccess {
+    /**
+     Default instance of the ActivateOrganizationsAccessOutputForActivateOrganizationsAccess structure.
+     */
+    static let __default: CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess = {
+        let defaultInstance = CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess(
+            activateOrganizationsAccessResult: ActivateOrganizationsAccessOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ActivateTypeInput {
     /**
      Default instance of the ActivateTypeInput structure.
@@ -337,6 +371,7 @@ public extension CreateChangeSetInput {
             description: nil,
             includeNestedStacks: nil,
             notificationARNs: nil,
+            onStackFailure: nil,
             parameters: nil,
             resourceTypes: nil,
             resourcesToImport: nil,
@@ -528,6 +563,40 @@ public extension CreatedButModifiedException {
      */
     static let __default: CloudformationModel.CreatedButModifiedException = {
         let defaultInstance = CloudformationModel.CreatedButModifiedException()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeactivateOrganizationsAccessInput {
+    /**
+     Default instance of the DeactivateOrganizationsAccessInput structure.
+     */
+    static let __default: CloudformationModel.DeactivateOrganizationsAccessInput = {
+        let defaultInstance = CloudformationModel.DeactivateOrganizationsAccessInput()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeactivateOrganizationsAccessOutput {
+    /**
+     Default instance of the DeactivateOrganizationsAccessOutput structure.
+     */
+    static let __default: CloudformationModel.DeactivateOrganizationsAccessOutput = {
+        let defaultInstance = CloudformationModel.DeactivateOrganizationsAccessOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess {
+    /**
+     Default instance of the DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess structure.
+     */
+    static let __default: CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess = {
+        let defaultInstance = CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess(
+            deactivateOrganizationsAccessResult: DeactivateOrganizationsAccessOutput.__default)
 
         return defaultInstance
     }()
@@ -865,6 +934,7 @@ public extension DescribeChangeSetOutput {
             includeNestedStacks: nil,
             nextToken: nil,
             notificationARNs: nil,
+            onStackFailure: nil,
             parameters: nil,
             parentChangeSetId: nil,
             rollbackConfiguration: nil,
@@ -886,6 +956,42 @@ public extension DescribeChangeSetOutputForDescribeChangeSet {
     static let __default: CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet = {
         let defaultInstance = CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet(
             describeChangeSetResult: DescribeChangeSetOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeOrganizationsAccessInput {
+    /**
+     Default instance of the DescribeOrganizationsAccessInput structure.
+     */
+    static let __default: CloudformationModel.DescribeOrganizationsAccessInput = {
+        let defaultInstance = CloudformationModel.DescribeOrganizationsAccessInput(
+            callAs: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeOrganizationsAccessOutput {
+    /**
+     Default instance of the DescribeOrganizationsAccessOutput structure.
+     */
+    static let __default: CloudformationModel.DescribeOrganizationsAccessOutput = {
+        let defaultInstance = CloudformationModel.DescribeOrganizationsAccessOutput(
+            status: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess {
+    /**
+     Default instance of the DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess structure.
+     */
+    static let __default: CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess = {
+        let defaultInstance = CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess(
+            describeOrganizationsAccessResult: DescribeOrganizationsAccessOutput.__default)
 
         return defaultInstance
     }()
@@ -3207,6 +3313,7 @@ public extension StackSet {
             organizationalUnitIds: nil,
             parameters: nil,
             permissionModel: nil,
+            regions: nil,
             stackSetARN: nil,
             stackSetDriftDetectionDetails: nil,
             stackSetId: nil,

@@ -29,6 +29,11 @@ import SmokeHTTPClient
  Client Protocol for the Cloudformation service.
  */
 public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
+    typealias ActivateOrganizationsAccessSyncType = (
+            _ input: CloudformationModel.ActivateOrganizationsAccessInput) throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
+    typealias ActivateOrganizationsAccessAsyncType = (
+            _ input: CloudformationModel.ActivateOrganizationsAccessInput, 
+            _ completion: @escaping (Result<CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess, CloudformationError>) -> ()) throws -> ()
     typealias ActivateTypeSyncType = (
             _ input: CloudformationModel.ActivateTypeInput) throws -> CloudformationModel.ActivateTypeOutputForActivateType
     typealias ActivateTypeAsyncType = (
@@ -69,6 +74,11 @@ public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
     typealias CreateStackSetAsyncType = (
             _ input: CloudformationModel.CreateStackSetInput, 
             _ completion: @escaping (Result<CloudformationModel.CreateStackSetOutputForCreateStackSet, CloudformationError>) -> ()) throws -> ()
+    typealias DeactivateOrganizationsAccessSyncType = (
+            _ input: CloudformationModel.DeactivateOrganizationsAccessInput) throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
+    typealias DeactivateOrganizationsAccessAsyncType = (
+            _ input: CloudformationModel.DeactivateOrganizationsAccessInput, 
+            _ completion: @escaping (Result<CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess, CloudformationError>) -> ()) throws -> ()
     typealias DeactivateTypeSyncType = (
             _ input: CloudformationModel.DeactivateTypeInput) throws -> CloudformationModel.DeactivateTypeOutputForDeactivateType
     typealias DeactivateTypeAsyncType = (
@@ -114,6 +124,11 @@ public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
     typealias DescribeChangeSetHooksAsyncType = (
             _ input: CloudformationModel.DescribeChangeSetHooksInput, 
             _ completion: @escaping (Result<CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks, CloudformationError>) -> ()) throws -> ()
+    typealias DescribeOrganizationsAccessSyncType = (
+            _ input: CloudformationModel.DescribeOrganizationsAccessInput) throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
+    typealias DescribeOrganizationsAccessAsyncType = (
+            _ input: CloudformationModel.DescribeOrganizationsAccessInput, 
+            _ completion: @escaping (Result<CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess, CloudformationError>) -> ()) throws -> ()
     typealias DescribePublisherSyncType = (
             _ input: CloudformationModel.DescribePublisherInput) throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher
     typealias DescribePublisherAsyncType = (
@@ -361,6 +376,32 @@ public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
             _ completion: @escaping (Result<CloudformationModel.ValidateTemplateOutputForValidateTemplate, CloudformationError>) -> ()) throws -> ()
 
     /**
+     Invokes the ActivateOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+         - completion: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    func activateOrganizationsAccessAsync(
+            input: CloudformationModel.ActivateOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the ActivateOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func activateOrganizationsAccessSync(
+            input: CloudformationModel.ActivateOrganizationsAccessInput) throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
+
+    /**
      Invokes the ActivateType operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -564,6 +605,32 @@ public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
      */
     func createStackSetSync(
             input: CloudformationModel.CreateStackSetInput) throws -> CloudformationModel.CreateStackSetOutputForCreateStackSet
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+         - completion: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    func deactivateOrganizationsAccessAsync(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func deactivateOrganizationsAccessSync(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput) throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
 
     /**
      Invokes the DeactivateType operation returning immediately and passing the response to a callback.
@@ -793,6 +860,32 @@ public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
      */
     func describeChangeSetHooksSync(
             input: CloudformationModel.DescribeChangeSetHooksInput) throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+         - completion: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    func describeOrganizationsAccessAsync(
+            input: CloudformationModel.DescribeOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func describeOrganizationsAccessSync(
+            input: CloudformationModel.DescribeOrganizationsAccessInput) throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
 
     /**
      Invokes the DescribePublisher operation returning immediately and passing the response to a callback.

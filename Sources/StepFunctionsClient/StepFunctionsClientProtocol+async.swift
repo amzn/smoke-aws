@@ -64,13 +64,40 @@ public extension StepFunctionsClientProtocol {
          - input: The validated CreateStateMachineInput object being passed to this operation.
      - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags, validation.
      */
     func createStateMachine(input: StepFunctionsModel.CreateStateMachineInput) async throws
      -> StepFunctionsModel.CreateStateMachineOutput {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try createStateMachineAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateStateMachineAlias operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateStateMachineAliasInput object being passed to this operation.
+     - Returns: The CreateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, invalidName, resourceNotFound, serviceQuotaExceeded, stateMachineDeleting, validation.
+     */
+    func createStateMachineAlias(input: StepFunctionsModel.CreateStateMachineAliasInput) async throws
+     -> StepFunctionsModel.CreateStateMachineAliasOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try createStateMachineAliasAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -125,6 +152,60 @@ public extension StepFunctionsClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteStateMachineAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteStateMachineAlias operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineAliasInput object being passed to this operation.
+     - Returns: The DeleteStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    func deleteStateMachineAlias(input: StepFunctionsModel.DeleteStateMachineAliasInput) async throws
+     -> StepFunctionsModel.DeleteStateMachineAliasOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteStateMachineAliasAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteStateMachineVersion operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineVersionInput object being passed to this operation.
+     - Returns: The DeleteStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, validation.
+     */
+    func deleteStateMachineVersion(input: StepFunctionsModel.DeleteStateMachineVersionInput) async throws
+     -> StepFunctionsModel.DeleteStateMachineVersionOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteStateMachineVersionAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -233,6 +314,33 @@ public extension StepFunctionsClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeStateMachineAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeStateMachineAlias operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineAliasInput object being passed to this operation.
+     - Returns: The DescribeStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    func describeStateMachineAlias(input: StepFunctionsModel.DescribeStateMachineAliasInput) async throws
+     -> StepFunctionsModel.DescribeStateMachineAliasOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeStateMachineAliasAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -409,6 +517,60 @@ public extension StepFunctionsClientProtocol {
     }
 
     /**
+     Invokes the ListStateMachineAliases operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListStateMachineAliasesInput object being passed to this operation.
+     - Returns: The ListStateMachineAliasesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    func listStateMachineAliases(input: StepFunctionsModel.ListStateMachineAliasesInput) async throws
+     -> StepFunctionsModel.ListStateMachineAliasesOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try listStateMachineAliasesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ListStateMachineVersions operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListStateMachineVersionsInput object being passed to this operation.
+     - Returns: The ListStateMachineVersionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, validation.
+     */
+    func listStateMachineVersions(input: StepFunctionsModel.ListStateMachineVersionsInput) async throws
+     -> StepFunctionsModel.ListStateMachineVersionsOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try listStateMachineVersionsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ListStateMachines operation and asynchronously returning the response.
 
      - Parameters:
@@ -449,6 +611,33 @@ public extension StepFunctionsClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try listTagsForResourceAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the PublishStateMachineVersion operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated PublishStateMachineVersionInput object being passed to this operation.
+     - Returns: The PublishStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    func publishStateMachineVersion(input: StepFunctionsModel.PublishStateMachineVersionInput) async throws
+     -> StepFunctionsModel.PublishStateMachineVersionOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try publishStateMachineVersionAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -712,13 +901,40 @@ public extension StepFunctionsClientProtocol {
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     func updateStateMachine(input: StepFunctionsModel.UpdateStateMachineInput) async throws
      -> StepFunctionsModel.UpdateStateMachineOutput {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try updateStateMachineAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the UpdateStateMachineAlias operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineAliasInput object being passed to this operation.
+     - Returns: The UpdateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    func updateStateMachineAlias(input: StepFunctionsModel.UpdateStateMachineAliasInput) async throws
+     -> StepFunctionsModel.UpdateStateMachineAliasOutput {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try updateStateMachineAliasAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

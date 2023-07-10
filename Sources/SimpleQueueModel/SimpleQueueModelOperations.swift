@@ -27,6 +27,7 @@ import Foundation
  */
 public enum SimpleQueueModelOperations: String, Hashable, CustomStringConvertible {
     case addPermission = "AddPermission"
+    case cancelMessageMoveTask = "CancelMessageMoveTask"
     case changeMessageVisibility = "ChangeMessageVisibility"
     case changeMessageVisibilityBatch = "ChangeMessageVisibilityBatch"
     case createQueue = "CreateQueue"
@@ -36,6 +37,7 @@ public enum SimpleQueueModelOperations: String, Hashable, CustomStringConvertibl
     case getQueueAttributes = "GetQueueAttributes"
     case getQueueUrl = "GetQueueUrl"
     case listDeadLetterSourceQueues = "ListDeadLetterSourceQueues"
+    case listMessageMoveTasks = "ListMessageMoveTasks"
     case listQueueTags = "ListQueueTags"
     case listQueues = "ListQueues"
     case purgeQueue = "PurgeQueue"
@@ -44,6 +46,7 @@ public enum SimpleQueueModelOperations: String, Hashable, CustomStringConvertibl
     case sendMessage = "SendMessage"
     case sendMessageBatch = "SendMessageBatch"
     case setQueueAttributes = "SetQueueAttributes"
+    case startMessageMoveTask = "StartMessageMoveTask"
     case tagQueue = "TagQueue"
     case untagQueue = "UntagQueue"
 
@@ -54,6 +57,8 @@ public enum SimpleQueueModelOperations: String, Hashable, CustomStringConvertibl
     public var operationPath: String {
         switch self {
         case .addPermission:
+            return "/"
+        case .cancelMessageMoveTask:
             return "/"
         case .changeMessageVisibility:
             return "/"
@@ -73,6 +78,8 @@ public enum SimpleQueueModelOperations: String, Hashable, CustomStringConvertibl
             return "/"
         case .listDeadLetterSourceQueues:
             return "/"
+        case .listMessageMoveTasks:
+            return "/"
         case .listQueueTags:
             return "/"
         case .listQueues:
@@ -88,6 +95,8 @@ public enum SimpleQueueModelOperations: String, Hashable, CustomStringConvertibl
         case .sendMessageBatch:
             return "/"
         case .setQueueAttributes:
+            return "/"
+        case .startMessageMoveTask:
             return "/"
         case .tagQueue:
             return "/"

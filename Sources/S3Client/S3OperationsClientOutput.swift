@@ -185,12 +185,17 @@ extension DeleteObjectsOutput: HTTPResponseOutputProtocol {
  Type to handle the output from the GetBucketAccelerateConfiguration operation in a HTTP client.
  */
 extension GetBucketAccelerateConfigurationOutput: HTTPResponseOutputProtocol {
-    public typealias BodyType = GetBucketAccelerateConfigurationOutput
-    public typealias HeadersType = GetBucketAccelerateConfigurationOutput
+    public typealias BodyType = GetBucketAccelerateConfigurationOperationOutputBody
+    public typealias HeadersType = GetBucketAccelerateConfigurationOperationOutputHeaders
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetBucketAccelerateConfigurationOutput {
-        return try bodyDecodableProvider()
+        let body = try bodyDecodableProvider()
+        let headers = try headersDecodableProvider()
+
+        return S3Model.GetBucketAccelerateConfigurationOutput(
+            requestCharged: headers.requestCharged,
+            status: body.status)
     }
 }
 
@@ -733,12 +738,28 @@ extension ListBucketsOutput: HTTPResponseOutputProtocol {
  Type to handle the output from the ListMultipartUploads operation in a HTTP client.
  */
 extension ListMultipartUploadsOutput: HTTPResponseOutputProtocol {
-    public typealias BodyType = ListMultipartUploadsOutput
-    public typealias HeadersType = ListMultipartUploadsOutput
+    public typealias BodyType = ListMultipartUploadsOperationOutputBody
+    public typealias HeadersType = ListMultipartUploadsOperationOutputHeaders
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListMultipartUploadsOutput {
-        return try bodyDecodableProvider()
+        let body = try bodyDecodableProvider()
+        let headers = try headersDecodableProvider()
+
+        return S3Model.ListMultipartUploadsOutput(
+            bucket: body.bucket,
+            commonPrefixes: body.commonPrefixes,
+            delimiter: body.delimiter,
+            encodingType: body.encodingType,
+            isTruncated: body.isTruncated,
+            keyMarker: body.keyMarker,
+            maxUploads: body.maxUploads,
+            nextKeyMarker: body.nextKeyMarker,
+            nextUploadIdMarker: body.nextUploadIdMarker,
+            prefix: body.prefix,
+            requestCharged: headers.requestCharged,
+            uploadIdMarker: body.uploadIdMarker,
+            uploads: body.uploads)
     }
 }
 
@@ -746,12 +767,29 @@ extension ListMultipartUploadsOutput: HTTPResponseOutputProtocol {
  Type to handle the output from the ListObjectVersions operation in a HTTP client.
  */
 extension ListObjectVersionsOutput: HTTPResponseOutputProtocol {
-    public typealias BodyType = ListObjectVersionsOutput
-    public typealias HeadersType = ListObjectVersionsOutput
+    public typealias BodyType = ListObjectVersionsOperationOutputBody
+    public typealias HeadersType = ListObjectVersionsOperationOutputHeaders
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListObjectVersionsOutput {
-        return try bodyDecodableProvider()
+        let body = try bodyDecodableProvider()
+        let headers = try headersDecodableProvider()
+
+        return S3Model.ListObjectVersionsOutput(
+            commonPrefixes: body.commonPrefixes,
+            deleteMarkers: body.deleteMarkers,
+            delimiter: body.delimiter,
+            encodingType: body.encodingType,
+            isTruncated: body.isTruncated,
+            keyMarker: body.keyMarker,
+            maxKeys: body.maxKeys,
+            name: body.name,
+            nextKeyMarker: body.nextKeyMarker,
+            nextVersionIdMarker: body.nextVersionIdMarker,
+            prefix: body.prefix,
+            requestCharged: headers.requestCharged,
+            versionIdMarker: body.versionIdMarker,
+            versions: body.versions)
     }
 }
 
@@ -759,12 +797,26 @@ extension ListObjectVersionsOutput: HTTPResponseOutputProtocol {
  Type to handle the output from the ListObjects operation in a HTTP client.
  */
 extension ListObjectsOutput: HTTPResponseOutputProtocol {
-    public typealias BodyType = ListObjectsOutput
-    public typealias HeadersType = ListObjectsOutput
+    public typealias BodyType = ListObjectsOperationOutputBody
+    public typealias HeadersType = ListObjectsOperationOutputHeaders
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListObjectsOutput {
-        return try bodyDecodableProvider()
+        let body = try bodyDecodableProvider()
+        let headers = try headersDecodableProvider()
+
+        return S3Model.ListObjectsOutput(
+            commonPrefixes: body.commonPrefixes,
+            contents: body.contents,
+            delimiter: body.delimiter,
+            encodingType: body.encodingType,
+            isTruncated: body.isTruncated,
+            marker: body.marker,
+            maxKeys: body.maxKeys,
+            name: body.name,
+            nextMarker: body.nextMarker,
+            prefix: body.prefix,
+            requestCharged: headers.requestCharged)
     }
 }
 
@@ -772,12 +824,28 @@ extension ListObjectsOutput: HTTPResponseOutputProtocol {
  Type to handle the output from the ListObjectsV2 operation in a HTTP client.
  */
 extension ListObjectsV2Output: HTTPResponseOutputProtocol {
-    public typealias BodyType = ListObjectsV2Output
-    public typealias HeadersType = ListObjectsV2Output
+    public typealias BodyType = ListObjectsV2OperationOutputBody
+    public typealias HeadersType = ListObjectsV2OperationOutputHeaders
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> ListObjectsV2Output {
-        return try bodyDecodableProvider()
+        let body = try bodyDecodableProvider()
+        let headers = try headersDecodableProvider()
+
+        return S3Model.ListObjectsV2Output(
+            commonPrefixes: body.commonPrefixes,
+            contents: body.contents,
+            continuationToken: body.continuationToken,
+            delimiter: body.delimiter,
+            encodingType: body.encodingType,
+            isTruncated: body.isTruncated,
+            keyCount: body.keyCount,
+            maxKeys: body.maxKeys,
+            name: body.name,
+            nextContinuationToken: body.nextContinuationToken,
+            prefix: body.prefix,
+            requestCharged: headers.requestCharged,
+            startAfter: body.startAfter)
     }
 }
 

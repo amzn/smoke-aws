@@ -31,20 +31,27 @@ import StepFunctionsModel
 public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     public let createActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let createStateMachineAlias: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteStateMachineAlias: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteStateMachineVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeActivity: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeMapRun: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeStateMachineAlias: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeStateMachineForExecution: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getActivityTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getExecutionHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listActivities: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listExecutions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listMapRuns: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStateMachineAliases: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStateMachineVersions: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listStateMachines: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listTagsForResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let publishStateMachineVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let sendTaskFailure: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let sendTaskHeartbeat: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let sendTaskSuccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -55,16 +62,23 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
     public let untagResource: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateMapRun: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let updateStateMachine: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let updateStateMachineAlias: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: StepFunctionsOperationsReporting) {
         self.createActivity = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createActivity)
         self.createStateMachine = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.createStateMachine)
+        self.createStateMachineAlias = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.createStateMachineAlias)
         self.deleteActivity = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteActivity)
         self.deleteStateMachine = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteStateMachine)
+        self.deleteStateMachineAlias = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteStateMachineAlias)
+        self.deleteStateMachineVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteStateMachineVersion)
         self.describeActivity = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeActivity)
         self.describeExecution = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -73,6 +87,8 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
             smokeAWSOperationReporting: operationsReporting.describeMapRun)
         self.describeStateMachine = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeStateMachine)
+        self.describeStateMachineAlias = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeStateMachineAlias)
         self.describeStateMachineForExecution = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeStateMachineForExecution)
         self.getActivityTask = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -85,10 +101,16 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
             smokeAWSOperationReporting: operationsReporting.listExecutions)
         self.listMapRuns = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listMapRuns)
+        self.listStateMachineAliases = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listStateMachineAliases)
+        self.listStateMachineVersions = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listStateMachineVersions)
         self.listStateMachines = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listStateMachines)
         self.listTagsForResource = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listTagsForResource)
+        self.publishStateMachineVersion = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.publishStateMachineVersion)
         self.sendTaskFailure = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.sendTaskFailure)
         self.sendTaskHeartbeat = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -109,5 +131,7 @@ public struct StepFunctionsInvocationsReporting<InvocationReportingType: HTTPCli
             smokeAWSOperationReporting: operationsReporting.updateMapRun)
         self.updateStateMachine = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.updateStateMachine)
+        self.updateStateMachineAlias = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.updateStateMachineAlias)
     }
 }

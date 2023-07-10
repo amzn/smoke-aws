@@ -42,12 +42,15 @@ public struct ElasticComputeCloudOperationsReporting {
     public let applySecurityGroupsToClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let assignIpv6Addresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let assignPrivateIpAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let assignPrivateNatGatewayAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateClientVpnTargetNetwork: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateDhcpOptions: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateIpamResourceDiscovery: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let associateNatGatewayAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let associateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -95,11 +98,13 @@ public struct ElasticComputeCloudOperationsReporting {
     public let createFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createInstanceConnectEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createInstanceExportTask: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createIpam: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createIpamPool: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let createIpamResourceDiscovery: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createIpamScope: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let createLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -170,10 +175,12 @@ public struct ElasticComputeCloudOperationsReporting {
     public let deleteFleets: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteFlowLogs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteFpgaImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteInstanceConnectEndpoint: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteInternetGateway: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteIpam: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteIpamPool: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let deleteIpamResourceDiscovery: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteIpamScope: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteKeyPair: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let deleteLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -283,6 +290,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describeImportImageTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeImportSnapshotTasks: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceAttribute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeInstanceConnectEndpoints: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceCreditSpecifications: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceEventNotificationAttributes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInstanceEventWindows: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -292,6 +300,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public let describeInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeInternetGateways: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeIpamPools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeIpamResourceDiscoveries: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let describeIpamResourceDiscoveryAssociations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeIpamScopes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeIpams: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let describeIpv6Pools: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -403,6 +413,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public let disassociateEnclaveCertificateIamRole: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateIamInstanceProfile: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateInstanceEventWindow: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateIpamResourceDiscovery: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disassociateNatGatewayAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateRouteTable: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateSubnetCidrBlock: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disassociateTransitGatewayMulticastDomain: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -444,6 +456,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getInstanceTypesFromInstanceRequirements: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getInstanceUefiData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getIpamAddressHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getIpamDiscoveredAccounts: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getIpamDiscoveredResourceCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getIpamPoolAllocations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getIpamPoolCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getIpamResourceCidrs: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -468,6 +482,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getVerifiedAccessGroupPolicy: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getVpnConnectionDeviceSampleConfiguration: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getVpnConnectionDeviceTypes: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getVpnTunnelReplacementStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let importClientVpnClientCertificateRevocationList: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let importImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let importInstance: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -500,6 +515,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let modifyIpam: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyIpamPool: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyIpamResourceCidr: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let modifyIpamResourceDiscovery: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyIpamScope: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyLaunchTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let modifyLocalGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -567,6 +583,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let replaceRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let replaceRouteTableAssociation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let replaceTransitGatewayRoute: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let replaceVpnTunnel: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let reportInstanceStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let requestSpotFleet: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let requestSpotInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -600,6 +617,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let terminateInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let unassignIpv6Addresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let unassignPrivateIpAddresses: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let unassignPrivateNatGatewayAddress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let unmonitorInstances: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let updateSecurityGroupRuleDescriptionsEgress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let updateSecurityGroupRuleDescriptionsIngress: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -634,6 +652,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .assignIpv6Addresses, configuration: reportingConfiguration)
         self.assignPrivateIpAddresses = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .assignPrivateIpAddresses, configuration: reportingConfiguration)
+        self.assignPrivateNatGatewayAddress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .assignPrivateNatGatewayAddress, configuration: reportingConfiguration)
         self.associateAddress = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateAddress, configuration: reportingConfiguration)
         self.associateClientVpnTargetNetwork = StandardSmokeAWSOperationReporting(
@@ -646,6 +666,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .associateIamInstanceProfile, configuration: reportingConfiguration)
         self.associateInstanceEventWindow = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateInstanceEventWindow, configuration: reportingConfiguration)
+        self.associateIpamResourceDiscovery = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateIpamResourceDiscovery, configuration: reportingConfiguration)
+        self.associateNatGatewayAddress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .associateNatGatewayAddress, configuration: reportingConfiguration)
         self.associateRouteTable = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .associateRouteTable, configuration: reportingConfiguration)
         self.associateSubnetCidrBlock = StandardSmokeAWSOperationReporting(
@@ -740,6 +764,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createFpgaImage, configuration: reportingConfiguration)
         self.createImage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createImage, configuration: reportingConfiguration)
+        self.createInstanceConnectEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createInstanceConnectEndpoint, configuration: reportingConfiguration)
         self.createInstanceEventWindow = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createInstanceEventWindow, configuration: reportingConfiguration)
         self.createInstanceExportTask = StandardSmokeAWSOperationReporting(
@@ -750,6 +776,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .createIpam, configuration: reportingConfiguration)
         self.createIpamPool = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createIpamPool, configuration: reportingConfiguration)
+        self.createIpamResourceDiscovery = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .createIpamResourceDiscovery, configuration: reportingConfiguration)
         self.createIpamScope = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createIpamScope, configuration: reportingConfiguration)
         self.createKeyPair = StandardSmokeAWSOperationReporting(
@@ -890,6 +918,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deleteFlowLogs, configuration: reportingConfiguration)
         self.deleteFpgaImage = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteFpgaImage, configuration: reportingConfiguration)
+        self.deleteInstanceConnectEndpoint = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteInstanceConnectEndpoint, configuration: reportingConfiguration)
         self.deleteInstanceEventWindow = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteInstanceEventWindow, configuration: reportingConfiguration)
         self.deleteInternetGateway = StandardSmokeAWSOperationReporting(
@@ -898,6 +928,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .deleteIpam, configuration: reportingConfiguration)
         self.deleteIpamPool = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteIpamPool, configuration: reportingConfiguration)
+        self.deleteIpamResourceDiscovery = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteIpamResourceDiscovery, configuration: reportingConfiguration)
         self.deleteIpamScope = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteIpamScope, configuration: reportingConfiguration)
         self.deleteKeyPair = StandardSmokeAWSOperationReporting(
@@ -1116,6 +1148,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeImportSnapshotTasks, configuration: reportingConfiguration)
         self.describeInstanceAttribute = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeInstanceAttribute, configuration: reportingConfiguration)
+        self.describeInstanceConnectEndpoints = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeInstanceConnectEndpoints, configuration: reportingConfiguration)
         self.describeInstanceCreditSpecifications = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeInstanceCreditSpecifications, configuration: reportingConfiguration)
         self.describeInstanceEventNotificationAttributes = StandardSmokeAWSOperationReporting(
@@ -1134,6 +1168,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .describeInternetGateways, configuration: reportingConfiguration)
         self.describeIpamPools = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeIpamPools, configuration: reportingConfiguration)
+        self.describeIpamResourceDiscoveries = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeIpamResourceDiscoveries, configuration: reportingConfiguration)
+        self.describeIpamResourceDiscoveryAssociations = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeIpamResourceDiscoveryAssociations, configuration: reportingConfiguration)
         self.describeIpamScopes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeIpamScopes, configuration: reportingConfiguration)
         self.describeIpams = StandardSmokeAWSOperationReporting(
@@ -1356,6 +1394,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .disassociateIamInstanceProfile, configuration: reportingConfiguration)
         self.disassociateInstanceEventWindow = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateInstanceEventWindow, configuration: reportingConfiguration)
+        self.disassociateIpamResourceDiscovery = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateIpamResourceDiscovery, configuration: reportingConfiguration)
+        self.disassociateNatGatewayAddress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disassociateNatGatewayAddress, configuration: reportingConfiguration)
         self.disassociateRouteTable = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disassociateRouteTable, configuration: reportingConfiguration)
         self.disassociateSubnetCidrBlock = StandardSmokeAWSOperationReporting(
@@ -1438,6 +1480,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getInstanceUefiData, configuration: reportingConfiguration)
         self.getIpamAddressHistory = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getIpamAddressHistory, configuration: reportingConfiguration)
+        self.getIpamDiscoveredAccounts = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getIpamDiscoveredAccounts, configuration: reportingConfiguration)
+        self.getIpamDiscoveredResourceCidrs = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getIpamDiscoveredResourceCidrs, configuration: reportingConfiguration)
         self.getIpamPoolAllocations = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getIpamPoolAllocations, configuration: reportingConfiguration)
         self.getIpamPoolCidrs = StandardSmokeAWSOperationReporting(
@@ -1486,6 +1532,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getVpnConnectionDeviceSampleConfiguration, configuration: reportingConfiguration)
         self.getVpnConnectionDeviceTypes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getVpnConnectionDeviceTypes, configuration: reportingConfiguration)
+        self.getVpnTunnelReplacementStatus = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getVpnTunnelReplacementStatus, configuration: reportingConfiguration)
         self.importClientVpnClientCertificateRevocationList = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .importClientVpnClientCertificateRevocationList, configuration: reportingConfiguration)
         self.importImage = StandardSmokeAWSOperationReporting(
@@ -1550,6 +1598,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .modifyIpamPool, configuration: reportingConfiguration)
         self.modifyIpamResourceCidr = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyIpamResourceCidr, configuration: reportingConfiguration)
+        self.modifyIpamResourceDiscovery = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .modifyIpamResourceDiscovery, configuration: reportingConfiguration)
         self.modifyIpamScope = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .modifyIpamScope, configuration: reportingConfiguration)
         self.modifyLaunchTemplate = StandardSmokeAWSOperationReporting(
@@ -1684,6 +1734,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .replaceRouteTableAssociation, configuration: reportingConfiguration)
         self.replaceTransitGatewayRoute = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .replaceTransitGatewayRoute, configuration: reportingConfiguration)
+        self.replaceVpnTunnel = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .replaceVpnTunnel, configuration: reportingConfiguration)
         self.reportInstanceStatus = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .reportInstanceStatus, configuration: reportingConfiguration)
         self.requestSpotFleet = StandardSmokeAWSOperationReporting(
@@ -1750,6 +1802,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .unassignIpv6Addresses, configuration: reportingConfiguration)
         self.unassignPrivateIpAddresses = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .unassignPrivateIpAddresses, configuration: reportingConfiguration)
+        self.unassignPrivateNatGatewayAddress = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .unassignPrivateNatGatewayAddress, configuration: reportingConfiguration)
         self.unmonitorInstances = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .unmonitorInstances, configuration: reportingConfiguration)
         self.updateSecurityGroupRuleDescriptionsEgress = StandardSmokeAWSOperationReporting(

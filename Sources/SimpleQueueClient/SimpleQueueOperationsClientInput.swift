@@ -44,6 +44,11 @@ public struct AddPermissionOperationHTTPRequestInput: HTTPRequestInputProtocol {
 }
 
 /**
+ Type to handle the input to the CancelMessageMoveTask operation in a HTTP client.
+ */
+public typealias CancelMessageMoveTaskOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ChangeMessageVisibility operation in a HTTP client.
  */
 public struct ChangeMessageVisibilityOperationHTTPRequestInput: HTTPRequestInputProtocol {
@@ -187,6 +192,11 @@ public struct ListDeadLetterSourceQueuesOperationHTTPRequestInput: HTTPRequestIn
 }
 
 /**
+ Type to handle the input to the ListMessageMoveTasks operation in a HTTP client.
+ */
+public typealias ListMessageMoveTasksOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ListQueueTags operation in a HTTP client.
  */
 public struct ListQueueTagsOperationHTTPRequestInput: HTTPRequestInputProtocol {
@@ -323,6 +333,11 @@ public struct SetQueueAttributesOperationHTTPRequestInput: HTTPRequestInputProto
         self.pathPostfix = encodable.queueUrl
     }
 }
+
+/**
+ Type to handle the input to the StartMessageMoveTask operation in a HTTP client.
+ */
+public typealias StartMessageMoveTaskOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the TagQueue operation in a HTTP client.

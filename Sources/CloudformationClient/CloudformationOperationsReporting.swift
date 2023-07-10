@@ -28,6 +28,7 @@ import CloudformationModel
  Operation reporting for the CloudformationModel.
  */
 public struct CloudformationOperationsReporting {
+    public let activateOrganizationsAccess: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let activateType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let batchDescribeTypeConfigurations: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let cancelUpdateStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
@@ -36,6 +37,7 @@ public struct CloudformationOperationsReporting {
     public let createStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let createStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let createStackSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let deactivateOrganizationsAccess: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let deactivateType: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let deleteChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let deleteStack: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
@@ -45,6 +47,7 @@ public struct CloudformationOperationsReporting {
     public let describeAccountLimits: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describeChangeSet: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describeChangeSetHooks: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let describeOrganizationsAccess: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describePublisher: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describeStackDriftDetectionStatus: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let describeStackEvents: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
@@ -96,6 +99,8 @@ public struct CloudformationOperationsReporting {
     public let validateTemplate: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudformationModelOperations>) {
+        self.activateOrganizationsAccess = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .activateOrganizationsAccess, configuration: reportingConfiguration)
         self.activateType = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .activateType, configuration: reportingConfiguration)
         self.batchDescribeTypeConfigurations = StandardSmokeAWSOperationReporting(
@@ -112,6 +117,8 @@ public struct CloudformationOperationsReporting {
             clientName: clientName, operation: .createStackInstances, configuration: reportingConfiguration)
         self.createStackSet = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .createStackSet, configuration: reportingConfiguration)
+        self.deactivateOrganizationsAccess = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deactivateOrganizationsAccess, configuration: reportingConfiguration)
         self.deactivateType = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deactivateType, configuration: reportingConfiguration)
         self.deleteChangeSet = StandardSmokeAWSOperationReporting(
@@ -130,6 +137,8 @@ public struct CloudformationOperationsReporting {
             clientName: clientName, operation: .describeChangeSet, configuration: reportingConfiguration)
         self.describeChangeSetHooks = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeChangeSetHooks, configuration: reportingConfiguration)
+        self.describeOrganizationsAccess = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeOrganizationsAccess, configuration: reportingConfiguration)
         self.describePublisher = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describePublisher, configuration: reportingConfiguration)
         self.describeStackDriftDetectionStatus = StandardSmokeAWSOperationReporting(

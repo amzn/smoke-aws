@@ -560,6 +560,11 @@ public enum SignalExternalWorkflowExecutionFailedCause: String, Codable, CustomS
 public typealias SignalName = String
 
 /**
+ Type definition for the StartAtPreviousStartedEvent field.
+ */
+public typealias StartAtPreviousStartedEvent = Bool
+
+/**
  Enumeration restricting the values of the StartChildWorkflowExecutionFailedCause field.
  */
 public enum StartChildWorkflowExecutionFailedCause: String, Codable, CustomStringConvertible {

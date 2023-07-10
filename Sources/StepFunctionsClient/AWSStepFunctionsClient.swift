@@ -245,7 +245,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - completion: The CreateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The CreateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+           The possible errors are: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags, validation.
      */
     public func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
@@ -278,7 +278,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated CreateStateMachineInput object being passed to this operation.
      - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags, validation.
      */
     public func createStateMachineSync(
             input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
@@ -292,6 +292,76 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStateMachine,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateStateMachineAliasInput object being passed to this operation.
+         - completion: The CreateStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The CreateStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, invalidName, resourceNotFound, serviceQuotaExceeded, stateMachineDeleting, validation.
+     */
+    public func createStateMachineAliasAsync(
+            input: StepFunctionsModel.CreateStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineAliasOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.createStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateStateMachineAliasOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateStateMachineAliasInput object being passed to this operation.
+     - Returns: The CreateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, invalidName, resourceNotFound, serviceQuotaExceeded, stateMachineDeleting, validation.
+     */
+    public func createStateMachineAliasSync(
+            input: StepFunctionsModel.CreateStateMachineAliasInput) throws -> StepFunctionsModel.CreateStateMachineAliasOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.createStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateStateMachineAliasOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -432,6 +502,146 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachine,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineAliasInput object being passed to this operation.
+         - completion: The DeleteStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The DeleteStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func deleteStateMachineAliasAsync(
+            input: StepFunctionsModel.DeleteStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineAliasOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.deleteStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteStateMachineAliasOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineAliasInput object being passed to this operation.
+     - Returns: The DeleteStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func deleteStateMachineAliasSync(
+            input: StepFunctionsModel.DeleteStateMachineAliasInput) throws -> StepFunctionsModel.DeleteStateMachineAliasOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.deleteStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteStateMachineAliasOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteStateMachineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineVersionInput object being passed to this operation.
+         - completion: The DeleteStateMachineVersionOutput object or an error will be passed to this 
+           callback when the operation is complete. The DeleteStateMachineVersionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, validation.
+     */
+    public func deleteStateMachineVersionAsync(
+            input: StepFunctionsModel.DeleteStateMachineVersionInput, 
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineVersionOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.deleteStateMachineVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteStateMachineVersionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteStateMachineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineVersionInput object being passed to this operation.
+     - Returns: The DeleteStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, validation.
+     */
+    public func deleteStateMachineVersionSync(
+            input: StepFunctionsModel.DeleteStateMachineVersionInput) throws -> StepFunctionsModel.DeleteStateMachineVersionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.deleteStateMachineVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteStateMachineVersionOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -712,6 +922,76 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachine,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineAliasInput object being passed to this operation.
+         - completion: The DescribeStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound, validation.
+     */
+    public func describeStateMachineAliasAsync(
+            input: StepFunctionsModel.DescribeStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineAliasOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeStateMachineAliasOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineAliasInput object being passed to this operation.
+     - Returns: The DescribeStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    public func describeStateMachineAliasSync(
+            input: StepFunctionsModel.DescribeStateMachineAliasInput) throws -> StepFunctionsModel.DescribeStateMachineAliasOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeStateMachineAliasOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -1148,6 +1428,146 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     }
 
     /**
+     Invokes the ListStateMachineAliases operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStateMachineAliasesInput object being passed to this operation.
+         - completion: The ListStateMachineAliasesOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListStateMachineAliasesOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidToken, resourceNotFound, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    public func listStateMachineAliasesAsync(
+            input: StepFunctionsModel.ListStateMachineAliasesInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachineAliasesOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listStateMachineAliases.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachineAliases,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListStateMachineAliasesOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListStateMachineAliases operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachineAliasesInput object being passed to this operation.
+     - Returns: The ListStateMachineAliasesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    public func listStateMachineAliasesSync(
+            input: StepFunctionsModel.ListStateMachineAliasesInput) throws -> StepFunctionsModel.ListStateMachineAliasesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listStateMachineAliases.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachineAliases,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListStateMachineAliasesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStateMachineVersions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStateMachineVersionsInput object being passed to this operation.
+         - completion: The ListStateMachineVersionsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListStateMachineVersionsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidToken, validation.
+     */
+    public func listStateMachineVersionsAsync(
+            input: StepFunctionsModel.ListStateMachineVersionsInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachineVersionsOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listStateMachineVersions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachineVersions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListStateMachineVersionsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListStateMachineVersions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachineVersionsInput object being passed to this operation.
+     - Returns: The ListStateMachineVersionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, validation.
+     */
+    public func listStateMachineVersionsSync(
+            input: StepFunctionsModel.ListStateMachineVersionsInput) throws -> StepFunctionsModel.ListStateMachineVersionsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listStateMachineVersions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachineVersions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListStateMachineVersionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListStateMachines operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1272,6 +1692,76 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PublishStateMachineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishStateMachineVersionInput object being passed to this operation.
+         - completion: The PublishStateMachineVersionOutput object or an error will be passed to this 
+           callback when the operation is complete. The PublishStateMachineVersionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    public func publishStateMachineVersionAsync(
+            input: StepFunctionsModel.PublishStateMachineVersionInput, 
+            completion: @escaping (Result<StepFunctionsModel.PublishStateMachineVersionOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.publishStateMachineVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishStateMachineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PublishStateMachineVersionOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the PublishStateMachineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishStateMachineVersionInput object being passed to this operation.
+     - Returns: The PublishStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    public func publishStateMachineVersionSync(
+            input: StepFunctionsModel.PublishStateMachineVersionInput) throws -> StepFunctionsModel.PublishStateMachineVersionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.publishStateMachineVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishStateMachineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PublishStateMachineVersionOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -1925,7 +2415,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - completion: The UpdateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+           The possible errors are: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
@@ -1958,7 +2448,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachineSync(
             input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {
@@ -1972,6 +2462,76 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStateMachine,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineAliasInput object being passed to this operation.
+         - completion: The UpdateStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func updateStateMachineAliasAsync(
+            input: StepFunctionsModel.UpdateStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineAliasOutput, StepFunctionsError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.updateStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateStateMachineAliasOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UpdateStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineAliasInput object being passed to this operation.
+     - Returns: The UpdateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func updateStateMachineAliasSync(
+            input: StepFunctionsModel.UpdateStateMachineAliasInput) throws -> StepFunctionsModel.UpdateStateMachineAliasOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.updateStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateStateMachineAliasOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -2032,7 +2592,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated CreateStateMachineInput object being passed to this operation.
      - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags, validation.
      */
     public func createStateMachine(
             input: StepFunctionsModel.CreateStateMachineInput) async throws -> StepFunctionsModel.CreateStateMachineOutput {
@@ -2046,6 +2606,42 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStateMachine,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = CreateStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateStateMachineAlias operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateStateMachineAliasInput object being passed to this operation.
+     - Returns: The CreateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, invalidName, resourceNotFound, serviceQuotaExceeded, stateMachineDeleting, validation.
+     */
+    public func createStateMachineAlias(
+            input: StepFunctionsModel.CreateStateMachineAliasInput) async throws -> StepFunctionsModel.CreateStateMachineAliasOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.createStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = CreateStateMachineAliasOperationHTTPRequestInput(encodable: input)
 
         do {
             return try await httpClient.executeRetriableWithOutput(
@@ -2118,6 +2714,78 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachine,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteStateMachineAlias operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineAliasInput object being passed to this operation.
+     - Returns: The DeleteStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func deleteStateMachineAlias(
+            input: StepFunctionsModel.DeleteStateMachineAliasInput) async throws -> StepFunctionsModel.DeleteStateMachineAliasOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.deleteStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteStateMachineAliasOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteStateMachineVersion operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineVersionInput object being passed to this operation.
+     - Returns: The DeleteStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, validation.
+     */
+    public func deleteStateMachineVersion(
+            input: StepFunctionsModel.DeleteStateMachineVersionInput) async throws -> StepFunctionsModel.DeleteStateMachineVersionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.deleteStateMachineVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteStateMachineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteStateMachineVersionOperationHTTPRequestInput(encodable: input)
 
         do {
             return try await httpClient.executeRetriableWithOutput(
@@ -2262,6 +2930,42 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachine,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DescribeStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeStateMachineAlias operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineAliasInput object being passed to this operation.
+     - Returns: The DescribeStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    public func describeStateMachineAlias(
+            input: StepFunctionsModel.DescribeStateMachineAliasInput) async throws -> StepFunctionsModel.DescribeStateMachineAliasOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.describeStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DescribeStateMachineAliasOperationHTTPRequestInput(encodable: input)
 
         do {
             return try await httpClient.executeRetriableWithOutput(
@@ -2494,6 +3198,78 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
     }
 
     /**
+     Invokes the ListStateMachineAliases operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachineAliasesInput object being passed to this operation.
+     - Returns: The ListStateMachineAliasesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    public func listStateMachineAliases(
+            input: StepFunctionsModel.ListStateMachineAliasesInput) async throws -> StepFunctionsModel.ListStateMachineAliasesOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listStateMachineAliases.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachineAliases,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListStateMachineAliasesOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStateMachineVersions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachineVersionsInput object being passed to this operation.
+     - Returns: The ListStateMachineVersionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, validation.
+     */
+    public func listStateMachineVersions(
+            input: StepFunctionsModel.ListStateMachineVersionsInput) async throws -> StepFunctionsModel.ListStateMachineVersionsOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.listStateMachineVersions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStateMachineVersions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = ListStateMachineVersionsOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListStateMachines operation suspending until the response is available before returning.
 
      - Parameters:
@@ -2550,6 +3326,42 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listTagsForResource,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = ListTagsForResourceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the PublishStateMachineVersion operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated PublishStateMachineVersionInput object being passed to this operation.
+     - Returns: The PublishStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    public func publishStateMachineVersion(
+            input: StepFunctionsModel.PublishStateMachineVersionInput) async throws -> StepFunctionsModel.PublishStateMachineVersionOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.publishStateMachineVersion.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.publishStateMachineVersion,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = PublishStateMachineVersionOperationHTTPRequestInput(encodable: input)
 
         do {
             return try await httpClient.executeRetriableWithOutput(
@@ -2896,7 +3708,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachine(
             input: StepFunctionsModel.UpdateStateMachineInput) async throws -> StepFunctionsModel.UpdateStateMachineOutput {
@@ -2910,6 +3722,42 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStateMachine,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = UpdateStateMachineOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: StepFunctionsError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UpdateStateMachineAlias operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineAliasInput object being passed to this operation.
+     - Returns: The UpdateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func updateStateMachineAlias(
+            input: StepFunctionsModel.UpdateStateMachineAliasInput) async throws -> StepFunctionsModel.UpdateStateMachineAliasOutput {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: StepFunctionsModelOperations.updateStateMachineAlias.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.updateStateMachineAlias,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = UpdateStateMachineAliasOperationHTTPRequestInput(encodable: input)
 
         do {
             return try await httpClient.executeRetriableWithOutput(

@@ -29,6 +29,8 @@ import SmokeHTTPClient
  Mock Client for the Cloudformation service by default returns the `__default` property of its return type.
  */
 public struct MockCloudformationClient: CloudformationClientProtocol {
+    let activateOrganizationsAccessAsyncOverride: ActivateOrganizationsAccessAsyncType?
+    let activateOrganizationsAccessSyncOverride: ActivateOrganizationsAccessSyncType?
     let activateTypeAsyncOverride: ActivateTypeAsyncType?
     let activateTypeSyncOverride: ActivateTypeSyncType?
     let batchDescribeTypeConfigurationsAsyncOverride: BatchDescribeTypeConfigurationsAsyncType?
@@ -45,6 +47,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
     let createStackInstancesSyncOverride: CreateStackInstancesSyncType?
     let createStackSetAsyncOverride: CreateStackSetAsyncType?
     let createStackSetSyncOverride: CreateStackSetSyncType?
+    let deactivateOrganizationsAccessAsyncOverride: DeactivateOrganizationsAccessAsyncType?
+    let deactivateOrganizationsAccessSyncOverride: DeactivateOrganizationsAccessSyncType?
     let deactivateTypeAsyncOverride: DeactivateTypeAsyncType?
     let deactivateTypeSyncOverride: DeactivateTypeSyncType?
     let deleteChangeSetAsyncOverride: DeleteChangeSetAsyncType?
@@ -63,6 +67,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
     let describeChangeSetSyncOverride: DescribeChangeSetSyncType?
     let describeChangeSetHooksAsyncOverride: DescribeChangeSetHooksAsyncType?
     let describeChangeSetHooksSyncOverride: DescribeChangeSetHooksSyncType?
+    let describeOrganizationsAccessAsyncOverride: DescribeOrganizationsAccessAsyncType?
+    let describeOrganizationsAccessSyncOverride: DescribeOrganizationsAccessSyncType?
     let describePublisherAsyncOverride: DescribePublisherAsyncType?
     let describePublisherSyncOverride: DescribePublisherSyncType?
     let describeStackDriftDetectionStatusAsyncOverride: DescribeStackDriftDetectionStatusAsyncType?
@@ -167,6 +173,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
      functions can be overridden by passing them to this initializer.
      */
     public init(
+            activateOrganizationsAccessAsync: ActivateOrganizationsAccessAsyncType? = nil,
+            activateOrganizationsAccessSync: ActivateOrganizationsAccessSyncType? = nil,
             activateTypeAsync: ActivateTypeAsyncType? = nil,
             activateTypeSync: ActivateTypeSyncType? = nil,
             batchDescribeTypeConfigurationsAsync: BatchDescribeTypeConfigurationsAsyncType? = nil,
@@ -183,6 +191,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             createStackInstancesSync: CreateStackInstancesSyncType? = nil,
             createStackSetAsync: CreateStackSetAsyncType? = nil,
             createStackSetSync: CreateStackSetSyncType? = nil,
+            deactivateOrganizationsAccessAsync: DeactivateOrganizationsAccessAsyncType? = nil,
+            deactivateOrganizationsAccessSync: DeactivateOrganizationsAccessSyncType? = nil,
             deactivateTypeAsync: DeactivateTypeAsyncType? = nil,
             deactivateTypeSync: DeactivateTypeSyncType? = nil,
             deleteChangeSetAsync: DeleteChangeSetAsyncType? = nil,
@@ -201,6 +211,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             describeChangeSetSync: DescribeChangeSetSyncType? = nil,
             describeChangeSetHooksAsync: DescribeChangeSetHooksAsyncType? = nil,
             describeChangeSetHooksSync: DescribeChangeSetHooksSyncType? = nil,
+            describeOrganizationsAccessAsync: DescribeOrganizationsAccessAsyncType? = nil,
+            describeOrganizationsAccessSync: DescribeOrganizationsAccessSyncType? = nil,
             describePublisherAsync: DescribePublisherAsyncType? = nil,
             describePublisherSync: DescribePublisherSyncType? = nil,
             describeStackDriftDetectionStatusAsync: DescribeStackDriftDetectionStatusAsyncType? = nil,
@@ -299,6 +311,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
             updateTerminationProtectionSync: UpdateTerminationProtectionSyncType? = nil,
             validateTemplateAsync: ValidateTemplateAsyncType? = nil,
             validateTemplateSync: ValidateTemplateSyncType? = nil) {
+        self.activateOrganizationsAccessAsyncOverride = activateOrganizationsAccessAsync
+        self.activateOrganizationsAccessSyncOverride = activateOrganizationsAccessSync
         self.activateTypeAsyncOverride = activateTypeAsync
         self.activateTypeSyncOverride = activateTypeSync
         self.batchDescribeTypeConfigurationsAsyncOverride = batchDescribeTypeConfigurationsAsync
@@ -315,6 +329,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         self.createStackInstancesSyncOverride = createStackInstancesSync
         self.createStackSetAsyncOverride = createStackSetAsync
         self.createStackSetSyncOverride = createStackSetSync
+        self.deactivateOrganizationsAccessAsyncOverride = deactivateOrganizationsAccessAsync
+        self.deactivateOrganizationsAccessSyncOverride = deactivateOrganizationsAccessSync
         self.deactivateTypeAsyncOverride = deactivateTypeAsync
         self.deactivateTypeSyncOverride = deactivateTypeSync
         self.deleteChangeSetAsyncOverride = deleteChangeSetAsync
@@ -333,6 +349,8 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         self.describeChangeSetSyncOverride = describeChangeSetSync
         self.describeChangeSetHooksAsyncOverride = describeChangeSetHooksAsync
         self.describeChangeSetHooksSyncOverride = describeChangeSetHooksSync
+        self.describeOrganizationsAccessAsyncOverride = describeOrganizationsAccessAsync
+        self.describeOrganizationsAccessSyncOverride = describeOrganizationsAccessSync
         self.describePublisherAsyncOverride = describePublisherAsync
         self.describePublisherSyncOverride = describePublisherSync
         self.describeStackDriftDetectionStatusAsyncOverride = describeStackDriftDetectionStatusAsync
@@ -431,6 +449,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         self.updateTerminationProtectionSyncOverride = updateTerminationProtectionSync
         self.validateTemplateAsyncOverride = validateTemplateAsync
         self.validateTemplateSyncOverride = validateTemplateSync
+    }
+
+    /**
+     Invokes the ActivateOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+         - completion: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    public func activateOrganizationsAccessAsync(
+            input: CloudformationModel.ActivateOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess, CloudformationError>) -> ()) throws {
+        if let activateOrganizationsAccessAsyncOverride = activateOrganizationsAccessAsyncOverride {
+            return try activateOrganizationsAccessAsyncOverride(input, completion)
+        }
+
+        let result = ActivateOrganizationsAccessOutputForActivateOrganizationsAccess.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ActivateOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func activateOrganizationsAccessSync(
+            input: CloudformationModel.ActivateOrganizationsAccessInput) throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess {
+        if let activateOrganizationsAccessSyncOverride = activateOrganizationsAccessSyncOverride {
+            return try activateOrganizationsAccessSyncOverride(input)
+        }
+
+        return ActivateOrganizationsAccessOutputForActivateOrganizationsAccess.__default
     }
 
     /**
@@ -745,6 +803,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         }
 
         return CreateStackSetOutputForCreateStackSet.__default
+    }
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+         - completion: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    public func deactivateOrganizationsAccessAsync(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess, CloudformationError>) -> ()) throws {
+        if let deactivateOrganizationsAccessAsyncOverride = deactivateOrganizationsAccessAsyncOverride {
+            return try deactivateOrganizationsAccessAsyncOverride(input, completion)
+        }
+
+        let result = DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func deactivateOrganizationsAccessSync(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput) throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess {
+        if let deactivateOrganizationsAccessSyncOverride = deactivateOrganizationsAccessSyncOverride {
+            return try deactivateOrganizationsAccessSyncOverride(input)
+        }
+
+        return DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess.__default
     }
 
     /**
@@ -1097,6 +1195,46 @@ public struct MockCloudformationClient: CloudformationClientProtocol {
         }
 
         return DescribeChangeSetHooksOutputForDescribeChangeSetHooks.__default
+    }
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+         - completion: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object or an error will be passed to this 
+           callback when the operation is complete. The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
+           object will be validated before being returned to caller.
+           The possible errors are: invalidOperation, operationNotFound.
+     */
+    public func describeOrganizationsAccessAsync(
+            input: CloudformationModel.DescribeOrganizationsAccessInput, 
+            completion: @escaping (Result<CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess, CloudformationError>) -> ()) throws {
+        if let describeOrganizationsAccessAsyncOverride = describeOrganizationsAccessAsyncOverride {
+            return try describeOrganizationsAccessAsyncOverride(input, completion)
+        }
+
+        let result = DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func describeOrganizationsAccessSync(
+            input: CloudformationModel.DescribeOrganizationsAccessInput) throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess {
+        if let describeOrganizationsAccessSyncOverride = describeOrganizationsAccessSyncOverride {
+            return try describeOrganizationsAccessSyncOverride(input)
+        }
+
+        return DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess.__default
     }
 
     /**

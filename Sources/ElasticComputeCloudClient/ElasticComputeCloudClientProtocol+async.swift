@@ -395,6 +395,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the AssignPrivateNatGatewayAddress operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated AssignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func assignPrivateNatGatewayAddress(input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest) async throws
+     -> ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try assignPrivateNatGatewayAddressAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the AssociateAddress operation and asynchronously returning the response.
 
      - Parameters:
@@ -533,6 +559,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try associateInstanceEventWindowAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the AssociateIpamResourceDiscovery operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated AssociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The AssociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateIpamResourceDiscovery(input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest) async throws
+     -> ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try associateIpamResourceDiscoveryAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the AssociateNatGatewayAddress operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated AssociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func associateNatGatewayAddress(input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest) async throws
+     -> ElasticComputeCloudModel.AssociateNatGatewayAddressResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try associateNatGatewayAddressAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -1757,6 +1835,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the CreateInstanceConnectEndpoint operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The CreateInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createInstanceConnectEndpoint(input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest) async throws
+     -> ElasticComputeCloudModel.CreateInstanceConnectEndpointResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try createInstanceConnectEndpointAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the CreateInstanceEventWindow operation and asynchronously returning the response.
 
      - Parameters:
@@ -1873,6 +1977,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try createIpamPoolAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the CreateIpamResourceDiscovery operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CreateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The CreateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func createIpamResourceDiscovery(input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest) async throws
+     -> ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try createIpamResourceDiscoveryAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -3687,6 +3817,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DeleteInstanceConnectEndpoint operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The DeleteInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteInstanceConnectEndpoint(input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest) async throws
+     -> ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteInstanceConnectEndpointAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DeleteInstanceEventWindow operation and asynchronously returning the response.
 
      - Parameters:
@@ -3773,6 +3929,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteIpamPoolAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteIpamResourceDiscovery operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DeleteIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func deleteIpamResourceDiscovery(input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest) async throws
+     -> ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteIpamResourceDiscoveryAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -6549,6 +6731,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DescribeInstanceConnectEndpoints operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeInstanceConnectEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceConnectEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeInstanceConnectEndpoints(input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeInstanceConnectEndpointsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DescribeInstanceCreditSpecifications operation and asynchronously returning the response.
 
      - Parameters:
@@ -6769,6 +6977,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try describeIpamPoolsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveries operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveriesRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeIpamResourceDiscoveries(input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest) async throws
+     -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeIpamResourceDiscoveriesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveryAssociations operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveryAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveryAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func describeIpamResourceDiscoveryAssociations(input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest) async throws
+     -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try describeIpamResourceDiscoveryAssociationsAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -9649,6 +9909,58 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisassociateIpamResourceDiscovery operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisassociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DisassociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateIpamResourceDiscovery(input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest) async throws
+     -> ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try disassociateIpamResourceDiscoveryAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DisassociateNatGatewayAddress operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisassociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The DisassociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disassociateNatGatewayAddress(input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest) async throws
+     -> ElasticComputeCloudModel.DisassociateNatGatewayAddressResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try disassociateNatGatewayAddressAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DisassociateRouteTable operation and asynchronously returning the response.
 
      - Parameters:
@@ -10703,6 +11015,58 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetIpamDiscoveredAccounts operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredAccountsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredAccountsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getIpamDiscoveredAccounts(input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest) async throws
+     -> ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getIpamDiscoveredAccountsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetIpamDiscoveredResourceCidrs operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredResourceCidrsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredResourceCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getIpamDiscoveredResourceCidrs(input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest) async throws
+     -> ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getIpamDiscoveredResourceCidrsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the GetIpamPoolAllocations operation and asynchronously returning the response.
 
      - Parameters:
@@ -11313,6 +11677,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try getVpnConnectionDeviceTypesAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetVpnTunnelReplacementStatus operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetVpnTunnelReplacementStatusRequest object being passed to this operation.
+     - Returns: The GetVpnTunnelReplacementStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getVpnTunnelReplacementStatus(input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest) async throws
+     -> ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getVpnTunnelReplacementStatusAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -12129,6 +12519,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try modifyIpamResourceCidrAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the ModifyIpamResourceDiscovery operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ModifyIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The ModifyIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func modifyIpamResourceDiscovery(input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest) async throws
+     -> ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try modifyIpamResourceDiscoveryAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -13849,6 +14265,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the ReplaceVpnTunnel operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ReplaceVpnTunnelRequest object being passed to this operation.
+     - Returns: The ReplaceVpnTunnelResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func replaceVpnTunnel(input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest) async throws
+     -> ElasticComputeCloudModel.ReplaceVpnTunnelResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try replaceVpnTunnelAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ReportInstanceStatus operation and asynchronously returning the response.
 
      - Parameters:
@@ -14670,6 +15112,32 @@ public extension ElasticComputeCloudClientProtocol {
                         cont.resume(throwing: error)
                     } else {
                         cont.resume(returning: ())
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the UnassignPrivateNatGatewayAddress operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated UnassignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The UnassignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func unassignPrivateNatGatewayAddress(input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest) async throws
+     -> ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try unassignPrivateNatGatewayAddressAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
                     }
                 }
             } catch {

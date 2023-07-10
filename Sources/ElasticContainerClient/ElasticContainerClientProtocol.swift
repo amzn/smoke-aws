@@ -74,6 +74,11 @@ public protocol ElasticContainerClientProtocol: ElasticContainerClientProtocolV2
     typealias DeleteServiceAsyncType = (
             _ input: ElasticContainerModel.DeleteServiceRequest, 
             _ completion: @escaping (Result<ElasticContainerModel.DeleteServiceResponse, ElasticContainerError>) -> ()) throws -> ()
+    typealias DeleteTaskDefinitionsSyncType = (
+            _ input: ElasticContainerModel.DeleteTaskDefinitionsRequest) throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse
+    typealias DeleteTaskDefinitionsAsyncType = (
+            _ input: ElasticContainerModel.DeleteTaskDefinitionsRequest, 
+            _ completion: @escaping (Result<ElasticContainerModel.DeleteTaskDefinitionsResponse, ElasticContainerError>) -> ()) throws -> ()
     typealias DeleteTaskSetSyncType = (
             _ input: ElasticContainerModel.DeleteTaskSetRequest) throws -> ElasticContainerModel.DeleteTaskSetResponse
     typealias DeleteTaskSetAsyncType = (
@@ -339,7 +344,7 @@ public protocol ElasticContainerClientProtocol: ElasticContainerClientProtocolV2
          - completion: The CreateClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The CreateClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, invalidParameter, server.
+           The possible errors are: client, invalidParameter, namespaceNotFound, server.
      */
     func createClusterAsync(
             input: ElasticContainerModel.CreateClusterRequest, 
@@ -352,7 +357,7 @@ public protocol ElasticContainerClientProtocol: ElasticContainerClientProtocolV2
          - input: The validated CreateClusterRequest object being passed to this operation.
      - Returns: The CreateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, server.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
      */
     func createClusterSync(
             input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse
@@ -538,6 +543,32 @@ public protocol ElasticContainerClientProtocol: ElasticContainerClientProtocolV2
      */
     func deleteServiceSync(
             input: ElasticContainerModel.DeleteServiceRequest) throws -> ElasticContainerModel.DeleteServiceResponse
+
+    /**
+     Invokes the DeleteTaskDefinitions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+         - completion: The DeleteTaskDefinitionsResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTaskDefinitionsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, invalidParameter, server.
+     */
+    func deleteTaskDefinitionsAsync(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest, 
+            completion: @escaping (Result<ElasticContainerModel.DeleteTaskDefinitionsResponse, ElasticContainerError>) -> ()) throws
+
+    /**
+     Invokes the DeleteTaskDefinitions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+     - Returns: The DeleteTaskDefinitionsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    func deleteTaskDefinitionsSync(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest) throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse
 
     /**
      Invokes the DeleteTaskSet operation returning immediately and passing the response to a callback.
@@ -1535,7 +1566,7 @@ public protocol ElasticContainerClientProtocol: ElasticContainerClientProtocolV2
          - completion: The UpdateClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The UpdateClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, clusterNotFound, invalidParameter, server.
+           The possible errors are: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     func updateClusterAsync(
             input: ElasticContainerModel.UpdateClusterRequest, 
@@ -1548,7 +1579,7 @@ public protocol ElasticContainerClientProtocol: ElasticContainerClientProtocolV2
          - input: The validated UpdateClusterRequest object being passed to this operation.
      - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     func updateClusterSync(
             input: ElasticContainerModel.UpdateClusterRequest) throws -> ElasticContainerModel.UpdateClusterResponse

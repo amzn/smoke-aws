@@ -25,6 +25,11 @@ import SmokeHTTPClient
 import CloudformationModel
 
 /**
+ Type to handle the input to the ActivateOrganizationsAccess operation in a HTTP client.
+ */
+public typealias ActivateOrganizationsAccessOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ActivateType operation in a HTTP client.
  */
 public typealias ActivateTypeOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -63,6 +68,11 @@ public typealias CreateStackInstancesOperationHTTPRequestInput = QueryHTTPReques
  Type to handle the input to the CreateStackSet operation in a HTTP client.
  */
 public typealias CreateStackSetOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeactivateOrganizationsAccess operation in a HTTP client.
+ */
+public typealias DeactivateOrganizationsAccessOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeactivateType operation in a HTTP client.
@@ -108,6 +118,11 @@ public typealias DescribeChangeSetOperationHTTPRequestInput = QueryHTTPRequestIn
  Type to handle the input to the DescribeChangeSetHooks operation in a HTTP client.
  */
 public typealias DescribeChangeSetHooksOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeOrganizationsAccess operation in a HTTP client.
+ */
+public typealias DescribeOrganizationsAccessOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribePublisher operation in a HTTP client.
