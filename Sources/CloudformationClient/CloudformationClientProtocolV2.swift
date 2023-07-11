@@ -30,6 +30,8 @@ import SmokeHTTPClient
  */
 public protocol CloudformationClientProtocolV2 {
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
+    typealias ActivateOrganizationsAccessFunctionType = (
+            _ input: CloudformationModel.ActivateOrganizationsAccessInput) async throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
     typealias ActivateTypeFunctionType = (
             _ input: CloudformationModel.ActivateTypeInput) async throws -> CloudformationModel.ActivateTypeOutputForActivateType
     typealias BatchDescribeTypeConfigurationsFunctionType = (
@@ -46,6 +48,8 @@ public protocol CloudformationClientProtocolV2 {
             _ input: CloudformationModel.CreateStackInstancesInput) async throws -> CloudformationModel.CreateStackInstancesOutputForCreateStackInstances
     typealias CreateStackSetFunctionType = (
             _ input: CloudformationModel.CreateStackSetInput) async throws -> CloudformationModel.CreateStackSetOutputForCreateStackSet
+    typealias DeactivateOrganizationsAccessFunctionType = (
+            _ input: CloudformationModel.DeactivateOrganizationsAccessInput) async throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
     typealias DeactivateTypeFunctionType = (
             _ input: CloudformationModel.DeactivateTypeInput) async throws -> CloudformationModel.DeactivateTypeOutputForDeactivateType
     typealias DeleteChangeSetFunctionType = (
@@ -64,6 +68,8 @@ public protocol CloudformationClientProtocolV2 {
             _ input: CloudformationModel.DescribeChangeSetInput) async throws -> CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet
     typealias DescribeChangeSetHooksFunctionType = (
             _ input: CloudformationModel.DescribeChangeSetHooksInput) async throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+    typealias DescribeOrganizationsAccessFunctionType = (
+            _ input: CloudformationModel.DescribeOrganizationsAccessInput) async throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
     typealias DescribePublisherFunctionType = (
             _ input: CloudformationModel.DescribePublisherInput) async throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher
     typealias DescribeStackDriftDetectionStatusFunctionType = (
@@ -164,6 +170,18 @@ public protocol CloudformationClientProtocolV2 {
             _ input: CloudformationModel.ValidateTemplateInput) async throws -> CloudformationModel.ValidateTemplateOutputForValidateTemplate
 
     /**
+     Invokes the ActivateOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func activateOrganizationsAccess(
+            input: CloudformationModel.ActivateOrganizationsAccessInput) async throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
+
+    /**
      Invokes the ActivateType operation suspending until the response is available before returning.
 
      - Parameters:
@@ -256,6 +274,18 @@ public protocol CloudformationClientProtocolV2 {
      */
     func createStackSet(
             input: CloudformationModel.CreateStackSetInput) async throws -> CloudformationModel.CreateStackSetOutputForCreateStackSet
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func deactivateOrganizationsAccess(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput) async throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
 
     /**
      Invokes the DeactivateType operation suspending until the response is available before returning.
@@ -361,6 +391,18 @@ public protocol CloudformationClientProtocolV2 {
      */
     func describeChangeSetHooks(
             input: CloudformationModel.DescribeChangeSetHooksInput) async throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    func describeOrganizationsAccess(
+            input: CloudformationModel.DescribeOrganizationsAccessInput) async throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
 
     /**
      Invokes the DescribePublisher operation suspending until the response is available before returning.

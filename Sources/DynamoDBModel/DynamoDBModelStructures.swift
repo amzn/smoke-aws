@@ -251,12 +251,12 @@ public struct AutoScalingTargetTrackingScalingPolicyConfigurationDescription: Co
     public var disableScaleIn: BooleanObject?
     public var scaleInCooldown: IntegerObject?
     public var scaleOutCooldown: IntegerObject?
-    public var targetValue: Double
+    public var targetValue: DoubleObject
 
     public init(disableScaleIn: BooleanObject? = nil,
                 scaleInCooldown: IntegerObject? = nil,
                 scaleOutCooldown: IntegerObject? = nil,
-                targetValue: Double) {
+                targetValue: DoubleObject) {
         self.disableScaleIn = disableScaleIn
         self.scaleInCooldown = scaleInCooldown
         self.scaleOutCooldown = scaleOutCooldown
@@ -278,12 +278,12 @@ public struct AutoScalingTargetTrackingScalingPolicyConfigurationUpdate: Codable
     public var disableScaleIn: BooleanObject?
     public var scaleInCooldown: IntegerObject?
     public var scaleOutCooldown: IntegerObject?
-    public var targetValue: Double
+    public var targetValue: DoubleObject
 
     public init(disableScaleIn: BooleanObject? = nil,
                 scaleInCooldown: IntegerObject? = nil,
                 scaleOutCooldown: IntegerObject? = nil,
-                targetValue: Double) {
+                targetValue: DoubleObject) {
         self.disableScaleIn = disableScaleIn
         self.scaleInCooldown = scaleInCooldown
         self.scaleOutCooldown = scaleOutCooldown
@@ -538,16 +538,20 @@ public struct BatchGetItemOutput: Codable, Equatable {
 
 public struct BatchStatementError: Codable, Equatable {
     public var code: BatchStatementErrorCodeEnum?
+    public var item: AttributeMap?
     public var message: String?
 
     public init(code: BatchStatementErrorCodeEnum? = nil,
+                item: AttributeMap? = nil,
                 message: String? = nil) {
         self.code = code
+        self.item = item
         self.message = message
     }
 
     enum CodingKeys: String, CodingKey {
         case code = "Code"
+        case item = "Item"
         case message = "Message"
     }
 
@@ -558,19 +562,23 @@ public struct BatchStatementError: Codable, Equatable {
 public struct BatchStatementRequest: Codable, Equatable {
     public var consistentRead: ConsistentRead?
     public var parameters: PreparedStatementParameters?
+    public var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     public var statement: PartiQLStatement
 
     public init(consistentRead: ConsistentRead? = nil,
                 parameters: PreparedStatementParameters? = nil,
+                returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure? = nil,
                 statement: PartiQLStatement) {
         self.consistentRead = consistentRead
         self.parameters = parameters
+        self.returnValuesOnConditionCheckFailure = returnValuesOnConditionCheckFailure
         self.statement = statement
     }
 
     enum CodingKeys: String, CodingKey {
         case consistentRead = "ConsistentRead"
         case parameters = "Parameters"
+        case returnValuesOnConditionCheckFailure = "ReturnValuesOnConditionCheckFailure"
         case statement = "Statement"
     }
 
@@ -772,13 +780,17 @@ public struct ConditionCheck: Codable, Equatable {
 }
 
 public struct ConditionalCheckFailedException: Codable, Equatable {
+    public var item: AttributeMap?
     public var message: ErrorMessage?
 
-    public init(message: ErrorMessage? = nil) {
+    public init(item: AttributeMap? = nil,
+                message: ErrorMessage? = nil) {
+        self.item = item
         self.message = message
     }
 
     enum CodingKeys: String, CodingKey {
+        case item = "Item"
         case message
     }
 
@@ -1042,6 +1054,7 @@ public struct CreateReplicationGroupMemberAction: Codable, Equatable {
 public struct CreateTableInput: Codable, Equatable {
     public var attributeDefinitions: AttributeDefinitions
     public var billingMode: BillingMode?
+    public var deletionProtectionEnabled: DeletionProtectionEnabled?
     public var globalSecondaryIndexes: GlobalSecondaryIndexList?
     public var keySchema: KeySchema
     public var localSecondaryIndexes: LocalSecondaryIndexList?
@@ -1054,6 +1067,7 @@ public struct CreateTableInput: Codable, Equatable {
 
     public init(attributeDefinitions: AttributeDefinitions,
                 billingMode: BillingMode? = nil,
+                deletionProtectionEnabled: DeletionProtectionEnabled? = nil,
                 globalSecondaryIndexes: GlobalSecondaryIndexList? = nil,
                 keySchema: KeySchema,
                 localSecondaryIndexes: LocalSecondaryIndexList? = nil,
@@ -1065,6 +1079,7 @@ public struct CreateTableInput: Codable, Equatable {
                 tags: TagList? = nil) {
         self.attributeDefinitions = attributeDefinitions
         self.billingMode = billingMode
+        self.deletionProtectionEnabled = deletionProtectionEnabled
         self.globalSecondaryIndexes = globalSecondaryIndexes
         self.keySchema = keySchema
         self.localSecondaryIndexes = localSecondaryIndexes
@@ -1079,6 +1094,7 @@ public struct CreateTableInput: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case attributeDefinitions = "AttributeDefinitions"
         case billingMode = "BillingMode"
+        case deletionProtectionEnabled = "DeletionProtectionEnabled"
         case globalSecondaryIndexes = "GlobalSecondaryIndexes"
         case keySchema = "KeySchema"
         case localSecondaryIndexes = "LocalSecondaryIndexes"
@@ -1230,6 +1246,7 @@ public struct DeleteItemInput: Codable, Equatable {
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
     public var returnValues: ReturnValue?
+    public var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     public var tableName: TableName
 
     public init(conditionExpression: ConditionExpression? = nil,
@@ -1241,6 +1258,7 @@ public struct DeleteItemInput: Codable, Equatable {
                 returnConsumedCapacity: ReturnConsumedCapacity? = nil,
                 returnItemCollectionMetrics: ReturnItemCollectionMetrics? = nil,
                 returnValues: ReturnValue? = nil,
+                returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure? = nil,
                 tableName: TableName) {
         self.conditionExpression = conditionExpression
         self.conditionalOperator = conditionalOperator
@@ -1251,6 +1269,7 @@ public struct DeleteItemInput: Codable, Equatable {
         self.returnConsumedCapacity = returnConsumedCapacity
         self.returnItemCollectionMetrics = returnItemCollectionMetrics
         self.returnValues = returnValues
+        self.returnValuesOnConditionCheckFailure = returnValuesOnConditionCheckFailure
         self.tableName = tableName
     }
 
@@ -1264,6 +1283,7 @@ public struct DeleteItemInput: Codable, Equatable {
         case returnConsumedCapacity = "ReturnConsumedCapacity"
         case returnItemCollectionMetrics = "ReturnItemCollectionMetrics"
         case returnValues = "ReturnValues"
+        case returnValuesOnConditionCheckFailure = "ReturnValuesOnConditionCheckFailure"
         case tableName = "TableName"
     }
 
@@ -1865,6 +1885,7 @@ public struct ExecuteStatementInput: Codable, Equatable {
     public var nextToken: PartiQLNextToken?
     public var parameters: PreparedStatementParameters?
     public var returnConsumedCapacity: ReturnConsumedCapacity?
+    public var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     public var statement: PartiQLStatement
 
     public init(consistentRead: ConsistentRead? = nil,
@@ -1872,12 +1893,14 @@ public struct ExecuteStatementInput: Codable, Equatable {
                 nextToken: PartiQLNextToken? = nil,
                 parameters: PreparedStatementParameters? = nil,
                 returnConsumedCapacity: ReturnConsumedCapacity? = nil,
+                returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure? = nil,
                 statement: PartiQLStatement) {
         self.consistentRead = consistentRead
         self.limit = limit
         self.nextToken = nextToken
         self.parameters = parameters
         self.returnConsumedCapacity = returnConsumedCapacity
+        self.returnValuesOnConditionCheckFailure = returnValuesOnConditionCheckFailure
         self.statement = statement
     }
 
@@ -1887,6 +1910,7 @@ public struct ExecuteStatementInput: Codable, Equatable {
         case nextToken = "NextToken"
         case parameters = "Parameters"
         case returnConsumedCapacity = "ReturnConsumedCapacity"
+        case returnValuesOnConditionCheckFailure = "ReturnValuesOnConditionCheckFailure"
         case statement = "Statement"
     }
 
@@ -2378,9 +2402,9 @@ public struct GlobalSecondaryIndexDescription: Codable, Equatable {
     public var backfilling: Backfilling?
     public var indexArn: String?
     public var indexName: IndexName?
-    public var indexSizeBytes: Long?
+    public var indexSizeBytes: LongObject?
     public var indexStatus: IndexStatus?
-    public var itemCount: Long?
+    public var itemCount: LongObject?
     public var keySchema: KeySchema?
     public var projection: Projection?
     public var provisionedThroughput: ProvisionedThroughputDescription?
@@ -2388,9 +2412,9 @@ public struct GlobalSecondaryIndexDescription: Codable, Equatable {
     public init(backfilling: Backfilling? = nil,
                 indexArn: String? = nil,
                 indexName: IndexName? = nil,
-                indexSizeBytes: Long? = nil,
+                indexSizeBytes: LongObject? = nil,
                 indexStatus: IndexStatus? = nil,
-                itemCount: Long? = nil,
+                itemCount: LongObject? = nil,
                 keySchema: KeySchema? = nil,
                 projection: Projection? = nil,
                 provisionedThroughput: ProvisionedThroughputDescription? = nil) {
@@ -2695,7 +2719,7 @@ public struct ImportTableDescription: Codable, Equatable {
     public var inputFormat: InputFormat?
     public var inputFormatOptions: InputFormatOptions?
     public var processedItemCount: ProcessedItemCount?
-    public var processedSizeBytes: Long?
+    public var processedSizeBytes: LongObject?
     public var s3BucketSource: S3BucketSource?
     public var startTime: ImportStartTime?
     public var tableArn: TableArn?
@@ -2715,7 +2739,7 @@ public struct ImportTableDescription: Codable, Equatable {
                 inputFormat: InputFormat? = nil,
                 inputFormatOptions: InputFormatOptions? = nil,
                 processedItemCount: ProcessedItemCount? = nil,
-                processedSizeBytes: Long? = nil,
+                processedSizeBytes: LongObject? = nil,
                 s3BucketSource: S3BucketSource? = nil,
                 startTime: ImportStartTime? = nil,
                 tableArn: TableArn? = nil,
@@ -3440,15 +3464,15 @@ public struct LocalSecondaryIndex: Codable, Equatable {
 public struct LocalSecondaryIndexDescription: Codable, Equatable {
     public var indexArn: String?
     public var indexName: IndexName?
-    public var indexSizeBytes: Long?
-    public var itemCount: Long?
+    public var indexSizeBytes: LongObject?
+    public var itemCount: LongObject?
     public var keySchema: KeySchema?
     public var projection: Projection?
 
     public init(indexArn: String? = nil,
                 indexName: IndexName? = nil,
-                indexSizeBytes: Long? = nil,
-                itemCount: Long? = nil,
+                indexSizeBytes: LongObject? = nil,
+                itemCount: LongObject? = nil,
                 keySchema: KeySchema? = nil,
                 projection: Projection? = nil) {
         self.indexArn = indexArn
@@ -3503,16 +3527,20 @@ public struct LocalSecondaryIndexInfo: Codable, Equatable {
 
 public struct ParameterizedStatement: Codable, Equatable {
     public var parameters: PreparedStatementParameters?
+    public var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     public var statement: PartiQLStatement
 
     public init(parameters: PreparedStatementParameters? = nil,
+                returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure? = nil,
                 statement: PartiQLStatement) {
         self.parameters = parameters
+        self.returnValuesOnConditionCheckFailure = returnValuesOnConditionCheckFailure
         self.statement = statement
     }
 
     enum CodingKeys: String, CodingKey {
         case parameters = "Parameters"
+        case returnValuesOnConditionCheckFailure = "ReturnValuesOnConditionCheckFailure"
         case statement = "Statement"
     }
 
@@ -3727,6 +3755,7 @@ public struct PutItemInput: Codable, Equatable {
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
     public var returnValues: ReturnValue?
+    public var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     public var tableName: TableName
 
     public init(conditionExpression: ConditionExpression? = nil,
@@ -3738,6 +3767,7 @@ public struct PutItemInput: Codable, Equatable {
                 returnConsumedCapacity: ReturnConsumedCapacity? = nil,
                 returnItemCollectionMetrics: ReturnItemCollectionMetrics? = nil,
                 returnValues: ReturnValue? = nil,
+                returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure? = nil,
                 tableName: TableName) {
         self.conditionExpression = conditionExpression
         self.conditionalOperator = conditionalOperator
@@ -3748,6 +3778,7 @@ public struct PutItemInput: Codable, Equatable {
         self.returnConsumedCapacity = returnConsumedCapacity
         self.returnItemCollectionMetrics = returnItemCollectionMetrics
         self.returnValues = returnValues
+        self.returnValuesOnConditionCheckFailure = returnValuesOnConditionCheckFailure
         self.tableName = tableName
     }
 
@@ -3761,6 +3792,7 @@ public struct PutItemInput: Codable, Equatable {
         case returnConsumedCapacity = "ReturnConsumedCapacity"
         case returnItemCollectionMetrics = "ReturnItemCollectionMetrics"
         case returnValues = "ReturnValues"
+        case returnValuesOnConditionCheckFailure = "ReturnValuesOnConditionCheckFailure"
         case tableName = "TableName"
     }
 
@@ -4769,7 +4801,7 @@ public struct SourceTableDetails: Codable, Equatable {
     public var tableCreationDateTime: TableCreationDateTime
     public var tableId: TableId
     public var tableName: TableName
-    public var tableSizeBytes: Long?
+    public var tableSizeBytes: LongObject?
 
     public init(billingMode: BillingMode? = nil,
                 itemCount: ItemCount? = nil,
@@ -4779,7 +4811,7 @@ public struct SourceTableDetails: Codable, Equatable {
                 tableCreationDateTime: TableCreationDateTime,
                 tableId: TableId,
                 tableName: TableName,
-                tableSizeBytes: Long? = nil) {
+                tableSizeBytes: LongObject? = nil) {
         self.billingMode = billingMode
         self.itemCount = itemCount
         self.keySchema = keySchema
@@ -4971,9 +5003,10 @@ public struct TableDescription: Codable, Equatable {
     public var attributeDefinitions: AttributeDefinitions?
     public var billingModeSummary: BillingModeSummary?
     public var creationDateTime: Date?
+    public var deletionProtectionEnabled: DeletionProtectionEnabled?
     public var globalSecondaryIndexes: GlobalSecondaryIndexDescriptionList?
     public var globalTableVersion: String?
-    public var itemCount: Long?
+    public var itemCount: LongObject?
     public var keySchema: KeySchema?
     public var latestStreamArn: StreamArn?
     public var latestStreamLabel: String?
@@ -4987,16 +5020,17 @@ public struct TableDescription: Codable, Equatable {
     public var tableClassSummary: TableClassSummary?
     public var tableId: TableId?
     public var tableName: TableName?
-    public var tableSizeBytes: Long?
+    public var tableSizeBytes: LongObject?
     public var tableStatus: TableStatus?
 
     public init(archivalSummary: ArchivalSummary? = nil,
                 attributeDefinitions: AttributeDefinitions? = nil,
                 billingModeSummary: BillingModeSummary? = nil,
                 creationDateTime: Date? = nil,
+                deletionProtectionEnabled: DeletionProtectionEnabled? = nil,
                 globalSecondaryIndexes: GlobalSecondaryIndexDescriptionList? = nil,
                 globalTableVersion: String? = nil,
-                itemCount: Long? = nil,
+                itemCount: LongObject? = nil,
                 keySchema: KeySchema? = nil,
                 latestStreamArn: StreamArn? = nil,
                 latestStreamLabel: String? = nil,
@@ -5010,12 +5044,13 @@ public struct TableDescription: Codable, Equatable {
                 tableClassSummary: TableClassSummary? = nil,
                 tableId: TableId? = nil,
                 tableName: TableName? = nil,
-                tableSizeBytes: Long? = nil,
+                tableSizeBytes: LongObject? = nil,
                 tableStatus: TableStatus? = nil) {
         self.archivalSummary = archivalSummary
         self.attributeDefinitions = attributeDefinitions
         self.billingModeSummary = billingModeSummary
         self.creationDateTime = creationDateTime
+        self.deletionProtectionEnabled = deletionProtectionEnabled
         self.globalSecondaryIndexes = globalSecondaryIndexes
         self.globalTableVersion = globalTableVersion
         self.itemCount = itemCount
@@ -5041,6 +5076,7 @@ public struct TableDescription: Codable, Equatable {
         case attributeDefinitions = "AttributeDefinitions"
         case billingModeSummary = "BillingModeSummary"
         case creationDateTime = "CreationDateTime"
+        case deletionProtectionEnabled = "DeletionProtectionEnabled"
         case globalSecondaryIndexes = "GlobalSecondaryIndexes"
         case globalTableVersion = "GlobalTableVersion"
         case itemCount = "ItemCount"
@@ -5647,6 +5683,7 @@ public struct UpdateItemInput: Codable, Equatable {
     public var returnConsumedCapacity: ReturnConsumedCapacity?
     public var returnItemCollectionMetrics: ReturnItemCollectionMetrics?
     public var returnValues: ReturnValue?
+    public var returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure?
     public var tableName: TableName
     public var updateExpression: UpdateExpression?
 
@@ -5660,6 +5697,7 @@ public struct UpdateItemInput: Codable, Equatable {
                 returnConsumedCapacity: ReturnConsumedCapacity? = nil,
                 returnItemCollectionMetrics: ReturnItemCollectionMetrics? = nil,
                 returnValues: ReturnValue? = nil,
+                returnValuesOnConditionCheckFailure: ReturnValuesOnConditionCheckFailure? = nil,
                 tableName: TableName,
                 updateExpression: UpdateExpression? = nil) {
         self.attributeUpdates = attributeUpdates
@@ -5672,6 +5710,7 @@ public struct UpdateItemInput: Codable, Equatable {
         self.returnConsumedCapacity = returnConsumedCapacity
         self.returnItemCollectionMetrics = returnItemCollectionMetrics
         self.returnValues = returnValues
+        self.returnValuesOnConditionCheckFailure = returnValuesOnConditionCheckFailure
         self.tableName = tableName
         self.updateExpression = updateExpression
     }
@@ -5687,6 +5726,7 @@ public struct UpdateItemInput: Codable, Equatable {
         case returnConsumedCapacity = "ReturnConsumedCapacity"
         case returnItemCollectionMetrics = "ReturnItemCollectionMetrics"
         case returnValues = "ReturnValues"
+        case returnValuesOnConditionCheckFailure = "ReturnValuesOnConditionCheckFailure"
         case tableName = "TableName"
         case updateExpression = "UpdateExpression"
     }
@@ -5757,6 +5797,7 @@ public struct UpdateReplicationGroupMemberAction: Codable, Equatable {
 public struct UpdateTableInput: Codable, Equatable {
     public var attributeDefinitions: AttributeDefinitions?
     public var billingMode: BillingMode?
+    public var deletionProtectionEnabled: DeletionProtectionEnabled?
     public var globalSecondaryIndexUpdates: GlobalSecondaryIndexUpdateList?
     public var provisionedThroughput: ProvisionedThroughput?
     public var replicaUpdates: ReplicationGroupUpdateList?
@@ -5767,6 +5808,7 @@ public struct UpdateTableInput: Codable, Equatable {
 
     public init(attributeDefinitions: AttributeDefinitions? = nil,
                 billingMode: BillingMode? = nil,
+                deletionProtectionEnabled: DeletionProtectionEnabled? = nil,
                 globalSecondaryIndexUpdates: GlobalSecondaryIndexUpdateList? = nil,
                 provisionedThroughput: ProvisionedThroughput? = nil,
                 replicaUpdates: ReplicationGroupUpdateList? = nil,
@@ -5776,6 +5818,7 @@ public struct UpdateTableInput: Codable, Equatable {
                 tableName: TableName) {
         self.attributeDefinitions = attributeDefinitions
         self.billingMode = billingMode
+        self.deletionProtectionEnabled = deletionProtectionEnabled
         self.globalSecondaryIndexUpdates = globalSecondaryIndexUpdates
         self.provisionedThroughput = provisionedThroughput
         self.replicaUpdates = replicaUpdates
@@ -5788,6 +5831,7 @@ public struct UpdateTableInput: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case attributeDefinitions = "AttributeDefinitions"
         case billingMode = "BillingMode"
+        case deletionProtectionEnabled = "DeletionProtectionEnabled"
         case globalSecondaryIndexUpdates = "GlobalSecondaryIndexUpdates"
         case provisionedThroughput = "ProvisionedThroughput"
         case replicaUpdates = "ReplicaUpdates"

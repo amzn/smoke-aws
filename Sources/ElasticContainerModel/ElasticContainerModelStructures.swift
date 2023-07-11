@@ -531,6 +531,7 @@ public struct Container: Codable, Equatable {
 public struct ContainerDefinition: Codable, Equatable {
     public var command: StringList?
     public var cpu: Integer?
+    public var credentialSpecs: StringList?
     public var dependsOn: ContainerDependencies?
     public var disableNetworking: BoxedBoolean?
     public var dnsSearchDomains: StringList?
@@ -571,6 +572,7 @@ public struct ContainerDefinition: Codable, Equatable {
 
     public init(command: StringList? = nil,
                 cpu: Integer? = nil,
+                credentialSpecs: StringList? = nil,
                 dependsOn: ContainerDependencies? = nil,
                 disableNetworking: BoxedBoolean? = nil,
                 dnsSearchDomains: StringList? = nil,
@@ -610,6 +612,7 @@ public struct ContainerDefinition: Codable, Equatable {
                 workingDirectory: String? = nil) {
         self.command = command
         self.cpu = cpu
+        self.credentialSpecs = credentialSpecs
         self.dependsOn = dependsOn
         self.disableNetworking = disableNetworking
         self.dnsSearchDomains = dnsSearchDomains
@@ -652,6 +655,7 @@ public struct ContainerDefinition: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case command
         case cpu
+        case credentialSpecs
         case dependsOn
         case disableNetworking
         case dnsSearchDomains
@@ -1378,6 +1382,40 @@ public struct DeleteServiceResponse: Codable, Equatable {
 
     public func validate() throws {
         try service?.validate()
+    }
+}
+
+public struct DeleteTaskDefinitionsRequest: Codable, Equatable {
+    public var taskDefinitions: StringList
+
+    public init(taskDefinitions: StringList) {
+        self.taskDefinitions = taskDefinitions
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case taskDefinitions
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteTaskDefinitionsResponse: Codable, Equatable {
+    public var failures: Failures?
+    public var taskDefinitions: TaskDefinitionList?
+
+    public init(failures: Failures? = nil,
+                taskDefinitions: TaskDefinitionList? = nil) {
+        self.failures = failures
+        self.taskDefinitions = taskDefinitions
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case failures
+        case taskDefinitions
+    }
+
+    public func validate() throws {
     }
 }
 

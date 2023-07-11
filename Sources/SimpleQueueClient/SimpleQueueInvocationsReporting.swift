@@ -30,6 +30,7 @@ import SimpleQueueModel
  */
 public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClientCoreInvocationReporting> {
     public let addPermission: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let cancelMessageMoveTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let changeMessageVisibility: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let changeMessageVisibilityBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let createQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -39,6 +40,7 @@ public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClien
     public let getQueueAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getQueueUrl: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listDeadLetterSourceQueues: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listMessageMoveTasks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listQueueTags: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listQueues: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let purgeQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -47,12 +49,15 @@ public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClien
     public let sendMessage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let sendMessageBatch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let setQueueAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let startMessageMoveTask: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let tagQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let untagQueue: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: SimpleQueueOperationsReporting) {
         self.addPermission = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.addPermission)
+        self.cancelMessageMoveTask = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.cancelMessageMoveTask)
         self.changeMessageVisibility = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.changeMessageVisibility)
         self.changeMessageVisibilityBatch = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -71,6 +76,8 @@ public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClien
             smokeAWSOperationReporting: operationsReporting.getQueueUrl)
         self.listDeadLetterSourceQueues = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listDeadLetterSourceQueues)
+        self.listMessageMoveTasks = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listMessageMoveTasks)
         self.listQueueTags = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listQueueTags)
         self.listQueues = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -87,6 +94,8 @@ public struct SimpleQueueInvocationsReporting<InvocationReportingType: HTTPClien
             smokeAWSOperationReporting: operationsReporting.sendMessageBatch)
         self.setQueueAttributes = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.setQueueAttributes)
+        self.startMessageMoveTask = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.startMessageMoveTask)
         self.tagQueue = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.tagQueue)
         self.untagQueue = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

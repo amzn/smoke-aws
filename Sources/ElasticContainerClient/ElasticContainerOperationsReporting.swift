@@ -37,6 +37,7 @@ public struct ElasticContainerOperationsReporting {
     public let deleteCapacityProvider: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let deleteCluster: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let deleteService: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
+    public let deleteTaskDefinitions: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let deleteTaskSet: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let deregisterContainerInstance: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
     public let deregisterTaskDefinition: StandardSmokeAWSOperationReporting<ElasticContainerModelOperations>
@@ -103,6 +104,8 @@ public struct ElasticContainerOperationsReporting {
             clientName: clientName, operation: .deleteCluster, configuration: reportingConfiguration)
         self.deleteService = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteService, configuration: reportingConfiguration)
+        self.deleteTaskDefinitions = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteTaskDefinitions, configuration: reportingConfiguration)
         self.deleteTaskSet = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteTaskSet, configuration: reportingConfiguration)
         self.deregisterContainerInstance = StandardSmokeAWSOperationReporting(

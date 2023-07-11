@@ -1607,6 +1607,7 @@ public extension PipelineMetadata {
         let defaultInstance = CodePipelineModel.PipelineMetadata(
             created: nil,
             pipelineArn: nil,
+            pollingDisabledAt: nil,
             updated: nil)
 
         return defaultInstance

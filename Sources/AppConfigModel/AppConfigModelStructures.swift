@@ -597,19 +597,22 @@ public struct CreateHostedConfigurationVersionRequest: Codable, Equatable {
     public var contentType: StringWithLengthBetween1And255
     public var description: Description?
     public var latestVersionNumber: Integer?
+    public var versionLabel: VersionLabel?
 
     public init(applicationId: Id,
                 configurationProfileId: Id,
                 content: Blob,
                 contentType: StringWithLengthBetween1And255,
                 description: Description? = nil,
-                latestVersionNumber: Integer? = nil) {
+                latestVersionNumber: Integer? = nil,
+                versionLabel: VersionLabel? = nil) {
         self.applicationId = applicationId
         self.configurationProfileId = configurationProfileId
         self.content = content
         self.contentType = contentType
         self.description = description
         self.latestVersionNumber = latestVersionNumber
+        self.versionLabel = versionLabel
     }
 
     enum CodingKeys: String, CodingKey {
@@ -619,6 +622,7 @@ public struct CreateHostedConfigurationVersionRequest: Codable, Equatable {
         case contentType = "Content-Type"
         case description = "Description"
         case latestVersionNumber = "Latest-Version-Number"
+        case versionLabel = "VersionLabel"
     }
 
     public func validate() throws {
@@ -626,6 +630,7 @@ public struct CreateHostedConfigurationVersionRequest: Codable, Equatable {
         try configurationProfileId.validateAsId()
         try contentType.validateAsStringWithLengthBetween1And255()
         try description?.validateAsDescription()
+        try versionLabel?.validateAsVersionLabel()
     }
 }
 
@@ -781,6 +786,8 @@ public struct Deployment: Codable, Equatable {
     public var finalBakeTimeInMinutes: MinutesBetween0And24Hours?
     public var growthFactor: Percentage?
     public var growthType: GrowthType?
+    public var kmsKeyArn: Arn?
+    public var kmsKeyIdentifier: Identifier?
     public var percentageComplete: Percentage?
     public var startedAt: Iso8601DateTime?
     public var state: DeploymentState?
@@ -801,6 +808,8 @@ public struct Deployment: Codable, Equatable {
                 finalBakeTimeInMinutes: MinutesBetween0And24Hours? = nil,
                 growthFactor: Percentage? = nil,
                 growthType: GrowthType? = nil,
+                kmsKeyArn: Arn? = nil,
+                kmsKeyIdentifier: Identifier? = nil,
                 percentageComplete: Percentage? = nil,
                 startedAt: Iso8601DateTime? = nil,
                 state: DeploymentState? = nil) {
@@ -820,6 +829,8 @@ public struct Deployment: Codable, Equatable {
         self.finalBakeTimeInMinutes = finalBakeTimeInMinutes
         self.growthFactor = growthFactor
         self.growthType = growthType
+        self.kmsKeyArn = kmsKeyArn
+        self.kmsKeyIdentifier = kmsKeyIdentifier
         self.percentageComplete = percentageComplete
         self.startedAt = startedAt
         self.state = state
@@ -842,6 +853,8 @@ public struct Deployment: Codable, Equatable {
         case finalBakeTimeInMinutes = "FinalBakeTimeInMinutes"
         case growthFactor = "GrowthFactor"
         case growthType = "GrowthType"
+        case kmsKeyArn = "KmsKeyArn"
+        case kmsKeyIdentifier = "KmsKeyIdentifier"
         case percentageComplete = "PercentageComplete"
         case startedAt = "StartedAt"
         case state = "State"
@@ -859,6 +872,8 @@ public struct Deployment: Codable, Equatable {
         try environmentId?.validateAsId()
         try finalBakeTimeInMinutes?.validateAsMinutesBetween0And24Hours()
         try growthFactor?.validateAsPercentage()
+        try kmsKeyArn?.validateAsArn()
+        try kmsKeyIdentifier?.validateAsIdentifier()
         try percentageComplete?.validateAsPercentage()
     }
 }
@@ -1490,6 +1505,7 @@ public struct HostedConfigurationVersion: Codable, Equatable {
     public var content: Blob?
     public var contentType: StringWithLengthBetween1And255?
     public var description: Description?
+    public var versionLabel: VersionLabel?
     public var versionNumber: Integer?
 
     public init(applicationId: Id? = nil,
@@ -1497,12 +1513,14 @@ public struct HostedConfigurationVersion: Codable, Equatable {
                 content: Blob? = nil,
                 contentType: StringWithLengthBetween1And255? = nil,
                 description: Description? = nil,
+                versionLabel: VersionLabel? = nil,
                 versionNumber: Integer? = nil) {
         self.applicationId = applicationId
         self.configurationProfileId = configurationProfileId
         self.content = content
         self.contentType = contentType
         self.description = description
+        self.versionLabel = versionLabel
         self.versionNumber = versionNumber
     }
 
@@ -1512,6 +1530,7 @@ public struct HostedConfigurationVersion: Codable, Equatable {
         case content = "Content"
         case contentType = "Content-Type"
         case description = "Description"
+        case versionLabel = "VersionLabel"
         case versionNumber = "Version-Number"
     }
 
@@ -1520,6 +1539,7 @@ public struct HostedConfigurationVersion: Codable, Equatable {
         try configurationProfileId?.validateAsId()
         try contentType?.validateAsStringWithLengthBetween1And255()
         try description?.validateAsDescription()
+        try versionLabel?.validateAsVersionLabel()
     }
 }
 
@@ -1528,17 +1548,20 @@ public struct HostedConfigurationVersionSummary: Codable, Equatable {
     public var configurationProfileId: Id?
     public var contentType: StringWithLengthBetween1And255?
     public var description: Description?
+    public var versionLabel: VersionLabel?
     public var versionNumber: Integer?
 
     public init(applicationId: Id? = nil,
                 configurationProfileId: Id? = nil,
                 contentType: StringWithLengthBetween1And255? = nil,
                 description: Description? = nil,
+                versionLabel: VersionLabel? = nil,
                 versionNumber: Integer? = nil) {
         self.applicationId = applicationId
         self.configurationProfileId = configurationProfileId
         self.contentType = contentType
         self.description = description
+        self.versionLabel = versionLabel
         self.versionNumber = versionNumber
     }
 
@@ -1547,6 +1570,7 @@ public struct HostedConfigurationVersionSummary: Codable, Equatable {
         case configurationProfileId = "ConfigurationProfileId"
         case contentType = "ContentType"
         case description = "Description"
+        case versionLabel = "VersionLabel"
         case versionNumber = "VersionNumber"
     }
 
@@ -1555,6 +1579,7 @@ public struct HostedConfigurationVersionSummary: Codable, Equatable {
         try configurationProfileId?.validateAsId()
         try contentType?.validateAsStringWithLengthBetween1And255()
         try description?.validateAsDescription()
+        try versionLabel?.validateAsVersionLabel()
     }
 }
 
@@ -1820,15 +1845,18 @@ public struct ListHostedConfigurationVersionsRequest: Codable, Equatable {
     public var configurationProfileId: Id
     public var maxResults: MaxResults?
     public var nextToken: NextToken?
+    public var versionLabel: QueryName?
 
     public init(applicationId: Id,
                 configurationProfileId: Id,
                 maxResults: MaxResults? = nil,
-                nextToken: NextToken? = nil) {
+                nextToken: NextToken? = nil,
+                versionLabel: QueryName? = nil) {
         self.applicationId = applicationId
         self.configurationProfileId = configurationProfileId
         self.maxResults = maxResults
         self.nextToken = nextToken
+        self.versionLabel = versionLabel
     }
 
     enum CodingKeys: String, CodingKey {
@@ -1836,6 +1864,7 @@ public struct ListHostedConfigurationVersionsRequest: Codable, Equatable {
         case configurationProfileId = "ConfigurationProfileId"
         case maxResults = "max_results"
         case nextToken = "next_token"
+        case versionLabel = "version_label"
     }
 
     public func validate() throws {
@@ -1843,6 +1872,7 @@ public struct ListHostedConfigurationVersionsRequest: Codable, Equatable {
         try configurationProfileId.validateAsId()
         try maxResults?.validateAsMaxResults()
         try nextToken?.validateAsNextToken()
+        try versionLabel?.validateAsQueryName()
     }
 }
 
@@ -1986,6 +2016,7 @@ public struct StartDeploymentRequest: Codable, Equatable {
     public var deploymentStrategyId: DeploymentStrategyId
     public var description: Description?
     public var environmentId: Id
+    public var kmsKeyIdentifier: Identifier?
     public var tags: TagMap?
 
     public init(applicationId: Id,
@@ -1994,6 +2025,7 @@ public struct StartDeploymentRequest: Codable, Equatable {
                 deploymentStrategyId: DeploymentStrategyId,
                 description: Description? = nil,
                 environmentId: Id,
+                kmsKeyIdentifier: Identifier? = nil,
                 tags: TagMap? = nil) {
         self.applicationId = applicationId
         self.configurationProfileId = configurationProfileId
@@ -2001,6 +2033,7 @@ public struct StartDeploymentRequest: Codable, Equatable {
         self.deploymentStrategyId = deploymentStrategyId
         self.description = description
         self.environmentId = environmentId
+        self.kmsKeyIdentifier = kmsKeyIdentifier
         self.tags = tags
     }
 
@@ -2011,6 +2044,7 @@ public struct StartDeploymentRequest: Codable, Equatable {
         case deploymentStrategyId = "DeploymentStrategyId"
         case description = "Description"
         case environmentId = "EnvironmentId"
+        case kmsKeyIdentifier = "KmsKeyIdentifier"
         case tags = "Tags"
     }
 
@@ -2021,6 +2055,7 @@ public struct StartDeploymentRequest: Codable, Equatable {
         try deploymentStrategyId.validateAsDeploymentStrategyId()
         try description?.validateAsDescription()
         try environmentId.validateAsId()
+        try kmsKeyIdentifier?.validateAsIdentifier()
     }
 }
 

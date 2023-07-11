@@ -26,6 +26,7 @@ import Foundation
  Operation enumeration for the CloudformationModel.
  */
 public enum CloudformationModelOperations: String, Hashable, CustomStringConvertible {
+    case activateOrganizationsAccess = "ActivateOrganizationsAccess"
     case activateType = "ActivateType"
     case batchDescribeTypeConfigurations = "BatchDescribeTypeConfigurations"
     case cancelUpdateStack = "CancelUpdateStack"
@@ -34,6 +35,7 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
     case createStack = "CreateStack"
     case createStackInstances = "CreateStackInstances"
     case createStackSet = "CreateStackSet"
+    case deactivateOrganizationsAccess = "DeactivateOrganizationsAccess"
     case deactivateType = "DeactivateType"
     case deleteChangeSet = "DeleteChangeSet"
     case deleteStack = "DeleteStack"
@@ -43,6 +45,7 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
     case describeAccountLimits = "DescribeAccountLimits"
     case describeChangeSet = "DescribeChangeSet"
     case describeChangeSetHooks = "DescribeChangeSetHooks"
+    case describeOrganizationsAccess = "DescribeOrganizationsAccess"
     case describePublisher = "DescribePublisher"
     case describeStackDriftDetectionStatus = "DescribeStackDriftDetectionStatus"
     case describeStackEvents = "DescribeStackEvents"
@@ -99,6 +102,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
 
     public var operationPath: String {
         switch self {
+        case .activateOrganizationsAccess:
+            return "/"
         case .activateType:
             return "/"
         case .batchDescribeTypeConfigurations:
@@ -114,6 +119,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
         case .createStackInstances:
             return "/"
         case .createStackSet:
+            return "/"
+        case .deactivateOrganizationsAccess:
             return "/"
         case .deactivateType:
             return "/"
@@ -132,6 +139,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
         case .describeChangeSet:
             return "/"
         case .describeChangeSetHooks:
+            return "/"
+        case .describeOrganizationsAccess:
             return "/"
         case .describePublisher:
             return "/"

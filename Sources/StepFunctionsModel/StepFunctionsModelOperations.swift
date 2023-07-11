@@ -28,20 +28,27 @@ import Foundation
 public enum StepFunctionsModelOperations: String, Hashable, CustomStringConvertible {
     case createActivity = "CreateActivity"
     case createStateMachine = "CreateStateMachine"
+    case createStateMachineAlias = "CreateStateMachineAlias"
     case deleteActivity = "DeleteActivity"
     case deleteStateMachine = "DeleteStateMachine"
+    case deleteStateMachineAlias = "DeleteStateMachineAlias"
+    case deleteStateMachineVersion = "DeleteStateMachineVersion"
     case describeActivity = "DescribeActivity"
     case describeExecution = "DescribeExecution"
     case describeMapRun = "DescribeMapRun"
     case describeStateMachine = "DescribeStateMachine"
+    case describeStateMachineAlias = "DescribeStateMachineAlias"
     case describeStateMachineForExecution = "DescribeStateMachineForExecution"
     case getActivityTask = "GetActivityTask"
     case getExecutionHistory = "GetExecutionHistory"
     case listActivities = "ListActivities"
     case listExecutions = "ListExecutions"
     case listMapRuns = "ListMapRuns"
+    case listStateMachineAliases = "ListStateMachineAliases"
+    case listStateMachineVersions = "ListStateMachineVersions"
     case listStateMachines = "ListStateMachines"
     case listTagsForResource = "ListTagsForResource"
+    case publishStateMachineVersion = "PublishStateMachineVersion"
     case sendTaskFailure = "SendTaskFailure"
     case sendTaskHeartbeat = "SendTaskHeartbeat"
     case sendTaskSuccess = "SendTaskSuccess"
@@ -52,6 +59,7 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
     case untagResource = "UntagResource"
     case updateMapRun = "UpdateMapRun"
     case updateStateMachine = "UpdateStateMachine"
+    case updateStateMachineAlias = "UpdateStateMachineAlias"
 
     public var description: String {
         return rawValue
@@ -63,9 +71,15 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
             return "/"
         case .createStateMachine:
             return "/"
+        case .createStateMachineAlias:
+            return "/"
         case .deleteActivity:
             return "/"
         case .deleteStateMachine:
+            return "/"
+        case .deleteStateMachineAlias:
+            return "/"
+        case .deleteStateMachineVersion:
             return "/"
         case .describeActivity:
             return "/"
@@ -74,6 +88,8 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
         case .describeMapRun:
             return "/"
         case .describeStateMachine:
+            return "/"
+        case .describeStateMachineAlias:
             return "/"
         case .describeStateMachineForExecution:
             return "/"
@@ -87,9 +103,15 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
             return "/"
         case .listMapRuns:
             return "/"
+        case .listStateMachineAliases:
+            return "/"
+        case .listStateMachineVersions:
+            return "/"
         case .listStateMachines:
             return "/"
         case .listTagsForResource:
+            return "/"
+        case .publishStateMachineVersion:
             return "/"
         case .sendTaskFailure:
             return "/"
@@ -110,6 +132,8 @@ public enum StepFunctionsModelOperations: String, Hashable, CustomStringConverti
         case .updateMapRun:
             return "/"
         case .updateStateMachine:
+            return "/"
+        case .updateStateMachineAlias:
             return "/"
         }
     }

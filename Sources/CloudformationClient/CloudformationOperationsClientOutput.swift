@@ -25,6 +25,19 @@ import SmokeHTTPClient
 import CloudformationModel
 
 /**
+ Type to handle the output from the ActivateOrganizationsAccess operation in a HTTP client.
+ */
+extension ActivateOrganizationsAccessOutputForActivateOrganizationsAccess: HTTPResponseOutputProtocol {
+    public typealias BodyType = ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
+    public typealias HeadersType = ActivateOrganizationsAccessOutputForActivateOrganizationsAccess
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ActivateOrganizationsAccessOutputForActivateOrganizationsAccess {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ActivateType operation in a HTTP client.
  */
 extension ActivateTypeOutputForActivateType: HTTPResponseOutputProtocol {
@@ -111,6 +124,19 @@ extension CreateStackSetOutputForCreateStackSet: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CreateStackSetOutputForCreateStackSet {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DeactivateOrganizationsAccess operation in a HTTP client.
+ */
+extension DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
+    public typealias HeadersType = DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess {
         return try bodyDecodableProvider()
     }
 }
@@ -215,6 +241,19 @@ extension DescribeChangeSetHooksOutputForDescribeChangeSetHooks: HTTPResponseOut
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeOrganizationsAccess operation in a HTTP client.
+ */
+extension DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess: HTTPResponseOutputProtocol {
+    public typealias BodyType = DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
+    public typealias HeadersType = DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess {
         return try bodyDecodableProvider()
     }
 }

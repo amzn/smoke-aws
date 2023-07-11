@@ -40,6 +40,7 @@ private let backupPolicyNotFoundIdentity = "BackupPolicyNotFoundFault"
 private let blueGreenDeploymentAlreadyExistsIdentity = "BlueGreenDeploymentAlreadyExistsFault"
 private let blueGreenDeploymentNotFoundIdentity = "BlueGreenDeploymentNotFoundFault"
 private let certificateNotFoundIdentity = "CertificateNotFound"
+private let createCustomDBEngineVersionIdentity = "CreateCustomDBEngineVersionFault"
 private let customAvailabilityZoneNotFoundIdentity = "CustomAvailabilityZoneNotFound"
 private let customDBEngineVersionAlreadyExistsIdentity = "CustomDBEngineVersionAlreadyExistsFault"
 private let customDBEngineVersionNotFoundIdentity = "CustomDBEngineVersionNotFoundFault"
@@ -152,6 +153,7 @@ private let sourceClusterNotSupportedIdentity = "SourceClusterNotSupportedFault"
 private let sourceDatabaseNotSupportedIdentity = "SourceDatabaseNotSupportedFault"
 private let sourceNotFoundIdentity = "SourceNotFound"
 private let storageQuotaExceededIdentity = "StorageQuotaExceeded"
+private let storageTypeNotAvailableIdentity = "StorageTypeNotAvailableFault"
 private let storageTypeNotSupportedIdentity = "StorageTypeNotSupported"
 private let subnetAlreadyInUseIdentity = "SubnetAlreadyInUse"
 private let subscriptionAlreadyExistIdentity = "SubscriptionAlreadyExist"
@@ -167,6 +169,7 @@ public enum RDSError: Swift.Error, Decodable {
     case blueGreenDeploymentAlreadyExists(BlueGreenDeploymentAlreadyExistsFault)
     case blueGreenDeploymentNotFound(BlueGreenDeploymentNotFoundFault)
     case certificateNotFound(CertificateNotFoundFault)
+    case createCustomDBEngineVersion(CreateCustomDBEngineVersionFault)
     case customAvailabilityZoneNotFound(CustomAvailabilityZoneNotFoundFault)
     case customDBEngineVersionAlreadyExists(CustomDBEngineVersionAlreadyExistsFault)
     case customDBEngineVersionNotFound(CustomDBEngineVersionNotFoundFault)
@@ -279,6 +282,7 @@ public enum RDSError: Swift.Error, Decodable {
     case sourceDatabaseNotSupported(SourceDatabaseNotSupportedFault)
     case sourceNotFound(SourceNotFoundFault)
     case storageQuotaExceeded(StorageQuotaExceededFault)
+    case storageTypeNotAvailable(StorageTypeNotAvailableFault)
     case storageTypeNotSupported(StorageTypeNotSupportedFault)
     case subnetAlreadyInUse(SubnetAlreadyInUse)
     case subscriptionAlreadyExist(SubscriptionAlreadyExistFault)
@@ -324,6 +328,9 @@ public enum RDSError: Swift.Error, Decodable {
         case certificateNotFoundIdentity:
             let errorPayload = try CertificateNotFoundFault(from: decoder)
             self = RDSError.certificateNotFound(errorPayload)
+        case createCustomDBEngineVersionIdentity:
+            let errorPayload = try CreateCustomDBEngineVersionFault(from: decoder)
+            self = RDSError.createCustomDBEngineVersion(errorPayload)
         case customAvailabilityZoneNotFoundIdentity:
             let errorPayload = try CustomAvailabilityZoneNotFoundFault(from: decoder)
             self = RDSError.customAvailabilityZoneNotFound(errorPayload)
@@ -660,6 +667,9 @@ public enum RDSError: Swift.Error, Decodable {
         case storageQuotaExceededIdentity:
             let errorPayload = try StorageQuotaExceededFault(from: decoder)
             self = RDSError.storageQuotaExceeded(errorPayload)
+        case storageTypeNotAvailableIdentity:
+            let errorPayload = try StorageTypeNotAvailableFault(from: decoder)
+            self = RDSError.storageTypeNotAvailable(errorPayload)
         case storageTypeNotSupportedIdentity:
             let errorPayload = try StorageTypeNotSupportedFault(from: decoder)
             self = RDSError.storageTypeNotSupported(errorPayload)

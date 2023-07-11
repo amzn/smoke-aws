@@ -94,6 +94,52 @@ public struct BatchResultErrorEntry: Codable, Equatable {
     }
 }
 
+public struct CancelMessageMoveTaskRequest: Codable, Equatable {
+    public var taskHandle: String
+
+    public init(taskHandle: String) {
+        self.taskHandle = taskHandle
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case taskHandle = "TaskHandle"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CancelMessageMoveTaskResult: Codable, Equatable {
+    public var approximateNumberOfMessagesMoved: Long?
+
+    public init(approximateNumberOfMessagesMoved: Long? = nil) {
+        self.approximateNumberOfMessagesMoved = approximateNumberOfMessagesMoved
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case approximateNumberOfMessagesMoved = "ApproximateNumberOfMessagesMoved"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct CancelMessageMoveTaskResultForCancelMessageMoveTask: Codable, Equatable {
+    public var cancelMessageMoveTaskResult: CancelMessageMoveTaskResult
+
+    public init(cancelMessageMoveTaskResult: CancelMessageMoveTaskResult) {
+        self.cancelMessageMoveTaskResult = cancelMessageMoveTaskResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case cancelMessageMoveTaskResult = "CancelMessageMoveTaskResult"
+    }
+
+    public func validate() throws {
+        try cancelMessageMoveTaskResult.validate()
+    }
+}
+
 public struct ChangeMessageVisibilityBatchRequest: Codable, Equatable {
     public var entries: ChangeMessageVisibilityBatchRequestEntryList
     public var queueUrl: String
@@ -588,6 +634,103 @@ public struct ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues: Cod
     }
 }
 
+public struct ListMessageMoveTasksRequest: Codable, Equatable {
+    public var maxResults: Integer?
+    public var sourceArn: String
+
+    public init(maxResults: Integer? = nil,
+                sourceArn: String) {
+        self.maxResults = maxResults
+        self.sourceArn = sourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case maxResults = "MaxResults"
+        case sourceArn = "SourceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListMessageMoveTasksResult: Codable, Equatable {
+    public var results: ListMessageMoveTasksResultEntryList?
+
+    public init(results: ListMessageMoveTasksResultEntryList? = nil) {
+        self.results = results
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case results = "Results"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListMessageMoveTasksResultEntry: Codable, Equatable {
+    public var approximateNumberOfMessagesMoved: Long?
+    public var approximateNumberOfMessagesToMove: Long?
+    public var destinationArn: String?
+    public var failureReason: String?
+    public var maxNumberOfMessagesPerSecond: Integer?
+    public var sourceArn: String?
+    public var startedTimestamp: Long?
+    public var status: String?
+    public var taskHandle: String?
+
+    public init(approximateNumberOfMessagesMoved: Long? = nil,
+                approximateNumberOfMessagesToMove: Long? = nil,
+                destinationArn: String? = nil,
+                failureReason: String? = nil,
+                maxNumberOfMessagesPerSecond: Integer? = nil,
+                sourceArn: String? = nil,
+                startedTimestamp: Long? = nil,
+                status: String? = nil,
+                taskHandle: String? = nil) {
+        self.approximateNumberOfMessagesMoved = approximateNumberOfMessagesMoved
+        self.approximateNumberOfMessagesToMove = approximateNumberOfMessagesToMove
+        self.destinationArn = destinationArn
+        self.failureReason = failureReason
+        self.maxNumberOfMessagesPerSecond = maxNumberOfMessagesPerSecond
+        self.sourceArn = sourceArn
+        self.startedTimestamp = startedTimestamp
+        self.status = status
+        self.taskHandle = taskHandle
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case approximateNumberOfMessagesMoved = "ApproximateNumberOfMessagesMoved"
+        case approximateNumberOfMessagesToMove = "ApproximateNumberOfMessagesToMove"
+        case destinationArn = "DestinationArn"
+        case failureReason = "FailureReason"
+        case maxNumberOfMessagesPerSecond = "MaxNumberOfMessagesPerSecond"
+        case sourceArn = "SourceArn"
+        case startedTimestamp = "StartedTimestamp"
+        case status = "Status"
+        case taskHandle = "TaskHandle"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ListMessageMoveTasksResultForListMessageMoveTasks: Codable, Equatable {
+    public var listMessageMoveTasksResult: ListMessageMoveTasksResult
+
+    public init(listMessageMoveTasksResult: ListMessageMoveTasksResult) {
+        self.listMessageMoveTasksResult = listMessageMoveTasksResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case listMessageMoveTasksResult = "ListMessageMoveTasksResult"
+    }
+
+    public func validate() throws {
+        try listMessageMoveTasksResult.validate()
+    }
+}
+
 public struct ListQueueTagsRequest: Codable, Equatable {
     public var queueUrl: String
 
@@ -960,6 +1103,15 @@ public struct RemovePermissionRequest: Codable, Equatable {
     }
 }
 
+public struct ResourceNotFoundException: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct SendMessageBatchRequest: Codable, Equatable {
     public var entries: SendMessageBatchRequestEntryList
     public var queueUrl: String
@@ -1190,6 +1342,60 @@ public struct SetQueueAttributesRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct StartMessageMoveTaskRequest: Codable, Equatable {
+    public var destinationArn: String?
+    public var maxNumberOfMessagesPerSecond: Integer?
+    public var sourceArn: String
+
+    public init(destinationArn: String? = nil,
+                maxNumberOfMessagesPerSecond: Integer? = nil,
+                sourceArn: String) {
+        self.destinationArn = destinationArn
+        self.maxNumberOfMessagesPerSecond = maxNumberOfMessagesPerSecond
+        self.sourceArn = sourceArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case destinationArn = "DestinationArn"
+        case maxNumberOfMessagesPerSecond = "MaxNumberOfMessagesPerSecond"
+        case sourceArn = "SourceArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StartMessageMoveTaskResult: Codable, Equatable {
+    public var taskHandle: String?
+
+    public init(taskHandle: String? = nil) {
+        self.taskHandle = taskHandle
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case taskHandle = "TaskHandle"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct StartMessageMoveTaskResultForStartMessageMoveTask: Codable, Equatable {
+    public var startMessageMoveTaskResult: StartMessageMoveTaskResult
+
+    public init(startMessageMoveTaskResult: StartMessageMoveTaskResult) {
+        self.startMessageMoveTaskResult = startMessageMoveTaskResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case startMessageMoveTaskResult = "StartMessageMoveTaskResult"
+    }
+
+    public func validate() throws {
+        try startMessageMoveTaskResult.validate()
     }
 }
 

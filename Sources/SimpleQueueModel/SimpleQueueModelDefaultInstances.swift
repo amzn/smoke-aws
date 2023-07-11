@@ -74,6 +74,42 @@ public extension BatchResultErrorEntry {
     }()
 }
 
+public extension CancelMessageMoveTaskRequest {
+    /**
+     Default instance of the CancelMessageMoveTaskRequest structure.
+     */
+    static let __default: SimpleQueueModel.CancelMessageMoveTaskRequest = {
+        let defaultInstance = SimpleQueueModel.CancelMessageMoveTaskRequest(
+            taskHandle: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension CancelMessageMoveTaskResult {
+    /**
+     Default instance of the CancelMessageMoveTaskResult structure.
+     */
+    static let __default: SimpleQueueModel.CancelMessageMoveTaskResult = {
+        let defaultInstance = SimpleQueueModel.CancelMessageMoveTaskResult(
+            approximateNumberOfMessagesMoved: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension CancelMessageMoveTaskResultForCancelMessageMoveTask {
+    /**
+     Default instance of the CancelMessageMoveTaskResultForCancelMessageMoveTask structure.
+     */
+    static let __default: SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask = {
+        let defaultInstance = SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask(
+            cancelMessageMoveTaskResult: CancelMessageMoveTaskResult.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ChangeMessageVisibilityBatchRequest {
     /**
      Default instance of the ChangeMessageVisibilityBatchRequest structure.
@@ -446,6 +482,63 @@ public extension ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
     }()
 }
 
+public extension ListMessageMoveTasksRequest {
+    /**
+     Default instance of the ListMessageMoveTasksRequest structure.
+     */
+    static let __default: SimpleQueueModel.ListMessageMoveTasksRequest = {
+        let defaultInstance = SimpleQueueModel.ListMessageMoveTasksRequest(
+            maxResults: nil,
+            sourceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListMessageMoveTasksResult {
+    /**
+     Default instance of the ListMessageMoveTasksResult structure.
+     */
+    static let __default: SimpleQueueModel.ListMessageMoveTasksResult = {
+        let defaultInstance = SimpleQueueModel.ListMessageMoveTasksResult(
+            results: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListMessageMoveTasksResultEntry {
+    /**
+     Default instance of the ListMessageMoveTasksResultEntry structure.
+     */
+    static let __default: SimpleQueueModel.ListMessageMoveTasksResultEntry = {
+        let defaultInstance = SimpleQueueModel.ListMessageMoveTasksResultEntry(
+            approximateNumberOfMessagesMoved: nil,
+            approximateNumberOfMessagesToMove: nil,
+            destinationArn: nil,
+            failureReason: nil,
+            maxNumberOfMessagesPerSecond: nil,
+            sourceArn: nil,
+            startedTimestamp: nil,
+            status: nil,
+            taskHandle: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListMessageMoveTasksResultForListMessageMoveTasks {
+    /**
+     Default instance of the ListMessageMoveTasksResultForListMessageMoveTasks structure.
+     */
+    static let __default: SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks = {
+        let defaultInstance = SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks(
+            listMessageMoveTasksResult: ListMessageMoveTasksResult.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension ListQueueTagsRequest {
     /**
      Default instance of the ListQueueTagsRequest structure.
@@ -715,6 +808,17 @@ public extension RemovePermissionRequest {
     }()
 }
 
+public extension ResourceNotFoundException {
+    /**
+     Default instance of the ResourceNotFoundException structure.
+     */
+    static let __default: SimpleQueueModel.ResourceNotFoundException = {
+        let defaultInstance = SimpleQueueModel.ResourceNotFoundException()
+
+        return defaultInstance
+    }()
+}
+
 public extension SendMessageBatchRequest {
     /**
      Default instance of the SendMessageBatchRequest structure.
@@ -842,6 +946,44 @@ public extension SetQueueAttributesRequest {
         let defaultInstance = SimpleQueueModel.SetQueueAttributesRequest(
             attributes: [:],
             queueUrl: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension StartMessageMoveTaskRequest {
+    /**
+     Default instance of the StartMessageMoveTaskRequest structure.
+     */
+    static let __default: SimpleQueueModel.StartMessageMoveTaskRequest = {
+        let defaultInstance = SimpleQueueModel.StartMessageMoveTaskRequest(
+            destinationArn: nil,
+            maxNumberOfMessagesPerSecond: nil,
+            sourceArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension StartMessageMoveTaskResult {
+    /**
+     Default instance of the StartMessageMoveTaskResult structure.
+     */
+    static let __default: SimpleQueueModel.StartMessageMoveTaskResult = {
+        let defaultInstance = SimpleQueueModel.StartMessageMoveTaskResult(
+            taskHandle: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StartMessageMoveTaskResultForStartMessageMoveTask {
+    /**
+     Default instance of the StartMessageMoveTaskResultForStartMessageMoveTask structure.
+     */
+    static let __default: SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask = {
+        let defaultInstance = SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask(
+            startMessageMoveTaskResult: StartMessageMoveTaskResult.__default)
 
         return defaultInstance
     }()

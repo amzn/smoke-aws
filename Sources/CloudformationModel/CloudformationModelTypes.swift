@@ -759,6 +759,21 @@ public enum OnFailure: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the OnStackFailure field.
+ */
+public enum OnStackFailure: String, Codable, CustomStringConvertible {
+    case delete = "DELETE"
+    case doNothing = "DO_NOTHING"
+    case rollback = "ROLLBACK"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: OnStackFailure = .delete
+}
+
+/**
  Enumeration restricting the values of the OperationResultFilterName field.
  */
 public enum OperationResultFilterName: String, Codable, CustomStringConvertible {
@@ -801,6 +816,21 @@ public enum OperationStatus: String, Codable, CustomStringConvertible {
  Type definition for the OptionalSecureUrl field.
  */
 public typealias OptionalSecureUrl = String
+
+/**
+ Enumeration restricting the values of the OrganizationStatus field.
+ */
+public enum OrganizationStatus: String, Codable, CustomStringConvertible {
+    case disabled = "DISABLED"
+    case disabledPermanently = "DISABLED_PERMANENTLY"
+    case enabled = "ENABLED"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: OrganizationStatus = .disabled
+}
 
 /**
  Type definition for the OrganizationalUnitId field.
@@ -1325,6 +1355,7 @@ public enum StackInstanceDetailedStatus: String, Codable, CustomStringConvertibl
     case inoperable = "INOPERABLE"
     case pending = "PENDING"
     case running = "RUNNING"
+    case skippedSuspendedAccount = "SKIPPED_SUSPENDED_ACCOUNT"
     case succeeded = "SUCCEEDED"
 
     public var description: String {

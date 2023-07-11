@@ -35,6 +35,7 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
     case deleteCapacityProvider = "DeleteCapacityProvider"
     case deleteCluster = "DeleteCluster"
     case deleteService = "DeleteService"
+    case deleteTaskDefinitions = "DeleteTaskDefinitions"
     case deleteTaskSet = "DeleteTaskSet"
     case deregisterContainerInstance = "DeregisterContainerInstance"
     case deregisterTaskDefinition = "DeregisterTaskDefinition"
@@ -105,6 +106,8 @@ public enum ElasticContainerModelOperations: String, Hashable, CustomStringConve
         case .deleteCluster:
             return "/"
         case .deleteService:
+            return "/"
+        case .deleteTaskDefinitions:
             return "/"
         case .deleteTaskSet:
             return "/"

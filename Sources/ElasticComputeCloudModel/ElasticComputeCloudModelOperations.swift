@@ -40,12 +40,15 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case applySecurityGroupsToClientVpnTargetNetwork = "ApplySecurityGroupsToClientVpnTargetNetwork"
     case assignIpv6Addresses = "AssignIpv6Addresses"
     case assignPrivateIpAddresses = "AssignPrivateIpAddresses"
+    case assignPrivateNatGatewayAddress = "AssignPrivateNatGatewayAddress"
     case associateAddress = "AssociateAddress"
     case associateClientVpnTargetNetwork = "AssociateClientVpnTargetNetwork"
     case associateDhcpOptions = "AssociateDhcpOptions"
     case associateEnclaveCertificateIamRole = "AssociateEnclaveCertificateIamRole"
     case associateIamInstanceProfile = "AssociateIamInstanceProfile"
     case associateInstanceEventWindow = "AssociateInstanceEventWindow"
+    case associateIpamResourceDiscovery = "AssociateIpamResourceDiscovery"
+    case associateNatGatewayAddress = "AssociateNatGatewayAddress"
     case associateRouteTable = "AssociateRouteTable"
     case associateSubnetCidrBlock = "AssociateSubnetCidrBlock"
     case associateTransitGatewayMulticastDomain = "AssociateTransitGatewayMulticastDomain"
@@ -93,11 +96,13 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case createFlowLogs = "CreateFlowLogs"
     case createFpgaImage = "CreateFpgaImage"
     case createImage = "CreateImage"
+    case createInstanceConnectEndpoint = "CreateInstanceConnectEndpoint"
     case createInstanceEventWindow = "CreateInstanceEventWindow"
     case createInstanceExportTask = "CreateInstanceExportTask"
     case createInternetGateway = "CreateInternetGateway"
     case createIpam = "CreateIpam"
     case createIpamPool = "CreateIpamPool"
+    case createIpamResourceDiscovery = "CreateIpamResourceDiscovery"
     case createIpamScope = "CreateIpamScope"
     case createKeyPair = "CreateKeyPair"
     case createLaunchTemplate = "CreateLaunchTemplate"
@@ -168,10 +173,12 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case deleteFleets = "DeleteFleets"
     case deleteFlowLogs = "DeleteFlowLogs"
     case deleteFpgaImage = "DeleteFpgaImage"
+    case deleteInstanceConnectEndpoint = "DeleteInstanceConnectEndpoint"
     case deleteInstanceEventWindow = "DeleteInstanceEventWindow"
     case deleteInternetGateway = "DeleteInternetGateway"
     case deleteIpam = "DeleteIpam"
     case deleteIpamPool = "DeleteIpamPool"
+    case deleteIpamResourceDiscovery = "DeleteIpamResourceDiscovery"
     case deleteIpamScope = "DeleteIpamScope"
     case deleteKeyPair = "DeleteKeyPair"
     case deleteLaunchTemplate = "DeleteLaunchTemplate"
@@ -281,6 +288,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeImportImageTasks = "DescribeImportImageTasks"
     case describeImportSnapshotTasks = "DescribeImportSnapshotTasks"
     case describeInstanceAttribute = "DescribeInstanceAttribute"
+    case describeInstanceConnectEndpoints = "DescribeInstanceConnectEndpoints"
     case describeInstanceCreditSpecifications = "DescribeInstanceCreditSpecifications"
     case describeInstanceEventNotificationAttributes = "DescribeInstanceEventNotificationAttributes"
     case describeInstanceEventWindows = "DescribeInstanceEventWindows"
@@ -290,6 +298,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case describeInstances = "DescribeInstances"
     case describeInternetGateways = "DescribeInternetGateways"
     case describeIpamPools = "DescribeIpamPools"
+    case describeIpamResourceDiscoveries = "DescribeIpamResourceDiscoveries"
+    case describeIpamResourceDiscoveryAssociations = "DescribeIpamResourceDiscoveryAssociations"
     case describeIpamScopes = "DescribeIpamScopes"
     case describeIpams = "DescribeIpams"
     case describeIpv6Pools = "DescribeIpv6Pools"
@@ -401,6 +411,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case disassociateEnclaveCertificateIamRole = "DisassociateEnclaveCertificateIamRole"
     case disassociateIamInstanceProfile = "DisassociateIamInstanceProfile"
     case disassociateInstanceEventWindow = "DisassociateInstanceEventWindow"
+    case disassociateIpamResourceDiscovery = "DisassociateIpamResourceDiscovery"
+    case disassociateNatGatewayAddress = "DisassociateNatGatewayAddress"
     case disassociateRouteTable = "DisassociateRouteTable"
     case disassociateSubnetCidrBlock = "DisassociateSubnetCidrBlock"
     case disassociateTransitGatewayMulticastDomain = "DisassociateTransitGatewayMulticastDomain"
@@ -442,6 +454,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getInstanceTypesFromInstanceRequirements = "GetInstanceTypesFromInstanceRequirements"
     case getInstanceUefiData = "GetInstanceUefiData"
     case getIpamAddressHistory = "GetIpamAddressHistory"
+    case getIpamDiscoveredAccounts = "GetIpamDiscoveredAccounts"
+    case getIpamDiscoveredResourceCidrs = "GetIpamDiscoveredResourceCidrs"
     case getIpamPoolAllocations = "GetIpamPoolAllocations"
     case getIpamPoolCidrs = "GetIpamPoolCidrs"
     case getIpamResourceCidrs = "GetIpamResourceCidrs"
@@ -466,6 +480,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getVerifiedAccessGroupPolicy = "GetVerifiedAccessGroupPolicy"
     case getVpnConnectionDeviceSampleConfiguration = "GetVpnConnectionDeviceSampleConfiguration"
     case getVpnConnectionDeviceTypes = "GetVpnConnectionDeviceTypes"
+    case getVpnTunnelReplacementStatus = "GetVpnTunnelReplacementStatus"
     case importClientVpnClientCertificateRevocationList = "ImportClientVpnClientCertificateRevocationList"
     case importImage = "ImportImage"
     case importInstance = "ImportInstance"
@@ -498,6 +513,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case modifyIpam = "ModifyIpam"
     case modifyIpamPool = "ModifyIpamPool"
     case modifyIpamResourceCidr = "ModifyIpamResourceCidr"
+    case modifyIpamResourceDiscovery = "ModifyIpamResourceDiscovery"
     case modifyIpamScope = "ModifyIpamScope"
     case modifyLaunchTemplate = "ModifyLaunchTemplate"
     case modifyLocalGatewayRoute = "ModifyLocalGatewayRoute"
@@ -565,6 +581,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case replaceRoute = "ReplaceRoute"
     case replaceRouteTableAssociation = "ReplaceRouteTableAssociation"
     case replaceTransitGatewayRoute = "ReplaceTransitGatewayRoute"
+    case replaceVpnTunnel = "ReplaceVpnTunnel"
     case reportInstanceStatus = "ReportInstanceStatus"
     case requestSpotFleet = "RequestSpotFleet"
     case requestSpotInstances = "RequestSpotInstances"
@@ -598,6 +615,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case terminateInstances = "TerminateInstances"
     case unassignIpv6Addresses = "UnassignIpv6Addresses"
     case unassignPrivateIpAddresses = "UnassignPrivateIpAddresses"
+    case unassignPrivateNatGatewayAddress = "UnassignPrivateNatGatewayAddress"
     case unmonitorInstances = "UnmonitorInstances"
     case updateSecurityGroupRuleDescriptionsEgress = "UpdateSecurityGroupRuleDescriptionsEgress"
     case updateSecurityGroupRuleDescriptionsIngress = "UpdateSecurityGroupRuleDescriptionsIngress"
@@ -637,6 +655,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .assignPrivateIpAddresses:
             return "/"
+        case .assignPrivateNatGatewayAddress:
+            return "/"
         case .associateAddress:
             return "/"
         case .associateClientVpnTargetNetwork:
@@ -648,6 +668,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .associateIamInstanceProfile:
             return "/"
         case .associateInstanceEventWindow:
+            return "/"
+        case .associateIpamResourceDiscovery:
+            return "/"
+        case .associateNatGatewayAddress:
             return "/"
         case .associateRouteTable:
             return "/"
@@ -743,6 +767,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .createImage:
             return "/"
+        case .createInstanceConnectEndpoint:
+            return "/"
         case .createInstanceEventWindow:
             return "/"
         case .createInstanceExportTask:
@@ -752,6 +778,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .createIpam:
             return "/"
         case .createIpamPool:
+            return "/"
+        case .createIpamResourceDiscovery:
             return "/"
         case .createIpamScope:
             return "/"
@@ -893,6 +921,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .deleteFpgaImage:
             return "/"
+        case .deleteInstanceConnectEndpoint:
+            return "/"
         case .deleteInstanceEventWindow:
             return "/"
         case .deleteInternetGateway:
@@ -900,6 +930,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .deleteIpam:
             return "/"
         case .deleteIpamPool:
+            return "/"
+        case .deleteIpamResourceDiscovery:
             return "/"
         case .deleteIpamScope:
             return "/"
@@ -1119,6 +1151,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .describeInstanceAttribute:
             return "/"
+        case .describeInstanceConnectEndpoints:
+            return "/"
         case .describeInstanceCreditSpecifications:
             return "/"
         case .describeInstanceEventNotificationAttributes:
@@ -1136,6 +1170,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .describeInternetGateways:
             return "/"
         case .describeIpamPools:
+            return "/"
+        case .describeIpamResourceDiscoveries:
+            return "/"
+        case .describeIpamResourceDiscoveryAssociations:
             return "/"
         case .describeIpamScopes:
             return "/"
@@ -1359,6 +1397,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .disassociateInstanceEventWindow:
             return "/"
+        case .disassociateIpamResourceDiscovery:
+            return "/"
+        case .disassociateNatGatewayAddress:
+            return "/"
         case .disassociateRouteTable:
             return "/"
         case .disassociateSubnetCidrBlock:
@@ -1441,6 +1483,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .getIpamAddressHistory:
             return "/"
+        case .getIpamDiscoveredAccounts:
+            return "/"
+        case .getIpamDiscoveredResourceCidrs:
+            return "/"
         case .getIpamPoolAllocations:
             return "/"
         case .getIpamPoolCidrs:
@@ -1488,6 +1534,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .getVpnConnectionDeviceSampleConfiguration:
             return "/"
         case .getVpnConnectionDeviceTypes:
+            return "/"
+        case .getVpnTunnelReplacementStatus:
             return "/"
         case .importClientVpnClientCertificateRevocationList:
             return "/"
@@ -1552,6 +1600,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .modifyIpamPool:
             return "/"
         case .modifyIpamResourceCidr:
+            return "/"
+        case .modifyIpamResourceDiscovery:
             return "/"
         case .modifyIpamScope:
             return "/"
@@ -1687,6 +1737,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .replaceTransitGatewayRoute:
             return "/"
+        case .replaceVpnTunnel:
+            return "/"
         case .reportInstanceStatus:
             return "/"
         case .requestSpotFleet:
@@ -1752,6 +1804,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .unassignIpv6Addresses:
             return "/"
         case .unassignPrivateIpAddresses:
+            return "/"
+        case .unassignPrivateNatGatewayAddress:
             return "/"
         case .unmonitorInstances:
             return "/"

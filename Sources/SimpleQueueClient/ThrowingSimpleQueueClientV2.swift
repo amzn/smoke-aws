@@ -32,6 +32,7 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
     let error: SimpleQueueError
     let addPermissionOverride: AddPermissionFunctionType?
+    let cancelMessageMoveTaskOverride: CancelMessageMoveTaskFunctionType?
     let changeMessageVisibilityOverride: ChangeMessageVisibilityFunctionType?
     let changeMessageVisibilityBatchOverride: ChangeMessageVisibilityBatchFunctionType?
     let createQueueOverride: CreateQueueFunctionType?
@@ -41,6 +42,7 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
     let getQueueAttributesOverride: GetQueueAttributesFunctionType?
     let getQueueUrlOverride: GetQueueUrlFunctionType?
     let listDeadLetterSourceQueuesOverride: ListDeadLetterSourceQueuesFunctionType?
+    let listMessageMoveTasksOverride: ListMessageMoveTasksFunctionType?
     let listQueueTagsOverride: ListQueueTagsFunctionType?
     let listQueuesOverride: ListQueuesFunctionType?
     let purgeQueueOverride: PurgeQueueFunctionType?
@@ -49,6 +51,7 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
     let sendMessageOverride: SendMessageFunctionType?
     let sendMessageBatchOverride: SendMessageBatchFunctionType?
     let setQueueAttributesOverride: SetQueueAttributesFunctionType?
+    let startMessageMoveTaskOverride: StartMessageMoveTaskFunctionType?
     let tagQueueOverride: TagQueueFunctionType?
     let untagQueueOverride: UntagQueueFunctionType?
 
@@ -58,6 +61,7 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
      */
     public init(error: SimpleQueueError,
             addPermission: AddPermissionFunctionType? = nil,
+            cancelMessageMoveTask: CancelMessageMoveTaskFunctionType? = nil,
             changeMessageVisibility: ChangeMessageVisibilityFunctionType? = nil,
             changeMessageVisibilityBatch: ChangeMessageVisibilityBatchFunctionType? = nil,
             createQueue: CreateQueueFunctionType? = nil,
@@ -67,6 +71,7 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
             getQueueAttributes: GetQueueAttributesFunctionType? = nil,
             getQueueUrl: GetQueueUrlFunctionType? = nil,
             listDeadLetterSourceQueues: ListDeadLetterSourceQueuesFunctionType? = nil,
+            listMessageMoveTasks: ListMessageMoveTasksFunctionType? = nil,
             listQueueTags: ListQueueTagsFunctionType? = nil,
             listQueues: ListQueuesFunctionType? = nil,
             purgeQueue: PurgeQueueFunctionType? = nil,
@@ -75,10 +80,12 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
             sendMessage: SendMessageFunctionType? = nil,
             sendMessageBatch: SendMessageBatchFunctionType? = nil,
             setQueueAttributes: SetQueueAttributesFunctionType? = nil,
+            startMessageMoveTask: StartMessageMoveTaskFunctionType? = nil,
             tagQueue: TagQueueFunctionType? = nil,
             untagQueue: UntagQueueFunctionType? = nil) {
         self.error = error
         self.addPermissionOverride = addPermission
+        self.cancelMessageMoveTaskOverride = cancelMessageMoveTask
         self.changeMessageVisibilityOverride = changeMessageVisibility
         self.changeMessageVisibilityBatchOverride = changeMessageVisibilityBatch
         self.createQueueOverride = createQueue
@@ -88,6 +95,7 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
         self.getQueueAttributesOverride = getQueueAttributes
         self.getQueueUrlOverride = getQueueUrl
         self.listDeadLetterSourceQueuesOverride = listDeadLetterSourceQueues
+        self.listMessageMoveTasksOverride = listMessageMoveTasks
         self.listQueueTagsOverride = listQueueTags
         self.listQueuesOverride = listQueues
         self.purgeQueueOverride = purgeQueue
@@ -96,6 +104,7 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
         self.sendMessageOverride = sendMessage
         self.sendMessageBatchOverride = sendMessageBatch
         self.setQueueAttributesOverride = setQueueAttributes
+        self.startMessageMoveTaskOverride = startMessageMoveTask
         self.tagQueueOverride = tagQueue
         self.untagQueueOverride = untagQueue
     }
@@ -111,6 +120,24 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
             input: SimpleQueueModel.AddPermissionRequest) async throws {
         if let addPermissionOverride = addPermissionOverride {
             return try await addPermissionOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CancelMessageMoveTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The CancelMessageMoveTaskResultForCancelMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func cancelMessageMoveTask(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest) async throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask {
+        if let cancelMessageMoveTaskOverride = cancelMessageMoveTaskOverride {
+            return try await cancelMessageMoveTaskOverride(input)
         }
 
         throw error
@@ -272,6 +299,24 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
     }
 
     /**
+     Invokes the ListMessageMoveTasks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+     - Returns: The ListMessageMoveTasksResultForListMessageMoveTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func listMessageMoveTasks(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest) async throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks {
+        if let listMessageMoveTasksOverride = listMessageMoveTasksOverride {
+            return try await listMessageMoveTasksOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ListQueueTags operation suspending until the response is available before returning.
 
      - Parameters:
@@ -401,6 +446,24 @@ public struct ThrowingSimpleQueueClientV2: SimpleQueueClientProtocolV2 {
             input: SimpleQueueModel.SetQueueAttributesRequest) async throws {
         if let setQueueAttributesOverride = setQueueAttributesOverride {
             return try await setQueueAttributesOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the StartMessageMoveTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The StartMessageMoveTaskResultForStartMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func startMessageMoveTask(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest) async throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask {
+        if let startMessageMoveTaskOverride = startMessageMoveTaskOverride {
+            return try await startMessageMoveTaskOverride(input)
         }
 
         throw error

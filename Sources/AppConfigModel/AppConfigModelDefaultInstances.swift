@@ -314,7 +314,8 @@ public extension CreateHostedConfigurationVersionRequest {
             content: Data(),
             contentType: "0",
             description: nil,
-            latestVersionNumber: nil)
+            latestVersionNumber: nil,
+            versionLabel: nil)
 
         return defaultInstance
     }()
@@ -431,6 +432,8 @@ public extension Deployment {
             finalBakeTimeInMinutes: nil,
             growthFactor: nil,
             growthType: nil,
+            kmsKeyArn: nil,
+            kmsKeyIdentifier: nil,
             percentageComplete: nil,
             startedAt: nil,
             state: nil)
@@ -773,6 +776,7 @@ public extension HostedConfigurationVersion {
             content: nil,
             contentType: nil,
             description: nil,
+            versionLabel: nil,
             versionNumber: nil)
 
         return defaultInstance
@@ -789,6 +793,7 @@ public extension HostedConfigurationVersionSummary {
             configurationProfileId: nil,
             contentType: nil,
             description: nil,
+            versionLabel: nil,
             versionNumber: nil)
 
         return defaultInstance
@@ -945,7 +950,8 @@ public extension ListHostedConfigurationVersionsRequest {
             applicationId: "",
             configurationProfileId: "",
             maxResults: nil,
-            nextToken: nil)
+            nextToken: nil,
+            versionLabel: nil)
 
         return defaultInstance
     }()
@@ -1053,6 +1059,7 @@ public extension StartDeploymentRequest {
             deploymentStrategyId: "",
             description: nil,
             environmentId: "",
+            kmsKeyIdentifier: nil,
             tags: nil)
 
         return defaultInstance

@@ -1407,6 +1407,7 @@ public struct GetMetricStreamOutput: Codable, Equatable {
     public var excludeFilters: MetricStreamFilters?
     public var firehoseArn: AmazonResourceName?
     public var includeFilters: MetricStreamFilters?
+    public var includeLinkedAccountsMetrics: IncludeLinkedAccountsMetrics?
     public var lastUpdateDate: Timestamp?
     public var name: MetricStreamName?
     public var outputFormat: MetricStreamOutputFormat?
@@ -1419,6 +1420,7 @@ public struct GetMetricStreamOutput: Codable, Equatable {
                 excludeFilters: MetricStreamFilters? = nil,
                 firehoseArn: AmazonResourceName? = nil,
                 includeFilters: MetricStreamFilters? = nil,
+                includeLinkedAccountsMetrics: IncludeLinkedAccountsMetrics? = nil,
                 lastUpdateDate: Timestamp? = nil,
                 name: MetricStreamName? = nil,
                 outputFormat: MetricStreamOutputFormat? = nil,
@@ -1430,6 +1432,7 @@ public struct GetMetricStreamOutput: Codable, Equatable {
         self.excludeFilters = excludeFilters
         self.firehoseArn = firehoseArn
         self.includeFilters = includeFilters
+        self.includeLinkedAccountsMetrics = includeLinkedAccountsMetrics
         self.lastUpdateDate = lastUpdateDate
         self.name = name
         self.outputFormat = outputFormat
@@ -1444,6 +1447,7 @@ public struct GetMetricStreamOutput: Codable, Equatable {
         case excludeFilters = "ExcludeFilters"
         case firehoseArn = "FirehoseArn"
         case includeFilters = "IncludeFilters"
+        case includeLinkedAccountsMetrics = "IncludeLinkedAccountsMetrics"
         case lastUpdateDate = "LastUpdateDate"
         case name = "Name"
         case outputFormat = "OutputFormat"
@@ -2539,13 +2543,17 @@ public struct MetricStreamEntry: Codable, Equatable {
 }
 
 public struct MetricStreamFilter: Codable, Equatable {
+    public var metricNames: MetricStreamFilterMetricNames?
     public var namespace: Namespace?
 
-    public init(namespace: Namespace? = nil) {
+    public init(metricNames: MetricStreamFilterMetricNames? = nil,
+                namespace: Namespace? = nil) {
+        self.metricNames = metricNames
         self.namespace = namespace
     }
 
     enum CodingKeys: String, CodingKey {
+        case metricNames = "MetricNames"
         case namespace = "Namespace"
     }
 
@@ -3037,6 +3045,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
     public var excludeFilters: MetricStreamFilters?
     public var firehoseArn: AmazonResourceName
     public var includeFilters: MetricStreamFilters?
+    public var includeLinkedAccountsMetrics: IncludeLinkedAccountsMetrics?
     public var name: MetricStreamName
     public var outputFormat: MetricStreamOutputFormat
     public var roleArn: AmazonResourceName
@@ -3046,6 +3055,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
     public init(excludeFilters: MetricStreamFilters? = nil,
                 firehoseArn: AmazonResourceName,
                 includeFilters: MetricStreamFilters? = nil,
+                includeLinkedAccountsMetrics: IncludeLinkedAccountsMetrics? = nil,
                 name: MetricStreamName,
                 outputFormat: MetricStreamOutputFormat,
                 roleArn: AmazonResourceName,
@@ -3054,6 +3064,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
         self.excludeFilters = excludeFilters
         self.firehoseArn = firehoseArn
         self.includeFilters = includeFilters
+        self.includeLinkedAccountsMetrics = includeLinkedAccountsMetrics
         self.name = name
         self.outputFormat = outputFormat
         self.roleArn = roleArn
@@ -3065,6 +3076,7 @@ public struct PutMetricStreamInput: Codable, Equatable {
         case excludeFilters = "ExcludeFilters"
         case firehoseArn = "FirehoseArn"
         case includeFilters = "IncludeFilters"
+        case includeLinkedAccountsMetrics = "IncludeLinkedAccountsMetrics"
         case name = "Name"
         case outputFormat = "OutputFormat"
         case roleArn = "RoleArn"

@@ -477,7 +477,8 @@ public extension ClusterPendingModifiedValues {
             iAMDatabaseAuthenticationEnabled: nil,
             iops: nil,
             masterUserPassword: nil,
-            pendingCloudwatchLogsExports: nil)
+            pendingCloudwatchLogsExports: nil,
+            storageType: nil)
 
         return defaultInstance
     }()
@@ -758,6 +759,17 @@ public extension CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment {
     }()
 }
 
+public extension CreateCustomDBEngineVersionFault {
+    /**
+     Default instance of the CreateCustomDBEngineVersionFault structure.
+     */
+    static let __default: RDSModel.CreateCustomDBEngineVersionFault = {
+        let defaultInstance = RDSModel.CreateCustomDBEngineVersionFault()
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateCustomDBEngineVersionMessage {
     /**
      Default instance of the CreateCustomDBEngineVersionMessage structure.
@@ -980,7 +992,11 @@ public extension CreateDBInstanceMessage {
             dBSubnetGroupName: nil,
             deletionProtection: nil,
             domain: nil,
+            domainAuthSecretArn: nil,
+            domainDnsIps: nil,
+            domainFqdn: nil,
             domainIAMRoleName: nil,
+            domainOu: nil,
             enableCloudwatchLogsExports: nil,
             enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
@@ -1028,6 +1044,7 @@ public extension CreateDBInstanceReadReplicaMessage {
      */
     static let __default: RDSModel.CreateDBInstanceReadReplicaMessage = {
         let defaultInstance = RDSModel.CreateDBInstanceReadReplicaMessage(
+            allocatedStorage: nil,
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
             copyTagsToSnapshot: nil,
@@ -1038,7 +1055,11 @@ public extension CreateDBInstanceReadReplicaMessage {
             dBSubnetGroupName: nil,
             deletionProtection: nil,
             domain: nil,
+            domainAuthSecretArn: nil,
+            domainDnsIps: nil,
+            domainFqdn: nil,
             domainIAMRoleName: nil,
+            domainOu: nil,
             enableCloudwatchLogsExports: nil,
             enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
@@ -1058,7 +1079,8 @@ public extension CreateDBInstanceReadReplicaMessage {
             processorFeatures: nil,
             publiclyAccessible: nil,
             replicaMode: nil,
-            sourceDBInstanceIdentifier: "value",
+            sourceDBClusterIdentifier: nil,
+            sourceDBInstanceIdentifier: nil,
             storageThroughput: nil,
             storageType: nil,
             tags: nil,
@@ -1587,6 +1609,7 @@ public extension DBCluster {
             hostedZoneId: nil,
             httpEndpointEnabled: nil,
             iAMDatabaseAuthenticationEnabled: nil,
+            iOOptimizedNextAllowedModificationTime: nil,
             iops: nil,
             kmsKeyId: nil,
             latestRestorableTime: nil,
@@ -2100,6 +2123,7 @@ public extension DBClusterSnapshot {
             sourceDBClusterSnapshotArn: nil,
             status: nil,
             storageEncrypted: nil,
+            storageType: nil,
             tagList: nil,
             vpcId: nil)
 
@@ -2357,6 +2381,7 @@ public extension DBInstance {
             publiclyAccessible: nil,
             readReplicaDBClusterIdentifiers: nil,
             readReplicaDBInstanceIdentifiers: nil,
+            readReplicaSourceDBClusterIdentifier: nil,
             readReplicaSourceDBInstanceIdentifier: nil,
             replicaMode: nil,
             resumeFullAutomationModeTime: nil,
@@ -4666,9 +4691,12 @@ public extension DomainMembership {
      */
     static let __default: RDSModel.DomainMembership = {
         let defaultInstance = RDSModel.DomainMembership(
+            authSecretArn: nil,
+            dnsIps: nil,
             domain: nil,
             fQDN: nil,
             iAMRoleName: nil,
+            oU: nil,
             status: nil)
 
         return defaultInstance
@@ -5782,6 +5810,7 @@ public extension ModifyDBClusterMessage {
     static let __default: RDSModel.ModifyDBClusterMessage = {
         let defaultInstance = RDSModel.ModifyDBClusterMessage(
             allocatedStorage: nil,
+            allowEngineModeChange: nil,
             allowMajorVersionUpgrade: nil,
             applyImmediately: nil,
             autoMinorVersionUpgrade: nil,
@@ -5800,6 +5829,7 @@ public extension ModifyDBClusterMessage {
             enableHttpEndpoint: nil,
             enableIAMDatabaseAuthentication: nil,
             enablePerformanceInsights: nil,
+            engineMode: nil,
             engineVersion: nil,
             iops: nil,
             manageMasterUserPassword: nil,
@@ -5925,11 +5955,17 @@ public extension ModifyDBInstanceMessage {
             dBSecurityGroups: nil,
             dBSubnetGroupName: nil,
             deletionProtection: nil,
+            disableDomain: nil,
             domain: nil,
+            domainAuthSecretArn: nil,
+            domainDnsIps: nil,
+            domainFqdn: nil,
             domainIAMRoleName: nil,
+            domainOu: nil,
             enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
             enablePerformanceInsights: nil,
+            engine: nil,
             engineVersion: nil,
             iops: nil,
             licenseModel: nil,
@@ -6774,6 +6810,7 @@ public extension PendingModifiedValues {
             dBInstanceClass: nil,
             dBInstanceIdentifier: nil,
             dBSubnetGroupName: nil,
+            engine: nil,
             engineVersion: nil,
             iAMDatabaseAuthenticationEnabled: nil,
             iops: nil,
@@ -7426,6 +7463,7 @@ public extension RestoreDBClusterFromS3Message {
             sourceEngine: "value",
             sourceEngineVersion: "value",
             storageEncrypted: nil,
+            storageType: nil,
             tags: nil,
             vpcSecurityGroupIds: nil)
 
@@ -7588,6 +7626,7 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
      */
     static let __default: RDSModel.RestoreDBInstanceFromDBSnapshotMessage = {
         let defaultInstance = RDSModel.RestoreDBInstanceFromDBSnapshotMessage(
+            allocatedStorage: nil,
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
             backupTarget: nil,
@@ -7602,7 +7641,11 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
             dBSubnetGroupName: nil,
             deletionProtection: nil,
             domain: nil,
+            domainAuthSecretArn: nil,
+            domainDnsIps: nil,
+            domainFqdn: nil,
             domainIAMRoleName: nil,
+            domainOu: nil,
             enableCloudwatchLogsExports: nil,
             enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
@@ -7740,6 +7783,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
      */
     static let __default: RDSModel.RestoreDBInstanceToPointInTimeMessage = {
         let defaultInstance = RDSModel.RestoreDBInstanceToPointInTimeMessage(
+            allocatedStorage: nil,
             autoMinorVersionUpgrade: nil,
             availabilityZone: nil,
             backupTarget: nil,
@@ -7751,7 +7795,11 @@ public extension RestoreDBInstanceToPointInTimeMessage {
             dBSubnetGroupName: nil,
             deletionProtection: nil,
             domain: nil,
+            domainAuthSecretArn: nil,
+            domainDnsIps: nil,
+            domainFqdn: nil,
             domainIAMRoleName: nil,
+            domainOu: nil,
             enableCloudwatchLogsExports: nil,
             enableCustomerOwnedIp: nil,
             enableIAMDatabaseAuthentication: nil,
@@ -8376,6 +8424,17 @@ public extension StorageQuotaExceededFault {
      */
     static let __default: RDSModel.StorageQuotaExceededFault = {
         let defaultInstance = RDSModel.StorageQuotaExceededFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension StorageTypeNotAvailableFault {
+    /**
+     Default instance of the StorageTypeNotAvailableFault structure.
+     */
+    static let __default: RDSModel.StorageTypeNotAvailableFault = {
+        let defaultInstance = RDSModel.StorageTypeNotAvailableFault()
 
         return defaultInstance
     }()

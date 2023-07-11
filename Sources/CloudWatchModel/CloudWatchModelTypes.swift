@@ -403,6 +403,11 @@ public typealias HistorySummary = String
 public typealias IncludeLinkedAccounts = Bool
 
 /**
+ Type definition for the IncludeLinkedAccountsMetrics field.
+ */
+public typealias IncludeLinkedAccountsMetrics = Bool
+
+/**
  Type definition for the InsightRuleAggregationStatistic field.
  */
 public typealias InsightRuleAggregationStatistic = String
@@ -606,6 +611,11 @@ public typealias MetricName = String
  Type definition for the MetricStreamEntries field.
  */
 public typealias MetricStreamEntries = [MetricStreamEntry]
+
+/**
+ Type definition for the MetricStreamFilterMetricNames field.
+ */
+public typealias MetricStreamFilterMetricNames = [MetricName]
 
 /**
  Type definition for the MetricStreamFilters field.

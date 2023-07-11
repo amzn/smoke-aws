@@ -1218,6 +1218,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the AssignPrivateNatGatewayAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssignPrivateNatGatewayAddressRequest object being passed to this operation.
+         - completion: The AssignPrivateNatGatewayAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The AssignPrivateNatGatewayAddressResult
+           object will be validated before being returned to caller.
+     */
+    public func assignPrivateNatGatewayAddressAsync(
+            input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.assignPrivateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssignPrivateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.assignPrivateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AssignPrivateNatGatewayAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func assignPrivateNatGatewayAddressSync(
+            input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.assignPrivateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssignPrivateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.assignPrivateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the AssociateAddress operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -1654,6 +1730,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.associateInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the AssociateIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The AssociateIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    public func associateIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AssociateIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The AssociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the AssociateNatGatewayAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated AssociateNatGatewayAddressRequest object being passed to this operation.
+         - completion: The AssociateNatGatewayAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The AssociateNatGatewayAddressResult
+           object will be validated before being returned to caller.
+     */
+    public func associateNatGatewayAddressAsync(
+            input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.AssociateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the AssociateNatGatewayAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated AssociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateNatGatewayAddressSync(
+            input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.AssociateNatGatewayAddressResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateNatGatewayAddress.rawValue,
             version: apiVersion)
 
         do {
@@ -5234,6 +5462,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the CreateInstanceConnectEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateInstanceConnectEndpointRequest object being passed to this operation.
+         - completion: The CreateInstanceConnectEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateInstanceConnectEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func createInstanceConnectEndpointAsync(
+            input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateInstanceConnectEndpointResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createInstanceConnectEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateInstanceConnectEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createInstanceConnectEndpoint.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateInstanceConnectEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The CreateInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createInstanceConnectEndpointSync(
+            input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest) throws -> ElasticComputeCloudModel.CreateInstanceConnectEndpointResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createInstanceConnectEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateInstanceConnectEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createInstanceConnectEndpoint.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateInstanceEventWindow operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -5597,6 +5901,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createIpamPool.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The CreateIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The CreateIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    public func createIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the CreateIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The CreateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createIpamResourceDiscovery.rawValue,
             version: apiVersion)
 
         do {
@@ -10919,6 +11299,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DeleteInstanceConnectEndpoint operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteInstanceConnectEndpointRequest object being passed to this operation.
+         - completion: The DeleteInstanceConnectEndpointResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteInstanceConnectEndpointResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteInstanceConnectEndpointAsync(
+            input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstanceConnectEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInstanceConnectEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteInstanceConnectEndpoint.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteInstanceConnectEndpoint operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The DeleteInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteInstanceConnectEndpointSync(
+            input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest) throws -> ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstanceConnectEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInstanceConnectEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteInstanceConnectEndpoint.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DeleteInstanceEventWindow operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -11203,6 +11659,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.deleteIpamPool.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The DeleteIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    public func deleteIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DeleteIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteIpamResourceDiscovery.rawValue,
             version: apiVersion)
 
         do {
@@ -19450,6 +19982,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DescribeInstanceConnectEndpoints operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeInstanceConnectEndpointsRequest object being passed to this operation.
+         - completion: The DescribeInstanceConnectEndpointsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeInstanceConnectEndpointsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeInstanceConnectEndpointsAsync(
+            input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstanceConnectEndpoints,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceConnectEndpointsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceConnectEndpoints.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeInstanceConnectEndpoints operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceConnectEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceConnectEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceConnectEndpointsSync(
+            input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest) throws -> ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstanceConnectEndpoints,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceConnectEndpointsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceConnectEndpoints.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeInstanceCreditSpecifications operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -20117,6 +20725,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeIpamPools.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveries operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveriesRequest object being passed to this operation.
+         - completion: The DescribeIpamResourceDiscoveriesResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeIpamResourceDiscoveriesResult
+           object will be validated before being returned to caller.
+     */
+    public func describeIpamResourceDiscoveriesAsync(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeIpamResourceDiscoveries,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeIpamResourceDiscoveriesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeIpamResourceDiscoveries.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveries operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveriesRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIpamResourceDiscoveriesSync(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest) throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeIpamResourceDiscoveries,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeIpamResourceDiscoveriesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeIpamResourceDiscoveries.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveryAssociations operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveryAssociationsRequest object being passed to this operation.
+         - completion: The DescribeIpamResourceDiscoveryAssociationsResult object or an error will be passed to this 
+           callback when the operation is complete. The DescribeIpamResourceDiscoveryAssociationsResult
+           object will be validated before being returned to caller.
+     */
+    public func describeIpamResourceDiscoveryAssociationsAsync(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeIpamResourceDiscoveryAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeIpamResourceDiscoveryAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeIpamResourceDiscoveryAssociations.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveryAssociations operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveryAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveryAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIpamResourceDiscoveryAssociationsSync(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest) throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeIpamResourceDiscoveryAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeIpamResourceDiscoveryAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeIpamResourceDiscoveryAssociations.rawValue,
             version: apiVersion)
 
         do {
@@ -28555,6 +29315,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DisassociateIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The DisassociateIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisassociateIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DisassociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DisassociateNatGatewayAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisassociateNatGatewayAddressRequest object being passed to this operation.
+         - completion: The DisassociateNatGatewayAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The DisassociateNatGatewayAddressResult
+           object will be validated before being returned to caller.
+     */
+    public func disassociateNatGatewayAddressAsync(
+            input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisassociateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisassociateNatGatewayAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisassociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The DisassociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateNatGatewayAddressSync(
+            input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.DisassociateNatGatewayAddressResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DisassociateRouteTable operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -31662,6 +32574,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the GetIpamDiscoveredAccounts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredAccountsRequest object being passed to this operation.
+         - completion: The GetIpamDiscoveredAccountsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetIpamDiscoveredAccountsResult
+           object will be validated before being returned to caller.
+     */
+    public func getIpamDiscoveredAccountsAsync(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getIpamDiscoveredAccounts,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetIpamDiscoveredAccountsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getIpamDiscoveredAccounts.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetIpamDiscoveredAccounts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredAccountsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredAccountsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getIpamDiscoveredAccountsSync(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest) throws -> ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getIpamDiscoveredAccounts,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetIpamDiscoveredAccountsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getIpamDiscoveredAccounts.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetIpamDiscoveredResourceCidrs operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredResourceCidrsRequest object being passed to this operation.
+         - completion: The GetIpamDiscoveredResourceCidrsResult object or an error will be passed to this 
+           callback when the operation is complete. The GetIpamDiscoveredResourceCidrsResult
+           object will be validated before being returned to caller.
+     */
+    public func getIpamDiscoveredResourceCidrsAsync(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getIpamDiscoveredResourceCidrs,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetIpamDiscoveredResourceCidrsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getIpamDiscoveredResourceCidrs.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetIpamDiscoveredResourceCidrs operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredResourceCidrsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredResourceCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getIpamDiscoveredResourceCidrsSync(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest) throws -> ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getIpamDiscoveredResourceCidrs,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetIpamDiscoveredResourceCidrsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getIpamDiscoveredResourceCidrs.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetIpamPoolAllocations operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -33469,6 +34533,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getVpnConnectionDeviceTypes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetVpnTunnelReplacementStatus operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetVpnTunnelReplacementStatusRequest object being passed to this operation.
+         - completion: The GetVpnTunnelReplacementStatusResult object or an error will be passed to this 
+           callback when the operation is complete. The GetVpnTunnelReplacementStatusResult
+           object will be validated before being returned to caller.
+     */
+    public func getVpnTunnelReplacementStatusAsync(
+            input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getVpnTunnelReplacementStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetVpnTunnelReplacementStatusOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getVpnTunnelReplacementStatus.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetVpnTunnelReplacementStatus operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetVpnTunnelReplacementStatusRequest object being passed to this operation.
+     - Returns: The GetVpnTunnelReplacementStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVpnTunnelReplacementStatusSync(
+            input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest) throws -> ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getVpnTunnelReplacementStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetVpnTunnelReplacementStatusOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getVpnTunnelReplacementStatus.rawValue,
             version: apiVersion)
 
         do {
@@ -35889,6 +37029,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyIpamResourceCidr.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyIpamResourceDiscovery operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ModifyIpamResourceDiscoveryRequest object being passed to this operation.
+         - completion: The ModifyIpamResourceDiscoveryResult object or an error will be passed to this 
+           callback when the operation is complete. The ModifyIpamResourceDiscoveryResult
+           object will be validated before being returned to caller.
+     */
+    public func modifyIpamResourceDiscoveryAsync(
+            input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ModifyIpamResourceDiscovery operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ModifyIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The ModifyIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyIpamResourceDiscoverySync(
+            input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest) throws -> ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyIpamResourceDiscovery.rawValue,
             version: apiVersion)
 
         do {
@@ -40971,6 +42187,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the ReplaceVpnTunnel operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ReplaceVpnTunnelRequest object being passed to this operation.
+         - completion: The ReplaceVpnTunnelResult object or an error will be passed to this 
+           callback when the operation is complete. The ReplaceVpnTunnelResult
+           object will be validated before being returned to caller.
+     */
+    public func replaceVpnTunnelAsync(
+            input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.ReplaceVpnTunnelResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.replaceVpnTunnel,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ReplaceVpnTunnelOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.replaceVpnTunnel.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ReplaceVpnTunnel operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ReplaceVpnTunnelRequest object being passed to this operation.
+     - Returns: The ReplaceVpnTunnelResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func replaceVpnTunnelSync(
+            input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest) throws -> ElasticComputeCloudModel.ReplaceVpnTunnelResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.replaceVpnTunnel,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ReplaceVpnTunnelOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.replaceVpnTunnel.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ReportInstanceStatus operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -43458,6 +44750,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the UnassignPrivateNatGatewayAddress operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UnassignPrivateNatGatewayAddressRequest object being passed to this operation.
+         - completion: The UnassignPrivateNatGatewayAddressResult object or an error will be passed to this 
+           callback when the operation is complete. The UnassignPrivateNatGatewayAddressResult
+           object will be validated before being returned to caller.
+     */
+    public func unassignPrivateNatGatewayAddressAsync(
+            input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.unassignPrivateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UnassignPrivateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.unassignPrivateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the UnassignPrivateNatGatewayAddress operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UnassignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The UnassignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func unassignPrivateNatGatewayAddressSync(
+            input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest) throws -> ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.unassignPrivateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UnassignPrivateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.unassignPrivateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the UnmonitorInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -44310,6 +45678,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the AssignPrivateNatGatewayAddress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AssignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func assignPrivateNatGatewayAddress(
+            input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.assignPrivateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssignPrivateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.assignPrivateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the AssociateAddress operation suspending until the response is available before returning.
 
      - Parameters:
@@ -44525,6 +45932,84 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.associateInstanceEventWindow.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the AssociateIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AssociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The AssociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the AssociateNatGatewayAddress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AssociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateNatGatewayAddress(
+            input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.AssociateNatGatewayAddressResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.associateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = AssociateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.associateNatGatewayAddress.rawValue,
             version: apiVersion)
 
         do {
@@ -46369,6 +47854,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the CreateInstanceConnectEndpoint operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The CreateInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createInstanceConnectEndpoint(
+            input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest) async throws -> ElasticComputeCloudModel.CreateInstanceConnectEndpointResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createInstanceConnectEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateInstanceConnectEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createInstanceConnectEndpoint.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the CreateInstanceEventWindow operation suspending until the response is available before returning.
 
      - Parameters:
@@ -46547,6 +48071,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.createIpamPool.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the CreateIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The CreateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.createIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = CreateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.createIpamResourceDiscovery.rawValue,
             version: apiVersion)
 
         do {
@@ -49284,6 +50847,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DeleteInstanceConnectEndpoint operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The DeleteInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteInstanceConnectEndpoint(
+            input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest) async throws -> ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteInstanceConnectEndpoint,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteInstanceConnectEndpointOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteInstanceConnectEndpoint.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DeleteInstanceEventWindow operation suspending until the response is available before returning.
 
      - Parameters:
@@ -49421,6 +51023,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.deleteIpamPool.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DeleteIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.deleteIpamResourceDiscovery.rawValue,
             version: apiVersion)
 
         do {
@@ -53653,6 +55294,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DescribeInstanceConnectEndpoints operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceConnectEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceConnectEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceConnectEndpoints(
+            input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeInstanceConnectEndpoints,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeInstanceConnectEndpointsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeInstanceConnectEndpoints.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DescribeInstanceCreditSpecifications operation suspending until the response is available before returning.
 
      - Parameters:
@@ -53987,6 +55667,84 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.describeIpamPools.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveries operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveriesRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIpamResourceDiscoveries(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest) async throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeIpamResourceDiscoveries,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeIpamResourceDiscoveriesOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeIpamResourceDiscoveries.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveryAssociations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveryAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveryAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIpamResourceDiscoveryAssociations(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest) async throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeIpamResourceDiscoveryAssociations,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeIpamResourceDiscoveryAssociationsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.describeIpamResourceDiscoveryAssociations.rawValue,
             version: apiVersion)
 
         do {
@@ -58323,6 +60081,84 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DisassociateIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisassociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DisassociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateIpamResourceDiscovery.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DisassociateNatGatewayAddress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisassociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The DisassociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateNatGatewayAddress(
+            input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.DisassociateNatGatewayAddressResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disassociateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisassociateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disassociateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DisassociateRouteTable operation suspending until the response is available before returning.
 
      - Parameters:
@@ -59916,6 +61752,84 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the GetIpamDiscoveredAccounts operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredAccountsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredAccountsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getIpamDiscoveredAccounts(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest) async throws -> ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getIpamDiscoveredAccounts,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetIpamDiscoveredAccountsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getIpamDiscoveredAccounts.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetIpamDiscoveredResourceCidrs operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredResourceCidrsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredResourceCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getIpamDiscoveredResourceCidrs(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest) async throws -> ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getIpamDiscoveredResourceCidrs,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetIpamDiscoveredResourceCidrsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getIpamDiscoveredResourceCidrs.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetIpamPoolAllocations operation suspending until the response is available before returning.
 
      - Parameters:
@@ -60835,6 +62749,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getVpnConnectionDeviceTypes.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetVpnTunnelReplacementStatus operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetVpnTunnelReplacementStatusRequest object being passed to this operation.
+     - Returns: The GetVpnTunnelReplacementStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVpnTunnelReplacementStatus(
+            input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest) async throws -> ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getVpnTunnelReplacementStatus,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetVpnTunnelReplacementStatusOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getVpnTunnelReplacementStatus.rawValue,
             version: apiVersion)
 
         do {
@@ -62075,6 +64028,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.modifyIpamResourceCidr.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ModifyIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ModifyIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The ModifyIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.modifyIpamResourceDiscovery,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ModifyIpamResourceDiscoveryOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.modifyIpamResourceDiscovery.rawValue,
             version: apiVersion)
 
         do {
@@ -64687,6 +66679,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the ReplaceVpnTunnel operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ReplaceVpnTunnelRequest object being passed to this operation.
+     - Returns: The ReplaceVpnTunnelResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func replaceVpnTunnel(
+            input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest) async throws -> ElasticComputeCloudModel.ReplaceVpnTunnelResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.replaceVpnTunnel,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ReplaceVpnTunnelOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.replaceVpnTunnel.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ReportInstanceStatus operation suspending until the response is available before returning.
 
      - Parameters:
@@ -65947,6 +67978,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
         do {
             try await httpClient.executeRetriableWithoutOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the UnassignPrivateNatGatewayAddress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UnassignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The UnassignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func unassignPrivateNatGatewayAddress(
+            input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.unassignPrivateNatGatewayAddress,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = UnassignPrivateNatGatewayAddressOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.unassignPrivateNatGatewayAddress.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,

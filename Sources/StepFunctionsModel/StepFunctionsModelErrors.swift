@@ -36,6 +36,7 @@ public extension Swift.Error {
 private let activityDoesNotExistIdentity = "ActivityDoesNotExist"
 private let activityLimitExceededIdentity = "ActivityLimitExceeded"
 private let activityWorkerLimitExceededIdentity = "ActivityWorkerLimitExceeded"
+private let conflictIdentity = "ConflictException"
 private let executionAlreadyExistsIdentity = "ExecutionAlreadyExists"
 private let executionDoesNotExistIdentity = "ExecutionDoesNotExist"
 private let executionLimitExceededIdentity = "ExecutionLimitExceeded"
@@ -49,6 +50,7 @@ private let invalidTokenIdentity = "InvalidToken"
 private let invalidTracingConfigurationIdentity = "InvalidTracingConfiguration"
 private let missingRequiredParameterIdentity = "MissingRequiredParameter"
 private let resourceNotFoundIdentity = "ResourceNotFound"
+private let serviceQuotaExceededIdentity = "ServiceQuotaExceededException"
 private let stateMachineAlreadyExistsIdentity = "StateMachineAlreadyExists"
 private let stateMachineDeletingIdentity = "StateMachineDeleting"
 private let stateMachineDoesNotExistIdentity = "StateMachineDoesNotExist"
@@ -75,6 +77,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case activityDoesNotExist(ActivityDoesNotExist)
     case activityLimitExceeded(ActivityLimitExceeded)
     case activityWorkerLimitExceeded(ActivityWorkerLimitExceeded)
+    case conflict(ConflictException)
     case executionAlreadyExists(ExecutionAlreadyExists)
     case executionDoesNotExist(ExecutionDoesNotExist)
     case executionLimitExceeded(ExecutionLimitExceeded)
@@ -88,6 +91,7 @@ public enum StepFunctionsError: Swift.Error, Decodable {
     case invalidTracingConfiguration(InvalidTracingConfiguration)
     case missingRequiredParameter(MissingRequiredParameter)
     case resourceNotFound(ResourceNotFound)
+    case serviceQuotaExceeded(ServiceQuotaExceededException)
     case stateMachineAlreadyExists(StateMachineAlreadyExists)
     case stateMachineDeleting(StateMachineDeleting)
     case stateMachineDoesNotExist(StateMachineDoesNotExist)
@@ -126,6 +130,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case activityWorkerLimitExceededIdentity:
             let errorPayload = try ActivityWorkerLimitExceeded(from: decoder)
             self = StepFunctionsError.activityWorkerLimitExceeded(errorPayload)
+        case conflictIdentity:
+            let errorPayload = try ConflictException(from: decoder)
+            self = StepFunctionsError.conflict(errorPayload)
         case executionAlreadyExistsIdentity:
             let errorPayload = try ExecutionAlreadyExists(from: decoder)
             self = StepFunctionsError.executionAlreadyExists(errorPayload)
@@ -165,6 +172,9 @@ public enum StepFunctionsError: Swift.Error, Decodable {
         case resourceNotFoundIdentity:
             let errorPayload = try ResourceNotFound(from: decoder)
             self = StepFunctionsError.resourceNotFound(errorPayload)
+        case serviceQuotaExceededIdentity:
+            let errorPayload = try ServiceQuotaExceededException(from: decoder)
+            self = StepFunctionsError.serviceQuotaExceeded(errorPayload)
         case stateMachineAlreadyExistsIdentity:
             let errorPayload = try StateMachineAlreadyExists(from: decoder)
             self = StepFunctionsError.stateMachineAlreadyExists(errorPayload)

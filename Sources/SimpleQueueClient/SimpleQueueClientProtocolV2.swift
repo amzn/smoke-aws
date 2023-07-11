@@ -32,6 +32,8 @@ public protocol SimpleQueueClientProtocolV2 {
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
     typealias AddPermissionFunctionType = (
             _ input: SimpleQueueModel.AddPermissionRequest) async throws -> ()
+    typealias CancelMessageMoveTaskFunctionType = (
+            _ input: SimpleQueueModel.CancelMessageMoveTaskRequest) async throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask
     typealias ChangeMessageVisibilityFunctionType = (
             _ input: SimpleQueueModel.ChangeMessageVisibilityRequest) async throws -> ()
     typealias ChangeMessageVisibilityBatchFunctionType = (
@@ -50,6 +52,8 @@ public protocol SimpleQueueClientProtocolV2 {
             _ input: SimpleQueueModel.GetQueueUrlRequest) async throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl
     typealias ListDeadLetterSourceQueuesFunctionType = (
             _ input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) async throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues
+    typealias ListMessageMoveTasksFunctionType = (
+            _ input: SimpleQueueModel.ListMessageMoveTasksRequest) async throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks
     typealias ListQueueTagsFunctionType = (
             _ input: SimpleQueueModel.ListQueueTagsRequest) async throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags
     typealias ListQueuesFunctionType = (
@@ -66,6 +70,8 @@ public protocol SimpleQueueClientProtocolV2 {
             _ input: SimpleQueueModel.SendMessageBatchRequest) async throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch
     typealias SetQueueAttributesFunctionType = (
             _ input: SimpleQueueModel.SetQueueAttributesRequest) async throws -> ()
+    typealias StartMessageMoveTaskFunctionType = (
+            _ input: SimpleQueueModel.StartMessageMoveTaskRequest) async throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask
     typealias TagQueueFunctionType = (
             _ input: SimpleQueueModel.TagQueueRequest) async throws -> ()
     typealias UntagQueueFunctionType = (
@@ -80,6 +86,18 @@ public protocol SimpleQueueClientProtocolV2 {
      */
     func addPermission(
             input: SimpleQueueModel.AddPermissionRequest) async throws
+
+    /**
+     Invokes the CancelMessageMoveTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The CancelMessageMoveTaskResultForCancelMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func cancelMessageMoveTask(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest) async throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask
 
     /**
      Invokes the ChangeMessageVisibility operation suspending until the response is available before returning.
@@ -183,6 +201,18 @@ public protocol SimpleQueueClientProtocolV2 {
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) async throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues
 
     /**
+     Invokes the ListMessageMoveTasks operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+     - Returns: The ListMessageMoveTasksResultForListMessageMoveTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func listMessageMoveTasks(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest) async throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks
+
+    /**
      Invokes the ListQueueTags operation suspending until the response is available before returning.
 
      - Parameters:
@@ -268,6 +298,18 @@ public protocol SimpleQueueClientProtocolV2 {
      */
     func setQueueAttributes(
             input: SimpleQueueModel.SetQueueAttributesRequest) async throws
+
+    /**
+     Invokes the StartMessageMoveTask operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The StartMessageMoveTaskResultForStartMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func startMessageMoveTask(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest) async throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask
 
     /**
      Invokes the TagQueue operation suspending until the response is available before returning.

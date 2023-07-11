@@ -45,12 +45,15 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let applySecurityGroupsToClientVpnTargetNetworkOverride: ApplySecurityGroupsToClientVpnTargetNetworkFunctionType?
     let assignIpv6AddressesOverride: AssignIpv6AddressesFunctionType?
     let assignPrivateIpAddressesOverride: AssignPrivateIpAddressesFunctionType?
+    let assignPrivateNatGatewayAddressOverride: AssignPrivateNatGatewayAddressFunctionType?
     let associateAddressOverride: AssociateAddressFunctionType?
     let associateClientVpnTargetNetworkOverride: AssociateClientVpnTargetNetworkFunctionType?
     let associateDhcpOptionsOverride: AssociateDhcpOptionsFunctionType?
     let associateEnclaveCertificateIamRoleOverride: AssociateEnclaveCertificateIamRoleFunctionType?
     let associateIamInstanceProfileOverride: AssociateIamInstanceProfileFunctionType?
     let associateInstanceEventWindowOverride: AssociateInstanceEventWindowFunctionType?
+    let associateIpamResourceDiscoveryOverride: AssociateIpamResourceDiscoveryFunctionType?
+    let associateNatGatewayAddressOverride: AssociateNatGatewayAddressFunctionType?
     let associateRouteTableOverride: AssociateRouteTableFunctionType?
     let associateSubnetCidrBlockOverride: AssociateSubnetCidrBlockFunctionType?
     let associateTransitGatewayMulticastDomainOverride: AssociateTransitGatewayMulticastDomainFunctionType?
@@ -98,11 +101,13 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let createFlowLogsOverride: CreateFlowLogsFunctionType?
     let createFpgaImageOverride: CreateFpgaImageFunctionType?
     let createImageOverride: CreateImageFunctionType?
+    let createInstanceConnectEndpointOverride: CreateInstanceConnectEndpointFunctionType?
     let createInstanceEventWindowOverride: CreateInstanceEventWindowFunctionType?
     let createInstanceExportTaskOverride: CreateInstanceExportTaskFunctionType?
     let createInternetGatewayOverride: CreateInternetGatewayFunctionType?
     let createIpamOverride: CreateIpamFunctionType?
     let createIpamPoolOverride: CreateIpamPoolFunctionType?
+    let createIpamResourceDiscoveryOverride: CreateIpamResourceDiscoveryFunctionType?
     let createIpamScopeOverride: CreateIpamScopeFunctionType?
     let createKeyPairOverride: CreateKeyPairFunctionType?
     let createLaunchTemplateOverride: CreateLaunchTemplateFunctionType?
@@ -173,10 +178,12 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let deleteFleetsOverride: DeleteFleetsFunctionType?
     let deleteFlowLogsOverride: DeleteFlowLogsFunctionType?
     let deleteFpgaImageOverride: DeleteFpgaImageFunctionType?
+    let deleteInstanceConnectEndpointOverride: DeleteInstanceConnectEndpointFunctionType?
     let deleteInstanceEventWindowOverride: DeleteInstanceEventWindowFunctionType?
     let deleteInternetGatewayOverride: DeleteInternetGatewayFunctionType?
     let deleteIpamOverride: DeleteIpamFunctionType?
     let deleteIpamPoolOverride: DeleteIpamPoolFunctionType?
+    let deleteIpamResourceDiscoveryOverride: DeleteIpamResourceDiscoveryFunctionType?
     let deleteIpamScopeOverride: DeleteIpamScopeFunctionType?
     let deleteKeyPairOverride: DeleteKeyPairFunctionType?
     let deleteLaunchTemplateOverride: DeleteLaunchTemplateFunctionType?
@@ -286,6 +293,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let describeImportImageTasksOverride: DescribeImportImageTasksFunctionType?
     let describeImportSnapshotTasksOverride: DescribeImportSnapshotTasksFunctionType?
     let describeInstanceAttributeOverride: DescribeInstanceAttributeFunctionType?
+    let describeInstanceConnectEndpointsOverride: DescribeInstanceConnectEndpointsFunctionType?
     let describeInstanceCreditSpecificationsOverride: DescribeInstanceCreditSpecificationsFunctionType?
     let describeInstanceEventNotificationAttributesOverride: DescribeInstanceEventNotificationAttributesFunctionType?
     let describeInstanceEventWindowsOverride: DescribeInstanceEventWindowsFunctionType?
@@ -295,6 +303,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let describeInstancesOverride: DescribeInstancesFunctionType?
     let describeInternetGatewaysOverride: DescribeInternetGatewaysFunctionType?
     let describeIpamPoolsOverride: DescribeIpamPoolsFunctionType?
+    let describeIpamResourceDiscoveriesOverride: DescribeIpamResourceDiscoveriesFunctionType?
+    let describeIpamResourceDiscoveryAssociationsOverride: DescribeIpamResourceDiscoveryAssociationsFunctionType?
     let describeIpamScopesOverride: DescribeIpamScopesFunctionType?
     let describeIpamsOverride: DescribeIpamsFunctionType?
     let describeIpv6PoolsOverride: DescribeIpv6PoolsFunctionType?
@@ -406,6 +416,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let disassociateEnclaveCertificateIamRoleOverride: DisassociateEnclaveCertificateIamRoleFunctionType?
     let disassociateIamInstanceProfileOverride: DisassociateIamInstanceProfileFunctionType?
     let disassociateInstanceEventWindowOverride: DisassociateInstanceEventWindowFunctionType?
+    let disassociateIpamResourceDiscoveryOverride: DisassociateIpamResourceDiscoveryFunctionType?
+    let disassociateNatGatewayAddressOverride: DisassociateNatGatewayAddressFunctionType?
     let disassociateRouteTableOverride: DisassociateRouteTableFunctionType?
     let disassociateSubnetCidrBlockOverride: DisassociateSubnetCidrBlockFunctionType?
     let disassociateTransitGatewayMulticastDomainOverride: DisassociateTransitGatewayMulticastDomainFunctionType?
@@ -447,6 +459,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let getInstanceTypesFromInstanceRequirementsOverride: GetInstanceTypesFromInstanceRequirementsFunctionType?
     let getInstanceUefiDataOverride: GetInstanceUefiDataFunctionType?
     let getIpamAddressHistoryOverride: GetIpamAddressHistoryFunctionType?
+    let getIpamDiscoveredAccountsOverride: GetIpamDiscoveredAccountsFunctionType?
+    let getIpamDiscoveredResourceCidrsOverride: GetIpamDiscoveredResourceCidrsFunctionType?
     let getIpamPoolAllocationsOverride: GetIpamPoolAllocationsFunctionType?
     let getIpamPoolCidrsOverride: GetIpamPoolCidrsFunctionType?
     let getIpamResourceCidrsOverride: GetIpamResourceCidrsFunctionType?
@@ -471,6 +485,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let getVerifiedAccessGroupPolicyOverride: GetVerifiedAccessGroupPolicyFunctionType?
     let getVpnConnectionDeviceSampleConfigurationOverride: GetVpnConnectionDeviceSampleConfigurationFunctionType?
     let getVpnConnectionDeviceTypesOverride: GetVpnConnectionDeviceTypesFunctionType?
+    let getVpnTunnelReplacementStatusOverride: GetVpnTunnelReplacementStatusFunctionType?
     let importClientVpnClientCertificateRevocationListOverride: ImportClientVpnClientCertificateRevocationListFunctionType?
     let importImageOverride: ImportImageFunctionType?
     let importInstanceOverride: ImportInstanceFunctionType?
@@ -503,6 +518,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let modifyIpamOverride: ModifyIpamFunctionType?
     let modifyIpamPoolOverride: ModifyIpamPoolFunctionType?
     let modifyIpamResourceCidrOverride: ModifyIpamResourceCidrFunctionType?
+    let modifyIpamResourceDiscoveryOverride: ModifyIpamResourceDiscoveryFunctionType?
     let modifyIpamScopeOverride: ModifyIpamScopeFunctionType?
     let modifyLaunchTemplateOverride: ModifyLaunchTemplateFunctionType?
     let modifyLocalGatewayRouteOverride: ModifyLocalGatewayRouteFunctionType?
@@ -570,6 +586,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let replaceRouteOverride: ReplaceRouteFunctionType?
     let replaceRouteTableAssociationOverride: ReplaceRouteTableAssociationFunctionType?
     let replaceTransitGatewayRouteOverride: ReplaceTransitGatewayRouteFunctionType?
+    let replaceVpnTunnelOverride: ReplaceVpnTunnelFunctionType?
     let reportInstanceStatusOverride: ReportInstanceStatusFunctionType?
     let requestSpotFleetOverride: RequestSpotFleetFunctionType?
     let requestSpotInstancesOverride: RequestSpotInstancesFunctionType?
@@ -603,6 +620,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     let terminateInstancesOverride: TerminateInstancesFunctionType?
     let unassignIpv6AddressesOverride: UnassignIpv6AddressesFunctionType?
     let unassignPrivateIpAddressesOverride: UnassignPrivateIpAddressesFunctionType?
+    let unassignPrivateNatGatewayAddressOverride: UnassignPrivateNatGatewayAddressFunctionType?
     let unmonitorInstancesOverride: UnmonitorInstancesFunctionType?
     let updateSecurityGroupRuleDescriptionsEgressOverride: UpdateSecurityGroupRuleDescriptionsEgressFunctionType?
     let updateSecurityGroupRuleDescriptionsIngressOverride: UpdateSecurityGroupRuleDescriptionsIngressFunctionType?
@@ -627,12 +645,15 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             applySecurityGroupsToClientVpnTargetNetwork: ApplySecurityGroupsToClientVpnTargetNetworkFunctionType? = nil,
             assignIpv6Addresses: AssignIpv6AddressesFunctionType? = nil,
             assignPrivateIpAddresses: AssignPrivateIpAddressesFunctionType? = nil,
+            assignPrivateNatGatewayAddress: AssignPrivateNatGatewayAddressFunctionType? = nil,
             associateAddress: AssociateAddressFunctionType? = nil,
             associateClientVpnTargetNetwork: AssociateClientVpnTargetNetworkFunctionType? = nil,
             associateDhcpOptions: AssociateDhcpOptionsFunctionType? = nil,
             associateEnclaveCertificateIamRole: AssociateEnclaveCertificateIamRoleFunctionType? = nil,
             associateIamInstanceProfile: AssociateIamInstanceProfileFunctionType? = nil,
             associateInstanceEventWindow: AssociateInstanceEventWindowFunctionType? = nil,
+            associateIpamResourceDiscovery: AssociateIpamResourceDiscoveryFunctionType? = nil,
+            associateNatGatewayAddress: AssociateNatGatewayAddressFunctionType? = nil,
             associateRouteTable: AssociateRouteTableFunctionType? = nil,
             associateSubnetCidrBlock: AssociateSubnetCidrBlockFunctionType? = nil,
             associateTransitGatewayMulticastDomain: AssociateTransitGatewayMulticastDomainFunctionType? = nil,
@@ -680,11 +701,13 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             createFlowLogs: CreateFlowLogsFunctionType? = nil,
             createFpgaImage: CreateFpgaImageFunctionType? = nil,
             createImage: CreateImageFunctionType? = nil,
+            createInstanceConnectEndpoint: CreateInstanceConnectEndpointFunctionType? = nil,
             createInstanceEventWindow: CreateInstanceEventWindowFunctionType? = nil,
             createInstanceExportTask: CreateInstanceExportTaskFunctionType? = nil,
             createInternetGateway: CreateInternetGatewayFunctionType? = nil,
             createIpam: CreateIpamFunctionType? = nil,
             createIpamPool: CreateIpamPoolFunctionType? = nil,
+            createIpamResourceDiscovery: CreateIpamResourceDiscoveryFunctionType? = nil,
             createIpamScope: CreateIpamScopeFunctionType? = nil,
             createKeyPair: CreateKeyPairFunctionType? = nil,
             createLaunchTemplate: CreateLaunchTemplateFunctionType? = nil,
@@ -755,10 +778,12 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             deleteFleets: DeleteFleetsFunctionType? = nil,
             deleteFlowLogs: DeleteFlowLogsFunctionType? = nil,
             deleteFpgaImage: DeleteFpgaImageFunctionType? = nil,
+            deleteInstanceConnectEndpoint: DeleteInstanceConnectEndpointFunctionType? = nil,
             deleteInstanceEventWindow: DeleteInstanceEventWindowFunctionType? = nil,
             deleteInternetGateway: DeleteInternetGatewayFunctionType? = nil,
             deleteIpam: DeleteIpamFunctionType? = nil,
             deleteIpamPool: DeleteIpamPoolFunctionType? = nil,
+            deleteIpamResourceDiscovery: DeleteIpamResourceDiscoveryFunctionType? = nil,
             deleteIpamScope: DeleteIpamScopeFunctionType? = nil,
             deleteKeyPair: DeleteKeyPairFunctionType? = nil,
             deleteLaunchTemplate: DeleteLaunchTemplateFunctionType? = nil,
@@ -868,6 +893,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             describeImportImageTasks: DescribeImportImageTasksFunctionType? = nil,
             describeImportSnapshotTasks: DescribeImportSnapshotTasksFunctionType? = nil,
             describeInstanceAttribute: DescribeInstanceAttributeFunctionType? = nil,
+            describeInstanceConnectEndpoints: DescribeInstanceConnectEndpointsFunctionType? = nil,
             describeInstanceCreditSpecifications: DescribeInstanceCreditSpecificationsFunctionType? = nil,
             describeInstanceEventNotificationAttributes: DescribeInstanceEventNotificationAttributesFunctionType? = nil,
             describeInstanceEventWindows: DescribeInstanceEventWindowsFunctionType? = nil,
@@ -877,6 +903,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             describeInstances: DescribeInstancesFunctionType? = nil,
             describeInternetGateways: DescribeInternetGatewaysFunctionType? = nil,
             describeIpamPools: DescribeIpamPoolsFunctionType? = nil,
+            describeIpamResourceDiscoveries: DescribeIpamResourceDiscoveriesFunctionType? = nil,
+            describeIpamResourceDiscoveryAssociations: DescribeIpamResourceDiscoveryAssociationsFunctionType? = nil,
             describeIpamScopes: DescribeIpamScopesFunctionType? = nil,
             describeIpams: DescribeIpamsFunctionType? = nil,
             describeIpv6Pools: DescribeIpv6PoolsFunctionType? = nil,
@@ -988,6 +1016,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             disassociateEnclaveCertificateIamRole: DisassociateEnclaveCertificateIamRoleFunctionType? = nil,
             disassociateIamInstanceProfile: DisassociateIamInstanceProfileFunctionType? = nil,
             disassociateInstanceEventWindow: DisassociateInstanceEventWindowFunctionType? = nil,
+            disassociateIpamResourceDiscovery: DisassociateIpamResourceDiscoveryFunctionType? = nil,
+            disassociateNatGatewayAddress: DisassociateNatGatewayAddressFunctionType? = nil,
             disassociateRouteTable: DisassociateRouteTableFunctionType? = nil,
             disassociateSubnetCidrBlock: DisassociateSubnetCidrBlockFunctionType? = nil,
             disassociateTransitGatewayMulticastDomain: DisassociateTransitGatewayMulticastDomainFunctionType? = nil,
@@ -1029,6 +1059,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             getInstanceTypesFromInstanceRequirements: GetInstanceTypesFromInstanceRequirementsFunctionType? = nil,
             getInstanceUefiData: GetInstanceUefiDataFunctionType? = nil,
             getIpamAddressHistory: GetIpamAddressHistoryFunctionType? = nil,
+            getIpamDiscoveredAccounts: GetIpamDiscoveredAccountsFunctionType? = nil,
+            getIpamDiscoveredResourceCidrs: GetIpamDiscoveredResourceCidrsFunctionType? = nil,
             getIpamPoolAllocations: GetIpamPoolAllocationsFunctionType? = nil,
             getIpamPoolCidrs: GetIpamPoolCidrsFunctionType? = nil,
             getIpamResourceCidrs: GetIpamResourceCidrsFunctionType? = nil,
@@ -1053,6 +1085,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             getVerifiedAccessGroupPolicy: GetVerifiedAccessGroupPolicyFunctionType? = nil,
             getVpnConnectionDeviceSampleConfiguration: GetVpnConnectionDeviceSampleConfigurationFunctionType? = nil,
             getVpnConnectionDeviceTypes: GetVpnConnectionDeviceTypesFunctionType? = nil,
+            getVpnTunnelReplacementStatus: GetVpnTunnelReplacementStatusFunctionType? = nil,
             importClientVpnClientCertificateRevocationList: ImportClientVpnClientCertificateRevocationListFunctionType? = nil,
             importImage: ImportImageFunctionType? = nil,
             importInstance: ImportInstanceFunctionType? = nil,
@@ -1085,6 +1118,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             modifyIpam: ModifyIpamFunctionType? = nil,
             modifyIpamPool: ModifyIpamPoolFunctionType? = nil,
             modifyIpamResourceCidr: ModifyIpamResourceCidrFunctionType? = nil,
+            modifyIpamResourceDiscovery: ModifyIpamResourceDiscoveryFunctionType? = nil,
             modifyIpamScope: ModifyIpamScopeFunctionType? = nil,
             modifyLaunchTemplate: ModifyLaunchTemplateFunctionType? = nil,
             modifyLocalGatewayRoute: ModifyLocalGatewayRouteFunctionType? = nil,
@@ -1152,6 +1186,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             replaceRoute: ReplaceRouteFunctionType? = nil,
             replaceRouteTableAssociation: ReplaceRouteTableAssociationFunctionType? = nil,
             replaceTransitGatewayRoute: ReplaceTransitGatewayRouteFunctionType? = nil,
+            replaceVpnTunnel: ReplaceVpnTunnelFunctionType? = nil,
             reportInstanceStatus: ReportInstanceStatusFunctionType? = nil,
             requestSpotFleet: RequestSpotFleetFunctionType? = nil,
             requestSpotInstances: RequestSpotInstancesFunctionType? = nil,
@@ -1185,6 +1220,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             terminateInstances: TerminateInstancesFunctionType? = nil,
             unassignIpv6Addresses: UnassignIpv6AddressesFunctionType? = nil,
             unassignPrivateIpAddresses: UnassignPrivateIpAddressesFunctionType? = nil,
+            unassignPrivateNatGatewayAddress: UnassignPrivateNatGatewayAddressFunctionType? = nil,
             unmonitorInstances: UnmonitorInstancesFunctionType? = nil,
             updateSecurityGroupRuleDescriptionsEgress: UpdateSecurityGroupRuleDescriptionsEgressFunctionType? = nil,
             updateSecurityGroupRuleDescriptionsIngress: UpdateSecurityGroupRuleDescriptionsIngressFunctionType? = nil,
@@ -1204,12 +1240,15 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.applySecurityGroupsToClientVpnTargetNetworkOverride = applySecurityGroupsToClientVpnTargetNetwork
         self.assignIpv6AddressesOverride = assignIpv6Addresses
         self.assignPrivateIpAddressesOverride = assignPrivateIpAddresses
+        self.assignPrivateNatGatewayAddressOverride = assignPrivateNatGatewayAddress
         self.associateAddressOverride = associateAddress
         self.associateClientVpnTargetNetworkOverride = associateClientVpnTargetNetwork
         self.associateDhcpOptionsOverride = associateDhcpOptions
         self.associateEnclaveCertificateIamRoleOverride = associateEnclaveCertificateIamRole
         self.associateIamInstanceProfileOverride = associateIamInstanceProfile
         self.associateInstanceEventWindowOverride = associateInstanceEventWindow
+        self.associateIpamResourceDiscoveryOverride = associateIpamResourceDiscovery
+        self.associateNatGatewayAddressOverride = associateNatGatewayAddress
         self.associateRouteTableOverride = associateRouteTable
         self.associateSubnetCidrBlockOverride = associateSubnetCidrBlock
         self.associateTransitGatewayMulticastDomainOverride = associateTransitGatewayMulticastDomain
@@ -1257,11 +1296,13 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.createFlowLogsOverride = createFlowLogs
         self.createFpgaImageOverride = createFpgaImage
         self.createImageOverride = createImage
+        self.createInstanceConnectEndpointOverride = createInstanceConnectEndpoint
         self.createInstanceEventWindowOverride = createInstanceEventWindow
         self.createInstanceExportTaskOverride = createInstanceExportTask
         self.createInternetGatewayOverride = createInternetGateway
         self.createIpamOverride = createIpam
         self.createIpamPoolOverride = createIpamPool
+        self.createIpamResourceDiscoveryOverride = createIpamResourceDiscovery
         self.createIpamScopeOverride = createIpamScope
         self.createKeyPairOverride = createKeyPair
         self.createLaunchTemplateOverride = createLaunchTemplate
@@ -1332,10 +1373,12 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.deleteFleetsOverride = deleteFleets
         self.deleteFlowLogsOverride = deleteFlowLogs
         self.deleteFpgaImageOverride = deleteFpgaImage
+        self.deleteInstanceConnectEndpointOverride = deleteInstanceConnectEndpoint
         self.deleteInstanceEventWindowOverride = deleteInstanceEventWindow
         self.deleteInternetGatewayOverride = deleteInternetGateway
         self.deleteIpamOverride = deleteIpam
         self.deleteIpamPoolOverride = deleteIpamPool
+        self.deleteIpamResourceDiscoveryOverride = deleteIpamResourceDiscovery
         self.deleteIpamScopeOverride = deleteIpamScope
         self.deleteKeyPairOverride = deleteKeyPair
         self.deleteLaunchTemplateOverride = deleteLaunchTemplate
@@ -1445,6 +1488,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.describeImportImageTasksOverride = describeImportImageTasks
         self.describeImportSnapshotTasksOverride = describeImportSnapshotTasks
         self.describeInstanceAttributeOverride = describeInstanceAttribute
+        self.describeInstanceConnectEndpointsOverride = describeInstanceConnectEndpoints
         self.describeInstanceCreditSpecificationsOverride = describeInstanceCreditSpecifications
         self.describeInstanceEventNotificationAttributesOverride = describeInstanceEventNotificationAttributes
         self.describeInstanceEventWindowsOverride = describeInstanceEventWindows
@@ -1454,6 +1498,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.describeInstancesOverride = describeInstances
         self.describeInternetGatewaysOverride = describeInternetGateways
         self.describeIpamPoolsOverride = describeIpamPools
+        self.describeIpamResourceDiscoveriesOverride = describeIpamResourceDiscoveries
+        self.describeIpamResourceDiscoveryAssociationsOverride = describeIpamResourceDiscoveryAssociations
         self.describeIpamScopesOverride = describeIpamScopes
         self.describeIpamsOverride = describeIpams
         self.describeIpv6PoolsOverride = describeIpv6Pools
@@ -1565,6 +1611,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.disassociateEnclaveCertificateIamRoleOverride = disassociateEnclaveCertificateIamRole
         self.disassociateIamInstanceProfileOverride = disassociateIamInstanceProfile
         self.disassociateInstanceEventWindowOverride = disassociateInstanceEventWindow
+        self.disassociateIpamResourceDiscoveryOverride = disassociateIpamResourceDiscovery
+        self.disassociateNatGatewayAddressOverride = disassociateNatGatewayAddress
         self.disassociateRouteTableOverride = disassociateRouteTable
         self.disassociateSubnetCidrBlockOverride = disassociateSubnetCidrBlock
         self.disassociateTransitGatewayMulticastDomainOverride = disassociateTransitGatewayMulticastDomain
@@ -1606,6 +1654,8 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.getInstanceTypesFromInstanceRequirementsOverride = getInstanceTypesFromInstanceRequirements
         self.getInstanceUefiDataOverride = getInstanceUefiData
         self.getIpamAddressHistoryOverride = getIpamAddressHistory
+        self.getIpamDiscoveredAccountsOverride = getIpamDiscoveredAccounts
+        self.getIpamDiscoveredResourceCidrsOverride = getIpamDiscoveredResourceCidrs
         self.getIpamPoolAllocationsOverride = getIpamPoolAllocations
         self.getIpamPoolCidrsOverride = getIpamPoolCidrs
         self.getIpamResourceCidrsOverride = getIpamResourceCidrs
@@ -1630,6 +1680,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.getVerifiedAccessGroupPolicyOverride = getVerifiedAccessGroupPolicy
         self.getVpnConnectionDeviceSampleConfigurationOverride = getVpnConnectionDeviceSampleConfiguration
         self.getVpnConnectionDeviceTypesOverride = getVpnConnectionDeviceTypes
+        self.getVpnTunnelReplacementStatusOverride = getVpnTunnelReplacementStatus
         self.importClientVpnClientCertificateRevocationListOverride = importClientVpnClientCertificateRevocationList
         self.importImageOverride = importImage
         self.importInstanceOverride = importInstance
@@ -1662,6 +1713,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.modifyIpamOverride = modifyIpam
         self.modifyIpamPoolOverride = modifyIpamPool
         self.modifyIpamResourceCidrOverride = modifyIpamResourceCidr
+        self.modifyIpamResourceDiscoveryOverride = modifyIpamResourceDiscovery
         self.modifyIpamScopeOverride = modifyIpamScope
         self.modifyLaunchTemplateOverride = modifyLaunchTemplate
         self.modifyLocalGatewayRouteOverride = modifyLocalGatewayRoute
@@ -1729,6 +1781,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.replaceRouteOverride = replaceRoute
         self.replaceRouteTableAssociationOverride = replaceRouteTableAssociation
         self.replaceTransitGatewayRouteOverride = replaceTransitGatewayRoute
+        self.replaceVpnTunnelOverride = replaceVpnTunnel
         self.reportInstanceStatusOverride = reportInstanceStatus
         self.requestSpotFleetOverride = requestSpotFleet
         self.requestSpotInstancesOverride = requestSpotInstances
@@ -1762,6 +1815,7 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
         self.terminateInstancesOverride = terminateInstances
         self.unassignIpv6AddressesOverride = unassignIpv6Addresses
         self.unassignPrivateIpAddressesOverride = unassignPrivateIpAddresses
+        self.unassignPrivateNatGatewayAddressOverride = unassignPrivateNatGatewayAddress
         self.unmonitorInstancesOverride = unmonitorInstances
         self.updateSecurityGroupRuleDescriptionsEgressOverride = updateSecurityGroupRuleDescriptionsEgress
         self.updateSecurityGroupRuleDescriptionsIngressOverride = updateSecurityGroupRuleDescriptionsIngress
@@ -2007,6 +2061,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     }
 
     /**
+     Invokes the AssignPrivateNatGatewayAddress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AssignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func assignPrivateNatGatewayAddress(
+            input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult {
+        if let assignPrivateNatGatewayAddressOverride = assignPrivateNatGatewayAddressOverride {
+            return try await assignPrivateNatGatewayAddressOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the AssociateAddress operation suspending until the response is available before returning.
 
      - Parameters:
@@ -2101,6 +2172,40 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest) async throws -> ElasticComputeCloudModel.AssociateInstanceEventWindowResult {
         if let associateInstanceEventWindowOverride = associateInstanceEventWindowOverride {
             return try await associateInstanceEventWindowOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the AssociateIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AssociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The AssociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult {
+        if let associateIpamResourceDiscoveryOverride = associateIpamResourceDiscoveryOverride {
+            return try await associateIpamResourceDiscoveryOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the AssociateNatGatewayAddress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated AssociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The AssociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func associateNatGatewayAddress(
+            input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.AssociateNatGatewayAddressResult {
+        if let associateNatGatewayAddressOverride = associateNatGatewayAddressOverride {
+            return try await associateNatGatewayAddressOverride(input)
         }
 
         throw error
@@ -2900,6 +3005,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     }
 
     /**
+     Invokes the CreateInstanceConnectEndpoint operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The CreateInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createInstanceConnectEndpoint(
+            input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest) async throws -> ElasticComputeCloudModel.CreateInstanceConnectEndpointResult {
+        if let createInstanceConnectEndpointOverride = createInstanceConnectEndpointOverride {
+            return try await createInstanceConnectEndpointOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the CreateInstanceEventWindow operation suspending until the response is available before returning.
 
      - Parameters:
@@ -2979,6 +3101,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.CreateIpamPoolRequest) async throws -> ElasticComputeCloudModel.CreateIpamPoolResult {
         if let createIpamPoolOverride = createIpamPoolOverride {
             return try await createIpamPoolOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated CreateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The CreateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func createIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult {
+        if let createIpamResourceDiscoveryOverride = createIpamResourceDiscoveryOverride {
+            return try await createIpamResourceDiscoveryOverride(input)
         }
 
         throw error
@@ -4165,6 +4304,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     }
 
     /**
+     Invokes the DeleteInstanceConnectEndpoint operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteInstanceConnectEndpointRequest object being passed to this operation.
+     - Returns: The DeleteInstanceConnectEndpointResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteInstanceConnectEndpoint(
+            input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest) async throws -> ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult {
+        if let deleteInstanceConnectEndpointOverride = deleteInstanceConnectEndpointOverride {
+            return try await deleteInstanceConnectEndpointOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DeleteInstanceEventWindow operation suspending until the response is available before returning.
 
      - Parameters:
@@ -4225,6 +4381,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.DeleteIpamPoolRequest) async throws -> ElasticComputeCloudModel.DeleteIpamPoolResult {
         if let deleteIpamPoolOverride = deleteIpamPoolOverride {
             return try await deleteIpamPoolOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DeleteIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func deleteIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult {
+        if let deleteIpamResourceDiscoveryOverride = deleteIpamResourceDiscoveryOverride {
+            return try await deleteIpamResourceDiscoveryOverride(input)
         }
 
         throw error
@@ -6048,6 +6221,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     }
 
     /**
+     Invokes the DescribeInstanceConnectEndpoints operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeInstanceConnectEndpointsRequest object being passed to this operation.
+     - Returns: The DescribeInstanceConnectEndpointsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeInstanceConnectEndpoints(
+            input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult {
+        if let describeInstanceConnectEndpointsOverride = describeInstanceConnectEndpointsOverride {
+            return try await describeInstanceConnectEndpointsOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DescribeInstanceCreditSpecifications operation suspending until the response is available before returning.
 
      - Parameters:
@@ -6195,6 +6385,40 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.DescribeIpamPoolsRequest) async throws -> ElasticComputeCloudModel.DescribeIpamPoolsResult {
         if let describeIpamPoolsOverride = describeIpamPoolsOverride {
             return try await describeIpamPoolsOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveries operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveriesRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveriesResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIpamResourceDiscoveries(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest) async throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult {
+        if let describeIpamResourceDiscoveriesOverride = describeIpamResourceDiscoveriesOverride {
+            return try await describeIpamResourceDiscoveriesOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeIpamResourceDiscoveryAssociations operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeIpamResourceDiscoveryAssociationsRequest object being passed to this operation.
+     - Returns: The DescribeIpamResourceDiscoveryAssociationsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func describeIpamResourceDiscoveryAssociations(
+            input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest) async throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult {
+        if let describeIpamResourceDiscoveryAssociationsOverride = describeIpamResourceDiscoveryAssociationsOverride {
+            return try await describeIpamResourceDiscoveryAssociationsOverride(input)
         }
 
         throw error
@@ -8078,6 +8302,40 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     }
 
     /**
+     Invokes the DisassociateIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisassociateIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The DisassociateIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult {
+        if let disassociateIpamResourceDiscoveryOverride = disassociateIpamResourceDiscoveryOverride {
+            return try await disassociateIpamResourceDiscoveryOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DisassociateNatGatewayAddress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisassociateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The DisassociateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disassociateNatGatewayAddress(
+            input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.DisassociateNatGatewayAddressResult {
+        if let disassociateNatGatewayAddressOverride = disassociateNatGatewayAddressOverride {
+            return try await disassociateNatGatewayAddressOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the DisassociateRouteTable operation suspending until the response is available before returning.
 
      - Parameters:
@@ -8769,6 +9027,40 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     }
 
     /**
+     Invokes the GetIpamDiscoveredAccounts operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredAccountsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredAccountsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getIpamDiscoveredAccounts(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest) async throws -> ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult {
+        if let getIpamDiscoveredAccountsOverride = getIpamDiscoveredAccountsOverride {
+            return try await getIpamDiscoveredAccountsOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetIpamDiscoveredResourceCidrs operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetIpamDiscoveredResourceCidrsRequest object being passed to this operation.
+     - Returns: The GetIpamDiscoveredResourceCidrsResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getIpamDiscoveredResourceCidrs(
+            input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest) async throws -> ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult {
+        if let getIpamDiscoveredResourceCidrsOverride = getIpamDiscoveredResourceCidrsOverride {
+            return try await getIpamDiscoveredResourceCidrsOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the GetIpamPoolAllocations operation suspending until the response is available before returning.
 
      - Parameters:
@@ -9171,6 +9463,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest) async throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult {
         if let getVpnConnectionDeviceTypesOverride = getVpnConnectionDeviceTypesOverride {
             return try await getVpnConnectionDeviceTypesOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the GetVpnTunnelReplacementStatus operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetVpnTunnelReplacementStatusRequest object being passed to this operation.
+     - Returns: The GetVpnTunnelReplacementStatusResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getVpnTunnelReplacementStatus(
+            input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest) async throws -> ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult {
+        if let getVpnTunnelReplacementStatusOverride = getVpnTunnelReplacementStatusOverride {
+            return try await getVpnTunnelReplacementStatusOverride(input)
         }
 
         throw error
@@ -9707,6 +10016,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest) async throws -> ElasticComputeCloudModel.ModifyIpamResourceCidrResult {
         if let modifyIpamResourceCidrOverride = modifyIpamResourceCidrOverride {
             return try await modifyIpamResourceCidrOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ModifyIpamResourceDiscovery operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ModifyIpamResourceDiscoveryRequest object being passed to this operation.
+     - Returns: The ModifyIpamResourceDiscoveryResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func modifyIpamResourceDiscovery(
+            input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult {
+        if let modifyIpamResourceDiscoveryOverride = modifyIpamResourceDiscoveryOverride {
+            return try await modifyIpamResourceDiscoveryOverride(input)
         }
 
         throw error
@@ -10834,6 +11160,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
     }
 
     /**
+     Invokes the ReplaceVpnTunnel operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ReplaceVpnTunnelRequest object being passed to this operation.
+     - Returns: The ReplaceVpnTunnelResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func replaceVpnTunnel(
+            input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest) async throws -> ElasticComputeCloudModel.ReplaceVpnTunnelResult {
+        if let replaceVpnTunnelOverride = replaceVpnTunnelOverride {
+            return try await replaceVpnTunnelOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ReportInstanceStatus operation suspending until the response is available before returning.
 
      - Parameters:
@@ -11375,6 +11718,23 @@ public struct ThrowingElasticComputeCloudClientV2: ElasticComputeCloudClientProt
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest) async throws {
         if let unassignPrivateIpAddressesOverride = unassignPrivateIpAddressesOverride {
             return try await unassignPrivateIpAddressesOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UnassignPrivateNatGatewayAddress operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated UnassignPrivateNatGatewayAddressRequest object being passed to this operation.
+     - Returns: The UnassignPrivateNatGatewayAddressResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func unassignPrivateNatGatewayAddress(
+            input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult {
+        if let unassignPrivateNatGatewayAddressOverride = unassignPrivateNatGatewayAddressOverride {
+            return try await unassignPrivateNatGatewayAddressOverride(input)
         }
 
         throw error

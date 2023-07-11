@@ -31,6 +31,7 @@ import SmokeHTTPClient
 public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
 #if (os(Linux) && compiler(>=5.5)) || (!os(Linux) && compiler(>=5.5.2)) && canImport(_Concurrency)
     let error: CloudformationError
+    let activateOrganizationsAccessOverride: ActivateOrganizationsAccessFunctionType?
     let activateTypeOverride: ActivateTypeFunctionType?
     let batchDescribeTypeConfigurationsOverride: BatchDescribeTypeConfigurationsFunctionType?
     let cancelUpdateStackOverride: CancelUpdateStackFunctionType?
@@ -39,6 +40,7 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
     let createStackOverride: CreateStackFunctionType?
     let createStackInstancesOverride: CreateStackInstancesFunctionType?
     let createStackSetOverride: CreateStackSetFunctionType?
+    let deactivateOrganizationsAccessOverride: DeactivateOrganizationsAccessFunctionType?
     let deactivateTypeOverride: DeactivateTypeFunctionType?
     let deleteChangeSetOverride: DeleteChangeSetFunctionType?
     let deleteStackOverride: DeleteStackFunctionType?
@@ -48,6 +50,7 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
     let describeAccountLimitsOverride: DescribeAccountLimitsFunctionType?
     let describeChangeSetOverride: DescribeChangeSetFunctionType?
     let describeChangeSetHooksOverride: DescribeChangeSetHooksFunctionType?
+    let describeOrganizationsAccessOverride: DescribeOrganizationsAccessFunctionType?
     let describePublisherOverride: DescribePublisherFunctionType?
     let describeStackDriftDetectionStatusOverride: DescribeStackDriftDetectionStatusFunctionType?
     let describeStackEventsOverride: DescribeStackEventsFunctionType?
@@ -103,6 +106,7 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
      functions can be overridden by passing them to this initializer.
      */
     public init(error: CloudformationError,
+            activateOrganizationsAccess: ActivateOrganizationsAccessFunctionType? = nil,
             activateType: ActivateTypeFunctionType? = nil,
             batchDescribeTypeConfigurations: BatchDescribeTypeConfigurationsFunctionType? = nil,
             cancelUpdateStack: CancelUpdateStackFunctionType? = nil,
@@ -111,6 +115,7 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
             createStack: CreateStackFunctionType? = nil,
             createStackInstances: CreateStackInstancesFunctionType? = nil,
             createStackSet: CreateStackSetFunctionType? = nil,
+            deactivateOrganizationsAccess: DeactivateOrganizationsAccessFunctionType? = nil,
             deactivateType: DeactivateTypeFunctionType? = nil,
             deleteChangeSet: DeleteChangeSetFunctionType? = nil,
             deleteStack: DeleteStackFunctionType? = nil,
@@ -120,6 +125,7 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
             describeAccountLimits: DescribeAccountLimitsFunctionType? = nil,
             describeChangeSet: DescribeChangeSetFunctionType? = nil,
             describeChangeSetHooks: DescribeChangeSetHooksFunctionType? = nil,
+            describeOrganizationsAccess: DescribeOrganizationsAccessFunctionType? = nil,
             describePublisher: DescribePublisherFunctionType? = nil,
             describeStackDriftDetectionStatus: DescribeStackDriftDetectionStatusFunctionType? = nil,
             describeStackEvents: DescribeStackEventsFunctionType? = nil,
@@ -170,6 +176,7 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
             updateTerminationProtection: UpdateTerminationProtectionFunctionType? = nil,
             validateTemplate: ValidateTemplateFunctionType? = nil) {
         self.error = error
+        self.activateOrganizationsAccessOverride = activateOrganizationsAccess
         self.activateTypeOverride = activateType
         self.batchDescribeTypeConfigurationsOverride = batchDescribeTypeConfigurations
         self.cancelUpdateStackOverride = cancelUpdateStack
@@ -178,6 +185,7 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
         self.createStackOverride = createStack
         self.createStackInstancesOverride = createStackInstances
         self.createStackSetOverride = createStackSet
+        self.deactivateOrganizationsAccessOverride = deactivateOrganizationsAccess
         self.deactivateTypeOverride = deactivateType
         self.deleteChangeSetOverride = deleteChangeSet
         self.deleteStackOverride = deleteStack
@@ -187,6 +195,7 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
         self.describeAccountLimitsOverride = describeAccountLimits
         self.describeChangeSetOverride = describeChangeSet
         self.describeChangeSetHooksOverride = describeChangeSetHooks
+        self.describeOrganizationsAccessOverride = describeOrganizationsAccess
         self.describePublisherOverride = describePublisher
         self.describeStackDriftDetectionStatusOverride = describeStackDriftDetectionStatus
         self.describeStackEventsOverride = describeStackEvents
@@ -236,6 +245,24 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
         self.updateStackSetOverride = updateStackSet
         self.updateTerminationProtectionOverride = updateTerminationProtection
         self.validateTemplateOverride = validateTemplate
+    }
+
+    /**
+     Invokes the ActivateOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ActivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The ActivateOrganizationsAccessOutputForActivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func activateOrganizationsAccess(
+            input: CloudformationModel.ActivateOrganizationsAccessInput) async throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess {
+        if let activateOrganizationsAccessOverride = activateOrganizationsAccessOverride {
+            return try await activateOrganizationsAccessOverride(input)
+        }
+
+        throw error
     }
 
     /**
@@ -375,6 +402,24 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
             input: CloudformationModel.CreateStackSetInput) async throws -> CloudformationModel.CreateStackSetOutputForCreateStackSet {
         if let createStackSetOverride = createStackSetOverride {
             return try await createStackSetOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeactivateOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeactivateOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func deactivateOrganizationsAccess(
+            input: CloudformationModel.DeactivateOrganizationsAccessInput) async throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess {
+        if let deactivateOrganizationsAccessOverride = deactivateOrganizationsAccessOverride {
+            return try await deactivateOrganizationsAccessOverride(input)
         }
 
         throw error
@@ -534,6 +579,24 @@ public struct ThrowingCloudformationClientV2: CloudformationClientProtocolV2 {
             input: CloudformationModel.DescribeChangeSetHooksInput) async throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
         if let describeChangeSetHooksOverride = describeChangeSetHooksOverride {
             return try await describeChangeSetHooksOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeOrganizationsAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeOrganizationsAccessInput object being passed to this operation.
+     - Returns: The DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidOperation, operationNotFound.
+     */
+    public func describeOrganizationsAccess(
+            input: CloudformationModel.DescribeOrganizationsAccessInput) async throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess {
+        if let describeOrganizationsAccessOverride = describeOrganizationsAccessOverride {
+            return try await describeOrganizationsAccessOverride(input)
         }
 
         throw error

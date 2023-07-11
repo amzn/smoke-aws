@@ -245,7 +245,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
          - completion: The CreateClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The CreateClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, invalidParameter, server.
+           The possible errors are: client, invalidParameter, namespaceNotFound, server.
      */
     public func createClusterAsync(
             input: ElasticContainerModel.CreateClusterRequest, 
@@ -278,7 +278,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
          - input: The validated CreateClusterRequest object being passed to this operation.
      - Returns: The CreateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, server.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
      */
     public func createClusterSync(
             input: ElasticContainerModel.CreateClusterRequest) throws -> ElasticContainerModel.CreateClusterResponse {
@@ -782,6 +782,76 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteService,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteTaskDefinitions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+         - completion: The DeleteTaskDefinitionsResponse object or an error will be passed to this 
+           callback when the operation is complete. The DeleteTaskDefinitionsResponse
+           object will be validated before being returned to caller.
+           The possible errors are: accessDenied, client, invalidParameter, server.
+     */
+    public func deleteTaskDefinitionsAsync(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest, 
+            completion: @escaping (Result<ElasticContainerModel.DeleteTaskDefinitionsResponse, ElasticContainerError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteTaskDefinitions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTaskDefinitions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteTaskDefinitionsOperationHTTPRequestInput(encodable: input)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteTaskDefinitions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+     - Returns: The DeleteTaskDefinitionsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    public func deleteTaskDefinitionsSync(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest) throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteTaskDefinitions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTaskDefinitions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
         do {
             return try httpClient.executeSyncRetriableWithOutput(
@@ -3465,7 +3535,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
          - completion: The UpdateClusterResponse object or an error will be passed to this 
            callback when the operation is complete. The UpdateClusterResponse
            object will be validated before being returned to caller.
-           The possible errors are: client, clusterNotFound, invalidParameter, server.
+           The possible errors are: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     public func updateClusterAsync(
             input: ElasticContainerModel.UpdateClusterRequest, 
@@ -3498,7 +3568,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
          - input: The validated UpdateClusterRequest object being passed to this operation.
      - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     public func updateClusterSync(
             input: ElasticContainerModel.UpdateClusterRequest) throws -> ElasticContainerModel.UpdateClusterResponse {
@@ -4062,7 +4132,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
          - input: The validated CreateClusterRequest object being passed to this operation.
      - Returns: The CreateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, server.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
      */
     public func createCluster(
             input: ElasticContainerModel.CreateClusterRequest) async throws -> ElasticContainerModel.CreateClusterResponse {
@@ -4328,6 +4398,42 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
         let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteService,
                                                             handlerDelegate: handlerDelegate)
         let requestInput = DeleteServiceOperationHTTPRequestInput(encodable: input)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticContainerError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteTaskDefinitions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+     - Returns: The DeleteTaskDefinitionsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    public func deleteTaskDefinitions(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest) async throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    operation: ElasticContainerModelOperations.deleteTaskDefinitions.rawValue,
+                    target: target)
+
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteTaskDefinitions,
+                                                            handlerDelegate: handlerDelegate)
+        let requestInput = DeleteTaskDefinitionsOperationHTTPRequestInput(encodable: input)
 
         do {
             return try await httpClient.executeRetriableWithOutput(
@@ -5718,7 +5824,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
          - input: The validated UpdateClusterRequest object being passed to this operation.
      - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     public func updateCluster(
             input: ElasticContainerModel.UpdateClusterRequest) async throws -> ElasticContainerModel.UpdateClusterResponse {

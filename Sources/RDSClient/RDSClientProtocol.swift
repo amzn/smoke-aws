@@ -1098,7 +1098,7 @@ public protocol RDSClientProtocol: RDSClientProtocolV2 {
          - completion: The DBEngineVersionForCreateCustomDBEngineVersion object or an error will be passed to this 
            callback when the operation is complete. The DBEngineVersionForCreateCustomDBEngineVersion
            object will be validated before being returned to caller.
-           The possible errors are: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, ec2ImagePropertiesNotSupported, kMSKeyNotAccessible.
+           The possible errors are: createCustomDBEngineVersion, customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, ec2ImagePropertiesNotSupported, kMSKeyNotAccessible.
      */
     func createCustomDBEngineVersionAsync(
             input: RDSModel.CreateCustomDBEngineVersionMessage, 
@@ -1111,7 +1111,7 @@ public protocol RDSClientProtocol: RDSClientProtocolV2 {
          - input: The validated CreateCustomDBEngineVersionMessage object being passed to this operation.
      - Returns: The DBEngineVersionForCreateCustomDBEngineVersion object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, ec2ImagePropertiesNotSupported, kMSKeyNotAccessible.
+     - Throws: createCustomDBEngineVersion, customDBEngineVersionAlreadyExists, customDBEngineVersionQuotaExceeded, ec2ImagePropertiesNotSupported, kMSKeyNotAccessible.
      */
     func createCustomDBEngineVersionSync(
             input: RDSModel.CreateCustomDBEngineVersionMessage) throws -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion
@@ -1254,7 +1254,7 @@ public protocol RDSClientProtocol: RDSClientProtocolV2 {
          - completion: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object or an error will be passed to this 
            callback when the operation is complete. The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
            object will be validated before being returned to caller.
-           The possible errors are: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+           The possible errors are: dBClusterNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceReadReplicaAsync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage, 
@@ -1267,7 +1267,7 @@ public protocol RDSClientProtocol: RDSClientProtocolV2 {
          - input: The validated CreateDBInstanceReadReplicaMessage object being passed to this operation.
      - Returns: The CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
+     - Throws: dBClusterNotFound, dBInstanceAlreadyExists, dBInstanceNotFound, dBParameterGroupNotFound, dBSecurityGroupNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotAllowed, dBSubnetGroupNotFound, domainNotFound, instanceQuotaExceeded, insufficientDBInstanceCapacity, invalidDBClusterState, invalidDBInstanceState, invalidDBSubnetGroup, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, networkTypeNotSupported, optionGroupNotFound, provisionedIopsNotAvailableInAZ, storageQuotaExceeded, storageTypeNotSupported.
      */
     func createDBInstanceReadReplicaSync(
             input: RDSModel.CreateDBInstanceReadReplicaMessage) throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica
@@ -3171,7 +3171,7 @@ public protocol RDSClientProtocol: RDSClientProtocolV2 {
          - completion: The ModifyDBClusterResultForModifyDBCluster object or an error will be passed to this 
            callback when the operation is complete. The ModifyDBClusterResultForModifyDBCluster
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBInstanceAlreadyExists, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded, storageTypeNotAvailable.
      */
     func modifyDBClusterAsync(
             input: RDSModel.ModifyDBClusterMessage, 
@@ -3184,7 +3184,7 @@ public protocol RDSClientProtocol: RDSClientProtocolV2 {
          - input: The validated ModifyDBClusterMessage object being passed to this operation.
      - Returns: The ModifyDBClusterResultForModifyDBCluster object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBInstanceAlreadyExists, dBSubnetGroupNotFound, domainNotFound, invalidDBClusterState, invalidDBInstanceState, invalidDBSecurityGroupState, invalidDBSubnetGroupState, invalidSubnet, invalidVPCNetworkState, storageQuotaExceeded, storageTypeNotAvailable.
      */
     func modifyDBClusterSync(
             input: RDSModel.ModifyDBClusterMessage) throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster
@@ -3890,7 +3890,7 @@ public protocol RDSClientProtocol: RDSClientProtocolV2 {
          - completion: The RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBClusterFromS3Async(
             input: RDSModel.RestoreDBClusterFromS3Message, 
@@ -3903,7 +3903,7 @@ public protocol RDSClientProtocol: RDSClientProtocolV2 {
          - input: The validated RestoreDBClusterFromS3Message object being passed to this operation.
      - Returns: The RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBSubnetGroupNotFound, domainNotFound, insufficientStorageClusterCapacity, invalidDBClusterState, invalidDBSubnetGroupState, invalidS3Bucket, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, storageQuotaExceeded, storageTypeNotSupported.
      */
     func restoreDBClusterFromS3Sync(
             input: RDSModel.RestoreDBClusterFromS3Message) throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3

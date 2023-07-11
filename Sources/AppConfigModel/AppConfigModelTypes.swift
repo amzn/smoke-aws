@@ -423,6 +423,11 @@ public typealias ValidatorTypeList = [ValidatorType]
 public typealias Version = String
 
 /**
+ Type definition for the VersionLabel field.
+ */
+public typealias VersionLabel = String
+
+/**
  Validation for the ActionList field.
 */
 extension Array where Element == AppConfigModel.Action {
@@ -841,6 +846,27 @@ extension AppConfigModel.Version {
 
         if self.count > 1024 {
             throw AppConfigError.validationError(reason: "The provided value to Version violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the VersionLabel field.
+*/
+extension AppConfigModel.VersionLabel {
+    public func validateAsVersionLabel() throws {
+        if self.count < 1 {
+            throw AppConfigError.validationError(reason: "The provided value to VersionLabel violated the minimum length constraint.")
+        }
+
+        if self.count > 64 {
+            throw AppConfigError.validationError(reason: "The provided value to VersionLabel violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: ".*[^0-9].*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw AppConfigError.validationError(
+                    reason: "The provided value to VersionLabel violated the regular expression constraint.")
         }
     }
 }

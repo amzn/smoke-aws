@@ -189,6 +189,18 @@ public extension CloudWatchLogsLogGroup {
     }()
 }
 
+public extension ConflictException {
+    /**
+     Default instance of the ConflictException structure.
+     */
+    static let __default: StepFunctionsModel.ConflictException = {
+        let defaultInstance = StepFunctionsModel.ConflictException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateActivityInput {
     /**
      Default instance of the CreateActivityInput structure.
@@ -215,6 +227,33 @@ public extension CreateActivityOutput {
     }()
 }
 
+public extension CreateStateMachineAliasInput {
+    /**
+     Default instance of the CreateStateMachineAliasInput structure.
+     */
+    static let __default: StepFunctionsModel.CreateStateMachineAliasInput = {
+        let defaultInstance = StepFunctionsModel.CreateStateMachineAliasInput(
+            description: nil,
+            name: "0",
+            routingConfiguration: [RoutingConfigurationListItem.__default])
+
+        return defaultInstance
+    }()
+}
+
+public extension CreateStateMachineAliasOutput {
+    /**
+     Default instance of the CreateStateMachineAliasOutput structure.
+     */
+    static let __default: StepFunctionsModel.CreateStateMachineAliasOutput = {
+        let defaultInstance = StepFunctionsModel.CreateStateMachineAliasOutput(
+            creationDate: 1.52953091375E9,
+            stateMachineAliasArn: "0")
+
+        return defaultInstance
+    }()
+}
+
 public extension CreateStateMachineInput {
     /**
      Default instance of the CreateStateMachineInput structure.
@@ -224,10 +263,12 @@ public extension CreateStateMachineInput {
             definition: "0",
             loggingConfiguration: nil,
             name: "0",
+            publish: nil,
             roleArn: "0",
             tags: nil,
             tracingConfiguration: nil,
-            type: nil)
+            type: nil,
+            versionDescription: nil)
 
         return defaultInstance
     }()
@@ -240,7 +281,8 @@ public extension CreateStateMachineOutput {
     static let __default: StepFunctionsModel.CreateStateMachineOutput = {
         let defaultInstance = StepFunctionsModel.CreateStateMachineOutput(
             creationDate: 1.52953091375E9,
-            stateMachineArn: "0")
+            stateMachineArn: "0",
+            stateMachineVersionArn: nil)
 
         return defaultInstance
     }()
@@ -269,6 +311,29 @@ public extension DeleteActivityOutput {
     }()
 }
 
+public extension DeleteStateMachineAliasInput {
+    /**
+     Default instance of the DeleteStateMachineAliasInput structure.
+     */
+    static let __default: StepFunctionsModel.DeleteStateMachineAliasInput = {
+        let defaultInstance = StepFunctionsModel.DeleteStateMachineAliasInput(
+            stateMachineAliasArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteStateMachineAliasOutput {
+    /**
+     Default instance of the DeleteStateMachineAliasOutput structure.
+     */
+    static let __default: StepFunctionsModel.DeleteStateMachineAliasOutput = {
+        let defaultInstance = StepFunctionsModel.DeleteStateMachineAliasOutput()
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteStateMachineInput {
     /**
      Default instance of the DeleteStateMachineInput structure.
@@ -287,6 +352,29 @@ public extension DeleteStateMachineOutput {
      */
     static let __default: StepFunctionsModel.DeleteStateMachineOutput = {
         let defaultInstance = StepFunctionsModel.DeleteStateMachineOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteStateMachineVersionInput {
+    /**
+     Default instance of the DeleteStateMachineVersionInput structure.
+     */
+    static let __default: StepFunctionsModel.DeleteStateMachineVersionInput = {
+        let defaultInstance = StepFunctionsModel.DeleteStateMachineVersionInput(
+            stateMachineVersionArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteStateMachineVersionOutput {
+    /**
+     Default instance of the DeleteStateMachineVersionOutput structure.
+     */
+    static let __default: StepFunctionsModel.DeleteStateMachineVersionOutput = {
+        let defaultInstance = StepFunctionsModel.DeleteStateMachineVersionOutput()
 
         return defaultInstance
     }()
@@ -346,7 +434,9 @@ public extension DescribeExecutionOutput {
             output: nil,
             outputDetails: nil,
             startDate: 1.52953091375E9,
+            stateMachineAliasArn: nil,
             stateMachineArn: "0",
+            stateMachineVersionArn: nil,
             status: .__default,
             stopDate: nil,
             traceHeader: nil)
@@ -388,6 +478,35 @@ public extension DescribeMapRunOutput {
     }()
 }
 
+public extension DescribeStateMachineAliasInput {
+    /**
+     Default instance of the DescribeStateMachineAliasInput structure.
+     */
+    static let __default: StepFunctionsModel.DescribeStateMachineAliasInput = {
+        let defaultInstance = StepFunctionsModel.DescribeStateMachineAliasInput(
+            stateMachineAliasArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension DescribeStateMachineAliasOutput {
+    /**
+     Default instance of the DescribeStateMachineAliasOutput structure.
+     */
+    static let __default: StepFunctionsModel.DescribeStateMachineAliasOutput = {
+        let defaultInstance = StepFunctionsModel.DescribeStateMachineAliasOutput(
+            creationDate: nil,
+            description: nil,
+            name: nil,
+            routingConfiguration: nil,
+            stateMachineAliasArn: nil,
+            updateDate: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeStateMachineForExecutionInput {
     /**
      Default instance of the DescribeStateMachineForExecutionInput structure.
@@ -411,6 +530,7 @@ public extension DescribeStateMachineForExecutionOutput {
             loggingConfiguration: nil,
             mapRunArn: nil,
             name: "0",
+            revisionId: nil,
             roleArn: "0",
             stateMachineArn: "0",
             tracingConfiguration: nil,
@@ -440,9 +560,11 @@ public extension DescribeStateMachineOutput {
         let defaultInstance = StepFunctionsModel.DescribeStateMachineOutput(
             creationDate: 1.52953091375E9,
             definition: "0",
+            description: nil,
             label: nil,
             loggingConfiguration: nil,
             name: "0",
+            revisionId: nil,
             roleArn: "0",
             stateMachineArn: "0",
             status: nil,
@@ -526,7 +648,9 @@ public extension ExecutionListItem {
             mapRunArn: nil,
             name: "0",
             startDate: 1.52953091375E9,
+            stateMachineAliasArn: nil,
             stateMachineArn: "0",
+            stateMachineVersionArn: nil,
             status: .__default,
             stopDate: nil)
 
@@ -542,7 +666,9 @@ public extension ExecutionStartedEventDetails {
         let defaultInstance = StepFunctionsModel.ExecutionStartedEventDetails(
             input: nil,
             inputDetails: nil,
-            roleArn: nil)
+            roleArn: nil,
+            stateMachineAliasArn: nil,
+            stateMachineVersionArn: nil)
 
         return defaultInstance
     }()
@@ -949,6 +1075,60 @@ public extension ListMapRunsOutput {
     }()
 }
 
+public extension ListStateMachineAliasesInput {
+    /**
+     Default instance of the ListStateMachineAliasesInput structure.
+     */
+    static let __default: StepFunctionsModel.ListStateMachineAliasesInput = {
+        let defaultInstance = StepFunctionsModel.ListStateMachineAliasesInput(
+            maxResults: nil,
+            nextToken: nil,
+            stateMachineArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListStateMachineAliasesOutput {
+    /**
+     Default instance of the ListStateMachineAliasesOutput structure.
+     */
+    static let __default: StepFunctionsModel.ListStateMachineAliasesOutput = {
+        let defaultInstance = StepFunctionsModel.ListStateMachineAliasesOutput(
+            nextToken: nil,
+            stateMachineAliases: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension ListStateMachineVersionsInput {
+    /**
+     Default instance of the ListStateMachineVersionsInput structure.
+     */
+    static let __default: StepFunctionsModel.ListStateMachineVersionsInput = {
+        let defaultInstance = StepFunctionsModel.ListStateMachineVersionsInput(
+            maxResults: nil,
+            nextToken: nil,
+            stateMachineArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListStateMachineVersionsOutput {
+    /**
+     Default instance of the ListStateMachineVersionsOutput structure.
+     */
+    static let __default: StepFunctionsModel.ListStateMachineVersionsOutput = {
+        let defaultInstance = StepFunctionsModel.ListStateMachineVersionsOutput(
+            nextToken: nil,
+            stateMachineVersions: [])
+
+        return defaultInstance
+    }()
+}
+
 public extension ListStateMachinesInput {
     /**
      Default instance of the ListStateMachinesInput structure.
@@ -1141,6 +1321,33 @@ public extension MissingRequiredParameter {
     }()
 }
 
+public extension PublishStateMachineVersionInput {
+    /**
+     Default instance of the PublishStateMachineVersionInput structure.
+     */
+    static let __default: StepFunctionsModel.PublishStateMachineVersionInput = {
+        let defaultInstance = StepFunctionsModel.PublishStateMachineVersionInput(
+            description: nil,
+            revisionId: nil,
+            stateMachineArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension PublishStateMachineVersionOutput {
+    /**
+     Default instance of the PublishStateMachineVersionOutput structure.
+     */
+    static let __default: StepFunctionsModel.PublishStateMachineVersionOutput = {
+        let defaultInstance = StepFunctionsModel.PublishStateMachineVersionOutput(
+            creationDate: 1.52953091375E9,
+            stateMachineVersionArn: "0")
+
+        return defaultInstance
+    }()
+}
+
 public extension ResourceNotFound {
     /**
      Default instance of the ResourceNotFound structure.
@@ -1149,6 +1356,19 @@ public extension ResourceNotFound {
         let defaultInstance = StepFunctionsModel.ResourceNotFound(
             message: nil,
             resourceName: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension RoutingConfigurationListItem {
+    /**
+     Default instance of the RoutingConfigurationListItem structure.
+     */
+    static let __default: StepFunctionsModel.RoutingConfigurationListItem = {
+        let defaultInstance = StepFunctionsModel.RoutingConfigurationListItem(
+            stateMachineVersionArn: "0",
+            weight: 0)
 
         return defaultInstance
     }()
@@ -1221,6 +1441,18 @@ public extension SendTaskSuccessOutput {
      */
     static let __default: StepFunctionsModel.SendTaskSuccessOutput = {
         let defaultInstance = StepFunctionsModel.SendTaskSuccessOutput()
+
+        return defaultInstance
+    }()
+}
+
+public extension ServiceQuotaExceededException {
+    /**
+     Default instance of the ServiceQuotaExceededException structure.
+     */
+    static let __default: StepFunctionsModel.ServiceQuotaExceededException = {
+        let defaultInstance = StepFunctionsModel.ServiceQuotaExceededException(
+            message: nil)
 
         return defaultInstance
     }()
@@ -1322,6 +1554,19 @@ public extension StateExitedEventDetails {
     }()
 }
 
+public extension StateMachineAliasListItem {
+    /**
+     Default instance of the StateMachineAliasListItem structure.
+     */
+    static let __default: StepFunctionsModel.StateMachineAliasListItem = {
+        let defaultInstance = StepFunctionsModel.StateMachineAliasListItem(
+            creationDate: 1.52953091375E9,
+            stateMachineAliasArn: "0")
+
+        return defaultInstance
+    }()
+}
+
 public extension StateMachineAlreadyExists {
     /**
      Default instance of the StateMachineAlreadyExists structure.
@@ -1392,6 +1637,19 @@ public extension StateMachineTypeNotSupported {
     static let __default: StepFunctionsModel.StateMachineTypeNotSupported = {
         let defaultInstance = StepFunctionsModel.StateMachineTypeNotSupported(
             message: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension StateMachineVersionListItem {
+    /**
+     Default instance of the StateMachineVersionListItem structure.
+     */
+    static let __default: StepFunctionsModel.StateMachineVersionListItem = {
+        let defaultInstance = StepFunctionsModel.StateMachineVersionListItem(
+            creationDate: 1.52953091375E9,
+            stateMachineVersionArn: "0")
 
         return defaultInstance
     }()
@@ -1692,6 +1950,32 @@ public extension UpdateMapRunOutput {
     }()
 }
 
+public extension UpdateStateMachineAliasInput {
+    /**
+     Default instance of the UpdateStateMachineAliasInput structure.
+     */
+    static let __default: StepFunctionsModel.UpdateStateMachineAliasInput = {
+        let defaultInstance = StepFunctionsModel.UpdateStateMachineAliasInput(
+            description: nil,
+            routingConfiguration: nil,
+            stateMachineAliasArn: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension UpdateStateMachineAliasOutput {
+    /**
+     Default instance of the UpdateStateMachineAliasOutput structure.
+     */
+    static let __default: StepFunctionsModel.UpdateStateMachineAliasOutput = {
+        let defaultInstance = StepFunctionsModel.UpdateStateMachineAliasOutput(
+            updateDate: 1.52953091375E9)
+
+        return defaultInstance
+    }()
+}
+
 public extension UpdateStateMachineInput {
     /**
      Default instance of the UpdateStateMachineInput structure.
@@ -1700,9 +1984,11 @@ public extension UpdateStateMachineInput {
         let defaultInstance = StepFunctionsModel.UpdateStateMachineInput(
             definition: nil,
             loggingConfiguration: nil,
+            publish: nil,
             roleArn: nil,
             stateMachineArn: "0",
-            tracingConfiguration: nil)
+            tracingConfiguration: nil,
+            versionDescription: nil)
 
         return defaultInstance
     }()
@@ -1714,6 +2000,8 @@ public extension UpdateStateMachineOutput {
      */
     static let __default: StepFunctionsModel.UpdateStateMachineOutput = {
         let defaultInstance = StepFunctionsModel.UpdateStateMachineOutput(
+            revisionId: nil,
+            stateMachineVersionArn: nil,
             updateDate: 1.52953091375E9)
 
         return defaultInstance

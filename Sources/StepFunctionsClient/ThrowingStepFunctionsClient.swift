@@ -34,10 +34,16 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     let createActivitySyncOverride: CreateActivitySyncType?
     let createStateMachineAsyncOverride: CreateStateMachineAsyncType?
     let createStateMachineSyncOverride: CreateStateMachineSyncType?
+    let createStateMachineAliasAsyncOverride: CreateStateMachineAliasAsyncType?
+    let createStateMachineAliasSyncOverride: CreateStateMachineAliasSyncType?
     let deleteActivityAsyncOverride: DeleteActivityAsyncType?
     let deleteActivitySyncOverride: DeleteActivitySyncType?
     let deleteStateMachineAsyncOverride: DeleteStateMachineAsyncType?
     let deleteStateMachineSyncOverride: DeleteStateMachineSyncType?
+    let deleteStateMachineAliasAsyncOverride: DeleteStateMachineAliasAsyncType?
+    let deleteStateMachineAliasSyncOverride: DeleteStateMachineAliasSyncType?
+    let deleteStateMachineVersionAsyncOverride: DeleteStateMachineVersionAsyncType?
+    let deleteStateMachineVersionSyncOverride: DeleteStateMachineVersionSyncType?
     let describeActivityAsyncOverride: DescribeActivityAsyncType?
     let describeActivitySyncOverride: DescribeActivitySyncType?
     let describeExecutionAsyncOverride: DescribeExecutionAsyncType?
@@ -46,6 +52,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     let describeMapRunSyncOverride: DescribeMapRunSyncType?
     let describeStateMachineAsyncOverride: DescribeStateMachineAsyncType?
     let describeStateMachineSyncOverride: DescribeStateMachineSyncType?
+    let describeStateMachineAliasAsyncOverride: DescribeStateMachineAliasAsyncType?
+    let describeStateMachineAliasSyncOverride: DescribeStateMachineAliasSyncType?
     let describeStateMachineForExecutionAsyncOverride: DescribeStateMachineForExecutionAsyncType?
     let describeStateMachineForExecutionSyncOverride: DescribeStateMachineForExecutionSyncType?
     let getActivityTaskAsyncOverride: GetActivityTaskAsyncType?
@@ -58,10 +66,16 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     let listExecutionsSyncOverride: ListExecutionsSyncType?
     let listMapRunsAsyncOverride: ListMapRunsAsyncType?
     let listMapRunsSyncOverride: ListMapRunsSyncType?
+    let listStateMachineAliasesAsyncOverride: ListStateMachineAliasesAsyncType?
+    let listStateMachineAliasesSyncOverride: ListStateMachineAliasesSyncType?
+    let listStateMachineVersionsAsyncOverride: ListStateMachineVersionsAsyncType?
+    let listStateMachineVersionsSyncOverride: ListStateMachineVersionsSyncType?
     let listStateMachinesAsyncOverride: ListStateMachinesAsyncType?
     let listStateMachinesSyncOverride: ListStateMachinesSyncType?
     let listTagsForResourceAsyncOverride: ListTagsForResourceAsyncType?
     let listTagsForResourceSyncOverride: ListTagsForResourceSyncType?
+    let publishStateMachineVersionAsyncOverride: PublishStateMachineVersionAsyncType?
+    let publishStateMachineVersionSyncOverride: PublishStateMachineVersionSyncType?
     let sendTaskFailureAsyncOverride: SendTaskFailureAsyncType?
     let sendTaskFailureSyncOverride: SendTaskFailureSyncType?
     let sendTaskHeartbeatAsyncOverride: SendTaskHeartbeatAsyncType?
@@ -82,6 +96,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     let updateMapRunSyncOverride: UpdateMapRunSyncType?
     let updateStateMachineAsyncOverride: UpdateStateMachineAsyncType?
     let updateStateMachineSyncOverride: UpdateStateMachineSyncType?
+    let updateStateMachineAliasAsyncOverride: UpdateStateMachineAliasAsyncType?
+    let updateStateMachineAliasSyncOverride: UpdateStateMachineAliasSyncType?
 
     /**
      Initializer that creates an instance of this clients. The behavior of individual
@@ -92,10 +108,16 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             createActivitySync: CreateActivitySyncType? = nil,
             createStateMachineAsync: CreateStateMachineAsyncType? = nil,
             createStateMachineSync: CreateStateMachineSyncType? = nil,
+            createStateMachineAliasAsync: CreateStateMachineAliasAsyncType? = nil,
+            createStateMachineAliasSync: CreateStateMachineAliasSyncType? = nil,
             deleteActivityAsync: DeleteActivityAsyncType? = nil,
             deleteActivitySync: DeleteActivitySyncType? = nil,
             deleteStateMachineAsync: DeleteStateMachineAsyncType? = nil,
             deleteStateMachineSync: DeleteStateMachineSyncType? = nil,
+            deleteStateMachineAliasAsync: DeleteStateMachineAliasAsyncType? = nil,
+            deleteStateMachineAliasSync: DeleteStateMachineAliasSyncType? = nil,
+            deleteStateMachineVersionAsync: DeleteStateMachineVersionAsyncType? = nil,
+            deleteStateMachineVersionSync: DeleteStateMachineVersionSyncType? = nil,
             describeActivityAsync: DescribeActivityAsyncType? = nil,
             describeActivitySync: DescribeActivitySyncType? = nil,
             describeExecutionAsync: DescribeExecutionAsyncType? = nil,
@@ -104,6 +126,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             describeMapRunSync: DescribeMapRunSyncType? = nil,
             describeStateMachineAsync: DescribeStateMachineAsyncType? = nil,
             describeStateMachineSync: DescribeStateMachineSyncType? = nil,
+            describeStateMachineAliasAsync: DescribeStateMachineAliasAsyncType? = nil,
+            describeStateMachineAliasSync: DescribeStateMachineAliasSyncType? = nil,
             describeStateMachineForExecutionAsync: DescribeStateMachineForExecutionAsyncType? = nil,
             describeStateMachineForExecutionSync: DescribeStateMachineForExecutionSyncType? = nil,
             getActivityTaskAsync: GetActivityTaskAsyncType? = nil,
@@ -116,10 +140,16 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             listExecutionsSync: ListExecutionsSyncType? = nil,
             listMapRunsAsync: ListMapRunsAsyncType? = nil,
             listMapRunsSync: ListMapRunsSyncType? = nil,
+            listStateMachineAliasesAsync: ListStateMachineAliasesAsyncType? = nil,
+            listStateMachineAliasesSync: ListStateMachineAliasesSyncType? = nil,
+            listStateMachineVersionsAsync: ListStateMachineVersionsAsyncType? = nil,
+            listStateMachineVersionsSync: ListStateMachineVersionsSyncType? = nil,
             listStateMachinesAsync: ListStateMachinesAsyncType? = nil,
             listStateMachinesSync: ListStateMachinesSyncType? = nil,
             listTagsForResourceAsync: ListTagsForResourceAsyncType? = nil,
             listTagsForResourceSync: ListTagsForResourceSyncType? = nil,
+            publishStateMachineVersionAsync: PublishStateMachineVersionAsyncType? = nil,
+            publishStateMachineVersionSync: PublishStateMachineVersionSyncType? = nil,
             sendTaskFailureAsync: SendTaskFailureAsyncType? = nil,
             sendTaskFailureSync: SendTaskFailureSyncType? = nil,
             sendTaskHeartbeatAsync: SendTaskHeartbeatAsyncType? = nil,
@@ -139,16 +169,24 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             updateMapRunAsync: UpdateMapRunAsyncType? = nil,
             updateMapRunSync: UpdateMapRunSyncType? = nil,
             updateStateMachineAsync: UpdateStateMachineAsyncType? = nil,
-            updateStateMachineSync: UpdateStateMachineSyncType? = nil) {
+            updateStateMachineSync: UpdateStateMachineSyncType? = nil,
+            updateStateMachineAliasAsync: UpdateStateMachineAliasAsyncType? = nil,
+            updateStateMachineAliasSync: UpdateStateMachineAliasSyncType? = nil) {
         self.error = error
         self.createActivityAsyncOverride = createActivityAsync
         self.createActivitySyncOverride = createActivitySync
         self.createStateMachineAsyncOverride = createStateMachineAsync
         self.createStateMachineSyncOverride = createStateMachineSync
+        self.createStateMachineAliasAsyncOverride = createStateMachineAliasAsync
+        self.createStateMachineAliasSyncOverride = createStateMachineAliasSync
         self.deleteActivityAsyncOverride = deleteActivityAsync
         self.deleteActivitySyncOverride = deleteActivitySync
         self.deleteStateMachineAsyncOverride = deleteStateMachineAsync
         self.deleteStateMachineSyncOverride = deleteStateMachineSync
+        self.deleteStateMachineAliasAsyncOverride = deleteStateMachineAliasAsync
+        self.deleteStateMachineAliasSyncOverride = deleteStateMachineAliasSync
+        self.deleteStateMachineVersionAsyncOverride = deleteStateMachineVersionAsync
+        self.deleteStateMachineVersionSyncOverride = deleteStateMachineVersionSync
         self.describeActivityAsyncOverride = describeActivityAsync
         self.describeActivitySyncOverride = describeActivitySync
         self.describeExecutionAsyncOverride = describeExecutionAsync
@@ -157,6 +195,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
         self.describeMapRunSyncOverride = describeMapRunSync
         self.describeStateMachineAsyncOverride = describeStateMachineAsync
         self.describeStateMachineSyncOverride = describeStateMachineSync
+        self.describeStateMachineAliasAsyncOverride = describeStateMachineAliasAsync
+        self.describeStateMachineAliasSyncOverride = describeStateMachineAliasSync
         self.describeStateMachineForExecutionAsyncOverride = describeStateMachineForExecutionAsync
         self.describeStateMachineForExecutionSyncOverride = describeStateMachineForExecutionSync
         self.getActivityTaskAsyncOverride = getActivityTaskAsync
@@ -169,10 +209,16 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
         self.listExecutionsSyncOverride = listExecutionsSync
         self.listMapRunsAsyncOverride = listMapRunsAsync
         self.listMapRunsSyncOverride = listMapRunsSync
+        self.listStateMachineAliasesAsyncOverride = listStateMachineAliasesAsync
+        self.listStateMachineAliasesSyncOverride = listStateMachineAliasesSync
+        self.listStateMachineVersionsAsyncOverride = listStateMachineVersionsAsync
+        self.listStateMachineVersionsSyncOverride = listStateMachineVersionsSync
         self.listStateMachinesAsyncOverride = listStateMachinesAsync
         self.listStateMachinesSyncOverride = listStateMachinesSync
         self.listTagsForResourceAsyncOverride = listTagsForResourceAsync
         self.listTagsForResourceSyncOverride = listTagsForResourceSync
+        self.publishStateMachineVersionAsyncOverride = publishStateMachineVersionAsync
+        self.publishStateMachineVersionSyncOverride = publishStateMachineVersionSync
         self.sendTaskFailureAsyncOverride = sendTaskFailureAsync
         self.sendTaskFailureSyncOverride = sendTaskFailureSync
         self.sendTaskHeartbeatAsyncOverride = sendTaskHeartbeatAsync
@@ -193,6 +239,8 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
         self.updateMapRunSyncOverride = updateMapRunSync
         self.updateStateMachineAsyncOverride = updateStateMachineAsync
         self.updateStateMachineSyncOverride = updateStateMachineSync
+        self.updateStateMachineAliasAsyncOverride = updateStateMachineAliasAsync
+        self.updateStateMachineAliasSyncOverride = updateStateMachineAliasSync
     }
 
     /**
@@ -241,7 +289,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The CreateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The CreateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+           The possible errors are: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags, validation.
      */
     public func createStateMachineAsync(
             input: StepFunctionsModel.CreateStateMachineInput, 
@@ -260,12 +308,50 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated CreateStateMachineInput object being passed to this operation.
      - Returns: The CreateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidName, invalidTracingConfiguration, stateMachineAlreadyExists, stateMachineDeleting, stateMachineLimitExceeded, stateMachineTypeNotSupported, tooManyTags, validation.
      */
     public func createStateMachineSync(
             input: StepFunctionsModel.CreateStateMachineInput) throws -> StepFunctionsModel.CreateStateMachineOutput {
         if let createStateMachineSyncOverride = createStateMachineSyncOverride {
             return try createStateMachineSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the CreateStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CreateStateMachineAliasInput object being passed to this operation.
+         - completion: The CreateStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The CreateStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, invalidName, resourceNotFound, serviceQuotaExceeded, stateMachineDeleting, validation.
+     */
+    public func createStateMachineAliasAsync(
+            input: StepFunctionsModel.CreateStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.CreateStateMachineAliasOutput, StepFunctionsError>) -> ()) throws {
+        if let createStateMachineAliasAsyncOverride = createStateMachineAliasAsyncOverride {
+            return try createStateMachineAliasAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the CreateStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CreateStateMachineAliasInput object being passed to this operation.
+     - Returns: The CreateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, invalidName, resourceNotFound, serviceQuotaExceeded, stateMachineDeleting, validation.
+     */
+    public func createStateMachineAliasSync(
+            input: StepFunctionsModel.CreateStateMachineAliasInput) throws -> StepFunctionsModel.CreateStateMachineAliasOutput {
+        if let createStateMachineAliasSyncOverride = createStateMachineAliasSyncOverride {
+            return try createStateMachineAliasSyncOverride(input)
         }
 
         throw error
@@ -342,6 +428,82 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             input: StepFunctionsModel.DeleteStateMachineInput) throws -> StepFunctionsModel.DeleteStateMachineOutput {
         if let deleteStateMachineSyncOverride = deleteStateMachineSyncOverride {
             return try deleteStateMachineSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineAliasInput object being passed to this operation.
+         - completion: The DeleteStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The DeleteStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func deleteStateMachineAliasAsync(
+            input: StepFunctionsModel.DeleteStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineAliasOutput, StepFunctionsError>) -> ()) throws {
+        if let deleteStateMachineAliasAsyncOverride = deleteStateMachineAliasAsyncOverride {
+            return try deleteStateMachineAliasAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DeleteStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineAliasInput object being passed to this operation.
+     - Returns: The DeleteStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func deleteStateMachineAliasSync(
+            input: StepFunctionsModel.DeleteStateMachineAliasInput) throws -> StepFunctionsModel.DeleteStateMachineAliasOutput {
+        if let deleteStateMachineAliasSyncOverride = deleteStateMachineAliasSyncOverride {
+            return try deleteStateMachineAliasSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteStateMachineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineVersionInput object being passed to this operation.
+         - completion: The DeleteStateMachineVersionOutput object or an error will be passed to this 
+           callback when the operation is complete. The DeleteStateMachineVersionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, validation.
+     */
+    public func deleteStateMachineVersionAsync(
+            input: StepFunctionsModel.DeleteStateMachineVersionInput, 
+            completion: @escaping (Result<StepFunctionsModel.DeleteStateMachineVersionOutput, StepFunctionsError>) -> ()) throws {
+        if let deleteStateMachineVersionAsyncOverride = deleteStateMachineVersionAsyncOverride {
+            return try deleteStateMachineVersionAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DeleteStateMachineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteStateMachineVersionInput object being passed to this operation.
+     - Returns: The DeleteStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, validation.
+     */
+    public func deleteStateMachineVersionSync(
+            input: StepFunctionsModel.DeleteStateMachineVersionInput) throws -> StepFunctionsModel.DeleteStateMachineVersionOutput {
+        if let deleteStateMachineVersionSyncOverride = deleteStateMachineVersionSyncOverride {
+            return try deleteStateMachineVersionSyncOverride(input)
         }
 
         throw error
@@ -494,6 +656,44 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             input: StepFunctionsModel.DescribeStateMachineInput) throws -> StepFunctionsModel.DescribeStateMachineOutput {
         if let describeStateMachineSyncOverride = describeStateMachineSyncOverride {
             return try describeStateMachineSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineAliasInput object being passed to this operation.
+         - completion: The DescribeStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The DescribeStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, resourceNotFound, validation.
+     */
+    public func describeStateMachineAliasAsync(
+            input: StepFunctionsModel.DescribeStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.DescribeStateMachineAliasOutput, StepFunctionsError>) -> ()) throws {
+        if let describeStateMachineAliasAsyncOverride = describeStateMachineAliasAsyncOverride {
+            return try describeStateMachineAliasAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the DescribeStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeStateMachineAliasInput object being passed to this operation.
+     - Returns: The DescribeStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, resourceNotFound, validation.
+     */
+    public func describeStateMachineAliasSync(
+            input: StepFunctionsModel.DescribeStateMachineAliasInput) throws -> StepFunctionsModel.DescribeStateMachineAliasOutput {
+        if let describeStateMachineAliasSyncOverride = describeStateMachineAliasSyncOverride {
+            return try describeStateMachineAliasSyncOverride(input)
         }
 
         throw error
@@ -728,6 +928,82 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
     }
 
     /**
+     Invokes the ListStateMachineAliases operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStateMachineAliasesInput object being passed to this operation.
+         - completion: The ListStateMachineAliasesOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListStateMachineAliasesOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidToken, resourceNotFound, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    public func listStateMachineAliasesAsync(
+            input: StepFunctionsModel.ListStateMachineAliasesInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachineAliasesOutput, StepFunctionsError>) -> ()) throws {
+        if let listStateMachineAliasesAsyncOverride = listStateMachineAliasesAsyncOverride {
+            return try listStateMachineAliasesAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ListStateMachineAliases operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachineAliasesInput object being passed to this operation.
+     - Returns: The ListStateMachineAliasesOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, resourceNotFound, stateMachineDeleting, stateMachineDoesNotExist.
+     */
+    public func listStateMachineAliasesSync(
+            input: StepFunctionsModel.ListStateMachineAliasesInput) throws -> StepFunctionsModel.ListStateMachineAliasesOutput {
+        if let listStateMachineAliasesSyncOverride = listStateMachineAliasesSyncOverride {
+            return try listStateMachineAliasesSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListStateMachineVersions operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStateMachineVersionsInput object being passed to this operation.
+         - completion: The ListStateMachineVersionsOutput object or an error will be passed to this 
+           callback when the operation is complete. The ListStateMachineVersionsOutput
+           object will be validated before being returned to caller.
+           The possible errors are: invalidArn, invalidToken, validation.
+     */
+    public func listStateMachineVersionsAsync(
+            input: StepFunctionsModel.ListStateMachineVersionsInput, 
+            completion: @escaping (Result<StepFunctionsModel.ListStateMachineVersionsOutput, StepFunctionsError>) -> ()) throws {
+        if let listStateMachineVersionsAsyncOverride = listStateMachineVersionsAsyncOverride {
+            return try listStateMachineVersionsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ListStateMachineVersions operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStateMachineVersionsInput object being passed to this operation.
+     - Returns: The ListStateMachineVersionsOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: invalidArn, invalidToken, validation.
+     */
+    public func listStateMachineVersionsSync(
+            input: StepFunctionsModel.ListStateMachineVersionsInput) throws -> StepFunctionsModel.ListStateMachineVersionsOutput {
+        if let listStateMachineVersionsSyncOverride = listStateMachineVersionsSyncOverride {
+            return try listStateMachineVersionsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
      Invokes the ListStateMachines operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -798,6 +1074,44 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
             input: StepFunctionsModel.ListTagsForResourceInput) throws -> StepFunctionsModel.ListTagsForResourceOutput {
         if let listTagsForResourceSyncOverride = listTagsForResourceSyncOverride {
             return try listTagsForResourceSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the PublishStateMachineVersion operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated PublishStateMachineVersionInput object being passed to this operation.
+         - completion: The PublishStateMachineVersionOutput object or an error will be passed to this 
+           callback when the operation is complete. The PublishStateMachineVersionOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    public func publishStateMachineVersionAsync(
+            input: StepFunctionsModel.PublishStateMachineVersionInput, 
+            completion: @escaping (Result<StepFunctionsModel.PublishStateMachineVersionOutput, StepFunctionsError>) -> ()) throws {
+        if let publishStateMachineVersionAsyncOverride = publishStateMachineVersionAsyncOverride {
+            return try publishStateMachineVersionAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the PublishStateMachineVersion operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated PublishStateMachineVersionInput object being passed to this operation.
+     - Returns: The PublishStateMachineVersionOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     */
+    public func publishStateMachineVersionSync(
+            input: StepFunctionsModel.PublishStateMachineVersionInput) throws -> StepFunctionsModel.PublishStateMachineVersionOutput {
+        if let publishStateMachineVersionSyncOverride = publishStateMachineVersionSyncOverride {
+            return try publishStateMachineVersionSyncOverride(input)
         }
 
         throw error
@@ -1153,7 +1467,7 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - completion: The UpdateStateMachineOutput object or an error will be passed to this 
            callback when the operation is complete. The UpdateStateMachineOutput
            object will be validated before being returned to caller.
-           The possible errors are: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+           The possible errors are: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachineAsync(
             input: StepFunctionsModel.UpdateStateMachineInput, 
@@ -1172,12 +1486,50 @@ public struct ThrowingStepFunctionsClient: StepFunctionsClientProtocol {
          - input: The validated UpdateStateMachineInput object being passed to this operation.
      - Returns: The UpdateStateMachineOutput object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, stateMachineDeleting, stateMachineDoesNotExist, validation.
+     - Throws: conflict, invalidArn, invalidDefinition, invalidLoggingConfiguration, invalidTracingConfiguration, missingRequiredParameter, serviceQuotaExceeded, stateMachineDeleting, stateMachineDoesNotExist, validation.
      */
     public func updateStateMachineSync(
             input: StepFunctionsModel.UpdateStateMachineInput) throws -> StepFunctionsModel.UpdateStateMachineOutput {
         if let updateStateMachineSyncOverride = updateStateMachineSyncOverride {
             return try updateStateMachineSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the UpdateStateMachineAlias operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineAliasInput object being passed to this operation.
+         - completion: The UpdateStateMachineAliasOutput object or an error will be passed to this 
+           callback when the operation is complete. The UpdateStateMachineAliasOutput
+           object will be validated before being returned to caller.
+           The possible errors are: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func updateStateMachineAliasAsync(
+            input: StepFunctionsModel.UpdateStateMachineAliasInput, 
+            completion: @escaping (Result<StepFunctionsModel.UpdateStateMachineAliasOutput, StepFunctionsError>) -> ()) throws {
+        if let updateStateMachineAliasAsyncOverride = updateStateMachineAliasAsyncOverride {
+            return try updateStateMachineAliasAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the UpdateStateMachineAlias operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated UpdateStateMachineAliasInput object being passed to this operation.
+     - Returns: The UpdateStateMachineAliasOutput object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: conflict, invalidArn, resourceNotFound, validation.
+     */
+    public func updateStateMachineAliasSync(
+            input: StepFunctionsModel.UpdateStateMachineAliasInput) throws -> StepFunctionsModel.UpdateStateMachineAliasOutput {
+        if let updateStateMachineAliasSyncOverride = updateStateMachineAliasSyncOverride {
+            return try updateStateMachineAliasSyncOverride(input)
         }
 
         throw error

@@ -39,6 +39,7 @@ public struct MockElasticContainerClientV2: ElasticContainerClientProtocolV2 {
     let deleteCapacityProviderOverride: DeleteCapacityProviderFunctionType?
     let deleteClusterOverride: DeleteClusterFunctionType?
     let deleteServiceOverride: DeleteServiceFunctionType?
+    let deleteTaskDefinitionsOverride: DeleteTaskDefinitionsFunctionType?
     let deleteTaskSetOverride: DeleteTaskSetFunctionType?
     let deregisterContainerInstanceOverride: DeregisterContainerInstanceFunctionType?
     let deregisterTaskDefinitionOverride: DeregisterTaskDefinitionFunctionType?
@@ -100,6 +101,7 @@ public struct MockElasticContainerClientV2: ElasticContainerClientProtocolV2 {
             deleteCapacityProvider: DeleteCapacityProviderFunctionType? = nil,
             deleteCluster: DeleteClusterFunctionType? = nil,
             deleteService: DeleteServiceFunctionType? = nil,
+            deleteTaskDefinitions: DeleteTaskDefinitionsFunctionType? = nil,
             deleteTaskSet: DeleteTaskSetFunctionType? = nil,
             deregisterContainerInstance: DeregisterContainerInstanceFunctionType? = nil,
             deregisterTaskDefinition: DeregisterTaskDefinitionFunctionType? = nil,
@@ -155,6 +157,7 @@ public struct MockElasticContainerClientV2: ElasticContainerClientProtocolV2 {
         self.deleteCapacityProviderOverride = deleteCapacityProvider
         self.deleteClusterOverride = deleteCluster
         self.deleteServiceOverride = deleteService
+        self.deleteTaskDefinitionsOverride = deleteTaskDefinitions
         self.deleteTaskSetOverride = deleteTaskSet
         self.deregisterContainerInstanceOverride = deregisterContainerInstance
         self.deregisterTaskDefinitionOverride = deregisterTaskDefinition
@@ -228,7 +231,7 @@ public struct MockElasticContainerClientV2: ElasticContainerClientProtocolV2 {
          - input: The validated CreateClusterRequest object being passed to this operation.
      - Returns: The CreateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, server.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
      */
     public func createCluster(
             input: ElasticContainerModel.CreateClusterRequest) async throws -> ElasticContainerModel.CreateClusterResponse {
@@ -363,6 +366,24 @@ public struct MockElasticContainerClientV2: ElasticContainerClientProtocolV2 {
         }
 
         return DeleteServiceResponse.__default
+    }
+
+    /**
+     Invokes the DeleteTaskDefinitions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+     - Returns: The DeleteTaskDefinitionsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    public func deleteTaskDefinitions(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest) async throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse {
+        if let deleteTaskDefinitionsOverride = deleteTaskDefinitionsOverride {
+            return try await deleteTaskDefinitionsOverride(input)
+        }
+
+        return DeleteTaskDefinitionsResponse.__default
     }
 
     /**
@@ -1056,7 +1077,7 @@ public struct MockElasticContainerClientV2: ElasticContainerClientProtocolV2 {
          - input: The validated UpdateClusterRequest object being passed to this operation.
      - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     public func updateCluster(
             input: ElasticContainerModel.UpdateClusterRequest) async throws -> ElasticContainerModel.UpdateClusterResponse {

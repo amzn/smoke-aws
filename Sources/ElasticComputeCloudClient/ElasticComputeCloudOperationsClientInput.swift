@@ -95,6 +95,11 @@ public typealias AssignIpv6AddressesOperationHTTPRequestInput = QueryHTTPRequest
 public typealias AssignPrivateIpAddressesOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the AssignPrivateNatGatewayAddress operation in a HTTP client.
+ */
+public typealias AssignPrivateNatGatewayAddressOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the AssociateAddress operation in a HTTP client.
  */
 public typealias AssociateAddressOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -123,6 +128,16 @@ public typealias AssociateIamInstanceProfileOperationHTTPRequestInput = QueryHTT
  Type to handle the input to the AssociateInstanceEventWindow operation in a HTTP client.
  */
 public typealias AssociateInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the AssociateIpamResourceDiscovery operation in a HTTP client.
+ */
+public typealias AssociateIpamResourceDiscoveryOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the AssociateNatGatewayAddress operation in a HTTP client.
+ */
+public typealias AssociateNatGatewayAddressOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the AssociateRouteTable operation in a HTTP client.
@@ -360,6 +375,11 @@ public typealias CreateFpgaImageOperationHTTPRequestInput = QueryHTTPRequestInpu
 public typealias CreateImageOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the CreateInstanceConnectEndpoint operation in a HTTP client.
+ */
+public typealias CreateInstanceConnectEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the CreateInstanceEventWindow operation in a HTTP client.
  */
 public typealias CreateInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -383,6 +403,11 @@ public typealias CreateIpamOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the CreateIpamPool operation in a HTTP client.
  */
 public typealias CreateIpamPoolOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the CreateIpamResourceDiscovery operation in a HTTP client.
+ */
+public typealias CreateIpamResourceDiscoveryOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the CreateIpamScope operation in a HTTP client.
@@ -735,6 +760,11 @@ public typealias DeleteFlowLogsOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias DeleteFpgaImageOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteInstanceConnectEndpoint operation in a HTTP client.
+ */
+public typealias DeleteInstanceConnectEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteInstanceEventWindow operation in a HTTP client.
  */
 public typealias DeleteInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -753,6 +783,11 @@ public typealias DeleteIpamOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the DeleteIpamPool operation in a HTTP client.
  */
 public typealias DeleteIpamPoolOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DeleteIpamResourceDiscovery operation in a HTTP client.
+ */
+public typealias DeleteIpamResourceDiscoveryOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DeleteIpamScope operation in a HTTP client.
@@ -1300,6 +1335,11 @@ public typealias DescribeImportSnapshotTasksOperationHTTPRequestInput = QueryHTT
 public typealias DescribeInstanceAttributeOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DescribeInstanceConnectEndpoints operation in a HTTP client.
+ */
+public typealias DescribeInstanceConnectEndpointsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DescribeInstanceCreditSpecifications operation in a HTTP client.
  */
 public typealias DescribeInstanceCreditSpecificationsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -1343,6 +1383,16 @@ public typealias DescribeInternetGatewaysOperationHTTPRequestInput = QueryHTTPRe
  Type to handle the input to the DescribeIpamPools operation in a HTTP client.
  */
 public typealias DescribeIpamPoolsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeIpamResourceDiscoveries operation in a HTTP client.
+ */
+public typealias DescribeIpamResourceDiscoveriesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeIpamResourceDiscoveryAssociations operation in a HTTP client.
+ */
+public typealias DescribeIpamResourceDiscoveryAssociationsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeIpamScopes operation in a HTTP client.
@@ -1900,6 +1950,16 @@ public typealias DisassociateIamInstanceProfileOperationHTTPRequestInput = Query
 public typealias DisassociateInstanceEventWindowOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisassociateIpamResourceDiscovery operation in a HTTP client.
+ */
+public typealias DisassociateIpamResourceDiscoveryOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DisassociateNatGatewayAddress operation in a HTTP client.
+ */
+public typealias DisassociateNatGatewayAddressOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisassociateRouteTable operation in a HTTP client.
  */
 public typealias DisassociateRouteTableOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -2105,6 +2165,16 @@ public typealias GetInstanceUefiDataOperationHTTPRequestInput = QueryHTTPRequest
 public typealias GetIpamAddressHistoryOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetIpamDiscoveredAccounts operation in a HTTP client.
+ */
+public typealias GetIpamDiscoveredAccountsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetIpamDiscoveredResourceCidrs operation in a HTTP client.
+ */
+public typealias GetIpamDiscoveredResourceCidrsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetIpamPoolAllocations operation in a HTTP client.
  */
 public typealias GetIpamPoolAllocationsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -2223,6 +2293,11 @@ public typealias GetVpnConnectionDeviceSampleConfigurationOperationHTTPRequestIn
  Type to handle the input to the GetVpnConnectionDeviceTypes operation in a HTTP client.
  */
 public typealias GetVpnConnectionDeviceTypesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetVpnTunnelReplacementStatus operation in a HTTP client.
+ */
+public typealias GetVpnTunnelReplacementStatusOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ImportClientVpnClientCertificateRevocationList operation in a HTTP client.
@@ -2383,6 +2458,11 @@ public typealias ModifyIpamPoolOperationHTTPRequestInput = QueryHTTPRequestInput
  Type to handle the input to the ModifyIpamResourceCidr operation in a HTTP client.
  */
 public typealias ModifyIpamResourceCidrOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the ModifyIpamResourceDiscovery operation in a HTTP client.
+ */
+public typealias ModifyIpamResourceDiscoveryOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the ModifyIpamScope operation in a HTTP client.
@@ -2720,6 +2800,11 @@ public typealias ReplaceRouteTableAssociationOperationHTTPRequestInput = QueryHT
 public typealias ReplaceTransitGatewayRouteOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ReplaceVpnTunnel operation in a HTTP client.
+ */
+public typealias ReplaceVpnTunnelOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ReportInstanceStatus operation in a HTTP client.
  */
 public typealias ReportInstanceStatusOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -2883,6 +2968,11 @@ public typealias UnassignIpv6AddressesOperationHTTPRequestInput = QueryHTTPReque
  Type to handle the input to the UnassignPrivateIpAddresses operation in a HTTP client.
  */
 public typealias UnassignPrivateIpAddressesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the UnassignPrivateNatGatewayAddress operation in a HTTP client.
+ */
+public typealias UnassignPrivateNatGatewayAddressOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the UnmonitorInstances operation in a HTTP client.

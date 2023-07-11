@@ -64,7 +64,7 @@ public extension ElasticContainerClientProtocol {
          - input: The validated CreateClusterRequest object being passed to this operation.
      - Returns: The CreateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, server.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
      */
     func createCluster(input: ElasticContainerModel.CreateClusterRequest) async throws
      -> ElasticContainerModel.CreateClusterResponse {
@@ -260,6 +260,33 @@ public extension ElasticContainerClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try deleteServiceAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DeleteTaskDefinitions operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+     - Returns: The DeleteTaskDefinitionsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    func deleteTaskDefinitions(input: ElasticContainerModel.DeleteTaskDefinitionsRequest) async throws
+     -> ElasticContainerModel.DeleteTaskDefinitionsResponse {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try deleteTaskDefinitionsAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -1306,7 +1333,7 @@ public extension ElasticContainerClientProtocol {
          - input: The validated UpdateClusterRequest object being passed to this operation.
      - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     func updateCluster(input: ElasticContainerModel.UpdateClusterRequest) async throws
      -> ElasticContainerModel.UpdateClusterResponse {

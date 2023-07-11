@@ -54,6 +54,33 @@ public extension SimpleQueueClientProtocol {
     }
 
     /**
+     Invokes the CancelMessageMoveTask operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The CancelMessageMoveTaskResultForCancelMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func cancelMessageMoveTask(input: SimpleQueueModel.CancelMessageMoveTaskRequest) async throws
+     -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try cancelMessageMoveTaskAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ChangeMessageVisibility operation and asynchronously returning the response.
 
      - Parameters:
@@ -284,6 +311,33 @@ public extension SimpleQueueClientProtocol {
     }
 
     /**
+     Invokes the ListMessageMoveTasks operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+     - Returns: The ListMessageMoveTasksResultForListMessageMoveTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func listMessageMoveTasks(input: SimpleQueueModel.ListMessageMoveTasksRequest) async throws
+     -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try listMessageMoveTasksAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ListQueueTags operation and asynchronously returning the response.
 
      - Parameters:
@@ -476,6 +530,33 @@ public extension SimpleQueueClientProtocol {
                         cont.resume(throwing: error)
                     } else {
                         cont.resume(returning: ())
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the StartMessageMoveTask operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The StartMessageMoveTaskResultForStartMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func startMessageMoveTask(input: SimpleQueueModel.StartMessageMoveTaskRequest) async throws
+     -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try startMessageMoveTaskAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
                     }
                 }
             } catch {

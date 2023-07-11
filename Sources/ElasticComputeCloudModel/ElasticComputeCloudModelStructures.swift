@@ -328,10 +328,10 @@ public struct AcceptVpcEndpointConnectionsResult: Codable, Equatable {
 
 public struct AcceptVpcPeeringConnectionRequest: Codable, Equatable {
     public var dryRun: Boolean?
-    public var vpcPeeringConnectionId: VpcPeeringConnectionIdWithResolver?
+    public var vpcPeeringConnectionId: VpcPeeringConnectionIdWithResolver
 
     public init(dryRun: Boolean? = nil,
-                vpcPeeringConnectionId: VpcPeeringConnectionIdWithResolver? = nil) {
+                vpcPeeringConnectionId: VpcPeeringConnectionIdWithResolver) {
         self.dryRun = dryRun
         self.vpcPeeringConnectionId = vpcPeeringConnectionId
     }
@@ -563,20 +563,45 @@ public struct AddedPrincipal: Codable, Equatable {
 public struct AdditionalDetail: Codable, Equatable {
     public var additionalDetailType: String?
     public var component: AnalysisComponent?
+    public var loadBalancers: AnalysisComponentList?
+    public var ruleGroupRuleOptionsPairs: RuleGroupRuleOptionsPairList?
+    public var ruleGroupTypePairs: RuleGroupTypePairList?
+    public var ruleOptions: RuleOptionList?
+    public var serviceName: String?
+    public var vpcEndpointService: AnalysisComponent?
 
     public init(additionalDetailType: String? = nil,
-                component: AnalysisComponent? = nil) {
+                component: AnalysisComponent? = nil,
+                loadBalancers: AnalysisComponentList? = nil,
+                ruleGroupRuleOptionsPairs: RuleGroupRuleOptionsPairList? = nil,
+                ruleGroupTypePairs: RuleGroupTypePairList? = nil,
+                ruleOptions: RuleOptionList? = nil,
+                serviceName: String? = nil,
+                vpcEndpointService: AnalysisComponent? = nil) {
         self.additionalDetailType = additionalDetailType
         self.component = component
+        self.loadBalancers = loadBalancers
+        self.ruleGroupRuleOptionsPairs = ruleGroupRuleOptionsPairs
+        self.ruleGroupTypePairs = ruleGroupTypePairs
+        self.ruleOptions = ruleOptions
+        self.serviceName = serviceName
+        self.vpcEndpointService = vpcEndpointService
     }
 
     enum CodingKeys: String, CodingKey {
         case additionalDetailType
         case component
+        case loadBalancers = "loadBalancerSet"
+        case ruleGroupRuleOptionsPairs = "ruleGroupRuleOptionsPairSet"
+        case ruleGroupTypePairs = "ruleGroupTypePairSet"
+        case ruleOptions = "ruleOptionSet"
+        case serviceName
+        case vpcEndpointService
     }
 
     public func validate() throws {
         try component?.validate()
+        try vpcEndpointService?.validate()
     }
 }
 
@@ -828,28 +853,34 @@ public struct AllocateAddressResult: Codable, Equatable {
 }
 
 public struct AllocateHostsRequest: Codable, Equatable {
+    public var assetIds: AssetIdList?
     public var autoPlacement: AutoPlacement?
     public var availabilityZone: String
     public var clientToken: String?
+    public var hostMaintenance: HostMaintenance?
     public var hostRecovery: HostRecovery?
     public var instanceFamily: String?
     public var instanceType: String?
     public var outpostArn: String?
-    public var quantity: Integer
+    public var quantity: Integer?
     public var tagSpecifications: TagSpecificationList?
 
-    public init(autoPlacement: AutoPlacement? = nil,
+    public init(assetIds: AssetIdList? = nil,
+                autoPlacement: AutoPlacement? = nil,
                 availabilityZone: String,
                 clientToken: String? = nil,
+                hostMaintenance: HostMaintenance? = nil,
                 hostRecovery: HostRecovery? = nil,
                 instanceFamily: String? = nil,
                 instanceType: String? = nil,
                 outpostArn: String? = nil,
-                quantity: Integer,
+                quantity: Integer? = nil,
                 tagSpecifications: TagSpecificationList? = nil) {
+        self.assetIds = assetIds
         self.autoPlacement = autoPlacement
         self.availabilityZone = availabilityZone
         self.clientToken = clientToken
+        self.hostMaintenance = hostMaintenance
         self.hostRecovery = hostRecovery
         self.instanceFamily = instanceFamily
         self.instanceType = instanceType
@@ -859,9 +890,11 @@ public struct AllocateHostsRequest: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case assetIds = "AssetId"
         case autoPlacement
         case availabilityZone
         case clientToken
+        case hostMaintenance = "HostMaintenance"
         case hostRecovery = "HostRecovery"
         case instanceFamily = "InstanceFamily"
         case instanceType
@@ -1140,11 +1173,14 @@ public struct AnalysisPacketHeader: Codable, Equatable {
 }
 
 public struct AnalysisRouteTableRoute: Codable, Equatable {
+    public var carrierGatewayId: String?
+    public var coreNetworkArn: ResourceArn?
     public var destinationCidr: String?
     public var destinationPrefixListId: String?
     public var egressOnlyInternetGatewayId: String?
     public var gatewayId: String?
     public var instanceId: String?
+    public var localGatewayId: String?
     public var natGatewayId: String?
     public var networkInterfaceId: String?
     public var origin: String?
@@ -1152,22 +1188,28 @@ public struct AnalysisRouteTableRoute: Codable, Equatable {
     public var transitGatewayId: String?
     public var vpcPeeringConnectionId: String?
 
-    public init(destinationCidr: String? = nil,
+    public init(carrierGatewayId: String? = nil,
+                coreNetworkArn: ResourceArn? = nil,
+                destinationCidr: String? = nil,
                 destinationPrefixListId: String? = nil,
                 egressOnlyInternetGatewayId: String? = nil,
                 gatewayId: String? = nil,
                 instanceId: String? = nil,
+                localGatewayId: String? = nil,
                 natGatewayId: String? = nil,
                 networkInterfaceId: String? = nil,
                 origin: String? = nil,
                 state: String? = nil,
                 transitGatewayId: String? = nil,
                 vpcPeeringConnectionId: String? = nil) {
+        self.carrierGatewayId = carrierGatewayId
+        self.coreNetworkArn = coreNetworkArn
         self.destinationCidr = destinationCidr
         self.destinationPrefixListId = destinationPrefixListId
         self.egressOnlyInternetGatewayId = egressOnlyInternetGatewayId
         self.gatewayId = gatewayId
         self.instanceId = instanceId
+        self.localGatewayId = localGatewayId
         self.natGatewayId = natGatewayId
         self.networkInterfaceId = networkInterfaceId
         self.origin = origin
@@ -1177,11 +1219,14 @@ public struct AnalysisRouteTableRoute: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
+        case carrierGatewayId
+        case coreNetworkArn
         case destinationCidr
         case destinationPrefixListId
         case egressOnlyInternetGatewayId
         case gatewayId
         case instanceId
+        case localGatewayId
         case natGatewayId
         case networkInterfaceId
         case origin
@@ -1191,6 +1236,7 @@ public struct AnalysisRouteTableRoute: Codable, Equatable {
     }
 
     public func validate() throws {
+        try coreNetworkArn?.validateAsResourceArn()
     }
 }
 
@@ -1384,6 +1430,53 @@ public struct AssignPrivateIpAddressesResult: Codable, Equatable {
     }
 }
 
+public struct AssignPrivateNatGatewayAddressRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var natGatewayId: NatGatewayId
+    public var privateIpAddressCount: PrivateIpAddressCount?
+    public var privateIpAddresses: IpList?
+
+    public init(dryRun: Boolean? = nil,
+                natGatewayId: NatGatewayId,
+                privateIpAddressCount: PrivateIpAddressCount? = nil,
+                privateIpAddresses: IpList? = nil) {
+        self.dryRun = dryRun
+        self.natGatewayId = natGatewayId
+        self.privateIpAddressCount = privateIpAddressCount
+        self.privateIpAddresses = privateIpAddresses
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case natGatewayId = "NatGatewayId"
+        case privateIpAddressCount = "PrivateIpAddressCount"
+        case privateIpAddresses = "PrivateIpAddress"
+    }
+
+    public func validate() throws {
+        try privateIpAddressCount?.validateAsPrivateIpAddressCount()
+    }
+}
+
+public struct AssignPrivateNatGatewayAddressResult: Codable, Equatable {
+    public var natGatewayAddresses: NatGatewayAddressList?
+    public var natGatewayId: NatGatewayId?
+
+    public init(natGatewayAddresses: NatGatewayAddressList? = nil,
+                natGatewayId: NatGatewayId? = nil) {
+        self.natGatewayAddresses = natGatewayAddresses
+        self.natGatewayId = natGatewayId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case natGatewayAddresses = "natGatewayAddressSet"
+        case natGatewayId
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct AssignedPrivateIpAddress: Codable, Equatable {
     public var privateIpAddress: String?
 
@@ -1406,7 +1499,7 @@ public struct AssociateAddressRequest: Codable, Equatable {
     public var instanceId: InstanceId?
     public var networkInterfaceId: NetworkInterfaceId?
     public var privateIpAddress: String?
-    public var publicIp: String?
+    public var publicIp: EipAllocationPublicIp?
 
     public init(allocationId: AllocationId? = nil,
                 allowReassociation: Boolean? = nil,
@@ -1414,7 +1507,7 @@ public struct AssociateAddressRequest: Codable, Equatable {
                 instanceId: InstanceId? = nil,
                 networkInterfaceId: NetworkInterfaceId? = nil,
                 privateIpAddress: String? = nil,
-                publicIp: String? = nil) {
+                publicIp: EipAllocationPublicIp? = nil) {
         self.allocationId = allocationId
         self.allowReassociation = allowReassociation
         self.dryRun = dryRun
@@ -1524,13 +1617,13 @@ public struct AssociateDhcpOptionsRequest: Codable, Equatable {
 }
 
 public struct AssociateEnclaveCertificateIamRoleRequest: Codable, Equatable {
-    public var certificateArn: ResourceArn?
+    public var certificateArn: CertificateId
     public var dryRun: Boolean?
-    public var roleArn: ResourceArn?
+    public var roleArn: RoleId
 
-    public init(certificateArn: ResourceArn? = nil,
+    public init(certificateArn: CertificateId,
                 dryRun: Boolean? = nil,
-                roleArn: ResourceArn? = nil) {
+                roleArn: RoleId) {
         self.certificateArn = certificateArn
         self.dryRun = dryRun
         self.roleArn = roleArn
@@ -1543,8 +1636,6 @@ public struct AssociateEnclaveCertificateIamRoleRequest: Codable, Equatable {
     }
 
     public func validate() throws {
-        try certificateArn?.validateAsResourceArn()
-        try roleArn?.validateAsResourceArn()
     }
 }
 
@@ -1647,6 +1738,99 @@ public struct AssociateInstanceEventWindowResult: Codable, Equatable {
     }
 }
 
+public struct AssociateIpamResourceDiscoveryRequest: Codable, Equatable {
+    public var clientToken: String?
+    public var dryRun: Boolean?
+    public var ipamId: IpamId
+    public var ipamResourceDiscoveryId: IpamResourceDiscoveryId
+    public var tagSpecifications: TagSpecificationList?
+
+    public init(clientToken: String? = nil,
+                dryRun: Boolean? = nil,
+                ipamId: IpamId,
+                ipamResourceDiscoveryId: IpamResourceDiscoveryId,
+                tagSpecifications: TagSpecificationList? = nil) {
+        self.clientToken = clientToken
+        self.dryRun = dryRun
+        self.ipamId = ipamId
+        self.ipamResourceDiscoveryId = ipamResourceDiscoveryId
+        self.tagSpecifications = tagSpecifications
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken = "ClientToken"
+        case dryRun = "DryRun"
+        case ipamId = "IpamId"
+        case ipamResourceDiscoveryId = "IpamResourceDiscoveryId"
+        case tagSpecifications = "TagSpecification"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct AssociateIpamResourceDiscoveryResult: Codable, Equatable {
+    public var ipamResourceDiscoveryAssociation: IpamResourceDiscoveryAssociation?
+
+    public init(ipamResourceDiscoveryAssociation: IpamResourceDiscoveryAssociation? = nil) {
+        self.ipamResourceDiscoveryAssociation = ipamResourceDiscoveryAssociation
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamResourceDiscoveryAssociation
+    }
+
+    public func validate() throws {
+        try ipamResourceDiscoveryAssociation?.validate()
+    }
+}
+
+public struct AssociateNatGatewayAddressRequest: Codable, Equatable {
+    public var allocationIds: AllocationIdList
+    public var dryRun: Boolean?
+    public var natGatewayId: NatGatewayId
+    public var privateIpAddresses: IpList?
+
+    public init(allocationIds: AllocationIdList,
+                dryRun: Boolean? = nil,
+                natGatewayId: NatGatewayId,
+                privateIpAddresses: IpList? = nil) {
+        self.allocationIds = allocationIds
+        self.dryRun = dryRun
+        self.natGatewayId = natGatewayId
+        self.privateIpAddresses = privateIpAddresses
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case allocationIds = "AllocationId"
+        case dryRun = "DryRun"
+        case natGatewayId = "NatGatewayId"
+        case privateIpAddresses = "PrivateIpAddress"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct AssociateNatGatewayAddressResult: Codable, Equatable {
+    public var natGatewayAddresses: NatGatewayAddressList?
+    public var natGatewayId: NatGatewayId?
+
+    public init(natGatewayAddresses: NatGatewayAddressList? = nil,
+                natGatewayId: NatGatewayId? = nil) {
+        self.natGatewayAddresses = natGatewayAddresses
+        self.natGatewayId = natGatewayId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case natGatewayAddresses = "natGatewayAddressSet"
+        case natGatewayId
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct AssociateRouteTableRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var gatewayId: RouteGatewayId?
@@ -1735,14 +1919,14 @@ public struct AssociateSubnetCidrBlockResult: Codable, Equatable {
 
 public struct AssociateTransitGatewayMulticastDomainRequest: Codable, Equatable {
     public var dryRun: Boolean?
-    public var subnetIds: TransitGatewaySubnetIdList?
-    public var transitGatewayAttachmentId: TransitGatewayAttachmentId?
-    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId?
+    public var subnetIds: TransitGatewaySubnetIdList
+    public var transitGatewayAttachmentId: TransitGatewayAttachmentId
+    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId
 
     public init(dryRun: Boolean? = nil,
-                subnetIds: TransitGatewaySubnetIdList? = nil,
-                transitGatewayAttachmentId: TransitGatewayAttachmentId? = nil,
-                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId? = nil) {
+                subnetIds: TransitGatewaySubnetIdList,
+                transitGatewayAttachmentId: TransitGatewayAttachmentId,
+                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId) {
         self.dryRun = dryRun
         self.subnetIds = subnetIds
         self.transitGatewayAttachmentId = transitGatewayAttachmentId
@@ -4761,7 +4945,7 @@ public struct CopySnapshotRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var encrypted: Boolean?
     public var kmsKeyId: KmsKeyId?
-    public var presignedUrl: String?
+    public var presignedUrl: CopySnapshotRequestPSU?
     public var sourceRegion: String
     public var sourceSnapshotId: String
     public var tagSpecifications: TagSpecificationList?
@@ -4772,7 +4956,7 @@ public struct CopySnapshotRequest: Codable, Equatable {
                 dryRun: Boolean? = nil,
                 encrypted: Boolean? = nil,
                 kmsKeyId: KmsKeyId? = nil,
-                presignedUrl: String? = nil,
+                presignedUrl: CopySnapshotRequestPSU? = nil,
                 sourceRegion: String,
                 sourceSnapshotId: String,
                 tagSpecifications: TagSpecificationList? = nil) {
@@ -4825,16 +5009,20 @@ public struct CopySnapshotResult: Codable, Equatable {
 }
 
 public struct CpuOptions: Codable, Equatable {
+    public var amdSevSnp: AmdSevSnpSpecification?
     public var coreCount: Integer?
     public var threadsPerCore: Integer?
 
-    public init(coreCount: Integer? = nil,
+    public init(amdSevSnp: AmdSevSnpSpecification? = nil,
+                coreCount: Integer? = nil,
                 threadsPerCore: Integer? = nil) {
+        self.amdSevSnp = amdSevSnp
         self.coreCount = coreCount
         self.threadsPerCore = threadsPerCore
     }
 
     enum CodingKeys: String, CodingKey {
+        case amdSevSnp
         case coreCount
         case threadsPerCore
     }
@@ -4844,16 +5032,20 @@ public struct CpuOptions: Codable, Equatable {
 }
 
 public struct CpuOptionsRequest: Codable, Equatable {
+    public var amdSevSnp: AmdSevSnpSpecification?
     public var coreCount: Integer?
     public var threadsPerCore: Integer?
 
-    public init(coreCount: Integer? = nil,
+    public init(amdSevSnp: AmdSevSnpSpecification? = nil,
+                coreCount: Integer? = nil,
                 threadsPerCore: Integer? = nil) {
+        self.amdSevSnp = amdSevSnp
         self.coreCount = coreCount
         self.threadsPerCore = threadsPerCore
     }
 
     enum CodingKeys: String, CodingKey {
+        case amdSevSnp = "AmdSevSnp"
         case coreCount = "CoreCount"
         case threadsPerCore = "ThreadsPerCore"
     }
@@ -4965,8 +5157,8 @@ public struct CreateCapacityReservationFleetResult: Codable, Equatable {
 }
 
 public struct CreateCapacityReservationRequest: Codable, Equatable {
-    public var availabilityZone: String?
-    public var availabilityZoneId: String?
+    public var availabilityZone: AvailabilityZoneName?
+    public var availabilityZoneId: AvailabilityZoneId?
     public var clientToken: String?
     public var dryRun: Boolean?
     public var ebsOptimized: Boolean?
@@ -4982,8 +5174,8 @@ public struct CreateCapacityReservationRequest: Codable, Equatable {
     public var tagSpecifications: TagSpecificationList?
     public var tenancy: CapacityReservationTenancy?
 
-    public init(availabilityZone: String? = nil,
-                availabilityZoneId: String? = nil,
+    public init(availabilityZone: AvailabilityZoneName? = nil,
+                availabilityZoneId: AvailabilityZoneId? = nil,
                 clientToken: String? = nil,
                 dryRun: Boolean? = nil,
                 ebsOptimized: Boolean? = nil,
@@ -5340,7 +5532,7 @@ public struct CreateCoipPoolResult: Codable, Equatable {
 }
 
 public struct CreateCustomerGatewayRequest: Codable, Equatable {
-    public var bgpAsn: Integer
+    public var bgpAsn: Integer?
     public var certificateArn: String?
     public var deviceName: String?
     public var dryRun: Boolean?
@@ -5349,7 +5541,7 @@ public struct CreateCustomerGatewayRequest: Codable, Equatable {
     public var tagSpecifications: TagSpecificationList?
     public var type: GatewayType
 
-    public init(bgpAsn: Integer,
+    public init(bgpAsn: Integer? = nil,
                 certificateArn: String? = nil,
                 deviceName: String? = nil,
                 dryRun: Boolean? = nil,
@@ -5913,6 +6105,62 @@ public struct CreateImageResult: Codable, Equatable {
     }
 }
 
+public struct CreateInstanceConnectEndpointRequest: Codable, Equatable {
+    public var clientToken: String?
+    public var dryRun: Boolean?
+    public var preserveClientIp: Boolean?
+    public var securityGroupIds: SecurityGroupIdStringListRequest?
+    public var subnetId: SubnetId
+    public var tagSpecifications: TagSpecificationList?
+
+    public init(clientToken: String? = nil,
+                dryRun: Boolean? = nil,
+                preserveClientIp: Boolean? = nil,
+                securityGroupIds: SecurityGroupIdStringListRequest? = nil,
+                subnetId: SubnetId,
+                tagSpecifications: TagSpecificationList? = nil) {
+        self.clientToken = clientToken
+        self.dryRun = dryRun
+        self.preserveClientIp = preserveClientIp
+        self.securityGroupIds = securityGroupIds
+        self.subnetId = subnetId
+        self.tagSpecifications = tagSpecifications
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken = "ClientToken"
+        case dryRun = "DryRun"
+        case preserveClientIp = "PreserveClientIp"
+        case securityGroupIds = "SecurityGroupId"
+        case subnetId = "SubnetId"
+        case tagSpecifications = "TagSpecification"
+    }
+
+    public func validate() throws {
+        try securityGroupIds?.validateAsSecurityGroupIdStringListRequest()
+    }
+}
+
+public struct CreateInstanceConnectEndpointResult: Codable, Equatable {
+    public var clientToken: String?
+    public var instanceConnectEndpoint: Ec2InstanceConnectEndpoint?
+
+    public init(clientToken: String? = nil,
+                instanceConnectEndpoint: Ec2InstanceConnectEndpoint? = nil) {
+        self.clientToken = clientToken
+        self.instanceConnectEndpoint = instanceConnectEndpoint
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken
+        case instanceConnectEndpoint
+    }
+
+    public func validate() throws {
+        try instanceConnectEndpoint?.validate()
+    }
+}
+
 public struct CreateInstanceEventWindowRequest: Codable, Equatable {
     public var cronExpression: InstanceEventWindowCronExpression?
     public var dryRun: Boolean?
@@ -6056,6 +6304,7 @@ public struct CreateIpamPoolRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var ipamScopeId: IpamScopeId
     public var locale: String?
+    public var publicIpSource: IpamPoolPublicIpSource?
     public var publiclyAdvertisable: Boolean?
     public var sourceIpamPoolId: IpamPoolId?
     public var tagSpecifications: TagSpecificationList?
@@ -6072,6 +6321,7 @@ public struct CreateIpamPoolRequest: Codable, Equatable {
                 dryRun: Boolean? = nil,
                 ipamScopeId: IpamScopeId,
                 locale: String? = nil,
+                publicIpSource: IpamPoolPublicIpSource? = nil,
                 publiclyAdvertisable: Boolean? = nil,
                 sourceIpamPoolId: IpamPoolId? = nil,
                 tagSpecifications: TagSpecificationList? = nil) {
@@ -6087,6 +6337,7 @@ public struct CreateIpamPoolRequest: Codable, Equatable {
         self.dryRun = dryRun
         self.ipamScopeId = ipamScopeId
         self.locale = locale
+        self.publicIpSource = publicIpSource
         self.publiclyAdvertisable = publiclyAdvertisable
         self.sourceIpamPoolId = sourceIpamPoolId
         self.tagSpecifications = tagSpecifications
@@ -6105,6 +6356,7 @@ public struct CreateIpamPoolRequest: Codable, Equatable {
         case dryRun = "DryRun"
         case ipamScopeId = "IpamScopeId"
         case locale = "Locale"
+        case publicIpSource = "PublicIpSource"
         case publiclyAdvertisable = "PubliclyAdvertisable"
         case sourceIpamPoolId = "SourceIpamPoolId"
         case tagSpecifications = "TagSpecification"
@@ -6162,6 +6414,54 @@ public struct CreateIpamRequest: Codable, Equatable {
 
     public func validate() throws {
         try operatingRegions?.validateAsAddIpamOperatingRegionSet()
+    }
+}
+
+public struct CreateIpamResourceDiscoveryRequest: Codable, Equatable {
+    public var clientToken: String?
+    public var description: String?
+    public var dryRun: Boolean?
+    public var operatingRegions: AddIpamOperatingRegionSet?
+    public var tagSpecifications: TagSpecificationList?
+
+    public init(clientToken: String? = nil,
+                description: String? = nil,
+                dryRun: Boolean? = nil,
+                operatingRegions: AddIpamOperatingRegionSet? = nil,
+                tagSpecifications: TagSpecificationList? = nil) {
+        self.clientToken = clientToken
+        self.description = description
+        self.dryRun = dryRun
+        self.operatingRegions = operatingRegions
+        self.tagSpecifications = tagSpecifications
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case clientToken = "ClientToken"
+        case description = "Description"
+        case dryRun = "DryRun"
+        case operatingRegions = "OperatingRegion"
+        case tagSpecifications = "TagSpecification"
+    }
+
+    public func validate() throws {
+        try operatingRegions?.validateAsAddIpamOperatingRegionSet()
+    }
+}
+
+public struct CreateIpamResourceDiscoveryResult: Codable, Equatable {
+    public var ipamResourceDiscovery: IpamResourceDiscovery?
+
+    public init(ipamResourceDiscovery: IpamResourceDiscovery? = nil) {
+        self.ipamResourceDiscovery = ipamResourceDiscovery
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamResourceDiscovery
+    }
+
+    public func validate() throws {
+        try ipamResourceDiscovery?.validate()
     }
 }
 
@@ -6324,6 +6624,7 @@ public struct CreateLaunchTemplateVersionRequest: Codable, Equatable {
     public var launchTemplateData: RequestLaunchTemplateData
     public var launchTemplateId: LaunchTemplateId?
     public var launchTemplateName: LaunchTemplateName?
+    public var resolveAlias: Boolean?
     public var sourceVersion: String?
     public var versionDescription: VersionDescription?
 
@@ -6332,6 +6633,7 @@ public struct CreateLaunchTemplateVersionRequest: Codable, Equatable {
                 launchTemplateData: RequestLaunchTemplateData,
                 launchTemplateId: LaunchTemplateId? = nil,
                 launchTemplateName: LaunchTemplateName? = nil,
+                resolveAlias: Boolean? = nil,
                 sourceVersion: String? = nil,
                 versionDescription: VersionDescription? = nil) {
         self.clientToken = clientToken
@@ -6339,6 +6641,7 @@ public struct CreateLaunchTemplateVersionRequest: Codable, Equatable {
         self.launchTemplateData = launchTemplateData
         self.launchTemplateId = launchTemplateId
         self.launchTemplateName = launchTemplateName
+        self.resolveAlias = resolveAlias
         self.sourceVersion = sourceVersion
         self.versionDescription = versionDescription
     }
@@ -6349,6 +6652,7 @@ public struct CreateLaunchTemplateVersionRequest: Codable, Equatable {
         case launchTemplateData = "LaunchTemplateData"
         case launchTemplateId = "LaunchTemplateId"
         case launchTemplateName = "LaunchTemplateName"
+        case resolveAlias = "ResolveAlias"
         case sourceVersion = "SourceVersion"
         case versionDescription = "VersionDescription"
     }
@@ -6382,18 +6686,21 @@ public struct CreateLaunchTemplateVersionResult: Codable, Equatable {
 }
 
 public struct CreateLocalGatewayRouteRequest: Codable, Equatable {
-    public var destinationCidrBlock: String
+    public var destinationCidrBlock: String?
+    public var destinationPrefixListId: PrefixListResourceId?
     public var dryRun: Boolean?
     public var localGatewayRouteTableId: LocalGatewayRoutetableId
     public var localGatewayVirtualInterfaceGroupId: LocalGatewayVirtualInterfaceGroupId?
     public var networkInterfaceId: NetworkInterfaceId?
 
-    public init(destinationCidrBlock: String,
+    public init(destinationCidrBlock: String? = nil,
+                destinationPrefixListId: PrefixListResourceId? = nil,
                 dryRun: Boolean? = nil,
                 localGatewayRouteTableId: LocalGatewayRoutetableId,
                 localGatewayVirtualInterfaceGroupId: LocalGatewayVirtualInterfaceGroupId? = nil,
                 networkInterfaceId: NetworkInterfaceId? = nil) {
         self.destinationCidrBlock = destinationCidrBlock
+        self.destinationPrefixListId = destinationPrefixListId
         self.dryRun = dryRun
         self.localGatewayRouteTableId = localGatewayRouteTableId
         self.localGatewayVirtualInterfaceGroupId = localGatewayVirtualInterfaceGroupId
@@ -6402,6 +6709,7 @@ public struct CreateLocalGatewayRouteRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case destinationCidrBlock = "DestinationCidrBlock"
+        case destinationPrefixListId = "DestinationPrefixListId"
         case dryRun = "DryRun"
         case localGatewayRouteTableId = "LocalGatewayRouteTableId"
         case localGatewayVirtualInterfaceGroupId = "LocalGatewayVirtualInterfaceGroupId"
@@ -6619,6 +6927,9 @@ public struct CreateNatGatewayRequest: Codable, Equatable {
     public var connectivityType: ConnectivityType?
     public var dryRun: Boolean?
     public var privateIpAddress: String?
+    public var secondaryAllocationIds: AllocationIdList?
+    public var secondaryPrivateIpAddressCount: PrivateIpAddressCount?
+    public var secondaryPrivateIpAddresses: IpList?
     public var subnetId: SubnetId
     public var tagSpecifications: TagSpecificationList?
 
@@ -6627,6 +6938,9 @@ public struct CreateNatGatewayRequest: Codable, Equatable {
                 connectivityType: ConnectivityType? = nil,
                 dryRun: Boolean? = nil,
                 privateIpAddress: String? = nil,
+                secondaryAllocationIds: AllocationIdList? = nil,
+                secondaryPrivateIpAddressCount: PrivateIpAddressCount? = nil,
+                secondaryPrivateIpAddresses: IpList? = nil,
                 subnetId: SubnetId,
                 tagSpecifications: TagSpecificationList? = nil) {
         self.allocationId = allocationId
@@ -6634,6 +6948,9 @@ public struct CreateNatGatewayRequest: Codable, Equatable {
         self.connectivityType = connectivityType
         self.dryRun = dryRun
         self.privateIpAddress = privateIpAddress
+        self.secondaryAllocationIds = secondaryAllocationIds
+        self.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount
+        self.secondaryPrivateIpAddresses = secondaryPrivateIpAddresses
         self.subnetId = subnetId
         self.tagSpecifications = tagSpecifications
     }
@@ -6644,11 +6961,15 @@ public struct CreateNatGatewayRequest: Codable, Equatable {
         case connectivityType = "ConnectivityType"
         case dryRun = "DryRun"
         case privateIpAddress = "PrivateIpAddress"
+        case secondaryAllocationIds = "SecondaryAllocationId"
+        case secondaryPrivateIpAddressCount = "SecondaryPrivateIpAddressCount"
+        case secondaryPrivateIpAddresses = "SecondaryPrivateIpAddress"
         case subnetId = "SubnetId"
         case tagSpecifications = "TagSpecification"
     }
 
     public func validate() throws {
+        try secondaryPrivateIpAddressCount?.validateAsPrivateIpAddressCount()
     }
 }
 
@@ -6818,20 +7139,24 @@ public struct CreateNetworkInsightsAccessScopeResult: Codable, Equatable {
 
 public struct CreateNetworkInsightsPathRequest: Codable, Equatable {
     public var clientToken: String
-    public var destination: NetworkInsightsResourceId
+    public var destination: NetworkInsightsResourceId?
     public var destinationIp: IpAddress?
     public var destinationPort: Port?
     public var dryRun: Boolean?
+    public var filterAtDestination: PathRequestFilter?
+    public var filterAtSource: PathRequestFilter?
     public var `protocol`: Protocol
     public var source: NetworkInsightsResourceId
     public var sourceIp: IpAddress?
     public var tagSpecifications: TagSpecificationList?
 
     public init(clientToken: String,
-                destination: NetworkInsightsResourceId,
+                destination: NetworkInsightsResourceId? = nil,
                 destinationIp: IpAddress? = nil,
                 destinationPort: Port? = nil,
                 dryRun: Boolean? = nil,
+                filterAtDestination: PathRequestFilter? = nil,
+                filterAtSource: PathRequestFilter? = nil,
                 `protocol`: Protocol,
                 source: NetworkInsightsResourceId,
                 sourceIp: IpAddress? = nil,
@@ -6841,6 +7166,8 @@ public struct CreateNetworkInsightsPathRequest: Codable, Equatable {
         self.destinationIp = destinationIp
         self.destinationPort = destinationPort
         self.dryRun = dryRun
+        self.filterAtDestination = filterAtDestination
+        self.filterAtSource = filterAtSource
         self.`protocol` = `protocol`
         self.source = source
         self.sourceIp = sourceIp
@@ -6853,6 +7180,8 @@ public struct CreateNetworkInsightsPathRequest: Codable, Equatable {
         case destinationIp = "DestinationIp"
         case destinationPort = "DestinationPort"
         case dryRun = "DryRun"
+        case filterAtDestination = "FilterAtDestination"
+        case filterAtSource = "FilterAtSource"
         case `protocol` = "Protocol"
         case source = "Source"
         case sourceIp = "SourceIp"
@@ -6862,6 +7191,8 @@ public struct CreateNetworkInsightsPathRequest: Codable, Equatable {
     public func validate() throws {
         try destinationIp?.validateAsIpAddress()
         try destinationPort?.validateAsPort()
+        try filterAtDestination?.validate()
+        try filterAtSource?.validate()
         try sourceIp?.validateAsIpAddress()
     }
 }
@@ -8825,7 +9156,7 @@ public struct CreateVerifiedAccessTrustProviderDeviceOptions: Codable, Equatable
 public struct CreateVerifiedAccessTrustProviderOidcOptions: Codable, Equatable {
     public var authorizationEndpoint: String?
     public var clientId: String?
-    public var clientSecret: String?
+    public var clientSecret: ClientSecretType?
     public var issuer: String?
     public var scope: String?
     public var tokenEndpoint: String?
@@ -8833,7 +9164,7 @@ public struct CreateVerifiedAccessTrustProviderOidcOptions: Codable, Equatable {
 
     public init(authorizationEndpoint: String? = nil,
                 clientId: String? = nil,
-                clientSecret: String? = nil,
+                clientSecret: ClientSecretType? = nil,
                 issuer: String? = nil,
                 scope: String? = nil,
                 tokenEndpoint: String? = nil,
@@ -8969,7 +9300,7 @@ public struct CreateVolumePermissionModifications: Codable, Equatable {
 }
 
 public struct CreateVolumeRequest: Codable, Equatable {
-    public var availabilityZone: String
+    public var availabilityZone: AvailabilityZoneName
     public var clientToken: String?
     public var dryRun: Boolean?
     public var encrypted: Boolean?
@@ -8983,7 +9314,7 @@ public struct CreateVolumeRequest: Codable, Equatable {
     public var throughput: Integer?
     public var volumeType: VolumeType?
 
-    public init(availabilityZone: String,
+    public init(availabilityZone: AvailabilityZoneName,
                 clientToken: String? = nil,
                 dryRun: Boolean? = nil,
                 encrypted: Boolean? = nil,
@@ -9239,14 +9570,14 @@ public struct CreateVpcPeeringConnectionRequest: Codable, Equatable {
     public var peerRegion: String?
     public var peerVpcId: String?
     public var tagSpecifications: TagSpecificationList?
-    public var vpcId: VpcId?
+    public var vpcId: VpcId
 
     public init(dryRun: Boolean? = nil,
                 peerOwnerId: String? = nil,
                 peerRegion: String? = nil,
                 peerVpcId: String? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
-                vpcId: VpcId? = nil) {
+                vpcId: VpcId) {
         self.dryRun = dryRun
         self.peerOwnerId = peerOwnerId
         self.peerRegion = peerRegion
@@ -10059,6 +10390,41 @@ public struct DeleteFpgaImageResult: Codable, Equatable {
     }
 }
 
+public struct DeleteInstanceConnectEndpointRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var instanceConnectEndpointId: InstanceConnectEndpointId
+
+    public init(dryRun: Boolean? = nil,
+                instanceConnectEndpointId: InstanceConnectEndpointId) {
+        self.dryRun = dryRun
+        self.instanceConnectEndpointId = instanceConnectEndpointId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case instanceConnectEndpointId = "InstanceConnectEndpointId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteInstanceConnectEndpointResult: Codable, Equatable {
+    public var instanceConnectEndpoint: Ec2InstanceConnectEndpoint?
+
+    public init(instanceConnectEndpoint: Ec2InstanceConnectEndpoint? = nil) {
+        self.instanceConnectEndpoint = instanceConnectEndpoint
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceConnectEndpoint
+    }
+
+    public func validate() throws {
+        try instanceConnectEndpoint?.validate()
+    }
+}
+
 public struct DeleteInstanceEventWindowRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var forceDelete: Boolean?
@@ -10172,6 +10538,41 @@ public struct DeleteIpamRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DeleteIpamResourceDiscoveryRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var ipamResourceDiscoveryId: IpamResourceDiscoveryId
+
+    public init(dryRun: Boolean? = nil,
+                ipamResourceDiscoveryId: IpamResourceDiscoveryId) {
+        self.dryRun = dryRun
+        self.ipamResourceDiscoveryId = ipamResourceDiscoveryId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case ipamResourceDiscoveryId = "IpamResourceDiscoveryId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteIpamResourceDiscoveryResult: Codable, Equatable {
+    public var ipamResourceDiscovery: IpamResourceDiscovery?
+
+    public init(ipamResourceDiscovery: IpamResourceDiscovery? = nil) {
+        self.ipamResourceDiscovery = ipamResourceDiscovery
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamResourceDiscovery
+    }
+
+    public func validate() throws {
+        try ipamResourceDiscovery?.validate()
     }
 }
 
@@ -10388,20 +10789,24 @@ public struct DeleteLaunchTemplateVersionsResult: Codable, Equatable {
 }
 
 public struct DeleteLocalGatewayRouteRequest: Codable, Equatable {
-    public var destinationCidrBlock: String
+    public var destinationCidrBlock: String?
+    public var destinationPrefixListId: PrefixListResourceId?
     public var dryRun: Boolean?
     public var localGatewayRouteTableId: LocalGatewayRoutetableId
 
-    public init(destinationCidrBlock: String,
+    public init(destinationCidrBlock: String? = nil,
+                destinationPrefixListId: PrefixListResourceId? = nil,
                 dryRun: Boolean? = nil,
                 localGatewayRouteTableId: LocalGatewayRoutetableId) {
         self.destinationCidrBlock = destinationCidrBlock
+        self.destinationPrefixListId = destinationPrefixListId
         self.dryRun = dryRun
         self.localGatewayRouteTableId = localGatewayRouteTableId
     }
 
     enum CodingKeys: String, CodingKey {
         case destinationCidrBlock = "DestinationCidrBlock"
+        case destinationPrefixListId = "DestinationPrefixListId"
         case dryRun = "DryRun"
         case localGatewayRouteTableId = "LocalGatewayRouteTableId"
     }
@@ -11170,10 +11575,10 @@ public struct DeleteTrafficMirrorFilterResult: Codable, Equatable {
 
 public struct DeleteTrafficMirrorFilterRuleRequest: Codable, Equatable {
     public var dryRun: Boolean?
-    public var trafficMirrorFilterRuleId: TrafficMirrorFilterRuleId
+    public var trafficMirrorFilterRuleId: TrafficMirrorFilterRuleIdWithResolver
 
     public init(dryRun: Boolean? = nil,
-                trafficMirrorFilterRuleId: TrafficMirrorFilterRuleId) {
+                trafficMirrorFilterRuleId: TrafficMirrorFilterRuleIdWithResolver) {
         self.dryRun = dryRun
         self.trafficMirrorFilterRuleId = trafficMirrorFilterRuleId
     }
@@ -12187,10 +12592,10 @@ public struct DeregisterImageRequest: Codable, Equatable {
 
 public struct DeregisterInstanceEventNotificationAttributesRequest: Codable, Equatable {
     public var dryRun: Boolean?
-    public var instanceTagAttribute: DeregisterInstanceTagAttributeRequest?
+    public var instanceTagAttribute: DeregisterInstanceTagAttributeRequest
 
     public init(dryRun: Boolean? = nil,
-                instanceTagAttribute: DeregisterInstanceTagAttributeRequest? = nil) {
+                instanceTagAttribute: DeregisterInstanceTagAttributeRequest) {
         self.dryRun = dryRun
         self.instanceTagAttribute = instanceTagAttribute
     }
@@ -12201,7 +12606,7 @@ public struct DeregisterInstanceEventNotificationAttributesRequest: Codable, Equ
     }
 
     public func validate() throws {
-        try instanceTagAttribute?.validate()
+        try instanceTagAttribute.validate()
     }
 }
 
@@ -14578,6 +14983,57 @@ public struct DescribeInstanceAttributeRequest: Codable, Equatable {
     }
 }
 
+public struct DescribeInstanceConnectEndpointsRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var instanceConnectEndpointIds: ValueStringList?
+    public var maxResults: InstanceConnectEndpointMaxResults?
+    public var nextToken: NextToken?
+
+    public init(dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                instanceConnectEndpointIds: ValueStringList? = nil,
+                maxResults: InstanceConnectEndpointMaxResults? = nil,
+                nextToken: NextToken? = nil) {
+        self.dryRun = dryRun
+        self.filters = filters
+        self.instanceConnectEndpointIds = instanceConnectEndpointIds
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case instanceConnectEndpointIds = "InstanceConnectEndpointId"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsInstanceConnectEndpointMaxResults()
+    }
+}
+
+public struct DescribeInstanceConnectEndpointsResult: Codable, Equatable {
+    public var instanceConnectEndpoints: InstanceConnectEndpointSet?
+    public var nextToken: NextToken?
+
+    public init(instanceConnectEndpoints: InstanceConnectEndpointSet? = nil,
+                nextToken: NextToken? = nil) {
+        self.instanceConnectEndpoints = instanceConnectEndpoints
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case instanceConnectEndpoints = "instanceConnectEndpointSet"
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DescribeInstanceCreditSpecificationsRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
@@ -15020,6 +15476,108 @@ public struct DescribeIpamPoolsResult: Codable, Equatable {
     }
 }
 
+public struct DescribeIpamResourceDiscoveriesRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var ipamResourceDiscoveryIds: ValueStringList?
+    public var maxResults: IpamMaxResults?
+    public var nextToken: NextToken?
+
+    public init(dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                ipamResourceDiscoveryIds: ValueStringList? = nil,
+                maxResults: IpamMaxResults? = nil,
+                nextToken: NextToken? = nil) {
+        self.dryRun = dryRun
+        self.filters = filters
+        self.ipamResourceDiscoveryIds = ipamResourceDiscoveryIds
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case ipamResourceDiscoveryIds = "IpamResourceDiscoveryId"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsIpamMaxResults()
+    }
+}
+
+public struct DescribeIpamResourceDiscoveriesResult: Codable, Equatable {
+    public var ipamResourceDiscoveries: IpamResourceDiscoverySet?
+    public var nextToken: NextToken?
+
+    public init(ipamResourceDiscoveries: IpamResourceDiscoverySet? = nil,
+                nextToken: NextToken? = nil) {
+        self.ipamResourceDiscoveries = ipamResourceDiscoveries
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamResourceDiscoveries = "ipamResourceDiscoverySet"
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeIpamResourceDiscoveryAssociationsRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var ipamResourceDiscoveryAssociationIds: ValueStringList?
+    public var maxResults: IpamMaxResults?
+    public var nextToken: NextToken?
+
+    public init(dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                ipamResourceDiscoveryAssociationIds: ValueStringList? = nil,
+                maxResults: IpamMaxResults? = nil,
+                nextToken: NextToken? = nil) {
+        self.dryRun = dryRun
+        self.filters = filters
+        self.ipamResourceDiscoveryAssociationIds = ipamResourceDiscoveryAssociationIds
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case ipamResourceDiscoveryAssociationIds = "IpamResourceDiscoveryAssociationId"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsIpamMaxResults()
+    }
+}
+
+public struct DescribeIpamResourceDiscoveryAssociationsResult: Codable, Equatable {
+    public var ipamResourceDiscoveryAssociations: IpamResourceDiscoveryAssociationSet?
+    public var nextToken: NextToken?
+
+    public init(ipamResourceDiscoveryAssociations: IpamResourceDiscoveryAssociationSet? = nil,
+                nextToken: NextToken? = nil) {
+        self.ipamResourceDiscoveryAssociations = ipamResourceDiscoveryAssociations
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamResourceDiscoveryAssociations = "ipamResourceDiscoveryAssociationSet"
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DescribeIpamScopesRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var filters: FilterList?
@@ -15228,6 +15786,7 @@ public struct DescribeLaunchTemplateVersionsRequest: Codable, Equatable {
     public var maxVersion: String?
     public var minVersion: String?
     public var nextToken: String?
+    public var resolveAlias: Boolean?
     public var versions: VersionStringList?
 
     public init(dryRun: Boolean? = nil,
@@ -15238,6 +15797,7 @@ public struct DescribeLaunchTemplateVersionsRequest: Codable, Equatable {
                 maxVersion: String? = nil,
                 minVersion: String? = nil,
                 nextToken: String? = nil,
+                resolveAlias: Boolean? = nil,
                 versions: VersionStringList? = nil) {
         self.dryRun = dryRun
         self.filters = filters
@@ -15247,6 +15807,7 @@ public struct DescribeLaunchTemplateVersionsRequest: Codable, Equatable {
         self.maxVersion = maxVersion
         self.minVersion = minVersion
         self.nextToken = nextToken
+        self.resolveAlias = resolveAlias
         self.versions = versions
     }
 
@@ -15259,6 +15820,7 @@ public struct DescribeLaunchTemplateVersionsRequest: Codable, Equatable {
         case maxVersion = "MaxVersion"
         case minVersion = "MinVersion"
         case nextToken = "NextToken"
+        case resolveAlias = "ResolveAlias"
         case versions = "LaunchTemplateVersion"
     }
 
@@ -20381,11 +20943,11 @@ public struct DisableVpcClassicLinkResult: Codable, Equatable {
 public struct DisassociateAddressRequest: Codable, Equatable {
     public var associationId: ElasticIpAssociationId?
     public var dryRun: Boolean?
-    public var publicIp: String?
+    public var publicIp: EipAllocationPublicIp?
 
     public init(associationId: ElasticIpAssociationId? = nil,
                 dryRun: Boolean? = nil,
-                publicIp: String? = nil) {
+                publicIp: EipAllocationPublicIp? = nil) {
         self.associationId = associationId
         self.dryRun = dryRun
         self.publicIp = publicIp
@@ -20445,13 +21007,13 @@ public struct DisassociateClientVpnTargetNetworkResult: Codable, Equatable {
 }
 
 public struct DisassociateEnclaveCertificateIamRoleRequest: Codable, Equatable {
-    public var certificateArn: ResourceArn?
+    public var certificateArn: CertificateId
     public var dryRun: Boolean?
-    public var roleArn: ResourceArn?
+    public var roleArn: RoleId
 
-    public init(certificateArn: ResourceArn? = nil,
+    public init(certificateArn: CertificateId,
                 dryRun: Boolean? = nil,
-                roleArn: ResourceArn? = nil) {
+                roleArn: RoleId) {
         self.certificateArn = certificateArn
         self.dryRun = dryRun
         self.roleArn = roleArn
@@ -20464,8 +21026,6 @@ public struct DisassociateEnclaveCertificateIamRoleRequest: Codable, Equatable {
     }
 
     public func validate() throws {
-        try certificateArn?.validateAsResourceArn()
-        try roleArn?.validateAsResourceArn()
     }
 }
 
@@ -20555,6 +21115,88 @@ public struct DisassociateInstanceEventWindowResult: Codable, Equatable {
     }
 }
 
+public struct DisassociateIpamResourceDiscoveryRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var ipamResourceDiscoveryAssociationId: IpamResourceDiscoveryAssociationId
+
+    public init(dryRun: Boolean? = nil,
+                ipamResourceDiscoveryAssociationId: IpamResourceDiscoveryAssociationId) {
+        self.dryRun = dryRun
+        self.ipamResourceDiscoveryAssociationId = ipamResourceDiscoveryAssociationId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case ipamResourceDiscoveryAssociationId = "IpamResourceDiscoveryAssociationId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisassociateIpamResourceDiscoveryResult: Codable, Equatable {
+    public var ipamResourceDiscoveryAssociation: IpamResourceDiscoveryAssociation?
+
+    public init(ipamResourceDiscoveryAssociation: IpamResourceDiscoveryAssociation? = nil) {
+        self.ipamResourceDiscoveryAssociation = ipamResourceDiscoveryAssociation
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamResourceDiscoveryAssociation
+    }
+
+    public func validate() throws {
+        try ipamResourceDiscoveryAssociation?.validate()
+    }
+}
+
+public struct DisassociateNatGatewayAddressRequest: Codable, Equatable {
+    public var associationIds: EipAssociationIdList
+    public var dryRun: Boolean?
+    public var maxDrainDurationSeconds: DrainSeconds?
+    public var natGatewayId: NatGatewayId
+
+    public init(associationIds: EipAssociationIdList,
+                dryRun: Boolean? = nil,
+                maxDrainDurationSeconds: DrainSeconds? = nil,
+                natGatewayId: NatGatewayId) {
+        self.associationIds = associationIds
+        self.dryRun = dryRun
+        self.maxDrainDurationSeconds = maxDrainDurationSeconds
+        self.natGatewayId = natGatewayId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case associationIds = "AssociationId"
+        case dryRun = "DryRun"
+        case maxDrainDurationSeconds = "MaxDrainDurationSeconds"
+        case natGatewayId = "NatGatewayId"
+    }
+
+    public func validate() throws {
+        try maxDrainDurationSeconds?.validateAsDrainSeconds()
+    }
+}
+
+public struct DisassociateNatGatewayAddressResult: Codable, Equatable {
+    public var natGatewayAddresses: NatGatewayAddressList?
+    public var natGatewayId: NatGatewayId?
+
+    public init(natGatewayAddresses: NatGatewayAddressList? = nil,
+                natGatewayId: NatGatewayId? = nil) {
+        self.natGatewayAddresses = natGatewayAddresses
+        self.natGatewayId = natGatewayId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case natGatewayAddresses = "natGatewayAddressSet"
+        case natGatewayId
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DisassociateRouteTableRequest: Codable, Equatable {
     public var associationId: RouteTableAssociationId
     public var dryRun: Boolean?
@@ -20611,14 +21253,14 @@ public struct DisassociateSubnetCidrBlockResult: Codable, Equatable {
 
 public struct DisassociateTransitGatewayMulticastDomainRequest: Codable, Equatable {
     public var dryRun: Boolean?
-    public var subnetIds: TransitGatewaySubnetIdList?
-    public var transitGatewayAttachmentId: TransitGatewayAttachmentId?
-    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId?
+    public var subnetIds: TransitGatewaySubnetIdList
+    public var transitGatewayAttachmentId: TransitGatewayAttachmentId
+    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId
 
     public init(dryRun: Boolean? = nil,
-                subnetIds: TransitGatewaySubnetIdList? = nil,
-                transitGatewayAttachmentId: TransitGatewayAttachmentId? = nil,
-                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId? = nil) {
+                subnetIds: TransitGatewaySubnetIdList,
+                transitGatewayAttachmentId: TransitGatewayAttachmentId,
+                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId) {
         self.dryRun = dryRun
         self.subnetIds = subnetIds
         self.transitGatewayAttachmentId = transitGatewayAttachmentId
@@ -20840,12 +21482,12 @@ public struct DiskImage: Codable, Equatable {
 public struct DiskImageDescription: Codable, Equatable {
     public var checksum: String?
     public var format: DiskImageFormat?
-    public var importManifestUrl: String?
+    public var importManifestUrl: ImportManifestUrl?
     public var size: Long?
 
     public init(checksum: String? = nil,
                 format: DiskImageFormat? = nil,
-                importManifestUrl: String? = nil,
+                importManifestUrl: ImportManifestUrl? = nil,
                 size: Long? = nil) {
         self.checksum = checksum
         self.format = format
@@ -20867,11 +21509,11 @@ public struct DiskImageDescription: Codable, Equatable {
 public struct DiskImageDetail: Codable, Equatable {
     public var bytes: Long
     public var format: DiskImageFormat
-    public var importManifestUrl: String
+    public var importManifestUrl: ImportManifestUrl
 
     public init(bytes: Long,
                 format: DiskImageFormat,
-                importManifestUrl: String) {
+                importManifestUrl: ImportManifestUrl) {
         self.bytes = bytes
         self.format = format
         self.importManifestUrl = importManifestUrl
@@ -20950,13 +21592,17 @@ public struct DnsEntry: Codable, Equatable {
 
 public struct DnsOptions: Codable, Equatable {
     public var dnsRecordIpType: DnsRecordIpType?
+    public var privateDnsOnlyForInboundResolverEndpoint: Boolean?
 
-    public init(dnsRecordIpType: DnsRecordIpType? = nil) {
+    public init(dnsRecordIpType: DnsRecordIpType? = nil,
+                privateDnsOnlyForInboundResolverEndpoint: Boolean? = nil) {
         self.dnsRecordIpType = dnsRecordIpType
+        self.privateDnsOnlyForInboundResolverEndpoint = privateDnsOnlyForInboundResolverEndpoint
     }
 
     enum CodingKeys: String, CodingKey {
         case dnsRecordIpType
+        case privateDnsOnlyForInboundResolverEndpoint
     }
 
     public func validate() throws {
@@ -20965,13 +21611,17 @@ public struct DnsOptions: Codable, Equatable {
 
 public struct DnsOptionsSpecification: Codable, Equatable {
     public var dnsRecordIpType: DnsRecordIpType?
+    public var privateDnsOnlyForInboundResolverEndpoint: Boolean?
 
-    public init(dnsRecordIpType: DnsRecordIpType? = nil) {
+    public init(dnsRecordIpType: DnsRecordIpType? = nil,
+                privateDnsOnlyForInboundResolverEndpoint: Boolean? = nil) {
         self.dnsRecordIpType = dnsRecordIpType
+        self.privateDnsOnlyForInboundResolverEndpoint = privateDnsOnlyForInboundResolverEndpoint
     }
 
     enum CodingKeys: String, CodingKey {
         case dnsRecordIpType = "DnsRecordIpType"
+        case privateDnsOnlyForInboundResolverEndpoint = "PrivateDnsOnlyForInboundResolverEndpoint"
     }
 
     public func validate() throws {
@@ -21150,6 +21800,78 @@ public struct EbsOptimizedInfo: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct Ec2InstanceConnectEndpoint: Codable, Equatable {
+    public var availabilityZone: String?
+    public var createdAt: MillisecondDateTime?
+    public var dnsName: String?
+    public var fipsDnsName: String?
+    public var instanceConnectEndpointArn: ResourceArn?
+    public var instanceConnectEndpointId: InstanceConnectEndpointId?
+    public var networkInterfaceIds: NetworkInterfaceIdSet?
+    public var ownerId: String?
+    public var preserveClientIp: Boolean?
+    public var securityGroupIds: SecurityGroupIdSet?
+    public var state: Ec2InstanceConnectEndpointState?
+    public var stateMessage: String?
+    public var subnetId: SubnetId?
+    public var tags: TagList?
+    public var vpcId: VpcId?
+
+    public init(availabilityZone: String? = nil,
+                createdAt: MillisecondDateTime? = nil,
+                dnsName: String? = nil,
+                fipsDnsName: String? = nil,
+                instanceConnectEndpointArn: ResourceArn? = nil,
+                instanceConnectEndpointId: InstanceConnectEndpointId? = nil,
+                networkInterfaceIds: NetworkInterfaceIdSet? = nil,
+                ownerId: String? = nil,
+                preserveClientIp: Boolean? = nil,
+                securityGroupIds: SecurityGroupIdSet? = nil,
+                state: Ec2InstanceConnectEndpointState? = nil,
+                stateMessage: String? = nil,
+                subnetId: SubnetId? = nil,
+                tags: TagList? = nil,
+                vpcId: VpcId? = nil) {
+        self.availabilityZone = availabilityZone
+        self.createdAt = createdAt
+        self.dnsName = dnsName
+        self.fipsDnsName = fipsDnsName
+        self.instanceConnectEndpointArn = instanceConnectEndpointArn
+        self.instanceConnectEndpointId = instanceConnectEndpointId
+        self.networkInterfaceIds = networkInterfaceIds
+        self.ownerId = ownerId
+        self.preserveClientIp = preserveClientIp
+        self.securityGroupIds = securityGroupIds
+        self.state = state
+        self.stateMessage = stateMessage
+        self.subnetId = subnetId
+        self.tags = tags
+        self.vpcId = vpcId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case availabilityZone
+        case createdAt
+        case dnsName
+        case fipsDnsName
+        case instanceConnectEndpointArn
+        case instanceConnectEndpointId
+        case networkInterfaceIds = "networkInterfaceIdSet"
+        case ownerId
+        case preserveClientIp
+        case securityGroupIds = "securityGroupIdSet"
+        case state
+        case stateMessage
+        case subnetId
+        case tags = "tagSet"
+        case vpcId
+    }
+
+    public func validate() throws {
+        try instanceConnectEndpointArn?.validateAsResourceArn()
     }
 }
 
@@ -22093,6 +22815,8 @@ public struct Explanation: Codable, Equatable {
     public var direction: String?
     public var elasticLoadBalancerListener: AnalysisComponent?
     public var explanationCode: String?
+    public var firewallStatefulRule: FirewallStatefulRule?
+    public var firewallStatelessRule: FirewallStatelessRule?
     public var ingressRouteTable: AnalysisComponent?
     public var internetGateway: AnalysisComponent?
     public var loadBalancerArn: ResourceArn?
@@ -22145,6 +22869,8 @@ public struct Explanation: Codable, Equatable {
                 direction: String? = nil,
                 elasticLoadBalancerListener: AnalysisComponent? = nil,
                 explanationCode: String? = nil,
+                firewallStatefulRule: FirewallStatefulRule? = nil,
+                firewallStatelessRule: FirewallStatelessRule? = nil,
                 ingressRouteTable: AnalysisComponent? = nil,
                 internetGateway: AnalysisComponent? = nil,
                 loadBalancerArn: ResourceArn? = nil,
@@ -22196,6 +22922,8 @@ public struct Explanation: Codable, Equatable {
         self.direction = direction
         self.elasticLoadBalancerListener = elasticLoadBalancerListener
         self.explanationCode = explanationCode
+        self.firewallStatefulRule = firewallStatefulRule
+        self.firewallStatelessRule = firewallStatelessRule
         self.ingressRouteTable = ingressRouteTable
         self.internetGateway = internetGateway
         self.loadBalancerArn = loadBalancerArn
@@ -22250,6 +22978,8 @@ public struct Explanation: Codable, Equatable {
         case direction
         case elasticLoadBalancerListener
         case explanationCode
+        case firewallStatefulRule
+        case firewallStatelessRule
         case ingressRouteTable
         case internetGateway
         case loadBalancerArn
@@ -22299,6 +23029,8 @@ public struct Explanation: Codable, Equatable {
         try destination?.validate()
         try destinationVpc?.validate()
         try elasticLoadBalancerListener?.validate()
+        try firewallStatefulRule?.validate()
+        try firewallStatelessRule?.validate()
         try ingressRouteTable?.validate()
         try internetGateway?.validate()
         try loadBalancerArn?.validateAsResourceArn()
@@ -22887,6 +23619,116 @@ public struct Filter: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct FilterPortRange: Codable, Equatable {
+    public var fromPort: Port?
+    public var toPort: Port?
+
+    public init(fromPort: Port? = nil,
+                toPort: Port? = nil) {
+        self.fromPort = fromPort
+        self.toPort = toPort
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case fromPort
+        case toPort
+    }
+
+    public func validate() throws {
+        try fromPort?.validateAsPort()
+        try toPort?.validateAsPort()
+    }
+}
+
+public struct FirewallStatefulRule: Codable, Equatable {
+    public var destinationPorts: PortRangeList?
+    public var destinations: ValueStringList?
+    public var direction: String?
+    public var `protocol`: String?
+    public var ruleAction: String?
+    public var ruleGroupArn: ResourceArn?
+    public var sourcePorts: PortRangeList?
+    public var sources: ValueStringList?
+
+    public init(destinationPorts: PortRangeList? = nil,
+                destinations: ValueStringList? = nil,
+                direction: String? = nil,
+                `protocol`: String? = nil,
+                ruleAction: String? = nil,
+                ruleGroupArn: ResourceArn? = nil,
+                sourcePorts: PortRangeList? = nil,
+                sources: ValueStringList? = nil) {
+        self.destinationPorts = destinationPorts
+        self.destinations = destinations
+        self.direction = direction
+        self.`protocol` = `protocol`
+        self.ruleAction = ruleAction
+        self.ruleGroupArn = ruleGroupArn
+        self.sourcePorts = sourcePorts
+        self.sources = sources
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case destinationPorts = "destinationPortSet"
+        case destinations = "destinationSet"
+        case direction
+        case `protocol` = "protocol"
+        case ruleAction
+        case ruleGroupArn
+        case sourcePorts = "sourcePortSet"
+        case sources = "sourceSet"
+    }
+
+    public func validate() throws {
+        try ruleGroupArn?.validateAsResourceArn()
+    }
+}
+
+public struct FirewallStatelessRule: Codable, Equatable {
+    public var destinationPorts: PortRangeList?
+    public var destinations: ValueStringList?
+    public var priority: Priority?
+    public var protocols: ProtocolIntList?
+    public var ruleAction: String?
+    public var ruleGroupArn: ResourceArn?
+    public var sourcePorts: PortRangeList?
+    public var sources: ValueStringList?
+
+    public init(destinationPorts: PortRangeList? = nil,
+                destinations: ValueStringList? = nil,
+                priority: Priority? = nil,
+                protocols: ProtocolIntList? = nil,
+                ruleAction: String? = nil,
+                ruleGroupArn: ResourceArn? = nil,
+                sourcePorts: PortRangeList? = nil,
+                sources: ValueStringList? = nil) {
+        self.destinationPorts = destinationPorts
+        self.destinations = destinations
+        self.priority = priority
+        self.protocols = protocols
+        self.ruleAction = ruleAction
+        self.ruleGroupArn = ruleGroupArn
+        self.sourcePorts = sourcePorts
+        self.sources = sources
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case destinationPorts = "destinationPortSet"
+        case destinations = "destinationSet"
+        case priority
+        case protocols = "protocolSet"
+        case ruleAction
+        case ruleGroupArn
+        case sourcePorts = "sourcePortSet"
+        case sources = "sourceSet"
+    }
+
+    public func validate() throws {
+        try priority?.validateAsPriority()
+        try ruleGroupArn?.validateAsResourceArn()
     }
 }
 
@@ -23567,10 +24409,10 @@ public struct FpgaInfo: Codable, Equatable {
 }
 
 public struct GetAssociatedEnclaveCertificateIamRolesRequest: Codable, Equatable {
-    public var certificateArn: ResourceArn?
+    public var certificateArn: CertificateId
     public var dryRun: Boolean?
 
-    public init(certificateArn: ResourceArn? = nil,
+    public init(certificateArn: CertificateId,
                 dryRun: Boolean? = nil) {
         self.certificateArn = certificateArn
         self.dryRun = dryRun
@@ -23582,7 +24424,6 @@ public struct GetAssociatedEnclaveCertificateIamRolesRequest: Codable, Equatable
     }
 
     public func validate() throws {
-        try certificateArn?.validateAsResourceArn()
     }
 }
 
@@ -24294,6 +25135,116 @@ public struct GetIpamAddressHistoryResult: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case historyRecords = "historyRecordSet"
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetIpamDiscoveredAccountsRequest: Codable, Equatable {
+    public var discoveryRegion: String
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var ipamResourceDiscoveryId: IpamResourceDiscoveryId
+    public var maxResults: IpamMaxResults?
+    public var nextToken: NextToken?
+
+    public init(discoveryRegion: String,
+                dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                ipamResourceDiscoveryId: IpamResourceDiscoveryId,
+                maxResults: IpamMaxResults? = nil,
+                nextToken: NextToken? = nil) {
+        self.discoveryRegion = discoveryRegion
+        self.dryRun = dryRun
+        self.filters = filters
+        self.ipamResourceDiscoveryId = ipamResourceDiscoveryId
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case discoveryRegion = "DiscoveryRegion"
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case ipamResourceDiscoveryId = "IpamResourceDiscoveryId"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsIpamMaxResults()
+    }
+}
+
+public struct GetIpamDiscoveredAccountsResult: Codable, Equatable {
+    public var ipamDiscoveredAccounts: IpamDiscoveredAccountSet?
+    public var nextToken: NextToken?
+
+    public init(ipamDiscoveredAccounts: IpamDiscoveredAccountSet? = nil,
+                nextToken: NextToken? = nil) {
+        self.ipamDiscoveredAccounts = ipamDiscoveredAccounts
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamDiscoveredAccounts = "ipamDiscoveredAccountSet"
+        case nextToken
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetIpamDiscoveredResourceCidrsRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var ipamResourceDiscoveryId: IpamResourceDiscoveryId
+    public var maxResults: IpamMaxResults?
+    public var nextToken: NextToken?
+    public var resourceRegion: String
+
+    public init(dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                ipamResourceDiscoveryId: IpamResourceDiscoveryId,
+                maxResults: IpamMaxResults? = nil,
+                nextToken: NextToken? = nil,
+                resourceRegion: String) {
+        self.dryRun = dryRun
+        self.filters = filters
+        self.ipamResourceDiscoveryId = ipamResourceDiscoveryId
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.resourceRegion = resourceRegion
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case ipamResourceDiscoveryId = "IpamResourceDiscoveryId"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case resourceRegion = "ResourceRegion"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsIpamMaxResults()
+    }
+}
+
+public struct GetIpamDiscoveredResourceCidrsResult: Codable, Equatable {
+    public var ipamDiscoveredResourceCidrs: IpamDiscoveredResourceCidrSet?
+    public var nextToken: NextToken?
+
+    public init(ipamDiscoveredResourceCidrs: IpamDiscoveredResourceCidrSet? = nil,
+                nextToken: NextToken? = nil) {
+        self.ipamDiscoveredResourceCidrs = ipamDiscoveredResourceCidrs
+        self.nextToken = nextToken
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamDiscoveredResourceCidrs = "ipamDiscoveredResourceCidrSet"
         case nextToken
     }
 
@@ -25028,13 +25979,13 @@ public struct GetTransitGatewayMulticastDomainAssociationsRequest: Codable, Equa
     public var filters: FilterList?
     public var maxResults: TransitGatewayMaxResults?
     public var nextToken: String?
-    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId?
+    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
                 maxResults: TransitGatewayMaxResults? = nil,
                 nextToken: String? = nil,
-                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId? = nil) {
+                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId) {
         self.dryRun = dryRun
         self.filters = filters
         self.maxResults = maxResults
@@ -25486,6 +26437,65 @@ public struct GetVpnConnectionDeviceTypesResult: Codable, Equatable {
     }
 }
 
+public struct GetVpnTunnelReplacementStatusRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var vpnConnectionId: VpnConnectionId
+    public var vpnTunnelOutsideIpAddress: String
+
+    public init(dryRun: Boolean? = nil,
+                vpnConnectionId: VpnConnectionId,
+                vpnTunnelOutsideIpAddress: String) {
+        self.dryRun = dryRun
+        self.vpnConnectionId = vpnConnectionId
+        self.vpnTunnelOutsideIpAddress = vpnTunnelOutsideIpAddress
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case vpnConnectionId = "VpnConnectionId"
+        case vpnTunnelOutsideIpAddress = "VpnTunnelOutsideIpAddress"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetVpnTunnelReplacementStatusResult: Codable, Equatable {
+    public var customerGatewayId: CustomerGatewayId?
+    public var maintenanceDetails: MaintenanceDetails?
+    public var transitGatewayId: TransitGatewayId?
+    public var vpnConnectionId: VpnConnectionId?
+    public var vpnGatewayId: VpnGatewayId?
+    public var vpnTunnelOutsideIpAddress: String?
+
+    public init(customerGatewayId: CustomerGatewayId? = nil,
+                maintenanceDetails: MaintenanceDetails? = nil,
+                transitGatewayId: TransitGatewayId? = nil,
+                vpnConnectionId: VpnConnectionId? = nil,
+                vpnGatewayId: VpnGatewayId? = nil,
+                vpnTunnelOutsideIpAddress: String? = nil) {
+        self.customerGatewayId = customerGatewayId
+        self.maintenanceDetails = maintenanceDetails
+        self.transitGatewayId = transitGatewayId
+        self.vpnConnectionId = vpnConnectionId
+        self.vpnGatewayId = vpnGatewayId
+        self.vpnTunnelOutsideIpAddress = vpnTunnelOutsideIpAddress
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customerGatewayId
+        case maintenanceDetails
+        case transitGatewayId
+        case vpnConnectionId
+        case vpnGatewayId
+        case vpnTunnelOutsideIpAddress
+    }
+
+    public func validate() throws {
+        try maintenanceDetails?.validate()
+    }
+}
+
 public struct GpuDeviceInfo: Codable, Equatable {
     public var count: GpuDeviceCount?
     public var manufacturer: GpuDeviceManufacturerName?
@@ -25648,12 +26658,14 @@ public struct HistoryRecordEntry: Codable, Equatable {
 public struct Host: Codable, Equatable {
     public var allocationTime: DateTime?
     public var allowsMultipleInstanceTypes: AllowsMultipleInstanceTypes?
+    public var assetId: AssetId?
     public var autoPlacement: AutoPlacement?
     public var availabilityZone: String?
     public var availabilityZoneId: String?
     public var availableCapacity: AvailableCapacity?
     public var clientToken: String?
     public var hostId: String?
+    public var hostMaintenance: HostMaintenance?
     public var hostProperties: HostProperties?
     public var hostRecovery: HostRecovery?
     public var hostReservationId: String?
@@ -25667,12 +26679,14 @@ public struct Host: Codable, Equatable {
 
     public init(allocationTime: DateTime? = nil,
                 allowsMultipleInstanceTypes: AllowsMultipleInstanceTypes? = nil,
+                assetId: AssetId? = nil,
                 autoPlacement: AutoPlacement? = nil,
                 availabilityZone: String? = nil,
                 availabilityZoneId: String? = nil,
                 availableCapacity: AvailableCapacity? = nil,
                 clientToken: String? = nil,
                 hostId: String? = nil,
+                hostMaintenance: HostMaintenance? = nil,
                 hostProperties: HostProperties? = nil,
                 hostRecovery: HostRecovery? = nil,
                 hostReservationId: String? = nil,
@@ -25685,12 +26699,14 @@ public struct Host: Codable, Equatable {
                 tags: TagList? = nil) {
         self.allocationTime = allocationTime
         self.allowsMultipleInstanceTypes = allowsMultipleInstanceTypes
+        self.assetId = assetId
         self.autoPlacement = autoPlacement
         self.availabilityZone = availabilityZone
         self.availabilityZoneId = availabilityZoneId
         self.availableCapacity = availableCapacity
         self.clientToken = clientToken
         self.hostId = hostId
+        self.hostMaintenance = hostMaintenance
         self.hostProperties = hostProperties
         self.hostRecovery = hostRecovery
         self.hostReservationId = hostReservationId
@@ -25706,12 +26722,14 @@ public struct Host: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case allocationTime
         case allowsMultipleInstanceTypes
+        case assetId
         case autoPlacement
         case availabilityZone
         case availabilityZoneId
         case availableCapacity
         case clientToken
         case hostId
+        case hostMaintenance
         case hostProperties
         case hostRecovery
         case hostReservationId
@@ -26241,14 +27259,14 @@ public struct ImageDiskContainer: Codable, Equatable {
     public var deviceName: String?
     public var format: String?
     public var snapshotId: SnapshotId?
-    public var url: String?
+    public var url: SensitiveUrl?
     public var userBucket: UserBucket?
 
     public init(description: String? = nil,
                 deviceName: String? = nil,
                 format: String? = nil,
                 snapshotId: SnapshotId? = nil,
-                url: String? = nil,
+                url: SensitiveUrl? = nil,
                 userBucket: UserBucket? = nil) {
         self.description = description
         self.deviceName = deviceName
@@ -27062,6 +28080,7 @@ public struct Instance: Codable, Equatable {
     public var capacityReservationSpecification: CapacityReservationSpecificationResponse?
     public var clientToken: String?
     public var cpuOptions: CpuOptions?
+    public var currentInstanceBootMode: InstanceBootModeValues?
     public var ebsOptimized: Boolean?
     public var elasticGpuAssociations: ElasticGpuAssociationList?
     public var elasticInferenceAcceleratorAssociations: ElasticInferenceAcceleratorAssociationList?
@@ -27119,6 +28138,7 @@ public struct Instance: Codable, Equatable {
                 capacityReservationSpecification: CapacityReservationSpecificationResponse? = nil,
                 clientToken: String? = nil,
                 cpuOptions: CpuOptions? = nil,
+                currentInstanceBootMode: InstanceBootModeValues? = nil,
                 ebsOptimized: Boolean? = nil,
                 elasticGpuAssociations: ElasticGpuAssociationList? = nil,
                 elasticInferenceAcceleratorAssociations: ElasticInferenceAcceleratorAssociationList? = nil,
@@ -27175,6 +28195,7 @@ public struct Instance: Codable, Equatable {
         self.capacityReservationSpecification = capacityReservationSpecification
         self.clientToken = clientToken
         self.cpuOptions = cpuOptions
+        self.currentInstanceBootMode = currentInstanceBootMode
         self.ebsOptimized = ebsOptimized
         self.elasticGpuAssociations = elasticGpuAssociations
         self.elasticInferenceAcceleratorAssociations = elasticInferenceAcceleratorAssociations
@@ -27234,6 +28255,7 @@ public struct Instance: Codable, Equatable {
         case capacityReservationSpecification
         case clientToken
         case cpuOptions
+        case currentInstanceBootMode
         case ebsOptimized
         case elasticGpuAssociations = "elasticGpuAssociationSet"
         case elasticInferenceAcceleratorAssociations = "elasticInferenceAcceleratorAssociationSet"
@@ -27503,10 +28525,10 @@ public struct InstanceCreditSpecification: Codable, Equatable {
 
 public struct InstanceCreditSpecificationRequest: Codable, Equatable {
     public var cpuCredits: String?
-    public var instanceId: InstanceId?
+    public var instanceId: InstanceId
 
     public init(cpuCredits: String? = nil,
-                instanceId: InstanceId? = nil) {
+                instanceId: InstanceId) {
         self.cpuCredits = cpuCredits
         self.instanceId = instanceId
     }
@@ -28463,11 +29485,11 @@ public struct InstanceRequirementsWithMetadataRequest: Codable, Equatable {
 public struct InstanceSpecification: Codable, Equatable {
     public var excludeBootVolume: Boolean?
     public var excludeDataVolumeIds: VolumeIdStringList?
-    public var instanceId: InstanceId?
+    public var instanceId: InstanceIdWithVolumeResolver
 
     public init(excludeBootVolume: Boolean? = nil,
                 excludeDataVolumeIds: VolumeIdStringList? = nil,
-                instanceId: InstanceId? = nil) {
+                instanceId: InstanceIdWithVolumeResolver) {
         self.excludeBootVolume = excludeBootVolume
         self.excludeDataVolumeIds = excludeDataVolumeIds
         self.instanceId = instanceId
@@ -28710,6 +29732,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
     public var instanceType: InstanceType?
     public var memoryInfo: MemoryInfo?
     public var networkInfo: NetworkInfo?
+    public var nitroEnclavesSupport: NitroEnclavesSupport?
     public var placementGroupInfo: PlacementGroupInfo?
     public var processorInfo: ProcessorInfo?
     public var supportedBootModes: BootModeTypeList?
@@ -28735,6 +29758,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
                 instanceType: InstanceType? = nil,
                 memoryInfo: MemoryInfo? = nil,
                 networkInfo: NetworkInfo? = nil,
+                nitroEnclavesSupport: NitroEnclavesSupport? = nil,
                 placementGroupInfo: PlacementGroupInfo? = nil,
                 processorInfo: ProcessorInfo? = nil,
                 supportedBootModes: BootModeTypeList? = nil,
@@ -28759,6 +29783,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
         self.instanceType = instanceType
         self.memoryInfo = memoryInfo
         self.networkInfo = networkInfo
+        self.nitroEnclavesSupport = nitroEnclavesSupport
         self.placementGroupInfo = placementGroupInfo
         self.processorInfo = processorInfo
         self.supportedBootModes = supportedBootModes
@@ -28786,6 +29811,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
         case instanceType
         case memoryInfo
         case networkInfo
+        case nitroEnclavesSupport
         case placementGroupInfo
         case processorInfo
         case supportedBootModes
@@ -28987,6 +30013,8 @@ public struct IpRange: Codable, Equatable {
 }
 
 public struct Ipam: Codable, Equatable {
+    public var defaultResourceDiscoveryAssociationId: IpamResourceDiscoveryAssociationId?
+    public var defaultResourceDiscoveryId: IpamResourceDiscoveryId?
     public var description: String?
     public var ipamArn: ResourceArn?
     public var ipamId: IpamId?
@@ -28995,11 +30023,14 @@ public struct Ipam: Codable, Equatable {
     public var ownerId: String?
     public var privateDefaultScopeId: IpamScopeId?
     public var publicDefaultScopeId: IpamScopeId?
+    public var resourceDiscoveryAssociationCount: Integer?
     public var scopeCount: Integer?
     public var state: IpamState?
     public var tags: TagList?
 
-    public init(description: String? = nil,
+    public init(defaultResourceDiscoveryAssociationId: IpamResourceDiscoveryAssociationId? = nil,
+                defaultResourceDiscoveryId: IpamResourceDiscoveryId? = nil,
+                description: String? = nil,
                 ipamArn: ResourceArn? = nil,
                 ipamId: IpamId? = nil,
                 ipamRegion: String? = nil,
@@ -29007,9 +30038,12 @@ public struct Ipam: Codable, Equatable {
                 ownerId: String? = nil,
                 privateDefaultScopeId: IpamScopeId? = nil,
                 publicDefaultScopeId: IpamScopeId? = nil,
+                resourceDiscoveryAssociationCount: Integer? = nil,
                 scopeCount: Integer? = nil,
                 state: IpamState? = nil,
                 tags: TagList? = nil) {
+        self.defaultResourceDiscoveryAssociationId = defaultResourceDiscoveryAssociationId
+        self.defaultResourceDiscoveryId = defaultResourceDiscoveryId
         self.description = description
         self.ipamArn = ipamArn
         self.ipamId = ipamId
@@ -29018,12 +30052,15 @@ public struct Ipam: Codable, Equatable {
         self.ownerId = ownerId
         self.privateDefaultScopeId = privateDefaultScopeId
         self.publicDefaultScopeId = publicDefaultScopeId
+        self.resourceDiscoveryAssociationCount = resourceDiscoveryAssociationCount
         self.scopeCount = scopeCount
         self.state = state
         self.tags = tags
     }
 
     enum CodingKeys: String, CodingKey {
+        case defaultResourceDiscoveryAssociationId
+        case defaultResourceDiscoveryId
         case description
         case ipamArn
         case ipamId
@@ -29032,6 +30069,7 @@ public struct Ipam: Codable, Equatable {
         case ownerId
         case privateDefaultScopeId
         case publicDefaultScopeId
+        case resourceDiscoveryAssociationCount
         case scopeCount
         case state
         case tags = "tagSet"
@@ -29116,6 +30154,108 @@ public struct IpamCidrAuthorizationContext: Codable, Equatable {
     }
 }
 
+public struct IpamDiscoveredAccount: Codable, Equatable {
+    public var accountId: String?
+    public var discoveryRegion: String?
+    public var failureReason: IpamDiscoveryFailureReason?
+    public var lastAttemptedDiscoveryTime: MillisecondDateTime?
+    public var lastSuccessfulDiscoveryTime: MillisecondDateTime?
+
+    public init(accountId: String? = nil,
+                discoveryRegion: String? = nil,
+                failureReason: IpamDiscoveryFailureReason? = nil,
+                lastAttemptedDiscoveryTime: MillisecondDateTime? = nil,
+                lastSuccessfulDiscoveryTime: MillisecondDateTime? = nil) {
+        self.accountId = accountId
+        self.discoveryRegion = discoveryRegion
+        self.failureReason = failureReason
+        self.lastAttemptedDiscoveryTime = lastAttemptedDiscoveryTime
+        self.lastSuccessfulDiscoveryTime = lastSuccessfulDiscoveryTime
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case accountId
+        case discoveryRegion
+        case failureReason
+        case lastAttemptedDiscoveryTime
+        case lastSuccessfulDiscoveryTime
+    }
+
+    public func validate() throws {
+        try failureReason?.validate()
+    }
+}
+
+public struct IpamDiscoveredResourceCidr: Codable, Equatable {
+    public var ipUsage: BoxedDouble?
+    public var ipamResourceDiscoveryId: IpamResourceDiscoveryId?
+    public var resourceCidr: String?
+    public var resourceId: String?
+    public var resourceOwnerId: String?
+    public var resourceRegion: String?
+    public var resourceTags: IpamResourceTagList?
+    public var resourceType: IpamResourceType?
+    public var sampleTime: MillisecondDateTime?
+    public var vpcId: String?
+
+    public init(ipUsage: BoxedDouble? = nil,
+                ipamResourceDiscoveryId: IpamResourceDiscoveryId? = nil,
+                resourceCidr: String? = nil,
+                resourceId: String? = nil,
+                resourceOwnerId: String? = nil,
+                resourceRegion: String? = nil,
+                resourceTags: IpamResourceTagList? = nil,
+                resourceType: IpamResourceType? = nil,
+                sampleTime: MillisecondDateTime? = nil,
+                vpcId: String? = nil) {
+        self.ipUsage = ipUsage
+        self.ipamResourceDiscoveryId = ipamResourceDiscoveryId
+        self.resourceCidr = resourceCidr
+        self.resourceId = resourceId
+        self.resourceOwnerId = resourceOwnerId
+        self.resourceRegion = resourceRegion
+        self.resourceTags = resourceTags
+        self.resourceType = resourceType
+        self.sampleTime = sampleTime
+        self.vpcId = vpcId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipUsage
+        case ipamResourceDiscoveryId
+        case resourceCidr
+        case resourceId
+        case resourceOwnerId
+        case resourceRegion
+        case resourceTags = "resourceTagSet"
+        case resourceType
+        case sampleTime
+        case vpcId
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct IpamDiscoveryFailureReason: Codable, Equatable {
+    public var code: IpamDiscoveryFailureCode?
+    public var message: String?
+
+    public init(code: IpamDiscoveryFailureCode? = nil,
+                message: String? = nil) {
+        self.code = code
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case code
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct IpamOperatingRegion: Codable, Equatable {
     public var regionName: String?
 
@@ -29149,6 +30289,7 @@ public struct IpamPool: Codable, Equatable {
     public var locale: String?
     public var ownerId: String?
     public var poolDepth: Integer?
+    public var publicIpSource: IpamPoolPublicIpSource?
     public var publiclyAdvertisable: Boolean?
     public var sourceIpamPoolId: IpamPoolId?
     public var state: IpamPoolState?
@@ -29172,6 +30313,7 @@ public struct IpamPool: Codable, Equatable {
                 locale: String? = nil,
                 ownerId: String? = nil,
                 poolDepth: Integer? = nil,
+                publicIpSource: IpamPoolPublicIpSource? = nil,
                 publiclyAdvertisable: Boolean? = nil,
                 sourceIpamPoolId: IpamPoolId? = nil,
                 state: IpamPoolState? = nil,
@@ -29194,6 +30336,7 @@ public struct IpamPool: Codable, Equatable {
         self.locale = locale
         self.ownerId = ownerId
         self.poolDepth = poolDepth
+        self.publicIpSource = publicIpSource
         self.publiclyAdvertisable = publiclyAdvertisable
         self.sourceIpamPoolId = sourceIpamPoolId
         self.state = state
@@ -29219,6 +30362,7 @@ public struct IpamPool: Codable, Equatable {
         case locale
         case ownerId
         case poolDepth
+        case publicIpSource
         case publiclyAdvertisable
         case sourceIpamPoolId
         case state
@@ -29278,19 +30422,27 @@ public struct IpamPoolAllocation: Codable, Equatable {
 public struct IpamPoolCidr: Codable, Equatable {
     public var cidr: String?
     public var failureReason: IpamPoolCidrFailureReason?
+    public var ipamPoolCidrId: IpamPoolCidrId?
+    public var netmaskLength: Integer?
     public var state: IpamPoolCidrState?
 
     public init(cidr: String? = nil,
                 failureReason: IpamPoolCidrFailureReason? = nil,
+                ipamPoolCidrId: IpamPoolCidrId? = nil,
+                netmaskLength: Integer? = nil,
                 state: IpamPoolCidrState? = nil) {
         self.cidr = cidr
         self.failureReason = failureReason
+        self.ipamPoolCidrId = ipamPoolCidrId
+        self.netmaskLength = netmaskLength
         self.state = state
     }
 
     enum CodingKeys: String, CodingKey {
         case cidr
         case failureReason
+        case ipamPoolCidrId
+        case netmaskLength
         case state
     }
 
@@ -29386,6 +30538,109 @@ public struct IpamResourceCidr: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct IpamResourceDiscovery: Codable, Equatable {
+    public var description: String?
+    public var ipamResourceDiscoveryArn: String?
+    public var ipamResourceDiscoveryId: IpamResourceDiscoveryId?
+    public var ipamResourceDiscoveryRegion: String?
+    public var isDefault: Boolean?
+    public var operatingRegions: IpamOperatingRegionSet?
+    public var ownerId: String?
+    public var state: IpamResourceDiscoveryState?
+    public var tags: TagList?
+
+    public init(description: String? = nil,
+                ipamResourceDiscoveryArn: String? = nil,
+                ipamResourceDiscoveryId: IpamResourceDiscoveryId? = nil,
+                ipamResourceDiscoveryRegion: String? = nil,
+                isDefault: Boolean? = nil,
+                operatingRegions: IpamOperatingRegionSet? = nil,
+                ownerId: String? = nil,
+                state: IpamResourceDiscoveryState? = nil,
+                tags: TagList? = nil) {
+        self.description = description
+        self.ipamResourceDiscoveryArn = ipamResourceDiscoveryArn
+        self.ipamResourceDiscoveryId = ipamResourceDiscoveryId
+        self.ipamResourceDiscoveryRegion = ipamResourceDiscoveryRegion
+        self.isDefault = isDefault
+        self.operatingRegions = operatingRegions
+        self.ownerId = ownerId
+        self.state = state
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case description
+        case ipamResourceDiscoveryArn
+        case ipamResourceDiscoveryId
+        case ipamResourceDiscoveryRegion
+        case isDefault
+        case operatingRegions = "operatingRegionSet"
+        case ownerId
+        case state
+        case tags = "tagSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct IpamResourceDiscoveryAssociation: Codable, Equatable {
+    public var ipamArn: ResourceArn?
+    public var ipamId: IpamId?
+    public var ipamRegion: String?
+    public var ipamResourceDiscoveryAssociationArn: String?
+    public var ipamResourceDiscoveryAssociationId: IpamResourceDiscoveryAssociationId?
+    public var ipamResourceDiscoveryId: IpamResourceDiscoveryId?
+    public var isDefault: Boolean?
+    public var ownerId: String?
+    public var resourceDiscoveryStatus: IpamAssociatedResourceDiscoveryStatus?
+    public var state: IpamResourceDiscoveryAssociationState?
+    public var tags: TagList?
+
+    public init(ipamArn: ResourceArn? = nil,
+                ipamId: IpamId? = nil,
+                ipamRegion: String? = nil,
+                ipamResourceDiscoveryAssociationArn: String? = nil,
+                ipamResourceDiscoveryAssociationId: IpamResourceDiscoveryAssociationId? = nil,
+                ipamResourceDiscoveryId: IpamResourceDiscoveryId? = nil,
+                isDefault: Boolean? = nil,
+                ownerId: String? = nil,
+                resourceDiscoveryStatus: IpamAssociatedResourceDiscoveryStatus? = nil,
+                state: IpamResourceDiscoveryAssociationState? = nil,
+                tags: TagList? = nil) {
+        self.ipamArn = ipamArn
+        self.ipamId = ipamId
+        self.ipamRegion = ipamRegion
+        self.ipamResourceDiscoveryAssociationArn = ipamResourceDiscoveryAssociationArn
+        self.ipamResourceDiscoveryAssociationId = ipamResourceDiscoveryAssociationId
+        self.ipamResourceDiscoveryId = ipamResourceDiscoveryId
+        self.isDefault = isDefault
+        self.ownerId = ownerId
+        self.resourceDiscoveryStatus = resourceDiscoveryStatus
+        self.state = state
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamArn
+        case ipamId
+        case ipamRegion
+        case ipamResourceDiscoveryAssociationArn
+        case ipamResourceDiscoveryAssociationId
+        case ipamResourceDiscoveryId
+        case isDefault
+        case ownerId
+        case resourceDiscoveryStatus
+        case state
+        case tags = "tagSet"
+    }
+
+    public func validate() throws {
+        try ipamArn?.validateAsResourceArn()
     }
 }
 
@@ -29785,7 +31040,7 @@ public struct LaunchSpecification: Codable, Equatable {
     public var ramdiskId: String?
     public var securityGroups: GroupIdentifierList?
     public var subnetId: String?
-    public var userData: String?
+    public var userData: SensitiveUserData?
 
     public init(addressingType: String? = nil,
                 blockDeviceMappings: BlockDeviceMappingList? = nil,
@@ -29801,7 +31056,7 @@ public struct LaunchSpecification: Codable, Equatable {
                 ramdiskId: String? = nil,
                 securityGroups: GroupIdentifierList? = nil,
                 subnetId: String? = nil,
-                userData: String? = nil) {
+                userData: SensitiveUserData? = nil) {
         self.addressingType = addressingType
         self.blockDeviceMappings = blockDeviceMappings
         self.ebsOptimized = ebsOptimized
@@ -30022,16 +31277,20 @@ public struct LaunchTemplateConfig: Codable, Equatable {
 }
 
 public struct LaunchTemplateCpuOptions: Codable, Equatable {
+    public var amdSevSnp: AmdSevSnpSpecification?
     public var coreCount: Integer?
     public var threadsPerCore: Integer?
 
-    public init(coreCount: Integer? = nil,
+    public init(amdSevSnp: AmdSevSnpSpecification? = nil,
+                coreCount: Integer? = nil,
                 threadsPerCore: Integer? = nil) {
+        self.amdSevSnp = amdSevSnp
         self.coreCount = coreCount
         self.threadsPerCore = threadsPerCore
     }
 
     enum CodingKeys: String, CodingKey {
+        case amdSevSnp
         case coreCount
         case threadsPerCore
     }
@@ -30041,16 +31300,20 @@ public struct LaunchTemplateCpuOptions: Codable, Equatable {
 }
 
 public struct LaunchTemplateCpuOptionsRequest: Codable, Equatable {
+    public var amdSevSnp: AmdSevSnpSpecification?
     public var coreCount: Integer?
     public var threadsPerCore: Integer?
 
-    public init(coreCount: Integer? = nil,
+    public init(amdSevSnp: AmdSevSnpSpecification? = nil,
+                coreCount: Integer? = nil,
                 threadsPerCore: Integer? = nil) {
+        self.amdSevSnp = amdSevSnp
         self.coreCount = coreCount
         self.threadsPerCore = threadsPerCore
     }
 
     enum CodingKeys: String, CodingKey {
+        case amdSevSnp = "AmdSevSnp"
         case coreCount = "CoreCount"
         case threadsPerCore = "ThreadsPerCore"
     }
@@ -31237,6 +32500,7 @@ public struct LocalGateway: Codable, Equatable {
 public struct LocalGatewayRoute: Codable, Equatable {
     public var coipPoolId: CoipPoolId?
     public var destinationCidrBlock: String?
+    public var destinationPrefixListId: PrefixListResourceId?
     public var localGatewayRouteTableArn: ResourceArn?
     public var localGatewayRouteTableId: LocalGatewayRoutetableId?
     public var localGatewayVirtualInterfaceGroupId: LocalGatewayVirtualInterfaceGroupId?
@@ -31248,6 +32512,7 @@ public struct LocalGatewayRoute: Codable, Equatable {
 
     public init(coipPoolId: CoipPoolId? = nil,
                 destinationCidrBlock: String? = nil,
+                destinationPrefixListId: PrefixListResourceId? = nil,
                 localGatewayRouteTableArn: ResourceArn? = nil,
                 localGatewayRouteTableId: LocalGatewayRoutetableId? = nil,
                 localGatewayVirtualInterfaceGroupId: LocalGatewayVirtualInterfaceGroupId? = nil,
@@ -31258,6 +32523,7 @@ public struct LocalGatewayRoute: Codable, Equatable {
                 type: LocalGatewayRouteType? = nil) {
         self.coipPoolId = coipPoolId
         self.destinationCidrBlock = destinationCidrBlock
+        self.destinationPrefixListId = destinationPrefixListId
         self.localGatewayRouteTableArn = localGatewayRouteTableArn
         self.localGatewayRouteTableId = localGatewayRouteTableId
         self.localGatewayVirtualInterfaceGroupId = localGatewayVirtualInterfaceGroupId
@@ -31271,6 +32537,7 @@ public struct LocalGatewayRoute: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case coipPoolId
         case destinationCidrBlock
+        case destinationPrefixListId
         case localGatewayRouteTableArn
         case localGatewayRouteTableId
         case localGatewayVirtualInterfaceGroupId
@@ -31495,6 +32762,29 @@ public struct LocalGatewayVirtualInterfaceGroup: Codable, Equatable {
         case localGatewayVirtualInterfaceIds = "localGatewayVirtualInterfaceIdSet"
         case ownerId
         case tags = "tagSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct MaintenanceDetails: Codable, Equatable {
+    public var lastMaintenanceApplied: MillisecondDateTime?
+    public var maintenanceAutoAppliedAfter: MillisecondDateTime?
+    public var pendingMaintenance: String?
+
+    public init(lastMaintenanceApplied: MillisecondDateTime? = nil,
+                maintenanceAutoAppliedAfter: MillisecondDateTime? = nil,
+                pendingMaintenance: String? = nil) {
+        self.lastMaintenanceApplied = lastMaintenanceApplied
+        self.maintenanceAutoAppliedAfter = maintenanceAutoAppliedAfter
+        self.pendingMaintenance = pendingMaintenance
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case lastMaintenanceApplied
+        case maintenanceAutoAppliedAfter
+        case pendingMaintenance
     }
 
     public func validate() throws {
@@ -32130,17 +33420,20 @@ public struct ModifyFpgaImageAttributeResult: Codable, Equatable {
 public struct ModifyHostsRequest: Codable, Equatable {
     public var autoPlacement: AutoPlacement?
     public var hostIds: RequestHostIdList
+    public var hostMaintenance: HostMaintenance?
     public var hostRecovery: HostRecovery?
     public var instanceFamily: String?
     public var instanceType: String?
 
     public init(autoPlacement: AutoPlacement? = nil,
                 hostIds: RequestHostIdList,
+                hostMaintenance: HostMaintenance? = nil,
                 hostRecovery: HostRecovery? = nil,
                 instanceFamily: String? = nil,
                 instanceType: String? = nil) {
         self.autoPlacement = autoPlacement
         self.hostIds = hostIds
+        self.hostMaintenance = hostMaintenance
         self.hostRecovery = hostRecovery
         self.instanceFamily = instanceFamily
         self.instanceType = instanceType
@@ -32149,6 +33442,7 @@ public struct ModifyHostsRequest: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case autoPlacement
         case hostIds = "hostId"
+        case hostMaintenance = "HostMaintenance"
         case hostRecovery = "HostRecovery"
         case instanceFamily = "InstanceFamily"
         case instanceType = "InstanceType"
@@ -32224,6 +33518,7 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
     public var description: AttributeValue?
     public var dryRun: Boolean?
     public var imageId: ImageId
+    public var imdsSupport: AttributeValue?
     public var launchPermission: LaunchPermissionModifications?
     public var operationType: OperationType?
     public var organizationArns: OrganizationArnStringList?
@@ -32237,6 +33532,7 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
                 description: AttributeValue? = nil,
                 dryRun: Boolean? = nil,
                 imageId: ImageId,
+                imdsSupport: AttributeValue? = nil,
                 launchPermission: LaunchPermissionModifications? = nil,
                 operationType: OperationType? = nil,
                 organizationArns: OrganizationArnStringList? = nil,
@@ -32249,6 +33545,7 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
         self.description = description
         self.dryRun = dryRun
         self.imageId = imageId
+        self.imdsSupport = imdsSupport
         self.launchPermission = launchPermission
         self.operationType = operationType
         self.organizationArns = organizationArns
@@ -32264,6 +33561,7 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
         case description = "Description"
         case dryRun
         case imageId = "ImageId"
+        case imdsSupport = "ImdsSupport"
         case launchPermission = "LaunchPermission"
         case operationType = "OperationType"
         case organizationArns = "OrganizationArn"
@@ -32276,6 +33574,7 @@ public struct ModifyImageAttributeRequest: Codable, Equatable {
 
     public func validate() throws {
         try description?.validate()
+        try imdsSupport?.validate()
         try launchPermission?.validate()
     }
 }
@@ -32858,6 +34157,55 @@ public struct ModifyIpamResourceCidrResult: Codable, Equatable {
     }
 }
 
+public struct ModifyIpamResourceDiscoveryRequest: Codable, Equatable {
+    public var addOperatingRegions: AddIpamOperatingRegionSet?
+    public var description: String?
+    public var dryRun: Boolean?
+    public var ipamResourceDiscoveryId: IpamResourceDiscoveryId
+    public var removeOperatingRegions: RemoveIpamOperatingRegionSet?
+
+    public init(addOperatingRegions: AddIpamOperatingRegionSet? = nil,
+                description: String? = nil,
+                dryRun: Boolean? = nil,
+                ipamResourceDiscoveryId: IpamResourceDiscoveryId,
+                removeOperatingRegions: RemoveIpamOperatingRegionSet? = nil) {
+        self.addOperatingRegions = addOperatingRegions
+        self.description = description
+        self.dryRun = dryRun
+        self.ipamResourceDiscoveryId = ipamResourceDiscoveryId
+        self.removeOperatingRegions = removeOperatingRegions
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case addOperatingRegions = "AddOperatingRegion"
+        case description = "Description"
+        case dryRun = "DryRun"
+        case ipamResourceDiscoveryId = "IpamResourceDiscoveryId"
+        case removeOperatingRegions = "RemoveOperatingRegion"
+    }
+
+    public func validate() throws {
+        try addOperatingRegions?.validateAsAddIpamOperatingRegionSet()
+        try removeOperatingRegions?.validateAsRemoveIpamOperatingRegionSet()
+    }
+}
+
+public struct ModifyIpamResourceDiscoveryResult: Codable, Equatable {
+    public var ipamResourceDiscovery: IpamResourceDiscovery?
+
+    public init(ipamResourceDiscovery: IpamResourceDiscovery? = nil) {
+        self.ipamResourceDiscovery = ipamResourceDiscovery
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipamResourceDiscovery
+    }
+
+    public func validate() throws {
+        try ipamResourceDiscovery?.validate()
+    }
+}
+
 public struct ModifyIpamResult: Codable, Equatable {
     public var ipam: Ipam?
 
@@ -32962,18 +34310,21 @@ public struct ModifyLaunchTemplateResult: Codable, Equatable {
 }
 
 public struct ModifyLocalGatewayRouteRequest: Codable, Equatable {
-    public var destinationCidrBlock: String
+    public var destinationCidrBlock: String?
+    public var destinationPrefixListId: PrefixListResourceId?
     public var dryRun: Boolean?
     public var localGatewayRouteTableId: LocalGatewayRoutetableId
     public var localGatewayVirtualInterfaceGroupId: LocalGatewayVirtualInterfaceGroupId?
     public var networkInterfaceId: NetworkInterfaceId?
 
-    public init(destinationCidrBlock: String,
+    public init(destinationCidrBlock: String? = nil,
+                destinationPrefixListId: PrefixListResourceId? = nil,
                 dryRun: Boolean? = nil,
                 localGatewayRouteTableId: LocalGatewayRoutetableId,
                 localGatewayVirtualInterfaceGroupId: LocalGatewayVirtualInterfaceGroupId? = nil,
                 networkInterfaceId: NetworkInterfaceId? = nil) {
         self.destinationCidrBlock = destinationCidrBlock
+        self.destinationPrefixListId = destinationPrefixListId
         self.dryRun = dryRun
         self.localGatewayRouteTableId = localGatewayRouteTableId
         self.localGatewayVirtualInterfaceGroupId = localGatewayVirtualInterfaceGroupId
@@ -32982,6 +34333,7 @@ public struct ModifyLocalGatewayRouteRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case destinationCidrBlock = "DestinationCidrBlock"
+        case destinationPrefixListId = "DestinationPrefixListId"
         case dryRun = "DryRun"
         case localGatewayRouteTableId = "LocalGatewayRouteTableId"
         case localGatewayVirtualInterfaceGroupId = "LocalGatewayVirtualInterfaceGroupId"
@@ -33112,13 +34464,13 @@ public struct ModifyPrivateDnsNameOptionsRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var enableResourceNameDnsAAAARecord: Boolean?
     public var enableResourceNameDnsARecord: Boolean?
-    public var instanceId: InstanceId?
+    public var instanceId: InstanceId
     public var privateDnsHostnameType: HostnameType?
 
     public init(dryRun: Boolean? = nil,
                 enableResourceNameDnsAAAARecord: Boolean? = nil,
                 enableResourceNameDnsARecord: Boolean? = nil,
-                instanceId: InstanceId? = nil,
+                instanceId: InstanceId,
                 privateDnsHostnameType: HostnameType? = nil) {
         self.dryRun = dryRun
         self.enableResourceNameDnsAAAARecord = enableResourceNameDnsAAAARecord
@@ -33479,7 +34831,7 @@ public struct ModifyTrafficMirrorFilterRuleRequest: Codable, Equatable {
     public var sourceCidrBlock: String?
     public var sourcePortRange: TrafficMirrorPortRangeRequest?
     public var trafficDirection: TrafficDirection?
-    public var trafficMirrorFilterRuleId: TrafficMirrorFilterRuleId
+    public var trafficMirrorFilterRuleId: TrafficMirrorFilterRuleIdWithResolver
 
     public init(description: String? = nil,
                 destinationCidrBlock: String? = nil,
@@ -33492,7 +34844,7 @@ public struct ModifyTrafficMirrorFilterRuleRequest: Codable, Equatable {
                 sourceCidrBlock: String? = nil,
                 sourcePortRange: TrafficMirrorPortRangeRequest? = nil,
                 trafficDirection: TrafficDirection? = nil,
-                trafficMirrorFilterRuleId: TrafficMirrorFilterRuleId) {
+                trafficMirrorFilterRuleId: TrafficMirrorFilterRuleIdWithResolver) {
         self.description = description
         self.destinationCidrBlock = destinationCidrBlock
         self.destinationPortRange = destinationPortRange
@@ -34156,14 +35508,38 @@ public struct ModifyVerifiedAccessInstanceResult: Codable, Equatable {
 }
 
 public struct ModifyVerifiedAccessTrustProviderOidcOptions: Codable, Equatable {
+    public var authorizationEndpoint: String?
+    public var clientId: String?
+    public var clientSecret: ClientSecretType?
+    public var issuer: String?
     public var scope: String?
+    public var tokenEndpoint: String?
+    public var userInfoEndpoint: String?
 
-    public init(scope: String? = nil) {
+    public init(authorizationEndpoint: String? = nil,
+                clientId: String? = nil,
+                clientSecret: ClientSecretType? = nil,
+                issuer: String? = nil,
+                scope: String? = nil,
+                tokenEndpoint: String? = nil,
+                userInfoEndpoint: String? = nil) {
+        self.authorizationEndpoint = authorizationEndpoint
+        self.clientId = clientId
+        self.clientSecret = clientSecret
+        self.issuer = issuer
         self.scope = scope
+        self.tokenEndpoint = tokenEndpoint
+        self.userInfoEndpoint = userInfoEndpoint
     }
 
     enum CodingKeys: String, CodingKey {
+        case authorizationEndpoint = "AuthorizationEndpoint"
+        case clientId = "ClientId"
+        case clientSecret = "ClientSecret"
+        case issuer = "Issuer"
         case scope = "Scope"
+        case tokenEndpoint = "TokenEndpoint"
+        case userInfoEndpoint = "UserInfoEndpoint"
     }
 
     public func validate() throws {
@@ -34829,15 +36205,18 @@ public struct ModifyVpnTunnelCertificateResult: Codable, Equatable {
 
 public struct ModifyVpnTunnelOptionsRequest: Codable, Equatable {
     public var dryRun: Boolean?
+    public var skipTunnelReplacement: Boolean?
     public var tunnelOptions: ModifyVpnTunnelOptionsSpecification
     public var vpnConnectionId: VpnConnectionId
     public var vpnTunnelOutsideIpAddress: String
 
     public init(dryRun: Boolean? = nil,
+                skipTunnelReplacement: Boolean? = nil,
                 tunnelOptions: ModifyVpnTunnelOptionsSpecification,
                 vpnConnectionId: VpnConnectionId,
                 vpnTunnelOutsideIpAddress: String) {
         self.dryRun = dryRun
+        self.skipTunnelReplacement = skipTunnelReplacement
         self.tunnelOptions = tunnelOptions
         self.vpnConnectionId = vpnConnectionId
         self.vpnTunnelOutsideIpAddress = vpnTunnelOutsideIpAddress
@@ -34845,6 +36224,7 @@ public struct ModifyVpnTunnelOptionsRequest: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case dryRun = "DryRun"
+        case skipTunnelReplacement = "SkipTunnelReplacement"
         case tunnelOptions = "TunnelOptions"
         case vpnConnectionId = "VpnConnectionId"
         case vpnTunnelOutsideIpAddress = "VpnTunnelOutsideIpAddress"
@@ -34874,6 +36254,7 @@ public struct ModifyVpnTunnelOptionsResult: Codable, Equatable {
 public struct ModifyVpnTunnelOptionsSpecification: Codable, Equatable {
     public var dPDTimeoutAction: String?
     public var dPDTimeoutSeconds: Integer?
+    public var enableTunnelLifecycleControl: Boolean?
     public var iKEVersions: IKEVersionsRequestList?
     public var logOptions: VpnTunnelLogOptionsSpecification?
     public var phase1DHGroupNumbers: Phase1DHGroupNumbersRequestList?
@@ -34884,7 +36265,7 @@ public struct ModifyVpnTunnelOptionsSpecification: Codable, Equatable {
     public var phase2EncryptionAlgorithms: Phase2EncryptionAlgorithmsRequestList?
     public var phase2IntegrityAlgorithms: Phase2IntegrityAlgorithmsRequestList?
     public var phase2LifetimeSeconds: Integer?
-    public var preSharedKey: String?
+    public var preSharedKey: PreSharedKey?
     public var rekeyFuzzPercentage: Integer?
     public var rekeyMarginTimeSeconds: Integer?
     public var replayWindowSize: Integer?
@@ -34894,6 +36275,7 @@ public struct ModifyVpnTunnelOptionsSpecification: Codable, Equatable {
 
     public init(dPDTimeoutAction: String? = nil,
                 dPDTimeoutSeconds: Integer? = nil,
+                enableTunnelLifecycleControl: Boolean? = nil,
                 iKEVersions: IKEVersionsRequestList? = nil,
                 logOptions: VpnTunnelLogOptionsSpecification? = nil,
                 phase1DHGroupNumbers: Phase1DHGroupNumbersRequestList? = nil,
@@ -34904,7 +36286,7 @@ public struct ModifyVpnTunnelOptionsSpecification: Codable, Equatable {
                 phase2EncryptionAlgorithms: Phase2EncryptionAlgorithmsRequestList? = nil,
                 phase2IntegrityAlgorithms: Phase2IntegrityAlgorithmsRequestList? = nil,
                 phase2LifetimeSeconds: Integer? = nil,
-                preSharedKey: String? = nil,
+                preSharedKey: PreSharedKey? = nil,
                 rekeyFuzzPercentage: Integer? = nil,
                 rekeyMarginTimeSeconds: Integer? = nil,
                 replayWindowSize: Integer? = nil,
@@ -34913,6 +36295,7 @@ public struct ModifyVpnTunnelOptionsSpecification: Codable, Equatable {
                 tunnelInsideIpv6Cidr: String? = nil) {
         self.dPDTimeoutAction = dPDTimeoutAction
         self.dPDTimeoutSeconds = dPDTimeoutSeconds
+        self.enableTunnelLifecycleControl = enableTunnelLifecycleControl
         self.iKEVersions = iKEVersions
         self.logOptions = logOptions
         self.phase1DHGroupNumbers = phase1DHGroupNumbers
@@ -34935,6 +36318,7 @@ public struct ModifyVpnTunnelOptionsSpecification: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case dPDTimeoutAction = "DPDTimeoutAction"
         case dPDTimeoutSeconds = "DPDTimeoutSeconds"
+        case enableTunnelLifecycleControl = "EnableTunnelLifecycleControl"
         case iKEVersions = "IKEVersion"
         case logOptions = "LogOptions"
         case phase1DHGroupNumbers = "Phase1DHGroupNumber"
@@ -35170,25 +36554,41 @@ public struct NatGateway: Codable, Equatable {
 
 public struct NatGatewayAddress: Codable, Equatable {
     public var allocationId: String?
+    public var associationId: String?
+    public var failureMessage: String?
+    public var isPrimary: Boolean?
     public var networkInterfaceId: String?
     public var privateIp: String?
     public var publicIp: String?
+    public var status: NatGatewayAddressStatus?
 
     public init(allocationId: String? = nil,
+                associationId: String? = nil,
+                failureMessage: String? = nil,
+                isPrimary: Boolean? = nil,
                 networkInterfaceId: String? = nil,
                 privateIp: String? = nil,
-                publicIp: String? = nil) {
+                publicIp: String? = nil,
+                status: NatGatewayAddressStatus? = nil) {
         self.allocationId = allocationId
+        self.associationId = associationId
+        self.failureMessage = failureMessage
+        self.isPrimary = isPrimary
         self.networkInterfaceId = networkInterfaceId
         self.privateIp = privateIp
         self.publicIp = publicIp
+        self.status = status
     }
 
     enum CodingKeys: String, CodingKey {
         case allocationId
+        case associationId
+        case failureMessage
+        case isPrimary
         case networkInterfaceId
         case privateIp
         case publicIp
+        case status
     }
 
     public func validate() throws {
@@ -35620,6 +37020,8 @@ public struct NetworkInsightsPath: Codable, Equatable {
     public var destinationArn: ResourceArn?
     public var destinationIp: IpAddress?
     public var destinationPort: Integer?
+    public var filterAtDestination: PathFilter?
+    public var filterAtSource: PathFilter?
     public var networkInsightsPathArn: ResourceArn?
     public var networkInsightsPathId: NetworkInsightsPathId?
     public var `protocol`: Protocol?
@@ -35633,6 +37035,8 @@ public struct NetworkInsightsPath: Codable, Equatable {
                 destinationArn: ResourceArn? = nil,
                 destinationIp: IpAddress? = nil,
                 destinationPort: Integer? = nil,
+                filterAtDestination: PathFilter? = nil,
+                filterAtSource: PathFilter? = nil,
                 networkInsightsPathArn: ResourceArn? = nil,
                 networkInsightsPathId: NetworkInsightsPathId? = nil,
                 `protocol`: Protocol? = nil,
@@ -35645,6 +37049,8 @@ public struct NetworkInsightsPath: Codable, Equatable {
         self.destinationArn = destinationArn
         self.destinationIp = destinationIp
         self.destinationPort = destinationPort
+        self.filterAtDestination = filterAtDestination
+        self.filterAtSource = filterAtSource
         self.networkInsightsPathArn = networkInsightsPathArn
         self.networkInsightsPathId = networkInsightsPathId
         self.`protocol` = `protocol`
@@ -35660,6 +37066,8 @@ public struct NetworkInsightsPath: Codable, Equatable {
         case destinationArn
         case destinationIp
         case destinationPort
+        case filterAtDestination
+        case filterAtSource
         case networkInsightsPathArn
         case networkInsightsPathId
         case `protocol` = "protocol"
@@ -35672,6 +37080,8 @@ public struct NetworkInsightsPath: Codable, Equatable {
     public func validate() throws {
         try destinationArn?.validateAsResourceArn()
         try destinationIp?.validateAsIpAddress()
+        try filterAtDestination?.validate()
+        try filterAtSource?.validate()
         try networkInsightsPathArn?.validateAsResourceArn()
         try sourceArn?.validateAsResourceArn()
         try sourceIp?.validateAsIpAddress()
@@ -36059,7 +37469,7 @@ public struct NewDhcpConfiguration: Codable, Equatable {
 public struct OidcOptions: Codable, Equatable {
     public var authorizationEndpoint: String?
     public var clientId: String?
-    public var clientSecret: String?
+    public var clientSecret: ClientSecretType?
     public var issuer: String?
     public var scope: String?
     public var tokenEndpoint: String?
@@ -36067,7 +37477,7 @@ public struct OidcOptions: Codable, Equatable {
 
     public init(authorizationEndpoint: String? = nil,
                 clientId: String? = nil,
-                clientSecret: String? = nil,
+                clientSecret: ClientSecretType? = nil,
                 issuer: String? = nil,
                 scope: String? = nil,
                 tokenEndpoint: String? = nil,
@@ -36253,11 +37663,14 @@ public struct PathComponent: Codable, Equatable {
     public var destinationVpc: AnalysisComponent?
     public var elasticLoadBalancerListener: AnalysisComponent?
     public var explanations: ExplanationList?
+    public var firewallStatefulRule: FirewallStatefulRule?
+    public var firewallStatelessRule: FirewallStatelessRule?
     public var inboundHeader: AnalysisPacketHeader?
     public var outboundHeader: AnalysisPacketHeader?
     public var routeTableRoute: AnalysisRouteTableRoute?
     public var securityGroupRule: AnalysisSecurityGroupRule?
     public var sequenceNumber: Integer?
+    public var serviceName: String?
     public var sourceVpc: AnalysisComponent?
     public var subnet: AnalysisComponent?
     public var transitGateway: AnalysisComponent?
@@ -36271,11 +37684,14 @@ public struct PathComponent: Codable, Equatable {
                 destinationVpc: AnalysisComponent? = nil,
                 elasticLoadBalancerListener: AnalysisComponent? = nil,
                 explanations: ExplanationList? = nil,
+                firewallStatefulRule: FirewallStatefulRule? = nil,
+                firewallStatelessRule: FirewallStatelessRule? = nil,
                 inboundHeader: AnalysisPacketHeader? = nil,
                 outboundHeader: AnalysisPacketHeader? = nil,
                 routeTableRoute: AnalysisRouteTableRoute? = nil,
                 securityGroupRule: AnalysisSecurityGroupRule? = nil,
                 sequenceNumber: Integer? = nil,
+                serviceName: String? = nil,
                 sourceVpc: AnalysisComponent? = nil,
                 subnet: AnalysisComponent? = nil,
                 transitGateway: AnalysisComponent? = nil,
@@ -36288,11 +37704,14 @@ public struct PathComponent: Codable, Equatable {
         self.destinationVpc = destinationVpc
         self.elasticLoadBalancerListener = elasticLoadBalancerListener
         self.explanations = explanations
+        self.firewallStatefulRule = firewallStatefulRule
+        self.firewallStatelessRule = firewallStatelessRule
         self.inboundHeader = inboundHeader
         self.outboundHeader = outboundHeader
         self.routeTableRoute = routeTableRoute
         self.securityGroupRule = securityGroupRule
         self.sequenceNumber = sequenceNumber
+        self.serviceName = serviceName
         self.sourceVpc = sourceVpc
         self.subnet = subnet
         self.transitGateway = transitGateway
@@ -36308,11 +37727,14 @@ public struct PathComponent: Codable, Equatable {
         case destinationVpc
         case elasticLoadBalancerListener
         case explanations = "explanationSet"
+        case firewallStatefulRule
+        case firewallStatelessRule
         case inboundHeader
         case outboundHeader
         case routeTableRoute
         case securityGroupRule
         case sequenceNumber
+        case serviceName
         case sourceVpc
         case subnet
         case transitGateway
@@ -36326,6 +37748,8 @@ public struct PathComponent: Codable, Equatable {
         try component?.validate()
         try destinationVpc?.validate()
         try elasticLoadBalancerListener?.validate()
+        try firewallStatefulRule?.validate()
+        try firewallStatelessRule?.validate()
         try inboundHeader?.validate()
         try outboundHeader?.validate()
         try routeTableRoute?.validate()
@@ -36335,6 +37759,68 @@ public struct PathComponent: Codable, Equatable {
         try transitGateway?.validate()
         try transitGatewayRouteTableRoute?.validate()
         try vpc?.validate()
+    }
+}
+
+public struct PathFilter: Codable, Equatable {
+    public var destinationAddress: IpAddress?
+    public var destinationPortRange: FilterPortRange?
+    public var sourceAddress: IpAddress?
+    public var sourcePortRange: FilterPortRange?
+
+    public init(destinationAddress: IpAddress? = nil,
+                destinationPortRange: FilterPortRange? = nil,
+                sourceAddress: IpAddress? = nil,
+                sourcePortRange: FilterPortRange? = nil) {
+        self.destinationAddress = destinationAddress
+        self.destinationPortRange = destinationPortRange
+        self.sourceAddress = sourceAddress
+        self.sourcePortRange = sourcePortRange
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case destinationAddress
+        case destinationPortRange
+        case sourceAddress
+        case sourcePortRange
+    }
+
+    public func validate() throws {
+        try destinationAddress?.validateAsIpAddress()
+        try destinationPortRange?.validate()
+        try sourceAddress?.validateAsIpAddress()
+        try sourcePortRange?.validate()
+    }
+}
+
+public struct PathRequestFilter: Codable, Equatable {
+    public var destinationAddress: IpAddress?
+    public var destinationPortRange: RequestFilterPortRange?
+    public var sourceAddress: IpAddress?
+    public var sourcePortRange: RequestFilterPortRange?
+
+    public init(destinationAddress: IpAddress? = nil,
+                destinationPortRange: RequestFilterPortRange? = nil,
+                sourceAddress: IpAddress? = nil,
+                sourcePortRange: RequestFilterPortRange? = nil) {
+        self.destinationAddress = destinationAddress
+        self.destinationPortRange = destinationPortRange
+        self.sourceAddress = sourceAddress
+        self.sourcePortRange = sourcePortRange
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case destinationAddress = "DestinationAddress"
+        case destinationPortRange = "DestinationPortRange"
+        case sourceAddress = "SourceAddress"
+        case sourcePortRange = "SourcePortRange"
+    }
+
+    public func validate() throws {
+        try destinationAddress?.validateAsIpAddress()
+        try destinationPortRange?.validate()
+        try sourceAddress?.validateAsIpAddress()
+        try sourcePortRange?.validate()
     }
 }
 
@@ -37133,16 +38619,20 @@ public struct PrivateIpAddressSpecification: Codable, Equatable {
 
 public struct ProcessorInfo: Codable, Equatable {
     public var supportedArchitectures: ArchitectureTypeList?
+    public var supportedFeatures: SupportedAdditionalProcessorFeatureList?
     public var sustainedClockSpeedInGhz: ProcessorSustainedClockSpeed?
 
     public init(supportedArchitectures: ArchitectureTypeList? = nil,
+                supportedFeatures: SupportedAdditionalProcessorFeatureList? = nil,
                 sustainedClockSpeedInGhz: ProcessorSustainedClockSpeed? = nil) {
         self.supportedArchitectures = supportedArchitectures
+        self.supportedFeatures = supportedFeatures
         self.sustainedClockSpeedInGhz = sustainedClockSpeedInGhz
     }
 
     enum CodingKeys: String, CodingKey {
         case supportedArchitectures
+        case supportedFeatures
         case sustainedClockSpeedInGhz
     }
 
@@ -37243,24 +38733,32 @@ public struct ProvisionByoipCidrResult: Codable, Equatable {
 public struct ProvisionIpamPoolCidrRequest: Codable, Equatable {
     public var cidr: String?
     public var cidrAuthorizationContext: IpamCidrAuthorizationContext?
+    public var clientToken: String?
     public var dryRun: Boolean?
     public var ipamPoolId: IpamPoolId
+    public var netmaskLength: Integer?
 
     public init(cidr: String? = nil,
                 cidrAuthorizationContext: IpamCidrAuthorizationContext? = nil,
+                clientToken: String? = nil,
                 dryRun: Boolean? = nil,
-                ipamPoolId: IpamPoolId) {
+                ipamPoolId: IpamPoolId,
+                netmaskLength: Integer? = nil) {
         self.cidr = cidr
         self.cidrAuthorizationContext = cidrAuthorizationContext
+        self.clientToken = clientToken
         self.dryRun = dryRun
         self.ipamPoolId = ipamPoolId
+        self.netmaskLength = netmaskLength
     }
 
     enum CodingKeys: String, CodingKey {
         case cidr = "Cidr"
         case cidrAuthorizationContext = "CidrAuthorizationContext"
+        case clientToken = "ClientToken"
         case dryRun = "DryRun"
         case ipamPoolId = "IpamPoolId"
+        case netmaskLength = "NetmaskLength"
     }
 
     public func validate() throws {
@@ -37854,10 +39352,10 @@ public struct RegisterImageResult: Codable, Equatable {
 
 public struct RegisterInstanceEventNotificationAttributesRequest: Codable, Equatable {
     public var dryRun: Boolean?
-    public var instanceTagAttribute: RegisterInstanceTagAttributeRequest?
+    public var instanceTagAttribute: RegisterInstanceTagAttributeRequest
 
     public init(dryRun: Boolean? = nil,
-                instanceTagAttribute: RegisterInstanceTagAttributeRequest? = nil) {
+                instanceTagAttribute: RegisterInstanceTagAttributeRequest) {
         self.dryRun = dryRun
         self.instanceTagAttribute = instanceTagAttribute
     }
@@ -37868,7 +39366,7 @@ public struct RegisterInstanceEventNotificationAttributesRequest: Codable, Equat
     }
 
     public func validate() throws {
-        try instanceTagAttribute?.validate()
+        try instanceTagAttribute.validate()
     }
 }
 
@@ -37910,13 +39408,13 @@ public struct RegisterInstanceTagAttributeRequest: Codable, Equatable {
 public struct RegisterTransitGatewayMulticastGroupMembersRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var groupIpAddress: String?
-    public var networkInterfaceIds: TransitGatewayNetworkInterfaceIdList?
-    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId?
+    public var networkInterfaceIds: TransitGatewayNetworkInterfaceIdList
+    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId
 
     public init(dryRun: Boolean? = nil,
                 groupIpAddress: String? = nil,
-                networkInterfaceIds: TransitGatewayNetworkInterfaceIdList? = nil,
-                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId? = nil) {
+                networkInterfaceIds: TransitGatewayNetworkInterfaceIdList,
+                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId) {
         self.dryRun = dryRun
         self.groupIpAddress = groupIpAddress
         self.networkInterfaceIds = networkInterfaceIds
@@ -37953,13 +39451,13 @@ public struct RegisterTransitGatewayMulticastGroupMembersResult: Codable, Equata
 public struct RegisterTransitGatewayMulticastGroupSourcesRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var groupIpAddress: String?
-    public var networkInterfaceIds: TransitGatewayNetworkInterfaceIdList?
-    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId?
+    public var networkInterfaceIds: TransitGatewayNetworkInterfaceIdList
+    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId
 
     public init(dryRun: Boolean? = nil,
                 groupIpAddress: String? = nil,
-                networkInterfaceIds: TransitGatewayNetworkInterfaceIdList? = nil,
-                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId? = nil) {
+                networkInterfaceIds: TransitGatewayNetworkInterfaceIdList,
+                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId) {
         self.dryRun = dryRun
         self.groupIpAddress = groupIpAddress
         self.networkInterfaceIds = networkInterfaceIds
@@ -38654,6 +40152,48 @@ public struct ReplaceTransitGatewayRouteResult: Codable, Equatable {
     }
 }
 
+public struct ReplaceVpnTunnelRequest: Codable, Equatable {
+    public var applyPendingMaintenance: Boolean?
+    public var dryRun: Boolean?
+    public var vpnConnectionId: VpnConnectionId
+    public var vpnTunnelOutsideIpAddress: String
+
+    public init(applyPendingMaintenance: Boolean? = nil,
+                dryRun: Boolean? = nil,
+                vpnConnectionId: VpnConnectionId,
+                vpnTunnelOutsideIpAddress: String) {
+        self.applyPendingMaintenance = applyPendingMaintenance
+        self.dryRun = dryRun
+        self.vpnConnectionId = vpnConnectionId
+        self.vpnTunnelOutsideIpAddress = vpnTunnelOutsideIpAddress
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case applyPendingMaintenance = "ApplyPendingMaintenance"
+        case dryRun = "DryRun"
+        case vpnConnectionId = "VpnConnectionId"
+        case vpnTunnelOutsideIpAddress = "VpnTunnelOutsideIpAddress"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ReplaceVpnTunnelResult: Codable, Equatable {
+    public var `return`: Boolean?
+
+    public init(`return`: Boolean? = nil) {
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case `return` = "return"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ReportInstanceStatusRequest: Codable, Equatable {
     public var description: String?
     public var dryRun: Boolean?
@@ -38690,6 +40230,27 @@ public struct ReportInstanceStatusRequest: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct RequestFilterPortRange: Codable, Equatable {
+    public var fromPort: Port?
+    public var toPort: Port?
+
+    public init(fromPort: Port? = nil,
+                toPort: Port? = nil) {
+        self.fromPort = fromPort
+        self.toPort = toPort
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case fromPort = "FromPort"
+        case toPort = "ToPort"
+    }
+
+    public func validate() throws {
+        try fromPort?.validateAsPort()
+        try toPort?.validateAsPort()
     }
 }
 
@@ -38743,7 +40304,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
     public var securityGroupIds: SecurityGroupIdStringList?
     public var securityGroups: SecurityGroupStringList?
     public var tagSpecifications: LaunchTemplateTagSpecificationRequestList?
-    public var userData: String?
+    public var userData: SensitiveUserData?
 
     public init(blockDeviceMappings: LaunchTemplateBlockDeviceMappingRequestList? = nil,
                 capacityReservationSpecification: LaunchTemplateCapacityReservationSpecificationRequest? = nil,
@@ -38775,7 +40336,7 @@ public struct RequestLaunchTemplateData: Codable, Equatable {
                 securityGroupIds: SecurityGroupIdStringList? = nil,
                 securityGroups: SecurityGroupStringList? = nil,
                 tagSpecifications: LaunchTemplateTagSpecificationRequestList? = nil,
-                userData: String? = nil) {
+                userData: SensitiveUserData? = nil) {
         self.blockDeviceMappings = blockDeviceMappings
         self.capacityReservationSpecification = capacityReservationSpecification
         self.cpuOptions = cpuOptions
@@ -38990,7 +40551,7 @@ public struct RequestSpotLaunchSpecification: Codable, Equatable {
     public var securityGroupIds: RequestSpotLaunchSpecificationSecurityGroupIdList?
     public var securityGroups: RequestSpotLaunchSpecificationSecurityGroupList?
     public var subnetId: SubnetId?
-    public var userData: String?
+    public var userData: SensitiveUserData?
 
     public init(addressingType: String? = nil,
                 blockDeviceMappings: BlockDeviceMappingList? = nil,
@@ -39007,7 +40568,7 @@ public struct RequestSpotLaunchSpecification: Codable, Equatable {
                 securityGroupIds: RequestSpotLaunchSpecificationSecurityGroupIdList? = nil,
                 securityGroups: RequestSpotLaunchSpecificationSecurityGroupList? = nil,
                 subnetId: SubnetId? = nil,
-                userData: String? = nil) {
+                userData: SensitiveUserData? = nil) {
         self.addressingType = addressingType
         self.blockDeviceMappings = blockDeviceMappings
         self.ebsOptimized = ebsOptimized
@@ -39791,7 +41352,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
     public var securityGroupIds: ValueStringList?
     public var securityGroups: ValueStringList?
     public var tagSpecifications: LaunchTemplateTagSpecificationList?
-    public var userData: String?
+    public var userData: SensitiveUserData?
 
     public init(blockDeviceMappings: LaunchTemplateBlockDeviceMappingList? = nil,
                 capacityReservationSpecification: LaunchTemplateCapacityReservationSpecificationResponse? = nil,
@@ -39823,7 +41384,7 @@ public struct ResponseLaunchTemplateData: Codable, Equatable {
                 securityGroupIds: ValueStringList? = nil,
                 securityGroups: ValueStringList? = nil,
                 tagSpecifications: LaunchTemplateTagSpecificationList? = nil,
-                userData: String? = nil) {
+                userData: SensitiveUserData? = nil) {
         self.blockDeviceMappings = blockDeviceMappings
         self.capacityReservationSpecification = capacityReservationSpecification
         self.cpuOptions = cpuOptions
@@ -40501,6 +42062,65 @@ public struct RouteTableAssociationState: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case state
         case statusMessage
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct RuleGroupRuleOptionsPair: Codable, Equatable {
+    public var ruleGroupArn: ResourceArn?
+    public var ruleOptions: RuleOptionList?
+
+    public init(ruleGroupArn: ResourceArn? = nil,
+                ruleOptions: RuleOptionList? = nil) {
+        self.ruleGroupArn = ruleGroupArn
+        self.ruleOptions = ruleOptions
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ruleGroupArn
+        case ruleOptions = "ruleOptionSet"
+    }
+
+    public func validate() throws {
+        try ruleGroupArn?.validateAsResourceArn()
+    }
+}
+
+public struct RuleGroupTypePair: Codable, Equatable {
+    public var ruleGroupArn: ResourceArn?
+    public var ruleGroupType: String?
+
+    public init(ruleGroupArn: ResourceArn? = nil,
+                ruleGroupType: String? = nil) {
+        self.ruleGroupArn = ruleGroupArn
+        self.ruleGroupType = ruleGroupType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ruleGroupArn
+        case ruleGroupType
+    }
+
+    public func validate() throws {
+        try ruleGroupArn?.validateAsResourceArn()
+    }
+}
+
+public struct RuleOption: Codable, Equatable {
+    public var keyword: String?
+    public var settings: StringList?
+
+    public init(keyword: String? = nil,
+                settings: StringList? = nil) {
+        self.keyword = keyword
+        self.settings = settings
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case keyword
+        case settings = "settingSet"
     }
 
     public func validate() throws {
@@ -41335,13 +42955,13 @@ public struct SearchTransitGatewayMulticastGroupsRequest: Codable, Equatable {
     public var filters: FilterList?
     public var maxResults: TransitGatewayMaxResults?
     public var nextToken: String?
-    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId?
+    public var transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId
 
     public init(dryRun: Boolean? = nil,
                 filters: FilterList? = nil,
                 maxResults: TransitGatewayMaxResults? = nil,
                 nextToken: String? = nil,
-                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId? = nil) {
+                transitGatewayMulticastDomainId: TransitGatewayMulticastDomainId) {
         self.dryRun = dryRun
         self.filters = filters
         self.maxResults = maxResults
@@ -41641,10 +43261,10 @@ public struct SecurityGroupRuleRequest: Codable, Equatable {
 
 public struct SecurityGroupRuleUpdate: Codable, Equatable {
     public var securityGroupRule: SecurityGroupRuleRequest?
-    public var securityGroupRuleId: SecurityGroupRuleId?
+    public var securityGroupRuleId: SecurityGroupRuleId
 
     public init(securityGroupRule: SecurityGroupRuleRequest? = nil,
-                securityGroupRuleId: SecurityGroupRuleId? = nil) {
+                securityGroupRuleId: SecurityGroupRuleId) {
         self.securityGroupRule = securityGroupRule
         self.securityGroupRuleId = securityGroupRuleId
     }
@@ -41964,7 +43584,7 @@ public struct SnapshotDetail: Codable, Equatable {
     public var snapshotId: String?
     public var status: String?
     public var statusMessage: String?
-    public var url: String?
+    public var url: SensitiveUrl?
     public var userBucket: UserBucketDetails?
 
     public init(description: String? = nil,
@@ -41975,7 +43595,7 @@ public struct SnapshotDetail: Codable, Equatable {
                 snapshotId: String? = nil,
                 status: String? = nil,
                 statusMessage: String? = nil,
-                url: String? = nil,
+                url: SensitiveUrl? = nil,
                 userBucket: UserBucketDetails? = nil) {
         self.description = description
         self.deviceName = deviceName
@@ -42010,12 +43630,12 @@ public struct SnapshotDetail: Codable, Equatable {
 public struct SnapshotDiskContainer: Codable, Equatable {
     public var description: String?
     public var format: String?
-    public var url: String?
+    public var url: SensitiveUrl?
     public var userBucket: UserBucket?
 
     public init(description: String? = nil,
                 format: String? = nil,
-                url: String? = nil,
+                url: SensitiveUrl? = nil,
                 userBucket: UserBucket? = nil) {
         self.description = description
         self.format = format
@@ -42131,7 +43751,7 @@ public struct SnapshotTaskDetail: Codable, Equatable {
     public var snapshotId: String?
     public var status: String?
     public var statusMessage: String?
-    public var url: String?
+    public var url: SensitiveUrl?
     public var userBucket: UserBucketDetails?
 
     public init(description: String? = nil,
@@ -42143,7 +43763,7 @@ public struct SnapshotTaskDetail: Codable, Equatable {
                 snapshotId: String? = nil,
                 status: String? = nil,
                 statusMessage: String? = nil,
-                url: String? = nil,
+                url: SensitiveUrl? = nil,
                 userBucket: UserBucketDetails? = nil) {
         self.description = description
         self.diskImageSize = diskImageSize
@@ -42305,7 +43925,7 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
     public var spotPrice: String?
     public var subnetId: SubnetId?
     public var tagSpecifications: SpotFleetTagSpecificationList?
-    public var userData: String?
+    public var userData: SensitiveUserData?
     public var weightedCapacity: Double?
 
     public init(addressingType: String? = nil,
@@ -42325,7 +43945,7 @@ public struct SpotFleetLaunchSpecification: Codable, Equatable {
                 spotPrice: String? = nil,
                 subnetId: SubnetId? = nil,
                 tagSpecifications: SpotFleetTagSpecificationList? = nil,
-                userData: String? = nil,
+                userData: SensitiveUserData? = nil,
                 weightedCapacity: Double? = nil) {
         self.addressingType = addressingType
         self.blockDeviceMappings = blockDeviceMappings
@@ -43793,12 +45413,12 @@ public struct TargetReservationValue: Codable, Equatable {
 
 public struct TerminateClientVpnConnectionsRequest: Codable, Equatable {
     public var clientVpnEndpointId: ClientVpnEndpointId
-    public var connectionId: VpnConnectionId?
+    public var connectionId: String?
     public var dryRun: Boolean?
     public var username: String?
 
     public init(clientVpnEndpointId: ClientVpnEndpointId,
-                connectionId: VpnConnectionId? = nil,
+                connectionId: String? = nil,
                 dryRun: Boolean? = nil,
                 username: String? = nil) {
         self.clientVpnEndpointId = clientVpnEndpointId
@@ -45565,6 +47185,7 @@ public struct TrunkInterfaceAssociation: Codable, Equatable {
 public struct TunnelOption: Codable, Equatable {
     public var dpdTimeoutAction: String?
     public var dpdTimeoutSeconds: Integer?
+    public var enableTunnelLifecycleControl: Boolean?
     public var ikeVersions: IKEVersionsList?
     public var logOptions: VpnTunnelLogOptions?
     public var outsideIpAddress: String?
@@ -45576,7 +47197,7 @@ public struct TunnelOption: Codable, Equatable {
     public var phase2EncryptionAlgorithms: Phase2EncryptionAlgorithmsList?
     public var phase2IntegrityAlgorithms: Phase2IntegrityAlgorithmsList?
     public var phase2LifetimeSeconds: Integer?
-    public var preSharedKey: String?
+    public var preSharedKey: PreSharedKey?
     public var rekeyFuzzPercentage: Integer?
     public var rekeyMarginTimeSeconds: Integer?
     public var replayWindowSize: Integer?
@@ -45586,6 +47207,7 @@ public struct TunnelOption: Codable, Equatable {
 
     public init(dpdTimeoutAction: String? = nil,
                 dpdTimeoutSeconds: Integer? = nil,
+                enableTunnelLifecycleControl: Boolean? = nil,
                 ikeVersions: IKEVersionsList? = nil,
                 logOptions: VpnTunnelLogOptions? = nil,
                 outsideIpAddress: String? = nil,
@@ -45597,7 +47219,7 @@ public struct TunnelOption: Codable, Equatable {
                 phase2EncryptionAlgorithms: Phase2EncryptionAlgorithmsList? = nil,
                 phase2IntegrityAlgorithms: Phase2IntegrityAlgorithmsList? = nil,
                 phase2LifetimeSeconds: Integer? = nil,
-                preSharedKey: String? = nil,
+                preSharedKey: PreSharedKey? = nil,
                 rekeyFuzzPercentage: Integer? = nil,
                 rekeyMarginTimeSeconds: Integer? = nil,
                 replayWindowSize: Integer? = nil,
@@ -45606,6 +47228,7 @@ public struct TunnelOption: Codable, Equatable {
                 tunnelInsideIpv6Cidr: String? = nil) {
         self.dpdTimeoutAction = dpdTimeoutAction
         self.dpdTimeoutSeconds = dpdTimeoutSeconds
+        self.enableTunnelLifecycleControl = enableTunnelLifecycleControl
         self.ikeVersions = ikeVersions
         self.logOptions = logOptions
         self.outsideIpAddress = outsideIpAddress
@@ -45629,6 +47252,7 @@ public struct TunnelOption: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case dpdTimeoutAction
         case dpdTimeoutSeconds
+        case enableTunnelLifecycleControl
         case ikeVersions = "ikeVersionSet"
         case logOptions
         case outsideIpAddress
@@ -45717,6 +47341,53 @@ public struct UnassignPrivateIpAddressesRequest: Codable, Equatable {
         case ipv4Prefixes = "Ipv4Prefix"
         case networkInterfaceId
         case privateIpAddresses = "privateIpAddress"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct UnassignPrivateNatGatewayAddressRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var maxDrainDurationSeconds: DrainSeconds?
+    public var natGatewayId: NatGatewayId
+    public var privateIpAddresses: IpList
+
+    public init(dryRun: Boolean? = nil,
+                maxDrainDurationSeconds: DrainSeconds? = nil,
+                natGatewayId: NatGatewayId,
+                privateIpAddresses: IpList) {
+        self.dryRun = dryRun
+        self.maxDrainDurationSeconds = maxDrainDurationSeconds
+        self.natGatewayId = natGatewayId
+        self.privateIpAddresses = privateIpAddresses
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case maxDrainDurationSeconds = "MaxDrainDurationSeconds"
+        case natGatewayId = "NatGatewayId"
+        case privateIpAddresses = "PrivateIpAddress"
+    }
+
+    public func validate() throws {
+        try maxDrainDurationSeconds?.validateAsDrainSeconds()
+    }
+}
+
+public struct UnassignPrivateNatGatewayAddressResult: Codable, Equatable {
+    public var natGatewayAddresses: NatGatewayAddressList?
+    public var natGatewayId: NatGatewayId?
+
+    public init(natGatewayAddresses: NatGatewayAddressList? = nil,
+                natGatewayId: NatGatewayId? = nil) {
+        self.natGatewayAddresses = natGatewayAddresses
+        self.natGatewayId = natGatewayId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case natGatewayAddresses = "natGatewayAddressSet"
+        case natGatewayId
     }
 
     public func validate() throws {
@@ -46488,20 +48159,28 @@ public struct VerifiedAccessLogKinesisDataFirehoseDestinationOptions: Codable, E
 
 public struct VerifiedAccessLogOptions: Codable, Equatable {
     public var cloudWatchLogs: VerifiedAccessLogCloudWatchLogsDestinationOptions?
+    public var includeTrustContext: Boolean?
     public var kinesisDataFirehose: VerifiedAccessLogKinesisDataFirehoseDestinationOptions?
+    public var logVersion: String?
     public var s3: VerifiedAccessLogS3DestinationOptions?
 
     public init(cloudWatchLogs: VerifiedAccessLogCloudWatchLogsDestinationOptions? = nil,
+                includeTrustContext: Boolean? = nil,
                 kinesisDataFirehose: VerifiedAccessLogKinesisDataFirehoseDestinationOptions? = nil,
+                logVersion: String? = nil,
                 s3: VerifiedAccessLogS3DestinationOptions? = nil) {
         self.cloudWatchLogs = cloudWatchLogs
+        self.includeTrustContext = includeTrustContext
         self.kinesisDataFirehose = kinesisDataFirehose
+        self.logVersion = logVersion
         self.s3 = s3
     }
 
     enum CodingKeys: String, CodingKey {
         case cloudWatchLogs = "CloudWatchLogs"
+        case includeTrustContext = "IncludeTrustContext"
         case kinesisDataFirehose = "KinesisDataFirehose"
+        case logVersion = "LogVersion"
         case s3 = "S3"
     }
 
@@ -46573,20 +48252,28 @@ public struct VerifiedAccessLogS3DestinationOptions: Codable, Equatable {
 
 public struct VerifiedAccessLogs: Codable, Equatable {
     public var cloudWatchLogs: VerifiedAccessLogCloudWatchLogsDestination?
+    public var includeTrustContext: Boolean?
     public var kinesisDataFirehose: VerifiedAccessLogKinesisDataFirehoseDestination?
+    public var logVersion: String?
     public var s3: VerifiedAccessLogS3Destination?
 
     public init(cloudWatchLogs: VerifiedAccessLogCloudWatchLogsDestination? = nil,
+                includeTrustContext: Boolean? = nil,
                 kinesisDataFirehose: VerifiedAccessLogKinesisDataFirehoseDestination? = nil,
+                logVersion: String? = nil,
                 s3: VerifiedAccessLogS3Destination? = nil) {
         self.cloudWatchLogs = cloudWatchLogs
+        self.includeTrustContext = includeTrustContext
         self.kinesisDataFirehose = kinesisDataFirehose
+        self.logVersion = logVersion
         self.s3 = s3
     }
 
     enum CodingKeys: String, CodingKey {
         case cloudWatchLogs
+        case includeTrustContext
         case kinesisDataFirehose
+        case logVersion
         case s3
     }
 
@@ -47515,7 +49202,7 @@ public struct VpnConnection: Codable, Equatable {
     public var category: String?
     public var coreNetworkArn: String?
     public var coreNetworkAttachmentArn: String?
-    public var customerGatewayConfiguration: String?
+    public var customerGatewayConfiguration: CustomerGatewayConfiguration?
     public var customerGatewayId: String?
     public var gatewayAssociationState: GatewayAssociationState?
     public var options: VpnConnectionOptions?
@@ -47531,7 +49218,7 @@ public struct VpnConnection: Codable, Equatable {
     public init(category: String? = nil,
                 coreNetworkArn: String? = nil,
                 coreNetworkAttachmentArn: String? = nil,
-                customerGatewayConfiguration: String? = nil,
+                customerGatewayConfiguration: CustomerGatewayConfiguration? = nil,
                 customerGatewayId: String? = nil,
                 gatewayAssociationState: GatewayAssociationState? = nil,
                 options: VpnConnectionOptions? = nil,
@@ -47809,6 +49496,7 @@ public struct VpnTunnelLogOptionsSpecification: Codable, Equatable {
 public struct VpnTunnelOptionsSpecification: Codable, Equatable {
     public var dPDTimeoutAction: String?
     public var dPDTimeoutSeconds: Integer?
+    public var enableTunnelLifecycleControl: Boolean?
     public var iKEVersions: IKEVersionsRequestList?
     public var logOptions: VpnTunnelLogOptionsSpecification?
     public var phase1DHGroupNumbers: Phase1DHGroupNumbersRequestList?
@@ -47819,7 +49507,7 @@ public struct VpnTunnelOptionsSpecification: Codable, Equatable {
     public var phase2EncryptionAlgorithms: Phase2EncryptionAlgorithmsRequestList?
     public var phase2IntegrityAlgorithms: Phase2IntegrityAlgorithmsRequestList?
     public var phase2LifetimeSeconds: Integer?
-    public var preSharedKey: String?
+    public var preSharedKey: PreSharedKey?
     public var rekeyFuzzPercentage: Integer?
     public var rekeyMarginTimeSeconds: Integer?
     public var replayWindowSize: Integer?
@@ -47829,6 +49517,7 @@ public struct VpnTunnelOptionsSpecification: Codable, Equatable {
 
     public init(dPDTimeoutAction: String? = nil,
                 dPDTimeoutSeconds: Integer? = nil,
+                enableTunnelLifecycleControl: Boolean? = nil,
                 iKEVersions: IKEVersionsRequestList? = nil,
                 logOptions: VpnTunnelLogOptionsSpecification? = nil,
                 phase1DHGroupNumbers: Phase1DHGroupNumbersRequestList? = nil,
@@ -47839,7 +49528,7 @@ public struct VpnTunnelOptionsSpecification: Codable, Equatable {
                 phase2EncryptionAlgorithms: Phase2EncryptionAlgorithmsRequestList? = nil,
                 phase2IntegrityAlgorithms: Phase2IntegrityAlgorithmsRequestList? = nil,
                 phase2LifetimeSeconds: Integer? = nil,
-                preSharedKey: String? = nil,
+                preSharedKey: PreSharedKey? = nil,
                 rekeyFuzzPercentage: Integer? = nil,
                 rekeyMarginTimeSeconds: Integer? = nil,
                 replayWindowSize: Integer? = nil,
@@ -47848,6 +49537,7 @@ public struct VpnTunnelOptionsSpecification: Codable, Equatable {
                 tunnelInsideIpv6Cidr: String? = nil) {
         self.dPDTimeoutAction = dPDTimeoutAction
         self.dPDTimeoutSeconds = dPDTimeoutSeconds
+        self.enableTunnelLifecycleControl = enableTunnelLifecycleControl
         self.iKEVersions = iKEVersions
         self.logOptions = logOptions
         self.phase1DHGroupNumbers = phase1DHGroupNumbers
@@ -47870,6 +49560,7 @@ public struct VpnTunnelOptionsSpecification: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case dPDTimeoutAction = "DPDTimeoutAction"
         case dPDTimeoutSeconds = "DPDTimeoutSeconds"
+        case enableTunnelLifecycleControl = "EnableTunnelLifecycleControl"
         case iKEVersions = "IKEVersion"
         case logOptions = "LogOptions"
         case phase1DHGroupNumbers = "Phase1DHGroupNumber"

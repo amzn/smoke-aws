@@ -31,6 +31,8 @@ import SmokeHTTPClient
 public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
     let addPermissionAsyncOverride: AddPermissionAsyncType?
     let addPermissionSyncOverride: AddPermissionSyncType?
+    let cancelMessageMoveTaskAsyncOverride: CancelMessageMoveTaskAsyncType?
+    let cancelMessageMoveTaskSyncOverride: CancelMessageMoveTaskSyncType?
     let changeMessageVisibilityAsyncOverride: ChangeMessageVisibilityAsyncType?
     let changeMessageVisibilitySyncOverride: ChangeMessageVisibilitySyncType?
     let changeMessageVisibilityBatchAsyncOverride: ChangeMessageVisibilityBatchAsyncType?
@@ -49,6 +51,8 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
     let getQueueUrlSyncOverride: GetQueueUrlSyncType?
     let listDeadLetterSourceQueuesAsyncOverride: ListDeadLetterSourceQueuesAsyncType?
     let listDeadLetterSourceQueuesSyncOverride: ListDeadLetterSourceQueuesSyncType?
+    let listMessageMoveTasksAsyncOverride: ListMessageMoveTasksAsyncType?
+    let listMessageMoveTasksSyncOverride: ListMessageMoveTasksSyncType?
     let listQueueTagsAsyncOverride: ListQueueTagsAsyncType?
     let listQueueTagsSyncOverride: ListQueueTagsSyncType?
     let listQueuesAsyncOverride: ListQueuesAsyncType?
@@ -65,6 +69,8 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
     let sendMessageBatchSyncOverride: SendMessageBatchSyncType?
     let setQueueAttributesAsyncOverride: SetQueueAttributesAsyncType?
     let setQueueAttributesSyncOverride: SetQueueAttributesSyncType?
+    let startMessageMoveTaskAsyncOverride: StartMessageMoveTaskAsyncType?
+    let startMessageMoveTaskSyncOverride: StartMessageMoveTaskSyncType?
     let tagQueueAsyncOverride: TagQueueAsyncType?
     let tagQueueSyncOverride: TagQueueSyncType?
     let untagQueueAsyncOverride: UntagQueueAsyncType?
@@ -77,6 +83,8 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
     public init(
             addPermissionAsync: AddPermissionAsyncType? = nil,
             addPermissionSync: AddPermissionSyncType? = nil,
+            cancelMessageMoveTaskAsync: CancelMessageMoveTaskAsyncType? = nil,
+            cancelMessageMoveTaskSync: CancelMessageMoveTaskSyncType? = nil,
             changeMessageVisibilityAsync: ChangeMessageVisibilityAsyncType? = nil,
             changeMessageVisibilitySync: ChangeMessageVisibilitySyncType? = nil,
             changeMessageVisibilityBatchAsync: ChangeMessageVisibilityBatchAsyncType? = nil,
@@ -95,6 +103,8 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
             getQueueUrlSync: GetQueueUrlSyncType? = nil,
             listDeadLetterSourceQueuesAsync: ListDeadLetterSourceQueuesAsyncType? = nil,
             listDeadLetterSourceQueuesSync: ListDeadLetterSourceQueuesSyncType? = nil,
+            listMessageMoveTasksAsync: ListMessageMoveTasksAsyncType? = nil,
+            listMessageMoveTasksSync: ListMessageMoveTasksSyncType? = nil,
             listQueueTagsAsync: ListQueueTagsAsyncType? = nil,
             listQueueTagsSync: ListQueueTagsSyncType? = nil,
             listQueuesAsync: ListQueuesAsyncType? = nil,
@@ -111,12 +121,16 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
             sendMessageBatchSync: SendMessageBatchSyncType? = nil,
             setQueueAttributesAsync: SetQueueAttributesAsyncType? = nil,
             setQueueAttributesSync: SetQueueAttributesSyncType? = nil,
+            startMessageMoveTaskAsync: StartMessageMoveTaskAsyncType? = nil,
+            startMessageMoveTaskSync: StartMessageMoveTaskSyncType? = nil,
             tagQueueAsync: TagQueueAsyncType? = nil,
             tagQueueSync: TagQueueSyncType? = nil,
             untagQueueAsync: UntagQueueAsyncType? = nil,
             untagQueueSync: UntagQueueSyncType? = nil) {
         self.addPermissionAsyncOverride = addPermissionAsync
         self.addPermissionSyncOverride = addPermissionSync
+        self.cancelMessageMoveTaskAsyncOverride = cancelMessageMoveTaskAsync
+        self.cancelMessageMoveTaskSyncOverride = cancelMessageMoveTaskSync
         self.changeMessageVisibilityAsyncOverride = changeMessageVisibilityAsync
         self.changeMessageVisibilitySyncOverride = changeMessageVisibilitySync
         self.changeMessageVisibilityBatchAsyncOverride = changeMessageVisibilityBatchAsync
@@ -135,6 +149,8 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
         self.getQueueUrlSyncOverride = getQueueUrlSync
         self.listDeadLetterSourceQueuesAsyncOverride = listDeadLetterSourceQueuesAsync
         self.listDeadLetterSourceQueuesSyncOverride = listDeadLetterSourceQueuesSync
+        self.listMessageMoveTasksAsyncOverride = listMessageMoveTasksAsync
+        self.listMessageMoveTasksSyncOverride = listMessageMoveTasksSync
         self.listQueueTagsAsyncOverride = listQueueTagsAsync
         self.listQueueTagsSyncOverride = listQueueTagsSync
         self.listQueuesAsyncOverride = listQueuesAsync
@@ -151,6 +167,8 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
         self.sendMessageBatchSyncOverride = sendMessageBatchSync
         self.setQueueAttributesAsyncOverride = setQueueAttributesAsync
         self.setQueueAttributesSyncOverride = setQueueAttributesSync
+        self.startMessageMoveTaskAsyncOverride = startMessageMoveTaskAsync
+        self.startMessageMoveTaskSyncOverride = startMessageMoveTaskSync
         self.tagQueueAsyncOverride = tagQueueAsync
         self.tagQueueSyncOverride = tagQueueSync
         self.untagQueueAsyncOverride = untagQueueAsync
@@ -189,6 +207,46 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
             return try addPermissionSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the CancelMessageMoveTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+         - completion: The CancelMessageMoveTaskResultForCancelMessageMoveTask object or an error will be passed to this 
+           callback when the operation is complete. The CancelMessageMoveTaskResultForCancelMessageMoveTask
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    public func cancelMessageMoveTaskAsync(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest, 
+            completion: @escaping (Result<SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask, SimpleQueueError>) -> ()) throws {
+        if let cancelMessageMoveTaskAsyncOverride = cancelMessageMoveTaskAsyncOverride {
+            return try cancelMessageMoveTaskAsyncOverride(input, completion)
+        }
+
+        let result = CancelMessageMoveTaskResultForCancelMessageMoveTask.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the CancelMessageMoveTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The CancelMessageMoveTaskResultForCancelMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func cancelMessageMoveTaskSync(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest) throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask {
+        if let cancelMessageMoveTaskSyncOverride = cancelMessageMoveTaskSyncOverride {
+            return try cancelMessageMoveTaskSyncOverride(input)
+        }
+
+        return CancelMessageMoveTaskResultForCancelMessageMoveTask.__default
     }
 
     /**
@@ -532,6 +590,46 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
     }
 
     /**
+     Invokes the ListMessageMoveTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+         - completion: The ListMessageMoveTasksResultForListMessageMoveTasks object or an error will be passed to this 
+           callback when the operation is complete. The ListMessageMoveTasksResultForListMessageMoveTasks
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    public func listMessageMoveTasksAsync(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest, 
+            completion: @escaping (Result<SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks, SimpleQueueError>) -> ()) throws {
+        if let listMessageMoveTasksAsyncOverride = listMessageMoveTasksAsyncOverride {
+            return try listMessageMoveTasksAsyncOverride(input, completion)
+        }
+
+        let result = ListMessageMoveTasksResultForListMessageMoveTasks.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the ListMessageMoveTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+     - Returns: The ListMessageMoveTasksResultForListMessageMoveTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func listMessageMoveTasksSync(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest) throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks {
+        if let listMessageMoveTasksSyncOverride = listMessageMoveTasksSyncOverride {
+            return try listMessageMoveTasksSyncOverride(input)
+        }
+
+        return ListMessageMoveTasksResultForListMessageMoveTasks.__default
+    }
+
+    /**
      Invokes the ListQueueTags operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -825,6 +923,46 @@ public struct MockSimpleQueueClient: SimpleQueueClientProtocol {
             return try setQueueAttributesSyncOverride(input)
         }
 
+    }
+
+    /**
+     Invokes the StartMessageMoveTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+         - completion: The StartMessageMoveTaskResultForStartMessageMoveTask object or an error will be passed to this 
+           callback when the operation is complete. The StartMessageMoveTaskResultForStartMessageMoveTask
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    public func startMessageMoveTaskAsync(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest, 
+            completion: @escaping (Result<SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask, SimpleQueueError>) -> ()) throws {
+        if let startMessageMoveTaskAsyncOverride = startMessageMoveTaskAsyncOverride {
+            return try startMessageMoveTaskAsyncOverride(input, completion)
+        }
+
+        let result = StartMessageMoveTaskResultForStartMessageMoveTask.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the StartMessageMoveTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The StartMessageMoveTaskResultForStartMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    public func startMessageMoveTaskSync(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest) throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask {
+        if let startMessageMoveTaskSyncOverride = startMessageMoveTaskSyncOverride {
+            return try startMessageMoveTaskSyncOverride(input)
+        }
+
+        return StartMessageMoveTaskResultForStartMessageMoveTask.__default
     }
 
     /**

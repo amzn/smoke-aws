@@ -47,6 +47,7 @@ private let queueDeletedRecentlyIdentity = "AWS.SimpleQueueService.QueueDeletedR
 private let queueDoesNotExistIdentity = "AWS.SimpleQueueService.NonExistentQueue"
 private let queueNameExistsIdentity = "QueueAlreadyExists"
 private let receiptHandleIsInvalidIdentity = "ReceiptHandleIsInvalid"
+private let resourceNotFoundIdentity = "ResourceNotFoundException"
 private let tooManyEntriesInBatchRequestIdentity = "AWS.SimpleQueueService.TooManyEntriesInBatchRequest"
 private let unsupportedOperationIdentity = "AWS.SimpleQueueService.UnsupportedOperation"
 private let __accessDeniedIdentity = "AccessDenied"
@@ -66,6 +67,7 @@ public enum SimpleQueueError: Swift.Error, Decodable {
     case queueDoesNotExist(QueueDoesNotExist)
     case queueNameExists(QueueNameExists)
     case receiptHandleIsInvalid(ReceiptHandleIsInvalid)
+    case resourceNotFound(ResourceNotFoundException)
     case tooManyEntriesInBatchRequest(TooManyEntriesInBatchRequest)
     case unsupportedOperation(UnsupportedOperation)
     case accessDenied(message: String?)
@@ -129,6 +131,9 @@ public enum SimpleQueueError: Swift.Error, Decodable {
         case receiptHandleIsInvalidIdentity:
             let errorPayload = try ReceiptHandleIsInvalid(from: decoder)
             self = SimpleQueueError.receiptHandleIsInvalid(errorPayload)
+        case resourceNotFoundIdentity:
+            let errorPayload = try ResourceNotFoundException(from: decoder)
+            self = SimpleQueueError.resourceNotFound(errorPayload)
         case tooManyEntriesInBatchRequestIdentity:
             let errorPayload = try TooManyEntriesInBatchRequest(from: decoder)
             self = SimpleQueueError.tooManyEntriesInBatchRequest(errorPayload)

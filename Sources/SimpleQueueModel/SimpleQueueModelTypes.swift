@@ -88,6 +88,16 @@ public typealias DeleteMessageBatchResultEntryList = [DeleteMessageBatchResultEn
 public typealias Integer = Int
 
 /**
+ Type definition for the ListMessageMoveTasksResultEntryList field.
+ */
+public typealias ListMessageMoveTasksResultEntryList = [ListMessageMoveTasksResultEntry]
+
+/**
+ Type definition for the Long field.
+ */
+public typealias Long = Int64
+
+/**
  Type definition for the MessageAttributeName field.
  */
 public typealias MessageAttributeName = String
@@ -124,6 +134,7 @@ public enum MessageSystemAttributeName: String, Codable, CustomStringConvertible
     case awstraceheader = "AWSTraceHeader"
     case approximatefirstreceivetimestamp = "ApproximateFirstReceiveTimestamp"
     case approximatereceivecount = "ApproximateReceiveCount"
+    case deadletterqueuesourcearn = "DeadLetterQueueSourceArn"
     case messagededuplicationid = "MessageDeduplicationId"
     case messagegroupid = "MessageGroupId"
     case senderid = "SenderId"

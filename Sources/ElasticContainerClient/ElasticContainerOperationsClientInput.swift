@@ -70,6 +70,11 @@ public typealias DeleteClusterOperationHTTPRequestInput = BodyHTTPRequestInput
 public typealias DeleteServiceOperationHTTPRequestInput = BodyHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteTaskDefinitions operation in a HTTP client.
+ */
+public typealias DeleteTaskDefinitionsOperationHTTPRequestInput = BodyHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteTaskSet operation in a HTTP client.
  */
 public typealias DeleteTaskSetOperationHTTPRequestInput = BodyHTTPRequestInput

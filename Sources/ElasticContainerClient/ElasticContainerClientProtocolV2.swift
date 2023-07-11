@@ -48,6 +48,8 @@ public protocol ElasticContainerClientProtocolV2 {
             _ input: ElasticContainerModel.DeleteClusterRequest) async throws -> ElasticContainerModel.DeleteClusterResponse
     typealias DeleteServiceFunctionType = (
             _ input: ElasticContainerModel.DeleteServiceRequest) async throws -> ElasticContainerModel.DeleteServiceResponse
+    typealias DeleteTaskDefinitionsFunctionType = (
+            _ input: ElasticContainerModel.DeleteTaskDefinitionsRequest) async throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse
     typealias DeleteTaskSetFunctionType = (
             _ input: ElasticContainerModel.DeleteTaskSetRequest) async throws -> ElasticContainerModel.DeleteTaskSetResponse
     typealias DeregisterContainerInstanceFunctionType = (
@@ -160,7 +162,7 @@ public protocol ElasticContainerClientProtocolV2 {
          - input: The validated CreateClusterRequest object being passed to this operation.
      - Returns: The CreateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, invalidParameter, server.
+     - Throws: client, invalidParameter, namespaceNotFound, server.
      */
     func createCluster(
             input: ElasticContainerModel.CreateClusterRequest) async throws -> ElasticContainerModel.CreateClusterResponse
@@ -248,6 +250,18 @@ public protocol ElasticContainerClientProtocolV2 {
      */
     func deleteService(
             input: ElasticContainerModel.DeleteServiceRequest) async throws -> ElasticContainerModel.DeleteServiceResponse
+
+    /**
+     Invokes the DeleteTaskDefinitions operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteTaskDefinitionsRequest object being passed to this operation.
+     - Returns: The DeleteTaskDefinitionsResponse object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: accessDenied, client, invalidParameter, server.
+     */
+    func deleteTaskDefinitions(
+            input: ElasticContainerModel.DeleteTaskDefinitionsRequest) async throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse
 
     /**
      Invokes the DeleteTaskSet operation suspending until the response is available before returning.
@@ -712,7 +726,7 @@ public protocol ElasticContainerClientProtocolV2 {
          - input: The validated UpdateClusterRequest object being passed to this operation.
      - Returns: The UpdateClusterResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: client, clusterNotFound, invalidParameter, server.
+     - Throws: client, clusterNotFound, invalidParameter, namespaceNotFound, server.
      */
     func updateCluster(
             input: ElasticContainerModel.UpdateClusterRequest) async throws -> ElasticContainerModel.UpdateClusterResponse

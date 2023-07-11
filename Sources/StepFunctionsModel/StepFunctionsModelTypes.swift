@@ -28,6 +28,11 @@ import Foundation
 public typealias ActivityList = [ActivityListItem]
 
 /**
+ Type definition for the AliasDescription field.
+ */
+public typealias AliasDescription = String
+
+/**
  Type definition for the Arn field.
  */
 public typealias Arn = String
@@ -41,6 +46,11 @@ public typealias BilledDuration = Int
  Type definition for the BilledMemoryUsed field.
  */
 public typealias BilledMemoryUsed = Int
+
+/**
+ Type definition for the CharacterRestrictedName field.
+ */
+public typealias CharacterRestrictedName = String
 
 /**
  Type definition for the ConnectorParameters field.
@@ -258,9 +268,24 @@ public typealias PageSize = Int
 public typealias PageToken = String
 
 /**
+ Type definition for the Publish field.
+ */
+public typealias Publish = Bool
+
+/**
  Type definition for the ReverseOrder field.
  */
 public typealias ReverseOrder = Bool
+
+/**
+ Type definition for the RevisionId field.
+ */
+public typealias RevisionId = String
+
+/**
+ Type definition for the RoutingConfigurationList field.
+ */
+public typealias RoutingConfigurationList = [RoutingConfigurationListItem]
 
 /**
  Type definition for the SensitiveCause field.
@@ -281,6 +306,11 @@ public typealias SensitiveDataJobInput = String
  Type definition for the SensitiveError field.
  */
 public typealias SensitiveError = String
+
+/**
+ Type definition for the StateMachineAliasList field.
+ */
+public typealias StateMachineAliasList = [StateMachineAliasListItem]
 
 /**
  Type definition for the StateMachineList field.
@@ -314,6 +344,11 @@ public enum StateMachineType: String, Codable, CustomStringConvertible {
     
     public static let __default: StateMachineType = .express
 }
+
+/**
+ Type definition for the StateMachineVersionList field.
+ */
+public typealias StateMachineVersionList = [StateMachineVersionListItem]
 
 /**
  Enumeration restricting the values of the SyncExecutionStatus field.
@@ -396,6 +431,7 @@ public typealias UnsignedLong = Int
 public enum ValidationExceptionReason: String, Codable, CustomStringConvertible {
     case apiDoesNotSupportLabeledArns = "API_DOES_NOT_SUPPORT_LABELED_ARNS"
     case cannotUpdateCompletedMapRun = "CANNOT_UPDATE_COMPLETED_MAP_RUN"
+    case invalidRoutingConfiguration = "INVALID_ROUTING_CONFIGURATION"
     case missingRequiredParameter = "MISSING_REQUIRED_PARAMETER"
 
     public var description: String {
@@ -406,6 +442,16 @@ public enum ValidationExceptionReason: String, Codable, CustomStringConvertible 
 }
 
 /**
+ Type definition for the VersionDescription field.
+ */
+public typealias VersionDescription = String
+
+/**
+ Type definition for the VersionWeight field.
+ */
+public typealias VersionWeight = Int
+
+/**
  Type definition for the IncludedDetails field.
  */
 public typealias IncludedDetails = Bool
@@ -414,6 +460,18 @@ public typealias IncludedDetails = Bool
  Type definition for the Truncated field.
  */
 public typealias Truncated = Bool
+
+/**
+ Validation for the AliasDescription field.
+*/
+extension StepFunctionsModel.AliasDescription {
+    public func validateAsAliasDescription() throws {
+
+        if self.count > 256 {
+            throw StepFunctionsError.validationError(reason: "The provided value to AliasDescription violated the maximum length constraint.")
+        }
+    }
+}
 
 /**
  Validation for the Arn field.
@@ -451,6 +509,27 @@ extension StepFunctionsModel.BilledMemoryUsed {
             throw StepFunctionsError.validationError(reason: "The provided value to BilledMemoryUsed violated the minimum range constraint.")
         }
 
+    }
+}
+
+/**
+ Validation for the CharacterRestrictedName field.
+*/
+extension StepFunctionsModel.CharacterRestrictedName {
+    public func validateAsCharacterRestrictedName() throws {
+        if self.count < 1 {
+            throw StepFunctionsError.validationError(reason: "The provided value to CharacterRestrictedName violated the minimum length constraint.")
+        }
+
+        if self.count > 80 {
+            throw StepFunctionsError.validationError(reason: "The provided value to CharacterRestrictedName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "^(?=.*[a-zA-Z_\\-\\.])[a-zA-Z0-9_\\-\\.]+$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw StepFunctionsError.validationError(
+                    reason: "The provided value to CharacterRestrictedName violated the regular expression constraint.")
+        }
     }
 }
 
@@ -579,6 +658,21 @@ extension StepFunctionsModel.PageToken {
 
         if self.count > 1024 {
             throw StepFunctionsError.validationError(reason: "The provided value to PageToken violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the RoutingConfigurationList field.
+*/
+extension Array where Element == StepFunctionsModel.RoutingConfigurationListItem {
+    public func validateAsRoutingConfigurationList() throws {
+        if self.count < 1 {
+            throw StepFunctionsError.validationError(reason: "The provided value to RoutingConfigurationList violated the minimum length constraint.")
+        }
+
+        if self.count > 2 {
+            throw StepFunctionsError.validationError(reason: "The provided value to RoutingConfigurationList violated the maximum length constraint.")
         }
     }
 }
@@ -751,5 +845,32 @@ extension StepFunctionsModel.UnsignedLong {
             throw StepFunctionsError.validationError(reason: "The provided value to UnsignedLong violated the minimum range constraint.")
         }
 
+    }
+}
+
+/**
+ Validation for the VersionDescription field.
+*/
+extension StepFunctionsModel.VersionDescription {
+    public func validateAsVersionDescription() throws {
+
+        if self.count > 256 {
+            throw StepFunctionsError.validationError(reason: "The provided value to VersionDescription violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the VersionWeight field.
+*/
+extension StepFunctionsModel.VersionWeight {
+    public func validateAsVersionWeight() throws {
+        if self < 0 {
+            throw StepFunctionsError.validationError(reason: "The provided value to VersionWeight violated the minimum range constraint.")
+        }
+
+        if self > 100 {
+            throw StepFunctionsError.validationError(reason: "The provided value to VersionWeight violated the maximum range constraint.")
+        }
     }
 }

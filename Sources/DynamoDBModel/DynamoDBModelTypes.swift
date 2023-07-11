@@ -410,6 +410,11 @@ public typealias CsvHeaderList = [CsvHeader]
 public typealias Date = String
 
 /**
+ Type definition for the DeletionProtectionEnabled field.
+ */
+public typealias DeletionProtectionEnabled = Bool
+
+/**
  Enumeration restricting the values of the DestinationStatus field.
  */
 public enum DestinationStatus: String, Codable, CustomStringConvertible {
@@ -425,6 +430,11 @@ public enum DestinationStatus: String, Codable, CustomStringConvertible {
     
     public static let __default: DestinationStatus = .active
 }
+
+/**
+ Type definition for the DoubleObject field.
+ */
+public typealias DoubleObject = Double
 
 /**
  Type definition for the Endpoints field.
@@ -867,6 +877,11 @@ public typealias LocalSecondaryIndexes = [LocalSecondaryIndexInfo]
  Type definition for the Long field.
  */
 public typealias Long = Int
+
+/**
+ Type definition for the LongObject field.
+ */
+public typealias LongObject = Int
 
 /**
  Type definition for the MapAttributeValue field.

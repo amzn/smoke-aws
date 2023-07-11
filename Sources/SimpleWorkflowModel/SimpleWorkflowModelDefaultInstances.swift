@@ -1204,6 +1204,7 @@ public extension PollForDecisionTaskInput {
             maximumPageSize: nil,
             nextPageToken: nil,
             reverseOrder: nil,
+            startAtPreviousStartedEvent: nil,
             taskList: TaskList.__default)
 
         return defaultInstance

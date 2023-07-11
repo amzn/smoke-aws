@@ -308,6 +308,7 @@ public extension BatchStatementError {
     static let __default: DynamoDBModel.BatchStatementError = {
         let defaultInstance = DynamoDBModel.BatchStatementError(
             code: nil,
+            item: nil,
             message: nil)
 
         return defaultInstance
@@ -322,6 +323,7 @@ public extension BatchStatementRequest {
         let defaultInstance = DynamoDBModel.BatchStatementRequest(
             consistentRead: nil,
             parameters: nil,
+            returnValuesOnConditionCheckFailure: nil,
             statement: "0")
 
         return defaultInstance
@@ -447,6 +449,7 @@ public extension ConditionalCheckFailedException {
      */
     static let __default: DynamoDBModel.ConditionalCheckFailedException = {
         let defaultInstance = DynamoDBModel.ConditionalCheckFailedException(
+            item: nil,
             message: nil)
 
         return defaultInstance
@@ -611,6 +614,7 @@ public extension CreateTableInput {
         let defaultInstance = DynamoDBModel.CreateTableInput(
             attributeDefinitions: [],
             billingMode: nil,
+            deletionProtectionEnabled: nil,
             globalSecondaryIndexes: nil,
             keySchema: [KeySchemaElement.__default],
             localSecondaryIndexes: nil,
@@ -718,6 +722,7 @@ public extension DeleteItemInput {
             returnConsumedCapacity: nil,
             returnItemCollectionMetrics: nil,
             returnValues: nil,
+            returnValuesOnConditionCheckFailure: nil,
             tableName: "012")
 
         return defaultInstance
@@ -1155,6 +1160,7 @@ public extension ExecuteStatementInput {
             nextToken: nil,
             parameters: nil,
             returnConsumedCapacity: nil,
+            returnValuesOnConditionCheckFailure: nil,
             statement: "0")
 
         return defaultInstance
@@ -2055,6 +2061,7 @@ public extension ParameterizedStatement {
     static let __default: DynamoDBModel.ParameterizedStatement = {
         let defaultInstance = DynamoDBModel.ParameterizedStatement(
             parameters: nil,
+            returnValuesOnConditionCheckFailure: nil,
             statement: "0")
 
         return defaultInstance
@@ -2197,6 +2204,7 @@ public extension PutItemInput {
             returnConsumedCapacity: nil,
             returnItemCollectionMetrics: nil,
             returnValues: nil,
+            returnValuesOnConditionCheckFailure: nil,
             tableName: "012")
 
         return defaultInstance
@@ -2823,6 +2831,7 @@ public extension TableDescription {
             attributeDefinitions: nil,
             billingModeSummary: nil,
             creationDateTime: nil,
+            deletionProtectionEnabled: nil,
             globalSecondaryIndexes: nil,
             globalTableVersion: nil,
             itemCount: nil,
@@ -3208,6 +3217,7 @@ public extension UpdateItemInput {
             returnConsumedCapacity: nil,
             returnItemCollectionMetrics: nil,
             returnValues: nil,
+            returnValuesOnConditionCheckFailure: nil,
             tableName: "012",
             updateExpression: nil)
 
@@ -3253,6 +3263,7 @@ public extension UpdateTableInput {
         let defaultInstance = DynamoDBModel.UpdateTableInput(
             attributeDefinitions: nil,
             billingMode: nil,
+            deletionProtectionEnabled: nil,
             globalSecondaryIndexUpdates: nil,
             provisionedThroughput: nil,
             replicaUpdates: nil,

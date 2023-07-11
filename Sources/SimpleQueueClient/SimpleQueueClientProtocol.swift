@@ -34,6 +34,11 @@ public protocol SimpleQueueClientProtocol: SimpleQueueClientProtocolV2 {
     typealias AddPermissionAsyncType = (
             _ input: SimpleQueueModel.AddPermissionRequest, 
             _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
+    typealias CancelMessageMoveTaskSyncType = (
+            _ input: SimpleQueueModel.CancelMessageMoveTaskRequest) throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask
+    typealias CancelMessageMoveTaskAsyncType = (
+            _ input: SimpleQueueModel.CancelMessageMoveTaskRequest, 
+            _ completion: @escaping (Result<SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask, SimpleQueueError>) -> ()) throws -> ()
     typealias ChangeMessageVisibilitySyncType = (
             _ input: SimpleQueueModel.ChangeMessageVisibilityRequest) throws -> ()
     typealias ChangeMessageVisibilityAsyncType = (
@@ -79,6 +84,11 @@ public protocol SimpleQueueClientProtocol: SimpleQueueClientProtocolV2 {
     typealias ListDeadLetterSourceQueuesAsyncType = (
             _ input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest, 
             _ completion: @escaping (Result<SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues, SimpleQueueError>) -> ()) throws -> ()
+    typealias ListMessageMoveTasksSyncType = (
+            _ input: SimpleQueueModel.ListMessageMoveTasksRequest) throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks
+    typealias ListMessageMoveTasksAsyncType = (
+            _ input: SimpleQueueModel.ListMessageMoveTasksRequest, 
+            _ completion: @escaping (Result<SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks, SimpleQueueError>) -> ()) throws -> ()
     typealias ListQueueTagsSyncType = (
             _ input: SimpleQueueModel.ListQueueTagsRequest) throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags
     typealias ListQueueTagsAsyncType = (
@@ -119,6 +129,11 @@ public protocol SimpleQueueClientProtocol: SimpleQueueClientProtocolV2 {
     typealias SetQueueAttributesAsyncType = (
             _ input: SimpleQueueModel.SetQueueAttributesRequest, 
             _ completion: @escaping (SimpleQueueError?) -> ()) throws -> ()
+    typealias StartMessageMoveTaskSyncType = (
+            _ input: SimpleQueueModel.StartMessageMoveTaskRequest) throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask
+    typealias StartMessageMoveTaskAsyncType = (
+            _ input: SimpleQueueModel.StartMessageMoveTaskRequest, 
+            _ completion: @escaping (Result<SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask, SimpleQueueError>) -> ()) throws -> ()
     typealias TagQueueSyncType = (
             _ input: SimpleQueueModel.TagQueueRequest) throws -> ()
     typealias TagQueueAsyncType = (
@@ -152,6 +167,32 @@ public protocol SimpleQueueClientProtocol: SimpleQueueClientProtocolV2 {
      */
     func addPermissionSync(
             input: SimpleQueueModel.AddPermissionRequest) throws
+
+    /**
+     Invokes the CancelMessageMoveTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+         - completion: The CancelMessageMoveTaskResultForCancelMessageMoveTask object or an error will be passed to this 
+           callback when the operation is complete. The CancelMessageMoveTaskResultForCancelMessageMoveTask
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    func cancelMessageMoveTaskAsync(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest, 
+            completion: @escaping (Result<SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask, SimpleQueueError>) -> ()) throws
+
+    /**
+     Invokes the CancelMessageMoveTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated CancelMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The CancelMessageMoveTaskResultForCancelMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func cancelMessageMoveTaskSync(
+            input: SimpleQueueModel.CancelMessageMoveTaskRequest) throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask
 
     /**
      Invokes the ChangeMessageVisibility operation returning immediately and passing the response to a callback.
@@ -377,6 +418,32 @@ public protocol SimpleQueueClientProtocol: SimpleQueueClientProtocolV2 {
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues
 
     /**
+     Invokes the ListMessageMoveTasks operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+         - completion: The ListMessageMoveTasksResultForListMessageMoveTasks object or an error will be passed to this 
+           callback when the operation is complete. The ListMessageMoveTasksResultForListMessageMoveTasks
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    func listMessageMoveTasksAsync(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest, 
+            completion: @escaping (Result<SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks, SimpleQueueError>) -> ()) throws
+
+    /**
+     Invokes the ListMessageMoveTasks operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListMessageMoveTasksRequest object being passed to this operation.
+     - Returns: The ListMessageMoveTasksResultForListMessageMoveTasks object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func listMessageMoveTasksSync(
+            input: SimpleQueueModel.ListMessageMoveTasksRequest) throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks
+
+    /**
      Invokes the ListQueueTags operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -568,6 +635,32 @@ public protocol SimpleQueueClientProtocol: SimpleQueueClientProtocolV2 {
      */
     func setQueueAttributesSync(
             input: SimpleQueueModel.SetQueueAttributesRequest) throws
+
+    /**
+     Invokes the StartMessageMoveTask operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+         - completion: The StartMessageMoveTaskResultForStartMessageMoveTask object or an error will be passed to this 
+           callback when the operation is complete. The StartMessageMoveTaskResultForStartMessageMoveTask
+           object will be validated before being returned to caller.
+           The possible errors are: resourceNotFound, unsupportedOperation.
+     */
+    func startMessageMoveTaskAsync(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest, 
+            completion: @escaping (Result<SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask, SimpleQueueError>) -> ()) throws
+
+    /**
+     Invokes the StartMessageMoveTask operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated StartMessageMoveTaskRequest object being passed to this operation.
+     - Returns: The StartMessageMoveTaskResultForStartMessageMoveTask object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: resourceNotFound, unsupportedOperation.
+     */
+    func startMessageMoveTaskSync(
+            input: SimpleQueueModel.StartMessageMoveTaskRequest) throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask
 
     /**
      Invokes the TagQueue operation returning immediately and passing the response to a callback.

@@ -29,6 +29,7 @@ import SimpleQueueModel
  */
 public struct SimpleQueueOperationsReporting {
     public let addPermission: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let cancelMessageMoveTask: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let changeMessageVisibility: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let changeMessageVisibilityBatch: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let createQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
@@ -38,6 +39,7 @@ public struct SimpleQueueOperationsReporting {
     public let getQueueAttributes: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let getQueueUrl: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let listDeadLetterSourceQueues: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let listMessageMoveTasks: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let listQueueTags: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let listQueues: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let purgeQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
@@ -46,12 +48,15 @@ public struct SimpleQueueOperationsReporting {
     public let sendMessage: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let sendMessageBatch: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let setQueueAttributes: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
+    public let startMessageMoveTask: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let tagQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
     public let untagQueue: StandardSmokeAWSOperationReporting<SimpleQueueModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<SimpleQueueModelOperations>) {
         self.addPermission = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .addPermission, configuration: reportingConfiguration)
+        self.cancelMessageMoveTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .cancelMessageMoveTask, configuration: reportingConfiguration)
         self.changeMessageVisibility = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .changeMessageVisibility, configuration: reportingConfiguration)
         self.changeMessageVisibilityBatch = StandardSmokeAWSOperationReporting(
@@ -70,6 +75,8 @@ public struct SimpleQueueOperationsReporting {
             clientName: clientName, operation: .getQueueUrl, configuration: reportingConfiguration)
         self.listDeadLetterSourceQueues = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listDeadLetterSourceQueues, configuration: reportingConfiguration)
+        self.listMessageMoveTasks = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listMessageMoveTasks, configuration: reportingConfiguration)
         self.listQueueTags = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listQueueTags, configuration: reportingConfiguration)
         self.listQueues = StandardSmokeAWSOperationReporting(
@@ -86,6 +93,8 @@ public struct SimpleQueueOperationsReporting {
             clientName: clientName, operation: .sendMessageBatch, configuration: reportingConfiguration)
         self.setQueueAttributes = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .setQueueAttributes, configuration: reportingConfiguration)
+        self.startMessageMoveTask = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .startMessageMoveTask, configuration: reportingConfiguration)
         self.tagQueue = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .tagQueue, configuration: reportingConfiguration)
         self.untagQueue = StandardSmokeAWSOperationReporting(

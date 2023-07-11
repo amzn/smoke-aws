@@ -339,6 +339,7 @@ public extension ContainerDefinition {
         let defaultInstance = ElasticContainerModel.ContainerDefinition(
             command: nil,
             cpu: nil,
+            credentialSpecs: nil,
             dependsOn: nil,
             disableNetworking: nil,
             dnsSearchDomains: nil,
@@ -730,6 +731,31 @@ public extension DeleteServiceResponse {
     static let __default: ElasticContainerModel.DeleteServiceResponse = {
         let defaultInstance = ElasticContainerModel.DeleteServiceResponse(
             service: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteTaskDefinitionsRequest {
+    /**
+     Default instance of the DeleteTaskDefinitionsRequest structure.
+     */
+    static let __default: ElasticContainerModel.DeleteTaskDefinitionsRequest = {
+        let defaultInstance = ElasticContainerModel.DeleteTaskDefinitionsRequest(
+            taskDefinitions: [])
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteTaskDefinitionsResponse {
+    /**
+     Default instance of the DeleteTaskDefinitionsResponse structure.
+     */
+    static let __default: ElasticContainerModel.DeleteTaskDefinitionsResponse = {
+        let defaultInstance = ElasticContainerModel.DeleteTaskDefinitionsResponse(
+            failures: nil,
+            taskDefinitions: nil)
 
         return defaultInstance
     }()

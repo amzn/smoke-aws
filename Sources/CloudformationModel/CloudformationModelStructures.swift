@@ -60,6 +60,40 @@ public struct AccountLimit: Codable, Equatable {
     }
 }
 
+public struct ActivateOrganizationsAccessInput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ActivateOrganizationsAccessOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ActivateOrganizationsAccessOutputForActivateOrganizationsAccess: Codable, Equatable {
+    public var activateOrganizationsAccessResult: ActivateOrganizationsAccessOutput
+
+    public init(activateOrganizationsAccessResult: ActivateOrganizationsAccessOutput) {
+        self.activateOrganizationsAccessResult = activateOrganizationsAccessResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case activateOrganizationsAccessResult = "ActivateOrganizationsAccessResult"
+    }
+
+    public func validate() throws {
+        try activateOrganizationsAccessResult.validate()
+    }
+}
+
 public struct ActivateTypeInput: Codable, Equatable {
     public var autoUpdate: AutoUpdate?
     public var executionRoleArn: RoleArn?
@@ -539,6 +573,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
     public var description: Description?
     public var includeNestedStacks: IncludeNestedStacks?
     public var notificationARNs: NotificationARNs?
+    public var onStackFailure: OnStackFailure?
     public var parameters: Parameters?
     public var resourceTypes: ResourceTypes?
     public var resourcesToImport: ResourcesToImport?
@@ -557,6 +592,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
                 description: Description? = nil,
                 includeNestedStacks: IncludeNestedStacks? = nil,
                 notificationARNs: NotificationARNs? = nil,
+                onStackFailure: OnStackFailure? = nil,
                 parameters: Parameters? = nil,
                 resourceTypes: ResourceTypes? = nil,
                 resourcesToImport: ResourcesToImport? = nil,
@@ -574,6 +610,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
         self.description = description
         self.includeNestedStacks = includeNestedStacks
         self.notificationARNs = notificationARNs
+        self.onStackFailure = onStackFailure
         self.parameters = parameters
         self.resourceTypes = resourceTypes
         self.resourcesToImport = resourcesToImport
@@ -594,6 +631,7 @@ public struct CreateChangeSetInput: Codable, Equatable {
         case description = "Description"
         case includeNestedStacks = "IncludeNestedStacks"
         case notificationARNs = "NotificationARNs"
+        case onStackFailure = "OnStackFailure"
         case parameters = "Parameters"
         case resourceTypes = "ResourceTypes"
         case resourcesToImport = "ResourcesToImport"
@@ -972,6 +1010,40 @@ public struct CreatedButModifiedException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct DeactivateOrganizationsAccessInput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeactivateOrganizationsAccessOutput: Codable, Equatable {
+
+    public init() {
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess: Codable, Equatable {
+    public var deactivateOrganizationsAccessResult: DeactivateOrganizationsAccessOutput
+
+    public init(deactivateOrganizationsAccessResult: DeactivateOrganizationsAccessOutput) {
+        self.deactivateOrganizationsAccessResult = deactivateOrganizationsAccessResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case deactivateOrganizationsAccessResult = "DeactivateOrganizationsAccessResult"
+    }
+
+    public func validate() throws {
+        try deactivateOrganizationsAccessResult.validate()
     }
 }
 
@@ -1482,6 +1554,7 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
     public var includeNestedStacks: IncludeNestedStacks?
     public var nextToken: NextToken?
     public var notificationARNs: NotificationARNs?
+    public var onStackFailure: OnStackFailure?
     public var parameters: Parameters?
     public var parentChangeSetId: ChangeSetId?
     public var rollbackConfiguration: RollbackConfiguration?
@@ -1502,6 +1575,7 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
                 includeNestedStacks: IncludeNestedStacks? = nil,
                 nextToken: NextToken? = nil,
                 notificationARNs: NotificationARNs? = nil,
+                onStackFailure: OnStackFailure? = nil,
                 parameters: Parameters? = nil,
                 parentChangeSetId: ChangeSetId? = nil,
                 rollbackConfiguration: RollbackConfiguration? = nil,
@@ -1521,6 +1595,7 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
         self.includeNestedStacks = includeNestedStacks
         self.nextToken = nextToken
         self.notificationARNs = notificationARNs
+        self.onStackFailure = onStackFailure
         self.parameters = parameters
         self.parentChangeSetId = parentChangeSetId
         self.rollbackConfiguration = rollbackConfiguration
@@ -1543,6 +1618,7 @@ public struct DescribeChangeSetOutput: Codable, Equatable {
         case includeNestedStacks = "IncludeNestedStacks"
         case nextToken = "NextToken"
         case notificationARNs = "NotificationARNs"
+        case onStackFailure = "OnStackFailure"
         case parameters = "Parameters"
         case parentChangeSetId = "ParentChangeSetId"
         case rollbackConfiguration = "RollbackConfiguration"
@@ -1580,6 +1656,52 @@ public struct DescribeChangeSetOutputForDescribeChangeSet: Codable, Equatable {
 
     public func validate() throws {
         try describeChangeSetResult.validate()
+    }
+}
+
+public struct DescribeOrganizationsAccessInput: Codable, Equatable {
+    public var callAs: CallAs?
+
+    public init(callAs: CallAs? = nil) {
+        self.callAs = callAs
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeOrganizationsAccessOutput: Codable, Equatable {
+    public var status: OrganizationStatus?
+
+    public init(status: OrganizationStatus? = nil) {
+        self.status = status
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case status = "Status"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess: Codable, Equatable {
+    public var describeOrganizationsAccessResult: DescribeOrganizationsAccessOutput
+
+    public init(describeOrganizationsAccessResult: DescribeOrganizationsAccessOutput) {
+        self.describeOrganizationsAccessResult = describeOrganizationsAccessResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case describeOrganizationsAccessResult = "DescribeOrganizationsAccessResult"
+    }
+
+    public func validate() throws {
+        try describeOrganizationsAccessResult.validate()
     }
 }
 
@@ -5498,6 +5620,7 @@ public struct StackSet: Codable, Equatable {
     public var organizationalUnitIds: OrganizationalUnitIdList?
     public var parameters: Parameters?
     public var permissionModel: PermissionModels?
+    public var regions: RegionList?
     public var stackSetARN: StackSetARN?
     public var stackSetDriftDetectionDetails: StackSetDriftDetectionDetails?
     public var stackSetId: StackSetId?
@@ -5515,6 +5638,7 @@ public struct StackSet: Codable, Equatable {
                 organizationalUnitIds: OrganizationalUnitIdList? = nil,
                 parameters: Parameters? = nil,
                 permissionModel: PermissionModels? = nil,
+                regions: RegionList? = nil,
                 stackSetARN: StackSetARN? = nil,
                 stackSetDriftDetectionDetails: StackSetDriftDetectionDetails? = nil,
                 stackSetId: StackSetId? = nil,
@@ -5531,6 +5655,7 @@ public struct StackSet: Codable, Equatable {
         self.organizationalUnitIds = organizationalUnitIds
         self.parameters = parameters
         self.permissionModel = permissionModel
+        self.regions = regions
         self.stackSetARN = stackSetARN
         self.stackSetDriftDetectionDetails = stackSetDriftDetectionDetails
         self.stackSetId = stackSetId
@@ -5550,6 +5675,7 @@ public struct StackSet: Codable, Equatable {
         case organizationalUnitIds = "OrganizationalUnitIds"
         case parameters = "Parameters"
         case permissionModel = "PermissionModel"
+        case regions = "Regions"
         case stackSetARN = "StackSetARN"
         case stackSetDriftDetectionDetails = "StackSetDriftDetectionDetails"
         case stackSetId = "StackSetId"

@@ -2633,19 +2633,23 @@ public struct PipelineExecutionSummary: Codable, Equatable {
 public struct PipelineMetadata: Codable, Equatable {
     public var created: Timestamp?
     public var pipelineArn: PipelineArn?
+    public var pollingDisabledAt: Timestamp?
     public var updated: Timestamp?
 
     public init(created: Timestamp? = nil,
                 pipelineArn: PipelineArn? = nil,
+                pollingDisabledAt: Timestamp? = nil,
                 updated: Timestamp? = nil) {
         self.created = created
         self.pipelineArn = pipelineArn
+        self.pollingDisabledAt = pollingDisabledAt
         self.updated = updated
     }
 
     enum CodingKeys: String, CodingKey {
         case created
         case pipelineArn
+        case pollingDisabledAt
         case updated
     }
 
