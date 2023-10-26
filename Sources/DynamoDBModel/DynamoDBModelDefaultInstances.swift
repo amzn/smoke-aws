@@ -280,7 +280,7 @@ public extension BatchGetItemInput {
      */
     static let __default: DynamoDBModel.BatchGetItemInput = {
         let defaultInstance = DynamoDBModel.BatchGetItemInput(
-            requestItems: ["Entry_0": KeysAndAttributes.__default],
+            requestItems: ["012": KeysAndAttributes.__default],
             returnConsumedCapacity: nil)
 
         return defaultInstance
@@ -350,7 +350,7 @@ public extension BatchWriteItemInput {
      */
     static let __default: DynamoDBModel.BatchWriteItemInput = {
         let defaultInstance = DynamoDBModel.BatchWriteItemInput(
-            requestItems: ["Entry_0": [WriteRequest.__default]],
+            requestItems: ["012": [WriteRequest.__default]],
             returnConsumedCapacity: nil,
             returnItemCollectionMetrics: nil)
 
