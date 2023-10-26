@@ -89,6 +89,12 @@ let package = Package(
             name: "S3Model",
             targets: ["S3Model"]),
         .library(
+            name: "SchedulerClient",
+            targets: ["SchedulerClient"]),
+        .library(
+            name: "SchedulerModel",
+            targets: ["SchedulerModel"]),
+        .library(
             name: "SecurityTokenClient",
             targets: ["SecurityTokenClient"]),
         .library(
@@ -239,6 +245,15 @@ let package = Package(
             ]),
         .target(
             name: "S3Model", dependencies: [
+                .product(name: "Logging", package: "swift-log"),
+            ]),
+        .target(
+            name: "SchedulerClient", dependencies: [
+                .target(name: "SchedulerModel"),
+                .target(name: "SmokeAWSHttp"),
+            ]),
+        .target(
+            name: "SchedulerModel", dependencies: [
                 .product(name: "Logging", package: "swift-log"),
             ]),
         .target(

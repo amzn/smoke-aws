@@ -292,7 +292,7 @@ public extension CreateExtensionRequest {
      */
     static let __default: AppConfigModel.CreateExtensionRequest = {
         let defaultInstance = AppConfigModel.CreateExtensionRequest(
-            actions: [.onDeploymentBaking: [Action.__default]],
+            actions: ["Entry_0": [Action.__default]],
             description: nil,
             latestVersionNumber: nil,
             name: "0",
