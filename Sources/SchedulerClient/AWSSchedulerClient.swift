@@ -94,7 +94,8 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<SchedulerModelOperations>
                     = SmokeAWSClientReportingConfiguration<SchedulerModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
-        let clientDelegate = JSONAWSHttpClientDelegate<SchedulerError>(requiresTLS: useTLS)
+        let clientDelegate = JSONAWSHttpClientDelegate<SchedulerError>(requiresTLS: useTLS,
+            errorTypeHTTPHeader: "x-amzn-ErrorType")
 
         self.httpClient = HTTPOperationsClient(
             endpointHostName: endpointHostName,
