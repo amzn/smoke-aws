@@ -14433,7 +14433,8 @@ public extension GetEbsEncryptionByDefaultResult {
      */
     static let __default: ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult = {
         let defaultInstance = ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult(
-            ebsEncryptionByDefault: nil)
+            ebsEncryptionByDefault: nil,
+            sseType: nil)
 
         return defaultInstance
     }()
@@ -16132,7 +16133,8 @@ public extension InferenceAcceleratorInfo {
      */
     static let __default: ElasticComputeCloudModel.InferenceAcceleratorInfo = {
         let defaultInstance = ElasticComputeCloudModel.InferenceAcceleratorInfo(
-            accelerators: nil)
+            accelerators: nil,
+            totalInferenceMemoryInMiB: nil)
 
         return defaultInstance
     }()
@@ -16146,7 +16148,20 @@ public extension InferenceDeviceInfo {
         let defaultInstance = ElasticComputeCloudModel.InferenceDeviceInfo(
             count: nil,
             manufacturer: nil,
+            memoryInfo: nil,
             name: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InferenceDeviceMemoryInfo {
+    /**
+     Default instance of the InferenceDeviceMemoryInfo structure.
+     */
+    static let __default: ElasticComputeCloudModel.InferenceDeviceMemoryInfo = {
+        let defaultInstance = ElasticComputeCloudModel.InferenceDeviceMemoryInfo(
+            sizeInMiB: nil)
 
         return defaultInstance
     }()
@@ -16933,6 +16948,8 @@ public extension InstanceTypeInfo {
             memoryInfo: nil,
             networkInfo: nil,
             nitroEnclavesSupport: nil,
+            nitroTpmInfo: nil,
+            nitroTpmSupport: nil,
             placementGroupInfo: nil,
             processorInfo: nil,
             supportedBootModes: nil,
@@ -20680,9 +20697,11 @@ public extension NetworkCardInfo {
      */
     static let __default: ElasticComputeCloudModel.NetworkCardInfo = {
         let defaultInstance = ElasticComputeCloudModel.NetworkCardInfo(
+            baselineBandwidthInGbps: nil,
             maximumNetworkInterfaces: nil,
             networkCardIndex: nil,
-            networkPerformance: nil)
+            networkPerformance: nil,
+            peakBandwidthInGbps: nil)
 
         return defaultInstance
     }()
@@ -20995,6 +21014,18 @@ public extension NewDhcpConfiguration {
         let defaultInstance = ElasticComputeCloudModel.NewDhcpConfiguration(
             key: nil,
             values: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension NitroTpmInfo {
+    /**
+     Default instance of the NitroTpmInfo structure.
+     */
+    static let __default: ElasticComputeCloudModel.NitroTpmInfo = {
+        let defaultInstance = ElasticComputeCloudModel.NitroTpmInfo(
+            supportedVersions: nil)
 
         return defaultInstance
     }()
@@ -23286,6 +23317,7 @@ public extension RestoreSnapshotFromRecycleBinResult {
             ownerId: nil,
             progress: nil,
             snapshotId: nil,
+            sseType: nil,
             startTime: nil,
             state: nil,
             volumeId: nil,
@@ -24201,6 +24233,7 @@ public extension Snapshot {
             progress: nil,
             restoreExpiryTime: nil,
             snapshotId: nil,
+            sseType: nil,
             startTime: nil,
             state: nil,
             stateMessage: nil,
@@ -24261,6 +24294,7 @@ public extension SnapshotInfo {
             ownerId: nil,
             progress: nil,
             snapshotId: nil,
+            sseType: nil,
             startTime: nil,
             state: nil,
             tags: nil,
@@ -26733,6 +26767,7 @@ public extension Volume {
             outpostArn: nil,
             size: nil,
             snapshotId: nil,
+            sseType: nil,
             state: nil,
             tags: nil,
             throughput: nil,

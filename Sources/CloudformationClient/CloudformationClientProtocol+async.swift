@@ -1197,6 +1197,33 @@ public extension CloudformationClientProtocol {
     }
 
     /**
+     Invokes the ListStackInstanceResourceDrifts operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+     - Returns: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    func listStackInstanceResourceDrifts(input: CloudformationModel.ListStackInstanceResourceDriftsInput) async throws
+     -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try listStackInstanceResourceDriftsAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the ListStackInstances operation and asynchronously returning the response.
 
      - Parameters:

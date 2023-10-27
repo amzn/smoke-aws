@@ -16,12 +16,12 @@
 // swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
-// AWSSchedulerClientGenerator.swift
-// SchedulerClient
+// AWSEventBridgeSchedulerClientGenerator.swift
+// EventBridgeSchedulerClient
 //
 
 import Foundation
-import SchedulerModel
+import EventBridgeSchedulerModel
 import SmokeAWSCore
 import SmokeHTTPClient
 import SmokeAWSHttp
@@ -31,9 +31,9 @@ import AsyncHTTPClient
 import Logging
 
 /**
- AWS Client Generator for the Scheduler service.
+ AWS Client Generator for the EventBridgeScheduler service.
  */
-public struct AWSSchedulerClientGenerator {
+public struct AWSEventBridgeSchedulerClientGenerator {
     let httpClient: HTTPOperationsClient
     let awsRegion: AWSRegion
     let service: String
@@ -42,7 +42,7 @@ public struct AWSSchedulerClientGenerator {
     let retryOnErrorProvider: (SmokeHTTPClient.HTTPClientError) -> Bool
     let credentialsProvider: CredentialsProvider
 
-    let operationsReporting: SchedulerOperationsReporting
+    let operationsReporting: EventBridgeSchedulerOperationsReporting
     
     public init(credentialsProvider: CredentialsProvider, awsRegion: AWSRegion,
                 endpointHostName: String,
@@ -55,10 +55,10 @@ public struct AWSSchedulerClientGenerator {
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
                 eventLoopProvider: HTTPClient.EventLoopGroupProvider = .createNew,
                 connectionPoolConfiguration: HTTPClient.Configuration.ConnectionPool? = nil,
-                reportingConfiguration: SmokeAWSClientReportingConfiguration<SchedulerModelOperations>
-                    = SmokeAWSClientReportingConfiguration<SchedulerModelOperations>() ) {
+                reportingConfiguration: SmokeAWSClientReportingConfiguration<EventBridgeSchedulerModelOperations>
+                    = SmokeAWSClientReportingConfiguration<EventBridgeSchedulerModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
-        let clientDelegate = JSONAWSHttpClientDelegate<SchedulerError>(requiresTLS: useTLS,
+        let clientDelegate = JSONAWSHttpClientDelegate<EventBridgeSchedulerError>(requiresTLS: useTLS,
             errorTypeHTTPHeader: "x-amzn-ErrorType")
 
         self.httpClient = HTTPOperationsClient(
@@ -75,7 +75,7 @@ public struct AWSSchedulerClientGenerator {
         self.credentialsProvider = credentialsProvider
         self.retryConfiguration = retryConfiguration
         self.retryOnErrorProvider = { error in error.isRetriable() }
-        self.operationsReporting = SchedulerOperationsReporting(clientName: "AWSSchedulerClient", reportingConfiguration: reportingConfiguration)
+        self.operationsReporting = EventBridgeSchedulerOperationsReporting(clientName: "AWSEventBridgeSchedulerClient", reportingConfiguration: reportingConfiguration)
     }
 
     /**
@@ -103,8 +103,8 @@ public struct AWSSchedulerClientGenerator {
     #endif
     
     public func with<NewInvocationReportingType: HTTPClientCoreInvocationReporting>(
-            reporting: NewInvocationReportingType) -> AWSSchedulerClient<NewInvocationReportingType> {
-        return AWSSchedulerClient<NewInvocationReportingType>(
+            reporting: NewInvocationReportingType) -> AWSEventBridgeSchedulerClient<NewInvocationReportingType> {
+        return AWSEventBridgeSchedulerClient<NewInvocationReportingType>(
             credentialsProvider: self.credentialsProvider,
             awsRegion: self.awsRegion,
             reporting: reporting,
@@ -119,7 +119,7 @@ public struct AWSSchedulerClientGenerator {
     public func with<NewTraceContextType: InvocationTraceContext>(
             logger: Logging.Logger,
             internalRequestId: String = "none",
-            traceContext: NewTraceContextType) -> AWSSchedulerClient<StandardHTTPClientCoreInvocationReporting<NewTraceContextType>> {
+            traceContext: NewTraceContextType) -> AWSEventBridgeSchedulerClient<StandardHTTPClientCoreInvocationReporting<NewTraceContextType>> {
         let reporting = StandardHTTPClientCoreInvocationReporting(
             logger: logger,
             internalRequestId: internalRequestId,
@@ -130,7 +130,7 @@ public struct AWSSchedulerClientGenerator {
     
     public func with(
             logger: Logging.Logger,
-            internalRequestId: String = "none") -> AWSSchedulerClient<StandardHTTPClientCoreInvocationReporting<AWSClientInvocationTraceContext>> {
+            internalRequestId: String = "none") -> AWSEventBridgeSchedulerClient<StandardHTTPClientCoreInvocationReporting<AWSClientInvocationTraceContext>> {
         let reporting = StandardHTTPClientCoreInvocationReporting(
             logger: logger,
             internalRequestId: internalRequestId,

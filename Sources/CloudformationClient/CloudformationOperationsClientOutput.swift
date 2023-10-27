@@ -571,6 +571,19 @@ extension ListImportsOutputForListImports: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the ListStackInstanceResourceDrifts operation in a HTTP client.
+ */
+extension ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts: HTTPResponseOutputProtocol {
+    public typealias BodyType = ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
+    public typealias HeadersType = ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the ListStackInstances operation in a HTTP client.
  */
 extension ListStackInstancesOutputForListStackInstances: HTTPResponseOutputProtocol {

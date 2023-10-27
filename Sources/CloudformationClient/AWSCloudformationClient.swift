@@ -3571,6 +3571,84 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
     }
 
     /**
+     Invokes the ListStackInstanceResourceDrifts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+         - completion: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object or an error will be passed to this 
+           callback when the operation is complete. The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
+           object will be validated before being returned to caller.
+           The possible errors are: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    public func listStackInstanceResourceDriftsAsync(
+            input: CloudformationModel.ListStackInstanceResourceDriftsInput, 
+            completion: @escaping (Result<CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts, CloudformationError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStackInstanceResourceDrifts,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStackInstanceResourceDriftsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStackInstanceResourceDrifts.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the ListStackInstanceResourceDrifts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+     - Returns: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    public func listStackInstanceResourceDriftsSync(
+            input: CloudformationModel.ListStackInstanceResourceDriftsInput) throws -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStackInstanceResourceDrifts,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStackInstanceResourceDriftsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStackInstanceResourceDrifts.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the ListStackInstances operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -7228,6 +7306,46 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: CloudformationModelOperations.listImports.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: CloudformationError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the ListStackInstanceResourceDrifts operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+     - Returns: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    public func listStackInstanceResourceDrifts(
+            input: CloudformationModel.ListStackInstanceResourceDriftsInput) async throws -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.listStackInstanceResourceDrifts,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = ListStackInstanceResourceDriftsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: CloudformationModelOperations.listStackInstanceResourceDrifts.rawValue,
             version: apiVersion)
 
         do {

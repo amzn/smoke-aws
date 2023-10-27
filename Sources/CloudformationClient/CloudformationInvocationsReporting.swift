@@ -73,6 +73,7 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
     public let listChangeSets: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listExports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listImports: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let listStackInstanceResourceDrifts: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listStackInstances: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listStackResources: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let listStackSetOperationResults: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -188,6 +189,8 @@ public struct CloudformationInvocationsReporting<InvocationReportingType: HTTPCl
             smokeAWSOperationReporting: operationsReporting.listExports)
         self.listImports = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listImports)
+        self.listStackInstanceResourceDrifts = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.listStackInstanceResourceDrifts)
         self.listStackInstances = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.listStackInstances)
         self.listStackResources = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

@@ -32,6 +32,7 @@ public extension AssumeRoleRequest {
             externalId: nil,
             policy: nil,
             policyArns: nil,
+            providedContexts: nil,
             roleArn: "01234567890123456789",
             roleSessionName: "01",
             serialNumber: nil,
@@ -489,6 +490,19 @@ public extension PolicyDescriptorType {
     static let __default: SecurityTokenModel.PolicyDescriptorType = {
         let defaultInstance = SecurityTokenModel.PolicyDescriptorType(
             arn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ProvidedContext {
+    /**
+     Default instance of the ProvidedContext structure.
+     */
+    static let __default: SecurityTokenModel.ProvidedContext = {
+        let defaultInstance = SecurityTokenModel.ProvidedContext(
+            contextAssertion: nil,
+            providerArn: nil)
 
         return defaultInstance
     }()

@@ -16,17 +16,17 @@
 // swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
-// SchedulerModelErrors.swift
-// SchedulerModel
+// EventBridgeSchedulerModelErrors.swift
+// EventBridgeSchedulerModel
 //
 
 import Foundation
 import Logging
 
-public typealias SchedulerErrorResult<SuccessPayload> = Result<SuccessPayload, SchedulerError>
+public typealias EventBridgeSchedulerErrorResult<SuccessPayload> = Result<SuccessPayload, EventBridgeSchedulerError>
 
 public extension Swift.Error {
-    func asUnrecognizedSchedulerError() -> SchedulerError {
+    func asUnrecognizedEventBridgeSchedulerError() -> EventBridgeSchedulerError {
         let errorType = String(describing: type(of: self))
         let errorDescription = String(describing: self)
         return .unrecognizedError(errorType, errorDescription)
@@ -41,7 +41,7 @@ private let throttlingIdentity = "ThrottlingException"
 private let validationIdentity = "ValidationException"
 private let __accessDeniedIdentity = "AccessDenied"
 
-public enum SchedulerError: Swift.Error, Decodable {
+public enum EventBridgeSchedulerError: Swift.Error, Decodable {
     case conflict(ConflictException)
     case internalServer(InternalServerException)
     case resourceNotFound(ResourceNotFoundException)
@@ -69,26 +69,26 @@ public enum SchedulerError: Swift.Error, Decodable {
         switch errorReason {
         case conflictIdentity:
             let errorPayload = try ConflictException(from: decoder)
-            self = SchedulerError.conflict(errorPayload)
+            self = EventBridgeSchedulerError.conflict(errorPayload)
         case internalServerIdentity:
             let errorPayload = try InternalServerException(from: decoder)
-            self = SchedulerError.internalServer(errorPayload)
+            self = EventBridgeSchedulerError.internalServer(errorPayload)
         case resourceNotFoundIdentity:
             let errorPayload = try ResourceNotFoundException(from: decoder)
-            self = SchedulerError.resourceNotFound(errorPayload)
+            self = EventBridgeSchedulerError.resourceNotFound(errorPayload)
         case serviceQuotaExceededIdentity:
             let errorPayload = try ServiceQuotaExceededException(from: decoder)
-            self = SchedulerError.serviceQuotaExceeded(errorPayload)
+            self = EventBridgeSchedulerError.serviceQuotaExceeded(errorPayload)
         case throttlingIdentity:
             let errorPayload = try ThrottlingException(from: decoder)
-            self = SchedulerError.throttling(errorPayload)
+            self = EventBridgeSchedulerError.throttling(errorPayload)
         case validationIdentity:
             let errorPayload = try ValidationException(from: decoder)
-            self = SchedulerError.validation(errorPayload)
+            self = EventBridgeSchedulerError.validation(errorPayload)
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
-            self = SchedulerError.unrecognizedError(errorReason, errorMessage)
+            self = EventBridgeSchedulerError.unrecognizedError(errorReason, errorMessage)
         }
     }
     

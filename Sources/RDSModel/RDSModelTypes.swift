@@ -642,6 +642,23 @@ public typealias KeyList = [String]
 public typealias KmsKeyIdOrArn = String
 
 /**
+ Enumeration restricting the values of the LocalWriteForwardingStatus field.
+ */
+public enum LocalWriteForwardingStatus: String, Codable, CustomStringConvertible {
+    case disabled
+    case disabling
+    case enabled
+    case enabling
+    case requested
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: LocalWriteForwardingStatus = .disabled
+}
+
+/**
  Type definition for the LogTypeList field.
  */
 public typealias LogTypeList = [String]

@@ -38,6 +38,11 @@ public typealias Issuer = String
 public typealias NameQualifier = String
 
 /**
+ Type definition for the ProvidedContextsListType field.
+ */
+public typealias ProvidedContextsListType = [ProvidedContext]
+
+/**
  Type definition for the SAMLAssertionType field.
  */
 public typealias SAMLAssertionType = String
@@ -81,6 +86,11 @@ public typealias AssumedRoleIdType = String
  Type definition for the ClientTokenType field.
  */
 public typealias ClientTokenType = String
+
+/**
+ Type definition for the ContextAssertionType field.
+ */
+public typealias ContextAssertionType = String
 
 /**
  Type definition for the DateType field.
@@ -238,6 +248,18 @@ public typealias UserNameType = String
 public typealias WebIdentitySubjectType = String
 
 /**
+ Validation for the ProvidedContextsListType field.
+*/
+extension Array where Element == SecurityTokenModel.ProvidedContext {
+    public func validateAsProvidedContextsListType() throws {
+
+        if self.count > 5 {
+            throw SecurityTokenError.validationError(reason: "The provided value to ProvidedContextsListType violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the SAMLAssertionType field.
 */
 extension SecurityTokenModel.SAMLAssertionType {
@@ -326,6 +348,21 @@ extension SecurityTokenModel.ClientTokenType {
 
         if self.count > 20000 {
             throw SecurityTokenError.validationError(reason: "The provided value to clientTokenType violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ContextAssertionType field.
+*/
+extension SecurityTokenModel.ContextAssertionType {
+    public func validateAsContextAssertionType() throws {
+        if self.count < 4 {
+            throw SecurityTokenError.validationError(reason: "The provided value to contextAssertionType violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw SecurityTokenError.validationError(reason: "The provided value to contextAssertionType violated the maximum length constraint.")
         }
     }
 }

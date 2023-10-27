@@ -659,6 +659,11 @@ public enum BareMetal: String, Codable, CustomStringConvertible {
 public typealias BareMetalFlag = Bool
 
 /**
+ Type definition for the BaselineBandwidthInGbps field.
+ */
+public typealias BaselineBandwidthInGbps = Double
+
+/**
  Type definition for the BaselineBandwidthInMbps field.
  */
 public typealias BaselineBandwidthInMbps = Int
@@ -3411,6 +3416,11 @@ public typealias InferenceDeviceInfoList = [InferenceDeviceInfo]
 public typealias InferenceDeviceManufacturerName = String
 
 /**
+ Type definition for the InferenceDeviceMemorySize field.
+ */
+public typealias InferenceDeviceMemorySize = Int
+
+/**
  Type definition for the InferenceDeviceName field.
  */
 public typealias InferenceDeviceName = String
@@ -3994,6 +4004,14 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case c7gMedium = "c7g.medium"
     case c7gMetal = "c7g.metal"
     case c7gXlarge = "c7g.xlarge"
+    case c7gn12xlarge = "c7gn.12xlarge"
+    case c7gn16xlarge = "c7gn.16xlarge"
+    case c7gn2xlarge = "c7gn.2xlarge"
+    case c7gn4xlarge = "c7gn.4xlarge"
+    case c7gn8xlarge = "c7gn.8xlarge"
+    case c7gnLarge = "c7gn.large"
+    case c7gnMedium = "c7gn.medium"
+    case c7gnXlarge = "c7gn.xlarge"
     case cc14xlarge = "cc1.4xlarge"
     case cc28xlarge = "cc2.8xlarge"
     case cg14xlarge = "cg1.4xlarge"
@@ -4055,6 +4073,9 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case hi14xlarge = "hi1.4xlarge"
     case hpc6a48xlarge = "hpc6a.48xlarge"
     case hpc6id32xlarge = "hpc6id.32xlarge"
+    case hpc7g16xlarge = "hpc7g.16xlarge"
+    case hpc7g4xlarge = "hpc7g.4xlarge"
+    case hpc7g8xlarge = "hpc7g.8xlarge"
     case hs18xlarge = "hs1.8xlarge"
     case i22xlarge = "i2.2xlarge"
     case i24xlarge = "i2.4xlarge"
@@ -6296,6 +6317,30 @@ public enum NitroEnclavesSupport: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the NitroTpmSupport field.
+ */
+public enum NitroTpmSupport: String, Codable, CustomStringConvertible {
+    case supported
+    case unsupported
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: NitroTpmSupport = .supported
+}
+
+/**
+ Type definition for the NitroTpmSupportedVersionType field.
+ */
+public typealias NitroTpmSupportedVersionType = String
+
+/**
+ Type definition for the NitroTpmSupportedVersionsList field.
+ */
+public typealias NitroTpmSupportedVersionsList = [NitroTpmSupportedVersionType]
+
+/**
  Type definition for the OccurrenceDayRequestSet field.
  */
 public typealias OccurrenceDayRequestSet = [Integer]
@@ -6438,6 +6483,11 @@ public enum PaymentOption: String, Codable, CustomStringConvertible {
     
     public static let __default: PaymentOption = .allupfront
 }
+
+/**
+ Type definition for the PeakBandwidthInGbps field.
+ */
+public typealias PeakBandwidthInGbps = Double
 
 /**
  Enumeration restricting the values of the PeriodType field.
@@ -7511,6 +7561,21 @@ public typealias RunInstancesUserData = String
 public typealias S3ObjectTagList = [S3ObjectTag]
 
 /**
+ Enumeration restricting the values of the SSEType field.
+ */
+public enum SSEType: String, Codable, CustomStringConvertible {
+    case none
+    case sseEbs = "sse-ebs"
+    case sseKms = "sse-kms"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: SSEType = .none
+}
+
+/**
  Type definition for the ScheduledInstanceAvailabilitySet field.
  */
 public typealias ScheduledInstanceAvailabilitySet = [ScheduledInstanceAvailability]
@@ -7854,6 +7919,7 @@ public enum SpotInstanceState: String, Codable, CustomStringConvertible {
     case active
     case cancelled
     case closed
+    case disabled
     case failed
     case open
 
@@ -9892,6 +9958,11 @@ public typealias TotalFpgaMemory = Int
 public typealias TotalGpuMemory = Int
 
 /**
+ Type definition for the TotalInferenceMemory field.
+ */
+public typealias TotalInferenceMemory = Int
+
+/**
  Validation for the AddIpamOperatingRegionSet field.
 */
 extension Array where Element == ElasticComputeCloudModel.AddIpamOperatingRegion {
@@ -9949,7 +10020,7 @@ extension ElasticComputeCloudModel.AllowedInstanceType {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to AllowedInstanceType violated the maximum length constraint.")
         }
 
-        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*]+", options: .regularExpression),
+        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*\\-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
                 throw ElasticComputeCloudError.validationError(
                     reason: "The provided value to AllowedInstanceType violated the regular expression constraint.")
@@ -10908,7 +10979,7 @@ extension ElasticComputeCloudModel.ExcludedInstanceType {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to ExcludedInstanceType violated the maximum length constraint.")
         }
 
-        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*]+", options: .regularExpression),
+        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*\\-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
                 throw ElasticComputeCloudError.validationError(
                     reason: "The provided value to ExcludedInstanceType violated the regular expression constraint.")

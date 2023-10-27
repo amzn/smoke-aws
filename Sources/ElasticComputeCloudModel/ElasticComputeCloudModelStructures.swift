@@ -24835,13 +24835,17 @@ public struct GetEbsEncryptionByDefaultRequest: Codable, Equatable {
 
 public struct GetEbsEncryptionByDefaultResult: Codable, Equatable {
     public var ebsEncryptionByDefault: Boolean?
+    public var sseType: SSEType?
 
-    public init(ebsEncryptionByDefault: Boolean? = nil) {
+    public init(ebsEncryptionByDefault: Boolean? = nil,
+                sseType: SSEType? = nil) {
         self.ebsEncryptionByDefault = ebsEncryptionByDefault
+        self.sseType = sseType
     }
 
     enum CodingKeys: String, CodingKey {
         case ebsEncryptionByDefault
+        case sseType
     }
 
     public func validate() throws {
@@ -28035,13 +28039,17 @@ public struct ImportVolumeTaskDetails: Codable, Equatable {
 
 public struct InferenceAcceleratorInfo: Codable, Equatable {
     public var accelerators: InferenceDeviceInfoList?
+    public var totalInferenceMemoryInMiB: TotalInferenceMemory?
 
-    public init(accelerators: InferenceDeviceInfoList? = nil) {
+    public init(accelerators: InferenceDeviceInfoList? = nil,
+                totalInferenceMemoryInMiB: TotalInferenceMemory? = nil) {
         self.accelerators = accelerators
+        self.totalInferenceMemoryInMiB = totalInferenceMemoryInMiB
     }
 
     enum CodingKeys: String, CodingKey {
         case accelerators
+        case totalInferenceMemoryInMiB
     }
 
     public func validate() throws {
@@ -28051,20 +28059,40 @@ public struct InferenceAcceleratorInfo: Codable, Equatable {
 public struct InferenceDeviceInfo: Codable, Equatable {
     public var count: InferenceDeviceCount?
     public var manufacturer: InferenceDeviceManufacturerName?
+    public var memoryInfo: InferenceDeviceMemoryInfo?
     public var name: InferenceDeviceName?
 
     public init(count: InferenceDeviceCount? = nil,
                 manufacturer: InferenceDeviceManufacturerName? = nil,
+                memoryInfo: InferenceDeviceMemoryInfo? = nil,
                 name: InferenceDeviceName? = nil) {
         self.count = count
         self.manufacturer = manufacturer
+        self.memoryInfo = memoryInfo
         self.name = name
     }
 
     enum CodingKeys: String, CodingKey {
         case count
         case manufacturer
+        case memoryInfo
         case name
+    }
+
+    public func validate() throws {
+        try memoryInfo?.validate()
+    }
+}
+
+public struct InferenceDeviceMemoryInfo: Codable, Equatable {
+    public var sizeInMiB: InferenceDeviceMemorySize?
+
+    public init(sizeInMiB: InferenceDeviceMemorySize? = nil) {
+        self.sizeInMiB = sizeInMiB
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case sizeInMiB
     }
 
     public func validate() throws {
@@ -29733,6 +29761,8 @@ public struct InstanceTypeInfo: Codable, Equatable {
     public var memoryInfo: MemoryInfo?
     public var networkInfo: NetworkInfo?
     public var nitroEnclavesSupport: NitroEnclavesSupport?
+    public var nitroTpmInfo: NitroTpmInfo?
+    public var nitroTpmSupport: NitroTpmSupport?
     public var placementGroupInfo: PlacementGroupInfo?
     public var processorInfo: ProcessorInfo?
     public var supportedBootModes: BootModeTypeList?
@@ -29759,6 +29789,8 @@ public struct InstanceTypeInfo: Codable, Equatable {
                 memoryInfo: MemoryInfo? = nil,
                 networkInfo: NetworkInfo? = nil,
                 nitroEnclavesSupport: NitroEnclavesSupport? = nil,
+                nitroTpmInfo: NitroTpmInfo? = nil,
+                nitroTpmSupport: NitroTpmSupport? = nil,
                 placementGroupInfo: PlacementGroupInfo? = nil,
                 processorInfo: ProcessorInfo? = nil,
                 supportedBootModes: BootModeTypeList? = nil,
@@ -29784,6 +29816,8 @@ public struct InstanceTypeInfo: Codable, Equatable {
         self.memoryInfo = memoryInfo
         self.networkInfo = networkInfo
         self.nitroEnclavesSupport = nitroEnclavesSupport
+        self.nitroTpmInfo = nitroTpmInfo
+        self.nitroTpmSupport = nitroTpmSupport
         self.placementGroupInfo = placementGroupInfo
         self.processorInfo = processorInfo
         self.supportedBootModes = supportedBootModes
@@ -29812,6 +29846,8 @@ public struct InstanceTypeInfo: Codable, Equatable {
         case memoryInfo
         case networkInfo
         case nitroEnclavesSupport
+        case nitroTpmInfo
+        case nitroTpmSupport
         case placementGroupInfo
         case processorInfo
         case supportedBootModes
@@ -29829,6 +29865,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
         try instanceStorageInfo?.validate()
         try memoryInfo?.validate()
         try networkInfo?.validate()
+        try nitroTpmInfo?.validate()
         try placementGroupInfo?.validate()
         try processorInfo?.validate()
         try vCpuInfo?.validate()
@@ -36741,22 +36778,30 @@ public struct NetworkBandwidthGbpsRequest: Codable, Equatable {
 }
 
 public struct NetworkCardInfo: Codable, Equatable {
+    public var baselineBandwidthInGbps: BaselineBandwidthInGbps?
     public var maximumNetworkInterfaces: MaxNetworkInterfaces?
     public var networkCardIndex: NetworkCardIndex?
     public var networkPerformance: NetworkPerformance?
+    public var peakBandwidthInGbps: PeakBandwidthInGbps?
 
-    public init(maximumNetworkInterfaces: MaxNetworkInterfaces? = nil,
+    public init(baselineBandwidthInGbps: BaselineBandwidthInGbps? = nil,
+                maximumNetworkInterfaces: MaxNetworkInterfaces? = nil,
                 networkCardIndex: NetworkCardIndex? = nil,
-                networkPerformance: NetworkPerformance? = nil) {
+                networkPerformance: NetworkPerformance? = nil,
+                peakBandwidthInGbps: PeakBandwidthInGbps? = nil) {
+        self.baselineBandwidthInGbps = baselineBandwidthInGbps
         self.maximumNetworkInterfaces = maximumNetworkInterfaces
         self.networkCardIndex = networkCardIndex
         self.networkPerformance = networkPerformance
+        self.peakBandwidthInGbps = peakBandwidthInGbps
     }
 
     enum CodingKeys: String, CodingKey {
+        case baselineBandwidthInGbps
         case maximumNetworkInterfaces
         case networkCardIndex
         case networkPerformance
+        case peakBandwidthInGbps
     }
 
     public func validate() throws {
@@ -37460,6 +37505,21 @@ public struct NewDhcpConfiguration: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case key
         case values = "Value"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct NitroTpmInfo: Codable, Equatable {
+    public var supportedVersions: NitroTpmSupportedVersionsList?
+
+    public init(supportedVersions: NitroTpmSupportedVersionsList? = nil) {
+        self.supportedVersions = supportedVersions
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case supportedVersions
     }
 
     public func validate() throws {
@@ -41610,6 +41670,7 @@ public struct RestoreSnapshotFromRecycleBinResult: Codable, Equatable {
     public var ownerId: String?
     public var progress: String?
     public var snapshotId: String?
+    public var sseType: SSEType?
     public var startTime: MillisecondDateTime?
     public var state: SnapshotState?
     public var volumeId: String?
@@ -41621,6 +41682,7 @@ public struct RestoreSnapshotFromRecycleBinResult: Codable, Equatable {
                 ownerId: String? = nil,
                 progress: String? = nil,
                 snapshotId: String? = nil,
+                sseType: SSEType? = nil,
                 startTime: MillisecondDateTime? = nil,
                 state: SnapshotState? = nil,
                 volumeId: String? = nil,
@@ -41631,6 +41693,7 @@ public struct RestoreSnapshotFromRecycleBinResult: Codable, Equatable {
         self.ownerId = ownerId
         self.progress = progress
         self.snapshotId = snapshotId
+        self.sseType = sseType
         self.startTime = startTime
         self.state = state
         self.volumeId = volumeId
@@ -41644,6 +41707,7 @@ public struct RestoreSnapshotFromRecycleBinResult: Codable, Equatable {
         case ownerId
         case progress
         case snapshotId
+        case sseType
         case startTime
         case state = "status"
         case volumeId
@@ -43507,6 +43571,7 @@ public struct Snapshot: Codable, Equatable {
     public var progress: String?
     public var restoreExpiryTime: MillisecondDateTime?
     public var snapshotId: String?
+    public var sseType: SSEType?
     public var startTime: DateTime?
     public var state: SnapshotState?
     public var stateMessage: String?
@@ -43525,6 +43590,7 @@ public struct Snapshot: Codable, Equatable {
                 progress: String? = nil,
                 restoreExpiryTime: MillisecondDateTime? = nil,
                 snapshotId: String? = nil,
+                sseType: SSEType? = nil,
                 startTime: DateTime? = nil,
                 state: SnapshotState? = nil,
                 stateMessage: String? = nil,
@@ -43542,6 +43608,7 @@ public struct Snapshot: Codable, Equatable {
         self.progress = progress
         self.restoreExpiryTime = restoreExpiryTime
         self.snapshotId = snapshotId
+        self.sseType = sseType
         self.startTime = startTime
         self.state = state
         self.stateMessage = stateMessage
@@ -43562,6 +43629,7 @@ public struct Snapshot: Codable, Equatable {
         case progress
         case restoreExpiryTime
         case snapshotId
+        case sseType
         case startTime
         case state = "status"
         case stateMessage = "statusMessage"
@@ -43662,6 +43730,7 @@ public struct SnapshotInfo: Codable, Equatable {
     public var ownerId: String?
     public var progress: String?
     public var snapshotId: String?
+    public var sseType: SSEType?
     public var startTime: MillisecondDateTime?
     public var state: SnapshotState?
     public var tags: TagList?
@@ -43674,6 +43743,7 @@ public struct SnapshotInfo: Codable, Equatable {
                 ownerId: String? = nil,
                 progress: String? = nil,
                 snapshotId: String? = nil,
+                sseType: SSEType? = nil,
                 startTime: MillisecondDateTime? = nil,
                 state: SnapshotState? = nil,
                 tags: TagList? = nil,
@@ -43685,6 +43755,7 @@ public struct SnapshotInfo: Codable, Equatable {
         self.ownerId = ownerId
         self.progress = progress
         self.snapshotId = snapshotId
+        self.sseType = sseType
         self.startTime = startTime
         self.state = state
         self.tags = tags
@@ -43699,6 +43770,7 @@ public struct SnapshotInfo: Codable, Equatable {
         case ownerId
         case progress
         case snapshotId
+        case sseType
         case startTime
         case state
         case tags = "tagSet"
@@ -48419,6 +48491,7 @@ public struct Volume: Codable, Equatable {
     public var outpostArn: String?
     public var size: Integer?
     public var snapshotId: String?
+    public var sseType: SSEType?
     public var state: VolumeState?
     public var tags: TagList?
     public var throughput: Integer?
@@ -48436,6 +48509,7 @@ public struct Volume: Codable, Equatable {
                 outpostArn: String? = nil,
                 size: Integer? = nil,
                 snapshotId: String? = nil,
+                sseType: SSEType? = nil,
                 state: VolumeState? = nil,
                 tags: TagList? = nil,
                 throughput: Integer? = nil,
@@ -48452,6 +48526,7 @@ public struct Volume: Codable, Equatable {
         self.outpostArn = outpostArn
         self.size = size
         self.snapshotId = snapshotId
+        self.sseType = sseType
         self.state = state
         self.tags = tags
         self.throughput = throughput
@@ -48471,6 +48546,7 @@ public struct Volume: Codable, Equatable {
         case outpostArn
         case size
         case snapshotId
+        case sseType
         case state = "status"
         case tags = "tagSet"
         case throughput

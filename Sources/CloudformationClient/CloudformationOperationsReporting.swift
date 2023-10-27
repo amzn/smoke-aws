@@ -72,6 +72,7 @@ public struct CloudformationOperationsReporting {
     public let listChangeSets: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let listExports: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let listImports: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
+    public let listStackInstanceResourceDrifts: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let listStackInstances: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let listStackResources: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
     public let listStackSetOperationResults: StandardSmokeAWSOperationReporting<CloudformationModelOperations>
@@ -187,6 +188,8 @@ public struct CloudformationOperationsReporting {
             clientName: clientName, operation: .listExports, configuration: reportingConfiguration)
         self.listImports = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listImports, configuration: reportingConfiguration)
+        self.listStackInstanceResourceDrifts = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .listStackInstanceResourceDrifts, configuration: reportingConfiguration)
         self.listStackInstances = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .listStackInstances, configuration: reportingConfiguration)
         self.listStackResources = StandardSmokeAWSOperationReporting(

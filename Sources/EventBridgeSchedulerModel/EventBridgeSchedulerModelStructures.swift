@@ -16,8 +16,8 @@
 // swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
-// SchedulerModelStructures.swift
-// SchedulerModel
+// EventBridgeSchedulerModelStructures.swift
+// EventBridgeSchedulerModel
 //
 
 import Foundation
@@ -131,7 +131,6 @@ public struct CreateScheduleGroupOutput: Codable, Equatable {
 }
 
 public struct CreateScheduleInput: Codable, Equatable {
-    public var actionAfterCompletion: ActionAfterCompletion?
     public var clientToken: ClientToken?
     public var description: Description?
     public var endDate: EndDate?
@@ -145,8 +144,7 @@ public struct CreateScheduleInput: Codable, Equatable {
     public var state: ScheduleState?
     public var target: Target
 
-    public init(actionAfterCompletion: ActionAfterCompletion? = nil,
-                clientToken: ClientToken? = nil,
+    public init(clientToken: ClientToken? = nil,
                 description: Description? = nil,
                 endDate: EndDate? = nil,
                 flexibleTimeWindow: FlexibleTimeWindow,
@@ -158,7 +156,6 @@ public struct CreateScheduleInput: Codable, Equatable {
                 startDate: StartDate? = nil,
                 state: ScheduleState? = nil,
                 target: Target) {
-        self.actionAfterCompletion = actionAfterCompletion
         self.clientToken = clientToken
         self.description = description
         self.endDate = endDate
@@ -174,7 +171,6 @@ public struct CreateScheduleInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case actionAfterCompletion = "ActionAfterCompletion"
         case clientToken = "ClientToken"
         case description = "Description"
         case endDate = "EndDate"
@@ -488,7 +484,6 @@ public struct GetScheduleInput: Codable, Equatable {
 }
 
 public struct GetScheduleOutput: Codable, Equatable {
-    public var actionAfterCompletion: ActionAfterCompletion?
     public var arn: ScheduleArn?
     public var creationDate: CreationDate?
     public var description: Description?
@@ -504,8 +499,7 @@ public struct GetScheduleOutput: Codable, Equatable {
     public var state: ScheduleState?
     public var target: Target?
 
-    public init(actionAfterCompletion: ActionAfterCompletion? = nil,
-                arn: ScheduleArn? = nil,
+    public init(arn: ScheduleArn? = nil,
                 creationDate: CreationDate? = nil,
                 description: Description? = nil,
                 endDate: EndDate? = nil,
@@ -519,7 +513,6 @@ public struct GetScheduleOutput: Codable, Equatable {
                 startDate: StartDate? = nil,
                 state: ScheduleState? = nil,
                 target: Target? = nil) {
-        self.actionAfterCompletion = actionAfterCompletion
         self.arn = arn
         self.creationDate = creationDate
         self.description = description
@@ -537,7 +530,6 @@ public struct GetScheduleOutput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case actionAfterCompletion = "ActionAfterCompletion"
         case arn = "Arn"
         case creationDate = "CreationDate"
         case description = "Description"
@@ -1141,7 +1133,6 @@ public struct UntagResourceOutput: Codable, Equatable {
 }
 
 public struct UpdateScheduleInput: Codable, Equatable {
-    public var actionAfterCompletion: ActionAfterCompletion?
     public var clientToken: ClientToken?
     public var description: Description?
     public var endDate: EndDate?
@@ -1155,8 +1146,7 @@ public struct UpdateScheduleInput: Codable, Equatable {
     public var state: ScheduleState?
     public var target: Target
 
-    public init(actionAfterCompletion: ActionAfterCompletion? = nil,
-                clientToken: ClientToken? = nil,
+    public init(clientToken: ClientToken? = nil,
                 description: Description? = nil,
                 endDate: EndDate? = nil,
                 flexibleTimeWindow: FlexibleTimeWindow,
@@ -1168,7 +1158,6 @@ public struct UpdateScheduleInput: Codable, Equatable {
                 startDate: StartDate? = nil,
                 state: ScheduleState? = nil,
                 target: Target) {
-        self.actionAfterCompletion = actionAfterCompletion
         self.clientToken = clientToken
         self.description = description
         self.endDate = endDate
@@ -1184,7 +1173,6 @@ public struct UpdateScheduleInput: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case actionAfterCompletion = "ActionAfterCompletion"
         case clientToken = "ClientToken"
         case description = "Description"
         case endDate = "EndDate"

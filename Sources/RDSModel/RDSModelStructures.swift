@@ -1291,6 +1291,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
     public var enableGlobalWriteForwarding: BooleanOptional?
     public var enableHttpEndpoint: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
+    public var enableLocalWriteForwarding: BooleanOptional?
     public var enablePerformanceInsights: BooleanOptional?
     public var engine: String
     public var engineMode: String?
@@ -1341,6 +1342,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
                 enableGlobalWriteForwarding: BooleanOptional? = nil,
                 enableHttpEndpoint: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
+                enableLocalWriteForwarding: BooleanOptional? = nil,
                 enablePerformanceInsights: BooleanOptional? = nil,
                 engine: String,
                 engineMode: String? = nil,
@@ -1390,6 +1392,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         self.enableGlobalWriteForwarding = enableGlobalWriteForwarding
         self.enableHttpEndpoint = enableHttpEndpoint
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
+        self.enableLocalWriteForwarding = enableLocalWriteForwarding
         self.enablePerformanceInsights = enablePerformanceInsights
         self.engine = engine
         self.engineMode = engineMode
@@ -1442,6 +1445,7 @@ public struct CreateDBClusterMessage: Codable, Equatable {
         case enableGlobalWriteForwarding = "EnableGlobalWriteForwarding"
         case enableHttpEndpoint = "EnableHttpEndpoint"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
+        case enableLocalWriteForwarding = "EnableLocalWriteForwarding"
         case enablePerformanceInsights = "EnablePerformanceInsights"
         case engine = "Engine"
         case engineMode = "EngineMode"
@@ -1642,6 +1646,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
     public var dBParameterGroupName: String?
     public var dBSecurityGroups: DBSecurityGroupNameList?
     public var dBSubnetGroupName: String?
+    public var dBSystemId: String?
     public var deletionProtection: BooleanOptional?
     public var domain: String?
     public var domainAuthSecretArn: String?
@@ -1702,6 +1707,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
                 dBParameterGroupName: String? = nil,
                 dBSecurityGroups: DBSecurityGroupNameList? = nil,
                 dBSubnetGroupName: String? = nil,
+                dBSystemId: String? = nil,
                 deletionProtection: BooleanOptional? = nil,
                 domain: String? = nil,
                 domainAuthSecretArn: String? = nil,
@@ -1761,6 +1767,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         self.dBParameterGroupName = dBParameterGroupName
         self.dBSecurityGroups = dBSecurityGroups
         self.dBSubnetGroupName = dBSubnetGroupName
+        self.dBSystemId = dBSystemId
         self.deletionProtection = deletionProtection
         self.domain = domain
         self.domainAuthSecretArn = domainAuthSecretArn
@@ -1823,6 +1830,7 @@ public struct CreateDBInstanceMessage: Codable, Equatable {
         case dBParameterGroupName = "DBParameterGroupName"
         case dBSecurityGroups = "DBSecurityGroups"
         case dBSubnetGroupName = "DBSubnetGroupName"
+        case dBSystemId = "DBSystemId"
         case deletionProtection = "DeletionProtection"
         case domain = "Domain"
         case domainAuthSecretArn = "DomainAuthSecretArn"
@@ -2803,6 +2811,7 @@ public struct DBCluster: Codable, Equatable {
     public var iops: IntegerOptional?
     public var kmsKeyId: String?
     public var latestRestorableTime: TStamp?
+    public var localWriteForwardingStatus: LocalWriteForwardingStatus?
     public var masterUserSecret: MasterUserSecret?
     public var masterUsername: String?
     public var monitoringInterval: IntegerOptional?
@@ -2876,6 +2885,7 @@ public struct DBCluster: Codable, Equatable {
                 iops: IntegerOptional? = nil,
                 kmsKeyId: String? = nil,
                 latestRestorableTime: TStamp? = nil,
+                localWriteForwardingStatus: LocalWriteForwardingStatus? = nil,
                 masterUserSecret: MasterUserSecret? = nil,
                 masterUsername: String? = nil,
                 monitoringInterval: IntegerOptional? = nil,
@@ -2948,6 +2958,7 @@ public struct DBCluster: Codable, Equatable {
         self.iops = iops
         self.kmsKeyId = kmsKeyId
         self.latestRestorableTime = latestRestorableTime
+        self.localWriteForwardingStatus = localWriteForwardingStatus
         self.masterUserSecret = masterUserSecret
         self.masterUsername = masterUsername
         self.monitoringInterval = monitoringInterval
@@ -3023,6 +3034,7 @@ public struct DBCluster: Codable, Equatable {
         case iops = "Iops"
         case kmsKeyId = "KmsKeyId"
         case latestRestorableTime = "LatestRestorableTime"
+        case localWriteForwardingStatus = "LocalWriteForwardingStatus"
         case masterUserSecret = "MasterUserSecret"
         case masterUsername = "MasterUsername"
         case monitoringInterval = "MonitoringInterval"
@@ -3897,6 +3909,7 @@ public struct DBEngineVersion: Codable, Equatable {
     public var supportsBabelfish: Boolean?
     public var supportsCertificateRotationWithoutRestart: BooleanOptional?
     public var supportsGlobalDatabases: Boolean?
+    public var supportsLocalWriteForwarding: BooleanOptional?
     public var supportsLogExportsToCloudwatchLogs: Boolean?
     public var supportsParallelQuery: Boolean?
     public var supportsReadReplica: Boolean?
@@ -3929,6 +3942,7 @@ public struct DBEngineVersion: Codable, Equatable {
                 supportsBabelfish: Boolean? = nil,
                 supportsCertificateRotationWithoutRestart: BooleanOptional? = nil,
                 supportsGlobalDatabases: Boolean? = nil,
+                supportsLocalWriteForwarding: BooleanOptional? = nil,
                 supportsLogExportsToCloudwatchLogs: Boolean? = nil,
                 supportsParallelQuery: Boolean? = nil,
                 supportsReadReplica: Boolean? = nil,
@@ -3960,6 +3974,7 @@ public struct DBEngineVersion: Codable, Equatable {
         self.supportsBabelfish = supportsBabelfish
         self.supportsCertificateRotationWithoutRestart = supportsCertificateRotationWithoutRestart
         self.supportsGlobalDatabases = supportsGlobalDatabases
+        self.supportsLocalWriteForwarding = supportsLocalWriteForwarding
         self.supportsLogExportsToCloudwatchLogs = supportsLogExportsToCloudwatchLogs
         self.supportsParallelQuery = supportsParallelQuery
         self.supportsReadReplica = supportsReadReplica
@@ -3994,6 +4009,7 @@ public struct DBEngineVersion: Codable, Equatable {
         case supportsBabelfish = "SupportsBabelfish"
         case supportsCertificateRotationWithoutRestart = "SupportsCertificateRotationWithoutRestart"
         case supportsGlobalDatabases = "SupportsGlobalDatabases"
+        case supportsLocalWriteForwarding = "SupportsLocalWriteForwarding"
         case supportsLogExportsToCloudwatchLogs = "SupportsLogExportsToCloudwatchLogs"
         case supportsParallelQuery = "SupportsParallelQuery"
         case supportsReadReplica = "SupportsReadReplica"
@@ -4150,6 +4166,7 @@ public struct DBInstance: Codable, Equatable {
     public var networkType: String?
     public var optionGroupMemberships: OptionGroupMembershipList?
     public var pendingModifiedValues: PendingModifiedValues?
+    public var percentProgress: String?
     public var performanceInsightsEnabled: BooleanOptional?
     public var performanceInsightsKMSKeyId: String?
     public var performanceInsightsRetentionPeriod: IntegerOptional?
@@ -4232,6 +4249,7 @@ public struct DBInstance: Codable, Equatable {
                 networkType: String? = nil,
                 optionGroupMemberships: OptionGroupMembershipList? = nil,
                 pendingModifiedValues: PendingModifiedValues? = nil,
+                percentProgress: String? = nil,
                 performanceInsightsEnabled: BooleanOptional? = nil,
                 performanceInsightsKMSKeyId: String? = nil,
                 performanceInsightsRetentionPeriod: IntegerOptional? = nil,
@@ -4313,6 +4331,7 @@ public struct DBInstance: Codable, Equatable {
         self.networkType = networkType
         self.optionGroupMemberships = optionGroupMemberships
         self.pendingModifiedValues = pendingModifiedValues
+        self.percentProgress = percentProgress
         self.performanceInsightsEnabled = performanceInsightsEnabled
         self.performanceInsightsKMSKeyId = performanceInsightsKMSKeyId
         self.performanceInsightsRetentionPeriod = performanceInsightsRetentionPeriod
@@ -4397,6 +4416,7 @@ public struct DBInstance: Codable, Equatable {
         case networkType = "NetworkType"
         case optionGroupMemberships = "OptionGroupMemberships"
         case pendingModifiedValues = "PendingModifiedValues"
+        case percentProgress = "PercentProgress"
         case performanceInsightsEnabled = "PerformanceInsightsEnabled"
         case performanceInsightsKMSKeyId = "PerformanceInsightsKMSKeyId"
         case performanceInsightsRetentionPeriod = "PerformanceInsightsRetentionPeriod"
@@ -5383,6 +5403,7 @@ public struct DBSnapshot: Codable, Equatable {
     public var dBInstanceIdentifier: String?
     public var dBSnapshotArn: String?
     public var dBSnapshotIdentifier: String?
+    public var dBSystemId: String?
     public var dbiResourceId: String?
     public var encrypted: Boolean?
     public var engine: String?
@@ -5417,6 +5438,7 @@ public struct DBSnapshot: Codable, Equatable {
                 dBInstanceIdentifier: String? = nil,
                 dBSnapshotArn: String? = nil,
                 dBSnapshotIdentifier: String? = nil,
+                dBSystemId: String? = nil,
                 dbiResourceId: String? = nil,
                 encrypted: Boolean? = nil,
                 engine: String? = nil,
@@ -5450,6 +5472,7 @@ public struct DBSnapshot: Codable, Equatable {
         self.dBInstanceIdentifier = dBInstanceIdentifier
         self.dBSnapshotArn = dBSnapshotArn
         self.dBSnapshotIdentifier = dBSnapshotIdentifier
+        self.dBSystemId = dBSystemId
         self.dbiResourceId = dbiResourceId
         self.encrypted = encrypted
         self.engine = engine
@@ -5486,6 +5509,7 @@ public struct DBSnapshot: Codable, Equatable {
         case dBInstanceIdentifier = "DBInstanceIdentifier"
         case dBSnapshotArn = "DBSnapshotArn"
         case dBSnapshotIdentifier = "DBSnapshotIdentifier"
+        case dBSystemId = "DBSystemId"
         case dbiResourceId = "DbiResourceId"
         case encrypted = "Encrypted"
         case engine = "Engine"
@@ -9516,6 +9540,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
     public var enableGlobalWriteForwarding: BooleanOptional?
     public var enableHttpEndpoint: BooleanOptional?
     public var enableIAMDatabaseAuthentication: BooleanOptional?
+    public var enableLocalWriteForwarding: BooleanOptional?
     public var enablePerformanceInsights: BooleanOptional?
     public var engineMode: String?
     public var engineVersion: String?
@@ -9558,6 +9583,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
                 enableGlobalWriteForwarding: BooleanOptional? = nil,
                 enableHttpEndpoint: BooleanOptional? = nil,
                 enableIAMDatabaseAuthentication: BooleanOptional? = nil,
+                enableLocalWriteForwarding: BooleanOptional? = nil,
                 enablePerformanceInsights: BooleanOptional? = nil,
                 engineMode: String? = nil,
                 engineVersion: String? = nil,
@@ -9599,6 +9625,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         self.enableGlobalWriteForwarding = enableGlobalWriteForwarding
         self.enableHttpEndpoint = enableHttpEndpoint
         self.enableIAMDatabaseAuthentication = enableIAMDatabaseAuthentication
+        self.enableLocalWriteForwarding = enableLocalWriteForwarding
         self.enablePerformanceInsights = enablePerformanceInsights
         self.engineMode = engineMode
         self.engineVersion = engineVersion
@@ -9643,6 +9670,7 @@ public struct ModifyDBClusterMessage: Codable, Equatable {
         case enableGlobalWriteForwarding = "EnableGlobalWriteForwarding"
         case enableHttpEndpoint = "EnableHttpEndpoint"
         case enableIAMDatabaseAuthentication = "EnableIAMDatabaseAuthentication"
+        case enableLocalWriteForwarding = "EnableLocalWriteForwarding"
         case enablePerformanceInsights = "EnablePerformanceInsights"
         case engineMode = "EngineMode"
         case engineVersion = "EngineVersion"
@@ -14644,6 +14672,7 @@ public struct UpgradeTarget: Codable, Equatable {
     public var supportedEngineModes: EngineModeList?
     public var supportsBabelfish: BooleanOptional?
     public var supportsGlobalDatabases: BooleanOptional?
+    public var supportsLocalWriteForwarding: BooleanOptional?
     public var supportsParallelQuery: BooleanOptional?
 
     public init(autoUpgrade: Boolean? = nil,
@@ -14654,6 +14683,7 @@ public struct UpgradeTarget: Codable, Equatable {
                 supportedEngineModes: EngineModeList? = nil,
                 supportsBabelfish: BooleanOptional? = nil,
                 supportsGlobalDatabases: BooleanOptional? = nil,
+                supportsLocalWriteForwarding: BooleanOptional? = nil,
                 supportsParallelQuery: BooleanOptional? = nil) {
         self.autoUpgrade = autoUpgrade
         self.description = description
@@ -14663,6 +14693,7 @@ public struct UpgradeTarget: Codable, Equatable {
         self.supportedEngineModes = supportedEngineModes
         self.supportsBabelfish = supportsBabelfish
         self.supportsGlobalDatabases = supportsGlobalDatabases
+        self.supportsLocalWriteForwarding = supportsLocalWriteForwarding
         self.supportsParallelQuery = supportsParallelQuery
     }
 
@@ -14675,6 +14706,7 @@ public struct UpgradeTarget: Codable, Equatable {
         case supportedEngineModes = "SupportedEngineModes"
         case supportsBabelfish = "SupportsBabelfish"
         case supportsGlobalDatabases = "SupportsGlobalDatabases"
+        case supportsLocalWriteForwarding = "SupportsLocalWriteForwarding"
         case supportsParallelQuery = "SupportsParallelQuery"
     }
 

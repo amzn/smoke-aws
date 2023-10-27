@@ -16,16 +16,16 @@
 // swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
-// SchedulerModelOperations.swift
-// SchedulerModel
+// EventBridgeSchedulerModelOperations.swift
+// EventBridgeSchedulerModel
 //
 
 import Foundation
 
 /**
- Operation enumeration for the SchedulerModel.
+ Operation enumeration for the EventBridgeSchedulerModel.
  */
-public enum SchedulerModelOperations: String, Hashable, CustomStringConvertible {
+public enum EventBridgeSchedulerModelOperations: String, Hashable, CustomStringConvertible {
     case createSchedule = "CreateSchedule"
     case createScheduleGroup = "CreateScheduleGroup"
     case deleteSchedule = "DeleteSchedule"
@@ -94,7 +94,7 @@ public struct CreateScheduleOperationInputPath: Codable, Equatable {
 }
 
 public extension CreateScheduleInput {
-    func asSchedulerModelCreateScheduleOperationInputPath() -> CreateScheduleOperationInputPath {
+    func asEventBridgeSchedulerModelCreateScheduleOperationInputPath() -> CreateScheduleOperationInputPath {
         return CreateScheduleOperationInputPath(
             name: name)
     }
@@ -105,7 +105,6 @@ public extension CreateScheduleInput {
  operation.
  */
 public struct CreateScheduleOperationInputBody: Codable, Equatable {
-    public var actionAfterCompletion: ActionAfterCompletion?
     public var clientToken: ClientToken?
     public var description: Description?
     public var endDate: EndDate?
@@ -118,8 +117,7 @@ public struct CreateScheduleOperationInputBody: Codable, Equatable {
     public var state: ScheduleState?
     public var target: Target
 
-    public init(actionAfterCompletion: ActionAfterCompletion? = nil,
-                clientToken: ClientToken? = nil,
+    public init(clientToken: ClientToken? = nil,
                 description: Description? = nil,
                 endDate: EndDate? = nil,
                 flexibleTimeWindow: FlexibleTimeWindow,
@@ -130,7 +128,6 @@ public struct CreateScheduleOperationInputBody: Codable, Equatable {
                 startDate: StartDate? = nil,
                 state: ScheduleState? = nil,
                 target: Target) {
-        self.actionAfterCompletion = actionAfterCompletion
         self.clientToken = clientToken
         self.description = description
         self.endDate = endDate
@@ -145,7 +142,6 @@ public struct CreateScheduleOperationInputBody: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case actionAfterCompletion = "ActionAfterCompletion"
         case clientToken = "ClientToken"
         case description = "Description"
         case endDate = "EndDate"
@@ -172,9 +168,8 @@ public struct CreateScheduleOperationInputBody: Codable, Equatable {
 }
 
 public extension CreateScheduleInput {
-    func asSchedulerModelCreateScheduleOperationInputBody() -> CreateScheduleOperationInputBody {
+    func asEventBridgeSchedulerModelCreateScheduleOperationInputBody() -> CreateScheduleOperationInputBody {
         return CreateScheduleOperationInputBody(
-            actionAfterCompletion: actionAfterCompletion,
             clientToken: clientToken,
             description: description,
             endDate: endDate,
@@ -210,7 +205,7 @@ public struct CreateScheduleGroupOperationInputPath: Codable, Equatable {
 }
 
 public extension CreateScheduleGroupInput {
-    func asSchedulerModelCreateScheduleGroupOperationInputPath() -> CreateScheduleGroupOperationInputPath {
+    func asEventBridgeSchedulerModelCreateScheduleGroupOperationInputPath() -> CreateScheduleGroupOperationInputPath {
         return CreateScheduleGroupOperationInputPath(
             name: name)
     }
@@ -242,7 +237,7 @@ public struct CreateScheduleGroupOperationInputBody: Codable, Equatable {
 }
 
 public extension CreateScheduleGroupInput {
-    func asSchedulerModelCreateScheduleGroupOperationInputBody() -> CreateScheduleGroupOperationInputBody {
+    func asEventBridgeSchedulerModelCreateScheduleGroupOperationInputBody() -> CreateScheduleGroupOperationInputBody {
         return CreateScheduleGroupOperationInputBody(
             clientToken: clientToken,
             tags: tags)
@@ -270,7 +265,7 @@ public struct DeleteScheduleOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteScheduleInput {
-    func asSchedulerModelDeleteScheduleOperationInputPath() -> DeleteScheduleOperationInputPath {
+    func asEventBridgeSchedulerModelDeleteScheduleOperationInputPath() -> DeleteScheduleOperationInputPath {
         return DeleteScheduleOperationInputPath(
             name: name)
     }
@@ -302,7 +297,7 @@ public struct DeleteScheduleOperationInputQuery: Codable, Equatable {
 }
 
 public extension DeleteScheduleInput {
-    func asSchedulerModelDeleteScheduleOperationInputQuery() -> DeleteScheduleOperationInputQuery {
+    func asEventBridgeSchedulerModelDeleteScheduleOperationInputQuery() -> DeleteScheduleOperationInputQuery {
         return DeleteScheduleOperationInputQuery(
             clientToken: clientToken,
             groupName: groupName)
@@ -330,7 +325,7 @@ public struct DeleteScheduleGroupOperationInputPath: Codable, Equatable {
 }
 
 public extension DeleteScheduleGroupInput {
-    func asSchedulerModelDeleteScheduleGroupOperationInputPath() -> DeleteScheduleGroupOperationInputPath {
+    func asEventBridgeSchedulerModelDeleteScheduleGroupOperationInputPath() -> DeleteScheduleGroupOperationInputPath {
         return DeleteScheduleGroupOperationInputPath(
             name: name)
     }
@@ -357,7 +352,7 @@ public struct DeleteScheduleGroupOperationInputQuery: Codable, Equatable {
 }
 
 public extension DeleteScheduleGroupInput {
-    func asSchedulerModelDeleteScheduleGroupOperationInputQuery() -> DeleteScheduleGroupOperationInputQuery {
+    func asEventBridgeSchedulerModelDeleteScheduleGroupOperationInputQuery() -> DeleteScheduleGroupOperationInputQuery {
         return DeleteScheduleGroupOperationInputQuery(
             clientToken: clientToken)
     }
@@ -384,7 +379,7 @@ public struct GetScheduleOperationInputPath: Codable, Equatable {
 }
 
 public extension GetScheduleInput {
-    func asSchedulerModelGetScheduleOperationInputPath() -> GetScheduleOperationInputPath {
+    func asEventBridgeSchedulerModelGetScheduleOperationInputPath() -> GetScheduleOperationInputPath {
         return GetScheduleOperationInputPath(
             name: name)
     }
@@ -411,7 +406,7 @@ public struct GetScheduleOperationInputQuery: Codable, Equatable {
 }
 
 public extension GetScheduleInput {
-    func asSchedulerModelGetScheduleOperationInputQuery() -> GetScheduleOperationInputQuery {
+    func asEventBridgeSchedulerModelGetScheduleOperationInputQuery() -> GetScheduleOperationInputQuery {
         return GetScheduleOperationInputQuery(
             groupName: groupName)
     }
@@ -438,7 +433,7 @@ public struct GetScheduleGroupOperationInputPath: Codable, Equatable {
 }
 
 public extension GetScheduleGroupInput {
-    func asSchedulerModelGetScheduleGroupOperationInputPath() -> GetScheduleGroupOperationInputPath {
+    func asEventBridgeSchedulerModelGetScheduleGroupOperationInputPath() -> GetScheduleGroupOperationInputPath {
         return GetScheduleGroupOperationInputPath(
             name: name)
     }
@@ -475,7 +470,7 @@ public struct ListScheduleGroupsOperationInputQuery: Codable, Equatable {
 }
 
 public extension ListScheduleGroupsInput {
-    func asSchedulerModelListScheduleGroupsOperationInputQuery() -> ListScheduleGroupsOperationInputQuery {
+    func asEventBridgeSchedulerModelListScheduleGroupsOperationInputQuery() -> ListScheduleGroupsOperationInputQuery {
         return ListScheduleGroupsOperationInputQuery(
             maxResults: maxResults,
             namePrefix: namePrefix,
@@ -523,7 +518,7 @@ public struct ListSchedulesOperationInputQuery: Codable, Equatable {
 }
 
 public extension ListSchedulesInput {
-    func asSchedulerModelListSchedulesOperationInputQuery() -> ListSchedulesOperationInputQuery {
+    func asEventBridgeSchedulerModelListSchedulesOperationInputQuery() -> ListSchedulesOperationInputQuery {
         return ListSchedulesOperationInputQuery(
             groupName: groupName,
             maxResults: maxResults,
@@ -554,7 +549,7 @@ public struct ListTagsForResourceOperationInputPath: Codable, Equatable {
 }
 
 public extension ListTagsForResourceInput {
-    func asSchedulerModelListTagsForResourceOperationInputPath() -> ListTagsForResourceOperationInputPath {
+    func asEventBridgeSchedulerModelListTagsForResourceOperationInputPath() -> ListTagsForResourceOperationInputPath {
         return ListTagsForResourceOperationInputPath(
             resourceArn: resourceArn)
     }
@@ -581,7 +576,7 @@ public struct TagResourceOperationInputPath: Codable, Equatable {
 }
 
 public extension TagResourceInput {
-    func asSchedulerModelTagResourceOperationInputPath() -> TagResourceOperationInputPath {
+    func asEventBridgeSchedulerModelTagResourceOperationInputPath() -> TagResourceOperationInputPath {
         return TagResourceOperationInputPath(
             resourceArn: resourceArn)
     }
@@ -608,7 +603,7 @@ public struct TagResourceOperationInputBody: Codable, Equatable {
 }
 
 public extension TagResourceInput {
-    func asSchedulerModelTagResourceOperationInputBody() -> TagResourceOperationInputBody {
+    func asEventBridgeSchedulerModelTagResourceOperationInputBody() -> TagResourceOperationInputBody {
         return TagResourceOperationInputBody(
             tags: tags)
     }
@@ -635,7 +630,7 @@ public struct UntagResourceOperationInputPath: Codable, Equatable {
 }
 
 public extension UntagResourceInput {
-    func asSchedulerModelUntagResourceOperationInputPath() -> UntagResourceOperationInputPath {
+    func asEventBridgeSchedulerModelUntagResourceOperationInputPath() -> UntagResourceOperationInputPath {
         return UntagResourceOperationInputPath(
             resourceArn: resourceArn)
     }
@@ -662,7 +657,7 @@ public struct UntagResourceOperationInputQuery: Codable, Equatable {
 }
 
 public extension UntagResourceInput {
-    func asSchedulerModelUntagResourceOperationInputQuery() -> UntagResourceOperationInputQuery {
+    func asEventBridgeSchedulerModelUntagResourceOperationInputQuery() -> UntagResourceOperationInputQuery {
         return UntagResourceOperationInputQuery(
             tagKeys: tagKeys)
     }
@@ -689,7 +684,7 @@ public struct UpdateScheduleOperationInputPath: Codable, Equatable {
 }
 
 public extension UpdateScheduleInput {
-    func asSchedulerModelUpdateScheduleOperationInputPath() -> UpdateScheduleOperationInputPath {
+    func asEventBridgeSchedulerModelUpdateScheduleOperationInputPath() -> UpdateScheduleOperationInputPath {
         return UpdateScheduleOperationInputPath(
             name: name)
     }
@@ -700,7 +695,6 @@ public extension UpdateScheduleInput {
  operation.
  */
 public struct UpdateScheduleOperationInputBody: Codable, Equatable {
-    public var actionAfterCompletion: ActionAfterCompletion?
     public var clientToken: ClientToken?
     public var description: Description?
     public var endDate: EndDate?
@@ -713,8 +707,7 @@ public struct UpdateScheduleOperationInputBody: Codable, Equatable {
     public var state: ScheduleState?
     public var target: Target
 
-    public init(actionAfterCompletion: ActionAfterCompletion? = nil,
-                clientToken: ClientToken? = nil,
+    public init(clientToken: ClientToken? = nil,
                 description: Description? = nil,
                 endDate: EndDate? = nil,
                 flexibleTimeWindow: FlexibleTimeWindow,
@@ -725,7 +718,6 @@ public struct UpdateScheduleOperationInputBody: Codable, Equatable {
                 startDate: StartDate? = nil,
                 state: ScheduleState? = nil,
                 target: Target) {
-        self.actionAfterCompletion = actionAfterCompletion
         self.clientToken = clientToken
         self.description = description
         self.endDate = endDate
@@ -740,7 +732,6 @@ public struct UpdateScheduleOperationInputBody: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case actionAfterCompletion = "ActionAfterCompletion"
         case clientToken = "ClientToken"
         case description = "Description"
         case endDate = "EndDate"
@@ -767,9 +758,8 @@ public struct UpdateScheduleOperationInputBody: Codable, Equatable {
 }
 
 public extension UpdateScheduleInput {
-    func asSchedulerModelUpdateScheduleOperationInputBody() -> UpdateScheduleOperationInputBody {
+    func asEventBridgeSchedulerModelUpdateScheduleOperationInputBody() -> UpdateScheduleOperationInputBody {
         return UpdateScheduleOperationInputBody(
-            actionAfterCompletion: actionAfterCompletion,
             clientToken: clientToken,
             description: description,
             endDate: endDate,

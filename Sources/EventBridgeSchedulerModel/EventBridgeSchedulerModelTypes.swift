@@ -16,25 +16,11 @@
 // swiftlint:disable type_body_length function_body_length generic_type_name cyclomatic_complexity
 // -- Generated Code; do not edit --
 //
-// SchedulerModelTypes.swift
-// SchedulerModel
+// EventBridgeSchedulerModelTypes.swift
+// EventBridgeSchedulerModel
 //
 
 import Foundation
-
-/**
- Enumeration restricting the values of the ActionAfterCompletion field.
- */
-public enum ActionAfterCompletion: String, Codable, CustomStringConvertible {
-    case delete = "DELETE"
-    case none = "NONE"
-
-    public var description: String {
-        return rawValue
-    }
-    
-    public static let __default: ActionAfterCompletion = .delete
-}
 
 /**
  Enumeration restricting the values of the AssignPublicIp field.
@@ -447,14 +433,14 @@ public typealias TaskDefinitionArn = String
 /**
  Validation for the CapacityProvider field.
 */
-extension SchedulerModel.CapacityProvider {
+extension EventBridgeSchedulerModel.CapacityProvider {
     public func validateAsCapacityProvider() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to CapacityProvider violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to CapacityProvider violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw SchedulerError.validationError(reason: "The provided value to CapacityProvider violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to CapacityProvider violated the maximum length constraint.")
         }
     }
 }
@@ -462,14 +448,14 @@ extension SchedulerModel.CapacityProvider {
 /**
  Validation for the CapacityProviderStrategy field.
 */
-extension Array where Element == SchedulerModel.CapacityProviderStrategyItem {
+extension Array where Element == EventBridgeSchedulerModel.CapacityProviderStrategyItem {
     public func validateAsCapacityProviderStrategy() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to CapacityProviderStrategy violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to CapacityProviderStrategy violated the minimum length constraint.")
         }
 
         if self.count > 6 {
-            throw SchedulerError.validationError(reason: "The provided value to CapacityProviderStrategy violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to CapacityProviderStrategy violated the maximum length constraint.")
         }
     }
 }
@@ -477,14 +463,14 @@ extension Array where Element == SchedulerModel.CapacityProviderStrategyItem {
 /**
  Validation for the CapacityProviderStrategyItemBase field.
 */
-extension SchedulerModel.CapacityProviderStrategyItemBase {
+extension EventBridgeSchedulerModel.CapacityProviderStrategyItemBase {
     public func validateAsCapacityProviderStrategyItemBase() throws {
         if self < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to CapacityProviderStrategyItemBase violated the minimum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to CapacityProviderStrategyItemBase violated the minimum range constraint.")
         }
 
         if self > 100000 {
-            throw SchedulerError.validationError(reason: "The provided value to CapacityProviderStrategyItemBase violated the maximum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to CapacityProviderStrategyItemBase violated the maximum range constraint.")
         }
     }
 }
@@ -492,14 +478,14 @@ extension SchedulerModel.CapacityProviderStrategyItemBase {
 /**
  Validation for the CapacityProviderStrategyItemWeight field.
 */
-extension SchedulerModel.CapacityProviderStrategyItemWeight {
+extension EventBridgeSchedulerModel.CapacityProviderStrategyItemWeight {
     public func validateAsCapacityProviderStrategyItemWeight() throws {
         if self < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to CapacityProviderStrategyItemWeight violated the minimum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to CapacityProviderStrategyItemWeight violated the minimum range constraint.")
         }
 
         if self > 1000 {
-            throw SchedulerError.validationError(reason: "The provided value to CapacityProviderStrategyItemWeight violated the maximum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to CapacityProviderStrategyItemWeight violated the maximum range constraint.")
         }
     }
 }
@@ -507,19 +493,19 @@ extension SchedulerModel.CapacityProviderStrategyItemWeight {
 /**
  Validation for the ClientToken field.
 */
-extension SchedulerModel.ClientToken {
+extension EventBridgeSchedulerModel.ClientToken {
     public func validateAsClientToken() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to ClientToken violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ClientToken violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SchedulerError.validationError(reason: "The provided value to ClientToken violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ClientToken violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^[a-zA-Z0-9-_]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to ClientToken violated the regular expression constraint.")
         }
     }
@@ -528,19 +514,19 @@ extension SchedulerModel.ClientToken {
 /**
  Validation for the DeadLetterConfigArnString field.
 */
-extension SchedulerModel.DeadLetterConfigArnString {
+extension EventBridgeSchedulerModel.DeadLetterConfigArnString {
     public func validateAsDeadLetterConfigArnString() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to DeadLetterConfigArnString violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to DeadLetterConfigArnString violated the minimum length constraint.")
         }
 
         if self.count > 1600 {
-            throw SchedulerError.validationError(reason: "The provided value to DeadLetterConfigArnString violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to DeadLetterConfigArnString violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^arn:aws(-[a-z]+)?:sqs:[a-z0-9\\-]+:\\d{12}:[a-zA-Z0-9\\-_]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to DeadLetterConfigArnString violated the regular expression constraint.")
         }
     }
@@ -549,14 +535,14 @@ extension SchedulerModel.DeadLetterConfigArnString {
 /**
  Validation for the Description field.
 */
-extension SchedulerModel.Description {
+extension EventBridgeSchedulerModel.Description {
     public func validateAsDescription() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to Description violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Description violated the minimum length constraint.")
         }
 
         if self.count > 512 {
-            throw SchedulerError.validationError(reason: "The provided value to Description violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Description violated the maximum length constraint.")
         }
     }
 }
@@ -564,14 +550,14 @@ extension SchedulerModel.Description {
 /**
  Validation for the DetailType field.
 */
-extension SchedulerModel.DetailType {
+extension EventBridgeSchedulerModel.DetailType {
     public func validateAsDetailType() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to DetailType violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to DetailType violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw SchedulerError.validationError(reason: "The provided value to DetailType violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to DetailType violated the maximum length constraint.")
         }
     }
 }
@@ -579,14 +565,14 @@ extension SchedulerModel.DetailType {
 /**
  Validation for the Group field.
 */
-extension SchedulerModel.Group {
+extension EventBridgeSchedulerModel.Group {
     public func validateAsGroup() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to Group violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Group violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw SchedulerError.validationError(reason: "The provided value to Group violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Group violated the maximum length constraint.")
         }
     }
 }
@@ -594,19 +580,19 @@ extension SchedulerModel.Group {
 /**
  Validation for the KmsKeyArn field.
 */
-extension SchedulerModel.KmsKeyArn {
+extension EventBridgeSchedulerModel.KmsKeyArn {
     public func validateAsKmsKeyArn() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to KmsKeyArn violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to KmsKeyArn violated the minimum length constraint.")
         }
 
         if self.count > 2048 {
-            throw SchedulerError.validationError(reason: "The provided value to KmsKeyArn violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to KmsKeyArn violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^arn:aws(-[a-z]+)?:kms:[a-z0-9\\-]+:\\d{12}:(key|alias)\\/[0-9a-zA-Z-_]*$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to KmsKeyArn violated the regular expression constraint.")
         }
     }
@@ -615,14 +601,14 @@ extension SchedulerModel.KmsKeyArn {
 /**
  Validation for the MaxResults field.
 */
-extension SchedulerModel.MaxResults {
+extension EventBridgeSchedulerModel.MaxResults {
     public func validateAsMaxResults() throws {
         if self < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to MaxResults violated the minimum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MaxResults violated the minimum range constraint.")
         }
 
         if self > 100 {
-            throw SchedulerError.validationError(reason: "The provided value to MaxResults violated the maximum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MaxResults violated the maximum range constraint.")
         }
     }
 }
@@ -630,14 +616,14 @@ extension SchedulerModel.MaxResults {
 /**
  Validation for the MaximumEventAgeInSeconds field.
 */
-extension SchedulerModel.MaximumEventAgeInSeconds {
+extension EventBridgeSchedulerModel.MaximumEventAgeInSeconds {
     public func validateAsMaximumEventAgeInSeconds() throws {
         if self < 60 {
-            throw SchedulerError.validationError(reason: "The provided value to MaximumEventAgeInSeconds violated the minimum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MaximumEventAgeInSeconds violated the minimum range constraint.")
         }
 
         if self > 86400 {
-            throw SchedulerError.validationError(reason: "The provided value to MaximumEventAgeInSeconds violated the maximum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MaximumEventAgeInSeconds violated the maximum range constraint.")
         }
     }
 }
@@ -645,14 +631,14 @@ extension SchedulerModel.MaximumEventAgeInSeconds {
 /**
  Validation for the MaximumRetryAttempts field.
 */
-extension SchedulerModel.MaximumRetryAttempts {
+extension EventBridgeSchedulerModel.MaximumRetryAttempts {
     public func validateAsMaximumRetryAttempts() throws {
         if self < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to MaximumRetryAttempts violated the minimum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MaximumRetryAttempts violated the minimum range constraint.")
         }
 
         if self > 185 {
-            throw SchedulerError.validationError(reason: "The provided value to MaximumRetryAttempts violated the maximum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MaximumRetryAttempts violated the maximum range constraint.")
         }
     }
 }
@@ -660,14 +646,14 @@ extension SchedulerModel.MaximumRetryAttempts {
 /**
  Validation for the MaximumWindowInMinutes field.
 */
-extension SchedulerModel.MaximumWindowInMinutes {
+extension EventBridgeSchedulerModel.MaximumWindowInMinutes {
     public func validateAsMaximumWindowInMinutes() throws {
         if self < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to MaximumWindowInMinutes violated the minimum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MaximumWindowInMinutes violated the minimum range constraint.")
         }
 
         if self > 1440 {
-            throw SchedulerError.validationError(reason: "The provided value to MaximumWindowInMinutes violated the maximum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MaximumWindowInMinutes violated the maximum range constraint.")
         }
     }
 }
@@ -675,14 +661,14 @@ extension SchedulerModel.MaximumWindowInMinutes {
 /**
  Validation for the MessageGroupId field.
 */
-extension SchedulerModel.MessageGroupId {
+extension EventBridgeSchedulerModel.MessageGroupId {
     public func validateAsMessageGroupId() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to MessageGroupId violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MessageGroupId violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw SchedulerError.validationError(reason: "The provided value to MessageGroupId violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to MessageGroupId violated the maximum length constraint.")
         }
     }
 }
@@ -690,19 +676,19 @@ extension SchedulerModel.MessageGroupId {
 /**
  Validation for the Name field.
 */
-extension SchedulerModel.Name {
+extension EventBridgeSchedulerModel.Name {
     public func validateAsName() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to Name violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Name violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SchedulerError.validationError(reason: "The provided value to Name violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Name violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^[0-9a-zA-Z-_.]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to Name violated the regular expression constraint.")
         }
     }
@@ -711,19 +697,19 @@ extension SchedulerModel.Name {
 /**
  Validation for the NamePrefix field.
 */
-extension SchedulerModel.NamePrefix {
+extension EventBridgeSchedulerModel.NamePrefix {
     public func validateAsNamePrefix() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to NamePrefix violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to NamePrefix violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SchedulerError.validationError(reason: "The provided value to NamePrefix violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to NamePrefix violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^[0-9a-zA-Z-_.]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to NamePrefix violated the regular expression constraint.")
         }
     }
@@ -732,14 +718,14 @@ extension SchedulerModel.NamePrefix {
 /**
  Validation for the NextToken field.
 */
-extension SchedulerModel.NextToken {
+extension EventBridgeSchedulerModel.NextToken {
     public func validateAsNextToken() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to NextToken violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to NextToken violated the minimum length constraint.")
         }
 
         if self.count > 2048 {
-            throw SchedulerError.validationError(reason: "The provided value to NextToken violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to NextToken violated the maximum length constraint.")
         }
     }
 }
@@ -747,14 +733,14 @@ extension SchedulerModel.NextToken {
 /**
  Validation for the PlacementConstraintExpression field.
 */
-extension SchedulerModel.PlacementConstraintExpression {
+extension EventBridgeSchedulerModel.PlacementConstraintExpression {
     public func validateAsPlacementConstraintExpression() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to PlacementConstraintExpression violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlacementConstraintExpression violated the minimum length constraint.")
         }
 
         if self.count > 2000 {
-            throw SchedulerError.validationError(reason: "The provided value to PlacementConstraintExpression violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlacementConstraintExpression violated the maximum length constraint.")
         }
     }
 }
@@ -762,14 +748,14 @@ extension SchedulerModel.PlacementConstraintExpression {
 /**
  Validation for the PlacementConstraints field.
 */
-extension Array where Element == SchedulerModel.PlacementConstraint {
+extension Array where Element == EventBridgeSchedulerModel.PlacementConstraint {
     public func validateAsPlacementConstraints() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to PlacementConstraints violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlacementConstraints violated the minimum length constraint.")
         }
 
         if self.count > 10 {
-            throw SchedulerError.validationError(reason: "The provided value to PlacementConstraints violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlacementConstraints violated the maximum length constraint.")
         }
     }
 }
@@ -777,14 +763,14 @@ extension Array where Element == SchedulerModel.PlacementConstraint {
 /**
  Validation for the PlacementStrategies field.
 */
-extension Array where Element == SchedulerModel.PlacementStrategy {
+extension Array where Element == EventBridgeSchedulerModel.PlacementStrategy {
     public func validateAsPlacementStrategies() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to PlacementStrategies violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlacementStrategies violated the minimum length constraint.")
         }
 
         if self.count > 5 {
-            throw SchedulerError.validationError(reason: "The provided value to PlacementStrategies violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlacementStrategies violated the maximum length constraint.")
         }
     }
 }
@@ -792,14 +778,14 @@ extension Array where Element == SchedulerModel.PlacementStrategy {
 /**
  Validation for the PlacementStrategyField field.
 */
-extension SchedulerModel.PlacementStrategyField {
+extension EventBridgeSchedulerModel.PlacementStrategyField {
     public func validateAsPlacementStrategyField() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to PlacementStrategyField violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlacementStrategyField violated the minimum length constraint.")
         }
 
         if self.count > 255 {
-            throw SchedulerError.validationError(reason: "The provided value to PlacementStrategyField violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlacementStrategyField violated the maximum length constraint.")
         }
     }
 }
@@ -807,14 +793,14 @@ extension SchedulerModel.PlacementStrategyField {
 /**
  Validation for the PlatformVersion field.
 */
-extension SchedulerModel.PlatformVersion {
+extension EventBridgeSchedulerModel.PlatformVersion {
     public func validateAsPlatformVersion() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to PlatformVersion violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlatformVersion violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SchedulerError.validationError(reason: "The provided value to PlatformVersion violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to PlatformVersion violated the maximum length constraint.")
         }
     }
 }
@@ -822,14 +808,14 @@ extension SchedulerModel.PlatformVersion {
 /**
  Validation for the ReferenceId field.
 */
-extension SchedulerModel.ReferenceId {
+extension EventBridgeSchedulerModel.ReferenceId {
     public func validateAsReferenceId() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to ReferenceId violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ReferenceId violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw SchedulerError.validationError(reason: "The provided value to ReferenceId violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ReferenceId violated the maximum length constraint.")
         }
     }
 }
@@ -837,19 +823,19 @@ extension SchedulerModel.ReferenceId {
 /**
  Validation for the RoleArn field.
 */
-extension SchedulerModel.RoleArn {
+extension EventBridgeSchedulerModel.RoleArn {
     public func validateAsRoleArn() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to RoleArn violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to RoleArn violated the minimum length constraint.")
         }
 
         if self.count > 1600 {
-            throw SchedulerError.validationError(reason: "The provided value to RoleArn violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to RoleArn violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^arn:aws(-[a-z]+)?:iam::\\d{12}:role\\/[\\w+=,.@\\/-]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to RoleArn violated the regular expression constraint.")
         }
     }
@@ -858,14 +844,14 @@ extension SchedulerModel.RoleArn {
 /**
  Validation for the SageMakerPipelineParameterList field.
 */
-extension Array where Element == SchedulerModel.SageMakerPipelineParameter {
+extension Array where Element == EventBridgeSchedulerModel.SageMakerPipelineParameter {
     public func validateAsSageMakerPipelineParameterList() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterList violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterList violated the minimum length constraint.")
         }
 
         if self.count > 200 {
-            throw SchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterList violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterList violated the maximum length constraint.")
         }
     }
 }
@@ -873,19 +859,19 @@ extension Array where Element == SchedulerModel.SageMakerPipelineParameter {
 /**
  Validation for the SageMakerPipelineParameterName field.
 */
-extension SchedulerModel.SageMakerPipelineParameterName {
+extension EventBridgeSchedulerModel.SageMakerPipelineParameterName {
     public func validateAsSageMakerPipelineParameterName() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterName violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterName violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterName violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterName violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^[A-Za-z0-9\\-_]*$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to SageMakerPipelineParameterName violated the regular expression constraint.")
         }
     }
@@ -894,14 +880,14 @@ extension SchedulerModel.SageMakerPipelineParameterName {
 /**
  Validation for the SageMakerPipelineParameterValue field.
 */
-extension SchedulerModel.SageMakerPipelineParameterValue {
+extension EventBridgeSchedulerModel.SageMakerPipelineParameterValue {
     public func validateAsSageMakerPipelineParameterValue() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterValue violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterValue violated the minimum length constraint.")
         }
 
         if self.count > 1024 {
-            throw SchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterValue violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SageMakerPipelineParameterValue violated the maximum length constraint.")
         }
     }
 }
@@ -909,19 +895,19 @@ extension SchedulerModel.SageMakerPipelineParameterValue {
 /**
  Validation for the ScheduleArn field.
 */
-extension SchedulerModel.ScheduleArn {
+extension EventBridgeSchedulerModel.ScheduleArn {
     public func validateAsScheduleArn() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleArn violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleArn violated the minimum length constraint.")
         }
 
         if self.count > 1224 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleArn violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleArn violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^arn:aws(-[a-z]+)?:scheduler:[a-z0-9\\-]+:\\d{12}:schedule\\/[0-9a-zA-Z-_.]+\\/[0-9a-zA-Z-_.]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to ScheduleArn violated the regular expression constraint.")
         }
     }
@@ -930,14 +916,14 @@ extension SchedulerModel.ScheduleArn {
 /**
  Validation for the ScheduleExpression field.
 */
-extension SchedulerModel.ScheduleExpression {
+extension EventBridgeSchedulerModel.ScheduleExpression {
     public func validateAsScheduleExpression() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleExpression violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleExpression violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleExpression violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleExpression violated the maximum length constraint.")
         }
     }
 }
@@ -945,14 +931,14 @@ extension SchedulerModel.ScheduleExpression {
 /**
  Validation for the ScheduleExpressionTimezone field.
 */
-extension SchedulerModel.ScheduleExpressionTimezone {
+extension EventBridgeSchedulerModel.ScheduleExpressionTimezone {
     public func validateAsScheduleExpressionTimezone() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleExpressionTimezone violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleExpressionTimezone violated the minimum length constraint.")
         }
 
         if self.count > 50 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleExpressionTimezone violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleExpressionTimezone violated the maximum length constraint.")
         }
     }
 }
@@ -960,19 +946,19 @@ extension SchedulerModel.ScheduleExpressionTimezone {
 /**
  Validation for the ScheduleGroupArn field.
 */
-extension SchedulerModel.ScheduleGroupArn {
+extension EventBridgeSchedulerModel.ScheduleGroupArn {
     public func validateAsScheduleGroupArn() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleGroupArn violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleGroupArn violated the minimum length constraint.")
         }
 
         if self.count > 1224 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleGroupArn violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleGroupArn violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^arn:aws(-[a-z]+)?:scheduler:[a-z0-9\\-]+:\\d{12}:schedule-group\\/[0-9a-zA-Z-_.]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to ScheduleGroupArn violated the regular expression constraint.")
         }
     }
@@ -981,19 +967,19 @@ extension SchedulerModel.ScheduleGroupArn {
 /**
  Validation for the ScheduleGroupName field.
 */
-extension SchedulerModel.ScheduleGroupName {
+extension EventBridgeSchedulerModel.ScheduleGroupName {
     public func validateAsScheduleGroupName() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleGroupName violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleGroupName violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleGroupName violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleGroupName violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^[0-9a-zA-Z-_.]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to ScheduleGroupName violated the regular expression constraint.")
         }
     }
@@ -1002,19 +988,19 @@ extension SchedulerModel.ScheduleGroupName {
 /**
  Validation for the ScheduleGroupNamePrefix field.
 */
-extension SchedulerModel.ScheduleGroupNamePrefix {
+extension EventBridgeSchedulerModel.ScheduleGroupNamePrefix {
     public func validateAsScheduleGroupNamePrefix() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleGroupNamePrefix violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleGroupNamePrefix violated the minimum length constraint.")
         }
 
         if self.count > 64 {
-            throw SchedulerError.validationError(reason: "The provided value to ScheduleGroupNamePrefix violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to ScheduleGroupNamePrefix violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^[0-9a-zA-Z-_.]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to ScheduleGroupNamePrefix violated the regular expression constraint.")
         }
     }
@@ -1023,14 +1009,14 @@ extension SchedulerModel.ScheduleGroupNamePrefix {
 /**
  Validation for the SecurityGroup field.
 */
-extension SchedulerModel.SecurityGroup {
+extension EventBridgeSchedulerModel.SecurityGroup {
     public func validateAsSecurityGroup() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to SecurityGroup violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SecurityGroup violated the minimum length constraint.")
         }
 
         if self.count > 1000 {
-            throw SchedulerError.validationError(reason: "The provided value to SecurityGroup violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SecurityGroup violated the maximum length constraint.")
         }
     }
 }
@@ -1038,14 +1024,14 @@ extension SchedulerModel.SecurityGroup {
 /**
  Validation for the SecurityGroups field.
 */
-extension Array where Element == SchedulerModel.SecurityGroup {
+extension Array where Element == EventBridgeSchedulerModel.SecurityGroup {
     public func validateAsSecurityGroups() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to SecurityGroups violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SecurityGroups violated the minimum length constraint.")
         }
 
         if self.count > 5 {
-            throw SchedulerError.validationError(reason: "The provided value to SecurityGroups violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to SecurityGroups violated the maximum length constraint.")
         }
     }
 }
@@ -1053,19 +1039,19 @@ extension Array where Element == SchedulerModel.SecurityGroup {
 /**
  Validation for the Source field.
 */
-extension SchedulerModel.Source {
+extension EventBridgeSchedulerModel.Source {
     public func validateAsSource() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to Source violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Source violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SchedulerError.validationError(reason: "The provided value to Source violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Source violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^(?=[/\\.\\-_A-Za-z0-9]+)((?!aws\\.).*)|(\\$(\\.[\\w_-]+(\\[(\\d+|\\*)\\])*)*)$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to Source violated the regular expression constraint.")
         }
     }
@@ -1074,14 +1060,14 @@ extension SchedulerModel.Source {
 /**
  Validation for the Subnet field.
 */
-extension SchedulerModel.Subnet {
+extension EventBridgeSchedulerModel.Subnet {
     public func validateAsSubnet() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to Subnet violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Subnet violated the minimum length constraint.")
         }
 
         if self.count > 1000 {
-            throw SchedulerError.validationError(reason: "The provided value to Subnet violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Subnet violated the maximum length constraint.")
         }
     }
 }
@@ -1089,14 +1075,14 @@ extension SchedulerModel.Subnet {
 /**
  Validation for the Subnets field.
 */
-extension Array where Element == SchedulerModel.Subnet {
+extension Array where Element == EventBridgeSchedulerModel.Subnet {
     public func validateAsSubnets() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to Subnets violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Subnets violated the minimum length constraint.")
         }
 
         if self.count > 16 {
-            throw SchedulerError.validationError(reason: "The provided value to Subnets violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Subnets violated the maximum length constraint.")
         }
     }
 }
@@ -1104,14 +1090,14 @@ extension Array where Element == SchedulerModel.Subnet {
 /**
  Validation for the TagKey field.
 */
-extension SchedulerModel.TagKey {
+extension EventBridgeSchedulerModel.TagKey {
     public func validateAsTagKey() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagKey violated the minimum length constraint.")
         }
 
         if self.count > 128 {
-            throw SchedulerError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagKey violated the maximum length constraint.")
         }
     }
 }
@@ -1119,14 +1105,14 @@ extension SchedulerModel.TagKey {
 /**
  Validation for the TagKeyList field.
 */
-extension Array where Element == SchedulerModel.TagKey {
+extension Array where Element == EventBridgeSchedulerModel.TagKey {
     public func validateAsTagKeyList() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to TagKeyList violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagKeyList violated the minimum length constraint.")
         }
 
         if self.count > 200 {
-            throw SchedulerError.validationError(reason: "The provided value to TagKeyList violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagKeyList violated the maximum length constraint.")
         }
     }
 }
@@ -1134,14 +1120,14 @@ extension Array where Element == SchedulerModel.TagKey {
 /**
  Validation for the TagList field.
 */
-extension Array where Element == SchedulerModel.Tag {
+extension Array where Element == EventBridgeSchedulerModel.Tag {
     public func validateAsTagList() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to TagList violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagList violated the minimum length constraint.")
         }
 
         if self.count > 200 {
-            throw SchedulerError.validationError(reason: "The provided value to TagList violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagList violated the maximum length constraint.")
         }
     }
 }
@@ -1149,19 +1135,19 @@ extension Array where Element == SchedulerModel.Tag {
 /**
  Validation for the TagResourceArn field.
 */
-extension SchedulerModel.TagResourceArn {
+extension EventBridgeSchedulerModel.TagResourceArn {
     public func validateAsTagResourceArn() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to TagResourceArn violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagResourceArn violated the minimum length constraint.")
         }
 
         if self.count > 1011 {
-            throw SchedulerError.validationError(reason: "The provided value to TagResourceArn violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagResourceArn violated the maximum length constraint.")
         }
 
         guard let matchingRange = self.range(of: "^arn:aws(-[a-z]+)?:scheduler:[a-z0-9\\-]+:\\d{12}:schedule-group\\/[0-9a-zA-Z-_.]+$", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
-                throw SchedulerError.validationError(
+                throw EventBridgeSchedulerError.validationError(
                     reason: "The provided value to TagResourceArn violated the regular expression constraint.")
         }
     }
@@ -1170,14 +1156,14 @@ extension SchedulerModel.TagResourceArn {
 /**
  Validation for the TagValue field.
 */
-extension SchedulerModel.TagValue {
+extension EventBridgeSchedulerModel.TagValue {
     public func validateAsTagValue() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagValue violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SchedulerError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TagValue violated the maximum length constraint.")
         }
     }
 }
@@ -1185,14 +1171,14 @@ extension SchedulerModel.TagValue {
 /**
  Validation for the Tags field.
 */
-extension Array where Element == SchedulerModel.TagMap {
+extension Array where Element == EventBridgeSchedulerModel.TagMap {
     public func validateAsTags() throws {
         if self.count < 0 {
-            throw SchedulerError.validationError(reason: "The provided value to Tags violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Tags violated the minimum length constraint.")
         }
 
         if self.count > 50 {
-            throw SchedulerError.validationError(reason: "The provided value to Tags violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to Tags violated the maximum length constraint.")
         }
     }
 }
@@ -1200,14 +1186,14 @@ extension Array where Element == SchedulerModel.TagMap {
 /**
  Validation for the TargetArn field.
 */
-extension SchedulerModel.TargetArn {
+extension EventBridgeSchedulerModel.TargetArn {
     public func validateAsTargetArn() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to TargetArn violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TargetArn violated the minimum length constraint.")
         }
 
         if self.count > 1600 {
-            throw SchedulerError.validationError(reason: "The provided value to TargetArn violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TargetArn violated the maximum length constraint.")
         }
     }
 }
@@ -1215,10 +1201,10 @@ extension SchedulerModel.TargetArn {
 /**
  Validation for the TargetInput field.
 */
-extension SchedulerModel.TargetInput {
+extension EventBridgeSchedulerModel.TargetInput {
     public func validateAsTargetInput() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to TargetInput violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TargetInput violated the minimum length constraint.")
         }
 
     }
@@ -1227,14 +1213,14 @@ extension SchedulerModel.TargetInput {
 /**
  Validation for the TargetPartitionKey field.
 */
-extension SchedulerModel.TargetPartitionKey {
+extension EventBridgeSchedulerModel.TargetPartitionKey {
     public func validateAsTargetPartitionKey() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to TargetPartitionKey violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TargetPartitionKey violated the minimum length constraint.")
         }
 
         if self.count > 256 {
-            throw SchedulerError.validationError(reason: "The provided value to TargetPartitionKey violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TargetPartitionKey violated the maximum length constraint.")
         }
     }
 }
@@ -1242,14 +1228,14 @@ extension SchedulerModel.TargetPartitionKey {
 /**
  Validation for the TaskCount field.
 */
-extension SchedulerModel.TaskCount {
+extension EventBridgeSchedulerModel.TaskCount {
     public func validateAsTaskCount() throws {
         if self < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to TaskCount violated the minimum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TaskCount violated the minimum range constraint.")
         }
 
         if self > 10 {
-            throw SchedulerError.validationError(reason: "The provided value to TaskCount violated the maximum range constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TaskCount violated the maximum range constraint.")
         }
     }
 }
@@ -1257,14 +1243,14 @@ extension SchedulerModel.TaskCount {
 /**
  Validation for the TaskDefinitionArn field.
 */
-extension SchedulerModel.TaskDefinitionArn {
+extension EventBridgeSchedulerModel.TaskDefinitionArn {
     public func validateAsTaskDefinitionArn() throws {
         if self.count < 1 {
-            throw SchedulerError.validationError(reason: "The provided value to TaskDefinitionArn violated the minimum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TaskDefinitionArn violated the minimum length constraint.")
         }
 
         if self.count > 1600 {
-            throw SchedulerError.validationError(reason: "The provided value to TaskDefinitionArn violated the maximum length constraint.")
+            throw EventBridgeSchedulerError.validationError(reason: "The provided value to TaskDefinitionArn violated the maximum length constraint.")
         }
     }
 }

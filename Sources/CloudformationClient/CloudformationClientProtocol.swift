@@ -249,6 +249,11 @@ public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
     typealias ListImportsAsyncType = (
             _ input: CloudformationModel.ListImportsInput, 
             _ completion: @escaping (Result<CloudformationModel.ListImportsOutputForListImports, CloudformationError>) -> ()) throws -> ()
+    typealias ListStackInstanceResourceDriftsSyncType = (
+            _ input: CloudformationModel.ListStackInstanceResourceDriftsInput) throws -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
+    typealias ListStackInstanceResourceDriftsAsyncType = (
+            _ input: CloudformationModel.ListStackInstanceResourceDriftsInput, 
+            _ completion: @escaping (Result<CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts, CloudformationError>) -> ()) throws -> ()
     typealias ListStackInstancesSyncType = (
             _ input: CloudformationModel.ListStackInstancesInput) throws -> CloudformationModel.ListStackInstancesOutputForListStackInstances
     typealias ListStackInstancesAsyncType = (
@@ -1484,6 +1489,32 @@ public protocol CloudformationClientProtocol: CloudformationClientProtocolV2 {
      */
     func listImportsSync(
             input: CloudformationModel.ListImportsInput) throws -> CloudformationModel.ListImportsOutputForListImports
+
+    /**
+     Invokes the ListStackInstanceResourceDrifts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+         - completion: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object or an error will be passed to this 
+           callback when the operation is complete. The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
+           object will be validated before being returned to caller.
+           The possible errors are: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    func listStackInstanceResourceDriftsAsync(
+            input: CloudformationModel.ListStackInstanceResourceDriftsInput, 
+            completion: @escaping (Result<CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts, CloudformationError>) -> ()) throws
+
+    /**
+     Invokes the ListStackInstanceResourceDrifts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+     - Returns: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    func listStackInstanceResourceDriftsSync(
+            input: CloudformationModel.ListStackInstanceResourceDriftsInput) throws -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
 
     /**
      Invokes the ListStackInstances operation returning immediately and passing the response to a callback.

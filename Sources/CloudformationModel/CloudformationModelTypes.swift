@@ -1236,6 +1236,11 @@ public typealias ResourcesToImport = [ResourceToImport]
 public typealias ResourcesToSkip = [ResourceToSkip]
 
 /**
+ Type definition for the RetainExceptOnCreate field.
+ */
+public typealias RetainExceptOnCreate = Bool
+
+/**
  Type definition for the RetainResources field.
  */
 public typealias RetainResources = [LogicalResourceId]
@@ -1370,6 +1375,7 @@ public enum StackInstanceDetailedStatus: String, Codable, CustomStringConvertibl
  */
 public enum StackInstanceFilterName: String, Codable, CustomStringConvertible {
     case detailedStatus = "DETAILED_STATUS"
+    case driftStatus = "DRIFT_STATUS"
     case lastOperationId = "LAST_OPERATION_ID"
 
     public var description: String {
@@ -1388,6 +1394,11 @@ public typealias StackInstanceFilterValues = String
  Type definition for the StackInstanceFilters field.
  */
 public typealias StackInstanceFilters = [StackInstanceFilter]
+
+/**
+ Type definition for the StackInstanceResourceDriftsSummaries field.
+ */
+public typealias StackInstanceResourceDriftsSummaries = [StackInstanceResourceDriftsSummary]
 
 /**
  Enumeration restricting the values of the StackInstanceStatus field.
@@ -1780,6 +1791,11 @@ public typealias TransformName = String
  Type definition for the TransformsList field.
  */
 public typealias TransformsList = [TransformName]
+
+/**
+ Type definition for the TreatUnrecognizedResourceTypesAsWarnings field.
+ */
+public typealias TreatUnrecognizedResourceTypesAsWarnings = Bool
 
 /**
  Type definition for the Type field.
@@ -2984,7 +3000,7 @@ extension CloudformationModel.StackInstanceFilterValues {
 extension Array where Element == CloudformationModel.StackInstanceFilter {
     public func validateAsStackInstanceFilters() throws {
 
-        if self.count > 2 {
+        if self.count > 3 {
             throw CloudformationError.validationError(reason: "The provided value to StackInstanceFilters violated the maximum length constraint.")
         }
     }
