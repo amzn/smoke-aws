@@ -38,6 +38,11 @@ public typealias Issuer = String
 public typealias NameQualifier = String
 
 /**
+ Type definition for the ProvidedContextsListType field.
+ */
+public typealias ProvidedContextsListType = [ProvidedContext]
+
+/**
  Type definition for the SAMLAssertionType field.
  */
 public typealias SAMLAssertionType = String
@@ -81,6 +86,11 @@ public typealias AssumedRoleIdType = String
  Type definition for the ClientTokenType field.
  */
 public typealias ClientTokenType = String
+
+/**
+ Type definition for the ContextAssertionType field.
+ */
+public typealias ContextAssertionType = String
 
 /**
  Type definition for the DateType field.
@@ -218,6 +228,11 @@ public typealias TokenCodeType = String
 public typealias TokenType = String
 
 /**
+ Type definition for the UnrestrictedSessionPolicyDocumentType field.
+ */
+public typealias UnrestrictedSessionPolicyDocumentType = String
+
+/**
  Type definition for the UrlType field.
  */
 public typealias UrlType = String
@@ -236,6 +251,18 @@ public typealias UserNameType = String
  Type definition for the WebIdentitySubjectType field.
  */
 public typealias WebIdentitySubjectType = String
+
+/**
+ Validation for the ProvidedContextsListType field.
+*/
+extension Array where Element == SecurityTokenModel.ProvidedContext {
+    public func validateAsProvidedContextsListType() throws {
+
+        if self.count > 5 {
+            throw SecurityTokenError.validationError(reason: "The provided value to ProvidedContextsListType violated the maximum length constraint.")
+        }
+    }
+}
 
 /**
  Validation for the SAMLAssertionType field.
@@ -326,6 +353,21 @@ extension SecurityTokenModel.ClientTokenType {
 
         if self.count > 20000 {
             throw SecurityTokenError.validationError(reason: "The provided value to clientTokenType violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the ContextAssertionType field.
+*/
+extension SecurityTokenModel.ContextAssertionType {
+    public func validateAsContextAssertionType() throws {
+        if self.count < 4 {
+            throw SecurityTokenError.validationError(reason: "The provided value to contextAssertionType violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw SecurityTokenError.validationError(reason: "The provided value to contextAssertionType violated the maximum length constraint.")
         }
     }
 }
@@ -596,6 +638,24 @@ extension SecurityTokenModel.TokenCodeType {
             matchingRange == startIndex..<endIndex else {
                 throw SecurityTokenError.validationError(
                     reason: "The provided value to tokenCodeType violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the UnrestrictedSessionPolicyDocumentType field.
+*/
+extension SecurityTokenModel.UnrestrictedSessionPolicyDocumentType {
+    public func validateAsUnrestrictedSessionPolicyDocumentType() throws {
+        if self.count < 1 {
+            throw SecurityTokenError.validationError(reason: "The provided value to unrestrictedSessionPolicyDocumentType violated the minimum length constraint.")
+        }
+
+
+        guard let matchingRange = self.range(of: "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw SecurityTokenError.validationError(
+                    reason: "The provided value to unrestrictedSessionPolicyDocumentType violated the regular expression constraint.")
         }
     }
 }

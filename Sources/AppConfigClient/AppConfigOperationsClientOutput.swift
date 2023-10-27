@@ -120,6 +120,7 @@ extension HostedConfigurationVersion: HTTPResponseOutputProtocol {
             content: body,
             contentType: headers.contentType,
             description: headers.description,
+            kmsKeyArn: headers.kmsKeyArn,
             versionLabel: headers.versionLabel,
             versionNumber: headers.versionNumber)
     }

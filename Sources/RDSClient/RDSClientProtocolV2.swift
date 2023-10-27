@@ -96,6 +96,8 @@ public protocol RDSClientProtocolV2 {
             _ input: RDSModel.DeleteCustomDBEngineVersionMessage) async throws -> RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion
     typealias DeleteDBClusterFunctionType = (
             _ input: RDSModel.DeleteDBClusterMessage) async throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
+    typealias DeleteDBClusterAutomatedBackupFunctionType = (
+            _ input: RDSModel.DeleteDBClusterAutomatedBackupMessage) async throws -> RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup
     typealias DeleteDBClusterEndpointFunctionType = (
             _ input: RDSModel.DeleteDBClusterEndpointMessage) async throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint
     typealias DeleteDBClusterParameterGroupFunctionType = (
@@ -132,6 +134,8 @@ public protocol RDSClientProtocolV2 {
             _ input: RDSModel.DescribeBlueGreenDeploymentsRequest) async throws -> RDSModel.DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments
     typealias DescribeCertificatesFunctionType = (
             _ input: RDSModel.DescribeCertificatesMessage) async throws -> RDSModel.CertificateMessageForDescribeCertificates
+    typealias DescribeDBClusterAutomatedBackupsFunctionType = (
+            _ input: RDSModel.DescribeDBClusterAutomatedBackupsMessage) async throws -> RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups
     typealias DescribeDBClusterBacktracksFunctionType = (
             _ input: RDSModel.DescribeDBClusterBacktracksMessage) async throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks
     typealias DescribeDBClusterEndpointsFunctionType = (
@@ -310,6 +314,8 @@ public protocol RDSClientProtocolV2 {
             _ input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) async throws -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication
     typealias SwitchoverBlueGreenDeploymentFunctionType = (
             _ input: RDSModel.SwitchoverBlueGreenDeploymentRequest) async throws -> RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment
+    typealias SwitchoverGlobalClusterFunctionType = (
+            _ input: RDSModel.SwitchoverGlobalClusterMessage) async throws -> RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster
     typealias SwitchoverReadReplicaFunctionType = (
             _ input: RDSModel.SwitchoverReadReplicaMessage) async throws -> RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica
 
@@ -698,10 +704,22 @@ public protocol RDSClientProtocolV2 {
          - input: The validated DeleteDBClusterMessage object being passed to this operation.
      - Returns: The DeleteDBClusterResultForDeleteDBCluster object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
+     - Throws: dBClusterAutomatedBackupQuotaExceeded, dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     func deleteDBCluster(
             input: RDSModel.DeleteDBClusterMessage) async throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster
+
+    /**
+     Invokes the DeleteDBClusterAutomatedBackup operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBClusterAutomatedBackupMessage object being passed to this operation.
+     - Returns: The DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterAutomatedBackupNotFound, invalidDBClusterAutomatedBackupState.
+     */
+    func deleteDBClusterAutomatedBackup(
+            input: RDSModel.DeleteDBClusterAutomatedBackupMessage) async throws -> RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup
 
     /**
      Invokes the DeleteDBClusterEndpoint operation suspending until the response is available before returning.
@@ -907,6 +925,18 @@ public protocol RDSClientProtocolV2 {
      */
     func describeCertificates(
             input: RDSModel.DescribeCertificatesMessage) async throws -> RDSModel.CertificateMessageForDescribeCertificates
+
+    /**
+     Invokes the DescribeDBClusterAutomatedBackups operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBClusterAutomatedBackupsMessage object being passed to this operation.
+     - Returns: The DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterAutomatedBackupNotFound.
+     */
+    func describeDBClusterAutomatedBackups(
+            input: RDSModel.DescribeDBClusterAutomatedBackupsMessage) async throws -> RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups
 
     /**
      Invokes the DescribeDBClusterBacktracks operation suspending until the response is available before returning.
@@ -1777,7 +1807,7 @@ public protocol RDSClientProtocolV2 {
          - input: The validated RestoreDBClusterFromSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     func restoreDBClusterFromSnapshot(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage) async throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
@@ -1789,7 +1819,7 @@ public protocol RDSClientProtocolV2 {
          - input: The validated RestoreDBClusterToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterAutomatedBackupNotFound, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     func restoreDBClusterToPointInTime(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage) async throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime
@@ -1961,6 +1991,18 @@ public protocol RDSClientProtocolV2 {
      */
     func switchoverBlueGreenDeployment(
             input: RDSModel.SwitchoverBlueGreenDeploymentRequest) async throws -> RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment
+
+    /**
+     Invokes the SwitchoverGlobalCluster operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SwitchoverGlobalClusterMessage object being passed to this operation.
+     - Returns: The SwitchoverGlobalClusterResultForSwitchoverGlobalCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    func switchoverGlobalCluster(
+            input: RDSModel.SwitchoverGlobalClusterMessage) async throws -> RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster
 
     /**
      Invokes the SwitchoverReadReplica operation suspending until the response is available before returning.

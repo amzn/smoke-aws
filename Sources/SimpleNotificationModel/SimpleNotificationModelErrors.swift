@@ -45,6 +45,7 @@ private let invalidBatchEntryIdIdentity = "InvalidBatchEntryId"
 private let invalidParameterIdentity = "InvalidParameter"
 private let invalidParameterValueIdentity = "ParameterValueInvalid"
 private let invalidSecurityIdentity = "InvalidSecurity"
+private let invalidStateIdentity = "InvalidState"
 private let kMSAccessDeniedIdentity = "KMSAccessDenied"
 private let kMSDisabledIdentity = "KMSDisabled"
 private let kMSInvalidStateIdentity = "KMSInvalidState"
@@ -54,6 +55,7 @@ private let kMSThrottlingIdentity = "KMSThrottling"
 private let notFoundIdentity = "NotFound"
 private let optedOutIdentity = "OptedOut"
 private let platformApplicationDisabledIdentity = "PlatformApplicationDisabled"
+private let replayLimitExceededIdentity = "ReplayLimitExceeded"
 private let resourceNotFoundIdentity = "ResourceNotFound"
 private let staleTagIdentity = "StaleTag"
 private let subscriptionLimitExceededIdentity = "SubscriptionLimitExceeded"
@@ -80,6 +82,7 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case invalidParameter(InvalidParameterException)
     case invalidParameterValue(InvalidParameterValueException)
     case invalidSecurity(InvalidSecurityException)
+    case invalidState(InvalidStateException)
     case kMSAccessDenied(KMSAccessDeniedException)
     case kMSDisabled(KMSDisabledException)
     case kMSInvalidState(KMSInvalidStateException)
@@ -89,6 +92,7 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case notFound(NotFoundException)
     case optedOut(OptedOutException)
     case platformApplicationDisabled(PlatformApplicationDisabledException)
+    case replayLimitExceeded(ReplayLimitExceededException)
     case resourceNotFound(ResourceNotFoundException)
     case staleTag(StaleTagException)
     case subscriptionLimitExceeded(SubscriptionLimitExceededException)
@@ -155,6 +159,9 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case invalidSecurityIdentity:
             let errorPayload = try InvalidSecurityException(from: decoder)
             self = SimpleNotificationError.invalidSecurity(errorPayload)
+        case invalidStateIdentity:
+            let errorPayload = try InvalidStateException(from: decoder)
+            self = SimpleNotificationError.invalidState(errorPayload)
         case kMSAccessDeniedIdentity:
             let errorPayload = try KMSAccessDeniedException(from: decoder)
             self = SimpleNotificationError.kMSAccessDenied(errorPayload)
@@ -182,6 +189,9 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case platformApplicationDisabledIdentity:
             let errorPayload = try PlatformApplicationDisabledException(from: decoder)
             self = SimpleNotificationError.platformApplicationDisabled(errorPayload)
+        case replayLimitExceededIdentity:
+            let errorPayload = try ReplayLimitExceededException(from: decoder)
+            self = SimpleNotificationError.replayLimitExceeded(errorPayload)
         case resourceNotFoundIdentity:
             let errorPayload = try ResourceNotFoundException(from: decoder)
             self = SimpleNotificationError.resourceNotFound(errorPayload)

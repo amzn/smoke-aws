@@ -150,6 +150,8 @@ public extension ConfigurationProfile {
             applicationId: nil,
             description: nil,
             id: nil,
+            kmsKeyArn: nil,
+            kmsKeyIdentifier: nil,
             locationUri: nil,
             name: nil,
             retrievalRoleArn: nil,
@@ -224,6 +226,7 @@ public extension CreateConfigurationProfileRequest {
         let defaultInstance = AppConfigModel.CreateConfigurationProfileRequest(
             applicationId: "",
             description: nil,
+            kmsKeyIdentifier: nil,
             locationUri: "0",
             name: "0",
             retrievalRoleArn: nil,
@@ -295,7 +298,7 @@ public extension CreateExtensionRequest {
             actions: [.onDeploymentBaking: [Action.__default]],
             description: nil,
             latestVersionNumber: nil,
-            name: "0",
+            name: "",
             parameters: nil,
             tags: nil)
 
@@ -436,7 +439,8 @@ public extension Deployment {
             kmsKeyIdentifier: nil,
             percentageComplete: nil,
             startedAt: nil,
-            state: nil)
+            state: nil,
+            versionLabel: nil)
 
         return defaultInstance
     }()
@@ -506,7 +510,8 @@ public extension DeploymentSummary {
             growthType: nil,
             percentageComplete: nil,
             startedAt: nil,
-            state: nil)
+            state: nil,
+            versionLabel: nil)
 
         return defaultInstance
     }()
@@ -776,6 +781,7 @@ public extension HostedConfigurationVersion {
             content: nil,
             contentType: nil,
             description: nil,
+            kmsKeyArn: nil,
             versionLabel: nil,
             versionNumber: nil)
 
@@ -793,6 +799,7 @@ public extension HostedConfigurationVersionSummary {
             configurationProfileId: nil,
             contentType: nil,
             description: nil,
+            kmsKeyArn: nil,
             versionLabel: nil,
             versionNumber: nil)
 
@@ -1129,6 +1136,7 @@ public extension UpdateConfigurationProfileRequest {
             applicationId: "",
             configurationProfileId: "",
             description: nil,
+            kmsKeyIdentifier: nil,
             name: nil,
             retrievalRoleArn: nil,
             validators: nil)

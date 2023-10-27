@@ -1250,8 +1250,10 @@ public extension ExportDescription {
             exportManifest: nil,
             exportStatus: nil,
             exportTime: nil,
+            exportType: nil,
             failureCode: nil,
             failureMessage: nil,
+            incrementalExportSpecification: nil,
             itemCount: nil,
             s3Bucket: nil,
             s3BucketOwner: nil,
@@ -1285,7 +1287,8 @@ public extension ExportSummary {
     static let __default: DynamoDBModel.ExportSummary = {
         let defaultInstance = DynamoDBModel.ExportSummary(
             exportArn: nil,
-            exportStatus: nil)
+            exportStatus: nil,
+            exportType: nil)
 
         return defaultInstance
     }()
@@ -1300,6 +1303,8 @@ public extension ExportTableToPointInTimeInput {
             clientToken: nil,
             exportFormat: nil,
             exportTime: nil,
+            exportType: nil,
+            incrementalExportSpecification: nil,
             s3Bucket: "",
             s3BucketOwner: nil,
             s3Prefix: nil,
@@ -1635,6 +1640,20 @@ public extension ImportTableOutput {
     static let __default: DynamoDBModel.ImportTableOutput = {
         let defaultInstance = DynamoDBModel.ImportTableOutput(
             importTableDescription: ImportTableDescription.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension IncrementalExportSpecification {
+    /**
+     Default instance of the IncrementalExportSpecification structure.
+     */
+    static let __default: DynamoDBModel.IncrementalExportSpecification = {
+        let defaultInstance = DynamoDBModel.IncrementalExportSpecification(
+            exportFromTime: nil,
+            exportToTime: nil,
+            exportViewType: nil)
 
         return defaultInstance
     }()

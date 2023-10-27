@@ -70,6 +70,7 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
     case listChangeSets = "ListChangeSets"
     case listExports = "ListExports"
     case listImports = "ListImports"
+    case listStackInstanceResourceDrifts = "ListStackInstanceResourceDrifts"
     case listStackInstances = "ListStackInstances"
     case listStackResources = "ListStackResources"
     case listStackSetOperationResults = "ListStackSetOperationResults"
@@ -189,6 +190,8 @@ public enum CloudformationModelOperations: String, Hashable, CustomStringConvert
         case .listExports:
             return "/"
         case .listImports:
+            return "/"
+        case .listStackInstanceResourceDrifts:
             return "/"
         case .listStackInstances:
             return "/"

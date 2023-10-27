@@ -118,6 +118,8 @@ public protocol CloudformationClientProtocolV2 {
             _ input: CloudformationModel.ListExportsInput) async throws -> CloudformationModel.ListExportsOutputForListExports
     typealias ListImportsFunctionType = (
             _ input: CloudformationModel.ListImportsInput) async throws -> CloudformationModel.ListImportsOutputForListImports
+    typealias ListStackInstanceResourceDriftsFunctionType = (
+            _ input: CloudformationModel.ListStackInstanceResourceDriftsInput) async throws -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
     typealias ListStackInstancesFunctionType = (
             _ input: CloudformationModel.ListStackInstancesInput) async throws -> CloudformationModel.ListStackInstancesOutputForListStackInstances
     typealias ListStackResourcesFunctionType = (
@@ -678,6 +680,18 @@ public protocol CloudformationClientProtocolV2 {
      */
     func listImports(
             input: CloudformationModel.ListImportsInput) async throws -> CloudformationModel.ListImportsOutputForListImports
+
+    /**
+     Invokes the ListStackInstanceResourceDrifts operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+     - Returns: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    func listStackInstanceResourceDrifts(
+            input: CloudformationModel.ListStackInstanceResourceDriftsInput) async throws -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
 
     /**
      Invokes the ListStackInstances operation suspending until the response is available before returning.

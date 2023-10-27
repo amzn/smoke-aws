@@ -659,6 +659,11 @@ public enum BareMetal: String, Codable, CustomStringConvertible {
 public typealias BareMetalFlag = Bool
 
 /**
+ Type definition for the BaselineBandwidthInGbps field.
+ */
+public typealias BaselineBandwidthInGbps = Double
+
+/**
  Type definition for the BaselineBandwidthInMbps field.
  */
 public typealias BaselineBandwidthInMbps = Int
@@ -984,6 +989,7 @@ public enum CapacityReservationInstancePlatform: String, Codable, CustomStringCo
     case rhelWithSqlServerWeb = "RHEL with SQL Server Web"
     case redHatEnterpriseLinux = "Red Hat Enterprise Linux"
     case suseLinux = "SUSE Linux"
+    case ubuntuPro = "Ubuntu Pro"
     case windows = "Windows"
     case windowsWithSqlServer = "Windows with SQL Server"
     case windowsWithSqlServerEnterprise = "Windows with SQL Server Enterprise"
@@ -2996,6 +3002,11 @@ public typealias GetIpamPoolAllocationsMaxResults = Int
 public typealias GetManagedPrefixListAssociationsMaxResults = Int
 
 /**
+ Type definition for the GetSecurityGroupsForVpcRequestMaxResults field.
+ */
+public typealias GetSecurityGroupsForVpcRequestMaxResults = Int
+
+/**
  Type definition for the GetSubnetCidrReservationsMaxResults field.
  */
 public typealias GetSubnetCidrReservationsMaxResults = Int
@@ -3264,6 +3275,32 @@ public enum ImageAttributeName: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the ImageBlockPublicAccessDisabledState field.
+ */
+public enum ImageBlockPublicAccessDisabledState: String, Codable, CustomStringConvertible {
+    case unblocked
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ImageBlockPublicAccessDisabledState = .unblocked
+}
+
+/**
+ Enumeration restricting the values of the ImageBlockPublicAccessEnabledState field.
+ */
+public enum ImageBlockPublicAccessEnabledState: String, Codable, CustomStringConvertible {
+    case blockNewSharing = "block-new-sharing"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ImageBlockPublicAccessEnabledState = .blockNewSharing
+}
+
+/**
  Type definition for the ImageDiskContainerList field.
  */
 public typealias ImageDiskContainerList = [ImageDiskContainer]
@@ -3299,6 +3336,7 @@ public typealias ImageRecycleBinInfoList = [ImageRecycleBinInfo]
 public enum ImageState: String, Codable, CustomStringConvertible {
     case available
     case deregistered
+    case disabled
     case error
     case failed
     case invalid
@@ -3409,6 +3447,11 @@ public typealias InferenceDeviceInfoList = [InferenceDeviceInfo]
  Type definition for the InferenceDeviceManufacturerName field.
  */
 public typealias InferenceDeviceManufacturerName = String
+
+/**
+ Type definition for the InferenceDeviceMemorySize field.
+ */
+public typealias InferenceDeviceMemorySize = Int
 
 /**
  Type definition for the InferenceDeviceName field.
@@ -3985,6 +4028,18 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case c6inLarge = "c6in.large"
     case c6inMetal = "c6in.metal"
     case c6inXlarge = "c6in.xlarge"
+    case c7a12xlarge = "c7a.12xlarge"
+    case c7a16xlarge = "c7a.16xlarge"
+    case c7a24xlarge = "c7a.24xlarge"
+    case c7a2xlarge = "c7a.2xlarge"
+    case c7a32xlarge = "c7a.32xlarge"
+    case c7a48xlarge = "c7a.48xlarge"
+    case c7a4xlarge = "c7a.4xlarge"
+    case c7a8xlarge = "c7a.8xlarge"
+    case c7aLarge = "c7a.large"
+    case c7aMedium = "c7a.medium"
+    case c7aMetal48xl = "c7a.metal-48xl"
+    case c7aXlarge = "c7a.xlarge"
     case c7g12xlarge = "c7g.12xlarge"
     case c7g16xlarge = "c7g.16xlarge"
     case c7g2xlarge = "c7g.2xlarge"
@@ -3994,6 +4049,31 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case c7gMedium = "c7g.medium"
     case c7gMetal = "c7g.metal"
     case c7gXlarge = "c7g.xlarge"
+    case c7gd12xlarge = "c7gd.12xlarge"
+    case c7gd16xlarge = "c7gd.16xlarge"
+    case c7gd2xlarge = "c7gd.2xlarge"
+    case c7gd4xlarge = "c7gd.4xlarge"
+    case c7gd8xlarge = "c7gd.8xlarge"
+    case c7gdLarge = "c7gd.large"
+    case c7gdMedium = "c7gd.medium"
+    case c7gdXlarge = "c7gd.xlarge"
+    case c7gn12xlarge = "c7gn.12xlarge"
+    case c7gn16xlarge = "c7gn.16xlarge"
+    case c7gn2xlarge = "c7gn.2xlarge"
+    case c7gn4xlarge = "c7gn.4xlarge"
+    case c7gn8xlarge = "c7gn.8xlarge"
+    case c7gnLarge = "c7gn.large"
+    case c7gnMedium = "c7gn.medium"
+    case c7gnXlarge = "c7gn.xlarge"
+    case c7i12xlarge = "c7i.12xlarge"
+    case c7i16xlarge = "c7i.16xlarge"
+    case c7i24xlarge = "c7i.24xlarge"
+    case c7i2xlarge = "c7i.2xlarge"
+    case c7i48xlarge = "c7i.48xlarge"
+    case c7i4xlarge = "c7i.4xlarge"
+    case c7i8xlarge = "c7i.8xlarge"
+    case c7iLarge = "c7i.large"
+    case c7iXlarge = "c7i.xlarge"
     case cc14xlarge = "cc1.4xlarge"
     case cc28xlarge = "cc2.8xlarge"
     case cg14xlarge = "cg1.4xlarge"
@@ -4055,6 +4135,13 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case hi14xlarge = "hi1.4xlarge"
     case hpc6a48xlarge = "hpc6a.48xlarge"
     case hpc6id32xlarge = "hpc6id.32xlarge"
+    case hpc7a12xlarge = "hpc7a.12xlarge"
+    case hpc7a24xlarge = "hpc7a.24xlarge"
+    case hpc7a48xlarge = "hpc7a.48xlarge"
+    case hpc7a96xlarge = "hpc7a.96xlarge"
+    case hpc7g16xlarge = "hpc7g.16xlarge"
+    case hpc7g4xlarge = "hpc7g.4xlarge"
+    case hpc7g8xlarge = "hpc7g.8xlarge"
     case hs18xlarge = "hs1.8xlarge"
     case i22xlarge = "i2.2xlarge"
     case i24xlarge = "i2.4xlarge"
@@ -4254,6 +4341,18 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m6inLarge = "m6in.large"
     case m6inMetal = "m6in.metal"
     case m6inXlarge = "m6in.xlarge"
+    case m7a12xlarge = "m7a.12xlarge"
+    case m7a16xlarge = "m7a.16xlarge"
+    case m7a24xlarge = "m7a.24xlarge"
+    case m7a2xlarge = "m7a.2xlarge"
+    case m7a32xlarge = "m7a.32xlarge"
+    case m7a48xlarge = "m7a.48xlarge"
+    case m7a4xlarge = "m7a.4xlarge"
+    case m7a8xlarge = "m7a.8xlarge"
+    case m7aLarge = "m7a.large"
+    case m7aMedium = "m7a.medium"
+    case m7aMetal48xl = "m7a.metal-48xl"
+    case m7aXlarge = "m7a.xlarge"
     case m7g12xlarge = "m7g.12xlarge"
     case m7g16xlarge = "m7g.16xlarge"
     case m7g2xlarge = "m7g.2xlarge"
@@ -4263,7 +4362,30 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case m7gMedium = "m7g.medium"
     case m7gMetal = "m7g.metal"
     case m7gXlarge = "m7g.xlarge"
+    case m7gd12xlarge = "m7gd.12xlarge"
+    case m7gd16xlarge = "m7gd.16xlarge"
+    case m7gd2xlarge = "m7gd.2xlarge"
+    case m7gd4xlarge = "m7gd.4xlarge"
+    case m7gd8xlarge = "m7gd.8xlarge"
+    case m7gdLarge = "m7gd.large"
+    case m7gdMedium = "m7gd.medium"
+    case m7gdXlarge = "m7gd.xlarge"
+    case m7iFlex2xlarge = "m7i-flex.2xlarge"
+    case m7iFlex4xlarge = "m7i-flex.4xlarge"
+    case m7iFlex8xlarge = "m7i-flex.8xlarge"
+    case m7iFlexLarge = "m7i-flex.large"
+    case m7iFlexXlarge = "m7i-flex.xlarge"
+    case m7i12xlarge = "m7i.12xlarge"
+    case m7i16xlarge = "m7i.16xlarge"
+    case m7i24xlarge = "m7i.24xlarge"
+    case m7i2xlarge = "m7i.2xlarge"
+    case m7i48xlarge = "m7i.48xlarge"
+    case m7i4xlarge = "m7i.4xlarge"
+    case m7i8xlarge = "m7i.8xlarge"
+    case m7iLarge = "m7i.large"
+    case m7iXlarge = "m7i.xlarge"
     case mac1Metal = "mac1.metal"
+    case mac2M2proMetal = "mac2-m2pro.metal"
     case mac2Metal = "mac2.metal"
     case p216xlarge = "p2.16xlarge"
     case p28xlarge = "p2.8xlarge"
@@ -4274,6 +4396,7 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case p3dn24xlarge = "p3dn.24xlarge"
     case p4d24xlarge = "p4d.24xlarge"
     case p4de24xlarge = "p4de.24xlarge"
+    case p548xlarge = "p5.48xlarge"
     case r32xlarge = "r3.2xlarge"
     case r34xlarge = "r3.4xlarge"
     case r38xlarge = "r3.8xlarge"
@@ -4415,6 +4538,18 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r6inLarge = "r6in.large"
     case r6inMetal = "r6in.metal"
     case r6inXlarge = "r6in.xlarge"
+    case r7a12xlarge = "r7a.12xlarge"
+    case r7a16xlarge = "r7a.16xlarge"
+    case r7a24xlarge = "r7a.24xlarge"
+    case r7a2xlarge = "r7a.2xlarge"
+    case r7a32xlarge = "r7a.32xlarge"
+    case r7a48xlarge = "r7a.48xlarge"
+    case r7a4xlarge = "r7a.4xlarge"
+    case r7a8xlarge = "r7a.8xlarge"
+    case r7aLarge = "r7a.large"
+    case r7aMedium = "r7a.medium"
+    case r7aMetal48xl = "r7a.metal-48xl"
+    case r7aXlarge = "r7a.xlarge"
     case r7g12xlarge = "r7g.12xlarge"
     case r7g16xlarge = "r7g.16xlarge"
     case r7g2xlarge = "r7g.2xlarge"
@@ -4424,6 +4559,31 @@ public enum InstanceType: String, Codable, CustomStringConvertible {
     case r7gMedium = "r7g.medium"
     case r7gMetal = "r7g.metal"
     case r7gXlarge = "r7g.xlarge"
+    case r7gd12xlarge = "r7gd.12xlarge"
+    case r7gd16xlarge = "r7gd.16xlarge"
+    case r7gd2xlarge = "r7gd.2xlarge"
+    case r7gd4xlarge = "r7gd.4xlarge"
+    case r7gd8xlarge = "r7gd.8xlarge"
+    case r7gdLarge = "r7gd.large"
+    case r7gdMedium = "r7gd.medium"
+    case r7gdXlarge = "r7gd.xlarge"
+    case r7i12xlarge = "r7i.12xlarge"
+    case r7i16xlarge = "r7i.16xlarge"
+    case r7i24xlarge = "r7i.24xlarge"
+    case r7i2xlarge = "r7i.2xlarge"
+    case r7i48xlarge = "r7i.48xlarge"
+    case r7i4xlarge = "r7i.4xlarge"
+    case r7i8xlarge = "r7i.8xlarge"
+    case r7iLarge = "r7i.large"
+    case r7iXlarge = "r7i.xlarge"
+    case r7iz12xlarge = "r7iz.12xlarge"
+    case r7iz16xlarge = "r7iz.16xlarge"
+    case r7iz2xlarge = "r7iz.2xlarge"
+    case r7iz32xlarge = "r7iz.32xlarge"
+    case r7iz4xlarge = "r7iz.4xlarge"
+    case r7iz8xlarge = "r7iz.8xlarge"
+    case r7izLarge = "r7iz.large"
+    case r7izXlarge = "r7iz.xlarge"
     case t1Micro = "t1.micro"
     case t22xlarge = "t2.2xlarge"
     case t2Large = "t2.large"
@@ -5278,6 +5438,11 @@ public enum KeyType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the KmsKeyArn field.
+ */
+public typealias KmsKeyArn = String
+
+/**
  Type definition for the KmsKeyId field.
  */
 public typealias KmsKeyId = String
@@ -5746,6 +5911,7 @@ public typealias Location = String
 public enum LocationType: String, Codable, CustomStringConvertible {
     case availabilityZone = "availability-zone"
     case availabilityZoneId = "availability-zone-id"
+    case outpost
     case region
 
     public var description: String {
@@ -6296,6 +6462,30 @@ public enum NitroEnclavesSupport: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Enumeration restricting the values of the NitroTpmSupport field.
+ */
+public enum NitroTpmSupport: String, Codable, CustomStringConvertible {
+    case supported
+    case unsupported
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: NitroTpmSupport = .supported
+}
+
+/**
+ Type definition for the NitroTpmSupportedVersionType field.
+ */
+public typealias NitroTpmSupportedVersionType = String
+
+/**
+ Type definition for the NitroTpmSupportedVersionsList field.
+ */
+public typealias NitroTpmSupportedVersionsList = [NitroTpmSupportedVersionType]
+
+/**
  Type definition for the OccurrenceDayRequestSet field.
  */
 public typealias OccurrenceDayRequestSet = [Integer]
@@ -6407,6 +6597,11 @@ public enum PartitionLoadFrequency: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the PasswordData field.
+ */
+public typealias PasswordData = String
+
+/**
  Type definition for the PathComponentList field.
  */
 public typealias PathComponentList = [PathComponent]
@@ -6438,6 +6633,11 @@ public enum PaymentOption: String, Codable, CustomStringConvertible {
     
     public static let __default: PaymentOption = .allupfront
 }
+
+/**
+ Type definition for the PeakBandwidthInGbps field.
+ */
+public typealias PeakBandwidthInGbps = Double
 
 /**
  Enumeration restricting the values of the PeriodType field.
@@ -7511,6 +7711,31 @@ public typealias RunInstancesUserData = String
 public typealias S3ObjectTagList = [S3ObjectTag]
 
 /**
+ Type definition for the S3StorageUploadPolicy field.
+ */
+public typealias S3StorageUploadPolicy = String
+
+/**
+ Type definition for the S3StorageUploadPolicySignature field.
+ */
+public typealias S3StorageUploadPolicySignature = String
+
+/**
+ Enumeration restricting the values of the SSEType field.
+ */
+public enum SSEType: String, Codable, CustomStringConvertible {
+    case none
+    case sseEbs = "sse-ebs"
+    case sseKms = "sse-kms"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: SSEType = .none
+}
+
+/**
  Type definition for the ScheduledInstanceAvailabilitySet field.
  */
 public typealias ScheduledInstanceAvailabilitySet = [ScheduledInstanceAvailability]
@@ -7549,6 +7774,11 @@ public typealias ScheduledInstancesNetworkInterfaceSet = [ScheduledInstancesNetw
  Type definition for the ScheduledInstancesSecurityGroupIdSet field.
  */
 public typealias ScheduledInstancesSecurityGroupIdSet = [SecurityGroupId]
+
+/**
+ Type definition for the SecurityGroupForVpcList field.
+ */
+public typealias SecurityGroupForVpcList = [SecurityGroupForVpc]
 
 /**
  Type definition for the SecurityGroupId field.
@@ -7854,6 +8084,7 @@ public enum SpotInstanceState: String, Codable, CustomStringConvertible {
     case active
     case cancelled
     case closed
+    case disabled
     case failed
     case open
 
@@ -8093,6 +8324,11 @@ public enum SubnetCidrReservationType: String, Codable, CustomStringConvertible 
     
     public static let __default: SubnetCidrReservationType = .explicit
 }
+
+/**
+ Type definition for the SubnetConfigurationsList field.
+ */
+public typealias SubnetConfigurationsList = [SubnetConfiguration]
 
 /**
  Type definition for the SubnetId field.
@@ -9892,6 +10128,11 @@ public typealias TotalFpgaMemory = Int
 public typealias TotalGpuMemory = Int
 
 /**
+ Type definition for the TotalInferenceMemory field.
+ */
+public typealias TotalInferenceMemory = Int
+
+/**
  Validation for the AddIpamOperatingRegionSet field.
 */
 extension Array where Element == ElasticComputeCloudModel.AddIpamOperatingRegion {
@@ -9949,7 +10190,7 @@ extension ElasticComputeCloudModel.AllowedInstanceType {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to AllowedInstanceType violated the maximum length constraint.")
         }
 
-        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*]+", options: .regularExpression),
+        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*\\-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
                 throw ElasticComputeCloudError.validationError(
                     reason: "The provided value to AllowedInstanceType violated the regular expression constraint.")
@@ -10908,7 +11149,7 @@ extension ElasticComputeCloudModel.ExcludedInstanceType {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to ExcludedInstanceType violated the maximum length constraint.")
         }
 
-        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*]+", options: .regularExpression),
+        guard let matchingRange = self.range(of: "[a-zA-Z0-9\\.\\*\\-]+", options: .regularExpression),
             matchingRange == startIndex..<endIndex else {
                 throw ElasticComputeCloudError.validationError(
                     reason: "The provided value to ExcludedInstanceType violated the regular expression constraint.")
@@ -11017,6 +11258,21 @@ extension ElasticComputeCloudModel.GetManagedPrefixListAssociationsMaxResults {
 
         if self > 255 {
             throw ElasticComputeCloudError.validationError(reason: "The provided value to GetManagedPrefixListAssociationsMaxResults violated the maximum range constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the GetSecurityGroupsForVpcRequestMaxResults field.
+*/
+extension ElasticComputeCloudModel.GetSecurityGroupsForVpcRequestMaxResults {
+    public func validateAsGetSecurityGroupsForVpcRequestMaxResults() throws {
+        if self < 5 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to GetSecurityGroupsForVpcRequestMaxResults violated the minimum range constraint.")
+        }
+
+        if self > 1000 {
+            throw ElasticComputeCloudError.validationError(reason: "The provided value to GetSecurityGroupsForVpcRequestMaxResults violated the maximum range constraint.")
         }
     }
 }

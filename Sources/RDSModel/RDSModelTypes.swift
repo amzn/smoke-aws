@@ -270,6 +270,11 @@ public enum CustomEngineVersionStatus: String, Codable, CustomStringConvertible 
 }
 
 /**
+ Type definition for the DBClusterAutomatedBackupList field.
+ */
+public typealias DBClusterAutomatedBackupList = [DBClusterAutomatedBackup]
+
+/**
  Type definition for the DBClusterBacktrackList field.
  */
 public typealias DBClusterBacktrackList = [DBClusterBacktrack]
@@ -602,6 +607,20 @@ public typealias GlobalClusterList = [GlobalCluster]
 public typealias GlobalClusterMemberList = [GlobalClusterMember]
 
 /**
+ Enumeration restricting the values of the GlobalClusterMemberSynchronizationStatus field.
+ */
+public enum GlobalClusterMemberSynchronizationStatus: String, Codable, CustomStringConvertible {
+    case connected
+    case pendingResync = "pending-resync"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: GlobalClusterMemberSynchronizationStatus = .connected
+}
+
+/**
  Enumeration restricting the values of the IAMAuthMode field.
  */
 public enum IAMAuthMode: String, Codable, CustomStringConvertible {
@@ -640,6 +659,23 @@ public typealias KeyList = [String]
  Type definition for the KmsKeyIdOrArn field.
  */
 public typealias KmsKeyIdOrArn = String
+
+/**
+ Enumeration restricting the values of the LocalWriteForwardingStatus field.
+ */
+public enum LocalWriteForwardingStatus: String, Codable, CustomStringConvertible {
+    case disabled
+    case disabling
+    case enabled
+    case enabling
+    case requested
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: LocalWriteForwardingStatus = .disabled
+}
 
 /**
  Type definition for the LogTypeList field.
@@ -895,6 +931,11 @@ public typealias TagList = [Tag]
  Type definition for the TargetDBClusterParameterGroupName field.
  */
 public typealias TargetDBClusterParameterGroupName = String
+
+/**
+ Type definition for the TargetDBInstanceClass field.
+ */
+public typealias TargetDBInstanceClass = String
 
 /**
  Type definition for the TargetDBParameterGroupName field.
@@ -1384,6 +1425,27 @@ extension RDSModel.TargetDBClusterParameterGroupName {
             matchingRange == startIndex..<endIndex else {
                 throw RDSError.validationError(
                     reason: "The provided value to TargetDBClusterParameterGroupName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the TargetDBInstanceClass field.
+*/
+extension RDSModel.TargetDBInstanceClass {
+    public func validateAsTargetDBInstanceClass() throws {
+        if self.count < 5 {
+            throw RDSError.validationError(reason: "The provided value to TargetDBInstanceClass violated the minimum length constraint.")
+        }
+
+        if self.count > 20 {
+            throw RDSError.validationError(reason: "The provided value to TargetDBInstanceClass violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "db\\.[0-9a-z]{2,6}\\.[0-9a-z]{4,9}", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw RDSError.validationError(
+                    reason: "The provided value to TargetDBInstanceClass violated the regular expression constraint.")
         }
     }
 }

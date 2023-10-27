@@ -1781,6 +1781,64 @@ public struct GetThirdPartyJobDetailsOutput: Codable, Equatable {
     }
 }
 
+public struct GitConfiguration: Codable, Equatable {
+    public var push: GitPushFilterList?
+    public var sourceActionName: ActionName
+
+    public init(push: GitPushFilterList? = nil,
+                sourceActionName: ActionName) {
+        self.push = push
+        self.sourceActionName = sourceActionName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case push
+        case sourceActionName
+    }
+
+    public func validate() throws {
+        try push?.validateAsGitPushFilterList()
+        try sourceActionName.validateAsActionName()
+    }
+}
+
+public struct GitPushFilter: Codable, Equatable {
+    public var tags: GitTagFilterCriteria?
+
+    public init(tags: GitTagFilterCriteria? = nil) {
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case tags
+    }
+
+    public func validate() throws {
+        try tags?.validate()
+    }
+}
+
+public struct GitTagFilterCriteria: Codable, Equatable {
+    public var excludes: GitTagPatternList?
+    public var includes: GitTagPatternList?
+
+    public init(excludes: GitTagPatternList? = nil,
+                includes: GitTagPatternList? = nil) {
+        self.excludes = excludes
+        self.includes = includes
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case excludes
+        case includes
+    }
+
+    public func validate() throws {
+        try excludes?.validateAsGitTagPatternList()
+        try includes?.validateAsGitTagPatternList()
+    }
+}
+
 public struct InputArtifact: Codable, Equatable {
     public var name: ArtifactName
 
@@ -2490,21 +2548,30 @@ public struct PipelineDeclaration: Codable, Equatable {
     public var artifactStore: ArtifactStore?
     public var artifactStores: ArtifactStoreMap?
     public var name: PipelineName
+    public var pipelineType: PipelineType?
     public var roleArn: RoleArn
     public var stages: PipelineStageDeclarationList
+    public var triggers: PipelineTriggerDeclarationList?
+    public var variables: PipelineVariableDeclarationList?
     public var version: PipelineVersion?
 
     public init(artifactStore: ArtifactStore? = nil,
                 artifactStores: ArtifactStoreMap? = nil,
                 name: PipelineName,
+                pipelineType: PipelineType? = nil,
                 roleArn: RoleArn,
                 stages: PipelineStageDeclarationList,
+                triggers: PipelineTriggerDeclarationList? = nil,
+                variables: PipelineVariableDeclarationList? = nil,
                 version: PipelineVersion? = nil) {
         self.artifactStore = artifactStore
         self.artifactStores = artifactStores
         self.name = name
+        self.pipelineType = pipelineType
         self.roleArn = roleArn
         self.stages = stages
+        self.triggers = triggers
+        self.variables = variables
         self.version = version
     }
 
@@ -2512,8 +2579,11 @@ public struct PipelineDeclaration: Codable, Equatable {
         case artifactStore
         case artifactStores
         case name
+        case pipelineType
         case roleArn
         case stages
+        case triggers
+        case variables
         case version
     }
 
@@ -2521,6 +2591,8 @@ public struct PipelineDeclaration: Codable, Equatable {
         try artifactStore?.validate()
         try name.validateAsPipelineName()
         try roleArn.validateAsRoleArn()
+        try triggers?.validateAsPipelineTriggerDeclarationList()
+        try variables?.validateAsPipelineVariableDeclarationList()
         try version?.validateAsPipelineVersion()
     }
 }
@@ -2532,19 +2604,25 @@ public struct PipelineExecution: Codable, Equatable {
     public var pipelineVersion: PipelineVersion?
     public var status: PipelineExecutionStatus?
     public var statusSummary: PipelineExecutionStatusSummary?
+    public var trigger: ExecutionTrigger?
+    public var variables: ResolvedPipelineVariableList?
 
     public init(artifactRevisions: ArtifactRevisionList? = nil,
                 pipelineExecutionId: PipelineExecutionId? = nil,
                 pipelineName: PipelineName? = nil,
                 pipelineVersion: PipelineVersion? = nil,
                 status: PipelineExecutionStatus? = nil,
-                statusSummary: PipelineExecutionStatusSummary? = nil) {
+                statusSummary: PipelineExecutionStatusSummary? = nil,
+                trigger: ExecutionTrigger? = nil,
+                variables: ResolvedPipelineVariableList? = nil) {
         self.artifactRevisions = artifactRevisions
         self.pipelineExecutionId = pipelineExecutionId
         self.pipelineName = pipelineName
         self.pipelineVersion = pipelineVersion
         self.status = status
         self.statusSummary = statusSummary
+        self.trigger = trigger
+        self.variables = variables
     }
 
     enum CodingKeys: String, CodingKey {
@@ -2554,12 +2632,15 @@ public struct PipelineExecution: Codable, Equatable {
         case pipelineVersion
         case status
         case statusSummary
+        case trigger
+        case variables
     }
 
     public func validate() throws {
         try pipelineExecutionId?.validateAsPipelineExecutionId()
         try pipelineName?.validateAsPipelineName()
         try pipelineVersion?.validateAsPipelineVersion()
+        try trigger?.validate()
     }
 }
 
@@ -2679,15 +2760,18 @@ public struct PipelineNotFoundException: Codable, Equatable {
 public struct PipelineSummary: Codable, Equatable {
     public var created: Timestamp?
     public var name: PipelineName?
+    public var pipelineType: PipelineType?
     public var updated: Timestamp?
     public var version: PipelineVersion?
 
     public init(created: Timestamp? = nil,
                 name: PipelineName? = nil,
+                pipelineType: PipelineType? = nil,
                 updated: Timestamp? = nil,
                 version: PipelineVersion? = nil) {
         self.created = created
         self.name = name
+        self.pipelineType = pipelineType
         self.updated = updated
         self.version = version
     }
@@ -2695,6 +2779,7 @@ public struct PipelineSummary: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case created
         case name
+        case pipelineType
         case updated
         case version
     }
@@ -2702,6 +2787,73 @@ public struct PipelineSummary: Codable, Equatable {
     public func validate() throws {
         try name?.validateAsPipelineName()
         try version?.validateAsPipelineVersion()
+    }
+}
+
+public struct PipelineTriggerDeclaration: Codable, Equatable {
+    public var gitConfiguration: GitConfiguration
+    public var providerType: PipelineTriggerProviderType
+
+    public init(gitConfiguration: GitConfiguration,
+                providerType: PipelineTriggerProviderType) {
+        self.gitConfiguration = gitConfiguration
+        self.providerType = providerType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case gitConfiguration
+        case providerType
+    }
+
+    public func validate() throws {
+        try gitConfiguration.validate()
+    }
+}
+
+public struct PipelineVariable: Codable, Equatable {
+    public var name: PipelineVariableName
+    public var value: PipelineVariableValue
+
+    public init(name: PipelineVariableName,
+                value: PipelineVariableValue) {
+        self.name = name
+        self.value = value
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case value
+    }
+
+    public func validate() throws {
+        try name.validateAsPipelineVariableName()
+        try value.validateAsPipelineVariableValue()
+    }
+}
+
+public struct PipelineVariableDeclaration: Codable, Equatable {
+    public var defaultValue: PipelineVariableValue?
+    public var description: PipelineVariableDescription?
+    public var name: PipelineVariableName
+
+    public init(defaultValue: PipelineVariableValue? = nil,
+                description: PipelineVariableDescription? = nil,
+                name: PipelineVariableName) {
+        self.defaultValue = defaultValue
+        self.description = description
+        self.name = name
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case defaultValue
+        case description
+        case name
+    }
+
+    public func validate() throws {
+        try defaultValue?.validateAsPipelineVariableValue()
+        try description?.validateAsPipelineVariableDescription()
+        try name.validateAsPipelineVariableName()
     }
 }
 
@@ -3087,6 +3239,25 @@ public struct RequestFailedException: Codable, Equatable {
     }
 }
 
+public struct ResolvedPipelineVariable: Codable, Equatable {
+    public var name: String?
+    public var resolvedValue: String?
+
+    public init(name: String? = nil,
+                resolvedValue: String? = nil) {
+        self.name = name
+        self.resolvedValue = resolvedValue
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case resolvedValue
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct ResourceNotFoundException: Codable, Equatable {
 
     public init() {
@@ -3329,21 +3500,26 @@ public struct StageState: Codable, Equatable {
 public struct StartPipelineExecutionInput: Codable, Equatable {
     public var clientRequestToken: ClientRequestToken?
     public var name: PipelineName
+    public var variables: PipelineVariableList?
 
     public init(clientRequestToken: ClientRequestToken? = nil,
-                name: PipelineName) {
+                name: PipelineName,
+                variables: PipelineVariableList? = nil) {
         self.clientRequestToken = clientRequestToken
         self.name = name
+        self.variables = variables
     }
 
     enum CodingKeys: String, CodingKey {
         case clientRequestToken
         case name
+        case variables
     }
 
     public func validate() throws {
         try clientRequestToken?.validateAsClientRequestToken()
         try name.validateAsPipelineName()
+        try variables?.validateAsPipelineVariableList()
     }
 }
 

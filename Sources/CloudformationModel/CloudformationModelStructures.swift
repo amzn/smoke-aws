@@ -704,6 +704,7 @@ public struct CreateStackInput: Codable, Equatable {
     public var onFailure: OnFailure?
     public var parameters: Parameters?
     public var resourceTypes: ResourceTypes?
+    public var retainExceptOnCreate: RetainExceptOnCreate?
     public var roleARN: RoleARN?
     public var rollbackConfiguration: RollbackConfiguration?
     public var stackName: StackName
@@ -722,6 +723,7 @@ public struct CreateStackInput: Codable, Equatable {
                 onFailure: OnFailure? = nil,
                 parameters: Parameters? = nil,
                 resourceTypes: ResourceTypes? = nil,
+                retainExceptOnCreate: RetainExceptOnCreate? = nil,
                 roleARN: RoleARN? = nil,
                 rollbackConfiguration: RollbackConfiguration? = nil,
                 stackName: StackName,
@@ -739,6 +741,7 @@ public struct CreateStackInput: Codable, Equatable {
         self.onFailure = onFailure
         self.parameters = parameters
         self.resourceTypes = resourceTypes
+        self.retainExceptOnCreate = retainExceptOnCreate
         self.roleARN = roleARN
         self.rollbackConfiguration = rollbackConfiguration
         self.stackName = stackName
@@ -759,6 +762,7 @@ public struct CreateStackInput: Codable, Equatable {
         case onFailure = "OnFailure"
         case parameters = "Parameters"
         case resourceTypes = "ResourceTypes"
+        case retainExceptOnCreate = "RetainExceptOnCreate"
         case roleARN = "RoleARN"
         case rollbackConfiguration = "RollbackConfiguration"
         case stackName = "StackName"
@@ -2770,15 +2774,18 @@ public struct ExecuteChangeSetInput: Codable, Equatable {
     public var changeSetName: ChangeSetNameOrId
     public var clientRequestToken: ClientRequestToken?
     public var disableRollback: DisableRollback?
+    public var retainExceptOnCreate: RetainExceptOnCreate?
     public var stackName: StackNameOrId?
 
     public init(changeSetName: ChangeSetNameOrId,
                 clientRequestToken: ClientRequestToken? = nil,
                 disableRollback: DisableRollback? = nil,
+                retainExceptOnCreate: RetainExceptOnCreate? = nil,
                 stackName: StackNameOrId? = nil) {
         self.changeSetName = changeSetName
         self.clientRequestToken = clientRequestToken
         self.disableRollback = disableRollback
+        self.retainExceptOnCreate = retainExceptOnCreate
         self.stackName = stackName
     }
 
@@ -2786,6 +2793,7 @@ public struct ExecuteChangeSetInput: Codable, Equatable {
         case changeSetName = "ChangeSetName"
         case clientRequestToken = "ClientRequestToken"
         case disableRollback = "DisableRollback"
+        case retainExceptOnCreate = "RetainExceptOnCreate"
         case stackName = "StackName"
     }
 
@@ -2956,17 +2964,20 @@ public struct GetTemplateSummaryInput: Codable, Equatable {
     public var stackName: StackNameOrId?
     public var stackSetName: StackSetNameOrId?
     public var templateBody: TemplateBody?
+    public var templateSummaryConfig: TemplateSummaryConfig?
     public var templateURL: TemplateURL?
 
     public init(callAs: CallAs? = nil,
                 stackName: StackNameOrId? = nil,
                 stackSetName: StackSetNameOrId? = nil,
                 templateBody: TemplateBody? = nil,
+                templateSummaryConfig: TemplateSummaryConfig? = nil,
                 templateURL: TemplateURL? = nil) {
         self.callAs = callAs
         self.stackName = stackName
         self.stackSetName = stackSetName
         self.templateBody = templateBody
+        self.templateSummaryConfig = templateSummaryConfig
         self.templateURL = templateURL
     }
 
@@ -2975,6 +2986,7 @@ public struct GetTemplateSummaryInput: Codable, Equatable {
         case stackName = "StackName"
         case stackSetName = "StackSetName"
         case templateBody = "TemplateBody"
+        case templateSummaryConfig = "TemplateSummaryConfig"
         case templateURL = "TemplateURL"
     }
 
@@ -2982,6 +2994,7 @@ public struct GetTemplateSummaryInput: Codable, Equatable {
         try stackName?.validateAsStackNameOrId()
         try stackSetName?.validateAsStackSetNameOrId()
         try templateBody?.validateAsTemplateBody()
+        try templateSummaryConfig?.validate()
         try templateURL?.validateAsTemplateURL()
     }
 }
@@ -2996,6 +3009,7 @@ public struct GetTemplateSummaryOutput: Codable, Equatable {
     public var resourceIdentifierSummaries: ResourceIdentifierSummaries?
     public var resourceTypes: ResourceTypes?
     public var version: Version?
+    public var warnings: Warnings?
 
     public init(capabilities: Capabilities? = nil,
                 capabilitiesReason: CapabilitiesReason? = nil,
@@ -3005,7 +3019,8 @@ public struct GetTemplateSummaryOutput: Codable, Equatable {
                 parameters: ParameterDeclarations? = nil,
                 resourceIdentifierSummaries: ResourceIdentifierSummaries? = nil,
                 resourceTypes: ResourceTypes? = nil,
-                version: Version? = nil) {
+                version: Version? = nil,
+                warnings: Warnings? = nil) {
         self.capabilities = capabilities
         self.capabilitiesReason = capabilitiesReason
         self.declaredTransforms = declaredTransforms
@@ -3015,6 +3030,7 @@ public struct GetTemplateSummaryOutput: Codable, Equatable {
         self.resourceIdentifierSummaries = resourceIdentifierSummaries
         self.resourceTypes = resourceTypes
         self.version = version
+        self.warnings = warnings
     }
 
     enum CodingKeys: String, CodingKey {
@@ -3027,10 +3043,12 @@ public struct GetTemplateSummaryOutput: Codable, Equatable {
         case resourceIdentifierSummaries = "ResourceIdentifierSummaries"
         case resourceTypes = "ResourceTypes"
         case version = "Version"
+        case warnings = "Warnings"
     }
 
     public func validate() throws {
         try description?.validateAsDescription()
+        try warnings?.validate()
     }
 }
 
@@ -3332,6 +3350,92 @@ public struct ListImportsOutputForListImports: Codable, Equatable {
 
     public func validate() throws {
         try listImportsResult.validate()
+    }
+}
+
+public struct ListStackInstanceResourceDriftsInput: Codable, Equatable {
+    public var callAs: CallAs?
+    public var maxResults: MaxResults?
+    public var nextToken: NextToken?
+    public var operationId: ClientRequestToken
+    public var stackInstanceAccount: Account
+    public var stackInstanceRegion: Region
+    public var stackInstanceResourceDriftStatuses: StackResourceDriftStatusFilters?
+    public var stackSetName: StackSetNameOrId
+
+    public init(callAs: CallAs? = nil,
+                maxResults: MaxResults? = nil,
+                nextToken: NextToken? = nil,
+                operationId: ClientRequestToken,
+                stackInstanceAccount: Account,
+                stackInstanceRegion: Region,
+                stackInstanceResourceDriftStatuses: StackResourceDriftStatusFilters? = nil,
+                stackSetName: StackSetNameOrId) {
+        self.callAs = callAs
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.operationId = operationId
+        self.stackInstanceAccount = stackInstanceAccount
+        self.stackInstanceRegion = stackInstanceRegion
+        self.stackInstanceResourceDriftStatuses = stackInstanceResourceDriftStatuses
+        self.stackSetName = stackSetName
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case callAs = "CallAs"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case operationId = "OperationId"
+        case stackInstanceAccount = "StackInstanceAccount"
+        case stackInstanceRegion = "StackInstanceRegion"
+        case stackInstanceResourceDriftStatuses = "StackInstanceResourceDriftStatuses"
+        case stackSetName = "StackSetName"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsMaxResults()
+        try nextToken?.validateAsNextToken()
+        try operationId.validateAsClientRequestToken()
+        try stackInstanceAccount.validateAsAccount()
+        try stackInstanceRegion.validateAsRegion()
+        try stackInstanceResourceDriftStatuses?.validateAsStackResourceDriftStatusFilters()
+        try stackSetName.validateAsStackSetNameOrId()
+    }
+}
+
+public struct ListStackInstanceResourceDriftsOutput: Codable, Equatable {
+    public var nextToken: NextToken?
+    public var summaries: StackInstanceResourceDriftsSummaries?
+
+    public init(nextToken: NextToken? = nil,
+                summaries: StackInstanceResourceDriftsSummaries? = nil) {
+        self.nextToken = nextToken
+        self.summaries = summaries
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken = "NextToken"
+        case summaries = "Summaries"
+    }
+
+    public func validate() throws {
+        try nextToken?.validateAsNextToken()
+    }
+}
+
+public struct ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts: Codable, Equatable {
+    public var listStackInstanceResourceDriftsResult: ListStackInstanceResourceDriftsOutput
+
+    public init(listStackInstanceResourceDriftsResult: ListStackInstanceResourceDriftsOutput) {
+        self.listStackInstanceResourceDriftsResult = listStackInstanceResourceDriftsResult
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case listStackInstanceResourceDriftsResult = "ListStackInstanceResourceDriftsResult"
+    }
+
+    public func validate() throws {
+        try listStackInstanceResourceDriftsResult.validate()
     }
 }
 
@@ -4695,19 +4799,23 @@ public struct RollbackConfiguration: Codable, Equatable {
 
 public struct RollbackStackInput: Codable, Equatable {
     public var clientRequestToken: ClientRequestToken?
+    public var retainExceptOnCreate: RetainExceptOnCreate?
     public var roleARN: RoleARN?
     public var stackName: StackNameOrId
 
     public init(clientRequestToken: ClientRequestToken? = nil,
+                retainExceptOnCreate: RetainExceptOnCreate? = nil,
                 roleARN: RoleARN? = nil,
                 stackName: StackNameOrId) {
         self.clientRequestToken = clientRequestToken
+        self.retainExceptOnCreate = retainExceptOnCreate
         self.roleARN = roleARN
         self.stackName = stackName
     }
 
     enum CodingKeys: String, CodingKey {
         case clientRequestToken = "ClientRequestToken"
+        case retainExceptOnCreate = "RetainExceptOnCreate"
         case roleARN = "RoleARN"
         case stackName = "StackName"
     }
@@ -4959,6 +5067,7 @@ public struct Stack: Codable, Equatable {
     public var outputs: Outputs?
     public var parameters: Parameters?
     public var parentId: StackId?
+    public var retainExceptOnCreate: RetainExceptOnCreate?
     public var roleARN: RoleARN?
     public var rollbackConfiguration: RollbackConfiguration?
     public var rootId: StackId?
@@ -4982,6 +5091,7 @@ public struct Stack: Codable, Equatable {
                 outputs: Outputs? = nil,
                 parameters: Parameters? = nil,
                 parentId: StackId? = nil,
+                retainExceptOnCreate: RetainExceptOnCreate? = nil,
                 roleARN: RoleARN? = nil,
                 rollbackConfiguration: RollbackConfiguration? = nil,
                 rootId: StackId? = nil,
@@ -5004,6 +5114,7 @@ public struct Stack: Codable, Equatable {
         self.outputs = outputs
         self.parameters = parameters
         self.parentId = parentId
+        self.retainExceptOnCreate = retainExceptOnCreate
         self.roleARN = roleARN
         self.rollbackConfiguration = rollbackConfiguration
         self.rootId = rootId
@@ -5029,6 +5140,7 @@ public struct Stack: Codable, Equatable {
         case outputs = "Outputs"
         case parameters = "Parameters"
         case parentId = "ParentId"
+        case retainExceptOnCreate = "RetainExceptOnCreate"
         case roleARN = "RoleARN"
         case rollbackConfiguration = "RollbackConfiguration"
         case rootId = "RootId"
@@ -5274,6 +5386,51 @@ public struct StackInstanceNotFoundException: Codable, Equatable {
     }
 
     public func validate() throws {
+    }
+}
+
+public struct StackInstanceResourceDriftsSummary: Codable, Equatable {
+    public var logicalResourceId: LogicalResourceId
+    public var physicalResourceId: PhysicalResourceId?
+    public var physicalResourceIdContext: PhysicalResourceIdContext?
+    public var propertyDifferences: PropertyDifferences?
+    public var resourceType: ResourceType
+    public var stackId: StackId
+    public var stackResourceDriftStatus: StackResourceDriftStatus
+    public var timestamp: Timestamp
+
+    public init(logicalResourceId: LogicalResourceId,
+                physicalResourceId: PhysicalResourceId? = nil,
+                physicalResourceIdContext: PhysicalResourceIdContext? = nil,
+                propertyDifferences: PropertyDifferences? = nil,
+                resourceType: ResourceType,
+                stackId: StackId,
+                stackResourceDriftStatus: StackResourceDriftStatus,
+                timestamp: Timestamp) {
+        self.logicalResourceId = logicalResourceId
+        self.physicalResourceId = physicalResourceId
+        self.physicalResourceIdContext = physicalResourceIdContext
+        self.propertyDifferences = propertyDifferences
+        self.resourceType = resourceType
+        self.stackId = stackId
+        self.stackResourceDriftStatus = stackResourceDriftStatus
+        self.timestamp = timestamp
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case logicalResourceId = "LogicalResourceId"
+        case physicalResourceId = "PhysicalResourceId"
+        case physicalResourceIdContext = "PhysicalResourceIdContext"
+        case propertyDifferences = "PropertyDifferences"
+        case resourceType = "ResourceType"
+        case stackId = "StackId"
+        case stackResourceDriftStatus = "StackResourceDriftStatus"
+        case timestamp = "Timestamp"
+    }
+
+    public func validate() throws {
+        try physicalResourceIdContext?.validateAsPhysicalResourceIdContext()
+        try resourceType.validateAsResourceType()
     }
 }
 
@@ -6190,6 +6347,21 @@ public struct TemplateParameter: Codable, Equatable {
     }
 }
 
+public struct TemplateSummaryConfig: Codable, Equatable {
+    public var treatUnrecognizedResourceTypesAsWarnings: TreatUnrecognizedResourceTypesAsWarnings?
+
+    public init(treatUnrecognizedResourceTypesAsWarnings: TreatUnrecognizedResourceTypesAsWarnings? = nil) {
+        self.treatUnrecognizedResourceTypesAsWarnings = treatUnrecognizedResourceTypesAsWarnings
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case treatUnrecognizedResourceTypesAsWarnings = "TreatUnrecognizedResourceTypesAsWarnings"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct TestTypeInput: Codable, Equatable {
     public var arn: TypeArn?
     public var logDeliveryBucket: S3Bucket?
@@ -6515,6 +6687,7 @@ public struct UpdateStackInput: Codable, Equatable {
     public var notificationARNs: NotificationARNs?
     public var parameters: Parameters?
     public var resourceTypes: ResourceTypes?
+    public var retainExceptOnCreate: RetainExceptOnCreate?
     public var roleARN: RoleARN?
     public var rollbackConfiguration: RollbackConfiguration?
     public var stackName: StackName
@@ -6533,6 +6706,7 @@ public struct UpdateStackInput: Codable, Equatable {
                 notificationARNs: NotificationARNs? = nil,
                 parameters: Parameters? = nil,
                 resourceTypes: ResourceTypes? = nil,
+                retainExceptOnCreate: RetainExceptOnCreate? = nil,
                 roleARN: RoleARN? = nil,
                 rollbackConfiguration: RollbackConfiguration? = nil,
                 stackName: StackName,
@@ -6550,6 +6724,7 @@ public struct UpdateStackInput: Codable, Equatable {
         self.notificationARNs = notificationARNs
         self.parameters = parameters
         self.resourceTypes = resourceTypes
+        self.retainExceptOnCreate = retainExceptOnCreate
         self.roleARN = roleARN
         self.rollbackConfiguration = rollbackConfiguration
         self.stackName = stackName
@@ -6570,6 +6745,7 @@ public struct UpdateStackInput: Codable, Equatable {
         case notificationARNs = "NotificationARNs"
         case parameters = "Parameters"
         case resourceTypes = "ResourceTypes"
+        case retainExceptOnCreate = "RetainExceptOnCreate"
         case roleARN = "RoleARN"
         case rollbackConfiguration = "RollbackConfiguration"
         case stackName = "StackName"
@@ -6955,5 +7131,20 @@ public struct ValidateTemplateOutputForValidateTemplate: Codable, Equatable {
 
     public func validate() throws {
         try validateTemplateResult.validate()
+    }
+}
+
+public struct Warnings: Codable, Equatable {
+    public var unrecognizedResourceTypes: ResourceTypes?
+
+    public init(unrecognizedResourceTypes: ResourceTypes? = nil) {
+        self.unrecognizedResourceTypes = unrecognizedResourceTypes
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case unrecognizedResourceTypes = "UnrecognizedResourceTypes"
+    }
+
+    public func validate() throws {
     }
 }

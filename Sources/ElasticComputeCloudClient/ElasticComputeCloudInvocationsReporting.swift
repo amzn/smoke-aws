@@ -402,6 +402,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let disableEbsEncryptionByDefault: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableFastLaunch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableFastSnapshotRestores: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let disableImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let disableImageBlockPublicAccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableImageDeprecation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableIpamOrganizationAdminAccount: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let disableSerialConsoleAccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -428,6 +430,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let enableEbsEncryptionByDefault: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableFastLaunch: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableFastSnapshotRestores: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let enableImage: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let enableImageBlockPublicAccess: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableImageDeprecation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableIpamOrganizationAdminAccount: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let enableReachabilityAnalyzerOrganizationSharing: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -454,6 +458,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let getFlowLogsIntegrationTemplate: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getGroupsForCapacityReservation: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getHostReservationPurchasePreview: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getImageBlockPublicAccessState: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getInstanceTypesFromInstanceRequirements: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getInstanceUefiData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getIpamAddressHistory: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -469,6 +474,7 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
     public let getNetworkInsightsAccessScopeContent: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getPasswordData: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getReservedInstancesExchangeQuote: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let getSecurityGroupsForVpc: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getSerialConsoleAccessStatus: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getSpotPlacementScores: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let getSubnetCidrReservations: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -1371,6 +1377,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.disableFastLaunch)
         self.disableFastSnapshotRestores = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.disableFastSnapshotRestores)
+        self.disableImage = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.disableImage)
+        self.disableImageBlockPublicAccess = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.disableImageBlockPublicAccess)
         self.disableImageDeprecation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.disableImageDeprecation)
         self.disableIpamOrganizationAdminAccount = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1423,6 +1433,10 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.enableFastLaunch)
         self.enableFastSnapshotRestores = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.enableFastSnapshotRestores)
+        self.enableImage = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.enableImage)
+        self.enableImageBlockPublicAccess = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.enableImageBlockPublicAccess)
         self.enableImageDeprecation = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.enableImageDeprecation)
         self.enableIpamOrganizationAdminAccount = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1475,6 +1489,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.getGroupsForCapacityReservation)
         self.getHostReservationPurchasePreview = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getHostReservationPurchasePreview)
+        self.getImageBlockPublicAccessState = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getImageBlockPublicAccessState)
         self.getInstanceTypesFromInstanceRequirements = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getInstanceTypesFromInstanceRequirements)
         self.getInstanceUefiData = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -1505,6 +1521,8 @@ public struct ElasticComputeCloudInvocationsReporting<InvocationReportingType: H
             smokeAWSOperationReporting: operationsReporting.getPasswordData)
         self.getReservedInstancesExchangeQuote = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getReservedInstancesExchangeQuote)
+        self.getSecurityGroupsForVpc = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.getSecurityGroupsForVpc)
         self.getSerialConsoleAccessStatus = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.getSerialConsoleAccessStatus)
         self.getSpotPlacementScores = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,

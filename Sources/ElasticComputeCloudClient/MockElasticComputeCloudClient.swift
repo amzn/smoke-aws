@@ -775,6 +775,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let disableFastLaunchSyncOverride: DisableFastLaunchSyncType?
     let disableFastSnapshotRestoresAsyncOverride: DisableFastSnapshotRestoresAsyncType?
     let disableFastSnapshotRestoresSyncOverride: DisableFastSnapshotRestoresSyncType?
+    let disableImageAsyncOverride: DisableImageAsyncType?
+    let disableImageSyncOverride: DisableImageSyncType?
+    let disableImageBlockPublicAccessAsyncOverride: DisableImageBlockPublicAccessAsyncType?
+    let disableImageBlockPublicAccessSyncOverride: DisableImageBlockPublicAccessSyncType?
     let disableImageDeprecationAsyncOverride: DisableImageDeprecationAsyncType?
     let disableImageDeprecationSyncOverride: DisableImageDeprecationSyncType?
     let disableIpamOrganizationAdminAccountAsyncOverride: DisableIpamOrganizationAdminAccountAsyncType?
@@ -827,6 +831,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let enableFastLaunchSyncOverride: EnableFastLaunchSyncType?
     let enableFastSnapshotRestoresAsyncOverride: EnableFastSnapshotRestoresAsyncType?
     let enableFastSnapshotRestoresSyncOverride: EnableFastSnapshotRestoresSyncType?
+    let enableImageAsyncOverride: EnableImageAsyncType?
+    let enableImageSyncOverride: EnableImageSyncType?
+    let enableImageBlockPublicAccessAsyncOverride: EnableImageBlockPublicAccessAsyncType?
+    let enableImageBlockPublicAccessSyncOverride: EnableImageBlockPublicAccessSyncType?
     let enableImageDeprecationAsyncOverride: EnableImageDeprecationAsyncType?
     let enableImageDeprecationSyncOverride: EnableImageDeprecationSyncType?
     let enableIpamOrganizationAdminAccountAsyncOverride: EnableIpamOrganizationAdminAccountAsyncType?
@@ -879,6 +887,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getGroupsForCapacityReservationSyncOverride: GetGroupsForCapacityReservationSyncType?
     let getHostReservationPurchasePreviewAsyncOverride: GetHostReservationPurchasePreviewAsyncType?
     let getHostReservationPurchasePreviewSyncOverride: GetHostReservationPurchasePreviewSyncType?
+    let getImageBlockPublicAccessStateAsyncOverride: GetImageBlockPublicAccessStateAsyncType?
+    let getImageBlockPublicAccessStateSyncOverride: GetImageBlockPublicAccessStateSyncType?
     let getInstanceTypesFromInstanceRequirementsAsyncOverride: GetInstanceTypesFromInstanceRequirementsAsyncType?
     let getInstanceTypesFromInstanceRequirementsSyncOverride: GetInstanceTypesFromInstanceRequirementsSyncType?
     let getInstanceUefiDataAsyncOverride: GetInstanceUefiDataAsyncType?
@@ -909,6 +919,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     let getPasswordDataSyncOverride: GetPasswordDataSyncType?
     let getReservedInstancesExchangeQuoteAsyncOverride: GetReservedInstancesExchangeQuoteAsyncType?
     let getReservedInstancesExchangeQuoteSyncOverride: GetReservedInstancesExchangeQuoteSyncType?
+    let getSecurityGroupsForVpcAsyncOverride: GetSecurityGroupsForVpcAsyncType?
+    let getSecurityGroupsForVpcSyncOverride: GetSecurityGroupsForVpcSyncType?
     let getSerialConsoleAccessStatusAsyncOverride: GetSerialConsoleAccessStatusAsyncType?
     let getSerialConsoleAccessStatusSyncOverride: GetSerialConsoleAccessStatusSyncType?
     let getSpotPlacementScoresAsyncOverride: GetSpotPlacementScoresAsyncType?
@@ -1969,6 +1981,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             disableFastLaunchSync: DisableFastLaunchSyncType? = nil,
             disableFastSnapshotRestoresAsync: DisableFastSnapshotRestoresAsyncType? = nil,
             disableFastSnapshotRestoresSync: DisableFastSnapshotRestoresSyncType? = nil,
+            disableImageAsync: DisableImageAsyncType? = nil,
+            disableImageSync: DisableImageSyncType? = nil,
+            disableImageBlockPublicAccessAsync: DisableImageBlockPublicAccessAsyncType? = nil,
+            disableImageBlockPublicAccessSync: DisableImageBlockPublicAccessSyncType? = nil,
             disableImageDeprecationAsync: DisableImageDeprecationAsyncType? = nil,
             disableImageDeprecationSync: DisableImageDeprecationSyncType? = nil,
             disableIpamOrganizationAdminAccountAsync: DisableIpamOrganizationAdminAccountAsyncType? = nil,
@@ -2021,6 +2037,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             enableFastLaunchSync: EnableFastLaunchSyncType? = nil,
             enableFastSnapshotRestoresAsync: EnableFastSnapshotRestoresAsyncType? = nil,
             enableFastSnapshotRestoresSync: EnableFastSnapshotRestoresSyncType? = nil,
+            enableImageAsync: EnableImageAsyncType? = nil,
+            enableImageSync: EnableImageSyncType? = nil,
+            enableImageBlockPublicAccessAsync: EnableImageBlockPublicAccessAsyncType? = nil,
+            enableImageBlockPublicAccessSync: EnableImageBlockPublicAccessSyncType? = nil,
             enableImageDeprecationAsync: EnableImageDeprecationAsyncType? = nil,
             enableImageDeprecationSync: EnableImageDeprecationSyncType? = nil,
             enableIpamOrganizationAdminAccountAsync: EnableIpamOrganizationAdminAccountAsyncType? = nil,
@@ -2073,6 +2093,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getGroupsForCapacityReservationSync: GetGroupsForCapacityReservationSyncType? = nil,
             getHostReservationPurchasePreviewAsync: GetHostReservationPurchasePreviewAsyncType? = nil,
             getHostReservationPurchasePreviewSync: GetHostReservationPurchasePreviewSyncType? = nil,
+            getImageBlockPublicAccessStateAsync: GetImageBlockPublicAccessStateAsyncType? = nil,
+            getImageBlockPublicAccessStateSync: GetImageBlockPublicAccessStateSyncType? = nil,
             getInstanceTypesFromInstanceRequirementsAsync: GetInstanceTypesFromInstanceRequirementsAsyncType? = nil,
             getInstanceTypesFromInstanceRequirementsSync: GetInstanceTypesFromInstanceRequirementsSyncType? = nil,
             getInstanceUefiDataAsync: GetInstanceUefiDataAsyncType? = nil,
@@ -2103,6 +2125,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
             getPasswordDataSync: GetPasswordDataSyncType? = nil,
             getReservedInstancesExchangeQuoteAsync: GetReservedInstancesExchangeQuoteAsyncType? = nil,
             getReservedInstancesExchangeQuoteSync: GetReservedInstancesExchangeQuoteSyncType? = nil,
+            getSecurityGroupsForVpcAsync: GetSecurityGroupsForVpcAsyncType? = nil,
+            getSecurityGroupsForVpcSync: GetSecurityGroupsForVpcSyncType? = nil,
             getSerialConsoleAccessStatusAsync: GetSerialConsoleAccessStatusAsyncType? = nil,
             getSerialConsoleAccessStatusSync: GetSerialConsoleAccessStatusSyncType? = nil,
             getSpotPlacementScoresAsync: GetSpotPlacementScoresAsyncType? = nil,
@@ -3157,6 +3181,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.disableFastLaunchSyncOverride = disableFastLaunchSync
         self.disableFastSnapshotRestoresAsyncOverride = disableFastSnapshotRestoresAsync
         self.disableFastSnapshotRestoresSyncOverride = disableFastSnapshotRestoresSync
+        self.disableImageAsyncOverride = disableImageAsync
+        self.disableImageSyncOverride = disableImageSync
+        self.disableImageBlockPublicAccessAsyncOverride = disableImageBlockPublicAccessAsync
+        self.disableImageBlockPublicAccessSyncOverride = disableImageBlockPublicAccessSync
         self.disableImageDeprecationAsyncOverride = disableImageDeprecationAsync
         self.disableImageDeprecationSyncOverride = disableImageDeprecationSync
         self.disableIpamOrganizationAdminAccountAsyncOverride = disableIpamOrganizationAdminAccountAsync
@@ -3209,6 +3237,10 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.enableFastLaunchSyncOverride = enableFastLaunchSync
         self.enableFastSnapshotRestoresAsyncOverride = enableFastSnapshotRestoresAsync
         self.enableFastSnapshotRestoresSyncOverride = enableFastSnapshotRestoresSync
+        self.enableImageAsyncOverride = enableImageAsync
+        self.enableImageSyncOverride = enableImageSync
+        self.enableImageBlockPublicAccessAsyncOverride = enableImageBlockPublicAccessAsync
+        self.enableImageBlockPublicAccessSyncOverride = enableImageBlockPublicAccessSync
         self.enableImageDeprecationAsyncOverride = enableImageDeprecationAsync
         self.enableImageDeprecationSyncOverride = enableImageDeprecationSync
         self.enableIpamOrganizationAdminAccountAsyncOverride = enableIpamOrganizationAdminAccountAsync
@@ -3261,6 +3293,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getGroupsForCapacityReservationSyncOverride = getGroupsForCapacityReservationSync
         self.getHostReservationPurchasePreviewAsyncOverride = getHostReservationPurchasePreviewAsync
         self.getHostReservationPurchasePreviewSyncOverride = getHostReservationPurchasePreviewSync
+        self.getImageBlockPublicAccessStateAsyncOverride = getImageBlockPublicAccessStateAsync
+        self.getImageBlockPublicAccessStateSyncOverride = getImageBlockPublicAccessStateSync
         self.getInstanceTypesFromInstanceRequirementsAsyncOverride = getInstanceTypesFromInstanceRequirementsAsync
         self.getInstanceTypesFromInstanceRequirementsSyncOverride = getInstanceTypesFromInstanceRequirementsSync
         self.getInstanceUefiDataAsyncOverride = getInstanceUefiDataAsync
@@ -3291,6 +3325,8 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         self.getPasswordDataSyncOverride = getPasswordDataSync
         self.getReservedInstancesExchangeQuoteAsyncOverride = getReservedInstancesExchangeQuoteAsync
         self.getReservedInstancesExchangeQuoteSyncOverride = getReservedInstancesExchangeQuoteSync
+        self.getSecurityGroupsForVpcAsyncOverride = getSecurityGroupsForVpcAsync
+        self.getSecurityGroupsForVpcSyncOverride = getSecurityGroupsForVpcSync
         self.getSerialConsoleAccessStatusAsyncOverride = getSerialConsoleAccessStatusAsync
         self.getSerialConsoleAccessStatusSyncOverride = getSerialConsoleAccessStatusSync
         self.getSpotPlacementScoresAsyncOverride = getSpotPlacementScoresAsync
@@ -9398,17 +9434,20 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The DeleteKeyPairResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteKeyPairResult
+           object will be validated before being returned to caller.
      */
     public func deleteKeyPairAsync(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteKeyPairResult, ElasticComputeCloudError>) -> ()) throws {
         if let deleteKeyPairAsyncOverride = deleteKeyPairAsyncOverride {
             return try deleteKeyPairAsyncOverride(input, completion)
         }
 
-        completion(nil)
+        let result = DeleteKeyPairResult.__default
+        
+        completion(.success(result))
     }
 
     /**
@@ -9416,13 +9455,16 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
+     - Returns: The DeleteKeyPairResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func deleteKeyPairSync(
-            input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws {
+            input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws -> ElasticComputeCloudModel.DeleteKeyPairResult {
         if let deleteKeyPairSyncOverride = deleteKeyPairSyncOverride {
             return try deleteKeyPairSyncOverride(input)
         }
 
+        return DeleteKeyPairResult.__default
     }
 
     /**
@@ -17590,6 +17632,82 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisableImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableImageRequest object being passed to this operation.
+         - completion: The DisableImageResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableImageResult
+           object will be validated before being returned to caller.
+     */
+    public func disableImageAsync(
+            input: ElasticComputeCloudModel.DisableImageRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableImageResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disableImageAsyncOverride = disableImageAsyncOverride {
+            return try disableImageAsyncOverride(input, completion)
+        }
+
+        let result = DisableImageResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DisableImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableImageRequest object being passed to this operation.
+     - Returns: The DisableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableImageSync(
+            input: ElasticComputeCloudModel.DisableImageRequest) throws -> ElasticComputeCloudModel.DisableImageResult {
+        if let disableImageSyncOverride = disableImageSyncOverride {
+            return try disableImageSyncOverride(input)
+        }
+
+        return DisableImageResult.__default
+    }
+
+    /**
+     Invokes the DisableImageBlockPublicAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableImageBlockPublicAccessRequest object being passed to this operation.
+         - completion: The DisableImageBlockPublicAccessResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableImageBlockPublicAccessResult
+           object will be validated before being returned to caller.
+     */
+    public func disableImageBlockPublicAccessAsync(
+            input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableImageBlockPublicAccessResult, ElasticComputeCloudError>) -> ()) throws {
+        if let disableImageBlockPublicAccessAsyncOverride = disableImageBlockPublicAccessAsyncOverride {
+            return try disableImageBlockPublicAccessAsyncOverride(input, completion)
+        }
+
+        let result = DisableImageBlockPublicAccessResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the DisableImageBlockPublicAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The DisableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableImageBlockPublicAccessSync(
+            input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest) throws -> ElasticComputeCloudModel.DisableImageBlockPublicAccessResult {
+        if let disableImageBlockPublicAccessSyncOverride = disableImageBlockPublicAccessSyncOverride {
+            return try disableImageBlockPublicAccessSyncOverride(input)
+        }
+
+        return DisableImageBlockPublicAccessResult.__default
+    }
+
+    /**
      Invokes the DisableImageDeprecation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -18557,6 +18675,82 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return EnableFastSnapshotRestoresResult.__default
+    }
+
+    /**
+     Invokes the EnableImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableImageRequest object being passed to this operation.
+         - completion: The EnableImageResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableImageResult
+           object will be validated before being returned to caller.
+     */
+    public func enableImageAsync(
+            input: ElasticComputeCloudModel.EnableImageRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableImageResult, ElasticComputeCloudError>) -> ()) throws {
+        if let enableImageAsyncOverride = enableImageAsyncOverride {
+            return try enableImageAsyncOverride(input, completion)
+        }
+
+        let result = EnableImageResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the EnableImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableImageRequest object being passed to this operation.
+     - Returns: The EnableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableImageSync(
+            input: ElasticComputeCloudModel.EnableImageRequest) throws -> ElasticComputeCloudModel.EnableImageResult {
+        if let enableImageSyncOverride = enableImageSyncOverride {
+            return try enableImageSyncOverride(input)
+        }
+
+        return EnableImageResult.__default
+    }
+
+    /**
+     Invokes the EnableImageBlockPublicAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableImageBlockPublicAccessRequest object being passed to this operation.
+         - completion: The EnableImageBlockPublicAccessResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableImageBlockPublicAccessResult
+           object will be validated before being returned to caller.
+     */
+    public func enableImageBlockPublicAccessAsync(
+            input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableImageBlockPublicAccessResult, ElasticComputeCloudError>) -> ()) throws {
+        if let enableImageBlockPublicAccessAsyncOverride = enableImageBlockPublicAccessAsyncOverride {
+            return try enableImageBlockPublicAccessAsyncOverride(input, completion)
+        }
+
+        let result = EnableImageBlockPublicAccessResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the EnableImageBlockPublicAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The EnableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableImageBlockPublicAccessSync(
+            input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest) throws -> ElasticComputeCloudModel.EnableImageBlockPublicAccessResult {
+        if let enableImageBlockPublicAccessSyncOverride = enableImageBlockPublicAccessSyncOverride {
+            return try enableImageBlockPublicAccessSyncOverride(input)
+        }
+
+        return EnableImageBlockPublicAccessResult.__default
     }
 
     /**
@@ -19536,6 +19730,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetImageBlockPublicAccessState operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetImageBlockPublicAccessStateRequest object being passed to this operation.
+         - completion: The GetImageBlockPublicAccessStateResult object or an error will be passed to this 
+           callback when the operation is complete. The GetImageBlockPublicAccessStateResult
+           object will be validated before being returned to caller.
+     */
+    public func getImageBlockPublicAccessStateAsync(
+            input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getImageBlockPublicAccessStateAsyncOverride = getImageBlockPublicAccessStateAsyncOverride {
+            return try getImageBlockPublicAccessStateAsyncOverride(input, completion)
+        }
+
+        let result = GetImageBlockPublicAccessStateResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetImageBlockPublicAccessState operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetImageBlockPublicAccessStateRequest object being passed to this operation.
+     - Returns: The GetImageBlockPublicAccessStateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getImageBlockPublicAccessStateSync(
+            input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest) throws -> ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult {
+        if let getImageBlockPublicAccessStateSyncOverride = getImageBlockPublicAccessStateSyncOverride {
+            return try getImageBlockPublicAccessStateSyncOverride(input)
+        }
+
+        return GetImageBlockPublicAccessStateResult.__default
+    }
+
+    /**
      Invokes the GetInstanceTypesFromInstanceRequirements operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -20103,6 +20335,44 @@ public struct MockElasticComputeCloudClient: ElasticComputeCloudClientProtocol {
         }
 
         return GetReservedInstancesExchangeQuoteResult.__default
+    }
+
+    /**
+     Invokes the GetSecurityGroupsForVpc operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSecurityGroupsForVpcRequest object being passed to this operation.
+         - completion: The GetSecurityGroupsForVpcResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSecurityGroupsForVpcResult
+           object will be validated before being returned to caller.
+     */
+    public func getSecurityGroupsForVpcAsync(
+            input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSecurityGroupsForVpcResult, ElasticComputeCloudError>) -> ()) throws {
+        if let getSecurityGroupsForVpcAsyncOverride = getSecurityGroupsForVpcAsyncOverride {
+            return try getSecurityGroupsForVpcAsyncOverride(input, completion)
+        }
+
+        let result = GetSecurityGroupsForVpcResult.__default
+        
+        completion(.success(result))
+    }
+
+    /**
+     Invokes the GetSecurityGroupsForVpc operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSecurityGroupsForVpcRequest object being passed to this operation.
+     - Returns: The GetSecurityGroupsForVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getSecurityGroupsForVpcSync(
+            input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest) throws -> ElasticComputeCloudModel.GetSecurityGroupsForVpcResult {
+        if let getSecurityGroupsForVpcSyncOverride = getSecurityGroupsForVpcSyncOverride {
+            return try getSecurityGroupsForVpcSyncOverride(input)
+        }
+
+        return GetSecurityGroupsForVpcResult.__default
     }
 
     /**

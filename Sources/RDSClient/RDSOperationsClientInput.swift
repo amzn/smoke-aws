@@ -190,6 +190,11 @@ public typealias DeleteCustomDBEngineVersionOperationHTTPRequestInput = QueryHTT
 public typealias DeleteDBClusterOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DeleteDBClusterAutomatedBackup operation in a HTTP client.
+ */
+public typealias DeleteDBClusterAutomatedBackupOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DeleteDBClusterEndpoint operation in a HTTP client.
  */
 public typealias DeleteDBClusterEndpointOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -278,6 +283,11 @@ public typealias DescribeBlueGreenDeploymentsOperationHTTPRequestInput = QueryHT
  Type to handle the input to the DescribeCertificates operation in a HTTP client.
  */
 public typealias DescribeCertificatesOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DescribeDBClusterAutomatedBackups operation in a HTTP client.
+ */
+public typealias DescribeDBClusterAutomatedBackupsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the DescribeDBClusterBacktracks operation in a HTTP client.
@@ -723,6 +733,11 @@ public typealias StopDBInstanceAutomatedBackupsReplicationOperationHTTPRequestIn
  Type to handle the input to the SwitchoverBlueGreenDeployment operation in a HTTP client.
  */
 public typealias SwitchoverBlueGreenDeploymentOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the SwitchoverGlobalCluster operation in a HTTP client.
+ */
+public typealias SwitchoverGlobalClusterOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the SwitchoverReadReplica operation in a HTTP client.

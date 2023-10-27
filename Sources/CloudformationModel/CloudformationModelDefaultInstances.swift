@@ -426,6 +426,7 @@ public extension CreateStackInput {
             onFailure: nil,
             parameters: nil,
             resourceTypes: nil,
+            retainExceptOnCreate: nil,
             roleARN: nil,
             rollbackConfiguration: nil,
             stackName: "value",
@@ -1649,6 +1650,7 @@ public extension ExecuteChangeSetInput {
             changeSetName: "0",
             clientRequestToken: nil,
             disableRollback: nil,
+            retainExceptOnCreate: nil,
             stackName: nil)
 
         return defaultInstance
@@ -1777,6 +1779,7 @@ public extension GetTemplateSummaryInput {
             stackName: nil,
             stackSetName: nil,
             templateBody: nil,
+            templateSummaryConfig: nil,
             templateURL: nil)
 
         return defaultInstance
@@ -1797,7 +1800,8 @@ public extension GetTemplateSummaryOutput {
             parameters: nil,
             resourceIdentifierSummaries: nil,
             resourceTypes: nil,
-            version: nil)
+            version: nil,
+            warnings: nil)
 
         return defaultInstance
     }()
@@ -2020,6 +2024,50 @@ public extension ListImportsOutputForListImports {
     static let __default: CloudformationModel.ListImportsOutputForListImports = {
         let defaultInstance = CloudformationModel.ListImportsOutputForListImports(
             listImportsResult: ListImportsOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListStackInstanceResourceDriftsInput {
+    /**
+     Default instance of the ListStackInstanceResourceDriftsInput structure.
+     */
+    static let __default: CloudformationModel.ListStackInstanceResourceDriftsInput = {
+        let defaultInstance = CloudformationModel.ListStackInstanceResourceDriftsInput(
+            callAs: nil,
+            maxResults: nil,
+            nextToken: nil,
+            operationId: "0",
+            stackInstanceAccount: "",
+            stackInstanceRegion: "",
+            stackInstanceResourceDriftStatuses: nil,
+            stackSetName: "")
+
+        return defaultInstance
+    }()
+}
+
+public extension ListStackInstanceResourceDriftsOutput {
+    /**
+     Default instance of the ListStackInstanceResourceDriftsOutput structure.
+     */
+    static let __default: CloudformationModel.ListStackInstanceResourceDriftsOutput = {
+        let defaultInstance = CloudformationModel.ListStackInstanceResourceDriftsOutput(
+            nextToken: nil,
+            summaries: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts {
+    /**
+     Default instance of the ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts structure.
+     */
+    static let __default: CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts = {
+        let defaultInstance = CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts(
+            listStackInstanceResourceDriftsResult: ListStackInstanceResourceDriftsOutput.__default)
 
         return defaultInstance
     }()
@@ -2857,6 +2905,7 @@ public extension RollbackStackInput {
     static let __default: CloudformationModel.RollbackStackInput = {
         let defaultInstance = CloudformationModel.RollbackStackInput(
             clientRequestToken: nil,
+            retainExceptOnCreate: nil,
             roleARN: nil,
             stackName: "0")
 
@@ -3027,6 +3076,7 @@ public extension Stack {
             outputs: nil,
             parameters: nil,
             parentId: nil,
+            retainExceptOnCreate: nil,
             roleARN: nil,
             rollbackConfiguration: nil,
             rootId: nil,
@@ -3148,6 +3198,25 @@ public extension StackInstanceNotFoundException {
      */
     static let __default: CloudformationModel.StackInstanceNotFoundException = {
         let defaultInstance = CloudformationModel.StackInstanceNotFoundException()
+
+        return defaultInstance
+    }()
+}
+
+public extension StackInstanceResourceDriftsSummary {
+    /**
+     Default instance of the StackInstanceResourceDriftsSummary structure.
+     */
+    static let __default: CloudformationModel.StackInstanceResourceDriftsSummary = {
+        let defaultInstance = CloudformationModel.StackInstanceResourceDriftsSummary(
+            logicalResourceId: "value",
+            physicalResourceId: nil,
+            physicalResourceIdContext: nil,
+            propertyDifferences: nil,
+            resourceType: "0",
+            stackId: "value",
+            stackResourceDriftStatus: .__default,
+            timestamp: "2013-02-18T17:00:00Z")
 
         return defaultInstance
     }()
@@ -3575,6 +3644,18 @@ public extension TemplateParameter {
     }()
 }
 
+public extension TemplateSummaryConfig {
+    /**
+     Default instance of the TemplateSummaryConfig structure.
+     */
+    static let __default: CloudformationModel.TemplateSummaryConfig = {
+        let defaultInstance = CloudformationModel.TemplateSummaryConfig(
+            treatUnrecognizedResourceTypesAsWarnings: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension TestTypeInput {
     /**
      Default instance of the TestTypeInput structure.
@@ -3751,6 +3832,7 @@ public extension UpdateStackInput {
             notificationARNs: nil,
             parameters: nil,
             resourceTypes: nil,
+            retainExceptOnCreate: nil,
             roleARN: nil,
             rollbackConfiguration: nil,
             stackName: "value",
@@ -3961,6 +4043,18 @@ public extension ValidateTemplateOutputForValidateTemplate {
     static let __default: CloudformationModel.ValidateTemplateOutputForValidateTemplate = {
         let defaultInstance = CloudformationModel.ValidateTemplateOutputForValidateTemplate(
             validateTemplateResult: ValidateTemplateOutput.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension Warnings {
+    /**
+     Default instance of the Warnings structure.
+     */
+    static let __default: CloudformationModel.Warnings = {
+        let defaultInstance = CloudformationModel.Warnings(
+            unrecognizedResourceTypes: nil)
 
         return defaultInstance
     }()

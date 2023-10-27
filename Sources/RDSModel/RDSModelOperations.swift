@@ -59,6 +59,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case deleteBlueGreenDeployment = "DeleteBlueGreenDeployment"
     case deleteCustomDBEngineVersion = "DeleteCustomDBEngineVersion"
     case deleteDBCluster = "DeleteDBCluster"
+    case deleteDBClusterAutomatedBackup = "DeleteDBClusterAutomatedBackup"
     case deleteDBClusterEndpoint = "DeleteDBClusterEndpoint"
     case deleteDBClusterParameterGroup = "DeleteDBClusterParameterGroup"
     case deleteDBClusterSnapshot = "DeleteDBClusterSnapshot"
@@ -77,6 +78,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case describeAccountAttributes = "DescribeAccountAttributes"
     case describeBlueGreenDeployments = "DescribeBlueGreenDeployments"
     case describeCertificates = "DescribeCertificates"
+    case describeDBClusterAutomatedBackups = "DescribeDBClusterAutomatedBackups"
     case describeDBClusterBacktracks = "DescribeDBClusterBacktracks"
     case describeDBClusterEndpoints = "DescribeDBClusterEndpoints"
     case describeDBClusterParameterGroups = "DescribeDBClusterParameterGroups"
@@ -166,6 +168,7 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
     case stopDBInstance = "StopDBInstance"
     case stopDBInstanceAutomatedBackupsReplication = "StopDBInstanceAutomatedBackupsReplication"
     case switchoverBlueGreenDeployment = "SwitchoverBlueGreenDeployment"
+    case switchoverGlobalCluster = "SwitchoverGlobalCluster"
     case switchoverReadReplica = "SwitchoverReadReplica"
 
     public var description: String {
@@ -240,6 +243,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
             return "/"
         case .deleteDBCluster:
             return "/"
+        case .deleteDBClusterAutomatedBackup:
+            return "/"
         case .deleteDBClusterEndpoint:
             return "/"
         case .deleteDBClusterParameterGroup:
@@ -275,6 +280,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .describeBlueGreenDeployments:
             return "/"
         case .describeCertificates:
+            return "/"
+        case .describeDBClusterAutomatedBackups:
             return "/"
         case .describeDBClusterBacktracks:
             return "/"
@@ -453,6 +460,8 @@ public enum RDSModelOperations: String, Hashable, CustomStringConvertible {
         case .stopDBInstanceAutomatedBackupsReplication:
             return "/"
         case .switchoverBlueGreenDeployment:
+            return "/"
+        case .switchoverGlobalCluster:
             return "/"
         case .switchoverReadReplica:
             return "/"

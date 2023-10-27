@@ -118,6 +118,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
     let listExportsSyncOverride: ListExportsSyncType?
     let listImportsAsyncOverride: ListImportsAsyncType?
     let listImportsSyncOverride: ListImportsSyncType?
+    let listStackInstanceResourceDriftsAsyncOverride: ListStackInstanceResourceDriftsAsyncType?
+    let listStackInstanceResourceDriftsSyncOverride: ListStackInstanceResourceDriftsSyncType?
     let listStackInstancesAsyncOverride: ListStackInstancesAsyncType?
     let listStackInstancesSyncOverride: ListStackInstancesSyncType?
     let listStackResourcesAsyncOverride: ListStackResourcesAsyncType?
@@ -262,6 +264,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
             listExportsSync: ListExportsSyncType? = nil,
             listImportsAsync: ListImportsAsyncType? = nil,
             listImportsSync: ListImportsSyncType? = nil,
+            listStackInstanceResourceDriftsAsync: ListStackInstanceResourceDriftsAsyncType? = nil,
+            listStackInstanceResourceDriftsSync: ListStackInstanceResourceDriftsSyncType? = nil,
             listStackInstancesAsync: ListStackInstancesAsyncType? = nil,
             listStackInstancesSync: ListStackInstancesSyncType? = nil,
             listStackResourcesAsync: ListStackResourcesAsyncType? = nil,
@@ -401,6 +405,8 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
         self.listExportsSyncOverride = listExportsSync
         self.listImportsAsyncOverride = listImportsAsync
         self.listImportsSyncOverride = listImportsSync
+        self.listStackInstanceResourceDriftsAsyncOverride = listStackInstanceResourceDriftsAsync
+        self.listStackInstanceResourceDriftsSyncOverride = listStackInstanceResourceDriftsSync
         self.listStackInstancesAsyncOverride = listStackInstancesAsync
         self.listStackInstancesSyncOverride = listStackInstancesSync
         self.listStackResourcesAsyncOverride = listStackResourcesAsync
@@ -2086,6 +2092,44 @@ public struct ThrowingCloudformationClient: CloudformationClientProtocol {
             input: CloudformationModel.ListImportsInput) throws -> CloudformationModel.ListImportsOutputForListImports {
         if let listImportsSyncOverride = listImportsSyncOverride {
             return try listImportsSyncOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the ListStackInstanceResourceDrifts operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+         - completion: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object or an error will be passed to this 
+           callback when the operation is complete. The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts
+           object will be validated before being returned to caller.
+           The possible errors are: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    public func listStackInstanceResourceDriftsAsync(
+            input: CloudformationModel.ListStackInstanceResourceDriftsInput, 
+            completion: @escaping (Result<CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts, CloudformationError>) -> ()) throws {
+        if let listStackInstanceResourceDriftsAsyncOverride = listStackInstanceResourceDriftsAsyncOverride {
+            return try listStackInstanceResourceDriftsAsyncOverride(input, completion)
+        }
+
+        completion(.failure(error))
+    }
+
+    /**
+     Invokes the ListStackInstanceResourceDrifts operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated ListStackInstanceResourceDriftsInput object being passed to this operation.
+     - Returns: The ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: operationNotFound, stackInstanceNotFound, stackSetNotFound.
+     */
+    public func listStackInstanceResourceDriftsSync(
+            input: CloudformationModel.ListStackInstanceResourceDriftsInput) throws -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts {
+        if let listStackInstanceResourceDriftsSyncOverride = listStackInstanceResourceDriftsSyncOverride {
+            return try listStackInstanceResourceDriftsSyncOverride(input)
         }
 
         throw error

@@ -415,6 +415,19 @@ extension DeleteDBClusterResultForDeleteDBCluster: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteDBClusterAutomatedBackup operation in a HTTP client.
+ */
+extension DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup
+    public typealias HeadersType = DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteDBClusterEndpoint operation in a HTTP client.
  */
 extension DBClusterEndpointForDeleteDBClusterEndpoint: HTTPResponseOutputProtocol {
@@ -579,6 +592,19 @@ extension CertificateMessageForDescribeCertificates: HTTPResponseOutputProtocol 
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> CertificateMessageForDescribeCertificates {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DescribeDBClusterAutomatedBackups operation in a HTTP client.
+ */
+extension DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups: HTTPResponseOutputProtocol {
+    public typealias BodyType = DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups
+    public typealias HeadersType = DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups {
         return try bodyDecodableProvider()
     }
 }
@@ -1697,6 +1723,19 @@ extension SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment:
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the SwitchoverGlobalCluster operation in a HTTP client.
+ */
+extension SwitchoverGlobalClusterResultForSwitchoverGlobalCluster: HTTPResponseOutputProtocol {
+    public typealias BodyType = SwitchoverGlobalClusterResultForSwitchoverGlobalCluster
+    public typealias HeadersType = SwitchoverGlobalClusterResultForSwitchoverGlobalCluster
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> SwitchoverGlobalClusterResultForSwitchoverGlobalCluster {
         return try bodyDecodableProvider()
     }
 }

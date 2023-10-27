@@ -992,6 +992,21 @@ public struct InvalidSecurityException: Codable, Equatable {
     }
 }
 
+public struct InvalidStateException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct KMSAccessDeniedException: Codable, Equatable {
     public var message: String?
 
@@ -1940,6 +1955,21 @@ public struct RemovePermissionInput: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case label = "Label"
         case topicArn = "TopicArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct ReplayLimitExceededException: Codable, Equatable {
+    public var message: String?
+
+    public init(message: String? = nil) {
+        self.message = message
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case message
     }
 
     public func validate() throws {

@@ -1068,46 +1068,61 @@ public struct DecisionTaskCompletedEventAttributes: Codable, Equatable {
     public var executionContext: Data?
     public var scheduledEventId: EventId
     public var startedEventId: EventId
+    public var taskList: TaskList?
+    public var taskListScheduleToStartTimeout: DurationInSecondsOptional?
 
     public init(executionContext: Data? = nil,
                 scheduledEventId: EventId,
-                startedEventId: EventId) {
+                startedEventId: EventId,
+                taskList: TaskList? = nil,
+                taskListScheduleToStartTimeout: DurationInSecondsOptional? = nil) {
         self.executionContext = executionContext
         self.scheduledEventId = scheduledEventId
         self.startedEventId = startedEventId
+        self.taskList = taskList
+        self.taskListScheduleToStartTimeout = taskListScheduleToStartTimeout
     }
 
     enum CodingKeys: String, CodingKey {
         case executionContext
         case scheduledEventId
         case startedEventId
+        case taskList
+        case taskListScheduleToStartTimeout
     }
 
     public func validate() throws {
         try executionContext?.validateAsData()
+        try taskList?.validate()
+        try taskListScheduleToStartTimeout?.validateAsDurationInSecondsOptional()
     }
 }
 
 public struct DecisionTaskScheduledEventAttributes: Codable, Equatable {
+    public var scheduleToStartTimeout: DurationInSecondsOptional?
     public var startToCloseTimeout: DurationInSecondsOptional?
     public var taskList: TaskList
     public var taskPriority: TaskPriority?
 
-    public init(startToCloseTimeout: DurationInSecondsOptional? = nil,
+    public init(scheduleToStartTimeout: DurationInSecondsOptional? = nil,
+                startToCloseTimeout: DurationInSecondsOptional? = nil,
                 taskList: TaskList,
                 taskPriority: TaskPriority? = nil) {
+        self.scheduleToStartTimeout = scheduleToStartTimeout
         self.startToCloseTimeout = startToCloseTimeout
         self.taskList = taskList
         self.taskPriority = taskPriority
     }
 
     enum CodingKeys: String, CodingKey {
+        case scheduleToStartTimeout
         case startToCloseTimeout
         case taskList
         case taskPriority
     }
 
     public func validate() throws {
+        try scheduleToStartTimeout?.validateAsDurationInSecondsOptional()
         try startToCloseTimeout?.validateAsDurationInSecondsOptional()
         try taskList.validate()
     }
@@ -2863,24 +2878,34 @@ public struct RespondActivityTaskFailedInput: Codable, Equatable {
 public struct RespondDecisionTaskCompletedInput: Codable, Equatable {
     public var decisions: DecisionList?
     public var executionContext: Data?
+    public var taskList: TaskList?
+    public var taskListScheduleToStartTimeout: DurationInSecondsOptional?
     public var taskToken: TaskToken
 
     public init(decisions: DecisionList? = nil,
                 executionContext: Data? = nil,
+                taskList: TaskList? = nil,
+                taskListScheduleToStartTimeout: DurationInSecondsOptional? = nil,
                 taskToken: TaskToken) {
         self.decisions = decisions
         self.executionContext = executionContext
+        self.taskList = taskList
+        self.taskListScheduleToStartTimeout = taskListScheduleToStartTimeout
         self.taskToken = taskToken
     }
 
     enum CodingKeys: String, CodingKey {
         case decisions
         case executionContext
+        case taskList
+        case taskListScheduleToStartTimeout
         case taskToken
     }
 
     public func validate() throws {
         try executionContext?.validateAsData()
+        try taskList?.validate()
+        try taskListScheduleToStartTimeout?.validateAsDurationInSecondsOptional()
         try taskToken.validateAsTaskToken()
     }
 }

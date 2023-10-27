@@ -2646,7 +2646,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The DeleteDBClusterResultForDeleteDBCluster object or an error will be passed to this 
            callback when the operation is complete. The DeleteDBClusterResultForDeleteDBCluster
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
+           The possible errors are: dBClusterAutomatedBackupQuotaExceeded, dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     public func deleteDBClusterAsync(
             input: RDSModel.DeleteDBClusterMessage, 
@@ -2683,7 +2683,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated DeleteDBClusterMessage object being passed to this operation.
      - Returns: The DeleteDBClusterResultForDeleteDBCluster object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
+     - Throws: dBClusterAutomatedBackupQuotaExceeded, dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     public func deleteDBClusterSync(
             input: RDSModel.DeleteDBClusterMessage) throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
@@ -2700,6 +2700,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.deleteDBCluster.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteDBClusterAutomatedBackup operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DeleteDBClusterAutomatedBackupMessage object being passed to this operation.
+         - completion: The DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup object or an error will be passed to this 
+           callback when the operation is complete. The DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterAutomatedBackupNotFound, invalidDBClusterAutomatedBackupState.
+     */
+    public func deleteDBClusterAutomatedBackupAsync(
+            input: RDSModel.DeleteDBClusterAutomatedBackupMessage, 
+            completion: @escaping (Result<RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterAutomatedBackup,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteDBClusterAutomatedBackupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteDBClusterAutomatedBackup.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DeleteDBClusterAutomatedBackup operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBClusterAutomatedBackupMessage object being passed to this operation.
+     - Returns: The DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterAutomatedBackupNotFound, invalidDBClusterAutomatedBackupState.
+     */
+    public func deleteDBClusterAutomatedBackupSync(
+            input: RDSModel.DeleteDBClusterAutomatedBackupMessage) throws -> RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterAutomatedBackup,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteDBClusterAutomatedBackupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteDBClusterAutomatedBackup.rawValue,
             version: apiVersion)
 
         do {
@@ -4087,6 +4165,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.describeCertificates.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeDBClusterAutomatedBackups operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DescribeDBClusterAutomatedBackupsMessage object being passed to this operation.
+         - completion: The DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups object or an error will be passed to this 
+           callback when the operation is complete. The DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterAutomatedBackupNotFound.
+     */
+    public func describeDBClusterAutomatedBackupsAsync(
+            input: RDSModel.DescribeDBClusterAutomatedBackupsMessage, 
+            completion: @escaping (Result<RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterAutomatedBackups,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBClusterAutomatedBackupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBClusterAutomatedBackups.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DescribeDBClusterAutomatedBackups operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBClusterAutomatedBackupsMessage object being passed to this operation.
+     - Returns: The DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterAutomatedBackupNotFound.
+     */
+    public func describeDBClusterAutomatedBackupsSync(
+            input: RDSModel.DescribeDBClusterAutomatedBackupsMessage) throws -> RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterAutomatedBackups,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBClusterAutomatedBackupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBClusterAutomatedBackups.rawValue,
             version: apiVersion)
 
         do {
@@ -9780,7 +9936,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshotAsync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage, 
@@ -9817,7 +9973,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated RestoreDBClusterFromSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshotSync(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage) throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
@@ -9858,7 +10014,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - completion: The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime object or an error will be passed to this 
            callback when the operation is complete. The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime
            object will be validated before being returned to caller.
-           The possible errors are: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
+           The possible errors are: dBClusterAlreadyExists, dBClusterAutomatedBackupNotFound, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     public func restoreDBClusterToPointInTimeAsync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage, 
@@ -9895,7 +10051,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated RestoreDBClusterToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterAutomatedBackupNotFound, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     public func restoreDBClusterToPointInTimeSync(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage) throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
@@ -11004,6 +11160,84 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.switchoverBlueGreenDeployment.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SwitchoverGlobalCluster operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated SwitchoverGlobalClusterMessage object being passed to this operation.
+         - completion: The SwitchoverGlobalClusterResultForSwitchoverGlobalCluster object or an error will be passed to this 
+           callback when the operation is complete. The SwitchoverGlobalClusterResultForSwitchoverGlobalCluster
+           object will be validated before being returned to caller.
+           The possible errors are: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    public func switchoverGlobalClusterAsync(
+            input: RDSModel.SwitchoverGlobalClusterMessage, 
+            completion: @escaping (Result<RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster, RDSError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.switchoverGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SwitchoverGlobalClusterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.switchoverGlobalCluster.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the SwitchoverGlobalCluster operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated SwitchoverGlobalClusterMessage object being passed to this operation.
+     - Returns: The SwitchoverGlobalClusterResultForSwitchoverGlobalCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    public func switchoverGlobalClusterSync(
+            input: RDSModel.SwitchoverGlobalClusterMessage) throws -> RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.switchoverGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SwitchoverGlobalClusterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.switchoverGlobalCluster.rawValue,
             version: apiVersion)
 
         do {
@@ -12381,7 +12615,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated DeleteDBClusterMessage object being passed to this operation.
      - Returns: The DeleteDBClusterResultForDeleteDBCluster object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
+     - Throws: dBClusterAutomatedBackupQuotaExceeded, dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     public func deleteDBCluster(
             input: RDSModel.DeleteDBClusterMessage) async throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
@@ -12398,6 +12632,46 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.deleteDBCluster.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DeleteDBClusterAutomatedBackup operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBClusterAutomatedBackupMessage object being passed to this operation.
+     - Returns: The DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterAutomatedBackupNotFound, invalidDBClusterAutomatedBackupState.
+     */
+    public func deleteDBClusterAutomatedBackup(
+            input: RDSModel.DeleteDBClusterAutomatedBackupMessage) async throws -> RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.deleteDBClusterAutomatedBackup,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DeleteDBClusterAutomatedBackupOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.deleteDBClusterAutomatedBackup.rawValue,
             version: apiVersion)
 
         do {
@@ -13107,6 +13381,46 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.describeCertificates.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DescribeDBClusterAutomatedBackups operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBClusterAutomatedBackupsMessage object being passed to this operation.
+     - Returns: The DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterAutomatedBackupNotFound.
+     */
+    public func describeDBClusterAutomatedBackups(
+            input: RDSModel.DescribeDBClusterAutomatedBackupsMessage) async throws -> RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.describeDBClusterAutomatedBackups,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DescribeDBClusterAutomatedBackupsOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.describeDBClusterAutomatedBackups.rawValue,
             version: apiVersion)
 
         do {
@@ -16036,7 +16350,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated RestoreDBClusterFromSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshot(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage) async throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
@@ -16076,7 +16390,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
          - input: The validated RestoreDBClusterToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterAutomatedBackupNotFound, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     public func restoreDBClusterToPointInTime(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage) async throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
@@ -16653,6 +16967,46 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: RDSModelOperations.switchoverBlueGreenDeployment.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: RDSError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the SwitchoverGlobalCluster operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SwitchoverGlobalClusterMessage object being passed to this operation.
+     - Returns: The SwitchoverGlobalClusterResultForSwitchoverGlobalCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    public func switchoverGlobalCluster(
+            input: RDSModel.SwitchoverGlobalClusterMessage) async throws -> RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.switchoverGlobalCluster,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = SwitchoverGlobalClusterOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: RDSModelOperations.switchoverGlobalCluster.rawValue,
             version: apiVersion)
 
         do {

@@ -1897,6 +1897,19 @@ extension DeleteIpamScopeResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DeleteKeyPair operation in a HTTP client.
+ */
+extension DeleteKeyPairResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DeleteKeyPairResult
+    public typealias HeadersType = DeleteKeyPairResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DeleteKeyPairResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DeleteLaunchTemplate operation in a HTTP client.
  */
 extension DeleteLaunchTemplateResult: HTTPResponseOutputProtocol {
@@ -4458,6 +4471,32 @@ extension DisableFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the DisableImage operation in a HTTP client.
+ */
+extension DisableImageResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableImageResult
+    public typealias HeadersType = DisableImageResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableImageResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the DisableImageBlockPublicAccess operation in a HTTP client.
+ */
+extension DisableImageBlockPublicAccessResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = DisableImageBlockPublicAccessResult
+    public typealias HeadersType = DisableImageBlockPublicAccessResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> DisableImageBlockPublicAccessResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the DisableImageDeprecation operation in a HTTP client.
  */
 extension DisableImageDeprecationResult: HTTPResponseOutputProtocol {
@@ -4752,6 +4791,32 @@ extension EnableFastSnapshotRestoresResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> EnableFastSnapshotRestoresResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the EnableImage operation in a HTTP client.
+ */
+extension EnableImageResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableImageResult
+    public typealias HeadersType = EnableImageResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableImageResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the EnableImageBlockPublicAccess operation in a HTTP client.
+ */
+extension EnableImageBlockPublicAccessResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = EnableImageBlockPublicAccessResult
+    public typealias HeadersType = EnableImageBlockPublicAccessResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> EnableImageBlockPublicAccessResult {
         return try bodyDecodableProvider()
     }
 }
@@ -5069,6 +5134,19 @@ extension GetHostReservationPurchasePreviewResult: HTTPResponseOutputProtocol {
 }
 
 /**
+ Type to handle the output from the GetImageBlockPublicAccessState operation in a HTTP client.
+ */
+extension GetImageBlockPublicAccessStateResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetImageBlockPublicAccessStateResult
+    public typealias HeadersType = GetImageBlockPublicAccessStateResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetImageBlockPublicAccessStateResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
  Type to handle the output from the GetInstanceTypesFromInstanceRequirements operation in a HTTP client.
  */
 extension GetInstanceTypesFromInstanceRequirementsResult: HTTPResponseOutputProtocol {
@@ -5259,6 +5337,19 @@ extension GetReservedInstancesExchangeQuoteResult: HTTPResponseOutputProtocol {
 
     public static func compose(bodyDecodableProvider: () throws -> BodyType,
                                headersDecodableProvider: () throws -> HeadersType) throws -> GetReservedInstancesExchangeQuoteResult {
+        return try bodyDecodableProvider()
+    }
+}
+
+/**
+ Type to handle the output from the GetSecurityGroupsForVpc operation in a HTTP client.
+ */
+extension GetSecurityGroupsForVpcResult: HTTPResponseOutputProtocol {
+    public typealias BodyType = GetSecurityGroupsForVpcResult
+    public typealias HeadersType = GetSecurityGroupsForVpcResult
+
+    public static func compose(bodyDecodableProvider: () throws -> BodyType,
+                               headersDecodableProvider: () throws -> HeadersType) throws -> GetSecurityGroupsForVpcResult {
         return try bodyDecodableProvider()
     }
 }

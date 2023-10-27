@@ -25,8 +25,9 @@ import Foundation
 public struct AssumeRoleRequest: Codable, Equatable {
     public var durationSeconds: RoleDurationSecondsType?
     public var externalId: ExternalIdType?
-    public var policy: SessionPolicyDocumentType?
+    public var policy: UnrestrictedSessionPolicyDocumentType?
     public var policyArns: PolicyDescriptorListType?
+    public var providedContexts: ProvidedContextsListType?
     public var roleArn: ArnType
     public var roleSessionName: RoleSessionNameType
     public var serialNumber: SerialNumberType?
@@ -37,8 +38,9 @@ public struct AssumeRoleRequest: Codable, Equatable {
 
     public init(durationSeconds: RoleDurationSecondsType? = nil,
                 externalId: ExternalIdType? = nil,
-                policy: SessionPolicyDocumentType? = nil,
+                policy: UnrestrictedSessionPolicyDocumentType? = nil,
                 policyArns: PolicyDescriptorListType? = nil,
+                providedContexts: ProvidedContextsListType? = nil,
                 roleArn: ArnType,
                 roleSessionName: RoleSessionNameType,
                 serialNumber: SerialNumberType? = nil,
@@ -50,6 +52,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
         self.externalId = externalId
         self.policy = policy
         self.policyArns = policyArns
+        self.providedContexts = providedContexts
         self.roleArn = roleArn
         self.roleSessionName = roleSessionName
         self.serialNumber = serialNumber
@@ -64,6 +67,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
         case externalId = "ExternalId"
         case policy = "Policy"
         case policyArns = "PolicyArns"
+        case providedContexts = "ProvidedContexts"
         case roleArn = "RoleArn"
         case roleSessionName = "RoleSessionName"
         case serialNumber = "SerialNumber"
@@ -76,7 +80,8 @@ public struct AssumeRoleRequest: Codable, Equatable {
     public func validate() throws {
         try durationSeconds?.validateAsRoleDurationSecondsType()
         try externalId?.validateAsExternalIdType()
-        try policy?.validateAsSessionPolicyDocumentType()
+        try policy?.validateAsUnrestrictedSessionPolicyDocumentType()
+        try providedContexts?.validateAsProvidedContextsListType()
         try roleArn.validateAsArnType()
         try roleSessionName.validateAsRoleSessionNameType()
         try serialNumber?.validateAsSerialNumberType()
@@ -812,6 +817,27 @@ public struct PolicyDescriptorType: Codable, Equatable {
 
     public func validate() throws {
         try arn?.validateAsArnType()
+    }
+}
+
+public struct ProvidedContext: Codable, Equatable {
+    public var contextAssertion: ContextAssertionType?
+    public var providerArn: ArnType?
+
+    public init(contextAssertion: ContextAssertionType? = nil,
+                providerArn: ArnType? = nil) {
+        self.contextAssertion = contextAssertion
+        self.providerArn = providerArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case contextAssertion = "ContextAssertion"
+        case providerArn = "ProviderArn"
+    }
+
+    public func validate() throws {
+        try contextAssertion?.validateAsContextAssertionType()
+        try providerArn?.validateAsArnType()
     }
 }
 

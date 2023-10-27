@@ -245,6 +245,11 @@ public typealias ListExportsOperationHTTPRequestInput = QueryHTTPRequestInput
 public typealias ListImportsOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the ListStackInstanceResourceDrifts operation in a HTTP client.
+ */
+public typealias ListStackInstanceResourceDriftsOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the ListStackInstances operation in a HTTP client.
  */
 public typealias ListStackInstancesOperationHTTPRequestInput = QueryHTTPRequestInput

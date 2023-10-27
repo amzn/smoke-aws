@@ -331,7 +331,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
          - completion: The ConfirmSubscriptionResponseForConfirmSubscription object or an error will be passed to this 
            callback when the operation is complete. The ConfirmSubscriptionResponseForConfirmSubscription
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, replayLimitExceeded, subscriptionLimitExceeded.
      */
     public func confirmSubscriptionAsync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput, 
@@ -368,7 +368,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
          - input: The validated ConfirmSubscriptionInput object being passed to this operation.
      - Returns: The ConfirmSubscriptionResponseForConfirmSubscription object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, replayLimitExceeded, subscriptionLimitExceeded.
      */
     public func confirmSubscriptionSync(
             input: SimpleNotificationModel.ConfirmSubscriptionInput) throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
@@ -948,7 +948,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
          - input: The validated DeleteTopicInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
+           The possible errors are: authorizationError, concurrentAccess, internalError, invalidParameter, invalidState, notFound, staleTag, tagPolicy.
      */
     public func deleteTopicAsync(
             input: SimpleNotificationModel.DeleteTopicInput, 
@@ -983,7 +983,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
 
      - Parameters:
          - input: The validated DeleteTopicInput object being passed to this operation.
-     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidState, notFound, staleTag, tagPolicy.
      */
     public func deleteTopicSync(
             input: SimpleNotificationModel.DeleteTopicInput) throws {
@@ -2883,7 +2883,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
          - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
          - completion: Nil or an error will be passed to this callback when the operation
            is complete.
-           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
+           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, replayLimitExceeded.
      */
     public func setSubscriptionAttributesAsync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput, 
@@ -2918,7 +2918,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
 
      - Parameters:
          - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, replayLimitExceeded.
      */
     public func setSubscriptionAttributesSync(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput) throws {
@@ -3034,7 +3034,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
          - completion: The SubscribeResponseForSubscribe object or an error will be passed to this 
            callback when the operation is complete. The SubscribeResponseForSubscribe
            object will be validated before being returned to caller.
-           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
+           The possible errors are: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, replayLimitExceeded, subscriptionLimitExceeded.
      */
     public func subscribeAsync(
             input: SimpleNotificationModel.SubscribeInput, 
@@ -3071,7 +3071,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
          - input: The validated SubscribeInput object being passed to this operation.
      - Returns: The SubscribeResponseForSubscribe object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, replayLimitExceeded, subscriptionLimitExceeded.
      */
     public func subscribeSync(
             input: SimpleNotificationModel.SubscribeInput) throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
@@ -3500,7 +3500,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
          - input: The validated ConfirmSubscriptionInput object being passed to this operation.
      - Returns: The ConfirmSubscriptionResponseForConfirmSubscription object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, replayLimitExceeded, subscriptionLimitExceeded.
      */
     public func confirmSubscription(
             input: SimpleNotificationModel.ConfirmSubscriptionInput) async throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
@@ -3814,7 +3814,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
 
      - Parameters:
          - input: The validated DeleteTopicInput object being passed to this operation.
-     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidState, notFound, staleTag, tagPolicy.
      */
     public func deleteTopic(
             input: SimpleNotificationModel.DeleteTopicInput) async throws {
@@ -4804,7 +4804,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
 
      - Parameters:
          - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, replayLimitExceeded.
      */
     public func setSubscriptionAttributes(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput) async throws {
@@ -4882,7 +4882,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
          - input: The validated SubscribeInput object being passed to this operation.
      - Returns: The SubscribeResponseForSubscribe object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, replayLimitExceeded, subscriptionLimitExceeded.
      */
     public func subscribe(
             input: SimpleNotificationModel.SubscribeInput) async throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {

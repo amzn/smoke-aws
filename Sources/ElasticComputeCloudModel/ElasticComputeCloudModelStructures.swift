@@ -5591,11 +5591,11 @@ public struct CreateCustomerGatewayResult: Codable, Equatable {
 }
 
 public struct CreateDefaultSubnetRequest: Codable, Equatable {
-    public var availabilityZone: String
+    public var availabilityZone: AvailabilityZoneName
     public var dryRun: Boolean?
     public var ipv6Native: Boolean?
 
-    public init(availabilityZone: String,
+    public init(availabilityZone: AvailabilityZoneName,
                 dryRun: Boolean? = nil,
                 ipv6Native: Boolean? = nil) {
         self.availabilityZone = availabilityZone
@@ -7264,6 +7264,7 @@ public struct CreateNetworkInterfaceRequest: Codable, Equatable {
     public var clientToken: String?
     public var description: String?
     public var dryRun: Boolean?
+    public var enablePrimaryIpv6: Boolean?
     public var groups: SecurityGroupIdStringList?
     public var interfaceType: NetworkInterfaceCreationType?
     public var ipv4PrefixCount: Integer?
@@ -7281,6 +7282,7 @@ public struct CreateNetworkInterfaceRequest: Codable, Equatable {
     public init(clientToken: String? = nil,
                 description: String? = nil,
                 dryRun: Boolean? = nil,
+                enablePrimaryIpv6: Boolean? = nil,
                 groups: SecurityGroupIdStringList? = nil,
                 interfaceType: NetworkInterfaceCreationType? = nil,
                 ipv4PrefixCount: Integer? = nil,
@@ -7297,6 +7299,7 @@ public struct CreateNetworkInterfaceRequest: Codable, Equatable {
         self.clientToken = clientToken
         self.description = description
         self.dryRun = dryRun
+        self.enablePrimaryIpv6 = enablePrimaryIpv6
         self.groups = groups
         self.interfaceType = interfaceType
         self.ipv4PrefixCount = ipv4PrefixCount
@@ -7316,6 +7319,7 @@ public struct CreateNetworkInterfaceRequest: Codable, Equatable {
         case clientToken = "ClientToken"
         case description
         case dryRun
+        case enablePrimaryIpv6 = "EnablePrimaryIpv6"
         case groups = "SecurityGroupId"
         case interfaceType = "InterfaceType"
         case ipv4PrefixCount = "Ipv4PrefixCount"
@@ -8972,6 +8976,7 @@ public struct CreateVerifiedAccessEndpointRequest: Codable, Equatable {
     public var networkInterfaceOptions: CreateVerifiedAccessEndpointEniOptions?
     public var policyDocument: String?
     public var securityGroupIds: SecurityGroupIdList?
+    public var sseSpecification: VerifiedAccessSseSpecificationRequest?
     public var tagSpecifications: TagSpecificationList?
     public var verifiedAccessGroupId: VerifiedAccessGroupId
 
@@ -8987,6 +8992,7 @@ public struct CreateVerifiedAccessEndpointRequest: Codable, Equatable {
                 networkInterfaceOptions: CreateVerifiedAccessEndpointEniOptions? = nil,
                 policyDocument: String? = nil,
                 securityGroupIds: SecurityGroupIdList? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationRequest? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
                 verifiedAccessGroupId: VerifiedAccessGroupId) {
         self.applicationDomain = applicationDomain
@@ -9001,6 +9007,7 @@ public struct CreateVerifiedAccessEndpointRequest: Codable, Equatable {
         self.networkInterfaceOptions = networkInterfaceOptions
         self.policyDocument = policyDocument
         self.securityGroupIds = securityGroupIds
+        self.sseSpecification = sseSpecification
         self.tagSpecifications = tagSpecifications
         self.verifiedAccessGroupId = verifiedAccessGroupId
     }
@@ -9018,6 +9025,7 @@ public struct CreateVerifiedAccessEndpointRequest: Codable, Equatable {
         case networkInterfaceOptions = "NetworkInterfaceOptions"
         case policyDocument = "PolicyDocument"
         case securityGroupIds = "SecurityGroupId"
+        case sseSpecification = "SseSpecification"
         case tagSpecifications = "TagSpecification"
         case verifiedAccessGroupId = "VerifiedAccessGroupId"
     }
@@ -9025,6 +9033,7 @@ public struct CreateVerifiedAccessEndpointRequest: Codable, Equatable {
     public func validate() throws {
         try loadBalancerOptions?.validate()
         try networkInterfaceOptions?.validate()
+        try sseSpecification?.validate()
     }
 }
 
@@ -9049,6 +9058,7 @@ public struct CreateVerifiedAccessGroupRequest: Codable, Equatable {
     public var description: String?
     public var dryRun: Boolean?
     public var policyDocument: String?
+    public var sseSpecification: VerifiedAccessSseSpecificationRequest?
     public var tagSpecifications: TagSpecificationList?
     public var verifiedAccessInstanceId: VerifiedAccessInstanceId
 
@@ -9056,12 +9066,14 @@ public struct CreateVerifiedAccessGroupRequest: Codable, Equatable {
                 description: String? = nil,
                 dryRun: Boolean? = nil,
                 policyDocument: String? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationRequest? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
                 verifiedAccessInstanceId: VerifiedAccessInstanceId) {
         self.clientToken = clientToken
         self.description = description
         self.dryRun = dryRun
         self.policyDocument = policyDocument
+        self.sseSpecification = sseSpecification
         self.tagSpecifications = tagSpecifications
         self.verifiedAccessInstanceId = verifiedAccessInstanceId
     }
@@ -9071,11 +9083,13 @@ public struct CreateVerifiedAccessGroupRequest: Codable, Equatable {
         case description = "Description"
         case dryRun = "DryRun"
         case policyDocument = "PolicyDocument"
+        case sseSpecification = "SseSpecification"
         case tagSpecifications = "TagSpecification"
         case verifiedAccessInstanceId = "VerifiedAccessInstanceId"
     }
 
     public func validate() throws {
+        try sseSpecification?.validate()
     }
 }
 
@@ -9099,15 +9113,18 @@ public struct CreateVerifiedAccessInstanceRequest: Codable, Equatable {
     public var clientToken: String?
     public var description: String?
     public var dryRun: Boolean?
+    public var fIPSEnabled: Boolean?
     public var tagSpecifications: TagSpecificationList?
 
     public init(clientToken: String? = nil,
                 description: String? = nil,
                 dryRun: Boolean? = nil,
+                fIPSEnabled: Boolean? = nil,
                 tagSpecifications: TagSpecificationList? = nil) {
         self.clientToken = clientToken
         self.description = description
         self.dryRun = dryRun
+        self.fIPSEnabled = fIPSEnabled
         self.tagSpecifications = tagSpecifications
     }
 
@@ -9115,6 +9132,7 @@ public struct CreateVerifiedAccessInstanceRequest: Codable, Equatable {
         case clientToken = "ClientToken"
         case description = "Description"
         case dryRun = "DryRun"
+        case fIPSEnabled = "FIPSEnabled"
         case tagSpecifications = "TagSpecification"
     }
 
@@ -9200,6 +9218,7 @@ public struct CreateVerifiedAccessTrustProviderRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var oidcOptions: CreateVerifiedAccessTrustProviderOidcOptions?
     public var policyReferenceName: String
+    public var sseSpecification: VerifiedAccessSseSpecificationRequest?
     public var tagSpecifications: TagSpecificationList?
     public var trustProviderType: TrustProviderType
     public var userTrustProviderType: UserTrustProviderType?
@@ -9211,6 +9230,7 @@ public struct CreateVerifiedAccessTrustProviderRequest: Codable, Equatable {
                 dryRun: Boolean? = nil,
                 oidcOptions: CreateVerifiedAccessTrustProviderOidcOptions? = nil,
                 policyReferenceName: String,
+                sseSpecification: VerifiedAccessSseSpecificationRequest? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
                 trustProviderType: TrustProviderType,
                 userTrustProviderType: UserTrustProviderType? = nil) {
@@ -9221,6 +9241,7 @@ public struct CreateVerifiedAccessTrustProviderRequest: Codable, Equatable {
         self.dryRun = dryRun
         self.oidcOptions = oidcOptions
         self.policyReferenceName = policyReferenceName
+        self.sseSpecification = sseSpecification
         self.tagSpecifications = tagSpecifications
         self.trustProviderType = trustProviderType
         self.userTrustProviderType = userTrustProviderType
@@ -9234,6 +9255,7 @@ public struct CreateVerifiedAccessTrustProviderRequest: Codable, Equatable {
         case dryRun = "DryRun"
         case oidcOptions = "OidcOptions"
         case policyReferenceName = "PolicyReferenceName"
+        case sseSpecification = "SseSpecification"
         case tagSpecifications = "TagSpecification"
         case trustProviderType = "TrustProviderType"
         case userTrustProviderType = "UserTrustProviderType"
@@ -9242,6 +9264,7 @@ public struct CreateVerifiedAccessTrustProviderRequest: Codable, Equatable {
     public func validate() throws {
         try deviceOptions?.validate()
         try oidcOptions?.validate()
+        try sseSpecification?.validate()
     }
 }
 
@@ -9427,6 +9450,7 @@ public struct CreateVpcEndpointRequest: Codable, Equatable {
     public var routeTableIds: VpcEndpointRouteTableIdList?
     public var securityGroupIds: VpcEndpointSecurityGroupIdList?
     public var serviceName: String
+    public var subnetConfigurations: SubnetConfigurationsList?
     public var subnetIds: VpcEndpointSubnetIdList?
     public var tagSpecifications: TagSpecificationList?
     public var vpcEndpointType: VpcEndpointType?
@@ -9441,6 +9465,7 @@ public struct CreateVpcEndpointRequest: Codable, Equatable {
                 routeTableIds: VpcEndpointRouteTableIdList? = nil,
                 securityGroupIds: VpcEndpointSecurityGroupIdList? = nil,
                 serviceName: String,
+                subnetConfigurations: SubnetConfigurationsList? = nil,
                 subnetIds: VpcEndpointSubnetIdList? = nil,
                 tagSpecifications: TagSpecificationList? = nil,
                 vpcEndpointType: VpcEndpointType? = nil,
@@ -9454,6 +9479,7 @@ public struct CreateVpcEndpointRequest: Codable, Equatable {
         self.routeTableIds = routeTableIds
         self.securityGroupIds = securityGroupIds
         self.serviceName = serviceName
+        self.subnetConfigurations = subnetConfigurations
         self.subnetIds = subnetIds
         self.tagSpecifications = tagSpecifications
         self.vpcEndpointType = vpcEndpointType
@@ -9470,6 +9496,7 @@ public struct CreateVpcEndpointRequest: Codable, Equatable {
         case routeTableIds = "RouteTableId"
         case securityGroupIds = "SecurityGroupId"
         case serviceName = "ServiceName"
+        case subnetConfigurations = "SubnetConfiguration"
         case subnetIds = "SubnetId"
         case tagSpecifications = "TagSpecification"
         case vpcEndpointType = "VpcEndpointType"
@@ -10644,6 +10671,25 @@ public struct DeleteKeyPairRequest: Codable, Equatable {
         case dryRun
         case keyName = "KeyName"
         case keyPairId = "KeyPairId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DeleteKeyPairResult: Codable, Equatable {
+    public var keyPairId: String?
+    public var `return`: Boolean?
+
+    public init(keyPairId: String? = nil,
+                `return`: Boolean? = nil) {
+        self.keyPairId = keyPairId
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case keyPairId
+        case `return` = "return"
     }
 
     public func validate() throws {
@@ -14804,6 +14850,7 @@ public struct DescribeImagesRequest: Codable, Equatable {
     public var filters: FilterList?
     public var imageIds: ImageIdStringList?
     public var includeDeprecated: Boolean?
+    public var includeDisabled: Boolean?
     public var maxResults: Integer?
     public var nextToken: String?
     public var owners: OwnerStringList?
@@ -14813,6 +14860,7 @@ public struct DescribeImagesRequest: Codable, Equatable {
                 filters: FilterList? = nil,
                 imageIds: ImageIdStringList? = nil,
                 includeDeprecated: Boolean? = nil,
+                includeDisabled: Boolean? = nil,
                 maxResults: Integer? = nil,
                 nextToken: String? = nil,
                 owners: OwnerStringList? = nil) {
@@ -14821,6 +14869,7 @@ public struct DescribeImagesRequest: Codable, Equatable {
         self.filters = filters
         self.imageIds = imageIds
         self.includeDeprecated = includeDeprecated
+        self.includeDisabled = includeDisabled
         self.maxResults = maxResults
         self.nextToken = nextToken
         self.owners = owners
@@ -14832,6 +14881,7 @@ public struct DescribeImagesRequest: Codable, Equatable {
         case filters = "Filter"
         case imageIds = "ImageId"
         case includeDeprecated = "IncludeDeprecated"
+        case includeDisabled = "IncludeDisabled"
         case maxResults = "MaxResults"
         case nextToken = "NextToken"
         case owners = "Owner"
@@ -20712,6 +20762,36 @@ public struct DisableFastSnapshotRestoresResult: Codable, Equatable {
     }
 }
 
+public struct DisableImageBlockPublicAccessRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+
+    public init(dryRun: Boolean? = nil) {
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisableImageBlockPublicAccessResult: Codable, Equatable {
+    public var imageBlockPublicAccessState: ImageBlockPublicAccessDisabledState?
+
+    public init(imageBlockPublicAccessState: ImageBlockPublicAccessDisabledState? = nil) {
+        self.imageBlockPublicAccessState = imageBlockPublicAccessState
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case imageBlockPublicAccessState
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct DisableImageDeprecationRequest: Codable, Equatable {
     public var dryRun: Boolean?
     public var imageId: ImageId
@@ -20732,6 +20812,40 @@ public struct DisableImageDeprecationRequest: Codable, Equatable {
 }
 
 public struct DisableImageDeprecationResult: Codable, Equatable {
+    public var `return`: Boolean?
+
+    public init(`return`: Boolean? = nil) {
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case `return` = "return"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisableImageRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var imageId: ImageId
+
+    public init(dryRun: Boolean? = nil,
+                imageId: ImageId) {
+        self.dryRun = dryRun
+        self.imageId = imageId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case imageId = "ImageId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct DisableImageResult: Codable, Equatable {
     public var `return`: Boolean?
 
     public init(`return`: Boolean? = nil) {
@@ -22463,6 +22577,40 @@ public struct EnableFastSnapshotRestoresResult: Codable, Equatable {
     }
 }
 
+public struct EnableImageBlockPublicAccessRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var imageBlockPublicAccessState: ImageBlockPublicAccessEnabledState
+
+    public init(dryRun: Boolean? = nil,
+                imageBlockPublicAccessState: ImageBlockPublicAccessEnabledState) {
+        self.dryRun = dryRun
+        self.imageBlockPublicAccessState = imageBlockPublicAccessState
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case imageBlockPublicAccessState = "ImageBlockPublicAccessState"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableImageBlockPublicAccessResult: Codable, Equatable {
+    public var imageBlockPublicAccessState: ImageBlockPublicAccessEnabledState?
+
+    public init(imageBlockPublicAccessState: ImageBlockPublicAccessEnabledState? = nil) {
+        self.imageBlockPublicAccessState = imageBlockPublicAccessState
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case imageBlockPublicAccessState
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct EnableImageDeprecationRequest: Codable, Equatable {
     public var deprecateAt: MillisecondDateTime
     public var dryRun: Boolean?
@@ -22487,6 +22635,40 @@ public struct EnableImageDeprecationRequest: Codable, Equatable {
 }
 
 public struct EnableImageDeprecationResult: Codable, Equatable {
+    public var `return`: Boolean?
+
+    public init(`return`: Boolean? = nil) {
+        self.`return` = `return`
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case `return` = "return"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableImageRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var imageId: ImageId
+
+    public init(dryRun: Boolean? = nil,
+                imageId: ImageId) {
+        self.dryRun = dryRun
+        self.imageId = imageId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case imageId = "ImageId"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct EnableImageResult: Codable, Equatable {
     public var `return`: Boolean?
 
     public init(`return`: Boolean? = nil) {
@@ -24835,13 +25017,17 @@ public struct GetEbsEncryptionByDefaultRequest: Codable, Equatable {
 
 public struct GetEbsEncryptionByDefaultResult: Codable, Equatable {
     public var ebsEncryptionByDefault: Boolean?
+    public var sseType: SSEType?
 
-    public init(ebsEncryptionByDefault: Boolean? = nil) {
+    public init(ebsEncryptionByDefault: Boolean? = nil,
+                sseType: SSEType? = nil) {
         self.ebsEncryptionByDefault = ebsEncryptionByDefault
+        self.sseType = sseType
     }
 
     enum CodingKeys: String, CodingKey {
         case ebsEncryptionByDefault
+        case sseType
     }
 
     public func validate() throws {
@@ -24978,6 +25164,36 @@ public struct GetHostReservationPurchasePreviewResult: Codable, Equatable {
         case purchase
         case totalHourlyPrice
         case totalUpfrontPrice
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetImageBlockPublicAccessStateRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+
+    public init(dryRun: Boolean? = nil) {
+        self.dryRun = dryRun
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct GetImageBlockPublicAccessStateResult: Codable, Equatable {
+    public var imageBlockPublicAccessState: String?
+
+    public init(imageBlockPublicAccessState: String? = nil) {
+        self.imageBlockPublicAccessState = imageBlockPublicAccessState
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case imageBlockPublicAccessState
     }
 
     public func validate() throws {
@@ -25674,11 +25890,11 @@ public struct GetPasswordDataRequest: Codable, Equatable {
 
 public struct GetPasswordDataResult: Codable, Equatable {
     public var instanceId: String?
-    public var passwordData: String?
+    public var passwordData: PasswordData?
     public var timestamp: DateTime?
 
     public init(instanceId: String? = nil,
-                passwordData: String? = nil,
+                passwordData: PasswordData? = nil,
                 timestamp: DateTime? = nil) {
         self.instanceId = instanceId
         self.passwordData = passwordData
@@ -25764,6 +25980,57 @@ public struct GetReservedInstancesExchangeQuoteResult: Codable, Equatable {
     public func validate() throws {
         try reservedInstanceValueRollup?.validate()
         try targetConfigurationValueRollup?.validate()
+    }
+}
+
+public struct GetSecurityGroupsForVpcRequest: Codable, Equatable {
+    public var dryRun: Boolean?
+    public var filters: FilterList?
+    public var maxResults: GetSecurityGroupsForVpcRequestMaxResults?
+    public var nextToken: String?
+    public var vpcId: VpcId
+
+    public init(dryRun: Boolean? = nil,
+                filters: FilterList? = nil,
+                maxResults: GetSecurityGroupsForVpcRequestMaxResults? = nil,
+                nextToken: String? = nil,
+                vpcId: VpcId) {
+        self.dryRun = dryRun
+        self.filters = filters
+        self.maxResults = maxResults
+        self.nextToken = nextToken
+        self.vpcId = vpcId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case dryRun = "DryRun"
+        case filters = "Filter"
+        case maxResults = "MaxResults"
+        case nextToken = "NextToken"
+        case vpcId = "VpcId"
+    }
+
+    public func validate() throws {
+        try maxResults?.validateAsGetSecurityGroupsForVpcRequestMaxResults()
+    }
+}
+
+public struct GetSecurityGroupsForVpcResult: Codable, Equatable {
+    public var nextToken: String?
+    public var securityGroupForVpcs: SecurityGroupForVpcList?
+
+    public init(nextToken: String? = nil,
+                securityGroupForVpcs: SecurityGroupForVpcList? = nil) {
+        self.nextToken = nextToken
+        self.securityGroupForVpcs = securityGroupForVpcs
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case nextToken
+        case securityGroupForVpcs = "securityGroupForVpcSet"
+    }
+
+    public func validate() throws {
     }
 }
 
@@ -27074,6 +27341,7 @@ public struct Image: Codable, Equatable {
     public var ramdiskId: String?
     public var rootDeviceName: String?
     public var rootDeviceType: DeviceType?
+    public var sourceInstanceId: String?
     public var sriovNetSupport: String?
     public var state: ImageState?
     public var stateReason: StateReason?
@@ -27105,6 +27373,7 @@ public struct Image: Codable, Equatable {
                 ramdiskId: String? = nil,
                 rootDeviceName: String? = nil,
                 rootDeviceType: DeviceType? = nil,
+                sourceInstanceId: String? = nil,
                 sriovNetSupport: String? = nil,
                 state: ImageState? = nil,
                 stateReason: StateReason? = nil,
@@ -27135,6 +27404,7 @@ public struct Image: Codable, Equatable {
         self.ramdiskId = ramdiskId
         self.rootDeviceName = rootDeviceName
         self.rootDeviceType = rootDeviceType
+        self.sourceInstanceId = sourceInstanceId
         self.sriovNetSupport = sriovNetSupport
         self.state = state
         self.stateReason = stateReason
@@ -27168,6 +27438,7 @@ public struct Image: Codable, Equatable {
         case ramdiskId
         case rootDeviceName
         case rootDeviceType
+        case sourceInstanceId
         case sriovNetSupport
         case state = "imageState"
         case stateReason
@@ -28035,13 +28306,17 @@ public struct ImportVolumeTaskDetails: Codable, Equatable {
 
 public struct InferenceAcceleratorInfo: Codable, Equatable {
     public var accelerators: InferenceDeviceInfoList?
+    public var totalInferenceMemoryInMiB: TotalInferenceMemory?
 
-    public init(accelerators: InferenceDeviceInfoList? = nil) {
+    public init(accelerators: InferenceDeviceInfoList? = nil,
+                totalInferenceMemoryInMiB: TotalInferenceMemory? = nil) {
         self.accelerators = accelerators
+        self.totalInferenceMemoryInMiB = totalInferenceMemoryInMiB
     }
 
     enum CodingKeys: String, CodingKey {
         case accelerators
+        case totalInferenceMemoryInMiB
     }
 
     public func validate() throws {
@@ -28051,20 +28326,40 @@ public struct InferenceAcceleratorInfo: Codable, Equatable {
 public struct InferenceDeviceInfo: Codable, Equatable {
     public var count: InferenceDeviceCount?
     public var manufacturer: InferenceDeviceManufacturerName?
+    public var memoryInfo: InferenceDeviceMemoryInfo?
     public var name: InferenceDeviceName?
 
     public init(count: InferenceDeviceCount? = nil,
                 manufacturer: InferenceDeviceManufacturerName? = nil,
+                memoryInfo: InferenceDeviceMemoryInfo? = nil,
                 name: InferenceDeviceName? = nil) {
         self.count = count
         self.manufacturer = manufacturer
+        self.memoryInfo = memoryInfo
         self.name = name
     }
 
     enum CodingKeys: String, CodingKey {
         case count
         case manufacturer
+        case memoryInfo
         case name
+    }
+
+    public func validate() throws {
+        try memoryInfo?.validate()
+    }
+}
+
+public struct InferenceDeviceMemoryInfo: Codable, Equatable {
+    public var sizeInMiB: InferenceDeviceMemorySize?
+
+    public init(sizeInMiB: InferenceDeviceMemorySize? = nil) {
+        self.sizeInMiB = sizeInMiB
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case sizeInMiB
     }
 
     public func validate() throws {
@@ -28783,13 +29078,17 @@ public struct InstanceIpv4Prefix: Codable, Equatable {
 
 public struct InstanceIpv6Address: Codable, Equatable {
     public var ipv6Address: String?
+    public var isPrimaryIpv6: Boolean?
 
-    public init(ipv6Address: String? = nil) {
+    public init(ipv6Address: String? = nil,
+                isPrimaryIpv6: Boolean? = nil) {
         self.ipv6Address = ipv6Address
+        self.isPrimaryIpv6 = isPrimaryIpv6
     }
 
     enum CodingKeys: String, CodingKey {
         case ipv6Address
+        case isPrimaryIpv6
     }
 
     public func validate() throws {
@@ -29129,6 +29428,7 @@ public struct InstanceNetworkInterfaceSpecification: Codable, Equatable {
     public var ipv6Prefixes: Ipv6PrefixList?
     public var networkCardIndex: Integer?
     public var networkInterfaceId: NetworkInterfaceId?
+    public var primaryIpv6: Boolean?
     public var privateIpAddress: String?
     public var privateIpAddresses: PrivateIpAddressSpecificationList?
     public var secondaryPrivateIpAddressCount: Integer?
@@ -29149,6 +29449,7 @@ public struct InstanceNetworkInterfaceSpecification: Codable, Equatable {
                 ipv6Prefixes: Ipv6PrefixList? = nil,
                 networkCardIndex: Integer? = nil,
                 networkInterfaceId: NetworkInterfaceId? = nil,
+                primaryIpv6: Boolean? = nil,
                 privateIpAddress: String? = nil,
                 privateIpAddresses: PrivateIpAddressSpecificationList? = nil,
                 secondaryPrivateIpAddressCount: Integer? = nil,
@@ -29168,6 +29469,7 @@ public struct InstanceNetworkInterfaceSpecification: Codable, Equatable {
         self.ipv6Prefixes = ipv6Prefixes
         self.networkCardIndex = networkCardIndex
         self.networkInterfaceId = networkInterfaceId
+        self.primaryIpv6 = primaryIpv6
         self.privateIpAddress = privateIpAddress
         self.privateIpAddresses = privateIpAddresses
         self.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount
@@ -29190,6 +29492,7 @@ public struct InstanceNetworkInterfaceSpecification: Codable, Equatable {
         case ipv6Prefixes = "Ipv6Prefix"
         case networkCardIndex = "NetworkCardIndex"
         case networkInterfaceId
+        case primaryIpv6 = "PrimaryIpv6"
         case privateIpAddress
         case privateIpAddresses = "privateIpAddressesSet"
         case secondaryPrivateIpAddressCount
@@ -29733,6 +30036,8 @@ public struct InstanceTypeInfo: Codable, Equatable {
     public var memoryInfo: MemoryInfo?
     public var networkInfo: NetworkInfo?
     public var nitroEnclavesSupport: NitroEnclavesSupport?
+    public var nitroTpmInfo: NitroTpmInfo?
+    public var nitroTpmSupport: NitroTpmSupport?
     public var placementGroupInfo: PlacementGroupInfo?
     public var processorInfo: ProcessorInfo?
     public var supportedBootModes: BootModeTypeList?
@@ -29759,6 +30064,8 @@ public struct InstanceTypeInfo: Codable, Equatable {
                 memoryInfo: MemoryInfo? = nil,
                 networkInfo: NetworkInfo? = nil,
                 nitroEnclavesSupport: NitroEnclavesSupport? = nil,
+                nitroTpmInfo: NitroTpmInfo? = nil,
+                nitroTpmSupport: NitroTpmSupport? = nil,
                 placementGroupInfo: PlacementGroupInfo? = nil,
                 processorInfo: ProcessorInfo? = nil,
                 supportedBootModes: BootModeTypeList? = nil,
@@ -29784,6 +30091,8 @@ public struct InstanceTypeInfo: Codable, Equatable {
         self.memoryInfo = memoryInfo
         self.networkInfo = networkInfo
         self.nitroEnclavesSupport = nitroEnclavesSupport
+        self.nitroTpmInfo = nitroTpmInfo
+        self.nitroTpmSupport = nitroTpmSupport
         self.placementGroupInfo = placementGroupInfo
         self.processorInfo = processorInfo
         self.supportedBootModes = supportedBootModes
@@ -29812,6 +30121,8 @@ public struct InstanceTypeInfo: Codable, Equatable {
         case memoryInfo
         case networkInfo
         case nitroEnclavesSupport
+        case nitroTpmInfo
+        case nitroTpmSupport
         case placementGroupInfo
         case processorInfo
         case supportedBootModes
@@ -29829,6 +30140,7 @@ public struct InstanceTypeInfo: Codable, Equatable {
         try instanceStorageInfo?.validate()
         try memoryInfo?.validate()
         try networkInfo?.validate()
+        try nitroTpmInfo?.validate()
         try placementGroupInfo?.validate()
         try processorInfo?.validate()
         try vCpuInfo?.validate()
@@ -31697,6 +32009,7 @@ public struct LaunchTemplateInstanceNetworkInterfaceSpecification: Codable, Equa
     public var ipv6Prefixes: Ipv6PrefixListResponse?
     public var networkCardIndex: Integer?
     public var networkInterfaceId: NetworkInterfaceId?
+    public var primaryIpv6: Boolean?
     public var privateIpAddress: String?
     public var privateIpAddresses: PrivateIpAddressSpecificationList?
     public var secondaryPrivateIpAddressCount: Integer?
@@ -31717,6 +32030,7 @@ public struct LaunchTemplateInstanceNetworkInterfaceSpecification: Codable, Equa
                 ipv6Prefixes: Ipv6PrefixListResponse? = nil,
                 networkCardIndex: Integer? = nil,
                 networkInterfaceId: NetworkInterfaceId? = nil,
+                primaryIpv6: Boolean? = nil,
                 privateIpAddress: String? = nil,
                 privateIpAddresses: PrivateIpAddressSpecificationList? = nil,
                 secondaryPrivateIpAddressCount: Integer? = nil,
@@ -31736,6 +32050,7 @@ public struct LaunchTemplateInstanceNetworkInterfaceSpecification: Codable, Equa
         self.ipv6Prefixes = ipv6Prefixes
         self.networkCardIndex = networkCardIndex
         self.networkInterfaceId = networkInterfaceId
+        self.primaryIpv6 = primaryIpv6
         self.privateIpAddress = privateIpAddress
         self.privateIpAddresses = privateIpAddresses
         self.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount
@@ -31758,6 +32073,7 @@ public struct LaunchTemplateInstanceNetworkInterfaceSpecification: Codable, Equa
         case ipv6Prefixes = "ipv6PrefixSet"
         case networkCardIndex
         case networkInterfaceId
+        case primaryIpv6
         case privateIpAddress
         case privateIpAddresses = "privateIpAddressesSet"
         case secondaryPrivateIpAddressCount
@@ -31784,6 +32100,7 @@ public struct LaunchTemplateInstanceNetworkInterfaceSpecificationRequest: Codabl
     public var ipv6Prefixes: Ipv6PrefixList?
     public var networkCardIndex: Integer?
     public var networkInterfaceId: NetworkInterfaceId?
+    public var primaryIpv6: Boolean?
     public var privateIpAddress: String?
     public var privateIpAddresses: PrivateIpAddressSpecificationList?
     public var secondaryPrivateIpAddressCount: Integer?
@@ -31804,6 +32121,7 @@ public struct LaunchTemplateInstanceNetworkInterfaceSpecificationRequest: Codabl
                 ipv6Prefixes: Ipv6PrefixList? = nil,
                 networkCardIndex: Integer? = nil,
                 networkInterfaceId: NetworkInterfaceId? = nil,
+                primaryIpv6: Boolean? = nil,
                 privateIpAddress: String? = nil,
                 privateIpAddresses: PrivateIpAddressSpecificationList? = nil,
                 secondaryPrivateIpAddressCount: Integer? = nil,
@@ -31823,6 +32141,7 @@ public struct LaunchTemplateInstanceNetworkInterfaceSpecificationRequest: Codabl
         self.ipv6Prefixes = ipv6Prefixes
         self.networkCardIndex = networkCardIndex
         self.networkInterfaceId = networkInterfaceId
+        self.primaryIpv6 = primaryIpv6
         self.privateIpAddress = privateIpAddress
         self.privateIpAddresses = privateIpAddresses
         self.secondaryPrivateIpAddressCount = secondaryPrivateIpAddressCount
@@ -31845,6 +32164,7 @@ public struct LaunchTemplateInstanceNetworkInterfaceSpecificationRequest: Codabl
         case ipv6Prefixes = "Ipv6Prefix"
         case networkCardIndex = "NetworkCardIndex"
         case networkInterfaceId = "NetworkInterfaceId"
+        case primaryIpv6 = "PrimaryIpv6"
         case privateIpAddress = "PrivateIpAddress"
         case privateIpAddresses = "PrivateIpAddresses"
         case secondaryPrivateIpAddressCount = "SecondaryPrivateIpAddressCount"
@@ -34422,6 +34742,7 @@ public struct ModifyNetworkInterfaceAttributeRequest: Codable, Equatable {
     public var description: AttributeValue?
     public var dryRun: Boolean?
     public var enaSrdSpecification: EnaSrdSpecification?
+    public var enablePrimaryIpv6: Boolean?
     public var groups: SecurityGroupIdStringList?
     public var networkInterfaceId: NetworkInterfaceId
     public var sourceDestCheck: AttributeBooleanValue?
@@ -34430,6 +34751,7 @@ public struct ModifyNetworkInterfaceAttributeRequest: Codable, Equatable {
                 description: AttributeValue? = nil,
                 dryRun: Boolean? = nil,
                 enaSrdSpecification: EnaSrdSpecification? = nil,
+                enablePrimaryIpv6: Boolean? = nil,
                 groups: SecurityGroupIdStringList? = nil,
                 networkInterfaceId: NetworkInterfaceId,
                 sourceDestCheck: AttributeBooleanValue? = nil) {
@@ -34437,6 +34759,7 @@ public struct ModifyNetworkInterfaceAttributeRequest: Codable, Equatable {
         self.description = description
         self.dryRun = dryRun
         self.enaSrdSpecification = enaSrdSpecification
+        self.enablePrimaryIpv6 = enablePrimaryIpv6
         self.groups = groups
         self.networkInterfaceId = networkInterfaceId
         self.sourceDestCheck = sourceDestCheck
@@ -34447,6 +34770,7 @@ public struct ModifyNetworkInterfaceAttributeRequest: Codable, Equatable {
         case description
         case dryRun
         case enaSrdSpecification = "EnaSrdSpecification"
+        case enablePrimaryIpv6 = "EnablePrimaryIpv6"
         case groups = "SecurityGroupId"
         case networkInterfaceId
         case sourceDestCheck
@@ -35220,18 +35544,21 @@ public struct ModifyVerifiedAccessEndpointPolicyRequest: Codable, Equatable {
     public var clientToken: String?
     public var dryRun: Boolean?
     public var policyDocument: String?
-    public var policyEnabled: Boolean
+    public var policyEnabled: Boolean?
+    public var sseSpecification: VerifiedAccessSseSpecificationRequest?
     public var verifiedAccessEndpointId: VerifiedAccessEndpointId
 
     public init(clientToken: String? = nil,
                 dryRun: Boolean? = nil,
                 policyDocument: String? = nil,
-                policyEnabled: Boolean,
+                policyEnabled: Boolean? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationRequest? = nil,
                 verifiedAccessEndpointId: VerifiedAccessEndpointId) {
         self.clientToken = clientToken
         self.dryRun = dryRun
         self.policyDocument = policyDocument
         self.policyEnabled = policyEnabled
+        self.sseSpecification = sseSpecification
         self.verifiedAccessEndpointId = verifiedAccessEndpointId
     }
 
@@ -35240,29 +35567,36 @@ public struct ModifyVerifiedAccessEndpointPolicyRequest: Codable, Equatable {
         case dryRun = "DryRun"
         case policyDocument = "PolicyDocument"
         case policyEnabled = "PolicyEnabled"
+        case sseSpecification = "SseSpecification"
         case verifiedAccessEndpointId = "VerifiedAccessEndpointId"
     }
 
     public func validate() throws {
+        try sseSpecification?.validate()
     }
 }
 
 public struct ModifyVerifiedAccessEndpointPolicyResult: Codable, Equatable {
     public var policyDocument: String?
     public var policyEnabled: Boolean?
+    public var sseSpecification: VerifiedAccessSseSpecificationResponse?
 
     public init(policyDocument: String? = nil,
-                policyEnabled: Boolean? = nil) {
+                policyEnabled: Boolean? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationResponse? = nil) {
         self.policyDocument = policyDocument
         self.policyEnabled = policyEnabled
+        self.sseSpecification = sseSpecification
     }
 
     enum CodingKeys: String, CodingKey {
         case policyDocument
         case policyEnabled
+        case sseSpecification
     }
 
     public func validate() throws {
+        try sseSpecification?.validate()
     }
 }
 
@@ -35327,18 +35661,21 @@ public struct ModifyVerifiedAccessGroupPolicyRequest: Codable, Equatable {
     public var clientToken: String?
     public var dryRun: Boolean?
     public var policyDocument: String?
-    public var policyEnabled: Boolean
+    public var policyEnabled: Boolean?
+    public var sseSpecification: VerifiedAccessSseSpecificationRequest?
     public var verifiedAccessGroupId: VerifiedAccessGroupId
 
     public init(clientToken: String? = nil,
                 dryRun: Boolean? = nil,
                 policyDocument: String? = nil,
-                policyEnabled: Boolean,
+                policyEnabled: Boolean? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationRequest? = nil,
                 verifiedAccessGroupId: VerifiedAccessGroupId) {
         self.clientToken = clientToken
         self.dryRun = dryRun
         self.policyDocument = policyDocument
         self.policyEnabled = policyEnabled
+        self.sseSpecification = sseSpecification
         self.verifiedAccessGroupId = verifiedAccessGroupId
     }
 
@@ -35347,29 +35684,36 @@ public struct ModifyVerifiedAccessGroupPolicyRequest: Codable, Equatable {
         case dryRun = "DryRun"
         case policyDocument = "PolicyDocument"
         case policyEnabled = "PolicyEnabled"
+        case sseSpecification = "SseSpecification"
         case verifiedAccessGroupId = "VerifiedAccessGroupId"
     }
 
     public func validate() throws {
+        try sseSpecification?.validate()
     }
 }
 
 public struct ModifyVerifiedAccessGroupPolicyResult: Codable, Equatable {
     public var policyDocument: String?
     public var policyEnabled: Boolean?
+    public var sseSpecification: VerifiedAccessSseSpecificationResponse?
 
     public init(policyDocument: String? = nil,
-                policyEnabled: Boolean? = nil) {
+                policyEnabled: Boolean? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationResponse? = nil) {
         self.policyDocument = policyDocument
         self.policyEnabled = policyEnabled
+        self.sseSpecification = sseSpecification
     }
 
     enum CodingKeys: String, CodingKey {
         case policyDocument
         case policyEnabled
+        case sseSpecification
     }
 
     public func validate() throws {
+        try sseSpecification?.validate()
     }
 }
 
@@ -35551,17 +35895,20 @@ public struct ModifyVerifiedAccessTrustProviderRequest: Codable, Equatable {
     public var description: String?
     public var dryRun: Boolean?
     public var oidcOptions: ModifyVerifiedAccessTrustProviderOidcOptions?
+    public var sseSpecification: VerifiedAccessSseSpecificationRequest?
     public var verifiedAccessTrustProviderId: VerifiedAccessTrustProviderId
 
     public init(clientToken: String? = nil,
                 description: String? = nil,
                 dryRun: Boolean? = nil,
                 oidcOptions: ModifyVerifiedAccessTrustProviderOidcOptions? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationRequest? = nil,
                 verifiedAccessTrustProviderId: VerifiedAccessTrustProviderId) {
         self.clientToken = clientToken
         self.description = description
         self.dryRun = dryRun
         self.oidcOptions = oidcOptions
+        self.sseSpecification = sseSpecification
         self.verifiedAccessTrustProviderId = verifiedAccessTrustProviderId
     }
 
@@ -35570,11 +35917,13 @@ public struct ModifyVerifiedAccessTrustProviderRequest: Codable, Equatable {
         case description = "Description"
         case dryRun = "DryRun"
         case oidcOptions = "OidcOptions"
+        case sseSpecification = "SseSpecification"
         case verifiedAccessTrustProviderId = "VerifiedAccessTrustProviderId"
     }
 
     public func validate() throws {
         try oidcOptions?.validate()
+        try sseSpecification?.validate()
     }
 }
 
@@ -35758,6 +36107,7 @@ public struct ModifyVpcEndpointRequest: Codable, Equatable {
     public var removeSecurityGroupIds: VpcEndpointSecurityGroupIdList?
     public var removeSubnetIds: VpcEndpointSubnetIdList?
     public var resetPolicy: Boolean?
+    public var subnetConfigurations: SubnetConfigurationsList?
     public var vpcEndpointId: VpcEndpointId
 
     public init(addRouteTableIds: VpcEndpointRouteTableIdList? = nil,
@@ -35772,6 +36122,7 @@ public struct ModifyVpcEndpointRequest: Codable, Equatable {
                 removeSecurityGroupIds: VpcEndpointSecurityGroupIdList? = nil,
                 removeSubnetIds: VpcEndpointSubnetIdList? = nil,
                 resetPolicy: Boolean? = nil,
+                subnetConfigurations: SubnetConfigurationsList? = nil,
                 vpcEndpointId: VpcEndpointId) {
         self.addRouteTableIds = addRouteTableIds
         self.addSecurityGroupIds = addSecurityGroupIds
@@ -35785,6 +36136,7 @@ public struct ModifyVpcEndpointRequest: Codable, Equatable {
         self.removeSecurityGroupIds = removeSecurityGroupIds
         self.removeSubnetIds = removeSubnetIds
         self.resetPolicy = resetPolicy
+        self.subnetConfigurations = subnetConfigurations
         self.vpcEndpointId = vpcEndpointId
     }
 
@@ -35801,6 +36153,7 @@ public struct ModifyVpcEndpointRequest: Codable, Equatable {
         case removeSecurityGroupIds = "RemoveSecurityGroupId"
         case removeSubnetIds = "RemoveSubnetId"
         case resetPolicy = "ResetPolicy"
+        case subnetConfigurations = "SubnetConfiguration"
         case vpcEndpointId = "VpcEndpointId"
     }
 
@@ -36741,22 +37094,30 @@ public struct NetworkBandwidthGbpsRequest: Codable, Equatable {
 }
 
 public struct NetworkCardInfo: Codable, Equatable {
+    public var baselineBandwidthInGbps: BaselineBandwidthInGbps?
     public var maximumNetworkInterfaces: MaxNetworkInterfaces?
     public var networkCardIndex: NetworkCardIndex?
     public var networkPerformance: NetworkPerformance?
+    public var peakBandwidthInGbps: PeakBandwidthInGbps?
 
-    public init(maximumNetworkInterfaces: MaxNetworkInterfaces? = nil,
+    public init(baselineBandwidthInGbps: BaselineBandwidthInGbps? = nil,
+                maximumNetworkInterfaces: MaxNetworkInterfaces? = nil,
                 networkCardIndex: NetworkCardIndex? = nil,
-                networkPerformance: NetworkPerformance? = nil) {
+                networkPerformance: NetworkPerformance? = nil,
+                peakBandwidthInGbps: PeakBandwidthInGbps? = nil) {
+        self.baselineBandwidthInGbps = baselineBandwidthInGbps
         self.maximumNetworkInterfaces = maximumNetworkInterfaces
         self.networkCardIndex = networkCardIndex
         self.networkPerformance = networkPerformance
+        self.peakBandwidthInGbps = peakBandwidthInGbps
     }
 
     enum CodingKeys: String, CodingKey {
+        case baselineBandwidthInGbps
         case maximumNetworkInterfaces
         case networkCardIndex
         case networkPerformance
+        case peakBandwidthInGbps
     }
 
     public func validate() throws {
@@ -37351,13 +37712,17 @@ public struct NetworkInterfaceCountRequest: Codable, Equatable {
 
 public struct NetworkInterfaceIpv6Address: Codable, Equatable {
     public var ipv6Address: String?
+    public var isPrimaryIpv6: Boolean?
 
-    public init(ipv6Address: String? = nil) {
+    public init(ipv6Address: String? = nil,
+                isPrimaryIpv6: Boolean? = nil) {
         self.ipv6Address = ipv6Address
+        self.isPrimaryIpv6 = isPrimaryIpv6
     }
 
     enum CodingKeys: String, CodingKey {
         case ipv6Address
+        case isPrimaryIpv6
     }
 
     public func validate() throws {
@@ -37460,6 +37825,21 @@ public struct NewDhcpConfiguration: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case key
         case values = "Value"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct NitroTpmInfo: Codable, Equatable {
+    public var supportedVersions: NitroTpmSupportedVersionsList?
+
+    public init(supportedVersions: NitroTpmSupportedVersionsList? = nil) {
+        self.supportedVersions = supportedVersions
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case supportedVersions
     }
 
     public func validate() throws {
@@ -41610,6 +41990,7 @@ public struct RestoreSnapshotFromRecycleBinResult: Codable, Equatable {
     public var ownerId: String?
     public var progress: String?
     public var snapshotId: String?
+    public var sseType: SSEType?
     public var startTime: MillisecondDateTime?
     public var state: SnapshotState?
     public var volumeId: String?
@@ -41621,6 +42002,7 @@ public struct RestoreSnapshotFromRecycleBinResult: Codable, Equatable {
                 ownerId: String? = nil,
                 progress: String? = nil,
                 snapshotId: String? = nil,
+                sseType: SSEType? = nil,
                 startTime: MillisecondDateTime? = nil,
                 state: SnapshotState? = nil,
                 volumeId: String? = nil,
@@ -41631,6 +42013,7 @@ public struct RestoreSnapshotFromRecycleBinResult: Codable, Equatable {
         self.ownerId = ownerId
         self.progress = progress
         self.snapshotId = snapshotId
+        self.sseType = sseType
         self.startTime = startTime
         self.state = state
         self.volumeId = volumeId
@@ -41644,6 +42027,7 @@ public struct RestoreSnapshotFromRecycleBinResult: Codable, Equatable {
         case ownerId
         case progress
         case snapshotId
+        case sseType
         case startTime
         case state = "status"
         case volumeId
@@ -42155,6 +42539,7 @@ public struct RunInstancesRequest: Codable, Equatable {
     public var ebsOptimized: Boolean?
     public var elasticGpuSpecification: ElasticGpuSpecifications?
     public var elasticInferenceAccelerators: ElasticInferenceAccelerators?
+    public var enablePrimaryIpv6: Boolean?
     public var enclaveOptions: EnclaveOptionsRequest?
     public var hibernationOptions: HibernationOptionsRequest?
     public var iamInstanceProfile: IamInstanceProfileSpecification?
@@ -42196,6 +42581,7 @@ public struct RunInstancesRequest: Codable, Equatable {
                 ebsOptimized: Boolean? = nil,
                 elasticGpuSpecification: ElasticGpuSpecifications? = nil,
                 elasticInferenceAccelerators: ElasticInferenceAccelerators? = nil,
+                enablePrimaryIpv6: Boolean? = nil,
                 enclaveOptions: EnclaveOptionsRequest? = nil,
                 hibernationOptions: HibernationOptionsRequest? = nil,
                 iamInstanceProfile: IamInstanceProfileSpecification? = nil,
@@ -42236,6 +42622,7 @@ public struct RunInstancesRequest: Codable, Equatable {
         self.ebsOptimized = ebsOptimized
         self.elasticGpuSpecification = elasticGpuSpecification
         self.elasticInferenceAccelerators = elasticInferenceAccelerators
+        self.enablePrimaryIpv6 = enablePrimaryIpv6
         self.enclaveOptions = enclaveOptions
         self.hibernationOptions = hibernationOptions
         self.iamInstanceProfile = iamInstanceProfile
@@ -42279,6 +42666,7 @@ public struct RunInstancesRequest: Codable, Equatable {
         case ebsOptimized
         case elasticGpuSpecification = "ElasticGpuSpecification"
         case elasticInferenceAccelerators = "ElasticInferenceAccelerator"
+        case enablePrimaryIpv6 = "EnablePrimaryIpv6"
         case enclaveOptions = "EnclaveOptions"
         case hibernationOptions = "HibernationOptions"
         case iamInstanceProfile
@@ -42397,13 +42785,13 @@ public struct S3Storage: Codable, Equatable {
     public var bucket: String?
     public var prefix: String?
     public var uploadPolicy: Blob?
-    public var uploadPolicySignature: String?
+    public var uploadPolicySignature: S3StorageUploadPolicySignature?
 
     public init(aWSAccessKeyId: String? = nil,
                 bucket: String? = nil,
                 prefix: String? = nil,
                 uploadPolicy: Blob? = nil,
-                uploadPolicySignature: String? = nil) {
+                uploadPolicySignature: S3StorageUploadPolicySignature? = nil) {
         self.aWSAccessKeyId = aWSAccessKeyId
         self.bucket = bucket
         self.prefix = prefix
@@ -43091,6 +43479,41 @@ public struct SecurityGroup: Codable, Equatable {
     }
 }
 
+public struct SecurityGroupForVpc: Codable, Equatable {
+    public var description: String?
+    public var groupId: String?
+    public var groupName: String?
+    public var ownerId: String?
+    public var primaryVpcId: String?
+    public var tags: TagList?
+
+    public init(description: String? = nil,
+                groupId: String? = nil,
+                groupName: String? = nil,
+                ownerId: String? = nil,
+                primaryVpcId: String? = nil,
+                tags: TagList? = nil) {
+        self.description = description
+        self.groupId = groupId
+        self.groupName = groupName
+        self.ownerId = ownerId
+        self.primaryVpcId = primaryVpcId
+        self.tags = tags
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case description
+        case groupId
+        case groupName
+        case ownerId
+        case primaryVpcId
+        case tags = "tagSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct SecurityGroupIdentifier: Codable, Equatable {
     public var groupId: String?
     public var groupName: String?
@@ -43507,6 +43930,7 @@ public struct Snapshot: Codable, Equatable {
     public var progress: String?
     public var restoreExpiryTime: MillisecondDateTime?
     public var snapshotId: String?
+    public var sseType: SSEType?
     public var startTime: DateTime?
     public var state: SnapshotState?
     public var stateMessage: String?
@@ -43525,6 +43949,7 @@ public struct Snapshot: Codable, Equatable {
                 progress: String? = nil,
                 restoreExpiryTime: MillisecondDateTime? = nil,
                 snapshotId: String? = nil,
+                sseType: SSEType? = nil,
                 startTime: DateTime? = nil,
                 state: SnapshotState? = nil,
                 stateMessage: String? = nil,
@@ -43542,6 +43967,7 @@ public struct Snapshot: Codable, Equatable {
         self.progress = progress
         self.restoreExpiryTime = restoreExpiryTime
         self.snapshotId = snapshotId
+        self.sseType = sseType
         self.startTime = startTime
         self.state = state
         self.stateMessage = stateMessage
@@ -43562,6 +43988,7 @@ public struct Snapshot: Codable, Equatable {
         case progress
         case restoreExpiryTime
         case snapshotId
+        case sseType
         case startTime
         case state = "status"
         case stateMessage = "statusMessage"
@@ -43662,6 +44089,7 @@ public struct SnapshotInfo: Codable, Equatable {
     public var ownerId: String?
     public var progress: String?
     public var snapshotId: String?
+    public var sseType: SSEType?
     public var startTime: MillisecondDateTime?
     public var state: SnapshotState?
     public var tags: TagList?
@@ -43674,6 +44102,7 @@ public struct SnapshotInfo: Codable, Equatable {
                 ownerId: String? = nil,
                 progress: String? = nil,
                 snapshotId: String? = nil,
+                sseType: SSEType? = nil,
                 startTime: MillisecondDateTime? = nil,
                 state: SnapshotState? = nil,
                 tags: TagList? = nil,
@@ -43685,6 +44114,7 @@ public struct SnapshotInfo: Codable, Equatable {
         self.ownerId = ownerId
         self.progress = progress
         self.snapshotId = snapshotId
+        self.sseType = sseType
         self.startTime = startTime
         self.state = state
         self.tags = tags
@@ -43699,6 +44129,7 @@ public struct SnapshotInfo: Codable, Equatable {
         case ownerId
         case progress
         case snapshotId
+        case sseType
         case startTime
         case state
         case tags = "tagSet"
@@ -45067,6 +45498,29 @@ public struct SubnetCidrReservation: Codable, Equatable {
         case subnetCidrReservationId
         case subnetId
         case tags = "tagSet"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct SubnetConfiguration: Codable, Equatable {
+    public var ipv4: String?
+    public var ipv6: String?
+    public var subnetId: SubnetId?
+
+    public init(ipv4: String? = nil,
+                ipv6: String? = nil,
+                subnetId: SubnetId? = nil) {
+        self.ipv4 = ipv4
+        self.ipv6 = ipv6
+        self.subnetId = subnetId
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case ipv4 = "Ipv4"
+        case ipv6 = "Ipv6"
+        case subnetId = "SubnetId"
     }
 
     public func validate() throws {
@@ -47807,6 +48261,7 @@ public struct VerifiedAccessEndpoint: Codable, Equatable {
     public var loadBalancerOptions: VerifiedAccessEndpointLoadBalancerOptions?
     public var networkInterfaceOptions: VerifiedAccessEndpointEniOptions?
     public var securityGroupIds: SecurityGroupIdList?
+    public var sseSpecification: VerifiedAccessSseSpecificationResponse?
     public var status: VerifiedAccessEndpointStatus?
     public var tags: TagList?
     public var verifiedAccessEndpointId: String?
@@ -47826,6 +48281,7 @@ public struct VerifiedAccessEndpoint: Codable, Equatable {
                 loadBalancerOptions: VerifiedAccessEndpointLoadBalancerOptions? = nil,
                 networkInterfaceOptions: VerifiedAccessEndpointEniOptions? = nil,
                 securityGroupIds: SecurityGroupIdList? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationResponse? = nil,
                 status: VerifiedAccessEndpointStatus? = nil,
                 tags: TagList? = nil,
                 verifiedAccessEndpointId: String? = nil,
@@ -47844,6 +48300,7 @@ public struct VerifiedAccessEndpoint: Codable, Equatable {
         self.loadBalancerOptions = loadBalancerOptions
         self.networkInterfaceOptions = networkInterfaceOptions
         self.securityGroupIds = securityGroupIds
+        self.sseSpecification = sseSpecification
         self.status = status
         self.tags = tags
         self.verifiedAccessEndpointId = verifiedAccessEndpointId
@@ -47865,6 +48322,7 @@ public struct VerifiedAccessEndpoint: Codable, Equatable {
         case loadBalancerOptions
         case networkInterfaceOptions
         case securityGroupIds = "securityGroupIdSet"
+        case sseSpecification
         case status
         case tags = "tagSet"
         case verifiedAccessEndpointId
@@ -47875,6 +48333,7 @@ public struct VerifiedAccessEndpoint: Codable, Equatable {
     public func validate() throws {
         try loadBalancerOptions?.validate()
         try networkInterfaceOptions?.validate()
+        try sseSpecification?.validate()
         try status?.validate()
     }
 }
@@ -47956,6 +48415,7 @@ public struct VerifiedAccessGroup: Codable, Equatable {
     public var description: String?
     public var lastUpdatedTime: String?
     public var owner: String?
+    public var sseSpecification: VerifiedAccessSseSpecificationResponse?
     public var tags: TagList?
     public var verifiedAccessGroupArn: String?
     public var verifiedAccessGroupId: String?
@@ -47966,6 +48426,7 @@ public struct VerifiedAccessGroup: Codable, Equatable {
                 description: String? = nil,
                 lastUpdatedTime: String? = nil,
                 owner: String? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationResponse? = nil,
                 tags: TagList? = nil,
                 verifiedAccessGroupArn: String? = nil,
                 verifiedAccessGroupId: String? = nil,
@@ -47975,6 +48436,7 @@ public struct VerifiedAccessGroup: Codable, Equatable {
         self.description = description
         self.lastUpdatedTime = lastUpdatedTime
         self.owner = owner
+        self.sseSpecification = sseSpecification
         self.tags = tags
         self.verifiedAccessGroupArn = verifiedAccessGroupArn
         self.verifiedAccessGroupId = verifiedAccessGroupId
@@ -47987,6 +48449,7 @@ public struct VerifiedAccessGroup: Codable, Equatable {
         case description
         case lastUpdatedTime
         case owner
+        case sseSpecification
         case tags = "tagSet"
         case verifiedAccessGroupArn
         case verifiedAccessGroupId
@@ -47994,12 +48457,14 @@ public struct VerifiedAccessGroup: Codable, Equatable {
     }
 
     public func validate() throws {
+        try sseSpecification?.validate()
     }
 }
 
 public struct VerifiedAccessInstance: Codable, Equatable {
     public var creationTime: String?
     public var description: String?
+    public var fipsEnabled: Boolean?
     public var lastUpdatedTime: String?
     public var tags: TagList?
     public var verifiedAccessInstanceId: String?
@@ -48007,12 +48472,14 @@ public struct VerifiedAccessInstance: Codable, Equatable {
 
     public init(creationTime: String? = nil,
                 description: String? = nil,
+                fipsEnabled: Boolean? = nil,
                 lastUpdatedTime: String? = nil,
                 tags: TagList? = nil,
                 verifiedAccessInstanceId: String? = nil,
                 verifiedAccessTrustProviders: VerifiedAccessTrustProviderCondensedList? = nil) {
         self.creationTime = creationTime
         self.description = description
+        self.fipsEnabled = fipsEnabled
         self.lastUpdatedTime = lastUpdatedTime
         self.tags = tags
         self.verifiedAccessInstanceId = verifiedAccessInstanceId
@@ -48022,6 +48489,7 @@ public struct VerifiedAccessInstance: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case creationTime
         case description
+        case fipsEnabled
         case lastUpdatedTime
         case tags = "tagSet"
         case verifiedAccessInstanceId
@@ -48284,6 +48752,44 @@ public struct VerifiedAccessLogs: Codable, Equatable {
     }
 }
 
+public struct VerifiedAccessSseSpecificationRequest: Codable, Equatable {
+    public var customerManagedKeyEnabled: Boolean?
+    public var kmsKeyArn: KmsKeyArn?
+
+    public init(customerManagedKeyEnabled: Boolean? = nil,
+                kmsKeyArn: KmsKeyArn? = nil) {
+        self.customerManagedKeyEnabled = customerManagedKeyEnabled
+        self.kmsKeyArn = kmsKeyArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customerManagedKeyEnabled = "CustomerManagedKeyEnabled"
+        case kmsKeyArn = "KmsKeyArn"
+    }
+
+    public func validate() throws {
+    }
+}
+
+public struct VerifiedAccessSseSpecificationResponse: Codable, Equatable {
+    public var customerManagedKeyEnabled: Boolean?
+    public var kmsKeyArn: KmsKeyArn?
+
+    public init(customerManagedKeyEnabled: Boolean? = nil,
+                kmsKeyArn: KmsKeyArn? = nil) {
+        self.customerManagedKeyEnabled = customerManagedKeyEnabled
+        self.kmsKeyArn = kmsKeyArn
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case customerManagedKeyEnabled
+        case kmsKeyArn
+    }
+
+    public func validate() throws {
+    }
+}
+
 public struct VerifiedAccessTrustProvider: Codable, Equatable {
     public var creationTime: String?
     public var description: String?
@@ -48292,6 +48798,7 @@ public struct VerifiedAccessTrustProvider: Codable, Equatable {
     public var lastUpdatedTime: String?
     public var oidcOptions: OidcOptions?
     public var policyReferenceName: String?
+    public var sseSpecification: VerifiedAccessSseSpecificationResponse?
     public var tags: TagList?
     public var trustProviderType: TrustProviderType?
     public var userTrustProviderType: UserTrustProviderType?
@@ -48304,6 +48811,7 @@ public struct VerifiedAccessTrustProvider: Codable, Equatable {
                 lastUpdatedTime: String? = nil,
                 oidcOptions: OidcOptions? = nil,
                 policyReferenceName: String? = nil,
+                sseSpecification: VerifiedAccessSseSpecificationResponse? = nil,
                 tags: TagList? = nil,
                 trustProviderType: TrustProviderType? = nil,
                 userTrustProviderType: UserTrustProviderType? = nil,
@@ -48315,6 +48823,7 @@ public struct VerifiedAccessTrustProvider: Codable, Equatable {
         self.lastUpdatedTime = lastUpdatedTime
         self.oidcOptions = oidcOptions
         self.policyReferenceName = policyReferenceName
+        self.sseSpecification = sseSpecification
         self.tags = tags
         self.trustProviderType = trustProviderType
         self.userTrustProviderType = userTrustProviderType
@@ -48329,6 +48838,7 @@ public struct VerifiedAccessTrustProvider: Codable, Equatable {
         case lastUpdatedTime
         case oidcOptions
         case policyReferenceName
+        case sseSpecification
         case tags = "tagSet"
         case trustProviderType
         case userTrustProviderType
@@ -48338,6 +48848,7 @@ public struct VerifiedAccessTrustProvider: Codable, Equatable {
     public func validate() throws {
         try deviceOptions?.validate()
         try oidcOptions?.validate()
+        try sseSpecification?.validate()
     }
 }
 
@@ -48419,6 +48930,7 @@ public struct Volume: Codable, Equatable {
     public var outpostArn: String?
     public var size: Integer?
     public var snapshotId: String?
+    public var sseType: SSEType?
     public var state: VolumeState?
     public var tags: TagList?
     public var throughput: Integer?
@@ -48436,6 +48948,7 @@ public struct Volume: Codable, Equatable {
                 outpostArn: String? = nil,
                 size: Integer? = nil,
                 snapshotId: String? = nil,
+                sseType: SSEType? = nil,
                 state: VolumeState? = nil,
                 tags: TagList? = nil,
                 throughput: Integer? = nil,
@@ -48452,6 +48965,7 @@ public struct Volume: Codable, Equatable {
         self.outpostArn = outpostArn
         self.size = size
         self.snapshotId = snapshotId
+        self.sseType = sseType
         self.state = state
         self.tags = tags
         self.throughput = throughput
@@ -48471,6 +48985,7 @@ public struct Volume: Codable, Equatable {
         case outpostArn
         case size
         case snapshotId
+        case sseType
         case state = "status"
         case tags = "tagSet"
         case throughput

@@ -64,6 +64,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
     let deleteBlueGreenDeploymentOverride: DeleteBlueGreenDeploymentFunctionType?
     let deleteCustomDBEngineVersionOverride: DeleteCustomDBEngineVersionFunctionType?
     let deleteDBClusterOverride: DeleteDBClusterFunctionType?
+    let deleteDBClusterAutomatedBackupOverride: DeleteDBClusterAutomatedBackupFunctionType?
     let deleteDBClusterEndpointOverride: DeleteDBClusterEndpointFunctionType?
     let deleteDBClusterParameterGroupOverride: DeleteDBClusterParameterGroupFunctionType?
     let deleteDBClusterSnapshotOverride: DeleteDBClusterSnapshotFunctionType?
@@ -82,6 +83,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
     let describeAccountAttributesOverride: DescribeAccountAttributesFunctionType?
     let describeBlueGreenDeploymentsOverride: DescribeBlueGreenDeploymentsFunctionType?
     let describeCertificatesOverride: DescribeCertificatesFunctionType?
+    let describeDBClusterAutomatedBackupsOverride: DescribeDBClusterAutomatedBackupsFunctionType?
     let describeDBClusterBacktracksOverride: DescribeDBClusterBacktracksFunctionType?
     let describeDBClusterEndpointsOverride: DescribeDBClusterEndpointsFunctionType?
     let describeDBClusterParameterGroupsOverride: DescribeDBClusterParameterGroupsFunctionType?
@@ -171,6 +173,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
     let stopDBInstanceOverride: StopDBInstanceFunctionType?
     let stopDBInstanceAutomatedBackupsReplicationOverride: StopDBInstanceAutomatedBackupsReplicationFunctionType?
     let switchoverBlueGreenDeploymentOverride: SwitchoverBlueGreenDeploymentFunctionType?
+    let switchoverGlobalClusterOverride: SwitchoverGlobalClusterFunctionType?
     let switchoverReadReplicaOverride: SwitchoverReadReplicaFunctionType?
 
     /**
@@ -211,6 +214,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
             deleteBlueGreenDeployment: DeleteBlueGreenDeploymentFunctionType? = nil,
             deleteCustomDBEngineVersion: DeleteCustomDBEngineVersionFunctionType? = nil,
             deleteDBCluster: DeleteDBClusterFunctionType? = nil,
+            deleteDBClusterAutomatedBackup: DeleteDBClusterAutomatedBackupFunctionType? = nil,
             deleteDBClusterEndpoint: DeleteDBClusterEndpointFunctionType? = nil,
             deleteDBClusterParameterGroup: DeleteDBClusterParameterGroupFunctionType? = nil,
             deleteDBClusterSnapshot: DeleteDBClusterSnapshotFunctionType? = nil,
@@ -229,6 +233,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
             describeAccountAttributes: DescribeAccountAttributesFunctionType? = nil,
             describeBlueGreenDeployments: DescribeBlueGreenDeploymentsFunctionType? = nil,
             describeCertificates: DescribeCertificatesFunctionType? = nil,
+            describeDBClusterAutomatedBackups: DescribeDBClusterAutomatedBackupsFunctionType? = nil,
             describeDBClusterBacktracks: DescribeDBClusterBacktracksFunctionType? = nil,
             describeDBClusterEndpoints: DescribeDBClusterEndpointsFunctionType? = nil,
             describeDBClusterParameterGroups: DescribeDBClusterParameterGroupsFunctionType? = nil,
@@ -318,6 +323,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
             stopDBInstance: StopDBInstanceFunctionType? = nil,
             stopDBInstanceAutomatedBackupsReplication: StopDBInstanceAutomatedBackupsReplicationFunctionType? = nil,
             switchoverBlueGreenDeployment: SwitchoverBlueGreenDeploymentFunctionType? = nil,
+            switchoverGlobalCluster: SwitchoverGlobalClusterFunctionType? = nil,
             switchoverReadReplica: SwitchoverReadReplicaFunctionType? = nil) {
         self.error = error
         self.addRoleToDBClusterOverride = addRoleToDBCluster
@@ -353,6 +359,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
         self.deleteBlueGreenDeploymentOverride = deleteBlueGreenDeployment
         self.deleteCustomDBEngineVersionOverride = deleteCustomDBEngineVersion
         self.deleteDBClusterOverride = deleteDBCluster
+        self.deleteDBClusterAutomatedBackupOverride = deleteDBClusterAutomatedBackup
         self.deleteDBClusterEndpointOverride = deleteDBClusterEndpoint
         self.deleteDBClusterParameterGroupOverride = deleteDBClusterParameterGroup
         self.deleteDBClusterSnapshotOverride = deleteDBClusterSnapshot
@@ -371,6 +378,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
         self.describeAccountAttributesOverride = describeAccountAttributes
         self.describeBlueGreenDeploymentsOverride = describeBlueGreenDeployments
         self.describeCertificatesOverride = describeCertificates
+        self.describeDBClusterAutomatedBackupsOverride = describeDBClusterAutomatedBackups
         self.describeDBClusterBacktracksOverride = describeDBClusterBacktracks
         self.describeDBClusterEndpointsOverride = describeDBClusterEndpoints
         self.describeDBClusterParameterGroupsOverride = describeDBClusterParameterGroups
@@ -460,6 +468,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
         self.stopDBInstanceOverride = stopDBInstance
         self.stopDBInstanceAutomatedBackupsReplicationOverride = stopDBInstanceAutomatedBackupsReplication
         self.switchoverBlueGreenDeploymentOverride = switchoverBlueGreenDeployment
+        self.switchoverGlobalClusterOverride = switchoverGlobalCluster
         self.switchoverReadReplicaOverride = switchoverReadReplica
     }
 
@@ -1040,12 +1049,30 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
          - input: The validated DeleteDBClusterMessage object being passed to this operation.
      - Returns: The DeleteDBClusterResultForDeleteDBCluster object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
+     - Throws: dBClusterAutomatedBackupQuotaExceeded, dBClusterNotFound, dBClusterSnapshotAlreadyExists, invalidDBClusterSnapshotState, invalidDBClusterState, snapshotQuotaExceeded.
      */
     public func deleteDBCluster(
             input: RDSModel.DeleteDBClusterMessage) async throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
         if let deleteDBClusterOverride = deleteDBClusterOverride {
             return try await deleteDBClusterOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DeleteDBClusterAutomatedBackup operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DeleteDBClusterAutomatedBackupMessage object being passed to this operation.
+     - Returns: The DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterAutomatedBackupNotFound, invalidDBClusterAutomatedBackupState.
+     */
+    public func deleteDBClusterAutomatedBackup(
+            input: RDSModel.DeleteDBClusterAutomatedBackupMessage) async throws -> RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup {
+        if let deleteDBClusterAutomatedBackupOverride = deleteDBClusterAutomatedBackupOverride {
+            return try await deleteDBClusterAutomatedBackupOverride(input)
         }
 
         throw error
@@ -1359,6 +1386,24 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
             input: RDSModel.DescribeCertificatesMessage) async throws -> RDSModel.CertificateMessageForDescribeCertificates {
         if let describeCertificatesOverride = describeCertificatesOverride {
             return try await describeCertificatesOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the DescribeDBClusterAutomatedBackups operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DescribeDBClusterAutomatedBackupsMessage object being passed to this operation.
+     - Returns: The DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterAutomatedBackupNotFound.
+     */
+    public func describeDBClusterAutomatedBackups(
+            input: RDSModel.DescribeDBClusterAutomatedBackupsMessage) async throws -> RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups {
+        if let describeDBClusterAutomatedBackupsOverride = describeDBClusterAutomatedBackupsOverride {
+            return try await describeDBClusterAutomatedBackupsOverride(input)
         }
 
         throw error
@@ -2671,7 +2716,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
          - input: The validated RestoreDBClusterFromSnapshotMessage object being passed to this operation.
      - Returns: The RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSnapshotNotFound, dBSubnetGroupDoesNotCoverEnoughAZs, dBSubnetGroupNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBInstanceState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded, storageQuotaExceeded.
      */
     public func restoreDBClusterFromSnapshot(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage) async throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
@@ -2689,7 +2734,7 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
          - input: The validated RestoreDBClusterToPointInTimeMessage object being passed to this operation.
      - Returns: The RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: dBClusterAlreadyExists, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
+     - Throws: dBClusterAlreadyExists, dBClusterAutomatedBackupNotFound, dBClusterNotFound, dBClusterParameterGroupNotFound, dBClusterQuotaExceeded, dBClusterSnapshotNotFound, dBSubnetGroupNotFound, domainNotFound, insufficientDBClusterCapacity, insufficientStorageClusterCapacity, invalidDBClusterSnapshotState, invalidDBClusterState, invalidDBSnapshotState, invalidRestore, invalidSubnet, invalidVPCNetworkState, kMSKeyNotAccessible, optionGroupNotFound, storageQuotaExceeded.
      */
     public func restoreDBClusterToPointInTime(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage) async throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
@@ -2947,6 +2992,24 @@ public struct ThrowingRDSClientV2: RDSClientProtocolV2 {
             input: RDSModel.SwitchoverBlueGreenDeploymentRequest) async throws -> RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment {
         if let switchoverBlueGreenDeploymentOverride = switchoverBlueGreenDeploymentOverride {
             return try await switchoverBlueGreenDeploymentOverride(input)
+        }
+
+        throw error
+    }
+
+    /**
+     Invokes the SwitchoverGlobalCluster operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated SwitchoverGlobalClusterMessage object being passed to this operation.
+     - Returns: The SwitchoverGlobalClusterResultForSwitchoverGlobalCluster object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     - Throws: dBClusterNotFound, globalClusterNotFound, invalidDBClusterState, invalidGlobalClusterState.
+     */
+    public func switchoverGlobalCluster(
+            input: RDSModel.SwitchoverGlobalClusterMessage) async throws -> RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster {
+        if let switchoverGlobalClusterOverride = switchoverGlobalClusterOverride {
+            return try await switchoverGlobalClusterOverride(input)
         }
 
         throw error

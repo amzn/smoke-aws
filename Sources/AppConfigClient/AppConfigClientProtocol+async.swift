@@ -37,7 +37,7 @@ public extension AppConfigClientProtocol {
          - input: The validated CreateApplicationRequest object being passed to this operation.
      - Returns: The Application object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer.
+     - Throws: badRequest, internalServer, serviceQuotaExceeded.
      */
     func createApplication(input: AppConfigModel.CreateApplicationRequest) async throws
      -> AppConfigModel.Application {
@@ -64,7 +64,7 @@ public extension AppConfigClientProtocol {
          - input: The validated CreateConfigurationProfileRequest object being passed to this operation.
      - Returns: The ConfigurationProfile object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer, resourceNotFound.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     func createConfigurationProfile(input: AppConfigModel.CreateConfigurationProfileRequest) async throws
      -> AppConfigModel.ConfigurationProfile {
@@ -91,7 +91,7 @@ public extension AppConfigClientProtocol {
          - input: The validated CreateDeploymentStrategyRequest object being passed to this operation.
      - Returns: The DeploymentStrategy object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer.
+     - Throws: badRequest, internalServer, serviceQuotaExceeded.
      */
     func createDeploymentStrategy(input: AppConfigModel.CreateDeploymentStrategyRequest) async throws
      -> AppConfigModel.DeploymentStrategy {
@@ -118,7 +118,7 @@ public extension AppConfigClientProtocol {
          - input: The validated CreateEnvironmentRequest object being passed to this operation.
      - Returns: The Environment object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer, resourceNotFound.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     func createEnvironment(input: AppConfigModel.CreateEnvironmentRequest) async throws
      -> AppConfigModel.Environment {

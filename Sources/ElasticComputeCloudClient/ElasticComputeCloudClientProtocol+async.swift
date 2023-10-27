@@ -3999,15 +3999,19 @@ public extension ElasticComputeCloudClientProtocol {
 
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
+     - Returns: The DeleteKeyPairResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
-    func deleteKeyPair(input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws {
+    func deleteKeyPair(input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws
+     -> ElasticComputeCloudModel.DeleteKeyPairResult {
         return try await withCheckedThrowingContinuation { cont in
             do {
-                try deleteKeyPairAsync(input: input) { error in
-                    if let error = error {
+                try deleteKeyPairAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
                         cont.resume(throwing: error)
-                    } else {
-                        cont.resume(returning: ())
+                    case .success(let response):
+                        cont.resume(returning: response)
                     }
                 }
             } catch {
@@ -9605,6 +9609,58 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the DisableImage operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisableImageRequest object being passed to this operation.
+     - Returns: The DisableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableImage(input: ElasticComputeCloudModel.DisableImageRequest) async throws
+     -> ElasticComputeCloudModel.DisableImageResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try disableImageAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the DisableImageBlockPublicAccess operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated DisableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The DisableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableImageBlockPublicAccess(input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest) async throws
+     -> ElasticComputeCloudModel.DisableImageBlockPublicAccessResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try disableImageBlockPublicAccessAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the DisableImageDeprecation operation and asynchronously returning the response.
 
      - Parameters:
@@ -10255,6 +10311,58 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try enableFastSnapshotRestoresAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the EnableImage operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated EnableImageRequest object being passed to this operation.
+     - Returns: The EnableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableImage(input: ElasticComputeCloudModel.EnableImageRequest) async throws
+     -> ElasticComputeCloudModel.EnableImageResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try enableImageAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the EnableImageBlockPublicAccess operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated EnableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The EnableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableImageBlockPublicAccess(input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest) async throws
+     -> ElasticComputeCloudModel.EnableImageBlockPublicAccessResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try enableImageBlockPublicAccessAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)
@@ -10937,6 +11045,32 @@ public extension ElasticComputeCloudClientProtocol {
     }
 
     /**
+     Invokes the GetImageBlockPublicAccessState operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetImageBlockPublicAccessStateRequest object being passed to this operation.
+     - Returns: The GetImageBlockPublicAccessStateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getImageBlockPublicAccessState(input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest) async throws
+     -> ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getImageBlockPublicAccessStateAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
      Invokes the GetInstanceTypesFromInstanceRequirements operation and asynchronously returning the response.
 
      - Parameters:
@@ -11313,6 +11447,32 @@ public extension ElasticComputeCloudClientProtocol {
         return try await withCheckedThrowingContinuation { cont in
             do {
                 try getReservedInstancesExchangeQuoteAsync(input: input) { result in
+                    switch result {
+                    case .failure(let error):
+                        cont.resume(throwing: error)
+                    case .success(let response):
+                        cont.resume(returning: response)
+                    }
+                }
+            } catch {
+                cont.resume(throwing: error)
+            }
+        }
+    }
+
+    /**
+     Invokes the GetSecurityGroupsForVpc operation and asynchronously returning the response.
+
+     - Parameters:
+         - input: The validated GetSecurityGroupsForVpcRequest object being passed to this operation.
+     - Returns: The GetSecurityGroupsForVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getSecurityGroupsForVpc(input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest) async throws
+     -> ElasticComputeCloudModel.GetSecurityGroupsForVpcResult {
+        return try await withCheckedThrowingContinuation { cont in
+            do {
+                try getSecurityGroupsForVpcAsync(input: input) { result in
                     switch result {
                     case .failure(let error):
                         cont.resume(throwing: error)

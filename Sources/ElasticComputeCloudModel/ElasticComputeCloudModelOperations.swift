@@ -399,6 +399,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case disableEbsEncryptionByDefault = "DisableEbsEncryptionByDefault"
     case disableFastLaunch = "DisableFastLaunch"
     case disableFastSnapshotRestores = "DisableFastSnapshotRestores"
+    case disableImage = "DisableImage"
+    case disableImageBlockPublicAccess = "DisableImageBlockPublicAccess"
     case disableImageDeprecation = "DisableImageDeprecation"
     case disableIpamOrganizationAdminAccount = "DisableIpamOrganizationAdminAccount"
     case disableSerialConsoleAccess = "DisableSerialConsoleAccess"
@@ -425,6 +427,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case enableEbsEncryptionByDefault = "EnableEbsEncryptionByDefault"
     case enableFastLaunch = "EnableFastLaunch"
     case enableFastSnapshotRestores = "EnableFastSnapshotRestores"
+    case enableImage = "EnableImage"
+    case enableImageBlockPublicAccess = "EnableImageBlockPublicAccess"
     case enableImageDeprecation = "EnableImageDeprecation"
     case enableIpamOrganizationAdminAccount = "EnableIpamOrganizationAdminAccount"
     case enableReachabilityAnalyzerOrganizationSharing = "EnableReachabilityAnalyzerOrganizationSharing"
@@ -451,6 +455,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getFlowLogsIntegrationTemplate = "GetFlowLogsIntegrationTemplate"
     case getGroupsForCapacityReservation = "GetGroupsForCapacityReservation"
     case getHostReservationPurchasePreview = "GetHostReservationPurchasePreview"
+    case getImageBlockPublicAccessState = "GetImageBlockPublicAccessState"
     case getInstanceTypesFromInstanceRequirements = "GetInstanceTypesFromInstanceRequirements"
     case getInstanceUefiData = "GetInstanceUefiData"
     case getIpamAddressHistory = "GetIpamAddressHistory"
@@ -466,6 +471,7 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
     case getNetworkInsightsAccessScopeContent = "GetNetworkInsightsAccessScopeContent"
     case getPasswordData = "GetPasswordData"
     case getReservedInstancesExchangeQuote = "GetReservedInstancesExchangeQuote"
+    case getSecurityGroupsForVpc = "GetSecurityGroupsForVpc"
     case getSerialConsoleAccessStatus = "GetSerialConsoleAccessStatus"
     case getSpotPlacementScores = "GetSpotPlacementScores"
     case getSubnetCidrReservations = "GetSubnetCidrReservations"
@@ -1373,6 +1379,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .disableFastSnapshotRestores:
             return "/"
+        case .disableImage:
+            return "/"
+        case .disableImageBlockPublicAccess:
+            return "/"
         case .disableImageDeprecation:
             return "/"
         case .disableIpamOrganizationAdminAccount:
@@ -1424,6 +1434,10 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .enableFastLaunch:
             return "/"
         case .enableFastSnapshotRestores:
+            return "/"
+        case .enableImage:
+            return "/"
+        case .enableImageBlockPublicAccess:
             return "/"
         case .enableImageDeprecation:
             return "/"
@@ -1477,6 +1491,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
             return "/"
         case .getHostReservationPurchasePreview:
             return "/"
+        case .getImageBlockPublicAccessState:
+            return "/"
         case .getInstanceTypesFromInstanceRequirements:
             return "/"
         case .getInstanceUefiData:
@@ -1506,6 +1522,8 @@ public enum ElasticComputeCloudModelOperations: String, Hashable, CustomStringCo
         case .getPasswordData:
             return "/"
         case .getReservedInstancesExchangeQuote:
+            return "/"
+        case .getSecurityGroupsForVpc:
             return "/"
         case .getSerialConsoleAccessStatus:
             return "/"

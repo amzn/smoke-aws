@@ -1030,6 +1030,7 @@ public enum SettingName: String, Codable, CustomStringConvertible {
     case containerinsights = "containerInsights"
     case containerinstancelongarnformat = "containerInstanceLongArnFormat"
     case fargatefipsmode = "fargateFIPSMode"
+    case fargatetaskretirementwaitperiod = "fargateTaskRetirementWaitPeriod"
     case servicelongarnformat = "serviceLongArnFormat"
     case tagresourceauthorization = "tagResourceAuthorization"
     case tasklongarnformat = "taskLongArnFormat"

@@ -2048,8 +2048,10 @@ public struct ExportDescription: Codable, Equatable {
     public var exportManifest: ExportManifest?
     public var exportStatus: ExportStatus?
     public var exportTime: ExportTime?
+    public var exportType: ExportType?
     public var failureCode: FailureCode?
     public var failureMessage: FailureMessage?
+    public var incrementalExportSpecification: IncrementalExportSpecification?
     public var itemCount: ItemCount?
     public var s3Bucket: S3Bucket?
     public var s3BucketOwner: S3BucketOwner?
@@ -2068,8 +2070,10 @@ public struct ExportDescription: Codable, Equatable {
                 exportManifest: ExportManifest? = nil,
                 exportStatus: ExportStatus? = nil,
                 exportTime: ExportTime? = nil,
+                exportType: ExportType? = nil,
                 failureCode: FailureCode? = nil,
                 failureMessage: FailureMessage? = nil,
+                incrementalExportSpecification: IncrementalExportSpecification? = nil,
                 itemCount: ItemCount? = nil,
                 s3Bucket: S3Bucket? = nil,
                 s3BucketOwner: S3BucketOwner? = nil,
@@ -2087,8 +2091,10 @@ public struct ExportDescription: Codable, Equatable {
         self.exportManifest = exportManifest
         self.exportStatus = exportStatus
         self.exportTime = exportTime
+        self.exportType = exportType
         self.failureCode = failureCode
         self.failureMessage = failureMessage
+        self.incrementalExportSpecification = incrementalExportSpecification
         self.itemCount = itemCount
         self.s3Bucket = s3Bucket
         self.s3BucketOwner = s3BucketOwner
@@ -2109,8 +2115,10 @@ public struct ExportDescription: Codable, Equatable {
         case exportManifest = "ExportManifest"
         case exportStatus = "ExportStatus"
         case exportTime = "ExportTime"
+        case exportType = "ExportType"
         case failureCode = "FailureCode"
         case failureMessage = "FailureMessage"
+        case incrementalExportSpecification = "IncrementalExportSpecification"
         case itemCount = "ItemCount"
         case s3Bucket = "S3Bucket"
         case s3BucketOwner = "S3BucketOwner"
@@ -2126,6 +2134,7 @@ public struct ExportDescription: Codable, Equatable {
         try billedSizeBytes?.validateAsBilledSizeBytes()
         try clientToken?.validateAsClientToken()
         try exportArn?.validateAsExportArn()
+        try incrementalExportSpecification?.validate()
         try itemCount?.validateAsItemCount()
         try s3Bucket?.validateAsS3Bucket()
         try s3BucketOwner?.validateAsS3BucketOwner()
@@ -2153,16 +2162,20 @@ public struct ExportNotFoundException: Codable, Equatable {
 public struct ExportSummary: Codable, Equatable {
     public var exportArn: ExportArn?
     public var exportStatus: ExportStatus?
+    public var exportType: ExportType?
 
     public init(exportArn: ExportArn? = nil,
-                exportStatus: ExportStatus? = nil) {
+                exportStatus: ExportStatus? = nil,
+                exportType: ExportType? = nil) {
         self.exportArn = exportArn
         self.exportStatus = exportStatus
+        self.exportType = exportType
     }
 
     enum CodingKeys: String, CodingKey {
         case exportArn = "ExportArn"
         case exportStatus = "ExportStatus"
+        case exportType = "ExportType"
     }
 
     public func validate() throws {
@@ -2174,6 +2187,8 @@ public struct ExportTableToPointInTimeInput: Codable, Equatable {
     public var clientToken: ClientToken?
     public var exportFormat: ExportFormat?
     public var exportTime: ExportTime?
+    public var exportType: ExportType?
+    public var incrementalExportSpecification: IncrementalExportSpecification?
     public var s3Bucket: S3Bucket
     public var s3BucketOwner: S3BucketOwner?
     public var s3Prefix: S3Prefix?
@@ -2184,6 +2199,8 @@ public struct ExportTableToPointInTimeInput: Codable, Equatable {
     public init(clientToken: ClientToken? = nil,
                 exportFormat: ExportFormat? = nil,
                 exportTime: ExportTime? = nil,
+                exportType: ExportType? = nil,
+                incrementalExportSpecification: IncrementalExportSpecification? = nil,
                 s3Bucket: S3Bucket,
                 s3BucketOwner: S3BucketOwner? = nil,
                 s3Prefix: S3Prefix? = nil,
@@ -2193,6 +2210,8 @@ public struct ExportTableToPointInTimeInput: Codable, Equatable {
         self.clientToken = clientToken
         self.exportFormat = exportFormat
         self.exportTime = exportTime
+        self.exportType = exportType
+        self.incrementalExportSpecification = incrementalExportSpecification
         self.s3Bucket = s3Bucket
         self.s3BucketOwner = s3BucketOwner
         self.s3Prefix = s3Prefix
@@ -2205,6 +2224,8 @@ public struct ExportTableToPointInTimeInput: Codable, Equatable {
         case clientToken = "ClientToken"
         case exportFormat = "ExportFormat"
         case exportTime = "ExportTime"
+        case exportType = "ExportType"
+        case incrementalExportSpecification = "IncrementalExportSpecification"
         case s3Bucket = "S3Bucket"
         case s3BucketOwner = "S3BucketOwner"
         case s3Prefix = "S3Prefix"
@@ -2215,6 +2236,7 @@ public struct ExportTableToPointInTimeInput: Codable, Equatable {
 
     public func validate() throws {
         try clientToken?.validateAsClientToken()
+        try incrementalExportSpecification?.validate()
         try s3Bucket.validateAsS3Bucket()
         try s3BucketOwner?.validateAsS3BucketOwner()
         try s3Prefix?.validateAsS3Prefix()
@@ -2854,6 +2876,29 @@ public struct ImportTableOutput: Codable, Equatable {
 
     public func validate() throws {
         try importTableDescription.validate()
+    }
+}
+
+public struct IncrementalExportSpecification: Codable, Equatable {
+    public var exportFromTime: ExportFromTime?
+    public var exportToTime: ExportToTime?
+    public var exportViewType: ExportViewType?
+
+    public init(exportFromTime: ExportFromTime? = nil,
+                exportToTime: ExportToTime? = nil,
+                exportViewType: ExportViewType? = nil) {
+        self.exportFromTime = exportFromTime
+        self.exportToTime = exportToTime
+        self.exportViewType = exportViewType
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case exportFromTime = "ExportFromTime"
+        case exportToTime = "ExportToTime"
+        case exportViewType = "ExportViewType"
+    }
+
+    public func validate() throws {
     }
 }
 

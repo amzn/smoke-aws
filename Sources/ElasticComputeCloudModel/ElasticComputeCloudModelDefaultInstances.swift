@@ -4090,6 +4090,7 @@ public extension CreateNetworkInterfaceRequest {
             clientToken: nil,
             description: nil,
             dryRun: nil,
+            enablePrimaryIpv6: nil,
             groups: nil,
             interfaceType: nil,
             ipv4PrefixCount: nil,
@@ -5060,6 +5061,7 @@ public extension CreateVerifiedAccessEndpointRequest {
             networkInterfaceOptions: nil,
             policyDocument: nil,
             securityGroupIds: nil,
+            sseSpecification: nil,
             tagSpecifications: nil,
             verifiedAccessGroupId: "value")
 
@@ -5089,6 +5091,7 @@ public extension CreateVerifiedAccessGroupRequest {
             description: nil,
             dryRun: nil,
             policyDocument: nil,
+            sseSpecification: nil,
             tagSpecifications: nil,
             verifiedAccessInstanceId: "value")
 
@@ -5117,6 +5120,7 @@ public extension CreateVerifiedAccessInstanceRequest {
             clientToken: nil,
             description: nil,
             dryRun: nil,
+            fIPSEnabled: nil,
             tagSpecifications: nil)
 
         return defaultInstance
@@ -5178,6 +5182,7 @@ public extension CreateVerifiedAccessTrustProviderRequest {
             dryRun: nil,
             oidcOptions: nil,
             policyReferenceName: "value",
+            sseSpecification: nil,
             tagSpecifications: nil,
             trustProviderType: .__default,
             userTrustProviderType: nil)
@@ -5293,6 +5298,7 @@ public extension CreateVpcEndpointRequest {
             routeTableIds: nil,
             securityGroupIds: nil,
             serviceName: "value",
+            subnetConfigurations: nil,
             subnetIds: nil,
             tagSpecifications: nil,
             vpcEndpointType: nil,
@@ -6030,6 +6036,19 @@ public extension DeleteKeyPairRequest {
             dryRun: nil,
             keyName: nil,
             keyPairId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteKeyPairResult {
+    /**
+     Default instance of the DeleteKeyPairResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DeleteKeyPairResult = {
+        let defaultInstance = ElasticComputeCloudModel.DeleteKeyPairResult(
+            keyPairId: nil,
+            return: nil)
 
         return defaultInstance
     }()
@@ -8685,6 +8704,7 @@ public extension DescribeImagesRequest {
             filters: nil,
             imageIds: nil,
             includeDeprecated: nil,
+            includeDisabled: nil,
             maxResults: nil,
             nextToken: nil,
             owners: nil)
@@ -12078,6 +12098,30 @@ public extension DisableFastSnapshotRestoresResult {
     }()
 }
 
+public extension DisableImageBlockPublicAccessRequest {
+    /**
+     Default instance of the DisableImageBlockPublicAccessRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest(
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableImageBlockPublicAccessResult {
+    /**
+     Default instance of the DisableImageBlockPublicAccessResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableImageBlockPublicAccessResult = {
+        let defaultInstance = ElasticComputeCloudModel.DisableImageBlockPublicAccessResult(
+            imageBlockPublicAccessState: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DisableImageDeprecationRequest {
     /**
      Default instance of the DisableImageDeprecationRequest structure.
@@ -12097,6 +12141,31 @@ public extension DisableImageDeprecationResult {
      */
     static let __default: ElasticComputeCloudModel.DisableImageDeprecationResult = {
         let defaultInstance = ElasticComputeCloudModel.DisableImageDeprecationResult(
+            return: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableImageRequest {
+    /**
+     Default instance of the DisableImageRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableImageRequest = {
+        let defaultInstance = ElasticComputeCloudModel.DisableImageRequest(
+            dryRun: nil,
+            imageId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DisableImageResult {
+    /**
+     Default instance of the DisableImageResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.DisableImageResult = {
+        let defaultInstance = ElasticComputeCloudModel.DisableImageResult(
             return: nil)
 
         return defaultInstance
@@ -13161,6 +13230,31 @@ public extension EnableFastSnapshotRestoresResult {
     }()
 }
 
+public extension EnableImageBlockPublicAccessRequest {
+    /**
+     Default instance of the EnableImageBlockPublicAccessRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest = {
+        let defaultInstance = ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest(
+            dryRun: nil,
+            imageBlockPublicAccessState: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableImageBlockPublicAccessResult {
+    /**
+     Default instance of the EnableImageBlockPublicAccessResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableImageBlockPublicAccessResult = {
+        let defaultInstance = ElasticComputeCloudModel.EnableImageBlockPublicAccessResult(
+            imageBlockPublicAccessState: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension EnableImageDeprecationRequest {
     /**
      Default instance of the EnableImageDeprecationRequest structure.
@@ -13181,6 +13275,31 @@ public extension EnableImageDeprecationResult {
      */
     static let __default: ElasticComputeCloudModel.EnableImageDeprecationResult = {
         let defaultInstance = ElasticComputeCloudModel.EnableImageDeprecationResult(
+            return: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableImageRequest {
+    /**
+     Default instance of the EnableImageRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableImageRequest = {
+        let defaultInstance = ElasticComputeCloudModel.EnableImageRequest(
+            dryRun: nil,
+            imageId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension EnableImageResult {
+    /**
+     Default instance of the EnableImageResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.EnableImageResult = {
+        let defaultInstance = ElasticComputeCloudModel.EnableImageResult(
             return: nil)
 
         return defaultInstance
@@ -14433,7 +14552,8 @@ public extension GetEbsEncryptionByDefaultResult {
      */
     static let __default: ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult = {
         let defaultInstance = ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult(
-            ebsEncryptionByDefault: nil)
+            ebsEncryptionByDefault: nil,
+            sseType: nil)
 
         return defaultInstance
     }()
@@ -14517,6 +14637,30 @@ public extension GetHostReservationPurchasePreviewResult {
             purchase: nil,
             totalHourlyPrice: nil,
             totalUpfrontPrice: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetImageBlockPublicAccessStateRequest {
+    /**
+     Default instance of the GetImageBlockPublicAccessStateRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest(
+            dryRun: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetImageBlockPublicAccessStateResult {
+    /**
+     Default instance of the GetImageBlockPublicAccessStateResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult(
+            imageBlockPublicAccessState: nil)
 
         return defaultInstance
     }()
@@ -14956,6 +15100,35 @@ public extension GetReservedInstancesExchangeQuoteResult {
             targetConfigurationValueRollup: nil,
             targetConfigurationValueSet: nil,
             validationFailureReason: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSecurityGroupsForVpcRequest {
+    /**
+     Default instance of the GetSecurityGroupsForVpcRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest = {
+        let defaultInstance = ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest(
+            dryRun: nil,
+            filters: nil,
+            maxResults: nil,
+            nextToken: nil,
+            vpcId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension GetSecurityGroupsForVpcResult {
+    /**
+     Default instance of the GetSecurityGroupsForVpcResult structure.
+     */
+    static let __default: ElasticComputeCloudModel.GetSecurityGroupsForVpcResult = {
+        let defaultInstance = ElasticComputeCloudModel.GetSecurityGroupsForVpcResult(
+            nextToken: nil,
+            securityGroupForVpcs: nil)
 
         return defaultInstance
     }()
@@ -15718,6 +15891,7 @@ public extension Image {
             ramdiskId: nil,
             rootDeviceName: nil,
             rootDeviceType: nil,
+            sourceInstanceId: nil,
             sriovNetSupport: nil,
             state: nil,
             stateReason: nil,
@@ -16132,7 +16306,8 @@ public extension InferenceAcceleratorInfo {
      */
     static let __default: ElasticComputeCloudModel.InferenceAcceleratorInfo = {
         let defaultInstance = ElasticComputeCloudModel.InferenceAcceleratorInfo(
-            accelerators: nil)
+            accelerators: nil,
+            totalInferenceMemoryInMiB: nil)
 
         return defaultInstance
     }()
@@ -16146,7 +16321,20 @@ public extension InferenceDeviceInfo {
         let defaultInstance = ElasticComputeCloudModel.InferenceDeviceInfo(
             count: nil,
             manufacturer: nil,
+            memoryInfo: nil,
             name: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension InferenceDeviceMemoryInfo {
+    /**
+     Default instance of the InferenceDeviceMemoryInfo structure.
+     */
+    static let __default: ElasticComputeCloudModel.InferenceDeviceMemoryInfo = {
+        let defaultInstance = ElasticComputeCloudModel.InferenceDeviceMemoryInfo(
+            sizeInMiB: nil)
 
         return defaultInstance
     }()
@@ -16476,7 +16664,8 @@ public extension InstanceIpv6Address {
      */
     static let __default: ElasticComputeCloudModel.InstanceIpv6Address = {
         let defaultInstance = ElasticComputeCloudModel.InstanceIpv6Address(
-            ipv6Address: nil)
+            ipv6Address: nil,
+            isPrimaryIpv6: nil)
 
         return defaultInstance
     }()
@@ -16672,6 +16861,7 @@ public extension InstanceNetworkInterfaceSpecification {
             ipv6Prefixes: nil,
             networkCardIndex: nil,
             networkInterfaceId: nil,
+            primaryIpv6: nil,
             privateIpAddress: nil,
             privateIpAddresses: nil,
             secondaryPrivateIpAddressCount: nil,
@@ -16933,6 +17123,8 @@ public extension InstanceTypeInfo {
             memoryInfo: nil,
             networkInfo: nil,
             nitroEnclavesSupport: nil,
+            nitroTpmInfo: nil,
+            nitroTpmSupport: nil,
             placementGroupInfo: nil,
             processorInfo: nil,
             supportedBootModes: nil,
@@ -17957,6 +18149,7 @@ public extension LaunchTemplateInstanceNetworkInterfaceSpecification {
             ipv6Prefixes: nil,
             networkCardIndex: nil,
             networkInterfaceId: nil,
+            primaryIpv6: nil,
             privateIpAddress: nil,
             privateIpAddresses: nil,
             secondaryPrivateIpAddressCount: nil,
@@ -17987,6 +18180,7 @@ public extension LaunchTemplateInstanceNetworkInterfaceSpecificationRequest {
             ipv6Prefixes: nil,
             networkCardIndex: nil,
             networkInterfaceId: nil,
+            primaryIpv6: nil,
             privateIpAddress: nil,
             privateIpAddresses: nil,
             secondaryPrivateIpAddressCount: nil,
@@ -19407,6 +19601,7 @@ public extension ModifyNetworkInterfaceAttributeRequest {
             description: nil,
             dryRun: nil,
             enaSrdSpecification: nil,
+            enablePrimaryIpv6: nil,
             groups: nil,
             networkInterfaceId: "value",
             sourceDestCheck: nil)
@@ -19839,7 +20034,8 @@ public extension ModifyVerifiedAccessEndpointPolicyRequest {
             clientToken: nil,
             dryRun: nil,
             policyDocument: nil,
-            policyEnabled: false,
+            policyEnabled: nil,
+            sseSpecification: nil,
             verifiedAccessEndpointId: "value")
 
         return defaultInstance
@@ -19853,7 +20049,8 @@ public extension ModifyVerifiedAccessEndpointPolicyResult {
     static let __default: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult = {
         let defaultInstance = ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult(
             policyDocument: nil,
-            policyEnabled: nil)
+            policyEnabled: nil,
+            sseSpecification: nil)
 
         return defaultInstance
     }()
@@ -19898,7 +20095,8 @@ public extension ModifyVerifiedAccessGroupPolicyRequest {
             clientToken: nil,
             dryRun: nil,
             policyDocument: nil,
-            policyEnabled: false,
+            policyEnabled: nil,
+            sseSpecification: nil,
             verifiedAccessGroupId: "value")
 
         return defaultInstance
@@ -19912,7 +20110,8 @@ public extension ModifyVerifiedAccessGroupPolicyResult {
     static let __default: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult = {
         let defaultInstance = ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult(
             policyDocument: nil,
-            policyEnabled: nil)
+            policyEnabled: nil,
+            sseSpecification: nil)
 
         return defaultInstance
     }()
@@ -20028,6 +20227,7 @@ public extension ModifyVerifiedAccessTrustProviderRequest {
             description: nil,
             dryRun: nil,
             oidcOptions: nil,
+            sseSpecification: nil,
             verifiedAccessTrustProviderId: "value")
 
         return defaultInstance
@@ -20150,6 +20350,7 @@ public extension ModifyVpcEndpointRequest {
             removeSecurityGroupIds: nil,
             removeSubnetIds: nil,
             resetPolicy: nil,
+            subnetConfigurations: nil,
             vpcEndpointId: "value")
 
         return defaultInstance
@@ -20680,9 +20881,11 @@ public extension NetworkCardInfo {
      */
     static let __default: ElasticComputeCloudModel.NetworkCardInfo = {
         let defaultInstance = ElasticComputeCloudModel.NetworkCardInfo(
+            baselineBandwidthInGbps: nil,
             maximumNetworkInterfaces: nil,
             networkCardIndex: nil,
-            networkPerformance: nil)
+            networkPerformance: nil,
+            peakBandwidthInGbps: nil)
 
         return defaultInstance
     }()
@@ -20936,7 +21139,8 @@ public extension NetworkInterfaceIpv6Address {
      */
     static let __default: ElasticComputeCloudModel.NetworkInterfaceIpv6Address = {
         let defaultInstance = ElasticComputeCloudModel.NetworkInterfaceIpv6Address(
-            ipv6Address: nil)
+            ipv6Address: nil,
+            isPrimaryIpv6: nil)
 
         return defaultInstance
     }()
@@ -20995,6 +21199,18 @@ public extension NewDhcpConfiguration {
         let defaultInstance = ElasticComputeCloudModel.NewDhcpConfiguration(
             key: nil,
             values: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension NitroTpmInfo {
+    /**
+     Default instance of the NitroTpmInfo structure.
+     */
+    static let __default: ElasticComputeCloudModel.NitroTpmInfo = {
+        let defaultInstance = ElasticComputeCloudModel.NitroTpmInfo(
+            supportedVersions: nil)
 
         return defaultInstance
     }()
@@ -23286,6 +23502,7 @@ public extension RestoreSnapshotFromRecycleBinResult {
             ownerId: nil,
             progress: nil,
             snapshotId: nil,
+            sseType: nil,
             startTime: nil,
             state: nil,
             volumeId: nil,
@@ -23566,6 +23783,7 @@ public extension RunInstancesRequest {
             ebsOptimized: nil,
             elasticGpuSpecification: nil,
             elasticInferenceAccelerators: nil,
+            enablePrimaryIpv6: nil,
             enclaveOptions: nil,
             hibernationOptions: nil,
             iamInstanceProfile: nil,
@@ -23986,6 +24204,23 @@ public extension SecurityGroup {
     }()
 }
 
+public extension SecurityGroupForVpc {
+    /**
+     Default instance of the SecurityGroupForVpc structure.
+     */
+    static let __default: ElasticComputeCloudModel.SecurityGroupForVpc = {
+        let defaultInstance = ElasticComputeCloudModel.SecurityGroupForVpc(
+            description: nil,
+            groupId: nil,
+            groupName: nil,
+            ownerId: nil,
+            primaryVpcId: nil,
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension SecurityGroupIdentifier {
     /**
      Default instance of the SecurityGroupIdentifier structure.
@@ -24201,6 +24436,7 @@ public extension Snapshot {
             progress: nil,
             restoreExpiryTime: nil,
             snapshotId: nil,
+            sseType: nil,
             startTime: nil,
             state: nil,
             stateMessage: nil,
@@ -24261,6 +24497,7 @@ public extension SnapshotInfo {
             ownerId: nil,
             progress: nil,
             snapshotId: nil,
+            sseType: nil,
             startTime: nil,
             state: nil,
             tags: nil,
@@ -24932,6 +25169,20 @@ public extension SubnetCidrReservation {
             subnetCidrReservationId: nil,
             subnetId: nil,
             tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SubnetConfiguration {
+    /**
+     Default instance of the SubnetConfiguration structure.
+     */
+    static let __default: ElasticComputeCloudModel.SubnetConfiguration = {
+        let defaultInstance = ElasticComputeCloudModel.SubnetConfiguration(
+            ipv4: nil,
+            ipv6: nil,
+            subnetId: nil)
 
         return defaultInstance
     }()
@@ -26429,6 +26680,7 @@ public extension VerifiedAccessEndpoint {
             loadBalancerOptions: nil,
             networkInterfaceOptions: nil,
             securityGroupIds: nil,
+            sseSpecification: nil,
             status: nil,
             tags: nil,
             verifiedAccessEndpointId: nil,
@@ -26492,6 +26744,7 @@ public extension VerifiedAccessGroup {
             description: nil,
             lastUpdatedTime: nil,
             owner: nil,
+            sseSpecification: nil,
             tags: nil,
             verifiedAccessGroupArn: nil,
             verifiedAccessGroupId: nil,
@@ -26509,6 +26762,7 @@ public extension VerifiedAccessInstance {
         let defaultInstance = ElasticComputeCloudModel.VerifiedAccessInstance(
             creationTime: nil,
             description: nil,
+            fipsEnabled: nil,
             lastUpdatedTime: nil,
             tags: nil,
             verifiedAccessInstanceId: nil,
@@ -26661,6 +26915,32 @@ public extension VerifiedAccessLogs {
     }()
 }
 
+public extension VerifiedAccessSseSpecificationRequest {
+    /**
+     Default instance of the VerifiedAccessSseSpecificationRequest structure.
+     */
+    static let __default: ElasticComputeCloudModel.VerifiedAccessSseSpecificationRequest = {
+        let defaultInstance = ElasticComputeCloudModel.VerifiedAccessSseSpecificationRequest(
+            customerManagedKeyEnabled: nil,
+            kmsKeyArn: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension VerifiedAccessSseSpecificationResponse {
+    /**
+     Default instance of the VerifiedAccessSseSpecificationResponse structure.
+     */
+    static let __default: ElasticComputeCloudModel.VerifiedAccessSseSpecificationResponse = {
+        let defaultInstance = ElasticComputeCloudModel.VerifiedAccessSseSpecificationResponse(
+            customerManagedKeyEnabled: nil,
+            kmsKeyArn: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension VerifiedAccessTrustProvider {
     /**
      Default instance of the VerifiedAccessTrustProvider structure.
@@ -26674,6 +26954,7 @@ public extension VerifiedAccessTrustProvider {
             lastUpdatedTime: nil,
             oidcOptions: nil,
             policyReferenceName: nil,
+            sseSpecification: nil,
             tags: nil,
             trustProviderType: nil,
             userTrustProviderType: nil,
@@ -26733,6 +27014,7 @@ public extension Volume {
             outpostArn: nil,
             size: nil,
             snapshotId: nil,
+            sseType: nil,
             state: nil,
             tags: nil,
             throughput: nil,
