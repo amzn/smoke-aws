@@ -1890,6 +1890,16 @@ public typealias DisableFastLaunchOperationHTTPRequestInput = QueryHTTPRequestIn
 public typealias DisableFastSnapshotRestoresOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the DisableImage operation in a HTTP client.
+ */
+public typealias DisableImageOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the DisableImageBlockPublicAccess operation in a HTTP client.
+ */
+public typealias DisableImageBlockPublicAccessOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the DisableImageDeprecation operation in a HTTP client.
  */
 public typealias DisableImageDeprecationOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -2018,6 +2028,16 @@ public typealias EnableFastLaunchOperationHTTPRequestInput = QueryHTTPRequestInp
  Type to handle the input to the EnableFastSnapshotRestores operation in a HTTP client.
  */
 public typealias EnableFastSnapshotRestoresOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the EnableImage operation in a HTTP client.
+ */
+public typealias EnableImageOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the EnableImageBlockPublicAccess operation in a HTTP client.
+ */
+public typealias EnableImageBlockPublicAccessOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the EnableImageDeprecation operation in a HTTP client.
@@ -2150,6 +2170,11 @@ public typealias GetGroupsForCapacityReservationOperationHTTPRequestInput = Quer
 public typealias GetHostReservationPurchasePreviewOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
+ Type to handle the input to the GetImageBlockPublicAccessState operation in a HTTP client.
+ */
+public typealias GetImageBlockPublicAccessStateOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
  Type to handle the input to the GetInstanceTypesFromInstanceRequirements operation in a HTTP client.
  */
 public typealias GetInstanceTypesFromInstanceRequirementsOperationHTTPRequestInput = QueryHTTPRequestInput
@@ -2223,6 +2248,11 @@ public typealias GetPasswordDataOperationHTTPRequestInput = QueryHTTPRequestInpu
  Type to handle the input to the GetReservedInstancesExchangeQuote operation in a HTTP client.
  */
 public typealias GetReservedInstancesExchangeQuoteOperationHTTPRequestInput = QueryHTTPRequestInput
+
+/**
+ Type to handle the input to the GetSecurityGroupsForVpc operation in a HTTP client.
+ */
+public typealias GetSecurityGroupsForVpcOperationHTTPRequestInput = QueryHTTPRequestInput
 
 /**
  Type to handle the input to the GetSerialConsoleAccessStatus operation in a HTTP client.

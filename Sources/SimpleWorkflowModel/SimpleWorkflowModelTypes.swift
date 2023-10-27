@@ -178,13 +178,14 @@ public typealias DecisionList = [Decision]
  Enumeration restricting the values of the DecisionTaskTimeoutType field.
  */
 public enum DecisionTaskTimeoutType: String, Codable, CustomStringConvertible {
+    case scheduleToStart = "SCHEDULE_TO_START"
     case startToClose = "START_TO_CLOSE"
 
     public var description: String {
         return rawValue
     }
     
-    public static let __default: DecisionTaskTimeoutType = .startToClose
+    public static let __default: DecisionTaskTimeoutType = .scheduleToStart
 }
 
 /**

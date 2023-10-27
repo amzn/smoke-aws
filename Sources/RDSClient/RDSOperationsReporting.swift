@@ -61,6 +61,7 @@ public struct RDSOperationsReporting {
     public let deleteBlueGreenDeployment: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteCustomDBEngineVersion: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let deleteDBClusterAutomatedBackup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBClusterEndpoint: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBClusterParameterGroup: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let deleteDBClusterSnapshot: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -79,6 +80,7 @@ public struct RDSOperationsReporting {
     public let describeAccountAttributes: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeBlueGreenDeployments: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeCertificates: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let describeDBClusterAutomatedBackups: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeDBClusterBacktracks: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeDBClusterEndpoints: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let describeDBClusterParameterGroups: StandardSmokeAWSOperationReporting<RDSModelOperations>
@@ -168,6 +170,7 @@ public struct RDSOperationsReporting {
     public let stopDBInstance: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let stopDBInstanceAutomatedBackupsReplication: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let switchoverBlueGreenDeployment: StandardSmokeAWSOperationReporting<RDSModelOperations>
+    public let switchoverGlobalCluster: StandardSmokeAWSOperationReporting<RDSModelOperations>
     public let switchoverReadReplica: StandardSmokeAWSOperationReporting<RDSModelOperations>
 
     public init(clientName: String, reportingConfiguration: SmokeAWSClientReportingConfiguration<RDSModelOperations>) {
@@ -237,6 +240,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .deleteCustomDBEngineVersion, configuration: reportingConfiguration)
         self.deleteDBCluster = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteDBCluster, configuration: reportingConfiguration)
+        self.deleteDBClusterAutomatedBackup = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .deleteDBClusterAutomatedBackup, configuration: reportingConfiguration)
         self.deleteDBClusterEndpoint = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .deleteDBClusterEndpoint, configuration: reportingConfiguration)
         self.deleteDBClusterParameterGroup = StandardSmokeAWSOperationReporting(
@@ -273,6 +278,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .describeBlueGreenDeployments, configuration: reportingConfiguration)
         self.describeCertificates = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeCertificates, configuration: reportingConfiguration)
+        self.describeDBClusterAutomatedBackups = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .describeDBClusterAutomatedBackups, configuration: reportingConfiguration)
         self.describeDBClusterBacktracks = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .describeDBClusterBacktracks, configuration: reportingConfiguration)
         self.describeDBClusterEndpoints = StandardSmokeAWSOperationReporting(
@@ -451,6 +458,8 @@ public struct RDSOperationsReporting {
             clientName: clientName, operation: .stopDBInstanceAutomatedBackupsReplication, configuration: reportingConfiguration)
         self.switchoverBlueGreenDeployment = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .switchoverBlueGreenDeployment, configuration: reportingConfiguration)
+        self.switchoverGlobalCluster = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .switchoverGlobalCluster, configuration: reportingConfiguration)
         self.switchoverReadReplica = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .switchoverReadReplica, configuration: reportingConfiguration)
     }

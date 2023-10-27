@@ -1635,6 +1635,7 @@ public typealias ReplicationRules = [ReplicationRule]
  */
 public enum ReplicationStatus: String, Codable, CustomStringConvertible {
     case complete = "COMPLETE"
+    case completed = "COMPLETED"
     case failed = "FAILED"
     case pending = "PENDING"
     case replica = "REPLICA"

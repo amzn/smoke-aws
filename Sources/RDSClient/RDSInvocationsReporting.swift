@@ -62,6 +62,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let deleteBlueGreenDeployment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteCustomDBEngineVersion: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDBCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let deleteDBClusterAutomatedBackup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDBClusterEndpoint: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDBClusterParameterGroup: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let deleteDBClusterSnapshot: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -80,6 +81,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let describeAccountAttributes: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeBlueGreenDeployments: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeCertificates: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let describeDBClusterAutomatedBackups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeDBClusterBacktracks: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeDBClusterEndpoints: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let describeDBClusterParameterGroups: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
@@ -169,6 +171,7 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
     public let stopDBInstance: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let stopDBInstanceAutomatedBackupsReplication: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let switchoverBlueGreenDeployment: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
+    public let switchoverGlobalCluster: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
     public let switchoverReadReplica: SmokeAWSHTTPClientInvocationReporting<InvocationReportingType>
 
     public init(reporting: InvocationReportingType, operationsReporting: RDSOperationsReporting) {
@@ -238,6 +241,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.deleteCustomDBEngineVersion)
         self.deleteDBCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteDBCluster)
+        self.deleteDBClusterAutomatedBackup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.deleteDBClusterAutomatedBackup)
         self.deleteDBClusterEndpoint = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.deleteDBClusterEndpoint)
         self.deleteDBClusterParameterGroup = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -274,6 +279,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.describeBlueGreenDeployments)
         self.describeCertificates = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeCertificates)
+        self.describeDBClusterAutomatedBackups = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.describeDBClusterAutomatedBackups)
         self.describeDBClusterBacktracks = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.describeDBClusterBacktracks)
         self.describeDBClusterEndpoints = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
@@ -452,6 +459,8 @@ public struct RDSInvocationsReporting<InvocationReportingType: HTTPClientCoreInv
             smokeAWSOperationReporting: operationsReporting.stopDBInstanceAutomatedBackupsReplication)
         self.switchoverBlueGreenDeployment = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.switchoverBlueGreenDeployment)
+        self.switchoverGlobalCluster = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
+            smokeAWSOperationReporting: operationsReporting.switchoverGlobalCluster)
         self.switchoverReadReplica = SmokeAWSHTTPClientInvocationReporting(smokeAWSInvocationReporting: reporting,
             smokeAWSOperationReporting: operationsReporting.switchoverReadReplica)
     }

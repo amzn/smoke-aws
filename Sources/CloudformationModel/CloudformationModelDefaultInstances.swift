@@ -2878,7 +2878,7 @@ public extension ResourceToImport {
     static let __default: CloudformationModel.ResourceToImport = {
         let defaultInstance = CloudformationModel.ResourceToImport(
             logicalResourceId: "value",
-            resourceIdentifier: ["0": "0"],
+            resourceIdentifier: ["Entry_0": "0"],
             resourceType: "0")
 
         return defaultInstance

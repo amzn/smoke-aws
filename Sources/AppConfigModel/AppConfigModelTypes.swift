@@ -205,6 +205,11 @@ public enum EnvironmentState: String, Codable, CustomStringConvertible {
 public typealias ExtensionAssociationSummaries = [ExtensionAssociationSummary]
 
 /**
+ Type definition for the ExtensionOrParameterName field.
+ */
+public typealias ExtensionOrParameterName = String
+
+/**
  Type definition for the ExtensionSummaries field.
  */
 public typealias ExtensionSummaries = [ExtensionSummary]
@@ -264,6 +269,16 @@ public typealias InvalidConfigurationDetailList = [InvalidConfigurationDetail]
 public typealias Iso8601DateTime = String
 
 /**
+ Type definition for the KmsKeyIdentifier field.
+ */
+public typealias KmsKeyIdentifier = String
+
+/**
+ Type definition for the KmsKeyIdentifierOrEmpty field.
+ */
+public typealias KmsKeyIdentifierOrEmpty = String
+
+/**
  Type definition for the LongName field.
  */
 public typealias LongName = String
@@ -296,12 +311,12 @@ public typealias NextToken = String
 /**
  Type definition for the ParameterMap field.
  */
-public typealias ParameterMap = [Name: Parameter]
+public typealias ParameterMap = [ExtensionOrParameterName: Parameter]
 
 /**
  Type definition for the ParameterValueMap field.
  */
-public typealias ParameterValueMap = [Name: StringWithLengthBetween1And2048]
+public typealias ParameterValueMap = [ExtensionOrParameterName: StringWithLengthBetween1And2048]
 
 /**
  Type definition for the Percentage field.
@@ -505,6 +520,19 @@ extension AppConfigModel.Description {
 }
 
 /**
+ Validation for the ExtensionOrParameterName field.
+*/
+extension AppConfigModel.ExtensionOrParameterName {
+    public func validateAsExtensionOrParameterName() throws {
+        guard let matchingRange = self.range(of: "^[^\\/#:\\n]{1,64}$", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw AppConfigError.validationError(
+                    reason: "The provided value to ExtensionOrParameterName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
  Validation for the GrowthFactor field.
 */
 extension AppConfigModel.GrowthFactor {
@@ -543,6 +571,36 @@ extension AppConfigModel.Identifier {
 
         if self.count > 2048 {
             throw AppConfigError.validationError(reason: "The provided value to Identifier violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the KmsKeyIdentifier field.
+*/
+extension AppConfigModel.KmsKeyIdentifier {
+    public func validateAsKmsKeyIdentifier() throws {
+        if self.count < 1 {
+            throw AppConfigError.validationError(reason: "The provided value to KmsKeyIdentifier violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw AppConfigError.validationError(reason: "The provided value to KmsKeyIdentifier violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the KmsKeyIdentifierOrEmpty field.
+*/
+extension AppConfigModel.KmsKeyIdentifierOrEmpty {
+    public func validateAsKmsKeyIdentifierOrEmpty() throws {
+        if self.count < 0 {
+            throw AppConfigError.validationError(reason: "The provided value to KmsKeyIdentifierOrEmpty violated the minimum length constraint.")
+        }
+
+        if self.count > 2048 {
+            throw AppConfigError.validationError(reason: "The provided value to KmsKeyIdentifierOrEmpty violated the maximum length constraint.")
         }
     }
 }

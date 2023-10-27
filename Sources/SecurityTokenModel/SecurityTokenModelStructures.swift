@@ -25,7 +25,7 @@ import Foundation
 public struct AssumeRoleRequest: Codable, Equatable {
     public var durationSeconds: RoleDurationSecondsType?
     public var externalId: ExternalIdType?
-    public var policy: SessionPolicyDocumentType?
+    public var policy: UnrestrictedSessionPolicyDocumentType?
     public var policyArns: PolicyDescriptorListType?
     public var providedContexts: ProvidedContextsListType?
     public var roleArn: ArnType
@@ -38,7 +38,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
 
     public init(durationSeconds: RoleDurationSecondsType? = nil,
                 externalId: ExternalIdType? = nil,
-                policy: SessionPolicyDocumentType? = nil,
+                policy: UnrestrictedSessionPolicyDocumentType? = nil,
                 policyArns: PolicyDescriptorListType? = nil,
                 providedContexts: ProvidedContextsListType? = nil,
                 roleArn: ArnType,
@@ -80,7 +80,7 @@ public struct AssumeRoleRequest: Codable, Equatable {
     public func validate() throws {
         try durationSeconds?.validateAsRoleDurationSecondsType()
         try externalId?.validateAsExternalIdType()
-        try policy?.validateAsSessionPolicyDocumentType()
+        try policy?.validateAsUnrestrictedSessionPolicyDocumentType()
         try providedContexts?.validateAsProvidedContextsListType()
         try roleArn.validateAsArnType()
         try roleSessionName.validateAsRoleSessionNameType()

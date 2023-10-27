@@ -410,6 +410,21 @@ public enum FailureType: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the GitPushFilterList field.
+ */
+public typealias GitPushFilterList = [GitPushFilter]
+
+/**
+ Type definition for the GitTagNamePattern field.
+ */
+public typealias GitTagNamePattern = String
+
+/**
+ Type definition for the GitTagPatternList field.
+ */
+public typealias GitTagPatternList = [GitTagNamePattern]
+
+/**
  Type definition for the InputArtifactList field.
  */
 public typealias InputArtifactList = [InputArtifact]
@@ -608,6 +623,63 @@ public typealias PipelineName = String
 public typealias PipelineStageDeclarationList = [StageDeclaration]
 
 /**
+ Type definition for the PipelineTriggerDeclarationList field.
+ */
+public typealias PipelineTriggerDeclarationList = [PipelineTriggerDeclaration]
+
+/**
+ Enumeration restricting the values of the PipelineTriggerProviderType field.
+ */
+public enum PipelineTriggerProviderType: String, Codable, CustomStringConvertible {
+    case codestarsourceconnection = "CodeStarSourceConnection"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PipelineTriggerProviderType = .codestarsourceconnection
+}
+
+/**
+ Enumeration restricting the values of the PipelineType field.
+ */
+public enum PipelineType: String, Codable, CustomStringConvertible {
+    case v1 = "V1"
+    case v2 = "V2"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: PipelineType = .v1
+}
+
+/**
+ Type definition for the PipelineVariableDeclarationList field.
+ */
+public typealias PipelineVariableDeclarationList = [PipelineVariableDeclaration]
+
+/**
+ Type definition for the PipelineVariableDescription field.
+ */
+public typealias PipelineVariableDescription = String
+
+/**
+ Type definition for the PipelineVariableList field.
+ */
+public typealias PipelineVariableList = [PipelineVariable]
+
+/**
+ Type definition for the PipelineVariableName field.
+ */
+public typealias PipelineVariableName = String
+
+/**
+ Type definition for the PipelineVariableValue field.
+ */
+public typealias PipelineVariableValue = String
+
+/**
  Type definition for the PipelineVersion field.
  */
 public typealias PipelineVersion = Int
@@ -641,6 +713,11 @@ public typealias QueryParamMap = [ActionConfigurationKey: ActionConfigurationQue
  Type definition for the ResolvedActionConfigurationMap field.
  */
 public typealias ResolvedActionConfigurationMap = [String: String]
+
+/**
+ Type definition for the ResolvedPipelineVariableList field.
+ */
+public typealias ResolvedPipelineVariableList = [ResolvedPipelineVariable]
 
 /**
  Type definition for the ResourceArn field.
@@ -744,13 +821,14 @@ public typealias StageName = String
  Enumeration restricting the values of the StageRetryMode field.
  */
 public enum StageRetryMode: String, Codable, CustomStringConvertible {
+    case allActions = "ALL_ACTIONS"
     case failedActions = "FAILED_ACTIONS"
 
     public var description: String {
         return rawValue
     }
     
-    public static let __default: StageRetryMode = .failedActions
+    public static let __default: StageRetryMode = .allActions
 }
 
 /**
@@ -832,6 +910,7 @@ public enum TriggerType: String, Codable, CustomStringConvertible {
     case putActionRevision = "PutActionRevision"
     case startPipelineExecution = "StartPipelineExecution"
     case webhook = "Webhook"
+    case webhookV2 = "WebhookV2"
 
     public var description: String {
         return rawValue
@@ -1388,6 +1467,51 @@ extension CodePipelineModel.ExecutionSummary {
 }
 
 /**
+ Validation for the GitPushFilterList field.
+*/
+extension Array where Element == CodePipelineModel.GitPushFilter {
+    public func validateAsGitPushFilterList() throws {
+        if self.count < 1 {
+            throw CodePipelineError.validationError(reason: "The provided value to GitPushFilterList violated the minimum length constraint.")
+        }
+
+        if self.count > 1 {
+            throw CodePipelineError.validationError(reason: "The provided value to GitPushFilterList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the GitTagNamePattern field.
+*/
+extension CodePipelineModel.GitTagNamePattern {
+    public func validateAsGitTagNamePattern() throws {
+        if self.count < 1 {
+            throw CodePipelineError.validationError(reason: "The provided value to GitTagNamePattern violated the minimum length constraint.")
+        }
+
+        if self.count > 255 {
+            throw CodePipelineError.validationError(reason: "The provided value to GitTagNamePattern violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the GitTagPatternList field.
+*/
+extension Array where Element == CodePipelineModel.GitTagNamePattern {
+    public func validateAsGitTagPatternList() throws {
+        if self.count < 1 {
+            throw CodePipelineError.validationError(reason: "The provided value to GitTagPatternList violated the minimum length constraint.")
+        }
+
+        if self.count > 8 {
+            throw CodePipelineError.validationError(reason: "The provided value to GitTagPatternList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
  Validation for the JobId field.
 */
 extension CodePipelineModel.JobId {
@@ -1684,6 +1808,108 @@ extension CodePipelineModel.PipelineName {
             matchingRange == startIndex..<endIndex else {
                 throw CodePipelineError.validationError(
                     reason: "The provided value to PipelineName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PipelineTriggerDeclarationList field.
+*/
+extension Array where Element == CodePipelineModel.PipelineTriggerDeclaration {
+    public func validateAsPipelineTriggerDeclarationList() throws {
+
+        if self.count > 20 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineTriggerDeclarationList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PipelineVariableDeclarationList field.
+*/
+extension Array where Element == CodePipelineModel.PipelineVariableDeclaration {
+    public func validateAsPipelineVariableDeclarationList() throws {
+
+        if self.count > 50 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableDeclarationList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PipelineVariableDescription field.
+*/
+extension CodePipelineModel.PipelineVariableDescription {
+    public func validateAsPipelineVariableDescription() throws {
+        if self.count < 0 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableDescription violated the minimum length constraint.")
+        }
+
+        if self.count > 200 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableDescription violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: ".*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CodePipelineError.validationError(
+                    reason: "The provided value to PipelineVariableDescription violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PipelineVariableList field.
+*/
+extension Array where Element == CodePipelineModel.PipelineVariable {
+    public func validateAsPipelineVariableList() throws {
+        if self.count < 1 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableList violated the minimum length constraint.")
+        }
+
+        if self.count > 50 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableList violated the maximum length constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PipelineVariableName field.
+*/
+extension CodePipelineModel.PipelineVariableName {
+    public func validateAsPipelineVariableName() throws {
+        if self.count < 1 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableName violated the minimum length constraint.")
+        }
+
+        if self.count > 128 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableName violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: "[A-Za-z0-9@\\-_]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CodePipelineError.validationError(
+                    reason: "The provided value to PipelineVariableName violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the PipelineVariableValue field.
+*/
+extension CodePipelineModel.PipelineVariableValue {
+    public func validateAsPipelineVariableValue() throws {
+        if self.count < 1 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableValue violated the minimum length constraint.")
+        }
+
+        if self.count > 1000 {
+            throw CodePipelineError.validationError(reason: "The provided value to PipelineVariableValue violated the maximum length constraint.")
+        }
+
+        guard let matchingRange = self.range(of: ".*", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw CodePipelineError.validationError(
+                    reason: "The provided value to PipelineVariableValue violated the regular expression constraint.")
         }
     }
 }

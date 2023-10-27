@@ -176,7 +176,7 @@ public struct ThrowingAppConfigClientV2: AppConfigClientProtocolV2 {
          - input: The validated CreateApplicationRequest object being passed to this operation.
      - Returns: The Application object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer.
+     - Throws: badRequest, internalServer, serviceQuotaExceeded.
      */
     public func createApplication(
             input: AppConfigModel.CreateApplicationRequest) async throws -> AppConfigModel.Application {
@@ -194,7 +194,7 @@ public struct ThrowingAppConfigClientV2: AppConfigClientProtocolV2 {
          - input: The validated CreateConfigurationProfileRequest object being passed to this operation.
      - Returns: The ConfigurationProfile object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer, resourceNotFound.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     public func createConfigurationProfile(
             input: AppConfigModel.CreateConfigurationProfileRequest) async throws -> AppConfigModel.ConfigurationProfile {
@@ -212,7 +212,7 @@ public struct ThrowingAppConfigClientV2: AppConfigClientProtocolV2 {
          - input: The validated CreateDeploymentStrategyRequest object being passed to this operation.
      - Returns: The DeploymentStrategy object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer.
+     - Throws: badRequest, internalServer, serviceQuotaExceeded.
      */
     public func createDeploymentStrategy(
             input: AppConfigModel.CreateDeploymentStrategyRequest) async throws -> AppConfigModel.DeploymentStrategy {
@@ -230,7 +230,7 @@ public struct ThrowingAppConfigClientV2: AppConfigClientProtocolV2 {
          - input: The validated CreateEnvironmentRequest object being passed to this operation.
      - Returns: The Environment object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer, resourceNotFound.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     public func createEnvironment(
             input: AppConfigModel.CreateEnvironmentRequest) async throws -> AppConfigModel.Environment {

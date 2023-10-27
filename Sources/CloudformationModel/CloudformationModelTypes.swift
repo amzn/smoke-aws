@@ -1104,6 +1104,7 @@ public enum ResourceAttribute: String, Codable, CustomStringConvertible {
     case properties = "Properties"
     case tags = "Tags"
     case updatePolicy = "UpdatePolicy"
+    case updateReplacePolicy = "UpdateReplacePolicy"
 
     public var description: String {
         return rawValue

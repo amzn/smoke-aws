@@ -253,7 +253,7 @@ public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
          - completion: The Application object or an error will be passed to this 
            callback when the operation is complete. The Application
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, internalServer.
+           The possible errors are: badRequest, internalServer, serviceQuotaExceeded.
      */
     func createApplicationAsync(
             input: AppConfigModel.CreateApplicationRequest, 
@@ -266,7 +266,7 @@ public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
          - input: The validated CreateApplicationRequest object being passed to this operation.
      - Returns: The Application object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer.
+     - Throws: badRequest, internalServer, serviceQuotaExceeded.
      */
     func createApplicationSync(
             input: AppConfigModel.CreateApplicationRequest) throws -> AppConfigModel.Application
@@ -279,7 +279,7 @@ public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
          - completion: The ConfigurationProfile object or an error will be passed to this 
            callback when the operation is complete. The ConfigurationProfile
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, internalServer, resourceNotFound.
+           The possible errors are: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     func createConfigurationProfileAsync(
             input: AppConfigModel.CreateConfigurationProfileRequest, 
@@ -292,7 +292,7 @@ public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
          - input: The validated CreateConfigurationProfileRequest object being passed to this operation.
      - Returns: The ConfigurationProfile object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer, resourceNotFound.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     func createConfigurationProfileSync(
             input: AppConfigModel.CreateConfigurationProfileRequest) throws -> AppConfigModel.ConfigurationProfile
@@ -305,7 +305,7 @@ public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
          - completion: The DeploymentStrategy object or an error will be passed to this 
            callback when the operation is complete. The DeploymentStrategy
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, internalServer.
+           The possible errors are: badRequest, internalServer, serviceQuotaExceeded.
      */
     func createDeploymentStrategyAsync(
             input: AppConfigModel.CreateDeploymentStrategyRequest, 
@@ -318,7 +318,7 @@ public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
          - input: The validated CreateDeploymentStrategyRequest object being passed to this operation.
      - Returns: The DeploymentStrategy object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer.
+     - Throws: badRequest, internalServer, serviceQuotaExceeded.
      */
     func createDeploymentStrategySync(
             input: AppConfigModel.CreateDeploymentStrategyRequest) throws -> AppConfigModel.DeploymentStrategy
@@ -331,7 +331,7 @@ public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
          - completion: The Environment object or an error will be passed to this 
            callback when the operation is complete. The Environment
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, internalServer, resourceNotFound.
+           The possible errors are: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     func createEnvironmentAsync(
             input: AppConfigModel.CreateEnvironmentRequest, 
@@ -344,7 +344,7 @@ public protocol AppConfigClientProtocol: AppConfigClientProtocolV2 {
          - input: The validated CreateEnvironmentRequest object being passed to this operation.
      - Returns: The Environment object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer, resourceNotFound.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     func createEnvironmentSync(
             input: AppConfigModel.CreateEnvironmentRequest) throws -> AppConfigModel.Environment

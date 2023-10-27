@@ -303,7 +303,7 @@ public struct MockAppConfigClient: AppConfigClientProtocol {
          - completion: The Application object or an error will be passed to this 
            callback when the operation is complete. The Application
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, internalServer.
+           The possible errors are: badRequest, internalServer, serviceQuotaExceeded.
      */
     public func createApplicationAsync(
             input: AppConfigModel.CreateApplicationRequest, 
@@ -324,7 +324,7 @@ public struct MockAppConfigClient: AppConfigClientProtocol {
          - input: The validated CreateApplicationRequest object being passed to this operation.
      - Returns: The Application object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer.
+     - Throws: badRequest, internalServer, serviceQuotaExceeded.
      */
     public func createApplicationSync(
             input: AppConfigModel.CreateApplicationRequest) throws -> AppConfigModel.Application {
@@ -343,7 +343,7 @@ public struct MockAppConfigClient: AppConfigClientProtocol {
          - completion: The ConfigurationProfile object or an error will be passed to this 
            callback when the operation is complete. The ConfigurationProfile
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, internalServer, resourceNotFound.
+           The possible errors are: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     public func createConfigurationProfileAsync(
             input: AppConfigModel.CreateConfigurationProfileRequest, 
@@ -364,7 +364,7 @@ public struct MockAppConfigClient: AppConfigClientProtocol {
          - input: The validated CreateConfigurationProfileRequest object being passed to this operation.
      - Returns: The ConfigurationProfile object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer, resourceNotFound.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     public func createConfigurationProfileSync(
             input: AppConfigModel.CreateConfigurationProfileRequest) throws -> AppConfigModel.ConfigurationProfile {
@@ -383,7 +383,7 @@ public struct MockAppConfigClient: AppConfigClientProtocol {
          - completion: The DeploymentStrategy object or an error will be passed to this 
            callback when the operation is complete. The DeploymentStrategy
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, internalServer.
+           The possible errors are: badRequest, internalServer, serviceQuotaExceeded.
      */
     public func createDeploymentStrategyAsync(
             input: AppConfigModel.CreateDeploymentStrategyRequest, 
@@ -404,7 +404,7 @@ public struct MockAppConfigClient: AppConfigClientProtocol {
          - input: The validated CreateDeploymentStrategyRequest object being passed to this operation.
      - Returns: The DeploymentStrategy object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer.
+     - Throws: badRequest, internalServer, serviceQuotaExceeded.
      */
     public func createDeploymentStrategySync(
             input: AppConfigModel.CreateDeploymentStrategyRequest) throws -> AppConfigModel.DeploymentStrategy {
@@ -423,7 +423,7 @@ public struct MockAppConfigClient: AppConfigClientProtocol {
          - completion: The Environment object or an error will be passed to this 
            callback when the operation is complete. The Environment
            object will be validated before being returned to caller.
-           The possible errors are: badRequest, internalServer, resourceNotFound.
+           The possible errors are: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     public func createEnvironmentAsync(
             input: AppConfigModel.CreateEnvironmentRequest, 
@@ -444,7 +444,7 @@ public struct MockAppConfigClient: AppConfigClientProtocol {
          - input: The validated CreateEnvironmentRequest object being passed to this operation.
      - Returns: The Environment object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: badRequest, internalServer, resourceNotFound.
+     - Throws: badRequest, internalServer, resourceNotFound, serviceQuotaExceeded.
      */
     public func createEnvironmentSync(
             input: AppConfigModel.CreateEnvironmentRequest) throws -> AppConfigModel.Environment {

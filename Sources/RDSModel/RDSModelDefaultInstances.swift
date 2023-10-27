@@ -409,6 +409,7 @@ public extension CertificateMessage {
     static let __default: RDSModel.CertificateMessage = {
         let defaultInstance = RDSModel.CertificateMessage(
             certificates: nil,
+            defaultCertificateForNewLaunches: nil,
             marker: nil)
 
         return defaultInstance
@@ -728,8 +729,10 @@ public extension CreateBlueGreenDeploymentRequest {
             source: "0",
             tags: nil,
             targetDBClusterParameterGroupName: nil,
+            targetDBInstanceClass: nil,
             targetDBParameterGroupName: nil,
-            targetEngineVersion: nil)
+            targetEngineVersion: nil,
+            upgradeTargetStorageConfig: nil)
 
         return defaultInstance
     }()
@@ -784,7 +787,9 @@ public extension CreateCustomDBEngineVersionMessage {
             imageId: nil,
             kMSKeyId: nil,
             manifest: nil,
-            tags: nil)
+            sourceCustomDbEngineVersionIdentifier: nil,
+            tags: nil,
+            useAwsProvidedLatestImage: nil)
 
         return defaultInstance
     }()
@@ -992,6 +997,7 @@ public extension CreateDBInstanceMessage {
             dBSecurityGroups: nil,
             dBSubnetGroupName: nil,
             dBSystemId: nil,
+            dedicatedLogVolume: nil,
             deletionProtection: nil,
             domain: nil,
             domainAuthSecretArn: nil,
@@ -1055,6 +1061,7 @@ public extension CreateDBInstanceReadReplicaMessage {
             dBInstanceIdentifier: "value",
             dBParameterGroupName: nil,
             dBSubnetGroupName: nil,
+            dedicatedLogVolume: nil,
             deletionProtection: nil,
             domain: nil,
             domainAuthSecretArn: nil,
@@ -1086,6 +1093,7 @@ public extension CreateDBInstanceReadReplicaMessage {
             storageThroughput: nil,
             storageType: nil,
             tags: nil,
+            upgradeStorageConfig: nil,
             useDefaultProcessorFeatures: nil,
             vpcSecurityGroupIds: nil)
 
@@ -1577,6 +1585,7 @@ public extension DBCluster {
             autoMinorVersionUpgrade: nil,
             automaticRestartTime: nil,
             availabilityZones: nil,
+            awsBackupRecoveryPointArn: nil,
             backtrackConsumedChangeRecords: nil,
             backtrackWindow: nil,
             backupRetentionPeriod: nil,
@@ -1652,6 +1661,88 @@ public extension DBClusterAlreadyExistsFault {
      */
     static let __default: RDSModel.DBClusterAlreadyExistsFault = {
         let defaultInstance = RDSModel.DBClusterAlreadyExistsFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBClusterAutomatedBackup {
+    /**
+     Default instance of the DBClusterAutomatedBackup structure.
+     */
+    static let __default: RDSModel.DBClusterAutomatedBackup = {
+        let defaultInstance = RDSModel.DBClusterAutomatedBackup(
+            allocatedStorage: nil,
+            availabilityZones: nil,
+            awsBackupRecoveryPointArn: nil,
+            backupRetentionPeriod: nil,
+            clusterCreateTime: nil,
+            dBClusterArn: nil,
+            dBClusterAutomatedBackupsArn: nil,
+            dBClusterIdentifier: nil,
+            dbClusterResourceId: nil,
+            engine: nil,
+            engineMode: nil,
+            engineVersion: nil,
+            iAMDatabaseAuthenticationEnabled: nil,
+            iops: nil,
+            kmsKeyId: nil,
+            licenseModel: nil,
+            masterUsername: nil,
+            port: nil,
+            region: nil,
+            restoreWindow: nil,
+            status: nil,
+            storageEncrypted: nil,
+            storageType: nil,
+            vpcId: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBClusterAutomatedBackupMessage {
+    /**
+     Default instance of the DBClusterAutomatedBackupMessage structure.
+     */
+    static let __default: RDSModel.DBClusterAutomatedBackupMessage = {
+        let defaultInstance = RDSModel.DBClusterAutomatedBackupMessage(
+            dBClusterAutomatedBackups: nil,
+            marker: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups {
+    /**
+     Default instance of the DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups structure.
+     */
+    static let __default: RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups = {
+        let defaultInstance = RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups(
+            describeDBClusterAutomatedBackupsResult: DBClusterAutomatedBackupMessage.__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension DBClusterAutomatedBackupNotFoundFault {
+    /**
+     Default instance of the DBClusterAutomatedBackupNotFoundFault structure.
+     */
+    static let __default: RDSModel.DBClusterAutomatedBackupNotFoundFault = {
+        let defaultInstance = RDSModel.DBClusterAutomatedBackupNotFoundFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension DBClusterAutomatedBackupQuotaExceededFault {
+    /**
+     Default instance of the DBClusterAutomatedBackupQuotaExceededFault structure.
+     */
+    static let __default: RDSModel.DBClusterAutomatedBackupQuotaExceededFault = {
+        let defaultInstance = RDSModel.DBClusterAutomatedBackupQuotaExceededFault()
 
         return defaultInstance
     }()
@@ -2112,6 +2203,7 @@ public extension DBClusterSnapshot {
             dBClusterSnapshotArn: nil,
             dBClusterSnapshotIdentifier: nil,
             dBSystemId: nil,
+            dbClusterResourceId: nil,
             engine: nil,
             engineMode: nil,
             engineVersion: nil,
@@ -2351,6 +2443,7 @@ public extension DBInstance {
             dBSystemId: nil,
             dbInstancePort: nil,
             dbiResourceId: nil,
+            dedicatedLogVolume: nil,
             deletionProtection: nil,
             domainMemberships: nil,
             enabledCloudwatchLogsExports: nil,
@@ -2361,6 +2454,7 @@ public extension DBInstance {
             iAMDatabaseAuthenticationEnabled: nil,
             instanceCreateTime: nil,
             iops: nil,
+            isStorageConfigUpgradeAvailable: nil,
             kmsKeyId: nil,
             latestRestorableTime: nil,
             licenseModel: nil,
@@ -2423,6 +2517,7 @@ public extension DBInstanceAutomatedBackup {
         let defaultInstance = RDSModel.DBInstanceAutomatedBackup(
             allocatedStorage: nil,
             availabilityZone: nil,
+            awsBackupRecoveryPointArn: nil,
             backupRetentionPeriod: nil,
             backupTarget: nil,
             dBInstanceArn: nil,
@@ -2430,6 +2525,7 @@ public extension DBInstanceAutomatedBackup {
             dBInstanceAutomatedBackupsReplications: nil,
             dBInstanceIdentifier: nil,
             dbiResourceId: nil,
+            dedicatedLogVolume: nil,
             encrypted: nil,
             engine: nil,
             engineVersion: nil,
@@ -3067,6 +3163,7 @@ public extension DBSnapshot {
             dBSnapshotIdentifier: nil,
             dBSystemId: nil,
             dbiResourceId: nil,
+            dedicatedLogVolume: nil,
             encrypted: nil,
             engine: nil,
             engineVersion: nil,
@@ -3342,6 +3439,42 @@ public extension DeleteCustomDBEngineVersionMessage {
     }()
 }
 
+public extension DeleteDBClusterAutomatedBackupMessage {
+    /**
+     Default instance of the DeleteDBClusterAutomatedBackupMessage structure.
+     */
+    static let __default: RDSModel.DeleteDBClusterAutomatedBackupMessage = {
+        let defaultInstance = RDSModel.DeleteDBClusterAutomatedBackupMessage(
+            dbClusterResourceId: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteDBClusterAutomatedBackupResult {
+    /**
+     Default instance of the DeleteDBClusterAutomatedBackupResult structure.
+     */
+    static let __default: RDSModel.DeleteDBClusterAutomatedBackupResult = {
+        let defaultInstance = RDSModel.DeleteDBClusterAutomatedBackupResult(
+            dBClusterAutomatedBackup: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup {
+    /**
+     Default instance of the DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup structure.
+     */
+    static let __default: RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup = {
+        let defaultInstance = RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup(
+            deleteDBClusterAutomatedBackupResult: DeleteDBClusterAutomatedBackupResult.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension DeleteDBClusterEndpointMessage {
     /**
      Default instance of the DeleteDBClusterEndpointMessage structure.
@@ -3361,6 +3494,7 @@ public extension DeleteDBClusterMessage {
     static let __default: RDSModel.DeleteDBClusterMessage = {
         let defaultInstance = RDSModel.DeleteDBClusterMessage(
             dBClusterIdentifier: "value",
+            deleteAutomatedBackups: nil,
             finalDBSnapshotIdentifier: nil,
             skipFinalSnapshot: nil)
 
@@ -3848,6 +3982,22 @@ public extension DescribeCertificatesMessage {
     }()
 }
 
+public extension DescribeDBClusterAutomatedBackupsMessage {
+    /**
+     Default instance of the DescribeDBClusterAutomatedBackupsMessage structure.
+     */
+    static let __default: RDSModel.DescribeDBClusterAutomatedBackupsMessage = {
+        let defaultInstance = RDSModel.DescribeDBClusterAutomatedBackupsMessage(
+            dBClusterIdentifier: nil,
+            dbClusterResourceId: nil,
+            filters: nil,
+            marker: nil,
+            maxRecords: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension DescribeDBClusterBacktracksMessage {
     /**
      Default instance of the DescribeDBClusterBacktracksMessage structure.
@@ -3955,6 +4105,7 @@ public extension DescribeDBClusterSnapshotsMessage {
         let defaultInstance = RDSModel.DescribeDBClusterSnapshotsMessage(
             dBClusterIdentifier: nil,
             dBClusterSnapshotIdentifier: nil,
+            dbClusterResourceId: nil,
             filters: nil,
             includePublic: nil,
             includeShared: nil,
@@ -5105,7 +5256,9 @@ public extension FailoverGlobalClusterMessage {
      */
     static let __default: RDSModel.FailoverGlobalClusterMessage = {
         let defaultInstance = RDSModel.FailoverGlobalClusterMessage(
+            allowDataLoss: nil,
             globalClusterIdentifier: "0",
+            switchover: nil,
             targetDbClusterIdentifier: "0")
 
         return defaultInstance
@@ -5143,6 +5296,7 @@ public extension FailoverState {
     static let __default: RDSModel.FailoverState = {
         let defaultInstance = RDSModel.FailoverState(
             fromDbClusterArn: nil,
+            isDataLossAllowed: nil,
             status: nil,
             toDbClusterArn: nil)
 
@@ -5205,7 +5359,8 @@ public extension GlobalClusterMember {
             dBClusterArn: nil,
             globalWriteForwardingStatus: nil,
             isWriter: nil,
-            readers: nil)
+            readers: nil,
+            synchronizationStatus: nil)
 
         return defaultInstance
     }()
@@ -5365,6 +5520,17 @@ public extension InvalidCustomDBEngineVersionStateFault {
      */
     static let __default: RDSModel.InvalidCustomDBEngineVersionStateFault = {
         let defaultInstance = RDSModel.InvalidCustomDBEngineVersionStateFault()
+
+        return defaultInstance
+    }()
+}
+
+public extension InvalidDBClusterAutomatedBackupStateFault {
+    /**
+     Default instance of the InvalidDBClusterAutomatedBackupStateFault structure.
+     */
+    static let __default: RDSModel.InvalidDBClusterAutomatedBackupStateFault = {
+        let defaultInstance = RDSModel.InvalidDBClusterAutomatedBackupStateFault()
 
         return defaultInstance
     }()
@@ -5820,6 +5986,7 @@ public extension ModifyDBClusterMessage {
             allowMajorVersionUpgrade: nil,
             applyImmediately: nil,
             autoMinorVersionUpgrade: nil,
+            awsBackupRecoveryPointArn: nil,
             backtrackWindow: nil,
             backupRetentionPeriod: nil,
             cloudwatchLogsExportConfiguration: nil,
@@ -5961,6 +6128,7 @@ public extension ModifyDBInstanceMessage {
             dBPortNumber: nil,
             dBSecurityGroups: nil,
             dBSubnetGroupName: nil,
+            dedicatedLogVolume: nil,
             deletionProtection: nil,
             disableDomain: nil,
             domain: nil,
@@ -6675,6 +6843,7 @@ public extension OrderableDBInstanceOption {
             supportedEngineModes: nil,
             supportedNetworkTypes: nil,
             supportsClusters: nil,
+            supportsDedicatedLogVolume: nil,
             supportsEnhancedMonitoring: nil,
             supportsGlobalDatabases: nil,
             supportsIAMDatabaseAuthentication: nil,
@@ -6817,6 +6986,7 @@ public extension PendingModifiedValues {
             dBInstanceClass: nil,
             dBInstanceIdentifier: nil,
             dBSubnetGroupName: nil,
+            dedicatedLogVolume: nil,
             engine: nil,
             engineVersion: nil,
             iAMDatabaseAuthenticationEnabled: nil,
@@ -7593,7 +7763,8 @@ public extension RestoreDBClusterToPointInTimeMessage {
             restoreType: nil,
             scalingConfiguration: nil,
             serverlessV2ScalingConfiguration: nil,
-            sourceDBClusterIdentifier: "value",
+            sourceDBClusterIdentifier: nil,
+            sourceDbClusterResourceId: nil,
             storageType: nil,
             tags: nil,
             useLatestRestorableTime: nil,
@@ -7646,6 +7817,7 @@ public extension RestoreDBInstanceFromDBSnapshotMessage {
             dBParameterGroupName: nil,
             dBSnapshotIdentifier: nil,
             dBSubnetGroupName: nil,
+            dedicatedLogVolume: nil,
             deletionProtection: nil,
             domain: nil,
             domainAuthSecretArn: nil,
@@ -7718,6 +7890,7 @@ public extension RestoreDBInstanceFromS3Message {
             dBParameterGroupName: nil,
             dBSecurityGroups: nil,
             dBSubnetGroupName: nil,
+            dedicatedLogVolume: nil,
             deletionProtection: nil,
             enableCloudwatchLogsExports: nil,
             enableIAMDatabaseAuthentication: nil,
@@ -7800,6 +7973,7 @@ public extension RestoreDBInstanceToPointInTimeMessage {
             dBName: nil,
             dBParameterGroupName: nil,
             dBSubnetGroupName: nil,
+            dedicatedLogVolume: nil,
             deletionProtection: nil,
             domain: nil,
             domainAuthSecretArn: nil,
@@ -8568,6 +8742,43 @@ public extension SwitchoverDetail {
     }()
 }
 
+public extension SwitchoverGlobalClusterMessage {
+    /**
+     Default instance of the SwitchoverGlobalClusterMessage structure.
+     */
+    static let __default: RDSModel.SwitchoverGlobalClusterMessage = {
+        let defaultInstance = RDSModel.SwitchoverGlobalClusterMessage(
+            globalClusterIdentifier: "0",
+            targetDbClusterIdentifier: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension SwitchoverGlobalClusterResult {
+    /**
+     Default instance of the SwitchoverGlobalClusterResult structure.
+     */
+    static let __default: RDSModel.SwitchoverGlobalClusterResult = {
+        let defaultInstance = RDSModel.SwitchoverGlobalClusterResult(
+            globalCluster: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension SwitchoverGlobalClusterResultForSwitchoverGlobalCluster {
+    /**
+     Default instance of the SwitchoverGlobalClusterResultForSwitchoverGlobalCluster structure.
+     */
+    static let __default: RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster = {
+        let defaultInstance = RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster(
+            switchoverGlobalClusterResult: SwitchoverGlobalClusterResult.__default)
+
+        return defaultInstance
+    }()
+}
+
 public extension SwitchoverReadReplicaMessage {
     /**
      Default instance of the SwitchoverReadReplicaMessage structure.
@@ -8729,6 +8940,7 @@ public extension ValidDBInstanceModificationsMessage {
     static let __default: RDSModel.ValidDBInstanceModificationsMessage = {
         let defaultInstance = RDSModel.ValidDBInstanceModificationsMessage(
             storage: nil,
+            supportsDedicatedLogVolume: nil,
             validProcessorFeatures: nil)
 
         return defaultInstance

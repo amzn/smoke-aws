@@ -228,6 +228,11 @@ public typealias TokenCodeType = String
 public typealias TokenType = String
 
 /**
+ Type definition for the UnrestrictedSessionPolicyDocumentType field.
+ */
+public typealias UnrestrictedSessionPolicyDocumentType = String
+
+/**
  Type definition for the UrlType field.
  */
 public typealias UrlType = String
@@ -633,6 +638,24 @@ extension SecurityTokenModel.TokenCodeType {
             matchingRange == startIndex..<endIndex else {
                 throw SecurityTokenError.validationError(
                     reason: "The provided value to tokenCodeType violated the regular expression constraint.")
+        }
+    }
+}
+
+/**
+ Validation for the UnrestrictedSessionPolicyDocumentType field.
+*/
+extension SecurityTokenModel.UnrestrictedSessionPolicyDocumentType {
+    public func validateAsUnrestrictedSessionPolicyDocumentType() throws {
+        if self.count < 1 {
+            throw SecurityTokenError.validationError(reason: "The provided value to unrestrictedSessionPolicyDocumentType violated the minimum length constraint.")
+        }
+
+
+        guard let matchingRange = self.range(of: "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+", options: .regularExpression),
+            matchingRange == startIndex..<endIndex else {
+                throw SecurityTokenError.validationError(
+                    reason: "The provided value to unrestrictedSessionPolicyDocumentType violated the regular expression constraint.")
         }
     }
 }

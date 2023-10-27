@@ -339,7 +339,7 @@ public protocol ElasticComputeCloudClientProtocolV2 {
     typealias DeleteIpamScopeFunctionType = (
             _ input: ElasticComputeCloudModel.DeleteIpamScopeRequest) async throws -> ElasticComputeCloudModel.DeleteIpamScopeResult
     typealias DeleteKeyPairFunctionType = (
-            _ input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws -> ()
+            _ input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws -> ElasticComputeCloudModel.DeleteKeyPairResult
     typealias DeleteLaunchTemplateFunctionType = (
             _ input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest) async throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult
     typealias DeleteLaunchTemplateVersionsFunctionType = (
@@ -776,6 +776,10 @@ public protocol ElasticComputeCloudClientProtocolV2 {
             _ input: ElasticComputeCloudModel.DisableFastLaunchRequest) async throws -> ElasticComputeCloudModel.DisableFastLaunchResult
     typealias DisableFastSnapshotRestoresFunctionType = (
             _ input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest) async throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult
+    typealias DisableImageFunctionType = (
+            _ input: ElasticComputeCloudModel.DisableImageRequest) async throws -> ElasticComputeCloudModel.DisableImageResult
+    typealias DisableImageBlockPublicAccessFunctionType = (
+            _ input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest) async throws -> ElasticComputeCloudModel.DisableImageBlockPublicAccessResult
     typealias DisableImageDeprecationFunctionType = (
             _ input: ElasticComputeCloudModel.DisableImageDeprecationRequest) async throws -> ElasticComputeCloudModel.DisableImageDeprecationResult
     typealias DisableIpamOrganizationAdminAccountFunctionType = (
@@ -828,6 +832,10 @@ public protocol ElasticComputeCloudClientProtocolV2 {
             _ input: ElasticComputeCloudModel.EnableFastLaunchRequest) async throws -> ElasticComputeCloudModel.EnableFastLaunchResult
     typealias EnableFastSnapshotRestoresFunctionType = (
             _ input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) async throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult
+    typealias EnableImageFunctionType = (
+            _ input: ElasticComputeCloudModel.EnableImageRequest) async throws -> ElasticComputeCloudModel.EnableImageResult
+    typealias EnableImageBlockPublicAccessFunctionType = (
+            _ input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest) async throws -> ElasticComputeCloudModel.EnableImageBlockPublicAccessResult
     typealias EnableImageDeprecationFunctionType = (
             _ input: ElasticComputeCloudModel.EnableImageDeprecationRequest) async throws -> ElasticComputeCloudModel.EnableImageDeprecationResult
     typealias EnableIpamOrganizationAdminAccountFunctionType = (
@@ -880,6 +888,8 @@ public protocol ElasticComputeCloudClientProtocolV2 {
             _ input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest) async throws -> ElasticComputeCloudModel.GetGroupsForCapacityReservationResult
     typealias GetHostReservationPurchasePreviewFunctionType = (
             _ input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) async throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult
+    typealias GetImageBlockPublicAccessStateFunctionType = (
+            _ input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest) async throws -> ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult
     typealias GetInstanceTypesFromInstanceRequirementsFunctionType = (
             _ input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest) async throws -> ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult
     typealias GetInstanceUefiDataFunctionType = (
@@ -910,6 +920,8 @@ public protocol ElasticComputeCloudClientProtocolV2 {
             _ input: ElasticComputeCloudModel.GetPasswordDataRequest) async throws -> ElasticComputeCloudModel.GetPasswordDataResult
     typealias GetReservedInstancesExchangeQuoteFunctionType = (
             _ input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) async throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult
+    typealias GetSecurityGroupsForVpcFunctionType = (
+            _ input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest) async throws -> ElasticComputeCloudModel.GetSecurityGroupsForVpcResult
     typealias GetSerialConsoleAccessStatusFunctionType = (
             _ input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest) async throws -> ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult
     typealias GetSpotPlacementScoresFunctionType = (
@@ -2898,9 +2910,11 @@ public protocol ElasticComputeCloudClientProtocolV2 {
 
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
+     - Returns: The DeleteKeyPairResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     func deleteKeyPair(
-            input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws
+            input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws -> ElasticComputeCloudModel.DeleteKeyPairResult
 
     /**
      Invokes the DeleteLaunchTemplate operation suspending until the response is available before returning.
@@ -5261,6 +5275,28 @@ public protocol ElasticComputeCloudClientProtocolV2 {
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest) async throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult
 
     /**
+     Invokes the DisableImage operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisableImageRequest object being passed to this operation.
+     - Returns: The DisableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableImage(
+            input: ElasticComputeCloudModel.DisableImageRequest) async throws -> ElasticComputeCloudModel.DisableImageResult
+
+    /**
+     Invokes the DisableImageBlockPublicAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The DisableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func disableImageBlockPublicAccess(
+            input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest) async throws -> ElasticComputeCloudModel.DisableImageBlockPublicAccessResult
+
+    /**
      Invokes the DisableImageDeprecation operation suspending until the response is available before returning.
 
      - Parameters:
@@ -5539,6 +5575,28 @@ public protocol ElasticComputeCloudClientProtocolV2 {
      */
     func enableFastSnapshotRestores(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) async throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult
+
+    /**
+     Invokes the EnableImage operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated EnableImageRequest object being passed to this operation.
+     - Returns: The EnableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableImage(
+            input: ElasticComputeCloudModel.EnableImageRequest) async throws -> ElasticComputeCloudModel.EnableImageResult
+
+    /**
+     Invokes the EnableImageBlockPublicAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated EnableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The EnableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func enableImageBlockPublicAccess(
+            input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest) async throws -> ElasticComputeCloudModel.EnableImageBlockPublicAccessResult
 
     /**
      Invokes the EnableImageDeprecation operation suspending until the response is available before returning.
@@ -5823,6 +5881,17 @@ public protocol ElasticComputeCloudClientProtocolV2 {
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) async throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult
 
     /**
+     Invokes the GetImageBlockPublicAccessState operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetImageBlockPublicAccessStateRequest object being passed to this operation.
+     - Returns: The GetImageBlockPublicAccessStateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getImageBlockPublicAccessState(
+            input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest) async throws -> ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult
+
+    /**
      Invokes the GetInstanceTypesFromInstanceRequirements operation suspending until the response is available before returning.
 
      - Parameters:
@@ -5986,6 +6055,17 @@ public protocol ElasticComputeCloudClientProtocolV2 {
      */
     func getReservedInstancesExchangeQuote(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) async throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult
+
+    /**
+     Invokes the GetSecurityGroupsForVpc operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetSecurityGroupsForVpcRequest object being passed to this operation.
+     - Returns: The GetSecurityGroupsForVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    func getSecurityGroupsForVpc(
+            input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest) async throws -> ElasticComputeCloudModel.GetSecurityGroupsForVpcResult
 
     /**
      Invokes the GetSerialConsoleAccessStatus operation suspending until the response is available before returning.

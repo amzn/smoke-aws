@@ -199,6 +199,7 @@ public extension CreateConfigurationProfileRequest {
  */
 public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
     public var description: Description?
+    public var kmsKeyIdentifier: KmsKeyIdentifier?
     public var locationUri: Uri
     public var name: LongName
     public var retrievalRoleArn: RoleArn?
@@ -207,6 +208,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
     public var validators: ValidatorList?
 
     public init(description: Description? = nil,
+                kmsKeyIdentifier: KmsKeyIdentifier? = nil,
                 locationUri: Uri,
                 name: LongName,
                 retrievalRoleArn: RoleArn? = nil,
@@ -214,6 +216,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
                 type: ConfigurationProfileType? = nil,
                 validators: ValidatorList? = nil) {
         self.description = description
+        self.kmsKeyIdentifier = kmsKeyIdentifier
         self.locationUri = locationUri
         self.name = name
         self.retrievalRoleArn = retrievalRoleArn
@@ -224,6 +227,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case description = "Description"
+        case kmsKeyIdentifier = "KmsKeyIdentifier"
         case locationUri = "LocationUri"
         case name = "Name"
         case retrievalRoleArn = "RetrievalRoleArn"
@@ -234,6 +238,7 @@ public struct CreateConfigurationProfileOperationInputBody: Codable, Equatable {
 
     public func validate() throws {
         try description?.validateAsDescription()
+        try kmsKeyIdentifier?.validateAsKmsKeyIdentifier()
         try locationUri.validateAsUri()
         try name.validateAsLongName()
         try retrievalRoleArn?.validateAsRoleArn()
@@ -246,6 +251,7 @@ public extension CreateConfigurationProfileRequest {
     func asAppConfigModelCreateConfigurationProfileOperationInputBody() -> CreateConfigurationProfileOperationInputBody {
         return CreateConfigurationProfileOperationInputBody(
             description: description,
+            kmsKeyIdentifier: kmsKeyIdentifier,
             locationUri: locationUri,
             name: name,
             retrievalRoleArn: retrievalRoleArn,
@@ -333,13 +339,13 @@ public extension CreateEnvironmentRequest {
 public struct CreateExtensionOperationInputBody: Codable, Equatable {
     public var actions: ActionsMap
     public var description: Description?
-    public var name: Name
+    public var name: ExtensionOrParameterName
     public var parameters: ParameterMap?
     public var tags: TagMap?
 
     public init(actions: ActionsMap,
                 description: Description? = nil,
-                name: Name,
+                name: ExtensionOrParameterName,
                 parameters: ParameterMap? = nil,
                 tags: TagMap? = nil) {
         self.actions = actions
@@ -359,7 +365,7 @@ public struct CreateExtensionOperationInputBody: Codable, Equatable {
 
     public func validate() throws {
         try description?.validateAsDescription()
-        try name.validateAsName()
+        try name.validateAsExtensionOrParameterName()
     }
 }
 
@@ -486,6 +492,7 @@ public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, E
     public var configurationProfileId: Id?
     public var contentType: StringWithLengthBetween1And255?
     public var description: Description?
+    public var kmsKeyArn: Arn?
     public var versionLabel: VersionLabel?
     public var versionNumber: Integer?
 
@@ -493,12 +500,14 @@ public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, E
                 configurationProfileId: Id? = nil,
                 contentType: StringWithLengthBetween1And255? = nil,
                 description: Description? = nil,
+                kmsKeyArn: Arn? = nil,
                 versionLabel: VersionLabel? = nil,
                 versionNumber: Integer? = nil) {
         self.applicationId = applicationId
         self.configurationProfileId = configurationProfileId
         self.contentType = contentType
         self.description = description
+        self.kmsKeyArn = kmsKeyArn
         self.versionLabel = versionLabel
         self.versionNumber = versionNumber
     }
@@ -508,6 +517,7 @@ public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, E
         case configurationProfileId = "Configuration-Profile-Id"
         case contentType = "Content-Type"
         case description = "Description"
+        case kmsKeyArn = "KmsKeyArn"
         case versionLabel = "VersionLabel"
         case versionNumber = "Version-Number"
     }
@@ -517,6 +527,7 @@ public struct CreateHostedConfigurationVersionOperationOutputHeaders: Codable, E
         try configurationProfileId?.validateAsId()
         try contentType?.validateAsStringWithLengthBetween1And255()
         try description?.validateAsDescription()
+        try kmsKeyArn?.validateAsArn()
         try versionLabel?.validateAsVersionLabel()
     }
 }
@@ -528,6 +539,7 @@ public extension HostedConfigurationVersion {
             configurationProfileId: configurationProfileId,
             contentType: contentType,
             description: description,
+            kmsKeyArn: kmsKeyArn,
             versionLabel: versionLabel,
             versionNumber: versionNumber)
     }
@@ -1639,14 +1651,14 @@ public struct StartDeploymentOperationInputBody: Codable, Equatable {
     public var configurationVersion: Version
     public var deploymentStrategyId: DeploymentStrategyId
     public var description: Description?
-    public var kmsKeyIdentifier: Identifier?
+    public var kmsKeyIdentifier: KmsKeyIdentifier?
     public var tags: TagMap?
 
     public init(configurationProfileId: Id,
                 configurationVersion: Version,
                 deploymentStrategyId: DeploymentStrategyId,
                 description: Description? = nil,
-                kmsKeyIdentifier: Identifier? = nil,
+                kmsKeyIdentifier: KmsKeyIdentifier? = nil,
                 tags: TagMap? = nil) {
         self.configurationProfileId = configurationProfileId
         self.configurationVersion = configurationVersion
@@ -1670,7 +1682,7 @@ public struct StartDeploymentOperationInputBody: Codable, Equatable {
         try configurationVersion.validateAsVersion()
         try deploymentStrategyId.validateAsDeploymentStrategyId()
         try description?.validateAsDescription()
-        try kmsKeyIdentifier?.validateAsIdentifier()
+        try kmsKeyIdentifier?.validateAsKmsKeyIdentifier()
     }
 }
 
@@ -1930,15 +1942,18 @@ public extension UpdateConfigurationProfileRequest {
  */
 public struct UpdateConfigurationProfileOperationInputBody: Codable, Equatable {
     public var description: Description?
+    public var kmsKeyIdentifier: KmsKeyIdentifierOrEmpty?
     public var name: Name?
     public var retrievalRoleArn: RoleArn?
     public var validators: ValidatorList?
 
     public init(description: Description? = nil,
+                kmsKeyIdentifier: KmsKeyIdentifierOrEmpty? = nil,
                 name: Name? = nil,
                 retrievalRoleArn: RoleArn? = nil,
                 validators: ValidatorList? = nil) {
         self.description = description
+        self.kmsKeyIdentifier = kmsKeyIdentifier
         self.name = name
         self.retrievalRoleArn = retrievalRoleArn
         self.validators = validators
@@ -1946,6 +1961,7 @@ public struct UpdateConfigurationProfileOperationInputBody: Codable, Equatable {
 
     enum CodingKeys: String, CodingKey {
         case description = "Description"
+        case kmsKeyIdentifier = "KmsKeyIdentifier"
         case name = "Name"
         case retrievalRoleArn = "RetrievalRoleArn"
         case validators = "Validators"
@@ -1953,6 +1969,7 @@ public struct UpdateConfigurationProfileOperationInputBody: Codable, Equatable {
 
     public func validate() throws {
         try description?.validateAsDescription()
+        try kmsKeyIdentifier?.validateAsKmsKeyIdentifierOrEmpty()
         try name?.validateAsName()
         try retrievalRoleArn?.validateAsRoleArn()
         try validators?.validateAsValidatorList()
@@ -1963,6 +1980,7 @@ public extension UpdateConfigurationProfileRequest {
     func asAppConfigModelUpdateConfigurationProfileOperationInputBody() -> UpdateConfigurationProfileOperationInputBody {
         return UpdateConfigurationProfileOperationInputBody(
             description: description,
+            kmsKeyIdentifier: kmsKeyIdentifier,
             name: name,
             retrievalRoleArn: retrievalRoleArn,
             validators: validators)

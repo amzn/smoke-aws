@@ -556,7 +556,9 @@ public extension DecisionTaskCompletedEventAttributes {
         let defaultInstance = SimpleWorkflowModel.DecisionTaskCompletedEventAttributes(
             executionContext: nil,
             scheduledEventId: 0,
-            startedEventId: 0)
+            startedEventId: 0,
+            taskList: nil,
+            taskListScheduleToStartTimeout: nil)
 
         return defaultInstance
     }()
@@ -568,6 +570,7 @@ public extension DecisionTaskScheduledEventAttributes {
      */
     static let __default: SimpleWorkflowModel.DecisionTaskScheduledEventAttributes = {
         let defaultInstance = SimpleWorkflowModel.DecisionTaskScheduledEventAttributes(
+            scheduleToStartTimeout: nil,
             startToCloseTimeout: nil,
             taskList: TaskList.__default,
             taskPriority: nil)
@@ -1455,6 +1458,8 @@ public extension RespondDecisionTaskCompletedInput {
         let defaultInstance = SimpleWorkflowModel.RespondDecisionTaskCompletedInput(
             decisions: nil,
             executionContext: nil,
+            taskList: nil,
+            taskListScheduleToStartTimeout: nil,
             taskToken: "0")
 
         return defaultInstance

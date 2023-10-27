@@ -491,6 +491,11 @@ public enum ExportFormat: String, Codable, CustomStringConvertible {
 }
 
 /**
+ Type definition for the ExportFromTime field.
+ */
+public typealias ExportFromTime = String
+
+/**
  Type definition for the ExportManifest field.
  */
 public typealias ExportManifest = String
@@ -529,6 +534,39 @@ public typealias ExportSummaries = [ExportSummary]
  Type definition for the ExportTime field.
  */
 public typealias ExportTime = String
+
+/**
+ Type definition for the ExportToTime field.
+ */
+public typealias ExportToTime = String
+
+/**
+ Enumeration restricting the values of the ExportType field.
+ */
+public enum ExportType: String, Codable, CustomStringConvertible {
+    case fullExport = "FULL_EXPORT"
+    case incrementalExport = "INCREMENTAL_EXPORT"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ExportType = .fullExport
+}
+
+/**
+ Enumeration restricting the values of the ExportViewType field.
+ */
+public enum ExportViewType: String, Codable, CustomStringConvertible {
+    case newAndOldImages = "NEW_AND_OLD_IMAGES"
+    case newImage = "NEW_IMAGE"
+
+    public var description: String {
+        return rawValue
+    }
+    
+    public static let __default: ExportViewType = .newAndOldImages
+}
 
 /**
  Type definition for the ExpressionAttributeNameMap field.

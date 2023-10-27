@@ -144,7 +144,7 @@ public protocol SimpleNotificationClientProtocolV2 {
          - input: The validated ConfirmSubscriptionInput object being passed to this operation.
      - Returns: The ConfirmSubscriptionResponseForConfirmSubscription object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, replayLimitExceeded, subscriptionLimitExceeded.
      */
     func confirmSubscription(
             input: SimpleNotificationModel.ConfirmSubscriptionInput) async throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription
@@ -234,7 +234,7 @@ public protocol SimpleNotificationClientProtocolV2 {
 
      - Parameters:
          - input: The validated DeleteTopicInput object being passed to this operation.
-     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, notFound, staleTag, tagPolicy.
+     - Throws: authorizationError, concurrentAccess, internalError, invalidParameter, invalidState, notFound, staleTag, tagPolicy.
      */
     func deleteTopic(
             input: SimpleNotificationModel.DeleteTopicInput) async throws
@@ -524,7 +524,7 @@ public protocol SimpleNotificationClientProtocolV2 {
 
      - Parameters:
          - input: The validated SetSubscriptionAttributesInput object being passed to this operation.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, notFound, replayLimitExceeded.
      */
     func setSubscriptionAttributes(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput) async throws
@@ -546,7 +546,7 @@ public protocol SimpleNotificationClientProtocolV2 {
          - input: The validated SubscribeInput object being passed to this operation.
      - Returns: The SubscribeResponseForSubscribe object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, subscriptionLimitExceeded.
+     - Throws: authorizationError, filterPolicyLimitExceeded, internalError, invalidParameter, invalidSecurity, notFound, replayLimitExceeded, subscriptionLimitExceeded.
      */
     func subscribe(
             input: SimpleNotificationModel.SubscribeInput) async throws -> SimpleNotificationModel.SubscribeResponseForSubscribe

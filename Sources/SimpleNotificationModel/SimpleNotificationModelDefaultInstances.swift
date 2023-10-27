@@ -757,6 +757,18 @@ public extension InvalidSecurityException {
     }()
 }
 
+public extension InvalidStateException {
+    /**
+     Default instance of the InvalidStateException structure.
+     */
+    static let __default: SimpleNotificationModel.InvalidStateException = {
+        let defaultInstance = SimpleNotificationModel.InvalidStateException(
+            message: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension KMSAccessDeniedException {
     /**
      Default instance of the KMSAccessDeniedException structure.
@@ -1416,6 +1428,18 @@ public extension RemovePermissionInput {
         let defaultInstance = SimpleNotificationModel.RemovePermissionInput(
             label: "value",
             topicArn: "value")
+
+        return defaultInstance
+    }()
+}
+
+public extension ReplayLimitExceededException {
+    /**
+     Default instance of the ReplayLimitExceededException structure.
+     */
+    static let __default: SimpleNotificationModel.ReplayLimitExceededException = {
+        let defaultInstance = SimpleNotificationModel.ReplayLimitExceededException(
+            message: nil)
 
         return defaultInstance
     }()

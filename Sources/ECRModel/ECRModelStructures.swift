@@ -3394,11 +3394,11 @@ public struct StartLifecyclePolicyPreviewResponse: Codable, Equatable {
 }
 
 public struct Tag: Codable, Equatable {
-    public var key: TagKey?
-    public var value: TagValue?
+    public var key: TagKey
+    public var value: TagValue
 
-    public init(key: TagKey? = nil,
-                value: TagValue? = nil) {
+    public init(key: TagKey,
+                value: TagValue) {
         self.key = key
         self.value = value
     }

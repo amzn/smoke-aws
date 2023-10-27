@@ -401,6 +401,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public let disableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableFastLaunch: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let disableImageBlockPublicAccess: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableImageDeprecation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableIpamOrganizationAdminAccount: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let disableSerialConsoleAccess: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -427,6 +429,8 @@ public struct ElasticComputeCloudOperationsReporting {
     public let enableEbsEncryptionByDefault: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableFastLaunch: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableFastSnapshotRestores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableImage: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let enableImageBlockPublicAccess: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableImageDeprecation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableIpamOrganizationAdminAccount: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let enableReachabilityAnalyzerOrganizationSharing: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -453,6 +457,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getFlowLogsIntegrationTemplate: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getGroupsForCapacityReservation: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getHostReservationPurchasePreview: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getImageBlockPublicAccessState: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getInstanceTypesFromInstanceRequirements: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getInstanceUefiData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getIpamAddressHistory: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -468,6 +473,7 @@ public struct ElasticComputeCloudOperationsReporting {
     public let getNetworkInsightsAccessScopeContent: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getPasswordData: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getReservedInstancesExchangeQuote: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
+    public let getSecurityGroupsForVpc: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getSerialConsoleAccessStatus: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getSpotPlacementScores: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
     public let getSubnetCidrReservations: StandardSmokeAWSOperationReporting<ElasticComputeCloudModelOperations>
@@ -1370,6 +1376,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .disableFastLaunch, configuration: reportingConfiguration)
         self.disableFastSnapshotRestores = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disableFastSnapshotRestores, configuration: reportingConfiguration)
+        self.disableImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableImage, configuration: reportingConfiguration)
+        self.disableImageBlockPublicAccess = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .disableImageBlockPublicAccess, configuration: reportingConfiguration)
         self.disableImageDeprecation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .disableImageDeprecation, configuration: reportingConfiguration)
         self.disableIpamOrganizationAdminAccount = StandardSmokeAWSOperationReporting(
@@ -1422,6 +1432,10 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .enableFastLaunch, configuration: reportingConfiguration)
         self.enableFastSnapshotRestores = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableFastSnapshotRestores, configuration: reportingConfiguration)
+        self.enableImage = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableImage, configuration: reportingConfiguration)
+        self.enableImageBlockPublicAccess = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .enableImageBlockPublicAccess, configuration: reportingConfiguration)
         self.enableImageDeprecation = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .enableImageDeprecation, configuration: reportingConfiguration)
         self.enableIpamOrganizationAdminAccount = StandardSmokeAWSOperationReporting(
@@ -1474,6 +1488,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getGroupsForCapacityReservation, configuration: reportingConfiguration)
         self.getHostReservationPurchasePreview = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getHostReservationPurchasePreview, configuration: reportingConfiguration)
+        self.getImageBlockPublicAccessState = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getImageBlockPublicAccessState, configuration: reportingConfiguration)
         self.getInstanceTypesFromInstanceRequirements = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getInstanceTypesFromInstanceRequirements, configuration: reportingConfiguration)
         self.getInstanceUefiData = StandardSmokeAWSOperationReporting(
@@ -1504,6 +1520,8 @@ public struct ElasticComputeCloudOperationsReporting {
             clientName: clientName, operation: .getPasswordData, configuration: reportingConfiguration)
         self.getReservedInstancesExchangeQuote = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getReservedInstancesExchangeQuote, configuration: reportingConfiguration)
+        self.getSecurityGroupsForVpc = StandardSmokeAWSOperationReporting(
+            clientName: clientName, operation: .getSecurityGroupsForVpc, configuration: reportingConfiguration)
         self.getSerialConsoleAccessStatus = StandardSmokeAWSOperationReporting(
             clientName: clientName, operation: .getSerialConsoleAccessStatus, configuration: reportingConfiguration)
         self.getSpotPlacementScores = StandardSmokeAWSOperationReporting(

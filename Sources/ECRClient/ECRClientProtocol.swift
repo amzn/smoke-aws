@@ -425,7 +425,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - completion: The DeleteLifecyclePolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The DeleteLifecyclePolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, lifecyclePolicyNotFound, repositoryNotFound, server.
+           The possible errors are: invalidParameter, lifecyclePolicyNotFound, repositoryNotFound, server, validation.
      */
     func deleteLifecyclePolicyAsync(
             input: ECRModel.DeleteLifecyclePolicyRequest, 
@@ -438,7 +438,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - input: The validated DeleteLifecyclePolicyRequest object being passed to this operation.
      - Returns: The DeleteLifecyclePolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, lifecyclePolicyNotFound, repositoryNotFound, server.
+     - Throws: invalidParameter, lifecyclePolicyNotFound, repositoryNotFound, server, validation.
      */
     func deleteLifecyclePolicySync(
             input: ECRModel.DeleteLifecyclePolicyRequest) throws -> ECRModel.DeleteLifecyclePolicyResponse
@@ -763,7 +763,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - completion: The GetLifecyclePolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The GetLifecyclePolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, lifecyclePolicyNotFound, repositoryNotFound, server.
+           The possible errors are: invalidParameter, lifecyclePolicyNotFound, repositoryNotFound, server, validation.
      */
     func getLifecyclePolicyAsync(
             input: ECRModel.GetLifecyclePolicyRequest, 
@@ -776,7 +776,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - input: The validated GetLifecyclePolicyRequest object being passed to this operation.
      - Returns: The GetLifecyclePolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, lifecyclePolicyNotFound, repositoryNotFound, server.
+     - Throws: invalidParameter, lifecyclePolicyNotFound, repositoryNotFound, server, validation.
      */
     func getLifecyclePolicySync(
             input: ECRModel.GetLifecyclePolicyRequest) throws -> ECRModel.GetLifecyclePolicyResponse
@@ -789,7 +789,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - completion: The GetLifecyclePolicyPreviewResponse object or an error will be passed to this 
            callback when the operation is complete. The GetLifecyclePolicyPreviewResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, lifecyclePolicyPreviewNotFound, repositoryNotFound, server.
+           The possible errors are: invalidParameter, lifecyclePolicyPreviewNotFound, repositoryNotFound, server, validation.
      */
     func getLifecyclePolicyPreviewAsync(
             input: ECRModel.GetLifecyclePolicyPreviewRequest, 
@@ -802,7 +802,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - input: The validated GetLifecyclePolicyPreviewRequest object being passed to this operation.
      - Returns: The GetLifecyclePolicyPreviewResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, lifecyclePolicyPreviewNotFound, repositoryNotFound, server.
+     - Throws: invalidParameter, lifecyclePolicyPreviewNotFound, repositoryNotFound, server, validation.
      */
     func getLifecyclePolicyPreviewSync(
             input: ECRModel.GetLifecyclePolicyPreviewRequest) throws -> ECRModel.GetLifecyclePolicyPreviewResponse
@@ -1049,7 +1049,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - completion: The PutLifecyclePolicyResponse object or an error will be passed to this 
            callback when the operation is complete. The PutLifecyclePolicyResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, repositoryNotFound, server.
+           The possible errors are: invalidParameter, repositoryNotFound, server, validation.
      */
     func putLifecyclePolicyAsync(
             input: ECRModel.PutLifecyclePolicyRequest, 
@@ -1062,7 +1062,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - input: The validated PutLifecyclePolicyRequest object being passed to this operation.
      - Returns: The PutLifecyclePolicyResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, repositoryNotFound, server.
+     - Throws: invalidParameter, repositoryNotFound, server, validation.
      */
     func putLifecyclePolicySync(
             input: ECRModel.PutLifecyclePolicyRequest) throws -> ECRModel.PutLifecyclePolicyResponse
@@ -1205,7 +1205,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - completion: The StartLifecyclePolicyPreviewResponse object or an error will be passed to this 
            callback when the operation is complete. The StartLifecyclePolicyPreviewResponse
            object will be validated before being returned to caller.
-           The possible errors are: invalidParameter, lifecyclePolicyNotFound, lifecyclePolicyPreviewInProgress, repositoryNotFound, server.
+           The possible errors are: invalidParameter, lifecyclePolicyNotFound, lifecyclePolicyPreviewInProgress, repositoryNotFound, server, validation.
      */
     func startLifecyclePolicyPreviewAsync(
             input: ECRModel.StartLifecyclePolicyPreviewRequest, 
@@ -1218,7 +1218,7 @@ public protocol ECRClientProtocol: ECRClientProtocolV2 {
          - input: The validated StartLifecyclePolicyPreviewRequest object being passed to this operation.
      - Returns: The StartLifecyclePolicyPreviewResponse object to be passed back from the caller of this operation.
          Will be validated before being returned to caller.
-     - Throws: invalidParameter, lifecyclePolicyNotFound, lifecyclePolicyPreviewInProgress, repositoryNotFound, server.
+     - Throws: invalidParameter, lifecyclePolicyNotFound, lifecyclePolicyPreviewInProgress, repositoryNotFound, server, validation.
      */
     func startLifecyclePolicyPreviewSync(
             input: ECRModel.StartLifecyclePolicyPreviewRequest) throws -> ECRModel.StartLifecyclePolicyPreviewResponse

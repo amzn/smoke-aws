@@ -11832,12 +11832,13 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
-         - completion: Nil or an error will be passed to this callback when the operation
-           is complete.
+         - completion: The DeleteKeyPairResult object or an error will be passed to this 
+           callback when the operation is complete. The DeleteKeyPairResult
+           object will be validated before being returned to caller.
      */
     public func deleteKeyPairAsync(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest, 
-            completion: @escaping (ElasticComputeCloudError?) -> ()) throws {
+            completion: @escaping (Result<ElasticComputeCloudModel.DeleteKeyPairResult, ElasticComputeCloudError>) -> ()) throws {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11853,7 +11854,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             action: ElasticComputeCloudModelOperations.deleteKeyPair.rawValue,
             version: apiVersion)
 
-        _ = try httpClient.executeOperationAsyncRetriableWithoutOutput(
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
             endpointPath: "/",
             httpMethod: .POST,
             input: requestInput,
@@ -11868,9 +11869,11 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
+     - Returns: The DeleteKeyPairResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func deleteKeyPairSync(
-            input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws {
+            input: ElasticComputeCloudModel.DeleteKeyPairRequest) throws -> ElasticComputeCloudModel.DeleteKeyPairResult {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -11887,7 +11890,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             version: apiVersion)
 
         do {
-            try httpClient.executeSyncRetriableWithoutOutput(
+            return try httpClient.executeSyncRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -28409,6 +28412,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DisableImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableImageRequest object being passed to this operation.
+         - completion: The DisableImageResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableImageResult
+           object will be validated before being returned to caller.
+     */
+    public func disableImageAsync(
+            input: ElasticComputeCloudModel.DisableImageRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableImageResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableImage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableImage.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisableImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableImageRequest object being passed to this operation.
+     - Returns: The DisableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableImageSync(
+            input: ElasticComputeCloudModel.DisableImageRequest) throws -> ElasticComputeCloudModel.DisableImageResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableImage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableImage.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DisableImageBlockPublicAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated DisableImageBlockPublicAccessRequest object being passed to this operation.
+         - completion: The DisableImageBlockPublicAccessResult object or an error will be passed to this 
+           callback when the operation is complete. The DisableImageBlockPublicAccessResult
+           object will be validated before being returned to caller.
+     */
+    public func disableImageBlockPublicAccessAsync(
+            input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.DisableImageBlockPublicAccessResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableImageBlockPublicAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableImageBlockPublicAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableImageBlockPublicAccess.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the DisableImageBlockPublicAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated DisableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The DisableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableImageBlockPublicAccessSync(
+            input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest) throws -> ElasticComputeCloudModel.DisableImageBlockPublicAccessResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableImageBlockPublicAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableImageBlockPublicAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableImageBlockPublicAccess.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DisableImageDeprecation operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -30359,6 +30514,158 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.enableFastSnapshotRestores.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the EnableImage operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableImageRequest object being passed to this operation.
+         - completion: The EnableImageResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableImageResult
+           object will be validated before being returned to caller.
+     */
+    public func enableImageAsync(
+            input: ElasticComputeCloudModel.EnableImageRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableImageResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableImage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableImage.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the EnableImage operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableImageRequest object being passed to this operation.
+     - Returns: The EnableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableImageSync(
+            input: ElasticComputeCloudModel.EnableImageRequest) throws -> ElasticComputeCloudModel.EnableImageResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableImage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableImage.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the EnableImageBlockPublicAccess operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated EnableImageBlockPublicAccessRequest object being passed to this operation.
+         - completion: The EnableImageBlockPublicAccessResult object or an error will be passed to this 
+           callback when the operation is complete. The EnableImageBlockPublicAccessResult
+           object will be validated before being returned to caller.
+     */
+    public func enableImageBlockPublicAccessAsync(
+            input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.EnableImageBlockPublicAccessResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableImageBlockPublicAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableImageBlockPublicAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableImageBlockPublicAccess.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the EnableImageBlockPublicAccess operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated EnableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The EnableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableImageBlockPublicAccessSync(
+            input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest) throws -> ElasticComputeCloudModel.EnableImageBlockPublicAccessResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableImageBlockPublicAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableImageBlockPublicAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableImageBlockPublicAccess.rawValue,
             version: apiVersion)
 
         do {
@@ -32346,6 +32653,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the GetImageBlockPublicAccessState operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetImageBlockPublicAccessStateRequest object being passed to this operation.
+         - completion: The GetImageBlockPublicAccessStateResult object or an error will be passed to this 
+           callback when the operation is complete. The GetImageBlockPublicAccessStateResult
+           object will be validated before being returned to caller.
+     */
+    public func getImageBlockPublicAccessStateAsync(
+            input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getImageBlockPublicAccessState,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetImageBlockPublicAccessStateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getImageBlockPublicAccessState.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetImageBlockPublicAccessState operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetImageBlockPublicAccessStateRequest object being passed to this operation.
+     - Returns: The GetImageBlockPublicAccessStateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getImageBlockPublicAccessStateSync(
+            input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest) throws -> ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getImageBlockPublicAccessState,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetImageBlockPublicAccessStateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getImageBlockPublicAccessState.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetInstanceTypesFromInstanceRequirements operation returning immediately and passing the response to a callback.
 
      - Parameters:
@@ -33469,6 +33852,82 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getReservedInstancesExchangeQuote.rawValue,
+            version: apiVersion)
+
+        do {
+            return try httpClient.executeSyncRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetSecurityGroupsForVpc operation returning immediately and passing the response to a callback.
+
+     - Parameters:
+         - input: The validated GetSecurityGroupsForVpcRequest object being passed to this operation.
+         - completion: The GetSecurityGroupsForVpcResult object or an error will be passed to this 
+           callback when the operation is complete. The GetSecurityGroupsForVpcResult
+           object will be validated before being returned to caller.
+     */
+    public func getSecurityGroupsForVpcAsync(
+            input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest, 
+            completion: @escaping (Result<ElasticComputeCloudModel.GetSecurityGroupsForVpcResult, ElasticComputeCloudError>) -> ()) throws {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSecurityGroupsForVpc,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSecurityGroupsForVpcOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getSecurityGroupsForVpc.rawValue,
+            version: apiVersion)
+
+        _ = try httpClient.executeOperationAsyncRetriableWithOutput(
+            endpointPath: "/",
+            httpMethod: .POST,
+            input: requestInput,
+            completion: completion,
+            invocationContext: invocationContext,
+            retryConfiguration: retryConfiguration,
+            retryOnError: retryOnErrorProvider)
+    }
+
+    /**
+     Invokes the GetSecurityGroupsForVpc operation waiting for the response before returning.
+
+     - Parameters:
+         - input: The validated GetSecurityGroupsForVpcRequest object being passed to this operation.
+     - Returns: The GetSecurityGroupsForVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getSecurityGroupsForVpcSync(
+            input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest) throws -> ElasticComputeCloudModel.GetSecurityGroupsForVpcResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSecurityGroupsForVpc,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSecurityGroupsForVpcOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getSecurityGroupsForVpc.rawValue,
             version: apiVersion)
 
         do {
@@ -51122,9 +51581,11 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
 
      - Parameters:
          - input: The validated DeleteKeyPairRequest object being passed to this operation.
+     - Returns: The DeleteKeyPairResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
      */
     public func deleteKeyPair(
-            input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws {
+            input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws -> ElasticComputeCloudModel.DeleteKeyPairResult {
         let handlerDelegate = AWSClientInvocationDelegate(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
@@ -51141,7 +51602,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
             version: apiVersion)
 
         do {
-            try await httpClient.executeRetriableWithoutOutput(
+            return try await httpClient.executeRetriableWithOutput(
                 endpointPath: "/",
                 httpMethod: .POST,
                 input: requestInput,
@@ -59617,6 +60078,84 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the DisableImage operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisableImageRequest object being passed to this operation.
+     - Returns: The DisableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableImage(
+            input: ElasticComputeCloudModel.DisableImageRequest) async throws -> ElasticComputeCloudModel.DisableImageResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableImage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableImage.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the DisableImageBlockPublicAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated DisableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The DisableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func disableImageBlockPublicAccess(
+            input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest) async throws -> ElasticComputeCloudModel.DisableImageBlockPublicAccessResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.disableImageBlockPublicAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = DisableImageBlockPublicAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.disableImageBlockPublicAccess.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the DisableImageDeprecation operation suspending until the response is available before returning.
 
      - Parameters:
@@ -60608,6 +61147,84 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.enableFastSnapshotRestores.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the EnableImage operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated EnableImageRequest object being passed to this operation.
+     - Returns: The EnableImageResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableImage(
+            input: ElasticComputeCloudModel.EnableImageRequest) async throws -> ElasticComputeCloudModel.EnableImageResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableImage,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableImageOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableImage.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the EnableImageBlockPublicAccess operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated EnableImageBlockPublicAccessRequest object being passed to this operation.
+     - Returns: The EnableImageBlockPublicAccessResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func enableImageBlockPublicAccess(
+            input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest) async throws -> ElasticComputeCloudModel.EnableImageBlockPublicAccessResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.enableImageBlockPublicAccess,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = EnableImageBlockPublicAccessOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.enableImageBlockPublicAccess.rawValue,
             version: apiVersion)
 
         do {
@@ -61635,6 +62252,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
     }
 
     /**
+     Invokes the GetImageBlockPublicAccessState operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetImageBlockPublicAccessStateRequest object being passed to this operation.
+     - Returns: The GetImageBlockPublicAccessStateResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getImageBlockPublicAccessState(
+            input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest) async throws -> ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getImageBlockPublicAccessState,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetImageBlockPublicAccessStateOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getImageBlockPublicAccessState.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
      Invokes the GetInstanceTypesFromInstanceRequirements operation suspending until the response is available before returning.
 
      - Parameters:
@@ -62203,6 +62859,45 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
         let requestInput = QueryWrapperHTTPRequestInput(
             wrappedInput: wrappedInput,
             action: ElasticComputeCloudModelOperations.getReservedInstancesExchangeQuote.rawValue,
+            version: apiVersion)
+
+        do {
+            return try await httpClient.executeRetriableWithOutput(
+                endpointPath: "/",
+                httpMethod: .POST,
+                input: requestInput,
+                invocationContext: invocationContext,
+                retryConfiguration: retryConfiguration,
+                retryOnError: retryOnErrorProvider)
+        } catch {
+            let typedError: ElasticComputeCloudError = error.asTypedError()
+            throw typedError
+        }
+    }
+
+    /**
+     Invokes the GetSecurityGroupsForVpc operation suspending until the response is available before returning.
+
+     - Parameters:
+         - input: The validated GetSecurityGroupsForVpcRequest object being passed to this operation.
+     - Returns: The GetSecurityGroupsForVpcResult object to be passed back from the caller of this operation.
+         Will be validated before being returned to caller.
+     */
+    public func getSecurityGroupsForVpc(
+            input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest) async throws -> ElasticComputeCloudModel.GetSecurityGroupsForVpcResult {
+        let handlerDelegate = AWSClientInvocationDelegate(
+                    credentialsProvider: credentialsProvider,
+                    awsRegion: awsRegion,
+                    service: service,
+                    target: target)
+        
+        let invocationContext = HTTPClientInvocationContext(reporting: self.invocationsReporting.getSecurityGroupsForVpc,
+                                                            handlerDelegate: handlerDelegate)
+        let wrappedInput = GetSecurityGroupsForVpcOperationHTTPRequestInput(encodable: input)
+        
+        let requestInput = QueryWrapperHTTPRequestInput(
+            wrappedInput: wrappedInput,
+            action: ElasticComputeCloudModelOperations.getSecurityGroupsForVpc.rawValue,
             version: apiVersion)
 
         do {

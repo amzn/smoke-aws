@@ -2033,8 +2033,8 @@ public extension Tag {
      */
     static let __default: ECRModel.Tag = {
         let defaultInstance = ECRModel.Tag(
-            key: nil,
-            value: nil)
+            key: "value",
+            value: "value")
 
         return defaultInstance
     }()

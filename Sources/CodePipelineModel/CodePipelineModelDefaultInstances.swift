@@ -1031,6 +1031,44 @@ public extension GetThirdPartyJobDetailsOutput {
     }()
 }
 
+public extension GitConfiguration {
+    /**
+     Default instance of the GitConfiguration structure.
+     */
+    static let __default: CodePipelineModel.GitConfiguration = {
+        let defaultInstance = CodePipelineModel.GitConfiguration(
+            push: nil,
+            sourceActionName: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension GitPushFilter {
+    /**
+     Default instance of the GitPushFilter structure.
+     */
+    static let __default: CodePipelineModel.GitPushFilter = {
+        let defaultInstance = CodePipelineModel.GitPushFilter(
+            tags: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension GitTagFilterCriteria {
+    /**
+     Default instance of the GitTagFilterCriteria structure.
+     */
+    static let __default: CodePipelineModel.GitTagFilterCriteria = {
+        let defaultInstance = CodePipelineModel.GitTagFilterCriteria(
+            excludes: nil,
+            includes: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension InputArtifact {
     /**
      Default instance of the InputArtifact structure.
@@ -1533,8 +1571,11 @@ public extension PipelineDeclaration {
             artifactStore: nil,
             artifactStores: nil,
             name: "0",
+            pipelineType: nil,
             roleArn: "",
             stages: [],
+            triggers: nil,
+            variables: nil,
             version: nil)
 
         return defaultInstance
@@ -1552,7 +1593,9 @@ public extension PipelineExecution {
             pipelineName: nil,
             pipelineVersion: nil,
             status: nil,
-            statusSummary: nil)
+            statusSummary: nil,
+            trigger: nil,
+            variables: nil)
 
         return defaultInstance
     }()
@@ -1644,8 +1687,49 @@ public extension PipelineSummary {
         let defaultInstance = CodePipelineModel.PipelineSummary(
             created: nil,
             name: nil,
+            pipelineType: nil,
             updated: nil,
             version: nil)
+
+        return defaultInstance
+    }()
+}
+
+public extension PipelineTriggerDeclaration {
+    /**
+     Default instance of the PipelineTriggerDeclaration structure.
+     */
+    static let __default: CodePipelineModel.PipelineTriggerDeclaration = {
+        let defaultInstance = CodePipelineModel.PipelineTriggerDeclaration(
+            gitConfiguration: GitConfiguration.__default,
+            providerType: .__default)
+
+        return defaultInstance
+    }()
+}
+
+public extension PipelineVariable {
+    /**
+     Default instance of the PipelineVariable structure.
+     */
+    static let __default: CodePipelineModel.PipelineVariable = {
+        let defaultInstance = CodePipelineModel.PipelineVariable(
+            name: "0",
+            value: "0")
+
+        return defaultInstance
+    }()
+}
+
+public extension PipelineVariableDeclaration {
+    /**
+     Default instance of the PipelineVariableDeclaration structure.
+     */
+    static let __default: CodePipelineModel.PipelineVariableDeclaration = {
+        let defaultInstance = CodePipelineModel.PipelineVariableDeclaration(
+            defaultValue: nil,
+            description: nil,
+            name: "0")
 
         return defaultInstance
     }()
@@ -1888,6 +1972,19 @@ public extension RequestFailedException {
     }()
 }
 
+public extension ResolvedPipelineVariable {
+    /**
+     Default instance of the ResolvedPipelineVariable structure.
+     */
+    static let __default: CodePipelineModel.ResolvedPipelineVariable = {
+        let defaultInstance = CodePipelineModel.ResolvedPipelineVariable(
+            name: nil,
+            resolvedValue: nil)
+
+        return defaultInstance
+    }()
+}
+
 public extension ResourceNotFoundException {
     /**
      Default instance of the ResourceNotFoundException structure.
@@ -2051,7 +2148,8 @@ public extension StartPipelineExecutionInput {
     static let __default: CodePipelineModel.StartPipelineExecutionInput = {
         let defaultInstance = CodePipelineModel.StartPipelineExecutionInput(
             clientRequestToken: nil,
-            name: "0")
+            name: "0",
+            variables: nil)
 
         return defaultInstance
     }()
