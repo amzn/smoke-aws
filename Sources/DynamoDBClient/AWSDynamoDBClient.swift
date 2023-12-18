@@ -3882,7 +3882,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func batchExecuteStatement(
             input: DynamoDBModel.BatchExecuteStatementInput) async throws -> DynamoDBModel.BatchExecuteStatementOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3918,7 +3918,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func batchGetItem(
             input: DynamoDBModel.BatchGetItemInput) async throws -> DynamoDBModel.BatchGetItemOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3954,7 +3954,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func batchWriteItem(
             input: DynamoDBModel.BatchWriteItemInput) async throws -> DynamoDBModel.BatchWriteItemOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3990,7 +3990,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func createBackup(
             input: DynamoDBModel.CreateBackupInput) async throws -> DynamoDBModel.CreateBackupOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4026,7 +4026,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func createGlobalTable(
             input: DynamoDBModel.CreateGlobalTableInput) async throws -> DynamoDBModel.CreateGlobalTableOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4062,7 +4062,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func createTable(
             input: DynamoDBModel.CreateTableInput) async throws -> DynamoDBModel.CreateTableOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4098,7 +4098,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func deleteBackup(
             input: DynamoDBModel.DeleteBackupInput) async throws -> DynamoDBModel.DeleteBackupOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4134,7 +4134,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func deleteItem(
             input: DynamoDBModel.DeleteItemInput) async throws -> DynamoDBModel.DeleteItemOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4170,7 +4170,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func deleteTable(
             input: DynamoDBModel.DeleteTableInput) async throws -> DynamoDBModel.DeleteTableOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4206,7 +4206,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeBackup(
             input: DynamoDBModel.DescribeBackupInput) async throws -> DynamoDBModel.DescribeBackupOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4242,7 +4242,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeContinuousBackups(
             input: DynamoDBModel.DescribeContinuousBackupsInput) async throws -> DynamoDBModel.DescribeContinuousBackupsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4278,7 +4278,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeContributorInsights(
             input: DynamoDBModel.DescribeContributorInsightsInput) async throws -> DynamoDBModel.DescribeContributorInsightsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4313,7 +4313,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeEndpoints(
             input: DynamoDBModel.DescribeEndpointsRequest) async throws -> DynamoDBModel.DescribeEndpointsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4349,7 +4349,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeExport(
             input: DynamoDBModel.DescribeExportInput) async throws -> DynamoDBModel.DescribeExportOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4385,7 +4385,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeGlobalTable(
             input: DynamoDBModel.DescribeGlobalTableInput) async throws -> DynamoDBModel.DescribeGlobalTableOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4421,7 +4421,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeGlobalTableSettings(
             input: DynamoDBModel.DescribeGlobalTableSettingsInput) async throws -> DynamoDBModel.DescribeGlobalTableSettingsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4457,7 +4457,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeImport(
             input: DynamoDBModel.DescribeImportInput) async throws -> DynamoDBModel.DescribeImportOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4493,7 +4493,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeKinesisStreamingDestination(
             input: DynamoDBModel.DescribeKinesisStreamingDestinationInput) async throws -> DynamoDBModel.DescribeKinesisStreamingDestinationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4529,7 +4529,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeLimits(
             input: DynamoDBModel.DescribeLimitsInput) async throws -> DynamoDBModel.DescribeLimitsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4565,7 +4565,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeTable(
             input: DynamoDBModel.DescribeTableInput) async throws -> DynamoDBModel.DescribeTableOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4601,7 +4601,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeTableReplicaAutoScaling(
             input: DynamoDBModel.DescribeTableReplicaAutoScalingInput) async throws -> DynamoDBModel.DescribeTableReplicaAutoScalingOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4637,7 +4637,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func describeTimeToLive(
             input: DynamoDBModel.DescribeTimeToLiveInput) async throws -> DynamoDBModel.DescribeTimeToLiveOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4673,7 +4673,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func disableKinesisStreamingDestination(
             input: DynamoDBModel.KinesisStreamingDestinationInput) async throws -> DynamoDBModel.KinesisStreamingDestinationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4709,7 +4709,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func enableKinesisStreamingDestination(
             input: DynamoDBModel.KinesisStreamingDestinationInput) async throws -> DynamoDBModel.KinesisStreamingDestinationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4745,7 +4745,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func executeStatement(
             input: DynamoDBModel.ExecuteStatementInput) async throws -> DynamoDBModel.ExecuteStatementOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4781,7 +4781,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func executeTransaction(
             input: DynamoDBModel.ExecuteTransactionInput) async throws -> DynamoDBModel.ExecuteTransactionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4817,7 +4817,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func exportTableToPointInTime(
             input: DynamoDBModel.ExportTableToPointInTimeInput) async throws -> DynamoDBModel.ExportTableToPointInTimeOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4853,7 +4853,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func getItem(
             input: DynamoDBModel.GetItemInput) async throws -> DynamoDBModel.GetItemOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4889,7 +4889,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func importTable(
             input: DynamoDBModel.ImportTableInput) async throws -> DynamoDBModel.ImportTableOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4925,7 +4925,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listBackups(
             input: DynamoDBModel.ListBackupsInput) async throws -> DynamoDBModel.ListBackupsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4961,7 +4961,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listContributorInsights(
             input: DynamoDBModel.ListContributorInsightsInput) async throws -> DynamoDBModel.ListContributorInsightsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4997,7 +4997,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listExports(
             input: DynamoDBModel.ListExportsInput) async throws -> DynamoDBModel.ListExportsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5033,7 +5033,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listGlobalTables(
             input: DynamoDBModel.ListGlobalTablesInput) async throws -> DynamoDBModel.ListGlobalTablesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5069,7 +5069,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listImports(
             input: DynamoDBModel.ListImportsInput) async throws -> DynamoDBModel.ListImportsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5105,7 +5105,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listTables(
             input: DynamoDBModel.ListTablesInput) async throws -> DynamoDBModel.ListTablesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5141,7 +5141,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func listTagsOfResource(
             input: DynamoDBModel.ListTagsOfResourceInput) async throws -> DynamoDBModel.ListTagsOfResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5177,7 +5177,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func putItem(
             input: DynamoDBModel.PutItemInput) async throws -> DynamoDBModel.PutItemOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5213,7 +5213,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func query(
             input: DynamoDBModel.QueryInput) async throws -> DynamoDBModel.QueryOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5249,7 +5249,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func restoreTableFromBackup(
             input: DynamoDBModel.RestoreTableFromBackupInput) async throws -> DynamoDBModel.RestoreTableFromBackupOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5285,7 +5285,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func restoreTableToPointInTime(
             input: DynamoDBModel.RestoreTableToPointInTimeInput) async throws -> DynamoDBModel.RestoreTableToPointInTimeOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5321,7 +5321,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func scan(
             input: DynamoDBModel.ScanInput) async throws -> DynamoDBModel.ScanOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5355,7 +5355,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func tagResource(
             input: DynamoDBModel.TagResourceInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5391,7 +5391,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func transactGetItems(
             input: DynamoDBModel.TransactGetItemsInput) async throws -> DynamoDBModel.TransactGetItemsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5427,7 +5427,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func transactWriteItems(
             input: DynamoDBModel.TransactWriteItemsInput) async throws -> DynamoDBModel.TransactWriteItemsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5461,7 +5461,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func untagResource(
             input: DynamoDBModel.UntagResourceInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5497,7 +5497,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateContinuousBackups(
             input: DynamoDBModel.UpdateContinuousBackupsInput) async throws -> DynamoDBModel.UpdateContinuousBackupsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5533,7 +5533,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateContributorInsights(
             input: DynamoDBModel.UpdateContributorInsightsInput) async throws -> DynamoDBModel.UpdateContributorInsightsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5569,7 +5569,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateGlobalTable(
             input: DynamoDBModel.UpdateGlobalTableInput) async throws -> DynamoDBModel.UpdateGlobalTableOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5605,7 +5605,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateGlobalTableSettings(
             input: DynamoDBModel.UpdateGlobalTableSettingsInput) async throws -> DynamoDBModel.UpdateGlobalTableSettingsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5641,7 +5641,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateItem(
             input: DynamoDBModel.UpdateItemInput) async throws -> DynamoDBModel.UpdateItemOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5677,7 +5677,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateTable(
             input: DynamoDBModel.UpdateTableInput) async throws -> DynamoDBModel.UpdateTableOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5713,7 +5713,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateTableReplicaAutoScaling(
             input: DynamoDBModel.UpdateTableReplicaAutoScalingInput) async throws -> DynamoDBModel.UpdateTableReplicaAutoScalingOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5749,7 +5749,7 @@ public struct AWSDynamoDBClient<InvocationReportingType: HTTPClientCoreInvocatio
      */
     public func updateTimeToLive(
             input: DynamoDBModel.UpdateTimeToLiveInput) async throws -> DynamoDBModel.UpdateTimeToLiveOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

@@ -5591,7 +5591,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func activateOrganizationsAccess(
             input: CloudformationModel.ActivateOrganizationsAccessInput) async throws -> CloudformationModel.ActivateOrganizationsAccessOutputForActivateOrganizationsAccess {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5631,7 +5631,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func activateType(
             input: CloudformationModel.ActivateTypeInput) async throws -> CloudformationModel.ActivateTypeOutputForActivateType {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5671,7 +5671,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func batchDescribeTypeConfigurations(
             input: CloudformationModel.BatchDescribeTypeConfigurationsInput) async throws -> CloudformationModel.BatchDescribeTypeConfigurationsOutputForBatchDescribeTypeConfigurations {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5709,7 +5709,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func cancelUpdateStack(
             input: CloudformationModel.CancelUpdateStackInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5749,7 +5749,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func continueUpdateRollback(
             input: CloudformationModel.ContinueUpdateRollbackInput) async throws -> CloudformationModel.ContinueUpdateRollbackOutputForContinueUpdateRollback {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5789,7 +5789,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func createChangeSet(
             input: CloudformationModel.CreateChangeSetInput) async throws -> CloudformationModel.CreateChangeSetOutputForCreateChangeSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5829,7 +5829,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func createStack(
             input: CloudformationModel.CreateStackInput) async throws -> CloudformationModel.CreateStackOutputForCreateStack {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5869,7 +5869,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func createStackInstances(
             input: CloudformationModel.CreateStackInstancesInput) async throws -> CloudformationModel.CreateStackInstancesOutputForCreateStackInstances {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5909,7 +5909,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func createStackSet(
             input: CloudformationModel.CreateStackSetInput) async throws -> CloudformationModel.CreateStackSetOutputForCreateStackSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5949,7 +5949,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deactivateOrganizationsAccess(
             input: CloudformationModel.DeactivateOrganizationsAccessInput) async throws -> CloudformationModel.DeactivateOrganizationsAccessOutputForDeactivateOrganizationsAccess {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5989,7 +5989,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deactivateType(
             input: CloudformationModel.DeactivateTypeInput) async throws -> CloudformationModel.DeactivateTypeOutputForDeactivateType {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6029,7 +6029,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deleteChangeSet(
             input: CloudformationModel.DeleteChangeSetInput) async throws -> CloudformationModel.DeleteChangeSetOutputForDeleteChangeSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6067,7 +6067,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deleteStack(
             input: CloudformationModel.DeleteStackInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6107,7 +6107,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deleteStackInstances(
             input: CloudformationModel.DeleteStackInstancesInput) async throws -> CloudformationModel.DeleteStackInstancesOutputForDeleteStackInstances {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6147,7 +6147,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deleteStackSet(
             input: CloudformationModel.DeleteStackSetInput) async throws -> CloudformationModel.DeleteStackSetOutputForDeleteStackSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6187,7 +6187,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deregisterType(
             input: CloudformationModel.DeregisterTypeInput) async throws -> CloudformationModel.DeregisterTypeOutputForDeregisterType {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6226,7 +6226,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeAccountLimits(
             input: CloudformationModel.DescribeAccountLimitsInput) async throws -> CloudformationModel.DescribeAccountLimitsOutputForDescribeAccountLimits {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6266,7 +6266,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeChangeSet(
             input: CloudformationModel.DescribeChangeSetInput) async throws -> CloudformationModel.DescribeChangeSetOutputForDescribeChangeSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6306,7 +6306,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeChangeSetHooks(
             input: CloudformationModel.DescribeChangeSetHooksInput) async throws -> CloudformationModel.DescribeChangeSetHooksOutputForDescribeChangeSetHooks {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6346,7 +6346,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeOrganizationsAccess(
             input: CloudformationModel.DescribeOrganizationsAccessInput) async throws -> CloudformationModel.DescribeOrganizationsAccessOutputForDescribeOrganizationsAccess {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6386,7 +6386,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describePublisher(
             input: CloudformationModel.DescribePublisherInput) async throws -> CloudformationModel.DescribePublisherOutputForDescribePublisher {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6425,7 +6425,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStackDriftDetectionStatus(
             input: CloudformationModel.DescribeStackDriftDetectionStatusInput) async throws -> CloudformationModel.DescribeStackDriftDetectionStatusOutputForDescribeStackDriftDetectionStatus {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6464,7 +6464,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStackEvents(
             input: CloudformationModel.DescribeStackEventsInput) async throws -> CloudformationModel.DescribeStackEventsOutputForDescribeStackEvents {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6504,7 +6504,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStackInstance(
             input: CloudformationModel.DescribeStackInstanceInput) async throws -> CloudformationModel.DescribeStackInstanceOutputForDescribeStackInstance {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6543,7 +6543,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStackResource(
             input: CloudformationModel.DescribeStackResourceInput) async throws -> CloudformationModel.DescribeStackResourceOutputForDescribeStackResource {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6582,7 +6582,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStackResourceDrifts(
             input: CloudformationModel.DescribeStackResourceDriftsInput) async throws -> CloudformationModel.DescribeStackResourceDriftsOutputForDescribeStackResourceDrifts {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6621,7 +6621,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStackResources(
             input: CloudformationModel.DescribeStackResourcesInput) async throws -> CloudformationModel.DescribeStackResourcesOutputForDescribeStackResources {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6661,7 +6661,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStackSet(
             input: CloudformationModel.DescribeStackSetInput) async throws -> CloudformationModel.DescribeStackSetOutputForDescribeStackSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6701,7 +6701,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStackSetOperation(
             input: CloudformationModel.DescribeStackSetOperationInput) async throws -> CloudformationModel.DescribeStackSetOperationOutputForDescribeStackSetOperation {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6740,7 +6740,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeStacks(
             input: CloudformationModel.DescribeStacksInput) async throws -> CloudformationModel.DescribeStacksOutputForDescribeStacks {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6780,7 +6780,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeType(
             input: CloudformationModel.DescribeTypeInput) async throws -> CloudformationModel.DescribeTypeOutputForDescribeType {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6820,7 +6820,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeTypeRegistration(
             input: CloudformationModel.DescribeTypeRegistrationInput) async throws -> CloudformationModel.DescribeTypeRegistrationOutputForDescribeTypeRegistration {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6859,7 +6859,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func detectStackDrift(
             input: CloudformationModel.DetectStackDriftInput) async throws -> CloudformationModel.DetectStackDriftOutputForDetectStackDrift {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6898,7 +6898,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func detectStackResourceDrift(
             input: CloudformationModel.DetectStackResourceDriftInput) async throws -> CloudformationModel.DetectStackResourceDriftOutputForDetectStackResourceDrift {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6938,7 +6938,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func detectStackSetDrift(
             input: CloudformationModel.DetectStackSetDriftInput) async throws -> CloudformationModel.DetectStackSetDriftOutputForDetectStackSetDrift {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6977,7 +6977,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func estimateTemplateCost(
             input: CloudformationModel.EstimateTemplateCostInput) async throws -> CloudformationModel.EstimateTemplateCostOutputForEstimateTemplateCost {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7017,7 +7017,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func executeChangeSet(
             input: CloudformationModel.ExecuteChangeSetInput) async throws -> CloudformationModel.ExecuteChangeSetOutputForExecuteChangeSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7056,7 +7056,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func getStackPolicy(
             input: CloudformationModel.GetStackPolicyInput) async throws -> CloudformationModel.GetStackPolicyOutputForGetStackPolicy {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7096,7 +7096,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func getTemplate(
             input: CloudformationModel.GetTemplateInput) async throws -> CloudformationModel.GetTemplateOutputForGetTemplate {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7136,7 +7136,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func getTemplateSummary(
             input: CloudformationModel.GetTemplateSummaryInput) async throws -> CloudformationModel.GetTemplateSummaryOutputForGetTemplateSummary {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7176,7 +7176,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func importStacksToStackSet(
             input: CloudformationModel.ImportStacksToStackSetInput) async throws -> CloudformationModel.ImportStacksToStackSetOutputForImportStacksToStackSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7215,7 +7215,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listChangeSets(
             input: CloudformationModel.ListChangeSetsInput) async throws -> CloudformationModel.ListChangeSetsOutputForListChangeSets {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7254,7 +7254,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listExports(
             input: CloudformationModel.ListExportsInput) async throws -> CloudformationModel.ListExportsOutputForListExports {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7293,7 +7293,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listImports(
             input: CloudformationModel.ListImportsInput) async throws -> CloudformationModel.ListImportsOutputForListImports {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7333,7 +7333,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listStackInstanceResourceDrifts(
             input: CloudformationModel.ListStackInstanceResourceDriftsInput) async throws -> CloudformationModel.ListStackInstanceResourceDriftsOutputForListStackInstanceResourceDrifts {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7373,7 +7373,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listStackInstances(
             input: CloudformationModel.ListStackInstancesInput) async throws -> CloudformationModel.ListStackInstancesOutputForListStackInstances {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7412,7 +7412,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listStackResources(
             input: CloudformationModel.ListStackResourcesInput) async throws -> CloudformationModel.ListStackResourcesOutputForListStackResources {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7452,7 +7452,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listStackSetOperationResults(
             input: CloudformationModel.ListStackSetOperationResultsInput) async throws -> CloudformationModel.ListStackSetOperationResultsOutputForListStackSetOperationResults {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7492,7 +7492,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listStackSetOperations(
             input: CloudformationModel.ListStackSetOperationsInput) async throws -> CloudformationModel.ListStackSetOperationsOutputForListStackSetOperations {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7531,7 +7531,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listStackSets(
             input: CloudformationModel.ListStackSetsInput) async throws -> CloudformationModel.ListStackSetsOutputForListStackSets {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7570,7 +7570,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listStacks(
             input: CloudformationModel.ListStacksInput) async throws -> CloudformationModel.ListStacksOutputForListStacks {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7610,7 +7610,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listTypeRegistrations(
             input: CloudformationModel.ListTypeRegistrationsInput) async throws -> CloudformationModel.ListTypeRegistrationsOutputForListTypeRegistrations {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7650,7 +7650,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listTypeVersions(
             input: CloudformationModel.ListTypeVersionsInput) async throws -> CloudformationModel.ListTypeVersionsOutputForListTypeVersions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7690,7 +7690,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listTypes(
             input: CloudformationModel.ListTypesInput) async throws -> CloudformationModel.ListTypesOutputForListTypes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7730,7 +7730,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func publishType(
             input: CloudformationModel.PublishTypeInput) async throws -> CloudformationModel.PublishTypeOutputForPublishType {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7770,7 +7770,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func recordHandlerProgress(
             input: CloudformationModel.RecordHandlerProgressInput) async throws -> CloudformationModel.RecordHandlerProgressOutputForRecordHandlerProgress {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7810,7 +7810,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func registerPublisher(
             input: CloudformationModel.RegisterPublisherInput) async throws -> CloudformationModel.RegisterPublisherOutputForRegisterPublisher {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7850,7 +7850,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func registerType(
             input: CloudformationModel.RegisterTypeInput) async throws -> CloudformationModel.RegisterTypeOutputForRegisterType {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7890,7 +7890,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func rollbackStack(
             input: CloudformationModel.RollbackStackInput) async throws -> CloudformationModel.RollbackStackOutputForRollbackStack {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7927,7 +7927,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func setStackPolicy(
             input: CloudformationModel.SetStackPolicyInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7967,7 +7967,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func setTypeConfiguration(
             input: CloudformationModel.SetTypeConfigurationInput) async throws -> CloudformationModel.SetTypeConfigurationOutputForSetTypeConfiguration {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8007,7 +8007,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func setTypeDefaultVersion(
             input: CloudformationModel.SetTypeDefaultVersionInput) async throws -> CloudformationModel.SetTypeDefaultVersionOutputForSetTypeDefaultVersion {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8044,7 +8044,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func signalResource(
             input: CloudformationModel.SignalResourceInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8084,7 +8084,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func stopStackSetOperation(
             input: CloudformationModel.StopStackSetOperationInput) async throws -> CloudformationModel.StopStackSetOperationOutputForStopStackSetOperation {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8124,7 +8124,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func testType(
             input: CloudformationModel.TestTypeInput) async throws -> CloudformationModel.TestTypeOutputForTestType {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8164,7 +8164,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func updateStack(
             input: CloudformationModel.UpdateStackInput) async throws -> CloudformationModel.UpdateStackOutputForUpdateStack {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8204,7 +8204,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func updateStackInstances(
             input: CloudformationModel.UpdateStackInstancesInput) async throws -> CloudformationModel.UpdateStackInstancesOutputForUpdateStackInstances {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8244,7 +8244,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func updateStackSet(
             input: CloudformationModel.UpdateStackSetInput) async throws -> CloudformationModel.UpdateStackSetOutputForUpdateStackSet {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8283,7 +8283,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func updateTerminationProtection(
             input: CloudformationModel.UpdateTerminationProtectionInput) async throws -> CloudformationModel.UpdateTerminationProtectionOutputForUpdateTerminationProtection {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8322,7 +8322,7 @@ public struct AWSCloudformationClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func validateTemplate(
             input: CloudformationModel.ValidateTemplateInput) async throws -> CloudformationModel.ValidateTemplateOutputForValidateTemplate {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

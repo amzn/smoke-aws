@@ -581,7 +581,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
      */
     public func batchExecuteStatement(
             input: RDSDataModel.BatchExecuteStatementRequest) async throws -> RDSDataModel.BatchExecuteStatementResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -617,7 +617,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
      */
     public func beginTransaction(
             input: RDSDataModel.BeginTransactionRequest) async throws -> RDSDataModel.BeginTransactionResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -653,7 +653,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
      */
     public func commitTransaction(
             input: RDSDataModel.CommitTransactionRequest) async throws -> RDSDataModel.CommitTransactionResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -689,7 +689,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
      */
     public func executeSql(
             input: RDSDataModel.ExecuteSqlRequest) async throws -> RDSDataModel.ExecuteSqlResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -725,7 +725,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
      */
     public func executeStatement(
             input: RDSDataModel.ExecuteStatementRequest) async throws -> RDSDataModel.ExecuteStatementResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -761,7 +761,7 @@ public struct AWSRDSDataClient<InvocationReportingType: HTTPClientCoreInvocation
      */
     public func rollbackTransaction(
             input: RDSDataModel.RollbackTransactionRequest) async throws -> RDSDataModel.RollbackTransactionResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

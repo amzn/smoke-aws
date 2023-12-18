@@ -784,7 +784,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func assumeRole(
             input: SecurityTokenModel.AssumeRoleRequest) async throws -> SecurityTokenModel.AssumeRoleResponseForAssumeRole {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -824,7 +824,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func assumeRoleWithSAML(
             input: SecurityTokenModel.AssumeRoleWithSAMLRequest) async throws -> SecurityTokenModel.AssumeRoleWithSAMLResponseForAssumeRoleWithSAML {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -864,7 +864,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func assumeRoleWithWebIdentity(
             input: SecurityTokenModel.AssumeRoleWithWebIdentityRequest) async throws -> SecurityTokenModel.AssumeRoleWithWebIdentityResponseForAssumeRoleWithWebIdentity {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -904,7 +904,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func decodeAuthorizationMessage(
             input: SecurityTokenModel.DecodeAuthorizationMessageRequest) async throws -> SecurityTokenModel.DecodeAuthorizationMessageResponseForDecodeAuthorizationMessage {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -943,7 +943,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getAccessKeyInfo(
             input: SecurityTokenModel.GetAccessKeyInfoRequest) async throws -> SecurityTokenModel.GetAccessKeyInfoResponseForGetAccessKeyInfo {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -982,7 +982,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getCallerIdentity(
             input: SecurityTokenModel.GetCallerIdentityRequest) async throws -> SecurityTokenModel.GetCallerIdentityResponseForGetCallerIdentity {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1022,7 +1022,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getFederationToken(
             input: SecurityTokenModel.GetFederationTokenRequest) async throws -> SecurityTokenModel.GetFederationTokenResponseForGetFederationToken {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1062,7 +1062,7 @@ public struct AWSSecurityTokenClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getSessionToken(
             input: SecurityTokenModel.GetSessionTokenRequest) async throws -> SecurityTokenModel.GetSessionTokenResponseForGetSessionToken {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

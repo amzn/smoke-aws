@@ -3031,7 +3031,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func batchCheckLayerAvailability(
             input: ECRModel.BatchCheckLayerAvailabilityRequest) async throws -> ECRModel.BatchCheckLayerAvailabilityResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3067,7 +3067,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func batchDeleteImage(
             input: ECRModel.BatchDeleteImageRequest) async throws -> ECRModel.BatchDeleteImageResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3103,7 +3103,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func batchGetImage(
             input: ECRModel.BatchGetImageRequest) async throws -> ECRModel.BatchGetImageResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3139,7 +3139,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func batchGetRepositoryScanningConfiguration(
             input: ECRModel.BatchGetRepositoryScanningConfigurationRequest) async throws -> ECRModel.BatchGetRepositoryScanningConfigurationResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3175,7 +3175,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func completeLayerUpload(
             input: ECRModel.CompleteLayerUploadRequest) async throws -> ECRModel.CompleteLayerUploadResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3211,7 +3211,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createPullThroughCacheRule(
             input: ECRModel.CreatePullThroughCacheRuleRequest) async throws -> ECRModel.CreatePullThroughCacheRuleResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3247,7 +3247,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createRepository(
             input: ECRModel.CreateRepositoryRequest) async throws -> ECRModel.CreateRepositoryResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3283,7 +3283,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteLifecyclePolicy(
             input: ECRModel.DeleteLifecyclePolicyRequest) async throws -> ECRModel.DeleteLifecyclePolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3319,7 +3319,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deletePullThroughCacheRule(
             input: ECRModel.DeletePullThroughCacheRuleRequest) async throws -> ECRModel.DeletePullThroughCacheRuleResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3355,7 +3355,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteRegistryPolicy(
             input: ECRModel.DeleteRegistryPolicyRequest) async throws -> ECRModel.DeleteRegistryPolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3391,7 +3391,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteRepository(
             input: ECRModel.DeleteRepositoryRequest) async throws -> ECRModel.DeleteRepositoryResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3427,7 +3427,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteRepositoryPolicy(
             input: ECRModel.DeleteRepositoryPolicyRequest) async throws -> ECRModel.DeleteRepositoryPolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3463,7 +3463,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeImageReplicationStatus(
             input: ECRModel.DescribeImageReplicationStatusRequest) async throws -> ECRModel.DescribeImageReplicationStatusResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3499,7 +3499,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeImageScanFindings(
             input: ECRModel.DescribeImageScanFindingsRequest) async throws -> ECRModel.DescribeImageScanFindingsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3535,7 +3535,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeImages(
             input: ECRModel.DescribeImagesRequest) async throws -> ECRModel.DescribeImagesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3571,7 +3571,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describePullThroughCacheRules(
             input: ECRModel.DescribePullThroughCacheRulesRequest) async throws -> ECRModel.DescribePullThroughCacheRulesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3607,7 +3607,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeRegistry(
             input: ECRModel.DescribeRegistryRequest) async throws -> ECRModel.DescribeRegistryResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3643,7 +3643,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeRepositories(
             input: ECRModel.DescribeRepositoriesRequest) async throws -> ECRModel.DescribeRepositoriesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3679,7 +3679,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func getAuthorizationToken(
             input: ECRModel.GetAuthorizationTokenRequest) async throws -> ECRModel.GetAuthorizationTokenResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3715,7 +3715,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func getDownloadUrlForLayer(
             input: ECRModel.GetDownloadUrlForLayerRequest) async throws -> ECRModel.GetDownloadUrlForLayerResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3751,7 +3751,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func getLifecyclePolicy(
             input: ECRModel.GetLifecyclePolicyRequest) async throws -> ECRModel.GetLifecyclePolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3787,7 +3787,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func getLifecyclePolicyPreview(
             input: ECRModel.GetLifecyclePolicyPreviewRequest) async throws -> ECRModel.GetLifecyclePolicyPreviewResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3823,7 +3823,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func getRegistryPolicy(
             input: ECRModel.GetRegistryPolicyRequest) async throws -> ECRModel.GetRegistryPolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3859,7 +3859,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func getRegistryScanningConfiguration(
             input: ECRModel.GetRegistryScanningConfigurationRequest) async throws -> ECRModel.GetRegistryScanningConfigurationResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3895,7 +3895,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func getRepositoryPolicy(
             input: ECRModel.GetRepositoryPolicyRequest) async throws -> ECRModel.GetRepositoryPolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3931,7 +3931,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func initiateLayerUpload(
             input: ECRModel.InitiateLayerUploadRequest) async throws -> ECRModel.InitiateLayerUploadResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3967,7 +3967,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func listImages(
             input: ECRModel.ListImagesRequest) async throws -> ECRModel.ListImagesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4003,7 +4003,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func listTagsForResource(
             input: ECRModel.ListTagsForResourceRequest) async throws -> ECRModel.ListTagsForResourceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4039,7 +4039,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func putImage(
             input: ECRModel.PutImageRequest) async throws -> ECRModel.PutImageResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4075,7 +4075,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func putImageScanningConfiguration(
             input: ECRModel.PutImageScanningConfigurationRequest) async throws -> ECRModel.PutImageScanningConfigurationResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4111,7 +4111,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func putImageTagMutability(
             input: ECRModel.PutImageTagMutabilityRequest) async throws -> ECRModel.PutImageTagMutabilityResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4147,7 +4147,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func putLifecyclePolicy(
             input: ECRModel.PutLifecyclePolicyRequest) async throws -> ECRModel.PutLifecyclePolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4183,7 +4183,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func putRegistryPolicy(
             input: ECRModel.PutRegistryPolicyRequest) async throws -> ECRModel.PutRegistryPolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4219,7 +4219,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func putRegistryScanningConfiguration(
             input: ECRModel.PutRegistryScanningConfigurationRequest) async throws -> ECRModel.PutRegistryScanningConfigurationResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4255,7 +4255,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func putReplicationConfiguration(
             input: ECRModel.PutReplicationConfigurationRequest) async throws -> ECRModel.PutReplicationConfigurationResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4291,7 +4291,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func setRepositoryPolicy(
             input: ECRModel.SetRepositoryPolicyRequest) async throws -> ECRModel.SetRepositoryPolicyResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4327,7 +4327,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startImageScan(
             input: ECRModel.StartImageScanRequest) async throws -> ECRModel.StartImageScanResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4363,7 +4363,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startLifecyclePolicyPreview(
             input: ECRModel.StartLifecyclePolicyPreviewRequest) async throws -> ECRModel.StartLifecyclePolicyPreviewResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4399,7 +4399,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func tagResource(
             input: ECRModel.TagResourceRequest) async throws -> ECRModel.TagResourceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4435,7 +4435,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func untagResource(
             input: ECRModel.UntagResourceRequest) async throws -> ECRModel.UntagResourceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4471,7 +4471,7 @@ public struct AWSECRClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func uploadLayerPart(
             input: ECRModel.UploadLayerPartRequest) async throws -> ECRModel.UploadLayerPartResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

@@ -2716,7 +2716,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func countClosedWorkflowExecutions(
             input: SimpleWorkflowModel.CountClosedWorkflowExecutionsInput) async throws -> SimpleWorkflowModel.WorkflowExecutionCount {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2752,7 +2752,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func countOpenWorkflowExecutions(
             input: SimpleWorkflowModel.CountOpenWorkflowExecutionsInput) async throws -> SimpleWorkflowModel.WorkflowExecutionCount {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2788,7 +2788,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func countPendingActivityTasks(
             input: SimpleWorkflowModel.CountPendingActivityTasksInput) async throws -> SimpleWorkflowModel.PendingTaskCount {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2824,7 +2824,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func countPendingDecisionTasks(
             input: SimpleWorkflowModel.CountPendingDecisionTasksInput) async throws -> SimpleWorkflowModel.PendingTaskCount {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2858,7 +2858,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deprecateActivityType(
             input: SimpleWorkflowModel.DeprecateActivityTypeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2892,7 +2892,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deprecateDomain(
             input: SimpleWorkflowModel.DeprecateDomainInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2926,7 +2926,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func deprecateWorkflowType(
             input: SimpleWorkflowModel.DeprecateWorkflowTypeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2962,7 +2962,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeActivityType(
             input: SimpleWorkflowModel.DescribeActivityTypeInput) async throws -> SimpleWorkflowModel.ActivityTypeDetail {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2998,7 +2998,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeDomain(
             input: SimpleWorkflowModel.DescribeDomainInput) async throws -> SimpleWorkflowModel.DomainDetail {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3034,7 +3034,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeWorkflowExecution(
             input: SimpleWorkflowModel.DescribeWorkflowExecutionInput) async throws -> SimpleWorkflowModel.WorkflowExecutionDetail {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3070,7 +3070,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func describeWorkflowType(
             input: SimpleWorkflowModel.DescribeWorkflowTypeInput) async throws -> SimpleWorkflowModel.WorkflowTypeDetail {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3106,7 +3106,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func getWorkflowExecutionHistory(
             input: SimpleWorkflowModel.GetWorkflowExecutionHistoryInput) async throws -> SimpleWorkflowModel.History {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3142,7 +3142,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listActivityTypes(
             input: SimpleWorkflowModel.ListActivityTypesInput) async throws -> SimpleWorkflowModel.ActivityTypeInfos {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3178,7 +3178,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listClosedWorkflowExecutions(
             input: SimpleWorkflowModel.ListClosedWorkflowExecutionsInput) async throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3214,7 +3214,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listDomains(
             input: SimpleWorkflowModel.ListDomainsInput) async throws -> SimpleWorkflowModel.DomainInfos {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3250,7 +3250,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listOpenWorkflowExecutions(
             input: SimpleWorkflowModel.ListOpenWorkflowExecutionsInput) async throws -> SimpleWorkflowModel.WorkflowExecutionInfos {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3286,7 +3286,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listTagsForResource(
             input: SimpleWorkflowModel.ListTagsForResourceInput) async throws -> SimpleWorkflowModel.ListTagsForResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3322,7 +3322,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func listWorkflowTypes(
             input: SimpleWorkflowModel.ListWorkflowTypesInput) async throws -> SimpleWorkflowModel.WorkflowTypeInfos {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3358,7 +3358,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func pollForActivityTask(
             input: SimpleWorkflowModel.PollForActivityTaskInput) async throws -> SimpleWorkflowModel.ActivityTask {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3394,7 +3394,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func pollForDecisionTask(
             input: SimpleWorkflowModel.PollForDecisionTaskInput) async throws -> SimpleWorkflowModel.DecisionTask {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3430,7 +3430,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func recordActivityTaskHeartbeat(
             input: SimpleWorkflowModel.RecordActivityTaskHeartbeatInput) async throws -> SimpleWorkflowModel.ActivityTaskStatus {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3464,7 +3464,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func registerActivityType(
             input: SimpleWorkflowModel.RegisterActivityTypeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3498,7 +3498,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func registerDomain(
             input: SimpleWorkflowModel.RegisterDomainInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3532,7 +3532,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func registerWorkflowType(
             input: SimpleWorkflowModel.RegisterWorkflowTypeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3566,7 +3566,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func requestCancelWorkflowExecution(
             input: SimpleWorkflowModel.RequestCancelWorkflowExecutionInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3600,7 +3600,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func respondActivityTaskCanceled(
             input: SimpleWorkflowModel.RespondActivityTaskCanceledInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3634,7 +3634,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func respondActivityTaskCompleted(
             input: SimpleWorkflowModel.RespondActivityTaskCompletedInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3668,7 +3668,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func respondActivityTaskFailed(
             input: SimpleWorkflowModel.RespondActivityTaskFailedInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3702,7 +3702,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func respondDecisionTaskCompleted(
             input: SimpleWorkflowModel.RespondDecisionTaskCompletedInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3736,7 +3736,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func signalWorkflowExecution(
             input: SimpleWorkflowModel.SignalWorkflowExecutionInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3772,7 +3772,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func startWorkflowExecution(
             input: SimpleWorkflowModel.StartWorkflowExecutionInput) async throws -> SimpleWorkflowModel.Run {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3806,7 +3806,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func tagResource(
             input: SimpleWorkflowModel.TagResourceInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3840,7 +3840,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func terminateWorkflowExecution(
             input: SimpleWorkflowModel.TerminateWorkflowExecutionInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3874,7 +3874,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func undeprecateActivityType(
             input: SimpleWorkflowModel.UndeprecateActivityTypeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3908,7 +3908,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func undeprecateDomain(
             input: SimpleWorkflowModel.UndeprecateDomainInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3942,7 +3942,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func undeprecateWorkflowType(
             input: SimpleWorkflowModel.UndeprecateWorkflowTypeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3976,7 +3976,7 @@ public struct AWSSimpleWorkflowClient<InvocationReportingType: HTTPClientCoreInv
      */
     public func untagResource(
             input: SimpleWorkflowModel.UntagResourceInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

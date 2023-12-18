@@ -11343,7 +11343,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func addRoleToDBCluster(
             input: RDSModel.AddRoleToDBClusterMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11381,7 +11381,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func addRoleToDBInstance(
             input: RDSModel.AddRoleToDBInstanceMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11421,7 +11421,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func addSourceIdentifierToSubscription(
             input: RDSModel.AddSourceIdentifierToSubscriptionMessage) async throws -> RDSModel.AddSourceIdentifierToSubscriptionResultForAddSourceIdentifierToSubscription {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11459,7 +11459,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func addTagsToResource(
             input: RDSModel.AddTagsToResourceMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11499,7 +11499,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func applyPendingMaintenanceAction(
             input: RDSModel.ApplyPendingMaintenanceActionMessage) async throws -> RDSModel.ApplyPendingMaintenanceActionResultForApplyPendingMaintenanceAction {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11539,7 +11539,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func authorizeDBSecurityGroupIngress(
             input: RDSModel.AuthorizeDBSecurityGroupIngressMessage) async throws -> RDSModel.AuthorizeDBSecurityGroupIngressResultForAuthorizeDBSecurityGroupIngress {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11579,7 +11579,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func backtrackDBCluster(
             input: RDSModel.BacktrackDBClusterMessage) async throws -> RDSModel.DBClusterBacktrackForBacktrackDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11619,7 +11619,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func cancelExportTask(
             input: RDSModel.CancelExportTaskMessage) async throws -> RDSModel.ExportTaskForCancelExportTask {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11659,7 +11659,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyDBClusterParameterGroup(
             input: RDSModel.CopyDBClusterParameterGroupMessage) async throws -> RDSModel.CopyDBClusterParameterGroupResultForCopyDBClusterParameterGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11699,7 +11699,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyDBClusterSnapshot(
             input: RDSModel.CopyDBClusterSnapshotMessage) async throws -> RDSModel.CopyDBClusterSnapshotResultForCopyDBClusterSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11739,7 +11739,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyDBParameterGroup(
             input: RDSModel.CopyDBParameterGroupMessage) async throws -> RDSModel.CopyDBParameterGroupResultForCopyDBParameterGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11779,7 +11779,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyDBSnapshot(
             input: RDSModel.CopyDBSnapshotMessage) async throws -> RDSModel.CopyDBSnapshotResultForCopyDBSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11819,7 +11819,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func copyOptionGroup(
             input: RDSModel.CopyOptionGroupMessage) async throws -> RDSModel.CopyOptionGroupResultForCopyOptionGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11859,7 +11859,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createBlueGreenDeployment(
             input: RDSModel.CreateBlueGreenDeploymentRequest) async throws -> RDSModel.CreateBlueGreenDeploymentResponseForCreateBlueGreenDeployment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11899,7 +11899,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createCustomDBEngineVersion(
             input: RDSModel.CreateCustomDBEngineVersionMessage) async throws -> RDSModel.DBEngineVersionForCreateCustomDBEngineVersion {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11939,7 +11939,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBCluster(
             input: RDSModel.CreateDBClusterMessage) async throws -> RDSModel.CreateDBClusterResultForCreateDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -11979,7 +11979,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBClusterEndpoint(
             input: RDSModel.CreateDBClusterEndpointMessage) async throws -> RDSModel.DBClusterEndpointForCreateDBClusterEndpoint {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12019,7 +12019,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBClusterParameterGroup(
             input: RDSModel.CreateDBClusterParameterGroupMessage) async throws -> RDSModel.CreateDBClusterParameterGroupResultForCreateDBClusterParameterGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12059,7 +12059,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBClusterSnapshot(
             input: RDSModel.CreateDBClusterSnapshotMessage) async throws -> RDSModel.CreateDBClusterSnapshotResultForCreateDBClusterSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12099,7 +12099,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBInstance(
             input: RDSModel.CreateDBInstanceMessage) async throws -> RDSModel.CreateDBInstanceResultForCreateDBInstance {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12139,7 +12139,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBInstanceReadReplica(
             input: RDSModel.CreateDBInstanceReadReplicaMessage) async throws -> RDSModel.CreateDBInstanceReadReplicaResultForCreateDBInstanceReadReplica {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12179,7 +12179,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBParameterGroup(
             input: RDSModel.CreateDBParameterGroupMessage) async throws -> RDSModel.CreateDBParameterGroupResultForCreateDBParameterGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12219,7 +12219,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBProxy(
             input: RDSModel.CreateDBProxyRequest) async throws -> RDSModel.CreateDBProxyResponseForCreateDBProxy {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12259,7 +12259,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBProxyEndpoint(
             input: RDSModel.CreateDBProxyEndpointRequest) async throws -> RDSModel.CreateDBProxyEndpointResponseForCreateDBProxyEndpoint {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12299,7 +12299,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBSecurityGroup(
             input: RDSModel.CreateDBSecurityGroupMessage) async throws -> RDSModel.CreateDBSecurityGroupResultForCreateDBSecurityGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12339,7 +12339,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBSnapshot(
             input: RDSModel.CreateDBSnapshotMessage) async throws -> RDSModel.CreateDBSnapshotResultForCreateDBSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12379,7 +12379,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createDBSubnetGroup(
             input: RDSModel.CreateDBSubnetGroupMessage) async throws -> RDSModel.CreateDBSubnetGroupResultForCreateDBSubnetGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12419,7 +12419,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createEventSubscription(
             input: RDSModel.CreateEventSubscriptionMessage) async throws -> RDSModel.CreateEventSubscriptionResultForCreateEventSubscription {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12459,7 +12459,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createGlobalCluster(
             input: RDSModel.CreateGlobalClusterMessage) async throws -> RDSModel.CreateGlobalClusterResultForCreateGlobalCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12499,7 +12499,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func createOptionGroup(
             input: RDSModel.CreateOptionGroupMessage) async throws -> RDSModel.CreateOptionGroupResultForCreateOptionGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12539,7 +12539,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteBlueGreenDeployment(
             input: RDSModel.DeleteBlueGreenDeploymentRequest) async throws -> RDSModel.DeleteBlueGreenDeploymentResponseForDeleteBlueGreenDeployment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12579,7 +12579,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteCustomDBEngineVersion(
             input: RDSModel.DeleteCustomDBEngineVersionMessage) async throws -> RDSModel.DBEngineVersionForDeleteCustomDBEngineVersion {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12619,7 +12619,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBCluster(
             input: RDSModel.DeleteDBClusterMessage) async throws -> RDSModel.DeleteDBClusterResultForDeleteDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12659,7 +12659,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBClusterAutomatedBackup(
             input: RDSModel.DeleteDBClusterAutomatedBackupMessage) async throws -> RDSModel.DeleteDBClusterAutomatedBackupResultForDeleteDBClusterAutomatedBackup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12699,7 +12699,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBClusterEndpoint(
             input: RDSModel.DeleteDBClusterEndpointMessage) async throws -> RDSModel.DBClusterEndpointForDeleteDBClusterEndpoint {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12737,7 +12737,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBClusterParameterGroup(
             input: RDSModel.DeleteDBClusterParameterGroupMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12777,7 +12777,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBClusterSnapshot(
             input: RDSModel.DeleteDBClusterSnapshotMessage) async throws -> RDSModel.DeleteDBClusterSnapshotResultForDeleteDBClusterSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12817,7 +12817,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBInstance(
             input: RDSModel.DeleteDBInstanceMessage) async throws -> RDSModel.DeleteDBInstanceResultForDeleteDBInstance {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12857,7 +12857,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBInstanceAutomatedBackup(
             input: RDSModel.DeleteDBInstanceAutomatedBackupMessage) async throws -> RDSModel.DeleteDBInstanceAutomatedBackupResultForDeleteDBInstanceAutomatedBackup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12895,7 +12895,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBParameterGroup(
             input: RDSModel.DeleteDBParameterGroupMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12935,7 +12935,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBProxy(
             input: RDSModel.DeleteDBProxyRequest) async throws -> RDSModel.DeleteDBProxyResponseForDeleteDBProxy {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -12975,7 +12975,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBProxyEndpoint(
             input: RDSModel.DeleteDBProxyEndpointRequest) async throws -> RDSModel.DeleteDBProxyEndpointResponseForDeleteDBProxyEndpoint {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13013,7 +13013,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBSecurityGroup(
             input: RDSModel.DeleteDBSecurityGroupMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13053,7 +13053,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBSnapshot(
             input: RDSModel.DeleteDBSnapshotMessage) async throws -> RDSModel.DeleteDBSnapshotResultForDeleteDBSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13091,7 +13091,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteDBSubnetGroup(
             input: RDSModel.DeleteDBSubnetGroupMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13131,7 +13131,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteEventSubscription(
             input: RDSModel.DeleteEventSubscriptionMessage) async throws -> RDSModel.DeleteEventSubscriptionResultForDeleteEventSubscription {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13171,7 +13171,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteGlobalCluster(
             input: RDSModel.DeleteGlobalClusterMessage) async throws -> RDSModel.DeleteGlobalClusterResultForDeleteGlobalCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13209,7 +13209,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deleteOptionGroup(
             input: RDSModel.DeleteOptionGroupMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13249,7 +13249,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func deregisterDBProxyTargets(
             input: RDSModel.DeregisterDBProxyTargetsRequest) async throws -> RDSModel.DeregisterDBProxyTargetsResponseForDeregisterDBProxyTargets {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13288,7 +13288,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeAccountAttributes(
             input: RDSModel.DescribeAccountAttributesMessage) async throws -> RDSModel.AccountAttributesMessageForDescribeAccountAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13328,7 +13328,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeBlueGreenDeployments(
             input: RDSModel.DescribeBlueGreenDeploymentsRequest) async throws -> RDSModel.DescribeBlueGreenDeploymentsResponseForDescribeBlueGreenDeployments {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13368,7 +13368,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeCertificates(
             input: RDSModel.DescribeCertificatesMessage) async throws -> RDSModel.CertificateMessageForDescribeCertificates {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13408,7 +13408,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterAutomatedBackups(
             input: RDSModel.DescribeDBClusterAutomatedBackupsMessage) async throws -> RDSModel.DBClusterAutomatedBackupMessageForDescribeDBClusterAutomatedBackups {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13448,7 +13448,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterBacktracks(
             input: RDSModel.DescribeDBClusterBacktracksMessage) async throws -> RDSModel.DBClusterBacktrackMessageForDescribeDBClusterBacktracks {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13488,7 +13488,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterEndpoints(
             input: RDSModel.DescribeDBClusterEndpointsMessage) async throws -> RDSModel.DBClusterEndpointMessageForDescribeDBClusterEndpoints {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13528,7 +13528,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterParameterGroups(
             input: RDSModel.DescribeDBClusterParameterGroupsMessage) async throws -> RDSModel.DBClusterParameterGroupsMessageForDescribeDBClusterParameterGroups {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13568,7 +13568,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterParameters(
             input: RDSModel.DescribeDBClusterParametersMessage) async throws -> RDSModel.DBClusterParameterGroupDetailsForDescribeDBClusterParameters {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13608,7 +13608,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterSnapshotAttributes(
             input: RDSModel.DescribeDBClusterSnapshotAttributesMessage) async throws -> RDSModel.DescribeDBClusterSnapshotAttributesResultForDescribeDBClusterSnapshotAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13648,7 +13648,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusterSnapshots(
             input: RDSModel.DescribeDBClusterSnapshotsMessage) async throws -> RDSModel.DBClusterSnapshotMessageForDescribeDBClusterSnapshots {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13688,7 +13688,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBClusters(
             input: RDSModel.DescribeDBClustersMessage) async throws -> RDSModel.DBClusterMessageForDescribeDBClusters {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13727,7 +13727,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBEngineVersions(
             input: RDSModel.DescribeDBEngineVersionsMessage) async throws -> RDSModel.DBEngineVersionMessageForDescribeDBEngineVersions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13767,7 +13767,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBInstanceAutomatedBackups(
             input: RDSModel.DescribeDBInstanceAutomatedBackupsMessage) async throws -> RDSModel.DBInstanceAutomatedBackupMessageForDescribeDBInstanceAutomatedBackups {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13807,7 +13807,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBInstances(
             input: RDSModel.DescribeDBInstancesMessage) async throws -> RDSModel.DBInstanceMessageForDescribeDBInstances {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13847,7 +13847,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBLogFiles(
             input: RDSModel.DescribeDBLogFilesMessage) async throws -> RDSModel.DescribeDBLogFilesResponseForDescribeDBLogFiles {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13887,7 +13887,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBParameterGroups(
             input: RDSModel.DescribeDBParameterGroupsMessage) async throws -> RDSModel.DBParameterGroupsMessageForDescribeDBParameterGroups {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13927,7 +13927,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBParameters(
             input: RDSModel.DescribeDBParametersMessage) async throws -> RDSModel.DBParameterGroupDetailsForDescribeDBParameters {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -13967,7 +13967,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBProxies(
             input: RDSModel.DescribeDBProxiesRequest) async throws -> RDSModel.DescribeDBProxiesResponseForDescribeDBProxies {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14007,7 +14007,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBProxyEndpoints(
             input: RDSModel.DescribeDBProxyEndpointsRequest) async throws -> RDSModel.DescribeDBProxyEndpointsResponseForDescribeDBProxyEndpoints {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14047,7 +14047,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBProxyTargetGroups(
             input: RDSModel.DescribeDBProxyTargetGroupsRequest) async throws -> RDSModel.DescribeDBProxyTargetGroupsResponseForDescribeDBProxyTargetGroups {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14087,7 +14087,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBProxyTargets(
             input: RDSModel.DescribeDBProxyTargetsRequest) async throws -> RDSModel.DescribeDBProxyTargetsResponseForDescribeDBProxyTargets {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14127,7 +14127,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBSecurityGroups(
             input: RDSModel.DescribeDBSecurityGroupsMessage) async throws -> RDSModel.DBSecurityGroupMessageForDescribeDBSecurityGroups {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14167,7 +14167,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBSnapshotAttributes(
             input: RDSModel.DescribeDBSnapshotAttributesMessage) async throws -> RDSModel.DescribeDBSnapshotAttributesResultForDescribeDBSnapshotAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14207,7 +14207,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBSnapshots(
             input: RDSModel.DescribeDBSnapshotsMessage) async throws -> RDSModel.DBSnapshotMessageForDescribeDBSnapshots {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14247,7 +14247,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeDBSubnetGroups(
             input: RDSModel.DescribeDBSubnetGroupsMessage) async throws -> RDSModel.DBSubnetGroupMessageForDescribeDBSubnetGroups {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14286,7 +14286,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEngineDefaultClusterParameters(
             input: RDSModel.DescribeEngineDefaultClusterParametersMessage) async throws -> RDSModel.DescribeEngineDefaultClusterParametersResultForDescribeEngineDefaultClusterParameters {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14325,7 +14325,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEngineDefaultParameters(
             input: RDSModel.DescribeEngineDefaultParametersMessage) async throws -> RDSModel.DescribeEngineDefaultParametersResultForDescribeEngineDefaultParameters {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14364,7 +14364,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEventCategories(
             input: RDSModel.DescribeEventCategoriesMessage) async throws -> RDSModel.EventCategoriesMessageForDescribeEventCategories {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14404,7 +14404,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEventSubscriptions(
             input: RDSModel.DescribeEventSubscriptionsMessage) async throws -> RDSModel.EventSubscriptionsMessageForDescribeEventSubscriptions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14443,7 +14443,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeEvents(
             input: RDSModel.DescribeEventsMessage) async throws -> RDSModel.EventsMessageForDescribeEvents {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14483,7 +14483,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeExportTasks(
             input: RDSModel.DescribeExportTasksMessage) async throws -> RDSModel.ExportTasksMessageForDescribeExportTasks {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14523,7 +14523,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeGlobalClusters(
             input: RDSModel.DescribeGlobalClustersMessage) async throws -> RDSModel.GlobalClustersMessageForDescribeGlobalClusters {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14562,7 +14562,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeOptionGroupOptions(
             input: RDSModel.DescribeOptionGroupOptionsMessage) async throws -> RDSModel.OptionGroupOptionsMessageForDescribeOptionGroupOptions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14602,7 +14602,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeOptionGroups(
             input: RDSModel.DescribeOptionGroupsMessage) async throws -> RDSModel.OptionGroupsForDescribeOptionGroups {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14641,7 +14641,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeOrderableDBInstanceOptions(
             input: RDSModel.DescribeOrderableDBInstanceOptionsMessage) async throws -> RDSModel.OrderableDBInstanceOptionsMessageForDescribeOrderableDBInstanceOptions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14681,7 +14681,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describePendingMaintenanceActions(
             input: RDSModel.DescribePendingMaintenanceActionsMessage) async throws -> RDSModel.PendingMaintenanceActionsMessageForDescribePendingMaintenanceActions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14721,7 +14721,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeReservedDBInstances(
             input: RDSModel.DescribeReservedDBInstancesMessage) async throws -> RDSModel.ReservedDBInstanceMessageForDescribeReservedDBInstances {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14761,7 +14761,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeReservedDBInstancesOfferings(
             input: RDSModel.DescribeReservedDBInstancesOfferingsMessage) async throws -> RDSModel.ReservedDBInstancesOfferingMessageForDescribeReservedDBInstancesOfferings {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14800,7 +14800,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeSourceRegions(
             input: RDSModel.DescribeSourceRegionsMessage) async throws -> RDSModel.SourceRegionMessageForDescribeSourceRegions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14840,7 +14840,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func describeValidDBInstanceModifications(
             input: RDSModel.DescribeValidDBInstanceModificationsMessage) async throws -> RDSModel.DescribeValidDBInstanceModificationsResultForDescribeValidDBInstanceModifications {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14880,7 +14880,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func downloadDBLogFilePortion(
             input: RDSModel.DownloadDBLogFilePortionMessage) async throws -> RDSModel.DownloadDBLogFilePortionDetailsForDownloadDBLogFilePortion {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14920,7 +14920,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func failoverDBCluster(
             input: RDSModel.FailoverDBClusterMessage) async throws -> RDSModel.FailoverDBClusterResultForFailoverDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -14960,7 +14960,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func failoverGlobalCluster(
             input: RDSModel.FailoverGlobalClusterMessage) async throws -> RDSModel.FailoverGlobalClusterResultForFailoverGlobalCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15000,7 +15000,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func listTagsForResource(
             input: RDSModel.ListTagsForResourceMessage) async throws -> RDSModel.TagListMessageForListTagsForResource {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15040,7 +15040,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyActivityStream(
             input: RDSModel.ModifyActivityStreamRequest) async throws -> RDSModel.ModifyActivityStreamResponseForModifyActivityStream {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15080,7 +15080,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyCertificates(
             input: RDSModel.ModifyCertificatesMessage) async throws -> RDSModel.ModifyCertificatesResultForModifyCertificates {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15120,7 +15120,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyCurrentDBClusterCapacity(
             input: RDSModel.ModifyCurrentDBClusterCapacityMessage) async throws -> RDSModel.DBClusterCapacityInfoForModifyCurrentDBClusterCapacity {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15160,7 +15160,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyCustomDBEngineVersion(
             input: RDSModel.ModifyCustomDBEngineVersionMessage) async throws -> RDSModel.DBEngineVersionForModifyCustomDBEngineVersion {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15200,7 +15200,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBCluster(
             input: RDSModel.ModifyDBClusterMessage) async throws -> RDSModel.ModifyDBClusterResultForModifyDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15240,7 +15240,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBClusterEndpoint(
             input: RDSModel.ModifyDBClusterEndpointMessage) async throws -> RDSModel.DBClusterEndpointForModifyDBClusterEndpoint {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15280,7 +15280,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBClusterParameterGroup(
             input: RDSModel.ModifyDBClusterParameterGroupMessage) async throws -> RDSModel.DBClusterParameterGroupNameMessageForModifyDBClusterParameterGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15320,7 +15320,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBClusterSnapshotAttribute(
             input: RDSModel.ModifyDBClusterSnapshotAttributeMessage) async throws -> RDSModel.ModifyDBClusterSnapshotAttributeResultForModifyDBClusterSnapshotAttribute {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15360,7 +15360,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBInstance(
             input: RDSModel.ModifyDBInstanceMessage) async throws -> RDSModel.ModifyDBInstanceResultForModifyDBInstance {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15400,7 +15400,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBParameterGroup(
             input: RDSModel.ModifyDBParameterGroupMessage) async throws -> RDSModel.DBParameterGroupNameMessageForModifyDBParameterGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15440,7 +15440,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBProxy(
             input: RDSModel.ModifyDBProxyRequest) async throws -> RDSModel.ModifyDBProxyResponseForModifyDBProxy {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15480,7 +15480,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBProxyEndpoint(
             input: RDSModel.ModifyDBProxyEndpointRequest) async throws -> RDSModel.ModifyDBProxyEndpointResponseForModifyDBProxyEndpoint {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15520,7 +15520,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBProxyTargetGroup(
             input: RDSModel.ModifyDBProxyTargetGroupRequest) async throws -> RDSModel.ModifyDBProxyTargetGroupResponseForModifyDBProxyTargetGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15560,7 +15560,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBSnapshot(
             input: RDSModel.ModifyDBSnapshotMessage) async throws -> RDSModel.ModifyDBSnapshotResultForModifyDBSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15600,7 +15600,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBSnapshotAttribute(
             input: RDSModel.ModifyDBSnapshotAttributeMessage) async throws -> RDSModel.ModifyDBSnapshotAttributeResultForModifyDBSnapshotAttribute {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15640,7 +15640,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyDBSubnetGroup(
             input: RDSModel.ModifyDBSubnetGroupMessage) async throws -> RDSModel.ModifyDBSubnetGroupResultForModifyDBSubnetGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15680,7 +15680,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyEventSubscription(
             input: RDSModel.ModifyEventSubscriptionMessage) async throws -> RDSModel.ModifyEventSubscriptionResultForModifyEventSubscription {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15720,7 +15720,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyGlobalCluster(
             input: RDSModel.ModifyGlobalClusterMessage) async throws -> RDSModel.ModifyGlobalClusterResultForModifyGlobalCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15760,7 +15760,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func modifyOptionGroup(
             input: RDSModel.ModifyOptionGroupMessage) async throws -> RDSModel.ModifyOptionGroupResultForModifyOptionGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15800,7 +15800,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func promoteReadReplica(
             input: RDSModel.PromoteReadReplicaMessage) async throws -> RDSModel.PromoteReadReplicaResultForPromoteReadReplica {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15840,7 +15840,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func promoteReadReplicaDBCluster(
             input: RDSModel.PromoteReadReplicaDBClusterMessage) async throws -> RDSModel.PromoteReadReplicaDBClusterResultForPromoteReadReplicaDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15880,7 +15880,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func purchaseReservedDBInstancesOffering(
             input: RDSModel.PurchaseReservedDBInstancesOfferingMessage) async throws -> RDSModel.PurchaseReservedDBInstancesOfferingResultForPurchaseReservedDBInstancesOffering {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15920,7 +15920,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func rebootDBCluster(
             input: RDSModel.RebootDBClusterMessage) async throws -> RDSModel.RebootDBClusterResultForRebootDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -15960,7 +15960,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func rebootDBInstance(
             input: RDSModel.RebootDBInstanceMessage) async throws -> RDSModel.RebootDBInstanceResultForRebootDBInstance {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16000,7 +16000,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func registerDBProxyTargets(
             input: RDSModel.RegisterDBProxyTargetsRequest) async throws -> RDSModel.RegisterDBProxyTargetsResponseForRegisterDBProxyTargets {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16040,7 +16040,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeFromGlobalCluster(
             input: RDSModel.RemoveFromGlobalClusterMessage) async throws -> RDSModel.RemoveFromGlobalClusterResultForRemoveFromGlobalCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16078,7 +16078,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeRoleFromDBCluster(
             input: RDSModel.RemoveRoleFromDBClusterMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16116,7 +16116,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeRoleFromDBInstance(
             input: RDSModel.RemoveRoleFromDBInstanceMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16156,7 +16156,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeSourceIdentifierFromSubscription(
             input: RDSModel.RemoveSourceIdentifierFromSubscriptionMessage) async throws -> RDSModel.RemoveSourceIdentifierFromSubscriptionResultForRemoveSourceIdentifierFromSubscription {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16194,7 +16194,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func removeTagsFromResource(
             input: RDSModel.RemoveTagsFromResourceMessage) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16234,7 +16234,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func resetDBClusterParameterGroup(
             input: RDSModel.ResetDBClusterParameterGroupMessage) async throws -> RDSModel.DBClusterParameterGroupNameMessageForResetDBClusterParameterGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16274,7 +16274,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func resetDBParameterGroup(
             input: RDSModel.ResetDBParameterGroupMessage) async throws -> RDSModel.DBParameterGroupNameMessageForResetDBParameterGroup {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16314,7 +16314,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBClusterFromS3(
             input: RDSModel.RestoreDBClusterFromS3Message) async throws -> RDSModel.RestoreDBClusterFromS3ResultForRestoreDBClusterFromS3 {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16354,7 +16354,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBClusterFromSnapshot(
             input: RDSModel.RestoreDBClusterFromSnapshotMessage) async throws -> RDSModel.RestoreDBClusterFromSnapshotResultForRestoreDBClusterFromSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16394,7 +16394,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBClusterToPointInTime(
             input: RDSModel.RestoreDBClusterToPointInTimeMessage) async throws -> RDSModel.RestoreDBClusterToPointInTimeResultForRestoreDBClusterToPointInTime {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16434,7 +16434,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBInstanceFromDBSnapshot(
             input: RDSModel.RestoreDBInstanceFromDBSnapshotMessage) async throws -> RDSModel.RestoreDBInstanceFromDBSnapshotResultForRestoreDBInstanceFromDBSnapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16474,7 +16474,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBInstanceFromS3(
             input: RDSModel.RestoreDBInstanceFromS3Message) async throws -> RDSModel.RestoreDBInstanceFromS3ResultForRestoreDBInstanceFromS3 {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16514,7 +16514,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func restoreDBInstanceToPointInTime(
             input: RDSModel.RestoreDBInstanceToPointInTimeMessage) async throws -> RDSModel.RestoreDBInstanceToPointInTimeResultForRestoreDBInstanceToPointInTime {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16554,7 +16554,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func revokeDBSecurityGroupIngress(
             input: RDSModel.RevokeDBSecurityGroupIngressMessage) async throws -> RDSModel.RevokeDBSecurityGroupIngressResultForRevokeDBSecurityGroupIngress {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16594,7 +16594,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startActivityStream(
             input: RDSModel.StartActivityStreamRequest) async throws -> RDSModel.StartActivityStreamResponseForStartActivityStream {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16634,7 +16634,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startDBCluster(
             input: RDSModel.StartDBClusterMessage) async throws -> RDSModel.StartDBClusterResultForStartDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16674,7 +16674,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startDBInstance(
             input: RDSModel.StartDBInstanceMessage) async throws -> RDSModel.StartDBInstanceResultForStartDBInstance {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16714,7 +16714,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startDBInstanceAutomatedBackupsReplication(
             input: RDSModel.StartDBInstanceAutomatedBackupsReplicationMessage) async throws -> RDSModel.StartDBInstanceAutomatedBackupsReplicationResultForStartDBInstanceAutomatedBackupsReplication {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16754,7 +16754,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func startExportTask(
             input: RDSModel.StartExportTaskMessage) async throws -> RDSModel.ExportTaskForStartExportTask {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16794,7 +16794,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func stopActivityStream(
             input: RDSModel.StopActivityStreamRequest) async throws -> RDSModel.StopActivityStreamResponseForStopActivityStream {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16834,7 +16834,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func stopDBCluster(
             input: RDSModel.StopDBClusterMessage) async throws -> RDSModel.StopDBClusterResultForStopDBCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16874,7 +16874,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func stopDBInstance(
             input: RDSModel.StopDBInstanceMessage) async throws -> RDSModel.StopDBInstanceResultForStopDBInstance {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16914,7 +16914,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func stopDBInstanceAutomatedBackupsReplication(
             input: RDSModel.StopDBInstanceAutomatedBackupsReplicationMessage) async throws -> RDSModel.StopDBInstanceAutomatedBackupsReplicationResultForStopDBInstanceAutomatedBackupsReplication {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16954,7 +16954,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func switchoverBlueGreenDeployment(
             input: RDSModel.SwitchoverBlueGreenDeploymentRequest) async throws -> RDSModel.SwitchoverBlueGreenDeploymentResponseForSwitchoverBlueGreenDeployment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -16994,7 +16994,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func switchoverGlobalCluster(
             input: RDSModel.SwitchoverGlobalClusterMessage) async throws -> RDSModel.SwitchoverGlobalClusterResultForSwitchoverGlobalCluster {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -17034,7 +17034,7 @@ public struct AWSRDSClient<InvocationReportingType: HTTPClientCoreInvocationRepo
      */
     public func switchoverReadReplica(
             input: RDSModel.SwitchoverReadReplicaMessage) async throws -> RDSModel.SwitchoverReadReplicaResultForSwitchoverReadReplica {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

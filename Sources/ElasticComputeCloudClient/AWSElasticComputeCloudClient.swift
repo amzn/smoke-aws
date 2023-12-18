@@ -45600,7 +45600,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptAddressTransfer(
             input: ElasticComputeCloudModel.AcceptAddressTransferRequest) async throws -> ElasticComputeCloudModel.AcceptAddressTransferResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45639,7 +45639,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptReservedInstancesExchangeQuote(
             input: ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteRequest) async throws -> ElasticComputeCloudModel.AcceptReservedInstancesExchangeQuoteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45678,7 +45678,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptTransitGatewayMulticastDomainAssociations(
             input: ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsRequest) async throws -> ElasticComputeCloudModel.AcceptTransitGatewayMulticastDomainAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45717,7 +45717,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptTransitGatewayPeeringAttachment(
             input: ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentRequest) async throws -> ElasticComputeCloudModel.AcceptTransitGatewayPeeringAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45756,7 +45756,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptTransitGatewayVpcAttachment(
             input: ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentRequest) async throws -> ElasticComputeCloudModel.AcceptTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45795,7 +45795,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptVpcEndpointConnections(
             input: ElasticComputeCloudModel.AcceptVpcEndpointConnectionsRequest) async throws -> ElasticComputeCloudModel.AcceptVpcEndpointConnectionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45834,7 +45834,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func acceptVpcPeeringConnection(
             input: ElasticComputeCloudModel.AcceptVpcPeeringConnectionRequest) async throws -> ElasticComputeCloudModel.AcceptVpcPeeringConnectionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45873,7 +45873,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func advertiseByoipCidr(
             input: ElasticComputeCloudModel.AdvertiseByoipCidrRequest) async throws -> ElasticComputeCloudModel.AdvertiseByoipCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45912,7 +45912,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func allocateAddress(
             input: ElasticComputeCloudModel.AllocateAddressRequest) async throws -> ElasticComputeCloudModel.AllocateAddressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45951,7 +45951,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func allocateHosts(
             input: ElasticComputeCloudModel.AllocateHostsRequest) async throws -> ElasticComputeCloudModel.AllocateHostsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -45990,7 +45990,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func allocateIpamPoolCidr(
             input: ElasticComputeCloudModel.AllocateIpamPoolCidrRequest) async throws -> ElasticComputeCloudModel.AllocateIpamPoolCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46029,7 +46029,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func applySecurityGroupsToClientVpnTargetNetwork(
             input: ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkRequest) async throws -> ElasticComputeCloudModel.ApplySecurityGroupsToClientVpnTargetNetworkResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46068,7 +46068,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func assignIpv6Addresses(
             input: ElasticComputeCloudModel.AssignIpv6AddressesRequest) async throws -> ElasticComputeCloudModel.AssignIpv6AddressesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46107,7 +46107,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func assignPrivateIpAddresses(
             input: ElasticComputeCloudModel.AssignPrivateIpAddressesRequest) async throws -> ElasticComputeCloudModel.AssignPrivateIpAddressesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46146,7 +46146,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func assignPrivateNatGatewayAddress(
             input: ElasticComputeCloudModel.AssignPrivateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.AssignPrivateNatGatewayAddressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46185,7 +46185,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateAddress(
             input: ElasticComputeCloudModel.AssociateAddressRequest) async throws -> ElasticComputeCloudModel.AssociateAddressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46224,7 +46224,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateClientVpnTargetNetwork(
             input: ElasticComputeCloudModel.AssociateClientVpnTargetNetworkRequest) async throws -> ElasticComputeCloudModel.AssociateClientVpnTargetNetworkResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46261,7 +46261,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateDhcpOptions(
             input: ElasticComputeCloudModel.AssociateDhcpOptionsRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46300,7 +46300,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateEnclaveCertificateIamRole(
             input: ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleRequest) async throws -> ElasticComputeCloudModel.AssociateEnclaveCertificateIamRoleResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46339,7 +46339,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateIamInstanceProfile(
             input: ElasticComputeCloudModel.AssociateIamInstanceProfileRequest) async throws -> ElasticComputeCloudModel.AssociateIamInstanceProfileResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46378,7 +46378,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateInstanceEventWindow(
             input: ElasticComputeCloudModel.AssociateInstanceEventWindowRequest) async throws -> ElasticComputeCloudModel.AssociateInstanceEventWindowResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46417,7 +46417,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateIpamResourceDiscovery(
             input: ElasticComputeCloudModel.AssociateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.AssociateIpamResourceDiscoveryResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46456,7 +46456,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateNatGatewayAddress(
             input: ElasticComputeCloudModel.AssociateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.AssociateNatGatewayAddressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46495,7 +46495,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateRouteTable(
             input: ElasticComputeCloudModel.AssociateRouteTableRequest) async throws -> ElasticComputeCloudModel.AssociateRouteTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46534,7 +46534,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateSubnetCidrBlock(
             input: ElasticComputeCloudModel.AssociateSubnetCidrBlockRequest) async throws -> ElasticComputeCloudModel.AssociateSubnetCidrBlockResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46573,7 +46573,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateTransitGatewayMulticastDomain(
             input: ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainRequest) async throws -> ElasticComputeCloudModel.AssociateTransitGatewayMulticastDomainResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46612,7 +46612,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateTransitGatewayPolicyTable(
             input: ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableRequest) async throws -> ElasticComputeCloudModel.AssociateTransitGatewayPolicyTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46651,7 +46651,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateTransitGatewayRouteTable(
             input: ElasticComputeCloudModel.AssociateTransitGatewayRouteTableRequest) async throws -> ElasticComputeCloudModel.AssociateTransitGatewayRouteTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46690,7 +46690,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateTrunkInterface(
             input: ElasticComputeCloudModel.AssociateTrunkInterfaceRequest) async throws -> ElasticComputeCloudModel.AssociateTrunkInterfaceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46729,7 +46729,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func associateVpcCidrBlock(
             input: ElasticComputeCloudModel.AssociateVpcCidrBlockRequest) async throws -> ElasticComputeCloudModel.AssociateVpcCidrBlockResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46768,7 +46768,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachClassicLinkVpc(
             input: ElasticComputeCloudModel.AttachClassicLinkVpcRequest) async throws -> ElasticComputeCloudModel.AttachClassicLinkVpcResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46805,7 +46805,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachInternetGateway(
             input: ElasticComputeCloudModel.AttachInternetGatewayRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46844,7 +46844,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachNetworkInterface(
             input: ElasticComputeCloudModel.AttachNetworkInterfaceRequest) async throws -> ElasticComputeCloudModel.AttachNetworkInterfaceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46883,7 +46883,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachVerifiedAccessTrustProvider(
             input: ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderRequest) async throws -> ElasticComputeCloudModel.AttachVerifiedAccessTrustProviderResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46922,7 +46922,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachVolume(
             input: ElasticComputeCloudModel.AttachVolumeRequest) async throws -> ElasticComputeCloudModel.VolumeAttachment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -46961,7 +46961,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func attachVpnGateway(
             input: ElasticComputeCloudModel.AttachVpnGatewayRequest) async throws -> ElasticComputeCloudModel.AttachVpnGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47000,7 +47000,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func authorizeClientVpnIngress(
             input: ElasticComputeCloudModel.AuthorizeClientVpnIngressRequest) async throws -> ElasticComputeCloudModel.AuthorizeClientVpnIngressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47039,7 +47039,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func authorizeSecurityGroupEgress(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupEgressRequest) async throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupEgressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47078,7 +47078,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func authorizeSecurityGroupIngress(
             input: ElasticComputeCloudModel.AuthorizeSecurityGroupIngressRequest) async throws -> ElasticComputeCloudModel.AuthorizeSecurityGroupIngressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47117,7 +47117,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func bundleInstance(
             input: ElasticComputeCloudModel.BundleInstanceRequest) async throws -> ElasticComputeCloudModel.BundleInstanceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47156,7 +47156,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelBundleTask(
             input: ElasticComputeCloudModel.CancelBundleTaskRequest) async throws -> ElasticComputeCloudModel.CancelBundleTaskResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47195,7 +47195,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelCapacityReservation(
             input: ElasticComputeCloudModel.CancelCapacityReservationRequest) async throws -> ElasticComputeCloudModel.CancelCapacityReservationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47234,7 +47234,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelCapacityReservationFleets(
             input: ElasticComputeCloudModel.CancelCapacityReservationFleetsRequest) async throws -> ElasticComputeCloudModel.CancelCapacityReservationFleetsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47271,7 +47271,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelConversionTask(
             input: ElasticComputeCloudModel.CancelConversionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47308,7 +47308,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelExportTask(
             input: ElasticComputeCloudModel.CancelExportTaskRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47347,7 +47347,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelImageLaunchPermission(
             input: ElasticComputeCloudModel.CancelImageLaunchPermissionRequest) async throws -> ElasticComputeCloudModel.CancelImageLaunchPermissionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47386,7 +47386,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelImportTask(
             input: ElasticComputeCloudModel.CancelImportTaskRequest) async throws -> ElasticComputeCloudModel.CancelImportTaskResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47425,7 +47425,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelReservedInstancesListing(
             input: ElasticComputeCloudModel.CancelReservedInstancesListingRequest) async throws -> ElasticComputeCloudModel.CancelReservedInstancesListingResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47464,7 +47464,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelSpotFleetRequests(
             input: ElasticComputeCloudModel.CancelSpotFleetRequestsRequest) async throws -> ElasticComputeCloudModel.CancelSpotFleetRequestsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47503,7 +47503,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func cancelSpotInstanceRequests(
             input: ElasticComputeCloudModel.CancelSpotInstanceRequestsRequest) async throws -> ElasticComputeCloudModel.CancelSpotInstanceRequestsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47542,7 +47542,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func confirmProductInstance(
             input: ElasticComputeCloudModel.ConfirmProductInstanceRequest) async throws -> ElasticComputeCloudModel.ConfirmProductInstanceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47581,7 +47581,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func copyFpgaImage(
             input: ElasticComputeCloudModel.CopyFpgaImageRequest) async throws -> ElasticComputeCloudModel.CopyFpgaImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47620,7 +47620,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func copyImage(
             input: ElasticComputeCloudModel.CopyImageRequest) async throws -> ElasticComputeCloudModel.CopyImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47659,7 +47659,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func copySnapshot(
             input: ElasticComputeCloudModel.CopySnapshotRequest) async throws -> ElasticComputeCloudModel.CopySnapshotResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47698,7 +47698,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createCapacityReservation(
             input: ElasticComputeCloudModel.CreateCapacityReservationRequest) async throws -> ElasticComputeCloudModel.CreateCapacityReservationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47737,7 +47737,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createCapacityReservationFleet(
             input: ElasticComputeCloudModel.CreateCapacityReservationFleetRequest) async throws -> ElasticComputeCloudModel.CreateCapacityReservationFleetResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47776,7 +47776,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createCarrierGateway(
             input: ElasticComputeCloudModel.CreateCarrierGatewayRequest) async throws -> ElasticComputeCloudModel.CreateCarrierGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47815,7 +47815,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createClientVpnEndpoint(
             input: ElasticComputeCloudModel.CreateClientVpnEndpointRequest) async throws -> ElasticComputeCloudModel.CreateClientVpnEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47854,7 +47854,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createClientVpnRoute(
             input: ElasticComputeCloudModel.CreateClientVpnRouteRequest) async throws -> ElasticComputeCloudModel.CreateClientVpnRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47893,7 +47893,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createCoipCidr(
             input: ElasticComputeCloudModel.CreateCoipCidrRequest) async throws -> ElasticComputeCloudModel.CreateCoipCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47932,7 +47932,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createCoipPool(
             input: ElasticComputeCloudModel.CreateCoipPoolRequest) async throws -> ElasticComputeCloudModel.CreateCoipPoolResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -47971,7 +47971,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createCustomerGateway(
             input: ElasticComputeCloudModel.CreateCustomerGatewayRequest) async throws -> ElasticComputeCloudModel.CreateCustomerGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48010,7 +48010,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createDefaultSubnet(
             input: ElasticComputeCloudModel.CreateDefaultSubnetRequest) async throws -> ElasticComputeCloudModel.CreateDefaultSubnetResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48049,7 +48049,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createDefaultVpc(
             input: ElasticComputeCloudModel.CreateDefaultVpcRequest) async throws -> ElasticComputeCloudModel.CreateDefaultVpcResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48088,7 +48088,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createDhcpOptions(
             input: ElasticComputeCloudModel.CreateDhcpOptionsRequest) async throws -> ElasticComputeCloudModel.CreateDhcpOptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48127,7 +48127,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createEgressOnlyInternetGateway(
             input: ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayRequest) async throws -> ElasticComputeCloudModel.CreateEgressOnlyInternetGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48166,7 +48166,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createFleet(
             input: ElasticComputeCloudModel.CreateFleetRequest) async throws -> ElasticComputeCloudModel.CreateFleetResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48205,7 +48205,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createFlowLogs(
             input: ElasticComputeCloudModel.CreateFlowLogsRequest) async throws -> ElasticComputeCloudModel.CreateFlowLogsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48244,7 +48244,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createFpgaImage(
             input: ElasticComputeCloudModel.CreateFpgaImageRequest) async throws -> ElasticComputeCloudModel.CreateFpgaImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48283,7 +48283,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createImage(
             input: ElasticComputeCloudModel.CreateImageRequest) async throws -> ElasticComputeCloudModel.CreateImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48322,7 +48322,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createInstanceConnectEndpoint(
             input: ElasticComputeCloudModel.CreateInstanceConnectEndpointRequest) async throws -> ElasticComputeCloudModel.CreateInstanceConnectEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48361,7 +48361,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createInstanceEventWindow(
             input: ElasticComputeCloudModel.CreateInstanceEventWindowRequest) async throws -> ElasticComputeCloudModel.CreateInstanceEventWindowResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48400,7 +48400,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createInstanceExportTask(
             input: ElasticComputeCloudModel.CreateInstanceExportTaskRequest) async throws -> ElasticComputeCloudModel.CreateInstanceExportTaskResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48439,7 +48439,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createInternetGateway(
             input: ElasticComputeCloudModel.CreateInternetGatewayRequest) async throws -> ElasticComputeCloudModel.CreateInternetGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48478,7 +48478,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createIpam(
             input: ElasticComputeCloudModel.CreateIpamRequest) async throws -> ElasticComputeCloudModel.CreateIpamResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48517,7 +48517,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createIpamPool(
             input: ElasticComputeCloudModel.CreateIpamPoolRequest) async throws -> ElasticComputeCloudModel.CreateIpamPoolResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48556,7 +48556,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createIpamResourceDiscovery(
             input: ElasticComputeCloudModel.CreateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.CreateIpamResourceDiscoveryResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48595,7 +48595,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createIpamScope(
             input: ElasticComputeCloudModel.CreateIpamScopeRequest) async throws -> ElasticComputeCloudModel.CreateIpamScopeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48634,7 +48634,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createKeyPair(
             input: ElasticComputeCloudModel.CreateKeyPairRequest) async throws -> ElasticComputeCloudModel.KeyPair {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48673,7 +48673,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLaunchTemplate(
             input: ElasticComputeCloudModel.CreateLaunchTemplateRequest) async throws -> ElasticComputeCloudModel.CreateLaunchTemplateResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48712,7 +48712,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLaunchTemplateVersion(
             input: ElasticComputeCloudModel.CreateLaunchTemplateVersionRequest) async throws -> ElasticComputeCloudModel.CreateLaunchTemplateVersionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48751,7 +48751,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLocalGatewayRoute(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteRequest) async throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48790,7 +48790,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLocalGatewayRouteTable(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableRequest) async throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48829,7 +48829,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLocalGatewayRouteTableVirtualInterfaceGroupAssociation(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest) async throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48868,7 +48868,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createLocalGatewayRouteTableVpcAssociation(
             input: ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationRequest) async throws -> ElasticComputeCloudModel.CreateLocalGatewayRouteTableVpcAssociationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48907,7 +48907,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createManagedPrefixList(
             input: ElasticComputeCloudModel.CreateManagedPrefixListRequest) async throws -> ElasticComputeCloudModel.CreateManagedPrefixListResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48946,7 +48946,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNatGateway(
             input: ElasticComputeCloudModel.CreateNatGatewayRequest) async throws -> ElasticComputeCloudModel.CreateNatGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -48985,7 +48985,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkAcl(
             input: ElasticComputeCloudModel.CreateNetworkAclRequest) async throws -> ElasticComputeCloudModel.CreateNetworkAclResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49022,7 +49022,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkAclEntry(
             input: ElasticComputeCloudModel.CreateNetworkAclEntryRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49061,7 +49061,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkInsightsAccessScope(
             input: ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeRequest) async throws -> ElasticComputeCloudModel.CreateNetworkInsightsAccessScopeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49100,7 +49100,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkInsightsPath(
             input: ElasticComputeCloudModel.CreateNetworkInsightsPathRequest) async throws -> ElasticComputeCloudModel.CreateNetworkInsightsPathResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49139,7 +49139,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkInterface(
             input: ElasticComputeCloudModel.CreateNetworkInterfaceRequest) async throws -> ElasticComputeCloudModel.CreateNetworkInterfaceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49178,7 +49178,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createNetworkInterfacePermission(
             input: ElasticComputeCloudModel.CreateNetworkInterfacePermissionRequest) async throws -> ElasticComputeCloudModel.CreateNetworkInterfacePermissionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49217,7 +49217,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createPlacementGroup(
             input: ElasticComputeCloudModel.CreatePlacementGroupRequest) async throws -> ElasticComputeCloudModel.CreatePlacementGroupResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49256,7 +49256,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createPublicIpv4Pool(
             input: ElasticComputeCloudModel.CreatePublicIpv4PoolRequest) async throws -> ElasticComputeCloudModel.CreatePublicIpv4PoolResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49295,7 +49295,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createReplaceRootVolumeTask(
             input: ElasticComputeCloudModel.CreateReplaceRootVolumeTaskRequest) async throws -> ElasticComputeCloudModel.CreateReplaceRootVolumeTaskResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49334,7 +49334,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createReservedInstancesListing(
             input: ElasticComputeCloudModel.CreateReservedInstancesListingRequest) async throws -> ElasticComputeCloudModel.CreateReservedInstancesListingResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49373,7 +49373,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createRestoreImageTask(
             input: ElasticComputeCloudModel.CreateRestoreImageTaskRequest) async throws -> ElasticComputeCloudModel.CreateRestoreImageTaskResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49412,7 +49412,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createRoute(
             input: ElasticComputeCloudModel.CreateRouteRequest) async throws -> ElasticComputeCloudModel.CreateRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49451,7 +49451,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createRouteTable(
             input: ElasticComputeCloudModel.CreateRouteTableRequest) async throws -> ElasticComputeCloudModel.CreateRouteTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49490,7 +49490,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSecurityGroup(
             input: ElasticComputeCloudModel.CreateSecurityGroupRequest) async throws -> ElasticComputeCloudModel.CreateSecurityGroupResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49529,7 +49529,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSnapshot(
             input: ElasticComputeCloudModel.CreateSnapshotRequest) async throws -> ElasticComputeCloudModel.Snapshot {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49568,7 +49568,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSnapshots(
             input: ElasticComputeCloudModel.CreateSnapshotsRequest) async throws -> ElasticComputeCloudModel.CreateSnapshotsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49607,7 +49607,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSpotDatafeedSubscription(
             input: ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionRequest) async throws -> ElasticComputeCloudModel.CreateSpotDatafeedSubscriptionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49646,7 +49646,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createStoreImageTask(
             input: ElasticComputeCloudModel.CreateStoreImageTaskRequest) async throws -> ElasticComputeCloudModel.CreateStoreImageTaskResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49685,7 +49685,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSubnet(
             input: ElasticComputeCloudModel.CreateSubnetRequest) async throws -> ElasticComputeCloudModel.CreateSubnetResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49724,7 +49724,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createSubnetCidrReservation(
             input: ElasticComputeCloudModel.CreateSubnetCidrReservationRequest) async throws -> ElasticComputeCloudModel.CreateSubnetCidrReservationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49761,7 +49761,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTags(
             input: ElasticComputeCloudModel.CreateTagsRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49800,7 +49800,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTrafficMirrorFilter(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRequest) async throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49839,7 +49839,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTrafficMirrorFilterRule(
             input: ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleRequest) async throws -> ElasticComputeCloudModel.CreateTrafficMirrorFilterRuleResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49878,7 +49878,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTrafficMirrorSession(
             input: ElasticComputeCloudModel.CreateTrafficMirrorSessionRequest) async throws -> ElasticComputeCloudModel.CreateTrafficMirrorSessionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49917,7 +49917,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTrafficMirrorTarget(
             input: ElasticComputeCloudModel.CreateTrafficMirrorTargetRequest) async throws -> ElasticComputeCloudModel.CreateTrafficMirrorTargetResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49956,7 +49956,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGateway(
             input: ElasticComputeCloudModel.CreateTransitGatewayRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -49995,7 +49995,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayConnect(
             input: ElasticComputeCloudModel.CreateTransitGatewayConnectRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50034,7 +50034,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayConnectPeer(
             input: ElasticComputeCloudModel.CreateTransitGatewayConnectPeerRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayConnectPeerResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50073,7 +50073,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayMulticastDomain(
             input: ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayMulticastDomainResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50112,7 +50112,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayPeeringAttachment(
             input: ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayPeeringAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50151,7 +50151,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayPolicyTable(
             input: ElasticComputeCloudModel.CreateTransitGatewayPolicyTableRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayPolicyTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50190,7 +50190,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayPrefixListReference(
             input: ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayPrefixListReferenceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50229,7 +50229,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayRoute(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50268,7 +50268,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayRouteTable(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50307,7 +50307,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayRouteTableAnnouncement(
             input: ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayRouteTableAnnouncementResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50346,7 +50346,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createTransitGatewayVpcAttachment(
             input: ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentRequest) async throws -> ElasticComputeCloudModel.CreateTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50385,7 +50385,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVerifiedAccessEndpoint(
             input: ElasticComputeCloudModel.CreateVerifiedAccessEndpointRequest) async throws -> ElasticComputeCloudModel.CreateVerifiedAccessEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50424,7 +50424,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVerifiedAccessGroup(
             input: ElasticComputeCloudModel.CreateVerifiedAccessGroupRequest) async throws -> ElasticComputeCloudModel.CreateVerifiedAccessGroupResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50463,7 +50463,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVerifiedAccessInstance(
             input: ElasticComputeCloudModel.CreateVerifiedAccessInstanceRequest) async throws -> ElasticComputeCloudModel.CreateVerifiedAccessInstanceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50502,7 +50502,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVerifiedAccessTrustProvider(
             input: ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderRequest) async throws -> ElasticComputeCloudModel.CreateVerifiedAccessTrustProviderResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50541,7 +50541,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVolume(
             input: ElasticComputeCloudModel.CreateVolumeRequest) async throws -> ElasticComputeCloudModel.Volume {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50580,7 +50580,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpc(
             input: ElasticComputeCloudModel.CreateVpcRequest) async throws -> ElasticComputeCloudModel.CreateVpcResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50619,7 +50619,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcEndpoint(
             input: ElasticComputeCloudModel.CreateVpcEndpointRequest) async throws -> ElasticComputeCloudModel.CreateVpcEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50658,7 +50658,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcEndpointConnectionNotification(
             input: ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationRequest) async throws -> ElasticComputeCloudModel.CreateVpcEndpointConnectionNotificationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50697,7 +50697,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcEndpointServiceConfiguration(
             input: ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationRequest) async throws -> ElasticComputeCloudModel.CreateVpcEndpointServiceConfigurationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50736,7 +50736,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpcPeeringConnection(
             input: ElasticComputeCloudModel.CreateVpcPeeringConnectionRequest) async throws -> ElasticComputeCloudModel.CreateVpcPeeringConnectionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50775,7 +50775,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpnConnection(
             input: ElasticComputeCloudModel.CreateVpnConnectionRequest) async throws -> ElasticComputeCloudModel.CreateVpnConnectionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50812,7 +50812,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpnConnectionRoute(
             input: ElasticComputeCloudModel.CreateVpnConnectionRouteRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50851,7 +50851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func createVpnGateway(
             input: ElasticComputeCloudModel.CreateVpnGatewayRequest) async throws -> ElasticComputeCloudModel.CreateVpnGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50890,7 +50890,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteCarrierGateway(
             input: ElasticComputeCloudModel.DeleteCarrierGatewayRequest) async throws -> ElasticComputeCloudModel.DeleteCarrierGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50929,7 +50929,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteClientVpnEndpoint(
             input: ElasticComputeCloudModel.DeleteClientVpnEndpointRequest) async throws -> ElasticComputeCloudModel.DeleteClientVpnEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -50968,7 +50968,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteClientVpnRoute(
             input: ElasticComputeCloudModel.DeleteClientVpnRouteRequest) async throws -> ElasticComputeCloudModel.DeleteClientVpnRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51007,7 +51007,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteCoipCidr(
             input: ElasticComputeCloudModel.DeleteCoipCidrRequest) async throws -> ElasticComputeCloudModel.DeleteCoipCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51046,7 +51046,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteCoipPool(
             input: ElasticComputeCloudModel.DeleteCoipPoolRequest) async throws -> ElasticComputeCloudModel.DeleteCoipPoolResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51083,7 +51083,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteCustomerGateway(
             input: ElasticComputeCloudModel.DeleteCustomerGatewayRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51120,7 +51120,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteDhcpOptions(
             input: ElasticComputeCloudModel.DeleteDhcpOptionsRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51159,7 +51159,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteEgressOnlyInternetGateway(
             input: ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayRequest) async throws -> ElasticComputeCloudModel.DeleteEgressOnlyInternetGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51198,7 +51198,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteFleets(
             input: ElasticComputeCloudModel.DeleteFleetsRequest) async throws -> ElasticComputeCloudModel.DeleteFleetsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51237,7 +51237,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteFlowLogs(
             input: ElasticComputeCloudModel.DeleteFlowLogsRequest) async throws -> ElasticComputeCloudModel.DeleteFlowLogsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51276,7 +51276,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteFpgaImage(
             input: ElasticComputeCloudModel.DeleteFpgaImageRequest) async throws -> ElasticComputeCloudModel.DeleteFpgaImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51315,7 +51315,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteInstanceConnectEndpoint(
             input: ElasticComputeCloudModel.DeleteInstanceConnectEndpointRequest) async throws -> ElasticComputeCloudModel.DeleteInstanceConnectEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51354,7 +51354,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteInstanceEventWindow(
             input: ElasticComputeCloudModel.DeleteInstanceEventWindowRequest) async throws -> ElasticComputeCloudModel.DeleteInstanceEventWindowResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51391,7 +51391,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteInternetGateway(
             input: ElasticComputeCloudModel.DeleteInternetGatewayRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51430,7 +51430,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteIpam(
             input: ElasticComputeCloudModel.DeleteIpamRequest) async throws -> ElasticComputeCloudModel.DeleteIpamResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51469,7 +51469,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteIpamPool(
             input: ElasticComputeCloudModel.DeleteIpamPoolRequest) async throws -> ElasticComputeCloudModel.DeleteIpamPoolResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51508,7 +51508,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteIpamResourceDiscovery(
             input: ElasticComputeCloudModel.DeleteIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.DeleteIpamResourceDiscoveryResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51547,7 +51547,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteIpamScope(
             input: ElasticComputeCloudModel.DeleteIpamScopeRequest) async throws -> ElasticComputeCloudModel.DeleteIpamScopeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51586,7 +51586,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteKeyPair(
             input: ElasticComputeCloudModel.DeleteKeyPairRequest) async throws -> ElasticComputeCloudModel.DeleteKeyPairResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51625,7 +51625,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLaunchTemplate(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateRequest) async throws -> ElasticComputeCloudModel.DeleteLaunchTemplateResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51664,7 +51664,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLaunchTemplateVersions(
             input: ElasticComputeCloudModel.DeleteLaunchTemplateVersionsRequest) async throws -> ElasticComputeCloudModel.DeleteLaunchTemplateVersionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51703,7 +51703,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLocalGatewayRoute(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteRequest) async throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51742,7 +51742,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLocalGatewayRouteTable(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableRequest) async throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51781,7 +51781,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest) async throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51820,7 +51820,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteLocalGatewayRouteTableVpcAssociation(
             input: ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationRequest) async throws -> ElasticComputeCloudModel.DeleteLocalGatewayRouteTableVpcAssociationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51859,7 +51859,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteManagedPrefixList(
             input: ElasticComputeCloudModel.DeleteManagedPrefixListRequest) async throws -> ElasticComputeCloudModel.DeleteManagedPrefixListResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51898,7 +51898,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNatGateway(
             input: ElasticComputeCloudModel.DeleteNatGatewayRequest) async throws -> ElasticComputeCloudModel.DeleteNatGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51935,7 +51935,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkAcl(
             input: ElasticComputeCloudModel.DeleteNetworkAclRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -51972,7 +51972,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkAclEntry(
             input: ElasticComputeCloudModel.DeleteNetworkAclEntryRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52011,7 +52011,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkInsightsAccessScope(
             input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeRequest) async throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52050,7 +52050,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkInsightsAccessScopeAnalysis(
             input: ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisRequest) async throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAccessScopeAnalysisResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52089,7 +52089,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkInsightsAnalysis(
             input: ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisRequest) async throws -> ElasticComputeCloudModel.DeleteNetworkInsightsAnalysisResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52128,7 +52128,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkInsightsPath(
             input: ElasticComputeCloudModel.DeleteNetworkInsightsPathRequest) async throws -> ElasticComputeCloudModel.DeleteNetworkInsightsPathResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52165,7 +52165,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkInterface(
             input: ElasticComputeCloudModel.DeleteNetworkInterfaceRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52204,7 +52204,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteNetworkInterfacePermission(
             input: ElasticComputeCloudModel.DeleteNetworkInterfacePermissionRequest) async throws -> ElasticComputeCloudModel.DeleteNetworkInterfacePermissionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52241,7 +52241,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deletePlacementGroup(
             input: ElasticComputeCloudModel.DeletePlacementGroupRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52280,7 +52280,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deletePublicIpv4Pool(
             input: ElasticComputeCloudModel.DeletePublicIpv4PoolRequest) async throws -> ElasticComputeCloudModel.DeletePublicIpv4PoolResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52319,7 +52319,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteQueuedReservedInstances(
             input: ElasticComputeCloudModel.DeleteQueuedReservedInstancesRequest) async throws -> ElasticComputeCloudModel.DeleteQueuedReservedInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52356,7 +52356,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteRoute(
             input: ElasticComputeCloudModel.DeleteRouteRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52393,7 +52393,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteRouteTable(
             input: ElasticComputeCloudModel.DeleteRouteTableRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52430,7 +52430,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSecurityGroup(
             input: ElasticComputeCloudModel.DeleteSecurityGroupRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52467,7 +52467,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSnapshot(
             input: ElasticComputeCloudModel.DeleteSnapshotRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52504,7 +52504,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSpotDatafeedSubscription(
             input: ElasticComputeCloudModel.DeleteSpotDatafeedSubscriptionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52541,7 +52541,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSubnet(
             input: ElasticComputeCloudModel.DeleteSubnetRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52580,7 +52580,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteSubnetCidrReservation(
             input: ElasticComputeCloudModel.DeleteSubnetCidrReservationRequest) async throws -> ElasticComputeCloudModel.DeleteSubnetCidrReservationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52617,7 +52617,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTags(
             input: ElasticComputeCloudModel.DeleteTagsRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52656,7 +52656,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTrafficMirrorFilter(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRequest) async throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52695,7 +52695,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTrafficMirrorFilterRule(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleRequest) async throws -> ElasticComputeCloudModel.DeleteTrafficMirrorFilterRuleResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52734,7 +52734,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTrafficMirrorSession(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorSessionRequest) async throws -> ElasticComputeCloudModel.DeleteTrafficMirrorSessionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52773,7 +52773,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTrafficMirrorTarget(
             input: ElasticComputeCloudModel.DeleteTrafficMirrorTargetRequest) async throws -> ElasticComputeCloudModel.DeleteTrafficMirrorTargetResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52812,7 +52812,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGateway(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52851,7 +52851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayConnect(
             input: ElasticComputeCloudModel.DeleteTransitGatewayConnectRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52890,7 +52890,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayConnectPeer(
             input: ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayConnectPeerResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52929,7 +52929,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayMulticastDomain(
             input: ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayMulticastDomainResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -52968,7 +52968,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayPeeringAttachment(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayPeeringAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53007,7 +53007,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayPolicyTable(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayPolicyTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53046,7 +53046,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayPrefixListReference(
             input: ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayPrefixListReferenceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53085,7 +53085,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayRoute(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53124,7 +53124,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayRouteTable(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53163,7 +53163,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayRouteTableAnnouncement(
             input: ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayRouteTableAnnouncementResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53202,7 +53202,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteTransitGatewayVpcAttachment(
             input: ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentRequest) async throws -> ElasticComputeCloudModel.DeleteTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53241,7 +53241,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVerifiedAccessEndpoint(
             input: ElasticComputeCloudModel.DeleteVerifiedAccessEndpointRequest) async throws -> ElasticComputeCloudModel.DeleteVerifiedAccessEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53280,7 +53280,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVerifiedAccessGroup(
             input: ElasticComputeCloudModel.DeleteVerifiedAccessGroupRequest) async throws -> ElasticComputeCloudModel.DeleteVerifiedAccessGroupResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53319,7 +53319,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVerifiedAccessInstance(
             input: ElasticComputeCloudModel.DeleteVerifiedAccessInstanceRequest) async throws -> ElasticComputeCloudModel.DeleteVerifiedAccessInstanceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53358,7 +53358,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVerifiedAccessTrustProvider(
             input: ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderRequest) async throws -> ElasticComputeCloudModel.DeleteVerifiedAccessTrustProviderResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53395,7 +53395,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVolume(
             input: ElasticComputeCloudModel.DeleteVolumeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53432,7 +53432,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpc(
             input: ElasticComputeCloudModel.DeleteVpcRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53471,7 +53471,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcEndpointConnectionNotifications(
             input: ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsRequest) async throws -> ElasticComputeCloudModel.DeleteVpcEndpointConnectionNotificationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53510,7 +53510,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcEndpointServiceConfigurations(
             input: ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsRequest) async throws -> ElasticComputeCloudModel.DeleteVpcEndpointServiceConfigurationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53549,7 +53549,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcEndpoints(
             input: ElasticComputeCloudModel.DeleteVpcEndpointsRequest) async throws -> ElasticComputeCloudModel.DeleteVpcEndpointsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53588,7 +53588,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpcPeeringConnection(
             input: ElasticComputeCloudModel.DeleteVpcPeeringConnectionRequest) async throws -> ElasticComputeCloudModel.DeleteVpcPeeringConnectionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53625,7 +53625,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpnConnection(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53662,7 +53662,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpnConnectionRoute(
             input: ElasticComputeCloudModel.DeleteVpnConnectionRouteRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53699,7 +53699,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deleteVpnGateway(
             input: ElasticComputeCloudModel.DeleteVpnGatewayRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53738,7 +53738,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deprovisionByoipCidr(
             input: ElasticComputeCloudModel.DeprovisionByoipCidrRequest) async throws -> ElasticComputeCloudModel.DeprovisionByoipCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53777,7 +53777,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deprovisionIpamPoolCidr(
             input: ElasticComputeCloudModel.DeprovisionIpamPoolCidrRequest) async throws -> ElasticComputeCloudModel.DeprovisionIpamPoolCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53816,7 +53816,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deprovisionPublicIpv4PoolCidr(
             input: ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrRequest) async throws -> ElasticComputeCloudModel.DeprovisionPublicIpv4PoolCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53853,7 +53853,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deregisterImage(
             input: ElasticComputeCloudModel.DeregisterImageRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53892,7 +53892,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deregisterInstanceEventNotificationAttributes(
             input: ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesRequest) async throws -> ElasticComputeCloudModel.DeregisterInstanceEventNotificationAttributesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53931,7 +53931,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deregisterTransitGatewayMulticastGroupMembers(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersRequest) async throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupMembersResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -53970,7 +53970,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func deregisterTransitGatewayMulticastGroupSources(
             input: ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesRequest) async throws -> ElasticComputeCloudModel.DeregisterTransitGatewayMulticastGroupSourcesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54009,7 +54009,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAccountAttributes(
             input: ElasticComputeCloudModel.DescribeAccountAttributesRequest) async throws -> ElasticComputeCloudModel.DescribeAccountAttributesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54048,7 +54048,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAddressTransfers(
             input: ElasticComputeCloudModel.DescribeAddressTransfersRequest) async throws -> ElasticComputeCloudModel.DescribeAddressTransfersResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54087,7 +54087,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAddresses(
             input: ElasticComputeCloudModel.DescribeAddressesRequest) async throws -> ElasticComputeCloudModel.DescribeAddressesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54126,7 +54126,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAddressesAttribute(
             input: ElasticComputeCloudModel.DescribeAddressesAttributeRequest) async throws -> ElasticComputeCloudModel.DescribeAddressesAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54165,7 +54165,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAggregateIdFormat(
             input: ElasticComputeCloudModel.DescribeAggregateIdFormatRequest) async throws -> ElasticComputeCloudModel.DescribeAggregateIdFormatResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54204,7 +54204,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAvailabilityZones(
             input: ElasticComputeCloudModel.DescribeAvailabilityZonesRequest) async throws -> ElasticComputeCloudModel.DescribeAvailabilityZonesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54243,7 +54243,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeAwsNetworkPerformanceMetricSubscriptions(
             input: ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsRequest) async throws -> ElasticComputeCloudModel.DescribeAwsNetworkPerformanceMetricSubscriptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54282,7 +54282,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeBundleTasks(
             input: ElasticComputeCloudModel.DescribeBundleTasksRequest) async throws -> ElasticComputeCloudModel.DescribeBundleTasksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54321,7 +54321,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeByoipCidrs(
             input: ElasticComputeCloudModel.DescribeByoipCidrsRequest) async throws -> ElasticComputeCloudModel.DescribeByoipCidrsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54360,7 +54360,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeCapacityReservationFleets(
             input: ElasticComputeCloudModel.DescribeCapacityReservationFleetsRequest) async throws -> ElasticComputeCloudModel.DescribeCapacityReservationFleetsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54399,7 +54399,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeCapacityReservations(
             input: ElasticComputeCloudModel.DescribeCapacityReservationsRequest) async throws -> ElasticComputeCloudModel.DescribeCapacityReservationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54438,7 +54438,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeCarrierGateways(
             input: ElasticComputeCloudModel.DescribeCarrierGatewaysRequest) async throws -> ElasticComputeCloudModel.DescribeCarrierGatewaysResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54477,7 +54477,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClassicLinkInstances(
             input: ElasticComputeCloudModel.DescribeClassicLinkInstancesRequest) async throws -> ElasticComputeCloudModel.DescribeClassicLinkInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54516,7 +54516,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnAuthorizationRules(
             input: ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesRequest) async throws -> ElasticComputeCloudModel.DescribeClientVpnAuthorizationRulesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54555,7 +54555,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnConnections(
             input: ElasticComputeCloudModel.DescribeClientVpnConnectionsRequest) async throws -> ElasticComputeCloudModel.DescribeClientVpnConnectionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54594,7 +54594,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnEndpoints(
             input: ElasticComputeCloudModel.DescribeClientVpnEndpointsRequest) async throws -> ElasticComputeCloudModel.DescribeClientVpnEndpointsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54633,7 +54633,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnRoutes(
             input: ElasticComputeCloudModel.DescribeClientVpnRoutesRequest) async throws -> ElasticComputeCloudModel.DescribeClientVpnRoutesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54672,7 +54672,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeClientVpnTargetNetworks(
             input: ElasticComputeCloudModel.DescribeClientVpnTargetNetworksRequest) async throws -> ElasticComputeCloudModel.DescribeClientVpnTargetNetworksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54711,7 +54711,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeCoipPools(
             input: ElasticComputeCloudModel.DescribeCoipPoolsRequest) async throws -> ElasticComputeCloudModel.DescribeCoipPoolsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54750,7 +54750,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeConversionTasks(
             input: ElasticComputeCloudModel.DescribeConversionTasksRequest) async throws -> ElasticComputeCloudModel.DescribeConversionTasksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54789,7 +54789,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeCustomerGateways(
             input: ElasticComputeCloudModel.DescribeCustomerGatewaysRequest) async throws -> ElasticComputeCloudModel.DescribeCustomerGatewaysResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54828,7 +54828,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeDhcpOptions(
             input: ElasticComputeCloudModel.DescribeDhcpOptionsRequest) async throws -> ElasticComputeCloudModel.DescribeDhcpOptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54867,7 +54867,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeEgressOnlyInternetGateways(
             input: ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysRequest) async throws -> ElasticComputeCloudModel.DescribeEgressOnlyInternetGatewaysResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54906,7 +54906,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeElasticGpus(
             input: ElasticComputeCloudModel.DescribeElasticGpusRequest) async throws -> ElasticComputeCloudModel.DescribeElasticGpusResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54945,7 +54945,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeExportImageTasks(
             input: ElasticComputeCloudModel.DescribeExportImageTasksRequest) async throws -> ElasticComputeCloudModel.DescribeExportImageTasksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -54984,7 +54984,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeExportTasks(
             input: ElasticComputeCloudModel.DescribeExportTasksRequest) async throws -> ElasticComputeCloudModel.DescribeExportTasksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55023,7 +55023,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFastLaunchImages(
             input: ElasticComputeCloudModel.DescribeFastLaunchImagesRequest) async throws -> ElasticComputeCloudModel.DescribeFastLaunchImagesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55062,7 +55062,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFastSnapshotRestores(
             input: ElasticComputeCloudModel.DescribeFastSnapshotRestoresRequest) async throws -> ElasticComputeCloudModel.DescribeFastSnapshotRestoresResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55101,7 +55101,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFleetHistory(
             input: ElasticComputeCloudModel.DescribeFleetHistoryRequest) async throws -> ElasticComputeCloudModel.DescribeFleetHistoryResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55140,7 +55140,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFleetInstances(
             input: ElasticComputeCloudModel.DescribeFleetInstancesRequest) async throws -> ElasticComputeCloudModel.DescribeFleetInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55179,7 +55179,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFleets(
             input: ElasticComputeCloudModel.DescribeFleetsRequest) async throws -> ElasticComputeCloudModel.DescribeFleetsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55218,7 +55218,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFlowLogs(
             input: ElasticComputeCloudModel.DescribeFlowLogsRequest) async throws -> ElasticComputeCloudModel.DescribeFlowLogsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55257,7 +55257,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFpgaImageAttribute(
             input: ElasticComputeCloudModel.DescribeFpgaImageAttributeRequest) async throws -> ElasticComputeCloudModel.DescribeFpgaImageAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55296,7 +55296,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeFpgaImages(
             input: ElasticComputeCloudModel.DescribeFpgaImagesRequest) async throws -> ElasticComputeCloudModel.DescribeFpgaImagesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55335,7 +55335,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeHostReservationOfferings(
             input: ElasticComputeCloudModel.DescribeHostReservationOfferingsRequest) async throws -> ElasticComputeCloudModel.DescribeHostReservationOfferingsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55374,7 +55374,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeHostReservations(
             input: ElasticComputeCloudModel.DescribeHostReservationsRequest) async throws -> ElasticComputeCloudModel.DescribeHostReservationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55413,7 +55413,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeHosts(
             input: ElasticComputeCloudModel.DescribeHostsRequest) async throws -> ElasticComputeCloudModel.DescribeHostsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55452,7 +55452,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIamInstanceProfileAssociations(
             input: ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsRequest) async throws -> ElasticComputeCloudModel.DescribeIamInstanceProfileAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55491,7 +55491,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIdFormat(
             input: ElasticComputeCloudModel.DescribeIdFormatRequest) async throws -> ElasticComputeCloudModel.DescribeIdFormatResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55530,7 +55530,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIdentityIdFormat(
             input: ElasticComputeCloudModel.DescribeIdentityIdFormatRequest) async throws -> ElasticComputeCloudModel.DescribeIdentityIdFormatResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55569,7 +55569,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeImageAttribute(
             input: ElasticComputeCloudModel.DescribeImageAttributeRequest) async throws -> ElasticComputeCloudModel.ImageAttribute {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55608,7 +55608,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeImages(
             input: ElasticComputeCloudModel.DescribeImagesRequest) async throws -> ElasticComputeCloudModel.DescribeImagesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55647,7 +55647,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeImportImageTasks(
             input: ElasticComputeCloudModel.DescribeImportImageTasksRequest) async throws -> ElasticComputeCloudModel.DescribeImportImageTasksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55686,7 +55686,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeImportSnapshotTasks(
             input: ElasticComputeCloudModel.DescribeImportSnapshotTasksRequest) async throws -> ElasticComputeCloudModel.DescribeImportSnapshotTasksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55725,7 +55725,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceAttribute(
             input: ElasticComputeCloudModel.DescribeInstanceAttributeRequest) async throws -> ElasticComputeCloudModel.InstanceAttribute {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55764,7 +55764,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceConnectEndpoints(
             input: ElasticComputeCloudModel.DescribeInstanceConnectEndpointsRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceConnectEndpointsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55803,7 +55803,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceCreditSpecifications(
             input: ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceCreditSpecificationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55842,7 +55842,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceEventNotificationAttributes(
             input: ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceEventNotificationAttributesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55881,7 +55881,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceEventWindows(
             input: ElasticComputeCloudModel.DescribeInstanceEventWindowsRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceEventWindowsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55920,7 +55920,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceStatus(
             input: ElasticComputeCloudModel.DescribeInstanceStatusRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceStatusResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55959,7 +55959,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceTypeOfferings(
             input: ElasticComputeCloudModel.DescribeInstanceTypeOfferingsRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceTypeOfferingsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -55998,7 +55998,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstanceTypes(
             input: ElasticComputeCloudModel.DescribeInstanceTypesRequest) async throws -> ElasticComputeCloudModel.DescribeInstanceTypesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56037,7 +56037,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInstances(
             input: ElasticComputeCloudModel.DescribeInstancesRequest) async throws -> ElasticComputeCloudModel.DescribeInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56076,7 +56076,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeInternetGateways(
             input: ElasticComputeCloudModel.DescribeInternetGatewaysRequest) async throws -> ElasticComputeCloudModel.DescribeInternetGatewaysResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56115,7 +56115,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIpamPools(
             input: ElasticComputeCloudModel.DescribeIpamPoolsRequest) async throws -> ElasticComputeCloudModel.DescribeIpamPoolsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56154,7 +56154,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIpamResourceDiscoveries(
             input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesRequest) async throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveriesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56193,7 +56193,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIpamResourceDiscoveryAssociations(
             input: ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsRequest) async throws -> ElasticComputeCloudModel.DescribeIpamResourceDiscoveryAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56232,7 +56232,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIpamScopes(
             input: ElasticComputeCloudModel.DescribeIpamScopesRequest) async throws -> ElasticComputeCloudModel.DescribeIpamScopesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56271,7 +56271,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIpams(
             input: ElasticComputeCloudModel.DescribeIpamsRequest) async throws -> ElasticComputeCloudModel.DescribeIpamsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56310,7 +56310,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeIpv6Pools(
             input: ElasticComputeCloudModel.DescribeIpv6PoolsRequest) async throws -> ElasticComputeCloudModel.DescribeIpv6PoolsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56349,7 +56349,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeKeyPairs(
             input: ElasticComputeCloudModel.DescribeKeyPairsRequest) async throws -> ElasticComputeCloudModel.DescribeKeyPairsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56388,7 +56388,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLaunchTemplateVersions(
             input: ElasticComputeCloudModel.DescribeLaunchTemplateVersionsRequest) async throws -> ElasticComputeCloudModel.DescribeLaunchTemplateVersionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56427,7 +56427,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLaunchTemplates(
             input: ElasticComputeCloudModel.DescribeLaunchTemplatesRequest) async throws -> ElasticComputeCloudModel.DescribeLaunchTemplatesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56466,7 +56466,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest) async throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56505,7 +56505,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayRouteTableVpcAssociations(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsRequest) async throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTableVpcAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56544,7 +56544,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayRouteTables(
             input: ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesRequest) async throws -> ElasticComputeCloudModel.DescribeLocalGatewayRouteTablesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56583,7 +56583,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayVirtualInterfaceGroups(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsRequest) async throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfaceGroupsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56622,7 +56622,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGatewayVirtualInterfaces(
             input: ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesRequest) async throws -> ElasticComputeCloudModel.DescribeLocalGatewayVirtualInterfacesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56661,7 +56661,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeLocalGateways(
             input: ElasticComputeCloudModel.DescribeLocalGatewaysRequest) async throws -> ElasticComputeCloudModel.DescribeLocalGatewaysResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56700,7 +56700,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeManagedPrefixLists(
             input: ElasticComputeCloudModel.DescribeManagedPrefixListsRequest) async throws -> ElasticComputeCloudModel.DescribeManagedPrefixListsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56739,7 +56739,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeMovingAddresses(
             input: ElasticComputeCloudModel.DescribeMovingAddressesRequest) async throws -> ElasticComputeCloudModel.DescribeMovingAddressesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56778,7 +56778,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNatGateways(
             input: ElasticComputeCloudModel.DescribeNatGatewaysRequest) async throws -> ElasticComputeCloudModel.DescribeNatGatewaysResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56817,7 +56817,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkAcls(
             input: ElasticComputeCloudModel.DescribeNetworkAclsRequest) async throws -> ElasticComputeCloudModel.DescribeNetworkAclsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56856,7 +56856,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInsightsAccessScopeAnalyses(
             input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesRequest) async throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopeAnalysesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56895,7 +56895,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInsightsAccessScopes(
             input: ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesRequest) async throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAccessScopesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56934,7 +56934,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInsightsAnalyses(
             input: ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesRequest) async throws -> ElasticComputeCloudModel.DescribeNetworkInsightsAnalysesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -56973,7 +56973,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInsightsPaths(
             input: ElasticComputeCloudModel.DescribeNetworkInsightsPathsRequest) async throws -> ElasticComputeCloudModel.DescribeNetworkInsightsPathsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57012,7 +57012,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInterfaceAttribute(
             input: ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeRequest) async throws -> ElasticComputeCloudModel.DescribeNetworkInterfaceAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57051,7 +57051,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInterfacePermissions(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsRequest) async throws -> ElasticComputeCloudModel.DescribeNetworkInterfacePermissionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57090,7 +57090,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeNetworkInterfaces(
             input: ElasticComputeCloudModel.DescribeNetworkInterfacesRequest) async throws -> ElasticComputeCloudModel.DescribeNetworkInterfacesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57129,7 +57129,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describePlacementGroups(
             input: ElasticComputeCloudModel.DescribePlacementGroupsRequest) async throws -> ElasticComputeCloudModel.DescribePlacementGroupsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57168,7 +57168,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describePrefixLists(
             input: ElasticComputeCloudModel.DescribePrefixListsRequest) async throws -> ElasticComputeCloudModel.DescribePrefixListsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57207,7 +57207,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describePrincipalIdFormat(
             input: ElasticComputeCloudModel.DescribePrincipalIdFormatRequest) async throws -> ElasticComputeCloudModel.DescribePrincipalIdFormatResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57246,7 +57246,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describePublicIpv4Pools(
             input: ElasticComputeCloudModel.DescribePublicIpv4PoolsRequest) async throws -> ElasticComputeCloudModel.DescribePublicIpv4PoolsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57285,7 +57285,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeRegions(
             input: ElasticComputeCloudModel.DescribeRegionsRequest) async throws -> ElasticComputeCloudModel.DescribeRegionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57324,7 +57324,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReplaceRootVolumeTasks(
             input: ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksRequest) async throws -> ElasticComputeCloudModel.DescribeReplaceRootVolumeTasksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57363,7 +57363,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReservedInstances(
             input: ElasticComputeCloudModel.DescribeReservedInstancesRequest) async throws -> ElasticComputeCloudModel.DescribeReservedInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57402,7 +57402,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReservedInstancesListings(
             input: ElasticComputeCloudModel.DescribeReservedInstancesListingsRequest) async throws -> ElasticComputeCloudModel.DescribeReservedInstancesListingsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57441,7 +57441,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReservedInstancesModifications(
             input: ElasticComputeCloudModel.DescribeReservedInstancesModificationsRequest) async throws -> ElasticComputeCloudModel.DescribeReservedInstancesModificationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57480,7 +57480,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeReservedInstancesOfferings(
             input: ElasticComputeCloudModel.DescribeReservedInstancesOfferingsRequest) async throws -> ElasticComputeCloudModel.DescribeReservedInstancesOfferingsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57519,7 +57519,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeRouteTables(
             input: ElasticComputeCloudModel.DescribeRouteTablesRequest) async throws -> ElasticComputeCloudModel.DescribeRouteTablesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57558,7 +57558,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeScheduledInstanceAvailability(
             input: ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityRequest) async throws -> ElasticComputeCloudModel.DescribeScheduledInstanceAvailabilityResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57597,7 +57597,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeScheduledInstances(
             input: ElasticComputeCloudModel.DescribeScheduledInstancesRequest) async throws -> ElasticComputeCloudModel.DescribeScheduledInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57636,7 +57636,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSecurityGroupReferences(
             input: ElasticComputeCloudModel.DescribeSecurityGroupReferencesRequest) async throws -> ElasticComputeCloudModel.DescribeSecurityGroupReferencesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57675,7 +57675,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSecurityGroupRules(
             input: ElasticComputeCloudModel.DescribeSecurityGroupRulesRequest) async throws -> ElasticComputeCloudModel.DescribeSecurityGroupRulesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57714,7 +57714,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSecurityGroups(
             input: ElasticComputeCloudModel.DescribeSecurityGroupsRequest) async throws -> ElasticComputeCloudModel.DescribeSecurityGroupsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57753,7 +57753,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSnapshotAttribute(
             input: ElasticComputeCloudModel.DescribeSnapshotAttributeRequest) async throws -> ElasticComputeCloudModel.DescribeSnapshotAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57792,7 +57792,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSnapshotTierStatus(
             input: ElasticComputeCloudModel.DescribeSnapshotTierStatusRequest) async throws -> ElasticComputeCloudModel.DescribeSnapshotTierStatusResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57831,7 +57831,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSnapshots(
             input: ElasticComputeCloudModel.DescribeSnapshotsRequest) async throws -> ElasticComputeCloudModel.DescribeSnapshotsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57870,7 +57870,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotDatafeedSubscription(
             input: ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionRequest) async throws -> ElasticComputeCloudModel.DescribeSpotDatafeedSubscriptionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57909,7 +57909,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotFleetInstances(
             input: ElasticComputeCloudModel.DescribeSpotFleetInstancesRequest) async throws -> ElasticComputeCloudModel.DescribeSpotFleetInstancesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57948,7 +57948,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotFleetRequestHistory(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryRequest) async throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestHistoryResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -57987,7 +57987,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotFleetRequests(
             input: ElasticComputeCloudModel.DescribeSpotFleetRequestsRequest) async throws -> ElasticComputeCloudModel.DescribeSpotFleetRequestsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58026,7 +58026,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotInstanceRequests(
             input: ElasticComputeCloudModel.DescribeSpotInstanceRequestsRequest) async throws -> ElasticComputeCloudModel.DescribeSpotInstanceRequestsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58065,7 +58065,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSpotPriceHistory(
             input: ElasticComputeCloudModel.DescribeSpotPriceHistoryRequest) async throws -> ElasticComputeCloudModel.DescribeSpotPriceHistoryResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58104,7 +58104,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeStaleSecurityGroups(
             input: ElasticComputeCloudModel.DescribeStaleSecurityGroupsRequest) async throws -> ElasticComputeCloudModel.DescribeStaleSecurityGroupsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58143,7 +58143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeStoreImageTasks(
             input: ElasticComputeCloudModel.DescribeStoreImageTasksRequest) async throws -> ElasticComputeCloudModel.DescribeStoreImageTasksResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58182,7 +58182,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeSubnets(
             input: ElasticComputeCloudModel.DescribeSubnetsRequest) async throws -> ElasticComputeCloudModel.DescribeSubnetsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58221,7 +58221,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTags(
             input: ElasticComputeCloudModel.DescribeTagsRequest) async throws -> ElasticComputeCloudModel.DescribeTagsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58260,7 +58260,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTrafficMirrorFilters(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorFiltersRequest) async throws -> ElasticComputeCloudModel.DescribeTrafficMirrorFiltersResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58299,7 +58299,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTrafficMirrorSessions(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorSessionsRequest) async throws -> ElasticComputeCloudModel.DescribeTrafficMirrorSessionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58338,7 +58338,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTrafficMirrorTargets(
             input: ElasticComputeCloudModel.DescribeTrafficMirrorTargetsRequest) async throws -> ElasticComputeCloudModel.DescribeTrafficMirrorTargetsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58377,7 +58377,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayAttachments(
             input: ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayAttachmentsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58416,7 +58416,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayConnectPeers(
             input: ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectPeersResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58455,7 +58455,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayConnects(
             input: ElasticComputeCloudModel.DescribeTransitGatewayConnectsRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayConnectsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58494,7 +58494,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayMulticastDomains(
             input: ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayMulticastDomainsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58533,7 +58533,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayPeeringAttachments(
             input: ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayPeeringAttachmentsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58572,7 +58572,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayPolicyTables(
             input: ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayPolicyTablesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58611,7 +58611,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayRouteTableAnnouncements(
             input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTableAnnouncementsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58650,7 +58650,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayRouteTables(
             input: ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayRouteTablesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58689,7 +58689,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGatewayVpcAttachments(
             input: ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewayVpcAttachmentsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58728,7 +58728,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTransitGateways(
             input: ElasticComputeCloudModel.DescribeTransitGatewaysRequest) async throws -> ElasticComputeCloudModel.DescribeTransitGatewaysResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58767,7 +58767,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeTrunkInterfaceAssociations(
             input: ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsRequest) async throws -> ElasticComputeCloudModel.DescribeTrunkInterfaceAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58806,7 +58806,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVerifiedAccessEndpoints(
             input: ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsRequest) async throws -> ElasticComputeCloudModel.DescribeVerifiedAccessEndpointsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58845,7 +58845,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVerifiedAccessGroups(
             input: ElasticComputeCloudModel.DescribeVerifiedAccessGroupsRequest) async throws -> ElasticComputeCloudModel.DescribeVerifiedAccessGroupsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58884,7 +58884,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVerifiedAccessInstanceLoggingConfigurations(
             input: ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsRequest) async throws -> ElasticComputeCloudModel.DescribeVerifiedAccessInstanceLoggingConfigurationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58923,7 +58923,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVerifiedAccessInstances(
             input: ElasticComputeCloudModel.DescribeVerifiedAccessInstancesRequest) async throws -> ElasticComputeCloudModel.DescribeVerifiedAccessInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -58962,7 +58962,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVerifiedAccessTrustProviders(
             input: ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersRequest) async throws -> ElasticComputeCloudModel.DescribeVerifiedAccessTrustProvidersResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59001,7 +59001,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVolumeAttribute(
             input: ElasticComputeCloudModel.DescribeVolumeAttributeRequest) async throws -> ElasticComputeCloudModel.DescribeVolumeAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59040,7 +59040,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVolumeStatus(
             input: ElasticComputeCloudModel.DescribeVolumeStatusRequest) async throws -> ElasticComputeCloudModel.DescribeVolumeStatusResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59079,7 +59079,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVolumes(
             input: ElasticComputeCloudModel.DescribeVolumesRequest) async throws -> ElasticComputeCloudModel.DescribeVolumesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59118,7 +59118,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVolumesModifications(
             input: ElasticComputeCloudModel.DescribeVolumesModificationsRequest) async throws -> ElasticComputeCloudModel.DescribeVolumesModificationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59157,7 +59157,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcAttribute(
             input: ElasticComputeCloudModel.DescribeVpcAttributeRequest) async throws -> ElasticComputeCloudModel.DescribeVpcAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59196,7 +59196,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcClassicLink(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkRequest) async throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59235,7 +59235,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcClassicLinkDnsSupport(
             input: ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportRequest) async throws -> ElasticComputeCloudModel.DescribeVpcClassicLinkDnsSupportResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59274,7 +59274,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointConnectionNotifications(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsRequest) async throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionNotificationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59313,7 +59313,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointConnections(
             input: ElasticComputeCloudModel.DescribeVpcEndpointConnectionsRequest) async throws -> ElasticComputeCloudModel.DescribeVpcEndpointConnectionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59352,7 +59352,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointServiceConfigurations(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsRequest) async throws -> ElasticComputeCloudModel.DescribeVpcEndpointServiceConfigurationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59391,7 +59391,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointServicePermissions(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsRequest) async throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicePermissionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59430,7 +59430,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpointServices(
             input: ElasticComputeCloudModel.DescribeVpcEndpointServicesRequest) async throws -> ElasticComputeCloudModel.DescribeVpcEndpointServicesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59469,7 +59469,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcEndpoints(
             input: ElasticComputeCloudModel.DescribeVpcEndpointsRequest) async throws -> ElasticComputeCloudModel.DescribeVpcEndpointsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59508,7 +59508,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcPeeringConnections(
             input: ElasticComputeCloudModel.DescribeVpcPeeringConnectionsRequest) async throws -> ElasticComputeCloudModel.DescribeVpcPeeringConnectionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59547,7 +59547,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpcs(
             input: ElasticComputeCloudModel.DescribeVpcsRequest) async throws -> ElasticComputeCloudModel.DescribeVpcsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59586,7 +59586,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpnConnections(
             input: ElasticComputeCloudModel.DescribeVpnConnectionsRequest) async throws -> ElasticComputeCloudModel.DescribeVpnConnectionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59625,7 +59625,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func describeVpnGateways(
             input: ElasticComputeCloudModel.DescribeVpnGatewaysRequest) async throws -> ElasticComputeCloudModel.DescribeVpnGatewaysResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59664,7 +59664,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachClassicLinkVpc(
             input: ElasticComputeCloudModel.DetachClassicLinkVpcRequest) async throws -> ElasticComputeCloudModel.DetachClassicLinkVpcResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59701,7 +59701,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachInternetGateway(
             input: ElasticComputeCloudModel.DetachInternetGatewayRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59738,7 +59738,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachNetworkInterface(
             input: ElasticComputeCloudModel.DetachNetworkInterfaceRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59777,7 +59777,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachVerifiedAccessTrustProvider(
             input: ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderRequest) async throws -> ElasticComputeCloudModel.DetachVerifiedAccessTrustProviderResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59816,7 +59816,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachVolume(
             input: ElasticComputeCloudModel.DetachVolumeRequest) async throws -> ElasticComputeCloudModel.VolumeAttachment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59853,7 +59853,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func detachVpnGateway(
             input: ElasticComputeCloudModel.DetachVpnGatewayRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59892,7 +59892,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableAddressTransfer(
             input: ElasticComputeCloudModel.DisableAddressTransferRequest) async throws -> ElasticComputeCloudModel.DisableAddressTransferResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59931,7 +59931,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableAwsNetworkPerformanceMetricSubscription(
             input: ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionRequest) async throws -> ElasticComputeCloudModel.DisableAwsNetworkPerformanceMetricSubscriptionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -59970,7 +59970,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableEbsEncryptionByDefault(
             input: ElasticComputeCloudModel.DisableEbsEncryptionByDefaultRequest) async throws -> ElasticComputeCloudModel.DisableEbsEncryptionByDefaultResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60009,7 +60009,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableFastLaunch(
             input: ElasticComputeCloudModel.DisableFastLaunchRequest) async throws -> ElasticComputeCloudModel.DisableFastLaunchResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60048,7 +60048,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableFastSnapshotRestores(
             input: ElasticComputeCloudModel.DisableFastSnapshotRestoresRequest) async throws -> ElasticComputeCloudModel.DisableFastSnapshotRestoresResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60087,7 +60087,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableImage(
             input: ElasticComputeCloudModel.DisableImageRequest) async throws -> ElasticComputeCloudModel.DisableImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60126,7 +60126,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableImageBlockPublicAccess(
             input: ElasticComputeCloudModel.DisableImageBlockPublicAccessRequest) async throws -> ElasticComputeCloudModel.DisableImageBlockPublicAccessResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60165,7 +60165,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableImageDeprecation(
             input: ElasticComputeCloudModel.DisableImageDeprecationRequest) async throws -> ElasticComputeCloudModel.DisableImageDeprecationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60204,7 +60204,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableIpamOrganizationAdminAccount(
             input: ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountRequest) async throws -> ElasticComputeCloudModel.DisableIpamOrganizationAdminAccountResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60243,7 +60243,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableSerialConsoleAccess(
             input: ElasticComputeCloudModel.DisableSerialConsoleAccessRequest) async throws -> ElasticComputeCloudModel.DisableSerialConsoleAccessResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60282,7 +60282,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableTransitGatewayRouteTablePropagation(
             input: ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationRequest) async throws -> ElasticComputeCloudModel.DisableTransitGatewayRouteTablePropagationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60319,7 +60319,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableVgwRoutePropagation(
             input: ElasticComputeCloudModel.DisableVgwRoutePropagationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60358,7 +60358,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableVpcClassicLink(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkRequest) async throws -> ElasticComputeCloudModel.DisableVpcClassicLinkResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60397,7 +60397,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disableVpcClassicLinkDnsSupport(
             input: ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportRequest) async throws -> ElasticComputeCloudModel.DisableVpcClassicLinkDnsSupportResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60434,7 +60434,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateAddress(
             input: ElasticComputeCloudModel.DisassociateAddressRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60473,7 +60473,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateClientVpnTargetNetwork(
             input: ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkRequest) async throws -> ElasticComputeCloudModel.DisassociateClientVpnTargetNetworkResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60512,7 +60512,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateEnclaveCertificateIamRole(
             input: ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleRequest) async throws -> ElasticComputeCloudModel.DisassociateEnclaveCertificateIamRoleResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60551,7 +60551,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateIamInstanceProfile(
             input: ElasticComputeCloudModel.DisassociateIamInstanceProfileRequest) async throws -> ElasticComputeCloudModel.DisassociateIamInstanceProfileResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60590,7 +60590,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateInstanceEventWindow(
             input: ElasticComputeCloudModel.DisassociateInstanceEventWindowRequest) async throws -> ElasticComputeCloudModel.DisassociateInstanceEventWindowResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60629,7 +60629,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateIpamResourceDiscovery(
             input: ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.DisassociateIpamResourceDiscoveryResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60668,7 +60668,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateNatGatewayAddress(
             input: ElasticComputeCloudModel.DisassociateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.DisassociateNatGatewayAddressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60705,7 +60705,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateRouteTable(
             input: ElasticComputeCloudModel.DisassociateRouteTableRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60744,7 +60744,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateSubnetCidrBlock(
             input: ElasticComputeCloudModel.DisassociateSubnetCidrBlockRequest) async throws -> ElasticComputeCloudModel.DisassociateSubnetCidrBlockResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60783,7 +60783,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateTransitGatewayMulticastDomain(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainRequest) async throws -> ElasticComputeCloudModel.DisassociateTransitGatewayMulticastDomainResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60822,7 +60822,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateTransitGatewayPolicyTable(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableRequest) async throws -> ElasticComputeCloudModel.DisassociateTransitGatewayPolicyTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60861,7 +60861,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateTransitGatewayRouteTable(
             input: ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableRequest) async throws -> ElasticComputeCloudModel.DisassociateTransitGatewayRouteTableResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60900,7 +60900,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateTrunkInterface(
             input: ElasticComputeCloudModel.DisassociateTrunkInterfaceRequest) async throws -> ElasticComputeCloudModel.DisassociateTrunkInterfaceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60939,7 +60939,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func disassociateVpcCidrBlock(
             input: ElasticComputeCloudModel.DisassociateVpcCidrBlockRequest) async throws -> ElasticComputeCloudModel.DisassociateVpcCidrBlockResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -60978,7 +60978,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableAddressTransfer(
             input: ElasticComputeCloudModel.EnableAddressTransferRequest) async throws -> ElasticComputeCloudModel.EnableAddressTransferResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61017,7 +61017,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableAwsNetworkPerformanceMetricSubscription(
             input: ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionRequest) async throws -> ElasticComputeCloudModel.EnableAwsNetworkPerformanceMetricSubscriptionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61056,7 +61056,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableEbsEncryptionByDefault(
             input: ElasticComputeCloudModel.EnableEbsEncryptionByDefaultRequest) async throws -> ElasticComputeCloudModel.EnableEbsEncryptionByDefaultResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61095,7 +61095,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableFastLaunch(
             input: ElasticComputeCloudModel.EnableFastLaunchRequest) async throws -> ElasticComputeCloudModel.EnableFastLaunchResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61134,7 +61134,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableFastSnapshotRestores(
             input: ElasticComputeCloudModel.EnableFastSnapshotRestoresRequest) async throws -> ElasticComputeCloudModel.EnableFastSnapshotRestoresResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61173,7 +61173,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableImage(
             input: ElasticComputeCloudModel.EnableImageRequest) async throws -> ElasticComputeCloudModel.EnableImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61212,7 +61212,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableImageBlockPublicAccess(
             input: ElasticComputeCloudModel.EnableImageBlockPublicAccessRequest) async throws -> ElasticComputeCloudModel.EnableImageBlockPublicAccessResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61251,7 +61251,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableImageDeprecation(
             input: ElasticComputeCloudModel.EnableImageDeprecationRequest) async throws -> ElasticComputeCloudModel.EnableImageDeprecationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61290,7 +61290,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableIpamOrganizationAdminAccount(
             input: ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountRequest) async throws -> ElasticComputeCloudModel.EnableIpamOrganizationAdminAccountResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61329,7 +61329,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableReachabilityAnalyzerOrganizationSharing(
             input: ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingRequest) async throws -> ElasticComputeCloudModel.EnableReachabilityAnalyzerOrganizationSharingResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61368,7 +61368,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableSerialConsoleAccess(
             input: ElasticComputeCloudModel.EnableSerialConsoleAccessRequest) async throws -> ElasticComputeCloudModel.EnableSerialConsoleAccessResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61407,7 +61407,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableTransitGatewayRouteTablePropagation(
             input: ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationRequest) async throws -> ElasticComputeCloudModel.EnableTransitGatewayRouteTablePropagationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61444,7 +61444,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableVgwRoutePropagation(
             input: ElasticComputeCloudModel.EnableVgwRoutePropagationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61481,7 +61481,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableVolumeIO(
             input: ElasticComputeCloudModel.EnableVolumeIORequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61520,7 +61520,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableVpcClassicLink(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkRequest) async throws -> ElasticComputeCloudModel.EnableVpcClassicLinkResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61559,7 +61559,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func enableVpcClassicLinkDnsSupport(
             input: ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportRequest) async throws -> ElasticComputeCloudModel.EnableVpcClassicLinkDnsSupportResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61598,7 +61598,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func exportClientVpnClientCertificateRevocationList(
             input: ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListRequest) async throws -> ElasticComputeCloudModel.ExportClientVpnClientCertificateRevocationListResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61637,7 +61637,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func exportClientVpnClientConfiguration(
             input: ElasticComputeCloudModel.ExportClientVpnClientConfigurationRequest) async throws -> ElasticComputeCloudModel.ExportClientVpnClientConfigurationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61676,7 +61676,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func exportImage(
             input: ElasticComputeCloudModel.ExportImageRequest) async throws -> ElasticComputeCloudModel.ExportImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61715,7 +61715,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func exportTransitGatewayRoutes(
             input: ElasticComputeCloudModel.ExportTransitGatewayRoutesRequest) async throws -> ElasticComputeCloudModel.ExportTransitGatewayRoutesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61754,7 +61754,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getAssociatedEnclaveCertificateIamRoles(
             input: ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesRequest) async throws -> ElasticComputeCloudModel.GetAssociatedEnclaveCertificateIamRolesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61793,7 +61793,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getAssociatedIpv6PoolCidrs(
             input: ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsRequest) async throws -> ElasticComputeCloudModel.GetAssociatedIpv6PoolCidrsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61832,7 +61832,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getAwsNetworkPerformanceData(
             input: ElasticComputeCloudModel.GetAwsNetworkPerformanceDataRequest) async throws -> ElasticComputeCloudModel.GetAwsNetworkPerformanceDataResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61871,7 +61871,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getCapacityReservationUsage(
             input: ElasticComputeCloudModel.GetCapacityReservationUsageRequest) async throws -> ElasticComputeCloudModel.GetCapacityReservationUsageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61910,7 +61910,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getCoipPoolUsage(
             input: ElasticComputeCloudModel.GetCoipPoolUsageRequest) async throws -> ElasticComputeCloudModel.GetCoipPoolUsageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61949,7 +61949,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getConsoleOutput(
             input: ElasticComputeCloudModel.GetConsoleOutputRequest) async throws -> ElasticComputeCloudModel.GetConsoleOutputResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -61988,7 +61988,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getConsoleScreenshot(
             input: ElasticComputeCloudModel.GetConsoleScreenshotRequest) async throws -> ElasticComputeCloudModel.GetConsoleScreenshotResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62027,7 +62027,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getDefaultCreditSpecification(
             input: ElasticComputeCloudModel.GetDefaultCreditSpecificationRequest) async throws -> ElasticComputeCloudModel.GetDefaultCreditSpecificationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62066,7 +62066,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getEbsDefaultKmsKeyId(
             input: ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdRequest) async throws -> ElasticComputeCloudModel.GetEbsDefaultKmsKeyIdResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62105,7 +62105,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getEbsEncryptionByDefault(
             input: ElasticComputeCloudModel.GetEbsEncryptionByDefaultRequest) async throws -> ElasticComputeCloudModel.GetEbsEncryptionByDefaultResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62144,7 +62144,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getFlowLogsIntegrationTemplate(
             input: ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateRequest) async throws -> ElasticComputeCloudModel.GetFlowLogsIntegrationTemplateResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62183,7 +62183,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getGroupsForCapacityReservation(
             input: ElasticComputeCloudModel.GetGroupsForCapacityReservationRequest) async throws -> ElasticComputeCloudModel.GetGroupsForCapacityReservationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62222,7 +62222,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getHostReservationPurchasePreview(
             input: ElasticComputeCloudModel.GetHostReservationPurchasePreviewRequest) async throws -> ElasticComputeCloudModel.GetHostReservationPurchasePreviewResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62261,7 +62261,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getImageBlockPublicAccessState(
             input: ElasticComputeCloudModel.GetImageBlockPublicAccessStateRequest) async throws -> ElasticComputeCloudModel.GetImageBlockPublicAccessStateResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62300,7 +62300,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getInstanceTypesFromInstanceRequirements(
             input: ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsRequest) async throws -> ElasticComputeCloudModel.GetInstanceTypesFromInstanceRequirementsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62339,7 +62339,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getInstanceUefiData(
             input: ElasticComputeCloudModel.GetInstanceUefiDataRequest) async throws -> ElasticComputeCloudModel.GetInstanceUefiDataResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62378,7 +62378,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getIpamAddressHistory(
             input: ElasticComputeCloudModel.GetIpamAddressHistoryRequest) async throws -> ElasticComputeCloudModel.GetIpamAddressHistoryResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62417,7 +62417,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getIpamDiscoveredAccounts(
             input: ElasticComputeCloudModel.GetIpamDiscoveredAccountsRequest) async throws -> ElasticComputeCloudModel.GetIpamDiscoveredAccountsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62456,7 +62456,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getIpamDiscoveredResourceCidrs(
             input: ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsRequest) async throws -> ElasticComputeCloudModel.GetIpamDiscoveredResourceCidrsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62495,7 +62495,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getIpamPoolAllocations(
             input: ElasticComputeCloudModel.GetIpamPoolAllocationsRequest) async throws -> ElasticComputeCloudModel.GetIpamPoolAllocationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62534,7 +62534,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getIpamPoolCidrs(
             input: ElasticComputeCloudModel.GetIpamPoolCidrsRequest) async throws -> ElasticComputeCloudModel.GetIpamPoolCidrsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62573,7 +62573,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getIpamResourceCidrs(
             input: ElasticComputeCloudModel.GetIpamResourceCidrsRequest) async throws -> ElasticComputeCloudModel.GetIpamResourceCidrsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62612,7 +62612,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getLaunchTemplateData(
             input: ElasticComputeCloudModel.GetLaunchTemplateDataRequest) async throws -> ElasticComputeCloudModel.GetLaunchTemplateDataResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62651,7 +62651,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getManagedPrefixListAssociations(
             input: ElasticComputeCloudModel.GetManagedPrefixListAssociationsRequest) async throws -> ElasticComputeCloudModel.GetManagedPrefixListAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62690,7 +62690,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getManagedPrefixListEntries(
             input: ElasticComputeCloudModel.GetManagedPrefixListEntriesRequest) async throws -> ElasticComputeCloudModel.GetManagedPrefixListEntriesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62729,7 +62729,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getNetworkInsightsAccessScopeAnalysisFindings(
             input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsRequest) async throws -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeAnalysisFindingsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62768,7 +62768,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getNetworkInsightsAccessScopeContent(
             input: ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentRequest) async throws -> ElasticComputeCloudModel.GetNetworkInsightsAccessScopeContentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62807,7 +62807,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getPasswordData(
             input: ElasticComputeCloudModel.GetPasswordDataRequest) async throws -> ElasticComputeCloudModel.GetPasswordDataResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62846,7 +62846,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getReservedInstancesExchangeQuote(
             input: ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteRequest) async throws -> ElasticComputeCloudModel.GetReservedInstancesExchangeQuoteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62885,7 +62885,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getSecurityGroupsForVpc(
             input: ElasticComputeCloudModel.GetSecurityGroupsForVpcRequest) async throws -> ElasticComputeCloudModel.GetSecurityGroupsForVpcResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62924,7 +62924,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getSerialConsoleAccessStatus(
             input: ElasticComputeCloudModel.GetSerialConsoleAccessStatusRequest) async throws -> ElasticComputeCloudModel.GetSerialConsoleAccessStatusResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -62963,7 +62963,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getSpotPlacementScores(
             input: ElasticComputeCloudModel.GetSpotPlacementScoresRequest) async throws -> ElasticComputeCloudModel.GetSpotPlacementScoresResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63002,7 +63002,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getSubnetCidrReservations(
             input: ElasticComputeCloudModel.GetSubnetCidrReservationsRequest) async throws -> ElasticComputeCloudModel.GetSubnetCidrReservationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63041,7 +63041,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayAttachmentPropagations(
             input: ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsRequest) async throws -> ElasticComputeCloudModel.GetTransitGatewayAttachmentPropagationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63080,7 +63080,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayMulticastDomainAssociations(
             input: ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsRequest) async throws -> ElasticComputeCloudModel.GetTransitGatewayMulticastDomainAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63119,7 +63119,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayPolicyTableAssociations(
             input: ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsRequest) async throws -> ElasticComputeCloudModel.GetTransitGatewayPolicyTableAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63158,7 +63158,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayPolicyTableEntries(
             input: ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesRequest) async throws -> ElasticComputeCloudModel.GetTransitGatewayPolicyTableEntriesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63197,7 +63197,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayPrefixListReferences(
             input: ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesRequest) async throws -> ElasticComputeCloudModel.GetTransitGatewayPrefixListReferencesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63236,7 +63236,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayRouteTableAssociations(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsRequest) async throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTableAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63275,7 +63275,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getTransitGatewayRouteTablePropagations(
             input: ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsRequest) async throws -> ElasticComputeCloudModel.GetTransitGatewayRouteTablePropagationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63314,7 +63314,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getVerifiedAccessEndpointPolicy(
             input: ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyRequest) async throws -> ElasticComputeCloudModel.GetVerifiedAccessEndpointPolicyResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63353,7 +63353,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getVerifiedAccessGroupPolicy(
             input: ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyRequest) async throws -> ElasticComputeCloudModel.GetVerifiedAccessGroupPolicyResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63392,7 +63392,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getVpnConnectionDeviceSampleConfiguration(
             input: ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationRequest) async throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceSampleConfigurationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63431,7 +63431,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getVpnConnectionDeviceTypes(
             input: ElasticComputeCloudModel.GetVpnConnectionDeviceTypesRequest) async throws -> ElasticComputeCloudModel.GetVpnConnectionDeviceTypesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63470,7 +63470,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func getVpnTunnelReplacementStatus(
             input: ElasticComputeCloudModel.GetVpnTunnelReplacementStatusRequest) async throws -> ElasticComputeCloudModel.GetVpnTunnelReplacementStatusResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63509,7 +63509,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importClientVpnClientCertificateRevocationList(
             input: ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListRequest) async throws -> ElasticComputeCloudModel.ImportClientVpnClientCertificateRevocationListResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63548,7 +63548,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importImage(
             input: ElasticComputeCloudModel.ImportImageRequest) async throws -> ElasticComputeCloudModel.ImportImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63587,7 +63587,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importInstance(
             input: ElasticComputeCloudModel.ImportInstanceRequest) async throws -> ElasticComputeCloudModel.ImportInstanceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63626,7 +63626,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importKeyPair(
             input: ElasticComputeCloudModel.ImportKeyPairRequest) async throws -> ElasticComputeCloudModel.ImportKeyPairResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63665,7 +63665,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importSnapshot(
             input: ElasticComputeCloudModel.ImportSnapshotRequest) async throws -> ElasticComputeCloudModel.ImportSnapshotResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63704,7 +63704,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func importVolume(
             input: ElasticComputeCloudModel.ImportVolumeRequest) async throws -> ElasticComputeCloudModel.ImportVolumeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63743,7 +63743,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func listImagesInRecycleBin(
             input: ElasticComputeCloudModel.ListImagesInRecycleBinRequest) async throws -> ElasticComputeCloudModel.ListImagesInRecycleBinResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63782,7 +63782,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func listSnapshotsInRecycleBin(
             input: ElasticComputeCloudModel.ListSnapshotsInRecycleBinRequest) async throws -> ElasticComputeCloudModel.ListSnapshotsInRecycleBinResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63821,7 +63821,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyAddressAttribute(
             input: ElasticComputeCloudModel.ModifyAddressAttributeRequest) async throws -> ElasticComputeCloudModel.ModifyAddressAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63860,7 +63860,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyAvailabilityZoneGroup(
             input: ElasticComputeCloudModel.ModifyAvailabilityZoneGroupRequest) async throws -> ElasticComputeCloudModel.ModifyAvailabilityZoneGroupResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63899,7 +63899,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyCapacityReservation(
             input: ElasticComputeCloudModel.ModifyCapacityReservationRequest) async throws -> ElasticComputeCloudModel.ModifyCapacityReservationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63938,7 +63938,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyCapacityReservationFleet(
             input: ElasticComputeCloudModel.ModifyCapacityReservationFleetRequest) async throws -> ElasticComputeCloudModel.ModifyCapacityReservationFleetResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -63977,7 +63977,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyClientVpnEndpoint(
             input: ElasticComputeCloudModel.ModifyClientVpnEndpointRequest) async throws -> ElasticComputeCloudModel.ModifyClientVpnEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64016,7 +64016,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyDefaultCreditSpecification(
             input: ElasticComputeCloudModel.ModifyDefaultCreditSpecificationRequest) async throws -> ElasticComputeCloudModel.ModifyDefaultCreditSpecificationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64055,7 +64055,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyEbsDefaultKmsKeyId(
             input: ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdRequest) async throws -> ElasticComputeCloudModel.ModifyEbsDefaultKmsKeyIdResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64094,7 +64094,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyFleet(
             input: ElasticComputeCloudModel.ModifyFleetRequest) async throws -> ElasticComputeCloudModel.ModifyFleetResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64133,7 +64133,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyFpgaImageAttribute(
             input: ElasticComputeCloudModel.ModifyFpgaImageAttributeRequest) async throws -> ElasticComputeCloudModel.ModifyFpgaImageAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64172,7 +64172,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyHosts(
             input: ElasticComputeCloudModel.ModifyHostsRequest) async throws -> ElasticComputeCloudModel.ModifyHostsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64209,7 +64209,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIdFormat(
             input: ElasticComputeCloudModel.ModifyIdFormatRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64246,7 +64246,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIdentityIdFormat(
             input: ElasticComputeCloudModel.ModifyIdentityIdFormatRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64283,7 +64283,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyImageAttribute(
             input: ElasticComputeCloudModel.ModifyImageAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64320,7 +64320,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceAttribute(
             input: ElasticComputeCloudModel.ModifyInstanceAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64359,7 +64359,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceCapacityReservationAttributes(
             input: ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesRequest) async throws -> ElasticComputeCloudModel.ModifyInstanceCapacityReservationAttributesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64398,7 +64398,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceCreditSpecification(
             input: ElasticComputeCloudModel.ModifyInstanceCreditSpecificationRequest) async throws -> ElasticComputeCloudModel.ModifyInstanceCreditSpecificationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64437,7 +64437,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceEventStartTime(
             input: ElasticComputeCloudModel.ModifyInstanceEventStartTimeRequest) async throws -> ElasticComputeCloudModel.ModifyInstanceEventStartTimeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64476,7 +64476,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceEventWindow(
             input: ElasticComputeCloudModel.ModifyInstanceEventWindowRequest) async throws -> ElasticComputeCloudModel.ModifyInstanceEventWindowResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64515,7 +64515,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceMaintenanceOptions(
             input: ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsRequest) async throws -> ElasticComputeCloudModel.ModifyInstanceMaintenanceOptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64554,7 +64554,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstanceMetadataOptions(
             input: ElasticComputeCloudModel.ModifyInstanceMetadataOptionsRequest) async throws -> ElasticComputeCloudModel.ModifyInstanceMetadataOptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64593,7 +64593,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyInstancePlacement(
             input: ElasticComputeCloudModel.ModifyInstancePlacementRequest) async throws -> ElasticComputeCloudModel.ModifyInstancePlacementResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64632,7 +64632,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIpam(
             input: ElasticComputeCloudModel.ModifyIpamRequest) async throws -> ElasticComputeCloudModel.ModifyIpamResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64671,7 +64671,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIpamPool(
             input: ElasticComputeCloudModel.ModifyIpamPoolRequest) async throws -> ElasticComputeCloudModel.ModifyIpamPoolResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64710,7 +64710,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIpamResourceCidr(
             input: ElasticComputeCloudModel.ModifyIpamResourceCidrRequest) async throws -> ElasticComputeCloudModel.ModifyIpamResourceCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64749,7 +64749,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIpamResourceDiscovery(
             input: ElasticComputeCloudModel.ModifyIpamResourceDiscoveryRequest) async throws -> ElasticComputeCloudModel.ModifyIpamResourceDiscoveryResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64788,7 +64788,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyIpamScope(
             input: ElasticComputeCloudModel.ModifyIpamScopeRequest) async throws -> ElasticComputeCloudModel.ModifyIpamScopeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64827,7 +64827,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyLaunchTemplate(
             input: ElasticComputeCloudModel.ModifyLaunchTemplateRequest) async throws -> ElasticComputeCloudModel.ModifyLaunchTemplateResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64866,7 +64866,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyLocalGatewayRoute(
             input: ElasticComputeCloudModel.ModifyLocalGatewayRouteRequest) async throws -> ElasticComputeCloudModel.ModifyLocalGatewayRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64905,7 +64905,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyManagedPrefixList(
             input: ElasticComputeCloudModel.ModifyManagedPrefixListRequest) async throws -> ElasticComputeCloudModel.ModifyManagedPrefixListResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64942,7 +64942,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyNetworkInterfaceAttribute(
             input: ElasticComputeCloudModel.ModifyNetworkInterfaceAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -64981,7 +64981,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyPrivateDnsNameOptions(
             input: ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsRequest) async throws -> ElasticComputeCloudModel.ModifyPrivateDnsNameOptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65020,7 +65020,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyReservedInstances(
             input: ElasticComputeCloudModel.ModifyReservedInstancesRequest) async throws -> ElasticComputeCloudModel.ModifyReservedInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65059,7 +65059,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifySecurityGroupRules(
             input: ElasticComputeCloudModel.ModifySecurityGroupRulesRequest) async throws -> ElasticComputeCloudModel.ModifySecurityGroupRulesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65096,7 +65096,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifySnapshotAttribute(
             input: ElasticComputeCloudModel.ModifySnapshotAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65135,7 +65135,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifySnapshotTier(
             input: ElasticComputeCloudModel.ModifySnapshotTierRequest) async throws -> ElasticComputeCloudModel.ModifySnapshotTierResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65174,7 +65174,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifySpotFleetRequest(
             input: ElasticComputeCloudModel.ModifySpotFleetRequestRequest) async throws -> ElasticComputeCloudModel.ModifySpotFleetRequestResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65211,7 +65211,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifySubnetAttribute(
             input: ElasticComputeCloudModel.ModifySubnetAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65250,7 +65250,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTrafficMirrorFilterNetworkServices(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesRequest) async throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterNetworkServicesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65289,7 +65289,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTrafficMirrorFilterRule(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleRequest) async throws -> ElasticComputeCloudModel.ModifyTrafficMirrorFilterRuleResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65328,7 +65328,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTrafficMirrorSession(
             input: ElasticComputeCloudModel.ModifyTrafficMirrorSessionRequest) async throws -> ElasticComputeCloudModel.ModifyTrafficMirrorSessionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65367,7 +65367,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTransitGateway(
             input: ElasticComputeCloudModel.ModifyTransitGatewayRequest) async throws -> ElasticComputeCloudModel.ModifyTransitGatewayResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65406,7 +65406,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTransitGatewayPrefixListReference(
             input: ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceRequest) async throws -> ElasticComputeCloudModel.ModifyTransitGatewayPrefixListReferenceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65445,7 +65445,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyTransitGatewayVpcAttachment(
             input: ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentRequest) async throws -> ElasticComputeCloudModel.ModifyTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65484,7 +65484,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVerifiedAccessEndpoint(
             input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointRequest) async throws -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65523,7 +65523,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVerifiedAccessEndpointPolicy(
             input: ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyRequest) async throws -> ElasticComputeCloudModel.ModifyVerifiedAccessEndpointPolicyResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65562,7 +65562,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVerifiedAccessGroup(
             input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupRequest) async throws -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65601,7 +65601,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVerifiedAccessGroupPolicy(
             input: ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyRequest) async throws -> ElasticComputeCloudModel.ModifyVerifiedAccessGroupPolicyResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65640,7 +65640,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVerifiedAccessInstance(
             input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceRequest) async throws -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65679,7 +65679,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVerifiedAccessInstanceLoggingConfiguration(
             input: ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationRequest) async throws -> ElasticComputeCloudModel.ModifyVerifiedAccessInstanceLoggingConfigurationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65718,7 +65718,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVerifiedAccessTrustProvider(
             input: ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderRequest) async throws -> ElasticComputeCloudModel.ModifyVerifiedAccessTrustProviderResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65757,7 +65757,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVolume(
             input: ElasticComputeCloudModel.ModifyVolumeRequest) async throws -> ElasticComputeCloudModel.ModifyVolumeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65794,7 +65794,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVolumeAttribute(
             input: ElasticComputeCloudModel.ModifyVolumeAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65831,7 +65831,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcAttribute(
             input: ElasticComputeCloudModel.ModifyVpcAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65870,7 +65870,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpoint(
             input: ElasticComputeCloudModel.ModifyVpcEndpointRequest) async throws -> ElasticComputeCloudModel.ModifyVpcEndpointResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65909,7 +65909,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpointConnectionNotification(
             input: ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationRequest) async throws -> ElasticComputeCloudModel.ModifyVpcEndpointConnectionNotificationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65948,7 +65948,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpointServiceConfiguration(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationRequest) async throws -> ElasticComputeCloudModel.ModifyVpcEndpointServiceConfigurationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -65987,7 +65987,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpointServicePayerResponsibility(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityRequest) async throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePayerResponsibilityResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66026,7 +66026,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcEndpointServicePermissions(
             input: ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsRequest) async throws -> ElasticComputeCloudModel.ModifyVpcEndpointServicePermissionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66065,7 +66065,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcPeeringConnectionOptions(
             input: ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsRequest) async throws -> ElasticComputeCloudModel.ModifyVpcPeeringConnectionOptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66104,7 +66104,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpcTenancy(
             input: ElasticComputeCloudModel.ModifyVpcTenancyRequest) async throws -> ElasticComputeCloudModel.ModifyVpcTenancyResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66143,7 +66143,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpnConnection(
             input: ElasticComputeCloudModel.ModifyVpnConnectionRequest) async throws -> ElasticComputeCloudModel.ModifyVpnConnectionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66182,7 +66182,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpnConnectionOptions(
             input: ElasticComputeCloudModel.ModifyVpnConnectionOptionsRequest) async throws -> ElasticComputeCloudModel.ModifyVpnConnectionOptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66221,7 +66221,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpnTunnelCertificate(
             input: ElasticComputeCloudModel.ModifyVpnTunnelCertificateRequest) async throws -> ElasticComputeCloudModel.ModifyVpnTunnelCertificateResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66260,7 +66260,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func modifyVpnTunnelOptions(
             input: ElasticComputeCloudModel.ModifyVpnTunnelOptionsRequest) async throws -> ElasticComputeCloudModel.ModifyVpnTunnelOptionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66299,7 +66299,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func monitorInstances(
             input: ElasticComputeCloudModel.MonitorInstancesRequest) async throws -> ElasticComputeCloudModel.MonitorInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66338,7 +66338,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func moveAddressToVpc(
             input: ElasticComputeCloudModel.MoveAddressToVpcRequest) async throws -> ElasticComputeCloudModel.MoveAddressToVpcResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66377,7 +66377,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func moveByoipCidrToIpam(
             input: ElasticComputeCloudModel.MoveByoipCidrToIpamRequest) async throws -> ElasticComputeCloudModel.MoveByoipCidrToIpamResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66416,7 +66416,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func provisionByoipCidr(
             input: ElasticComputeCloudModel.ProvisionByoipCidrRequest) async throws -> ElasticComputeCloudModel.ProvisionByoipCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66455,7 +66455,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func provisionIpamPoolCidr(
             input: ElasticComputeCloudModel.ProvisionIpamPoolCidrRequest) async throws -> ElasticComputeCloudModel.ProvisionIpamPoolCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66494,7 +66494,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func provisionPublicIpv4PoolCidr(
             input: ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrRequest) async throws -> ElasticComputeCloudModel.ProvisionPublicIpv4PoolCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66533,7 +66533,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func purchaseHostReservation(
             input: ElasticComputeCloudModel.PurchaseHostReservationRequest) async throws -> ElasticComputeCloudModel.PurchaseHostReservationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66572,7 +66572,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func purchaseReservedInstancesOffering(
             input: ElasticComputeCloudModel.PurchaseReservedInstancesOfferingRequest) async throws -> ElasticComputeCloudModel.PurchaseReservedInstancesOfferingResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66611,7 +66611,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func purchaseScheduledInstances(
             input: ElasticComputeCloudModel.PurchaseScheduledInstancesRequest) async throws -> ElasticComputeCloudModel.PurchaseScheduledInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66648,7 +66648,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rebootInstances(
             input: ElasticComputeCloudModel.RebootInstancesRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66687,7 +66687,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func registerImage(
             input: ElasticComputeCloudModel.RegisterImageRequest) async throws -> ElasticComputeCloudModel.RegisterImageResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66726,7 +66726,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func registerInstanceEventNotificationAttributes(
             input: ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesRequest) async throws -> ElasticComputeCloudModel.RegisterInstanceEventNotificationAttributesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66765,7 +66765,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func registerTransitGatewayMulticastGroupMembers(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersRequest) async throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupMembersResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66804,7 +66804,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func registerTransitGatewayMulticastGroupSources(
             input: ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesRequest) async throws -> ElasticComputeCloudModel.RegisterTransitGatewayMulticastGroupSourcesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66843,7 +66843,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectTransitGatewayMulticastDomainAssociations(
             input: ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsRequest) async throws -> ElasticComputeCloudModel.RejectTransitGatewayMulticastDomainAssociationsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66882,7 +66882,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectTransitGatewayPeeringAttachment(
             input: ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentRequest) async throws -> ElasticComputeCloudModel.RejectTransitGatewayPeeringAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66921,7 +66921,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectTransitGatewayVpcAttachment(
             input: ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentRequest) async throws -> ElasticComputeCloudModel.RejectTransitGatewayVpcAttachmentResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66960,7 +66960,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectVpcEndpointConnections(
             input: ElasticComputeCloudModel.RejectVpcEndpointConnectionsRequest) async throws -> ElasticComputeCloudModel.RejectVpcEndpointConnectionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -66999,7 +66999,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func rejectVpcPeeringConnection(
             input: ElasticComputeCloudModel.RejectVpcPeeringConnectionRequest) async throws -> ElasticComputeCloudModel.RejectVpcPeeringConnectionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67036,7 +67036,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func releaseAddress(
             input: ElasticComputeCloudModel.ReleaseAddressRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67075,7 +67075,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func releaseHosts(
             input: ElasticComputeCloudModel.ReleaseHostsRequest) async throws -> ElasticComputeCloudModel.ReleaseHostsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67114,7 +67114,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func releaseIpamPoolAllocation(
             input: ElasticComputeCloudModel.ReleaseIpamPoolAllocationRequest) async throws -> ElasticComputeCloudModel.ReleaseIpamPoolAllocationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67153,7 +67153,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceIamInstanceProfileAssociation(
             input: ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationRequest) async throws -> ElasticComputeCloudModel.ReplaceIamInstanceProfileAssociationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67192,7 +67192,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceNetworkAclAssociation(
             input: ElasticComputeCloudModel.ReplaceNetworkAclAssociationRequest) async throws -> ElasticComputeCloudModel.ReplaceNetworkAclAssociationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67229,7 +67229,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceNetworkAclEntry(
             input: ElasticComputeCloudModel.ReplaceNetworkAclEntryRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67266,7 +67266,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceRoute(
             input: ElasticComputeCloudModel.ReplaceRouteRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67305,7 +67305,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceRouteTableAssociation(
             input: ElasticComputeCloudModel.ReplaceRouteTableAssociationRequest) async throws -> ElasticComputeCloudModel.ReplaceRouteTableAssociationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67344,7 +67344,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceTransitGatewayRoute(
             input: ElasticComputeCloudModel.ReplaceTransitGatewayRouteRequest) async throws -> ElasticComputeCloudModel.ReplaceTransitGatewayRouteResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67383,7 +67383,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func replaceVpnTunnel(
             input: ElasticComputeCloudModel.ReplaceVpnTunnelRequest) async throws -> ElasticComputeCloudModel.ReplaceVpnTunnelResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67420,7 +67420,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func reportInstanceStatus(
             input: ElasticComputeCloudModel.ReportInstanceStatusRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67459,7 +67459,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func requestSpotFleet(
             input: ElasticComputeCloudModel.RequestSpotFleetRequest) async throws -> ElasticComputeCloudModel.RequestSpotFleetResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67498,7 +67498,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func requestSpotInstances(
             input: ElasticComputeCloudModel.RequestSpotInstancesRequest) async throws -> ElasticComputeCloudModel.RequestSpotInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67537,7 +67537,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetAddressAttribute(
             input: ElasticComputeCloudModel.ResetAddressAttributeRequest) async throws -> ElasticComputeCloudModel.ResetAddressAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67576,7 +67576,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetEbsDefaultKmsKeyId(
             input: ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdRequest) async throws -> ElasticComputeCloudModel.ResetEbsDefaultKmsKeyIdResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67615,7 +67615,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetFpgaImageAttribute(
             input: ElasticComputeCloudModel.ResetFpgaImageAttributeRequest) async throws -> ElasticComputeCloudModel.ResetFpgaImageAttributeResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67652,7 +67652,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetImageAttribute(
             input: ElasticComputeCloudModel.ResetImageAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67689,7 +67689,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetInstanceAttribute(
             input: ElasticComputeCloudModel.ResetInstanceAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67726,7 +67726,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetNetworkInterfaceAttribute(
             input: ElasticComputeCloudModel.ResetNetworkInterfaceAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67763,7 +67763,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func resetSnapshotAttribute(
             input: ElasticComputeCloudModel.ResetSnapshotAttributeRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67802,7 +67802,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func restoreAddressToClassic(
             input: ElasticComputeCloudModel.RestoreAddressToClassicRequest) async throws -> ElasticComputeCloudModel.RestoreAddressToClassicResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67841,7 +67841,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func restoreImageFromRecycleBin(
             input: ElasticComputeCloudModel.RestoreImageFromRecycleBinRequest) async throws -> ElasticComputeCloudModel.RestoreImageFromRecycleBinResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67880,7 +67880,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func restoreManagedPrefixListVersion(
             input: ElasticComputeCloudModel.RestoreManagedPrefixListVersionRequest) async throws -> ElasticComputeCloudModel.RestoreManagedPrefixListVersionResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67919,7 +67919,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func restoreSnapshotFromRecycleBin(
             input: ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinRequest) async throws -> ElasticComputeCloudModel.RestoreSnapshotFromRecycleBinResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67958,7 +67958,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func restoreSnapshotTier(
             input: ElasticComputeCloudModel.RestoreSnapshotTierRequest) async throws -> ElasticComputeCloudModel.RestoreSnapshotTierResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -67997,7 +67997,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func revokeClientVpnIngress(
             input: ElasticComputeCloudModel.RevokeClientVpnIngressRequest) async throws -> ElasticComputeCloudModel.RevokeClientVpnIngressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68036,7 +68036,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func revokeSecurityGroupEgress(
             input: ElasticComputeCloudModel.RevokeSecurityGroupEgressRequest) async throws -> ElasticComputeCloudModel.RevokeSecurityGroupEgressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68075,7 +68075,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func revokeSecurityGroupIngress(
             input: ElasticComputeCloudModel.RevokeSecurityGroupIngressRequest) async throws -> ElasticComputeCloudModel.RevokeSecurityGroupIngressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68114,7 +68114,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func runInstances(
             input: ElasticComputeCloudModel.RunInstancesRequest) async throws -> ElasticComputeCloudModel.Reservation {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68153,7 +68153,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func runScheduledInstances(
             input: ElasticComputeCloudModel.RunScheduledInstancesRequest) async throws -> ElasticComputeCloudModel.RunScheduledInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68192,7 +68192,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func searchLocalGatewayRoutes(
             input: ElasticComputeCloudModel.SearchLocalGatewayRoutesRequest) async throws -> ElasticComputeCloudModel.SearchLocalGatewayRoutesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68231,7 +68231,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func searchTransitGatewayMulticastGroups(
             input: ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsRequest) async throws -> ElasticComputeCloudModel.SearchTransitGatewayMulticastGroupsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68270,7 +68270,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func searchTransitGatewayRoutes(
             input: ElasticComputeCloudModel.SearchTransitGatewayRoutesRequest) async throws -> ElasticComputeCloudModel.SearchTransitGatewayRoutesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68307,7 +68307,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func sendDiagnosticInterrupt(
             input: ElasticComputeCloudModel.SendDiagnosticInterruptRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68346,7 +68346,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func startInstances(
             input: ElasticComputeCloudModel.StartInstancesRequest) async throws -> ElasticComputeCloudModel.StartInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68385,7 +68385,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func startNetworkInsightsAccessScopeAnalysis(
             input: ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisRequest) async throws -> ElasticComputeCloudModel.StartNetworkInsightsAccessScopeAnalysisResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68424,7 +68424,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func startNetworkInsightsAnalysis(
             input: ElasticComputeCloudModel.StartNetworkInsightsAnalysisRequest) async throws -> ElasticComputeCloudModel.StartNetworkInsightsAnalysisResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68463,7 +68463,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func startVpcEndpointServicePrivateDnsVerification(
             input: ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationRequest) async throws -> ElasticComputeCloudModel.StartVpcEndpointServicePrivateDnsVerificationResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68502,7 +68502,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func stopInstances(
             input: ElasticComputeCloudModel.StopInstancesRequest) async throws -> ElasticComputeCloudModel.StopInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68541,7 +68541,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func terminateClientVpnConnections(
             input: ElasticComputeCloudModel.TerminateClientVpnConnectionsRequest) async throws -> ElasticComputeCloudModel.TerminateClientVpnConnectionsResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68580,7 +68580,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func terminateInstances(
             input: ElasticComputeCloudModel.TerminateInstancesRequest) async throws -> ElasticComputeCloudModel.TerminateInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68619,7 +68619,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func unassignIpv6Addresses(
             input: ElasticComputeCloudModel.UnassignIpv6AddressesRequest) async throws -> ElasticComputeCloudModel.UnassignIpv6AddressesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68656,7 +68656,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func unassignPrivateIpAddresses(
             input: ElasticComputeCloudModel.UnassignPrivateIpAddressesRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68695,7 +68695,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func unassignPrivateNatGatewayAddress(
             input: ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressRequest) async throws -> ElasticComputeCloudModel.UnassignPrivateNatGatewayAddressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68734,7 +68734,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func unmonitorInstances(
             input: ElasticComputeCloudModel.UnmonitorInstancesRequest) async throws -> ElasticComputeCloudModel.UnmonitorInstancesResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68773,7 +68773,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func updateSecurityGroupRuleDescriptionsEgress(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressRequest) async throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsEgressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68812,7 +68812,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func updateSecurityGroupRuleDescriptionsIngress(
             input: ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressRequest) async throws -> ElasticComputeCloudModel.UpdateSecurityGroupRuleDescriptionsIngressResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -68851,7 +68851,7 @@ public struct AWSElasticComputeCloudClient<InvocationReportingType: HTTPClientCo
      */
     public func withdrawByoipCidr(
             input: ElasticComputeCloudModel.WithdrawByoipCidrRequest) async throws -> ElasticComputeCloudModel.WithdrawByoipCidrResult {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

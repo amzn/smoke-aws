@@ -3118,7 +3118,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteAlarms(
             input: CloudWatchModel.DeleteAlarmsInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3158,7 +3158,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteAnomalyDetector(
             input: CloudWatchModel.DeleteAnomalyDetectorInput) async throws -> CloudWatchModel.DeleteAnomalyDetectorOutputForDeleteAnomalyDetector {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3198,7 +3198,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteDashboards(
             input: CloudWatchModel.DeleteDashboardsInput) async throws -> CloudWatchModel.DeleteDashboardsOutputForDeleteDashboards {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3238,7 +3238,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteInsightRules(
             input: CloudWatchModel.DeleteInsightRulesInput) async throws -> CloudWatchModel.DeleteInsightRulesOutputForDeleteInsightRules {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3278,7 +3278,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func deleteMetricStream(
             input: CloudWatchModel.DeleteMetricStreamInput) async throws -> CloudWatchModel.DeleteMetricStreamOutputForDeleteMetricStream {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3318,7 +3318,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeAlarmHistory(
             input: CloudWatchModel.DescribeAlarmHistoryInput) async throws -> CloudWatchModel.DescribeAlarmHistoryOutputForDescribeAlarmHistory {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3358,7 +3358,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeAlarms(
             input: CloudWatchModel.DescribeAlarmsInput) async throws -> CloudWatchModel.DescribeAlarmsOutputForDescribeAlarms {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3397,7 +3397,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeAlarmsForMetric(
             input: CloudWatchModel.DescribeAlarmsForMetricInput) async throws -> CloudWatchModel.DescribeAlarmsForMetricOutputForDescribeAlarmsForMetric {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3437,7 +3437,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeAnomalyDetectors(
             input: CloudWatchModel.DescribeAnomalyDetectorsInput) async throws -> CloudWatchModel.DescribeAnomalyDetectorsOutputForDescribeAnomalyDetectors {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3477,7 +3477,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func describeInsightRules(
             input: CloudWatchModel.DescribeInsightRulesInput) async throws -> CloudWatchModel.DescribeInsightRulesOutputForDescribeInsightRules {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3514,7 +3514,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func disableAlarmActions(
             input: CloudWatchModel.DisableAlarmActionsInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3554,7 +3554,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func disableInsightRules(
             input: CloudWatchModel.DisableInsightRulesInput) async throws -> CloudWatchModel.DisableInsightRulesOutputForDisableInsightRules {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3591,7 +3591,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func enableAlarmActions(
             input: CloudWatchModel.EnableAlarmActionsInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3631,7 +3631,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func enableInsightRules(
             input: CloudWatchModel.EnableInsightRulesInput) async throws -> CloudWatchModel.EnableInsightRulesOutputForEnableInsightRules {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3671,7 +3671,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getDashboard(
             input: CloudWatchModel.GetDashboardInput) async throws -> CloudWatchModel.GetDashboardOutputForGetDashboard {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3711,7 +3711,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getInsightRuleReport(
             input: CloudWatchModel.GetInsightRuleReportInput) async throws -> CloudWatchModel.GetInsightRuleReportOutputForGetInsightRuleReport {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3751,7 +3751,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getMetricData(
             input: CloudWatchModel.GetMetricDataInput) async throws -> CloudWatchModel.GetMetricDataOutputForGetMetricData {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3791,7 +3791,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getMetricStatistics(
             input: CloudWatchModel.GetMetricStatisticsInput) async throws -> CloudWatchModel.GetMetricStatisticsOutputForGetMetricStatistics {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3831,7 +3831,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getMetricStream(
             input: CloudWatchModel.GetMetricStreamInput) async throws -> CloudWatchModel.GetMetricStreamOutputForGetMetricStream {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3870,7 +3870,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func getMetricWidgetImage(
             input: CloudWatchModel.GetMetricWidgetImageInput) async throws -> CloudWatchModel.GetMetricWidgetImageOutputForGetMetricWidgetImage {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3910,7 +3910,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func listDashboards(
             input: CloudWatchModel.ListDashboardsInput) async throws -> CloudWatchModel.ListDashboardsOutputForListDashboards {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3950,7 +3950,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func listManagedInsightRules(
             input: CloudWatchModel.ListManagedInsightRulesInput) async throws -> CloudWatchModel.ListManagedInsightRulesOutputForListManagedInsightRules {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3990,7 +3990,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func listMetricStreams(
             input: CloudWatchModel.ListMetricStreamsInput) async throws -> CloudWatchModel.ListMetricStreamsOutputForListMetricStreams {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4030,7 +4030,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func listMetrics(
             input: CloudWatchModel.ListMetricsInput) async throws -> CloudWatchModel.ListMetricsOutputForListMetrics {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4070,7 +4070,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func listTagsForResource(
             input: CloudWatchModel.ListTagsForResourceInput) async throws -> CloudWatchModel.ListTagsForResourceOutputForListTagsForResource {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4110,7 +4110,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putAnomalyDetector(
             input: CloudWatchModel.PutAnomalyDetectorInput) async throws -> CloudWatchModel.PutAnomalyDetectorOutputForPutAnomalyDetector {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4148,7 +4148,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putCompositeAlarm(
             input: CloudWatchModel.PutCompositeAlarmInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4188,7 +4188,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putDashboard(
             input: CloudWatchModel.PutDashboardInput) async throws -> CloudWatchModel.PutDashboardOutputForPutDashboard {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4228,7 +4228,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putInsightRule(
             input: CloudWatchModel.PutInsightRuleInput) async throws -> CloudWatchModel.PutInsightRuleOutputForPutInsightRule {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4268,7 +4268,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putManagedInsightRules(
             input: CloudWatchModel.PutManagedInsightRulesInput) async throws -> CloudWatchModel.PutManagedInsightRulesOutputForPutManagedInsightRules {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4306,7 +4306,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putMetricAlarm(
             input: CloudWatchModel.PutMetricAlarmInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4344,7 +4344,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putMetricData(
             input: CloudWatchModel.PutMetricDataInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4384,7 +4384,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func putMetricStream(
             input: CloudWatchModel.PutMetricStreamInput) async throws -> CloudWatchModel.PutMetricStreamOutputForPutMetricStream {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4422,7 +4422,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func setAlarmState(
             input: CloudWatchModel.SetAlarmStateInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4462,7 +4462,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func startMetricStreams(
             input: CloudWatchModel.StartMetricStreamsInput) async throws -> CloudWatchModel.StartMetricStreamsOutputForStartMetricStreams {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4502,7 +4502,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func stopMetricStreams(
             input: CloudWatchModel.StopMetricStreamsInput) async throws -> CloudWatchModel.StopMetricStreamsOutputForStopMetricStreams {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4542,7 +4542,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func tagResource(
             input: CloudWatchModel.TagResourceInput) async throws -> CloudWatchModel.TagResourceOutputForTagResource {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4582,7 +4582,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
      */
     public func untagResource(
             input: CloudWatchModel.UntagResourceInput) async throws -> CloudWatchModel.UntagResourceOutputForUntagResource {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

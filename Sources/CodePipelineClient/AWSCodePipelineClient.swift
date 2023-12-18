@@ -2864,7 +2864,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func acknowledgeJob(
             input: CodePipelineModel.AcknowledgeJobInput) async throws -> CodePipelineModel.AcknowledgeJobOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2900,7 +2900,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func acknowledgeThirdPartyJob(
             input: CodePipelineModel.AcknowledgeThirdPartyJobInput) async throws -> CodePipelineModel.AcknowledgeThirdPartyJobOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2936,7 +2936,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func createCustomActionType(
             input: CodePipelineModel.CreateCustomActionTypeInput) async throws -> CodePipelineModel.CreateCustomActionTypeOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2972,7 +2972,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func createPipeline(
             input: CodePipelineModel.CreatePipelineInput) async throws -> CodePipelineModel.CreatePipelineOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3006,7 +3006,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func deleteCustomActionType(
             input: CodePipelineModel.DeleteCustomActionTypeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3040,7 +3040,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func deletePipeline(
             input: CodePipelineModel.DeletePipelineInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3076,7 +3076,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func deleteWebhook(
             input: CodePipelineModel.DeleteWebhookInput) async throws -> CodePipelineModel.DeleteWebhookOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3112,7 +3112,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func deregisterWebhookWithThirdParty(
             input: CodePipelineModel.DeregisterWebhookWithThirdPartyInput) async throws -> CodePipelineModel.DeregisterWebhookWithThirdPartyOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3146,7 +3146,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func disableStageTransition(
             input: CodePipelineModel.DisableStageTransitionInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3180,7 +3180,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func enableStageTransition(
             input: CodePipelineModel.EnableStageTransitionInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3216,7 +3216,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func getActionType(
             input: CodePipelineModel.GetActionTypeInput) async throws -> CodePipelineModel.GetActionTypeOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3252,7 +3252,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func getJobDetails(
             input: CodePipelineModel.GetJobDetailsInput) async throws -> CodePipelineModel.GetJobDetailsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3288,7 +3288,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func getPipeline(
             input: CodePipelineModel.GetPipelineInput) async throws -> CodePipelineModel.GetPipelineOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3324,7 +3324,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func getPipelineExecution(
             input: CodePipelineModel.GetPipelineExecutionInput) async throws -> CodePipelineModel.GetPipelineExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3360,7 +3360,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func getPipelineState(
             input: CodePipelineModel.GetPipelineStateInput) async throws -> CodePipelineModel.GetPipelineStateOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3396,7 +3396,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func getThirdPartyJobDetails(
             input: CodePipelineModel.GetThirdPartyJobDetailsInput) async throws -> CodePipelineModel.GetThirdPartyJobDetailsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3432,7 +3432,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func listActionExecutions(
             input: CodePipelineModel.ListActionExecutionsInput) async throws -> CodePipelineModel.ListActionExecutionsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3468,7 +3468,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func listActionTypes(
             input: CodePipelineModel.ListActionTypesInput) async throws -> CodePipelineModel.ListActionTypesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3504,7 +3504,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func listPipelineExecutions(
             input: CodePipelineModel.ListPipelineExecutionsInput) async throws -> CodePipelineModel.ListPipelineExecutionsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3540,7 +3540,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func listPipelines(
             input: CodePipelineModel.ListPipelinesInput) async throws -> CodePipelineModel.ListPipelinesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3576,7 +3576,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func listTagsForResource(
             input: CodePipelineModel.ListTagsForResourceInput) async throws -> CodePipelineModel.ListTagsForResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3612,7 +3612,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func listWebhooks(
             input: CodePipelineModel.ListWebhooksInput) async throws -> CodePipelineModel.ListWebhooksOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3648,7 +3648,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func pollForJobs(
             input: CodePipelineModel.PollForJobsInput) async throws -> CodePipelineModel.PollForJobsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3684,7 +3684,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func pollForThirdPartyJobs(
             input: CodePipelineModel.PollForThirdPartyJobsInput) async throws -> CodePipelineModel.PollForThirdPartyJobsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3720,7 +3720,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func putActionRevision(
             input: CodePipelineModel.PutActionRevisionInput) async throws -> CodePipelineModel.PutActionRevisionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3756,7 +3756,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func putApprovalResult(
             input: CodePipelineModel.PutApprovalResultInput) async throws -> CodePipelineModel.PutApprovalResultOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3790,7 +3790,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func putJobFailureResult(
             input: CodePipelineModel.PutJobFailureResultInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3824,7 +3824,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func putJobSuccessResult(
             input: CodePipelineModel.PutJobSuccessResultInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3858,7 +3858,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func putThirdPartyJobFailureResult(
             input: CodePipelineModel.PutThirdPartyJobFailureResultInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3892,7 +3892,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func putThirdPartyJobSuccessResult(
             input: CodePipelineModel.PutThirdPartyJobSuccessResultInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3928,7 +3928,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func putWebhook(
             input: CodePipelineModel.PutWebhookInput) async throws -> CodePipelineModel.PutWebhookOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3964,7 +3964,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func registerWebhookWithThirdParty(
             input: CodePipelineModel.RegisterWebhookWithThirdPartyInput) async throws -> CodePipelineModel.RegisterWebhookWithThirdPartyOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4000,7 +4000,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func retryStageExecution(
             input: CodePipelineModel.RetryStageExecutionInput) async throws -> CodePipelineModel.RetryStageExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4036,7 +4036,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func startPipelineExecution(
             input: CodePipelineModel.StartPipelineExecutionInput) async throws -> CodePipelineModel.StartPipelineExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4072,7 +4072,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func stopPipelineExecution(
             input: CodePipelineModel.StopPipelineExecutionInput) async throws -> CodePipelineModel.StopPipelineExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4108,7 +4108,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func tagResource(
             input: CodePipelineModel.TagResourceInput) async throws -> CodePipelineModel.TagResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4144,7 +4144,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func untagResource(
             input: CodePipelineModel.UntagResourceInput) async throws -> CodePipelineModel.UntagResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4178,7 +4178,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func updateActionType(
             input: CodePipelineModel.UpdateActionTypeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4214,7 +4214,7 @@ public struct AWSCodePipelineClient<InvocationReportingType: HTTPClientCoreInvoc
      */
     public func updatePipeline(
             input: CodePipelineModel.UpdatePipelineInput) async throws -> CodePipelineModel.UpdatePipelineOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
