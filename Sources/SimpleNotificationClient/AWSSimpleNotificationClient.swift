@@ -3424,7 +3424,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func addPermission(
             input: SimpleNotificationModel.AddPermissionInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3464,7 +3464,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func checkIfPhoneNumberIsOptedOut(
             input: SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutInput) async throws -> SimpleNotificationModel.CheckIfPhoneNumberIsOptedOutResponseForCheckIfPhoneNumberIsOptedOut {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3504,7 +3504,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func confirmSubscription(
             input: SimpleNotificationModel.ConfirmSubscriptionInput) async throws -> SimpleNotificationModel.ConfirmSubscriptionResponseForConfirmSubscription {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3544,7 +3544,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func createPlatformApplication(
             input: SimpleNotificationModel.CreatePlatformApplicationInput) async throws -> SimpleNotificationModel.CreatePlatformApplicationResponseForCreatePlatformApplication {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3584,7 +3584,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func createPlatformEndpoint(
             input: SimpleNotificationModel.CreatePlatformEndpointInput) async throws -> SimpleNotificationModel.CreateEndpointResponseForCreatePlatformEndpoint {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3624,7 +3624,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func createSMSSandboxPhoneNumber(
             input: SimpleNotificationModel.CreateSMSSandboxPhoneNumberInput) async throws -> SimpleNotificationModel.CreateSMSSandboxPhoneNumberResultForCreateSMSSandboxPhoneNumber {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3664,7 +3664,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func createTopic(
             input: SimpleNotificationModel.CreateTopicInput) async throws -> SimpleNotificationModel.CreateTopicResponseForCreateTopic {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3702,7 +3702,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func deleteEndpoint(
             input: SimpleNotificationModel.DeleteEndpointInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3740,7 +3740,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func deletePlatformApplication(
             input: SimpleNotificationModel.DeletePlatformApplicationInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3780,7 +3780,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func deleteSMSSandboxPhoneNumber(
             input: SimpleNotificationModel.DeleteSMSSandboxPhoneNumberInput) async throws -> SimpleNotificationModel.DeleteSMSSandboxPhoneNumberResultForDeleteSMSSandboxPhoneNumber {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3818,7 +3818,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func deleteTopic(
             input: SimpleNotificationModel.DeleteTopicInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3858,7 +3858,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getDataProtectionPolicy(
             input: SimpleNotificationModel.GetDataProtectionPolicyInput) async throws -> SimpleNotificationModel.GetDataProtectionPolicyResponseForGetDataProtectionPolicy {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3898,7 +3898,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getEndpointAttributes(
             input: SimpleNotificationModel.GetEndpointAttributesInput) async throws -> SimpleNotificationModel.GetEndpointAttributesResponseForGetEndpointAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3938,7 +3938,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getPlatformApplicationAttributes(
             input: SimpleNotificationModel.GetPlatformApplicationAttributesInput) async throws -> SimpleNotificationModel.GetPlatformApplicationAttributesResponseForGetPlatformApplicationAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3978,7 +3978,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getSMSAttributes(
             input: SimpleNotificationModel.GetSMSAttributesInput) async throws -> SimpleNotificationModel.GetSMSAttributesResponseForGetSMSAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4018,7 +4018,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getSMSSandboxAccountStatus(
             input: SimpleNotificationModel.GetSMSSandboxAccountStatusInput) async throws -> SimpleNotificationModel.GetSMSSandboxAccountStatusResultForGetSMSSandboxAccountStatus {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4058,7 +4058,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getSubscriptionAttributes(
             input: SimpleNotificationModel.GetSubscriptionAttributesInput) async throws -> SimpleNotificationModel.GetSubscriptionAttributesResponseForGetSubscriptionAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4098,7 +4098,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func getTopicAttributes(
             input: SimpleNotificationModel.GetTopicAttributesInput) async throws -> SimpleNotificationModel.GetTopicAttributesResponseForGetTopicAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4138,7 +4138,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listEndpointsByPlatformApplication(
             input: SimpleNotificationModel.ListEndpointsByPlatformApplicationInput) async throws -> SimpleNotificationModel.ListEndpointsByPlatformApplicationResponseForListEndpointsByPlatformApplication {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4178,7 +4178,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listOriginationNumbers(
             input: SimpleNotificationModel.ListOriginationNumbersRequest) async throws -> SimpleNotificationModel.ListOriginationNumbersResultForListOriginationNumbers {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4218,7 +4218,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listPhoneNumbersOptedOut(
             input: SimpleNotificationModel.ListPhoneNumbersOptedOutInput) async throws -> SimpleNotificationModel.ListPhoneNumbersOptedOutResponseForListPhoneNumbersOptedOut {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4258,7 +4258,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listPlatformApplications(
             input: SimpleNotificationModel.ListPlatformApplicationsInput) async throws -> SimpleNotificationModel.ListPlatformApplicationsResponseForListPlatformApplications {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4298,7 +4298,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listSMSSandboxPhoneNumbers(
             input: SimpleNotificationModel.ListSMSSandboxPhoneNumbersInput) async throws -> SimpleNotificationModel.ListSMSSandboxPhoneNumbersResultForListSMSSandboxPhoneNumbers {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4338,7 +4338,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listSubscriptions(
             input: SimpleNotificationModel.ListSubscriptionsInput) async throws -> SimpleNotificationModel.ListSubscriptionsResponseForListSubscriptions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4378,7 +4378,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listSubscriptionsByTopic(
             input: SimpleNotificationModel.ListSubscriptionsByTopicInput) async throws -> SimpleNotificationModel.ListSubscriptionsByTopicResponseForListSubscriptionsByTopic {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4418,7 +4418,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listTagsForResource(
             input: SimpleNotificationModel.ListTagsForResourceRequest) async throws -> SimpleNotificationModel.ListTagsForResourceResponseForListTagsForResource {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4458,7 +4458,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func listTopics(
             input: SimpleNotificationModel.ListTopicsInput) async throws -> SimpleNotificationModel.ListTopicsResponseForListTopics {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4498,7 +4498,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func optInPhoneNumber(
             input: SimpleNotificationModel.OptInPhoneNumberInput) async throws -> SimpleNotificationModel.OptInPhoneNumberResponseForOptInPhoneNumber {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4538,7 +4538,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func publish(
             input: SimpleNotificationModel.PublishInput) async throws -> SimpleNotificationModel.PublishResponseForPublish {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4578,7 +4578,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func publishBatch(
             input: SimpleNotificationModel.PublishBatchInput) async throws -> SimpleNotificationModel.PublishBatchResponseForPublishBatch {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4616,7 +4616,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func putDataProtectionPolicy(
             input: SimpleNotificationModel.PutDataProtectionPolicyInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4654,7 +4654,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func removePermission(
             input: SimpleNotificationModel.RemovePermissionInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4692,7 +4692,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setEndpointAttributes(
             input: SimpleNotificationModel.SetEndpointAttributesInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4730,7 +4730,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setPlatformApplicationAttributes(
             input: SimpleNotificationModel.SetPlatformApplicationAttributesInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4770,7 +4770,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setSMSAttributes(
             input: SimpleNotificationModel.SetSMSAttributesInput) async throws -> SimpleNotificationModel.SetSMSAttributesResponseForSetSMSAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4808,7 +4808,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setSubscriptionAttributes(
             input: SimpleNotificationModel.SetSubscriptionAttributesInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4846,7 +4846,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func setTopicAttributes(
             input: SimpleNotificationModel.SetTopicAttributesInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4886,7 +4886,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func subscribe(
             input: SimpleNotificationModel.SubscribeInput) async throws -> SimpleNotificationModel.SubscribeResponseForSubscribe {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4926,7 +4926,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func tagResource(
             input: SimpleNotificationModel.TagResourceRequest) async throws -> SimpleNotificationModel.TagResourceResponseForTagResource {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4964,7 +4964,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func unsubscribe(
             input: SimpleNotificationModel.UnsubscribeInput) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5004,7 +5004,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func untagResource(
             input: SimpleNotificationModel.UntagResourceRequest) async throws -> SimpleNotificationModel.UntagResourceResponseForUntagResource {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5044,7 +5044,7 @@ public struct AWSSimpleNotificationClient<InvocationReportingType: HTTPClientCor
      */
     public func verifySMSSandboxPhoneNumber(
             input: SimpleNotificationModel.VerifySMSSandboxPhoneNumberInput) async throws -> SimpleNotificationModel.VerifySMSSandboxPhoneNumberResultForVerifySMSSandboxPhoneNumber {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

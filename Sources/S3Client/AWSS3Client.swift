@@ -6871,7 +6871,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func abortMultipartUpload(
             input: S3Model.AbortMultipartUploadRequest) async throws -> S3Model.AbortMultipartUploadOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6907,7 +6907,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func completeMultipartUpload(
             input: S3Model.CompleteMultipartUploadRequest) async throws -> S3Model.CompleteMultipartUploadOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6944,7 +6944,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func copyObject(
             input: S3Model.CopyObjectRequest) async throws -> S3Model.CopyObjectOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6981,7 +6981,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func createBucket(
             input: S3Model.CreateBucketRequest) async throws -> S3Model.CreateBucketOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7017,7 +7017,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func createMultipartUpload(
             input: S3Model.CreateMultipartUploadRequest) async throws -> S3Model.CreateMultipartUploadOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7051,7 +7051,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucket(
             input: S3Model.DeleteBucketRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7085,7 +7085,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketAnalyticsConfiguration(
             input: S3Model.DeleteBucketAnalyticsConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7119,7 +7119,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketCors(
             input: S3Model.DeleteBucketCorsRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7153,7 +7153,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketEncryption(
             input: S3Model.DeleteBucketEncryptionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7187,7 +7187,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketIntelligentTieringConfiguration(
             input: S3Model.DeleteBucketIntelligentTieringConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7221,7 +7221,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketInventoryConfiguration(
             input: S3Model.DeleteBucketInventoryConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7255,7 +7255,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketLifecycle(
             input: S3Model.DeleteBucketLifecycleRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7289,7 +7289,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketMetricsConfiguration(
             input: S3Model.DeleteBucketMetricsConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7323,7 +7323,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketOwnershipControls(
             input: S3Model.DeleteBucketOwnershipControlsRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7357,7 +7357,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketPolicy(
             input: S3Model.DeleteBucketPolicyRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7391,7 +7391,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketReplication(
             input: S3Model.DeleteBucketReplicationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7425,7 +7425,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketTagging(
             input: S3Model.DeleteBucketTaggingRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7459,7 +7459,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteBucketWebsite(
             input: S3Model.DeleteBucketWebsiteRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7495,7 +7495,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteObject(
             input: S3Model.DeleteObjectRequest) async throws -> S3Model.DeleteObjectOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7531,7 +7531,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteObjectTagging(
             input: S3Model.DeleteObjectTaggingRequest) async throws -> S3Model.DeleteObjectTaggingOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7567,7 +7567,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deleteObjects(
             input: S3Model.DeleteObjectsRequest) async throws -> S3Model.DeleteObjectsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7601,7 +7601,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func deletePublicAccessBlock(
             input: S3Model.DeletePublicAccessBlockRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7637,7 +7637,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketAccelerateConfiguration(
             input: S3Model.GetBucketAccelerateConfigurationRequest) async throws -> S3Model.GetBucketAccelerateConfigurationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7673,7 +7673,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketAcl(
             input: S3Model.GetBucketAclRequest) async throws -> S3Model.GetBucketAclOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7709,7 +7709,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketAnalyticsConfiguration(
             input: S3Model.GetBucketAnalyticsConfigurationRequest) async throws -> S3Model.GetBucketAnalyticsConfigurationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7745,7 +7745,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketCors(
             input: S3Model.GetBucketCorsRequest) async throws -> S3Model.GetBucketCorsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7781,7 +7781,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketEncryption(
             input: S3Model.GetBucketEncryptionRequest) async throws -> S3Model.GetBucketEncryptionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7817,7 +7817,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketIntelligentTieringConfiguration(
             input: S3Model.GetBucketIntelligentTieringConfigurationRequest) async throws -> S3Model.GetBucketIntelligentTieringConfigurationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7853,7 +7853,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketInventoryConfiguration(
             input: S3Model.GetBucketInventoryConfigurationRequest) async throws -> S3Model.GetBucketInventoryConfigurationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7889,7 +7889,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketLifecycle(
             input: S3Model.GetBucketLifecycleRequest) async throws -> S3Model.GetBucketLifecycleOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7925,7 +7925,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketLifecycleConfiguration(
             input: S3Model.GetBucketLifecycleConfigurationRequest) async throws -> S3Model.GetBucketLifecycleConfigurationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7961,7 +7961,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketLocation(
             input: S3Model.GetBucketLocationRequest) async throws -> S3Model.GetBucketLocationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -7997,7 +7997,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketLogging(
             input: S3Model.GetBucketLoggingRequest) async throws -> S3Model.GetBucketLoggingOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8033,7 +8033,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketMetricsConfiguration(
             input: S3Model.GetBucketMetricsConfigurationRequest) async throws -> S3Model.GetBucketMetricsConfigurationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8069,7 +8069,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketNotification(
             input: S3Model.GetBucketNotificationConfigurationRequest) async throws -> S3Model.NotificationConfigurationDeprecated {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8105,7 +8105,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketNotificationConfiguration(
             input: S3Model.GetBucketNotificationConfigurationRequest) async throws -> S3Model.NotificationConfiguration {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8141,7 +8141,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketOwnershipControls(
             input: S3Model.GetBucketOwnershipControlsRequest) async throws -> S3Model.GetBucketOwnershipControlsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8177,7 +8177,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketPolicy(
             input: S3Model.GetBucketPolicyRequest) async throws -> S3Model.GetBucketPolicyOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8213,7 +8213,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketPolicyStatus(
             input: S3Model.GetBucketPolicyStatusRequest) async throws -> S3Model.GetBucketPolicyStatusOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8249,7 +8249,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketReplication(
             input: S3Model.GetBucketReplicationRequest) async throws -> S3Model.GetBucketReplicationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8285,7 +8285,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketRequestPayment(
             input: S3Model.GetBucketRequestPaymentRequest) async throws -> S3Model.GetBucketRequestPaymentOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8321,7 +8321,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketTagging(
             input: S3Model.GetBucketTaggingRequest) async throws -> S3Model.GetBucketTaggingOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8357,7 +8357,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketVersioning(
             input: S3Model.GetBucketVersioningRequest) async throws -> S3Model.GetBucketVersioningOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8393,7 +8393,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getBucketWebsite(
             input: S3Model.GetBucketWebsiteRequest) async throws -> S3Model.GetBucketWebsiteOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8430,7 +8430,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObject(
             input: S3Model.GetObjectRequest) async throws -> S3Model.GetObjectOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8467,7 +8467,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectAcl(
             input: S3Model.GetObjectAclRequest) async throws -> S3Model.GetObjectAclOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8504,7 +8504,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectAttributes(
             input: S3Model.GetObjectAttributesRequest) async throws -> S3Model.GetObjectAttributesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8540,7 +8540,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectLegalHold(
             input: S3Model.GetObjectLegalHoldRequest) async throws -> S3Model.GetObjectLegalHoldOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8576,7 +8576,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectLockConfiguration(
             input: S3Model.GetObjectLockConfigurationRequest) async throws -> S3Model.GetObjectLockConfigurationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8612,7 +8612,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectRetention(
             input: S3Model.GetObjectRetentionRequest) async throws -> S3Model.GetObjectRetentionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8648,7 +8648,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectTagging(
             input: S3Model.GetObjectTaggingRequest) async throws -> S3Model.GetObjectTaggingOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8684,7 +8684,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getObjectTorrent(
             input: S3Model.GetObjectTorrentRequest) async throws -> S3Model.GetObjectTorrentOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8720,7 +8720,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func getPublicAccessBlock(
             input: S3Model.GetPublicAccessBlockRequest) async throws -> S3Model.GetPublicAccessBlockOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8755,7 +8755,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func headBucket(
             input: S3Model.HeadBucketRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8792,7 +8792,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func headObject(
             input: S3Model.HeadObjectRequest) async throws -> S3Model.HeadObjectOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8828,7 +8828,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listBucketAnalyticsConfigurations(
             input: S3Model.ListBucketAnalyticsConfigurationsRequest) async throws -> S3Model.ListBucketAnalyticsConfigurationsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8864,7 +8864,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listBucketIntelligentTieringConfigurations(
             input: S3Model.ListBucketIntelligentTieringConfigurationsRequest) async throws -> S3Model.ListBucketIntelligentTieringConfigurationsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8900,7 +8900,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listBucketInventoryConfigurations(
             input: S3Model.ListBucketInventoryConfigurationsRequest) async throws -> S3Model.ListBucketInventoryConfigurationsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8936,7 +8936,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listBucketMetricsConfigurations(
             input: S3Model.ListBucketMetricsConfigurationsRequest) async throws -> S3Model.ListBucketMetricsConfigurationsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -8968,7 +8968,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
          Will be validated before being returned to caller.
      */
     public func listBuckets() async throws -> S3Model.ListBucketsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9004,7 +9004,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listMultipartUploads(
             input: S3Model.ListMultipartUploadsRequest) async throws -> S3Model.ListMultipartUploadsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9040,7 +9040,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listObjectVersions(
             input: S3Model.ListObjectVersionsRequest) async throws -> S3Model.ListObjectVersionsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9077,7 +9077,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listObjects(
             input: S3Model.ListObjectsRequest) async throws -> S3Model.ListObjectsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9114,7 +9114,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listObjectsV2(
             input: S3Model.ListObjectsV2Request) async throws -> S3Model.ListObjectsV2Output {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9150,7 +9150,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func listParts(
             input: S3Model.ListPartsRequest) async throws -> S3Model.ListPartsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9184,7 +9184,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketAccelerateConfiguration(
             input: S3Model.PutBucketAccelerateConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9218,7 +9218,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketAcl(
             input: S3Model.PutBucketAclRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9252,7 +9252,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketAnalyticsConfiguration(
             input: S3Model.PutBucketAnalyticsConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9286,7 +9286,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketCors(
             input: S3Model.PutBucketCorsRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9320,7 +9320,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketEncryption(
             input: S3Model.PutBucketEncryptionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9354,7 +9354,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketIntelligentTieringConfiguration(
             input: S3Model.PutBucketIntelligentTieringConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9388,7 +9388,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketInventoryConfiguration(
             input: S3Model.PutBucketInventoryConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9422,7 +9422,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketLifecycle(
             input: S3Model.PutBucketLifecycleRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9456,7 +9456,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketLifecycleConfiguration(
             input: S3Model.PutBucketLifecycleConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9490,7 +9490,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketLogging(
             input: S3Model.PutBucketLoggingRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9524,7 +9524,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketMetricsConfiguration(
             input: S3Model.PutBucketMetricsConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9558,7 +9558,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketNotification(
             input: S3Model.PutBucketNotificationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9592,7 +9592,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketNotificationConfiguration(
             input: S3Model.PutBucketNotificationConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9626,7 +9626,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketOwnershipControls(
             input: S3Model.PutBucketOwnershipControlsRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9660,7 +9660,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketPolicy(
             input: S3Model.PutBucketPolicyRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9694,7 +9694,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketReplication(
             input: S3Model.PutBucketReplicationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9728,7 +9728,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketRequestPayment(
             input: S3Model.PutBucketRequestPaymentRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9762,7 +9762,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketTagging(
             input: S3Model.PutBucketTaggingRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9796,7 +9796,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketVersioning(
             input: S3Model.PutBucketVersioningRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9830,7 +9830,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putBucketWebsite(
             input: S3Model.PutBucketWebsiteRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9866,7 +9866,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObject(
             input: S3Model.PutObjectRequest) async throws -> S3Model.PutObjectOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9903,7 +9903,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectAcl(
             input: S3Model.PutObjectAclRequest) async throws -> S3Model.PutObjectAclOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9939,7 +9939,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectLegalHold(
             input: S3Model.PutObjectLegalHoldRequest) async throws -> S3Model.PutObjectLegalHoldOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -9975,7 +9975,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectLockConfiguration(
             input: S3Model.PutObjectLockConfigurationRequest) async throws -> S3Model.PutObjectLockConfigurationOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10011,7 +10011,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectRetention(
             input: S3Model.PutObjectRetentionRequest) async throws -> S3Model.PutObjectRetentionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10047,7 +10047,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putObjectTagging(
             input: S3Model.PutObjectTaggingRequest) async throws -> S3Model.PutObjectTaggingOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10081,7 +10081,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func putPublicAccessBlock(
             input: S3Model.PutPublicAccessBlockRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10118,7 +10118,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func restoreObject(
             input: S3Model.RestoreObjectRequest) async throws -> S3Model.RestoreObjectOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10154,7 +10154,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func selectObjectContent(
             input: S3Model.SelectObjectContentRequest) async throws -> S3Model.SelectObjectContentOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10190,7 +10190,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func uploadPart(
             input: S3Model.UploadPartRequest) async throws -> S3Model.UploadPartOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10226,7 +10226,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func uploadPartCopy(
             input: S3Model.UploadPartCopyRequest) async throws -> S3Model.UploadPartCopyOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -10260,7 +10260,7 @@ public struct AWSS3Client<InvocationReportingType: HTTPClientCoreInvocationRepor
      */
     public func writeGetObjectResponse(
             input: S3Model.WriteGetObjectResponseRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

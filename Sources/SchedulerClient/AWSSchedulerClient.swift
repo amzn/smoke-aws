@@ -1002,7 +1002,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createSchedule(
             input: SchedulerModel.CreateScheduleInput) async throws -> SchedulerModel.CreateScheduleOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1038,7 +1038,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createScheduleGroup(
             input: SchedulerModel.CreateScheduleGroupInput) async throws -> SchedulerModel.CreateScheduleGroupOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1074,7 +1074,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteSchedule(
             input: SchedulerModel.DeleteScheduleInput) async throws -> SchedulerModel.DeleteScheduleOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1110,7 +1110,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteScheduleGroup(
             input: SchedulerModel.DeleteScheduleGroupInput) async throws -> SchedulerModel.DeleteScheduleGroupOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1146,7 +1146,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getSchedule(
             input: SchedulerModel.GetScheduleInput) async throws -> SchedulerModel.GetScheduleOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1182,7 +1182,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getScheduleGroup(
             input: SchedulerModel.GetScheduleGroupInput) async throws -> SchedulerModel.GetScheduleGroupOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1218,7 +1218,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listScheduleGroups(
             input: SchedulerModel.ListScheduleGroupsInput) async throws -> SchedulerModel.ListScheduleGroupsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1254,7 +1254,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listSchedules(
             input: SchedulerModel.ListSchedulesInput) async throws -> SchedulerModel.ListSchedulesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1290,7 +1290,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listTagsForResource(
             input: SchedulerModel.ListTagsForResourceInput) async throws -> SchedulerModel.ListTagsForResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1326,7 +1326,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func tagResource(
             input: SchedulerModel.TagResourceInput) async throws -> SchedulerModel.TagResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1362,7 +1362,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func untagResource(
             input: SchedulerModel.UntagResourceInput) async throws -> SchedulerModel.UntagResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1398,7 +1398,7 @@ public struct AWSSchedulerClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func updateSchedule(
             input: SchedulerModel.UpdateScheduleInput) async throws -> SchedulerModel.UpdateScheduleOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

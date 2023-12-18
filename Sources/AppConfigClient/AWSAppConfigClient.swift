@@ -3158,7 +3158,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createApplication(
             input: AppConfigModel.CreateApplicationRequest) async throws -> AppConfigModel.Application {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3194,7 +3194,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createConfigurationProfile(
             input: AppConfigModel.CreateConfigurationProfileRequest) async throws -> AppConfigModel.ConfigurationProfile {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3230,7 +3230,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createDeploymentStrategy(
             input: AppConfigModel.CreateDeploymentStrategyRequest) async throws -> AppConfigModel.DeploymentStrategy {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3266,7 +3266,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createEnvironment(
             input: AppConfigModel.CreateEnvironmentRequest) async throws -> AppConfigModel.Environment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3302,7 +3302,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createExtension(
             input: AppConfigModel.CreateExtensionRequest) async throws -> AppConfigModel.Extension {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3338,7 +3338,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createExtensionAssociation(
             input: AppConfigModel.CreateExtensionAssociationRequest) async throws -> AppConfigModel.ExtensionAssociation {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3374,7 +3374,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func createHostedConfigurationVersion(
             input: AppConfigModel.CreateHostedConfigurationVersionRequest) async throws -> AppConfigModel.HostedConfigurationVersion {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3408,7 +3408,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteApplication(
             input: AppConfigModel.DeleteApplicationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3442,7 +3442,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteConfigurationProfile(
             input: AppConfigModel.DeleteConfigurationProfileRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3476,7 +3476,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteDeploymentStrategy(
             input: AppConfigModel.DeleteDeploymentStrategyRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3510,7 +3510,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteEnvironment(
             input: AppConfigModel.DeleteEnvironmentRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3544,7 +3544,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteExtension(
             input: AppConfigModel.DeleteExtensionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3578,7 +3578,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteExtensionAssociation(
             input: AppConfigModel.DeleteExtensionAssociationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3612,7 +3612,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func deleteHostedConfigurationVersion(
             input: AppConfigModel.DeleteHostedConfigurationVersionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3648,7 +3648,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getApplication(
             input: AppConfigModel.GetApplicationRequest) async throws -> AppConfigModel.Application {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3684,7 +3684,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getConfiguration(
             input: AppConfigModel.GetConfigurationRequest) async throws -> AppConfigModel.Configuration {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3720,7 +3720,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getConfigurationProfile(
             input: AppConfigModel.GetConfigurationProfileRequest) async throws -> AppConfigModel.ConfigurationProfile {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3756,7 +3756,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getDeployment(
             input: AppConfigModel.GetDeploymentRequest) async throws -> AppConfigModel.Deployment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3792,7 +3792,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getDeploymentStrategy(
             input: AppConfigModel.GetDeploymentStrategyRequest) async throws -> AppConfigModel.DeploymentStrategy {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3828,7 +3828,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getEnvironment(
             input: AppConfigModel.GetEnvironmentRequest) async throws -> AppConfigModel.Environment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3864,7 +3864,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getExtension(
             input: AppConfigModel.GetExtensionRequest) async throws -> AppConfigModel.Extension {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3900,7 +3900,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getExtensionAssociation(
             input: AppConfigModel.GetExtensionAssociationRequest) async throws -> AppConfigModel.ExtensionAssociation {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3936,7 +3936,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func getHostedConfigurationVersion(
             input: AppConfigModel.GetHostedConfigurationVersionRequest) async throws -> AppConfigModel.HostedConfigurationVersion {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3972,7 +3972,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listApplications(
             input: AppConfigModel.ListApplicationsRequest) async throws -> AppConfigModel.Applications {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4008,7 +4008,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listConfigurationProfiles(
             input: AppConfigModel.ListConfigurationProfilesRequest) async throws -> AppConfigModel.ConfigurationProfiles {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4044,7 +4044,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listDeploymentStrategies(
             input: AppConfigModel.ListDeploymentStrategiesRequest) async throws -> AppConfigModel.DeploymentStrategies {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4080,7 +4080,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listDeployments(
             input: AppConfigModel.ListDeploymentsRequest) async throws -> AppConfigModel.Deployments {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4116,7 +4116,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listEnvironments(
             input: AppConfigModel.ListEnvironmentsRequest) async throws -> AppConfigModel.Environments {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4152,7 +4152,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listExtensionAssociations(
             input: AppConfigModel.ListExtensionAssociationsRequest) async throws -> AppConfigModel.ExtensionAssociations {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4188,7 +4188,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listExtensions(
             input: AppConfigModel.ListExtensionsRequest) async throws -> AppConfigModel.Extensions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4224,7 +4224,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listHostedConfigurationVersions(
             input: AppConfigModel.ListHostedConfigurationVersionsRequest) async throws -> AppConfigModel.HostedConfigurationVersions {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4260,7 +4260,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func listTagsForResource(
             input: AppConfigModel.ListTagsForResourceRequest) async throws -> AppConfigModel.ResourceTags {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4296,7 +4296,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func startDeployment(
             input: AppConfigModel.StartDeploymentRequest) async throws -> AppConfigModel.Deployment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4332,7 +4332,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func stopDeployment(
             input: AppConfigModel.StopDeploymentRequest) async throws -> AppConfigModel.Deployment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4366,7 +4366,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func tagResource(
             input: AppConfigModel.TagResourceRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4400,7 +4400,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func untagResource(
             input: AppConfigModel.UntagResourceRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4436,7 +4436,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func updateApplication(
             input: AppConfigModel.UpdateApplicationRequest) async throws -> AppConfigModel.Application {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4472,7 +4472,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func updateConfigurationProfile(
             input: AppConfigModel.UpdateConfigurationProfileRequest) async throws -> AppConfigModel.ConfigurationProfile {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4508,7 +4508,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func updateDeploymentStrategy(
             input: AppConfigModel.UpdateDeploymentStrategyRequest) async throws -> AppConfigModel.DeploymentStrategy {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4544,7 +4544,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func updateEnvironment(
             input: AppConfigModel.UpdateEnvironmentRequest) async throws -> AppConfigModel.Environment {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4580,7 +4580,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func updateExtension(
             input: AppConfigModel.UpdateExtensionRequest) async throws -> AppConfigModel.Extension {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4616,7 +4616,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func updateExtensionAssociation(
             input: AppConfigModel.UpdateExtensionAssociationRequest) async throws -> AppConfigModel.ExtensionAssociation {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4650,7 +4650,7 @@ public struct AWSAppConfigClient<InvocationReportingType: HTTPClientCoreInvocati
      */
     public func validateConfiguration(
             input: AppConfigModel.ValidateConfigurationRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

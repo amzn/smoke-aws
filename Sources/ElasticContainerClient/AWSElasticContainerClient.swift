@@ -4100,7 +4100,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func createCapacityProvider(
             input: ElasticContainerModel.CreateCapacityProviderRequest) async throws -> ElasticContainerModel.CreateCapacityProviderResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4136,7 +4136,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func createCluster(
             input: ElasticContainerModel.CreateClusterRequest) async throws -> ElasticContainerModel.CreateClusterResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4172,7 +4172,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func createService(
             input: ElasticContainerModel.CreateServiceRequest) async throws -> ElasticContainerModel.CreateServiceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4208,7 +4208,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func createTaskSet(
             input: ElasticContainerModel.CreateTaskSetRequest) async throws -> ElasticContainerModel.CreateTaskSetResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4244,7 +4244,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deleteAccountSetting(
             input: ElasticContainerModel.DeleteAccountSettingRequest) async throws -> ElasticContainerModel.DeleteAccountSettingResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4280,7 +4280,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deleteAttributes(
             input: ElasticContainerModel.DeleteAttributesRequest) async throws -> ElasticContainerModel.DeleteAttributesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4316,7 +4316,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deleteCapacityProvider(
             input: ElasticContainerModel.DeleteCapacityProviderRequest) async throws -> ElasticContainerModel.DeleteCapacityProviderResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4352,7 +4352,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deleteCluster(
             input: ElasticContainerModel.DeleteClusterRequest) async throws -> ElasticContainerModel.DeleteClusterResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4388,7 +4388,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deleteService(
             input: ElasticContainerModel.DeleteServiceRequest) async throws -> ElasticContainerModel.DeleteServiceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4424,7 +4424,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deleteTaskDefinitions(
             input: ElasticContainerModel.DeleteTaskDefinitionsRequest) async throws -> ElasticContainerModel.DeleteTaskDefinitionsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4460,7 +4460,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deleteTaskSet(
             input: ElasticContainerModel.DeleteTaskSetRequest) async throws -> ElasticContainerModel.DeleteTaskSetResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4496,7 +4496,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deregisterContainerInstance(
             input: ElasticContainerModel.DeregisterContainerInstanceRequest) async throws -> ElasticContainerModel.DeregisterContainerInstanceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4532,7 +4532,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func deregisterTaskDefinition(
             input: ElasticContainerModel.DeregisterTaskDefinitionRequest) async throws -> ElasticContainerModel.DeregisterTaskDefinitionResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4568,7 +4568,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func describeCapacityProviders(
             input: ElasticContainerModel.DescribeCapacityProvidersRequest) async throws -> ElasticContainerModel.DescribeCapacityProvidersResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4604,7 +4604,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func describeClusters(
             input: ElasticContainerModel.DescribeClustersRequest) async throws -> ElasticContainerModel.DescribeClustersResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4640,7 +4640,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func describeContainerInstances(
             input: ElasticContainerModel.DescribeContainerInstancesRequest) async throws -> ElasticContainerModel.DescribeContainerInstancesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4676,7 +4676,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func describeServices(
             input: ElasticContainerModel.DescribeServicesRequest) async throws -> ElasticContainerModel.DescribeServicesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4712,7 +4712,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func describeTaskDefinition(
             input: ElasticContainerModel.DescribeTaskDefinitionRequest) async throws -> ElasticContainerModel.DescribeTaskDefinitionResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4748,7 +4748,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func describeTaskSets(
             input: ElasticContainerModel.DescribeTaskSetsRequest) async throws -> ElasticContainerModel.DescribeTaskSetsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4784,7 +4784,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func describeTasks(
             input: ElasticContainerModel.DescribeTasksRequest) async throws -> ElasticContainerModel.DescribeTasksResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4820,7 +4820,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func discoverPollEndpoint(
             input: ElasticContainerModel.DiscoverPollEndpointRequest) async throws -> ElasticContainerModel.DiscoverPollEndpointResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4856,7 +4856,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func executeCommand(
             input: ElasticContainerModel.ExecuteCommandRequest) async throws -> ElasticContainerModel.ExecuteCommandResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4892,7 +4892,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func getTaskProtection(
             input: ElasticContainerModel.GetTaskProtectionRequest) async throws -> ElasticContainerModel.GetTaskProtectionResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4928,7 +4928,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listAccountSettings(
             input: ElasticContainerModel.ListAccountSettingsRequest) async throws -> ElasticContainerModel.ListAccountSettingsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -4964,7 +4964,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listAttributes(
             input: ElasticContainerModel.ListAttributesRequest) async throws -> ElasticContainerModel.ListAttributesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5000,7 +5000,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listClusters(
             input: ElasticContainerModel.ListClustersRequest) async throws -> ElasticContainerModel.ListClustersResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5036,7 +5036,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listContainerInstances(
             input: ElasticContainerModel.ListContainerInstancesRequest) async throws -> ElasticContainerModel.ListContainerInstancesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5072,7 +5072,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listServices(
             input: ElasticContainerModel.ListServicesRequest) async throws -> ElasticContainerModel.ListServicesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5108,7 +5108,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listServicesByNamespace(
             input: ElasticContainerModel.ListServicesByNamespaceRequest) async throws -> ElasticContainerModel.ListServicesByNamespaceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5144,7 +5144,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listTagsForResource(
             input: ElasticContainerModel.ListTagsForResourceRequest) async throws -> ElasticContainerModel.ListTagsForResourceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5180,7 +5180,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listTaskDefinitionFamilies(
             input: ElasticContainerModel.ListTaskDefinitionFamiliesRequest) async throws -> ElasticContainerModel.ListTaskDefinitionFamiliesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5216,7 +5216,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listTaskDefinitions(
             input: ElasticContainerModel.ListTaskDefinitionsRequest) async throws -> ElasticContainerModel.ListTaskDefinitionsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5252,7 +5252,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func listTasks(
             input: ElasticContainerModel.ListTasksRequest) async throws -> ElasticContainerModel.ListTasksResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5288,7 +5288,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func putAccountSetting(
             input: ElasticContainerModel.PutAccountSettingRequest) async throws -> ElasticContainerModel.PutAccountSettingResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5324,7 +5324,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func putAccountSettingDefault(
             input: ElasticContainerModel.PutAccountSettingDefaultRequest) async throws -> ElasticContainerModel.PutAccountSettingDefaultResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5360,7 +5360,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func putAttributes(
             input: ElasticContainerModel.PutAttributesRequest) async throws -> ElasticContainerModel.PutAttributesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5396,7 +5396,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func putClusterCapacityProviders(
             input: ElasticContainerModel.PutClusterCapacityProvidersRequest) async throws -> ElasticContainerModel.PutClusterCapacityProvidersResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5432,7 +5432,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func registerContainerInstance(
             input: ElasticContainerModel.RegisterContainerInstanceRequest) async throws -> ElasticContainerModel.RegisterContainerInstanceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5468,7 +5468,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func registerTaskDefinition(
             input: ElasticContainerModel.RegisterTaskDefinitionRequest) async throws -> ElasticContainerModel.RegisterTaskDefinitionResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5504,7 +5504,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func runTask(
             input: ElasticContainerModel.RunTaskRequest) async throws -> ElasticContainerModel.RunTaskResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5540,7 +5540,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func startTask(
             input: ElasticContainerModel.StartTaskRequest) async throws -> ElasticContainerModel.StartTaskResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5576,7 +5576,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func stopTask(
             input: ElasticContainerModel.StopTaskRequest) async throws -> ElasticContainerModel.StopTaskResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5612,7 +5612,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func submitAttachmentStateChanges(
             input: ElasticContainerModel.SubmitAttachmentStateChangesRequest) async throws -> ElasticContainerModel.SubmitAttachmentStateChangesResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5648,7 +5648,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func submitContainerStateChange(
             input: ElasticContainerModel.SubmitContainerStateChangeRequest) async throws -> ElasticContainerModel.SubmitContainerStateChangeResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5684,7 +5684,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func submitTaskStateChange(
             input: ElasticContainerModel.SubmitTaskStateChangeRequest) async throws -> ElasticContainerModel.SubmitTaskStateChangeResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5720,7 +5720,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func tagResource(
             input: ElasticContainerModel.TagResourceRequest) async throws -> ElasticContainerModel.TagResourceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5756,7 +5756,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func untagResource(
             input: ElasticContainerModel.UntagResourceRequest) async throws -> ElasticContainerModel.UntagResourceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5792,7 +5792,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateCapacityProvider(
             input: ElasticContainerModel.UpdateCapacityProviderRequest) async throws -> ElasticContainerModel.UpdateCapacityProviderResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5828,7 +5828,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateCluster(
             input: ElasticContainerModel.UpdateClusterRequest) async throws -> ElasticContainerModel.UpdateClusterResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5864,7 +5864,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateClusterSettings(
             input: ElasticContainerModel.UpdateClusterSettingsRequest) async throws -> ElasticContainerModel.UpdateClusterSettingsResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5900,7 +5900,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateContainerAgent(
             input: ElasticContainerModel.UpdateContainerAgentRequest) async throws -> ElasticContainerModel.UpdateContainerAgentResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5936,7 +5936,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateContainerInstancesState(
             input: ElasticContainerModel.UpdateContainerInstancesStateRequest) async throws -> ElasticContainerModel.UpdateContainerInstancesStateResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -5972,7 +5972,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateService(
             input: ElasticContainerModel.UpdateServiceRequest) async throws -> ElasticContainerModel.UpdateServiceResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6008,7 +6008,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateServicePrimaryTaskSet(
             input: ElasticContainerModel.UpdateServicePrimaryTaskSetRequest) async throws -> ElasticContainerModel.UpdateServicePrimaryTaskSetResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6044,7 +6044,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateTaskProtection(
             input: ElasticContainerModel.UpdateTaskProtectionRequest) async throws -> ElasticContainerModel.UpdateTaskProtectionResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -6080,7 +6080,7 @@ public struct AWSElasticContainerClient<InvocationReportingType: HTTPClientCoreI
      */
     public func updateTaskSet(
             input: ElasticContainerModel.UpdateTaskSetRequest) async throws -> ElasticContainerModel.UpdateTaskSetResponse {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

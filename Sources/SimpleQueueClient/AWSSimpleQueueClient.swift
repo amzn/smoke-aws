@@ -1953,7 +1953,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func addPermission(
             input: SimpleQueueModel.AddPermissionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -1993,7 +1993,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func cancelMessageMoveTask(
             input: SimpleQueueModel.CancelMessageMoveTaskRequest) async throws -> SimpleQueueModel.CancelMessageMoveTaskResultForCancelMessageMoveTask {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2031,7 +2031,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func changeMessageVisibility(
             input: SimpleQueueModel.ChangeMessageVisibilityRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2071,7 +2071,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func changeMessageVisibilityBatch(
             input: SimpleQueueModel.ChangeMessageVisibilityBatchRequest) async throws -> SimpleQueueModel.ChangeMessageVisibilityBatchResultForChangeMessageVisibilityBatch {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2111,7 +2111,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func createQueue(
             input: SimpleQueueModel.CreateQueueRequest) async throws -> SimpleQueueModel.CreateQueueResultForCreateQueue {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2149,7 +2149,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func deleteMessage(
             input: SimpleQueueModel.DeleteMessageRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2189,7 +2189,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func deleteMessageBatch(
             input: SimpleQueueModel.DeleteMessageBatchRequest) async throws -> SimpleQueueModel.DeleteMessageBatchResultForDeleteMessageBatch {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2226,7 +2226,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func deleteQueue(
             input: SimpleQueueModel.DeleteQueueRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2266,7 +2266,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func getQueueAttributes(
             input: SimpleQueueModel.GetQueueAttributesRequest) async throws -> SimpleQueueModel.GetQueueAttributesResultForGetQueueAttributes {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2306,7 +2306,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func getQueueUrl(
             input: SimpleQueueModel.GetQueueUrlRequest) async throws -> SimpleQueueModel.GetQueueUrlResultForGetQueueUrl {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2346,7 +2346,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func listDeadLetterSourceQueues(
             input: SimpleQueueModel.ListDeadLetterSourceQueuesRequest) async throws -> SimpleQueueModel.ListDeadLetterSourceQueuesResultForListDeadLetterSourceQueues {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2386,7 +2386,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func listMessageMoveTasks(
             input: SimpleQueueModel.ListMessageMoveTasksRequest) async throws -> SimpleQueueModel.ListMessageMoveTasksResultForListMessageMoveTasks {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2425,7 +2425,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func listQueueTags(
             input: SimpleQueueModel.ListQueueTagsRequest) async throws -> SimpleQueueModel.ListQueueTagsResultForListQueueTags {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2464,7 +2464,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func listQueues(
             input: SimpleQueueModel.ListQueuesRequest) async throws -> SimpleQueueModel.ListQueuesResultForListQueues {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2502,7 +2502,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func purgeQueue(
             input: SimpleQueueModel.PurgeQueueRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2542,7 +2542,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func receiveMessage(
             input: SimpleQueueModel.ReceiveMessageRequest) async throws -> SimpleQueueModel.ReceiveMessageResultForReceiveMessage {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2579,7 +2579,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func removePermission(
             input: SimpleQueueModel.RemovePermissionRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2619,7 +2619,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func sendMessage(
             input: SimpleQueueModel.SendMessageRequest) async throws -> SimpleQueueModel.SendMessageResultForSendMessage {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2659,7 +2659,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func sendMessageBatch(
             input: SimpleQueueModel.SendMessageBatchRequest) async throws -> SimpleQueueModel.SendMessageBatchResultForSendMessageBatch {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2697,7 +2697,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func setQueueAttributes(
             input: SimpleQueueModel.SetQueueAttributesRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2737,7 +2737,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func startMessageMoveTask(
             input: SimpleQueueModel.StartMessageMoveTaskRequest) async throws -> SimpleQueueModel.StartMessageMoveTaskResultForStartMessageMoveTask {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2774,7 +2774,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func tagQueue(
             input: SimpleQueueModel.TagQueueRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2811,7 +2811,7 @@ public struct AWSSimpleQueueClient<InvocationReportingType: HTTPClientCoreInvoca
      */
     public func untagQueue(
             input: SimpleQueueModel.UntagQueueRequest) async throws {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

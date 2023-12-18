@@ -2560,7 +2560,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func createActivity(
             input: StepFunctionsModel.CreateActivityInput) async throws -> StepFunctionsModel.CreateActivityOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2596,7 +2596,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func createStateMachine(
             input: StepFunctionsModel.CreateStateMachineInput) async throws -> StepFunctionsModel.CreateStateMachineOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2632,7 +2632,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func createStateMachineAlias(
             input: StepFunctionsModel.CreateStateMachineAliasInput) async throws -> StepFunctionsModel.CreateStateMachineAliasOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2668,7 +2668,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func deleteActivity(
             input: StepFunctionsModel.DeleteActivityInput) async throws -> StepFunctionsModel.DeleteActivityOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2704,7 +2704,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func deleteStateMachine(
             input: StepFunctionsModel.DeleteStateMachineInput) async throws -> StepFunctionsModel.DeleteStateMachineOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2740,7 +2740,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func deleteStateMachineAlias(
             input: StepFunctionsModel.DeleteStateMachineAliasInput) async throws -> StepFunctionsModel.DeleteStateMachineAliasOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2776,7 +2776,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func deleteStateMachineVersion(
             input: StepFunctionsModel.DeleteStateMachineVersionInput) async throws -> StepFunctionsModel.DeleteStateMachineVersionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2812,7 +2812,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeActivity(
             input: StepFunctionsModel.DescribeActivityInput) async throws -> StepFunctionsModel.DescribeActivityOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2848,7 +2848,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeExecution(
             input: StepFunctionsModel.DescribeExecutionInput) async throws -> StepFunctionsModel.DescribeExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2884,7 +2884,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeMapRun(
             input: StepFunctionsModel.DescribeMapRunInput) async throws -> StepFunctionsModel.DescribeMapRunOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2920,7 +2920,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeStateMachine(
             input: StepFunctionsModel.DescribeStateMachineInput) async throws -> StepFunctionsModel.DescribeStateMachineOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2956,7 +2956,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeStateMachineAlias(
             input: StepFunctionsModel.DescribeStateMachineAliasInput) async throws -> StepFunctionsModel.DescribeStateMachineAliasOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -2992,7 +2992,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func describeStateMachineForExecution(
             input: StepFunctionsModel.DescribeStateMachineForExecutionInput) async throws -> StepFunctionsModel.DescribeStateMachineForExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3028,7 +3028,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getActivityTask(
             input: StepFunctionsModel.GetActivityTaskInput) async throws -> StepFunctionsModel.GetActivityTaskOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3064,7 +3064,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func getExecutionHistory(
             input: StepFunctionsModel.GetExecutionHistoryInput) async throws -> StepFunctionsModel.GetExecutionHistoryOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3100,7 +3100,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listActivities(
             input: StepFunctionsModel.ListActivitiesInput) async throws -> StepFunctionsModel.ListActivitiesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3136,7 +3136,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listExecutions(
             input: StepFunctionsModel.ListExecutionsInput) async throws -> StepFunctionsModel.ListExecutionsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3172,7 +3172,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listMapRuns(
             input: StepFunctionsModel.ListMapRunsInput) async throws -> StepFunctionsModel.ListMapRunsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3208,7 +3208,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listStateMachineAliases(
             input: StepFunctionsModel.ListStateMachineAliasesInput) async throws -> StepFunctionsModel.ListStateMachineAliasesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3244,7 +3244,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listStateMachineVersions(
             input: StepFunctionsModel.ListStateMachineVersionsInput) async throws -> StepFunctionsModel.ListStateMachineVersionsOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3280,7 +3280,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listStateMachines(
             input: StepFunctionsModel.ListStateMachinesInput) async throws -> StepFunctionsModel.ListStateMachinesOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3316,7 +3316,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func listTagsForResource(
             input: StepFunctionsModel.ListTagsForResourceInput) async throws -> StepFunctionsModel.ListTagsForResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3352,7 +3352,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func publishStateMachineVersion(
             input: StepFunctionsModel.PublishStateMachineVersionInput) async throws -> StepFunctionsModel.PublishStateMachineVersionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3388,7 +3388,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func sendTaskFailure(
             input: StepFunctionsModel.SendTaskFailureInput) async throws -> StepFunctionsModel.SendTaskFailureOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3424,7 +3424,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func sendTaskHeartbeat(
             input: StepFunctionsModel.SendTaskHeartbeatInput) async throws -> StepFunctionsModel.SendTaskHeartbeatOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3460,7 +3460,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func sendTaskSuccess(
             input: StepFunctionsModel.SendTaskSuccessInput) async throws -> StepFunctionsModel.SendTaskSuccessOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3496,7 +3496,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func startExecution(
             input: StepFunctionsModel.StartExecutionInput) async throws -> StepFunctionsModel.StartExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3532,7 +3532,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func startSyncExecution(
             input: StepFunctionsModel.StartSyncExecutionInput) async throws -> StepFunctionsModel.StartSyncExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3568,7 +3568,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func stopExecution(
             input: StepFunctionsModel.StopExecutionInput) async throws -> StepFunctionsModel.StopExecutionOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3604,7 +3604,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func tagResource(
             input: StepFunctionsModel.TagResourceInput) async throws -> StepFunctionsModel.TagResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3640,7 +3640,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func untagResource(
             input: StepFunctionsModel.UntagResourceInput) async throws -> StepFunctionsModel.UntagResourceOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3676,7 +3676,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func updateMapRun(
             input: StepFunctionsModel.UpdateMapRunInput) async throws -> StepFunctionsModel.UpdateMapRunOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3712,7 +3712,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func updateStateMachine(
             input: StepFunctionsModel.UpdateStateMachineInput) async throws -> StepFunctionsModel.UpdateStateMachineOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,
@@ -3748,7 +3748,7 @@ public struct AWSStepFunctionsClient<InvocationReportingType: HTTPClientCoreInvo
      */
     public func updateStateMachineAlias(
             input: StepFunctionsModel.UpdateStateMachineAliasInput) async throws -> StepFunctionsModel.UpdateStateMachineAliasOutput {
-        let handlerDelegate = AWSClientInvocationDelegate(
+        let handlerDelegate = try await AWSClientInvocationDelegate.get(
                     credentialsProvider: credentialsProvider,
                     awsRegion: awsRegion,
                     service: service,

@@ -1,5 +1,5 @@
 ---
-date: 2023-04-17 10:00
+date: 2023-12-17 10:00
 description: Support Policy for SmokeAWS.
 tags: support policy
 ---
@@ -24,10 +24,10 @@ SmokeAWS has two mechanism for removing support for Swift Toolchain versions-
 Once support has been removed, testing via continuous integration may be removed and no guarantees will be given for compiling the package using this version of the toolchain.
 
 Following these rules, the support level for different Swift Toolchain versions are-
-1. **Swift 5.5 and earlier**: No support.
-2. **Swift 5.6**: Supported for SmokeAWS 2.x. Support to be removed after 30th of September, 2023. See https://github.com/amzn/smoke-aws/issues/130 for open compiler crash issue.
-3. **Swift 5.7**: Supported for SmokeAWS 2.x.
-4. **Swift 5.8**: Supported for SmokeAWS 2.x.
+1. **Swift 5.6 and earlier**: No support.
+2. **Swift 5.7**: Supported for SmokeAWS 2.x. Support to be removed after 18th of March, 2024.
+3. **Swift 5.8**: Supported for SmokeAWS 2.x.
+4. **Swift 5.9**: Supported for SmokeAWS 2.x.
 
 # Runtime Support
 
