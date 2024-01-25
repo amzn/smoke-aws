@@ -43,7 +43,7 @@ public enum CloudWatchClientError: Swift.Error {
 
     public func isRetriable() -> Bool? {
         switch self {
-        case .limitExceededException, .limitExceededFault:
+        case .limitExceededException, .limitExceededFault, .throttling:
             return true
         default:
             return nil
@@ -86,7 +86,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 endpointPort: Int = 443,
                 requiresTLS: Bool? = nil,
                 service: String = "monitoring",
-                contentType: String = "application/octet-stream",
+                contentType: String = "application/x-www-form-urlencoded; charset=utf-8",
                 apiVersion: String = "2010-08-01",
                 connectionTimeoutSeconds: Int64 = 10,
                 retryConfiguration: HTTPClientRetryConfiguration = .default,
@@ -95,7 +95,7 @@ public struct AWSCloudWatchClient<InvocationReportingType: HTTPClientCoreInvocat
                 reportingConfiguration: SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>
                     = SmokeAWSClientReportingConfiguration<CloudWatchModelOperations>() ) {
         let useTLS = requiresTLS ?? AWSHTTPClientDelegate.requiresTLS(forEndpointPort: endpointPort)
-        let clientDelegate = XMLAWSHttpClientDelegate<CloudWatchError>(requiresTLS: useTLS,
+        let clientDelegate = FormEncodedXMLAWSHttpClientDelegate<CloudWatchError>(requiresTLS: useTLS,
             outputListDecodingStrategy: .collapseListUsingItemTag("member"), 
             inputQueryListEncodingStrategy: .expandListWithIndexAndItemTag(itemTag: "member"))
 
