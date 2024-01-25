@@ -46,7 +46,18 @@ private let limitExceededFaultIdentity = "LimitExceeded"
 private let missingRequiredParameterIdentity = "MissingParameter"
 private let resourceNotFoundIdentity = "ResourceNotFound"
 private let resourceNotFoundExceptionIdentity = "ResourceNotFoundException"
+private let throttlingIdentity = "ThrottlingException"
 private let __accessDeniedIdentity = "AccessDenied"
+
+public struct CloudWatchErrorPayload: Codable {
+    public let type: String
+    public let message: String
+
+    enum CodingKeys: String, CodingKey {
+        case type = "Code"
+        case message = "Message"
+    }
+}
 
 public enum CloudWatchError: Swift.Error, Decodable {
     case concurrentModification(ConcurrentModificationException)
@@ -62,6 +73,7 @@ public enum CloudWatchError: Swift.Error, Decodable {
     case missingRequiredParameter(MissingRequiredParameterException)
     case resourceNotFound(ResourceNotFound)
     case resourceNotFoundException(ResourceNotFoundException)
+    case throttling(CloudWatchErrorPayload)
     case accessDenied(message: String?)
     case validationError(reason: String)
     case unrecognizedError(String, String?)
@@ -120,6 +132,9 @@ public enum CloudWatchError: Swift.Error, Decodable {
         case resourceNotFoundExceptionIdentity:
             let errorPayload = try ResourceNotFoundException(from: decoder)
             self = CloudWatchError.resourceNotFoundException(errorPayload)
+        case throttlingIdentity:
+            let errorPayload = try CloudWatchErrorPayload(from: decoder)
+            self = CloudWatchError.throttling(errorPayload)
         case __accessDeniedIdentity:
             self = .accessDenied(message: errorMessage)
         default:
