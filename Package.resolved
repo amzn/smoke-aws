@@ -14,9 +14,9 @@
         "package": "smoke-aws-support",
         "repositoryURL": "https://github.com/amzn/smoke-aws-support.git",
         "state": {
-          "branch": "update-smoke-http",
-          "revision": "74c9ec7b99d558d92c93a06245af6392a55b637d",
-          "version": null
+          "branch": null,
+          "revision": "b858670eac000b3a957d85672b915c03275c0d9b",
+          "version": "2.0.0"
         }
       },
       {
