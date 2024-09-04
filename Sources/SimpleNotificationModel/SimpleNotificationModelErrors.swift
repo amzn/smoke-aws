@@ -62,12 +62,23 @@ private let subscriptionLimitExceededIdentity = "SubscriptionLimitExceeded"
 private let tagLimitExceededIdentity = "TagLimitExceeded"
 private let tagPolicyIdentity = "TagPolicy"
 private let throttledIdentity = "Throttled"
+private let throttlingIdentity = "Throttling"
 private let tooManyEntriesInBatchRequestIdentity = "TooManyEntriesInBatchRequest"
 private let topicLimitExceededIdentity = "TopicLimitExceeded"
 private let userErrorIdentity = "UserError"
 private let validationIdentity = "ValidationException"
 private let verificationIdentity = "VerificationException"
 private let __accessDeniedIdentity = "AccessDenied"
+
+public struct SimpleNotificationErrorPayload: Codable {
+    public let type: String
+    public let message: String
+
+    enum CodingKeys: String, CodingKey {
+        case type = "Code"
+        case message = "Message"
+    }
+}
 
 public enum SimpleNotificationError: Swift.Error, Decodable {
     case authorizationError(AuthorizationErrorException)
@@ -99,6 +110,7 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
     case tagLimitExceeded(TagLimitExceededException)
     case tagPolicy(TagPolicyException)
     case throttled(ThrottledException)
+    case throttling(SimpleNotificationErrorPayload)
     case tooManyEntriesInBatchRequest(TooManyEntriesInBatchRequestException)
     case topicLimitExceeded(TopicLimitExceededException)
     case userError(UserErrorException)
@@ -210,6 +222,9 @@ public enum SimpleNotificationError: Swift.Error, Decodable {
         case throttledIdentity:
             let errorPayload = try ThrottledException(from: decoder)
             self = SimpleNotificationError.throttled(errorPayload)
+        case throttlingIdentity:
+            let errorPayload = try SimpleNotificationErrorPayload(from: decoder)
+            self = SimpleNotificationError.throttling(errorPayload)
         case tooManyEntriesInBatchRequestIdentity:
             let errorPayload = try TooManyEntriesInBatchRequestException(from: decoder)
             self = SimpleNotificationError.tooManyEntriesInBatchRequest(errorPayload)

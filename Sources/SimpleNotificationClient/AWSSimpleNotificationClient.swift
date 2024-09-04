@@ -43,7 +43,7 @@ public enum SimpleNotificationClientError: Swift.Error {
 
     public func isRetriable() -> Bool? {
         switch self {
-        case .filterPolicyLimitExceeded, .kMSThrottling, .subscriptionLimitExceeded, .throttled, .topicLimitExceeded:
+        case .filterPolicyLimitExceeded, .kMSThrottling, .subscriptionLimitExceeded, .throttled, .throttling, .topicLimitExceeded:
             return true
         default:
             return nil
