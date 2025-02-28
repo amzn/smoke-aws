@@ -2947,7 +2947,6 @@ public extension Object {
      */
     static let __default: S3Model.Object = {
         let defaultInstance = S3Model.Object(
-            checksumAlgorithm: nil,
             eTag: nil,
             key: nil,
             lastModified: nil,

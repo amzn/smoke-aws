@@ -5409,7 +5409,6 @@ public struct NotificationConfigurationFilter: Codable, Equatable {
 }
 
 public struct Object: Codable, Equatable {
-    public var checksumAlgorithm: ChecksumAlgorithmList?
     public var eTag: ETag?
     public var key: ObjectKey?
     public var lastModified: LastModified?
@@ -5418,15 +5417,13 @@ public struct Object: Codable, Equatable {
     public var size: Size?
     public var storageClass: ObjectStorageClass?
 
-    public init(checksumAlgorithm: ChecksumAlgorithmList? = nil,
-                eTag: ETag? = nil,
+    public init(eTag: ETag? = nil,
                 key: ObjectKey? = nil,
                 lastModified: LastModified? = nil,
                 owner: Owner? = nil,
                 restoreStatus: RestoreStatus? = nil,
                 size: Size? = nil,
                 storageClass: ObjectStorageClass? = nil) {
-        self.checksumAlgorithm = checksumAlgorithm
         self.eTag = eTag
         self.key = key
         self.lastModified = lastModified
@@ -5437,7 +5434,6 @@ public struct Object: Codable, Equatable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case checksumAlgorithm = "ChecksumAlgorithm"
         case eTag = "ETag"
         case key = "Key"
         case lastModified = "LastModified"
